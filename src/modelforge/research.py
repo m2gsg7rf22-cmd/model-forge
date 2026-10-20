@@ -90,7 +90,12 @@ def probe(
     for result in results:
         groups.setdefault(result["prompt"], []).append(result["output"])
     consistency = {p: len(set(out)) == 1 for p, out in groups.items() if len(out) > 1}
+    from .evaluation import rank_behavioral_hypotheses
+
     return {
+        "behavioral_hypothesis_ranking": rank_behavioral_hypotheses(
+            {"results": results}
+        ),
         "kind": "behavioral_observation",
         "model": model,
         "endpoint": endpoint,

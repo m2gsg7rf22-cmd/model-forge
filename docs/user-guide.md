@@ -44,8 +44,8 @@ without a desktop display. Data defaults to `~/.modelforge`; use
 
 **Dashboard** refreshes actual hardware and tasks. **Settings** accepts JSON
 containing `api_endpoint`, `api_model`, `max_workers`, `agent_timeout_seconds`, and
-`agent_memory_mb`. The queue currently uses a fixed two-worker ceiling;
-`max_workers` is stored but does not change it. API endpoint/model preferences
+`agent_memory_mb`. The queue has a hard two-worker ceiling;
+`max_workers` selects one or two active workers. API endpoint/model preferences
 are stored; Research fields must currently be entered explicitly. Secret fields
 are rejected; keep API keys in the environment. Agent limits are clamped to
 1–300 seconds and 64–4,096 MiB.
