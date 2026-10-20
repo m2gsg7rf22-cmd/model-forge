@@ -56,6 +56,34 @@ def main() -> None:
     p.add_argument("payload", help="JSON object")
     p = sub.add_parser("example")
     p.add_argument("--destination", default="example-export.zip")
+    p = sub.add_parser("engine", help="Invoke a typed local research service operation")
+    p.add_argument(
+        "operation",
+        choices=[
+            "local_runtime_status",
+            "install_local_runtime",
+            "create_local_fixture",
+            "attach_local_model",
+            "local_generate",
+            "train_local_model",
+            "train_mlx_model",
+            "reconstruct_local",
+            "mlx_benchmark",
+            "run_umrre",
+            "trace_local_model",
+            "run_experiment",
+        ],
+    )
+    p.add_argument(
+        "arguments",
+        nargs="?",
+        default="{}",
+        help="JSON object matching the operation API",
+    )
+    p = sub.add_parser(
+        "local-example", help="Real offline Llama creation, LoRA, merge and export"
+    )
+    p.add_argument("--destination", default="local-model-example.zip")
     args = parser.parse_args()
     if args.home:
         os.environ["MODELFORGE_HOME"] = str(Path(args.home).resolve())
@@ -67,7 +95,41 @@ def main() -> None:
     service = Service(args.home)
     result: Any
     try:
-        if args.command in {"hardware", "projects", "tasks"}:
+        if args.command == "engine":
+            arguments = json.loads(args.arguments)
+            if not isinstance(arguments, dict):
+                raise ValueError("Engine arguments must be a JSON object")
+            result = getattr(service, args.operation)(**arguments)
+        elif args.command == "local-example":
+            project = service.create_project("Offline Llama adaptation example")
+            pid = project["id"]
+            built = service.create_local_fixture(pid, "llama")
+            before = service.local_generate(pid, "hello world", max_new_tokens=4)
+            trained = service.train_local_model(
+                pid,
+                "hello world model forge " * 12,
+                steps=4,
+                authorized=True,
+                rights="Project-owned synthetic fixture and user-created example text",
+            )
+            after = service.local_generate(pid, "hello world", max_new_tokens=4)
+            reconstructed = service.reconstruct_local(
+                pid,
+                ["hello world"],
+                redistributable=True,
+                rights="Project-owned randomly initialized fixture and adaptation",
+            )
+            exported = service.export(pid, args.destination)
+            result = dict(
+                project=project,
+                build=built,
+                before=before,
+                training=trained,
+                after=after,
+                reconstruction=reconstructed,
+                export=exported,
+            )
+        elif args.command in {"hardware", "projects", "tasks"}:
             result = getattr(service, args.command)()
         elif args.command == "run-tasks":
             result = service.run_pending()

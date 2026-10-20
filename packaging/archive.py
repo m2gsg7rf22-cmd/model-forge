@@ -8,11 +8,15 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import tomllib
 import zipfile
 
 root = Path(__file__).resolve().parents[1]
 dist = root / "dist"
-name = f"ModelForge-0.1.0-{platform.system()}-{platform.machine()}"
+version = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))[
+    "project"
+]["version"]
+name = f"ModelForge-{version}-{platform.system()}-{platform.machine()}"
 source = "ModelForge.app" if sys.platform == "darwin" else "ModelForge"
 archive = dist / (name + ".zip")
 if sys.platform == "darwin":

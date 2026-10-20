@@ -6,6 +6,7 @@ import importlib.metadata
 import shutil
 import subprocess
 import sys
+import tomllib
 
 root = Path(__file__).resolve().parents[1]
 os.environ.setdefault(
@@ -23,6 +24,12 @@ for dist in importlib.metadata.distributions():
                 dest = notices / str(dist.metadata["Name"]) / file.name
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(source, dest)
+version = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))[
+    "project"
+]["version"]
+wheels = list((root / "dist").glob("modelforge_research-" + version + "-*.whl"))
+if len(wheels) != 1:
+    raise RuntimeError("Build the current source wheel before packaging the desktop")
 separator = ";" if sys.platform == "win32" else ":"
 subprocess.run(
     [
@@ -49,6 +56,20 @@ subprocess.run(
         "onnx",
         "--exclude-module",
         "coremltools",
+        "--add-data",
+        str(wheels[0]) + separator + "engine-wheel",
+        *[
+            item
+            for module in (
+                "torch",
+                "transformers",
+                "peft",
+                "mlx",
+                "mlx_lm",
+                "accelerate",
+            )
+            for item in ("--exclude-module", module)
+        ],
         "--exclude-module",
         "pytest",
         str(root / "packaging" / "desktop_entry.py"),

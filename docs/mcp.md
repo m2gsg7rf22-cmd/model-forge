@@ -69,7 +69,7 @@ again if more queued work remains. This is a persistent queue, not an always-on
 scheduler daemon or a provider monetary-budget manager.
 
 The server currently exposes tools only; no separate resource/prompt catalog,
-HTTP transport, or remote authentication service is shipped. All 17 tools are listed above. Direct numerical comparison of two arbitrary
+HTTP transport, or remote authentication service is shipped. The table above lists the original tools; the v0.2 additions are listed below. Direct numerical comparison of two arbitrary
 supported bundle paths remains `builder.compare_models` in the Python API;
 `compare_experiments` compares stored behavioral findings instead.
 
@@ -77,3 +77,32 @@ See [Claude Code](claude-code.md) and [Codex](codex.md) for host setup. The
 `packaging/connect.py` helper prepares isolated files and requires `--apply`
 before invoking host registration. Real MCP protocol validation and host
 integration limitations are tracked in [validation](validation.md).
+
+
+## Local engines and research tools (0.2)
+
+The server also registers typed Service signatures as MCP tools named
+`local_runtime_status`, `install_local_runtime`, `create_local_fixture`,
+`attach_local_model`, `local_generate`, `train_local_model`, `train_mlx_model`,
+`reconstruct_local`, `mlx_benchmark`, `trace_local_model`, `run_umrre` and
+`run_experiment`. See [API arguments](api.md#local-engine-operations-02) and inspect
+the client's actual `list_tools` response for the installed version.
+
+A supported HF sequence is `create_project` → `create_local_fixture` (or authorized
+`attach_local_model`) → `local_generate` → authorized `train_local_model` →
+`local_generate` → rights-gated `reconstruct_local` → `export_project`. These
+operations run actual local weights, distinct from the legacy `generate` and
+`train_model` byte-fixture tools. MLX generation/training requires its optional
+Apple Silicon runtime. MLX adapters support local reload but no merge/export.
+
+`trace_local_model` measures activations and optionally ablates an exact reported
+MLP; it does not infer semantic neuron roles. `run_umrre` performs controlled owned
+NumPy experiments without remote requests. `run_experiment` issues requests only
+with explicit endpoint authorization and enforces its persisted request/output
+reservation caps; input costs and provider overhead remain additional.
+
+Installing libraries or listing tools does not demonstrate actual execution on
+every hardware backend. Native desktop users can configure a separate companion
+Python. Agents can install and verify an isolated environment directly from the
+repository using [bootstrap](agent-install.md). Host registration is applied only
+when explicitly requested; bootstrap verification calls actual MCP engine tools.

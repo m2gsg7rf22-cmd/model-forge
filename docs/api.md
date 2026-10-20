@@ -1,6 +1,6 @@
 # Python and CLI API
 
-The 0.1 API uses JSON-compatible dictionaries rather than a stable versioned
+The 0.2 API uses JSON-compatible dictionaries rather than a stable versioned
 Python schema. Import from the installed `modelforge` package. Failures raise
 exceptions in Python; the desktop displays them and the MCP SDK reports tool
 errors. The CLI currently prints uncaught error tracebacks.
@@ -75,8 +75,9 @@ modelforge compare-experiments PROJECT_ID LEFT_FINDING_ID RIGHT_FINDING_ID
 modelforge benchmark PROJECT_ID FINDING_ID '{"prompt text":"exact expected output"}'
 ```
 
-Use `findings PROJECT_ID` to obtain behavioral finding IDs. Reconstruction requires
-an empty target project and supports only the validated tiny-model architecture.
+Use `findings PROJECT_ID` to obtain behavioral finding IDs. The legacy `reconstruct` operation requires
+an empty target project and supports only the validated byte-model architecture;
+`reconstruct_local` below handles supported HF weights separately.
 `compare-experiments` pairs exact prompt text by occurrence order and reports
 unmatched samples; it does not establish a causal version change. `benchmark`
 counts exact Unicode text matches without normalization; supplied labels are not
@@ -118,3 +119,44 @@ names/values without importing their code. `load_plugin(name, trusted=True)`
 explicitly imports a named installed factory, validates its returned adapter,
 and rejects built-in overrides. With the default `trusted=False` it raises
 `PermissionError` before imports. Neither inspection nor routing loads plugins.
+
+
+## Local engine operations (0.2)
+
+`modelforge engine OPERATION 'JSON_OBJECT'` calls the corresponding Service method
+with keyword arguments. CLI global `--home` precedes `engine`. These are the same
+operations used by the GUI and MCP. Optional heavy work runs in a separate
+bounded worker interpreter; UMRRE is an independent NumPy operation.
+
+| Service / engine operation | Main arguments and result |
+| --- | --- |
+| `local_runtime_status()` | Actual configured-interpreter dependency inventory; not backend certification |
+| `install_local_runtime(backend="llm", authorized=False)` | Explicit install into a new dedicated environment; backend `llm` or `mlx`; saves interpreter setting |
+| `create_local_fixture(project_id, model_type="llama")` | Complete owned random GPT-2/Llama SafeTensors and local tokenizer |
+| `attach_local_model(project_id, source_path, authorized=False, memory_limit_mb=2048, device="cpu")` | Validate compatible local weights; persist external reference |
+| `local_generate(project_id, text, max_new_tokens=32, memory_limit_mb=2048, device="cpu", backend="hf", quantize_bits=0)` | Real tokens; MLX Llama accepts 0/4/8-bit linear representation |
+| `train_local_model(project_id, text, method="lora", steps=10, learning_rate=.01, max_sequence_length=64, memory_limit_mb=2048, device="cpu", authorized=False, rights="", resume=False)` | Full/LoRA checkpoints and actual losses; guarded unverified CUDA QLoRA |
+| `train_mlx_model(project_id, text, steps=5, learning_rate=.01, memory_limit_mb=2048, authorized=False, rights="", quantize_bits=0)` | Actual Apple GPU LoRA, optionally quantized base; reloadable adapter, no resume/merge |
+| `reconstruct_local(project_id, prompts, redistributable=False, rights="")` | Separate safe HF reconstruction or adapter merge with rights and finite parity |
+| `mlx_benchmark(project_id)` | Measured CPU/GPU float32 and GPU 4/8-bit runs |
+| `trace_local_model(project_id, text, ablate_module="", memory_limit_mb=2048, device="cpu")` | <=64 tokens / <=128 module summaries; optional named MLP zero-ablation |
+| `run_umrre(project_id, seed=7)` | Bounded controlled owned reconstruction/approximation/compression suite |
+| `run_experiment(project_id, endpoint, model, cases, authorized=False, max_requests=10, output_token_budget=1024, resume_id=None)` | Durable reserved-request ledger and observations; no monetary cap |
+
+```sh
+modelforge engine local_runtime_status '{}'
+modelforge engine attach_local_model '{"project_id":"PROJECT_ID","source_path":"/models/local-llama","authorized":true,"device":"cpu"}'
+modelforge engine train_local_model '{"project_id":"PROJECT_ID","text":"owned training text owned training text","steps":3,"method":"lora","authorized":true,"rights":"I own this corpus and may adapt this model"}'
+modelforge engine local_generate '{"project_id":"PROJECT_ID","text":"hello","backend":"mlx","quantize_bits":4,"max_new_tokens":4}'
+modelforge engine trace_local_model '{"project_id":"PROJECT_ID","text":"hello"}'
+```
+
+The old `infer`/`train` commands remain byte-model operations; use `local_generate`
+and `train_local_model` for HF models. Setting `runtime_python` selects an absolute
+companion interpreter. No API automatically downloads model weights or enables
+remote Python. Training and redistribution require separate explicit rights.
+Attached source weights and raw training trees are excluded from project export;
+explicit reconstruction produces the separately exportable bundle. MLX adapters
+remain local because merge/export is unsupported. Detailed bounds are documented
+in [local runtime](local-runtime.md), [training](training.md), [MLX](mlx.md),
+[research lab](research-lab.md) and [UMRRE](umrre.md).

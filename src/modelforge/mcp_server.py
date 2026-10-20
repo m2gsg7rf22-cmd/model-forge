@@ -126,6 +126,23 @@ def create_server(data_dir: str | None = None) -> FastMCP:
         """Report actual hardware and current memory."""
         return service.hardware()
 
+    # Bound signatures remain explicit typed MCP schemas; every tool calls the shared engines.
+    for name in (
+        "local_runtime_status",
+        "install_local_runtime",
+        "create_local_fixture",
+        "attach_local_model",
+        "local_generate",
+        "train_local_model",
+        "train_mlx_model",
+        "reconstruct_local",
+        "mlx_benchmark",
+        "run_umrre",
+        "trace_local_model",
+        "run_experiment",
+    ):
+        server.tool()(getattr(service, name))
+
     return server
 
 

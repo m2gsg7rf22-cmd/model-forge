@@ -1,90 +1,46 @@
-# Capabilities and reconstruction boundaries
+# Capabilities and reconstruction boundaries — 0.2
 
-ModelForge 0.1.0 is an integrated local research workbench. Its executable model
-builder supports one project-owned tiny causal architecture. Imported models are
-inspected as artifacts, not automatically executed or reconstructed.
+ModelForge separates artifact evidence, accessible-weight execution and black-box behavioral research. UMRRE's name describes a research objective; it does not certify universal recovery.
 
-## Format matrix
-
-| Source | Working inspection | Execution or reconstruction |
+| Input / operation | Implemented capability | Boundary |
 | --- | --- | --- |
-| SafeTensors | Tensor names, shapes, dtypes, stored element count, validated offsets; bounded headers | Only the supported ModelForge tiny-model bundle can run |
-| GGUF little-endian v2/v3 | Typed metadata, tensor descriptors, quantization types; known-type byte bounds | Unsupported |
-| HF config directory | Config, SafeTensors shards and index consistency, tokenizer metadata | Arbitrary Transformers execution unsupported |
-| ONNX | Optional `onnx` parser: graph operators/edges and dense initializer shapes; external data unopened | ONNX Runtime execution unsupported |
-| Core ML `.mlmodel` | Optional `coremltools`: declared type and input/output interface | Tensor inventory and execution unsupported |
-| Core ML `.mlpackage` | Explicit unsupported result | Unsupported |
-| PyTorch/pickle checkpoints | Refused, including trusted checkpoints in this release | Unsupported; convert trusted files externally |
-| Authorized text API | Responses, latency, JSON validity, repeat consistency, descriptive property ranking; saved finding comparisons and explicit-label exact-match scoring | No structural or weight recovery |
+| SafeTensors / HF configuration | Bounded tensor/header inventory, shard validation, tokenizer metadata | Headers alone do not prove graph semantics |
+| Complete local GPT-2 / Llama | Built-in installed Transformers model, fast local tokenizer, CPU or available MPS/CUDA device | Local SafeTensors only; no Hub download or remote Python; exact inventory required |
+| Local Llama on Apple Silicon | Actual MLX CPU/Metal inference, 4/8-bit linear quantization, measured benchmark | GPT-2 and arbitrary MLX architectures unsupported; original local HF weights required |
+| Full / LoRA training | Actual Torch full-parameter or PEFT adapter updates; immutable checkpoints; resume | Authorized corpus/model required; training loss is not held-out quality |
+| QLoRA | Explicit CUDA/bitsandbytes eligibility checks and NF4 path | Not hardware-verified on this development host |
+| MLX LoRA / quantized-base LoRA | Actual rank-four updates and integrity-checked adapter reload | No MLX resume or merge/export yet |
+| Forward tracing / intervention | Up to 64 input tokens, 128 leaf activation summaries; named GPT-2/Llama MLP zero-ablation and numeric logits/KL | Local HF models/adapters; no semantic attribution or inaccessible-model inference |
+| Reconstruction | Safe reserialization or HF LoRA merge, provenance, rights gate and finite prompt parity | Complete compatible weights required; does not recover missing weights |
+| GGUF v2/v3 | Bounded metadata/tensor descriptors | Execution unsupported |
+| ONNX / Core ML | Optional metadata parsers | Execution unsupported |
+| Python / pickle checkpoint | Refused, including trusted files | Convert independently outside ModelForge |
+| Authorized text API | Durable request/output reservation, retained responses, schema/label/context/repetition measurements | No architecture or weight recovery; no provider dollar cap |
+| UMRRE | Controlled affine recovery, nonidentifiability/symmetry proofs by construction, held-out student approximation, compression | Small owned synthetic systems, not frontier models |
+| Image / video / audio | Compatible artifact metadata; synthetic UMRRE tensor projections | No generative pipelines or semantic reconstruction |
 
-[Inspector bounds and sources](inspector-sources.md) describe accepted dtypes,
-limits, and malformed-file rejection. Metadata is parsed without executing model
-code. An optional dependency being absent produces an explicit unsupported result.
-
-## Modality matrix
-
-| Model type | Current capability | Planned extension, not implemented |
-| --- | --- | --- |
-| Language | Local metadata; authorized text API probes; tiny CPU fixture build/inference/output-head training | General LLM runtime adapters, LoRA/QLoRA, activation interventions |
-| Multimodal | Declared nested vision/text/audio configs and compatible tensor metadata | Uniform executable multimodal adapters |
-| Images / diffusion / ViT | Compatible tensor inventories, config declarations, name-based layer categories | Diffusers pipelines and image generation |
-| Video / audio | Compatible artifact metadata only | Modality-specific probes, pipelines, and reconstruction |
-
-Separate `LanguageAdapter`, `MultimodalAdapter`, `ImageAdapter`, `VideoAdapter`,
-and `AudioAdapter` classes share `inspect(path)`, `infer(path, prompt)`, and a
-`capabilities` dictionary. Metadata inspection delegates to the same bounded
-inspector. Only `LanguageAdapter` runs the supported project-owned tiny bundle;
-all other inference calls raise `UnsupportedModelOperation` with a technical
-reason. Routing uses artifact declarations and remains a heuristic.
-
-Installed `modelforge.adapters` entry points can be listed without importing their
-code. Loading requires an explicit `load_plugin(name, trusted=True)` call;
-inspection never loads extensions automatically. A plugin factory must return a
-`ModelAdapter` and cannot replace a built-in modality. The plugin path is a
-trusted-code extension interface, not a sandbox. Extension candidates and their
-actual integration status appear in [ecosystem review](ecosystem.md).
+[Inspector bounds](inspector-sources.md), [local runtime](local-runtime.md), [training](training.md), [MLX](mlx.md), [research lab](research-lab.md) and [UMRRE](umrre.md) provide exact technical limits.
 
 ## Evidence and exactness
 
-| Available evidence | What the report establishes | What remains unknown |
-| --- | --- | --- |
-| Config only | What the artifact declares about layers, heads, activation, context and modality | Actual computation, parameter count, weights, tokenizer equivalence |
-| Tensor headers | Stored names, shapes, dtypes, element counts | Training semantics, precise connectivity, completeness without inventory |
-| Tensor names | Explicitly inferred layer categories | Verified attention mechanism or execution order |
-| ONNX graph | Serialized operators and graph connectivity | External data contents, full subgraph inventory, numerical parity |
-| Finite API outputs | Observed behavior for those requests and endpoint version | Architecture, weights, true context limit, universal behavior |
-| Complete supported tiny bundle | Loader validates architecture, tensor mapping and tokenizer; finite numerical comparison | Universal parity on all inputs or parity with an unrelated source |
+Configuration is declared evidence. Tensor names support qualified structural inference. ONNX graphs describe serialized edges. Runtime hooks measure actual built-in forward execution. API outputs show only observed endpoint behavior. These are distinct evidence sources.
 
-Inspection always reports `reconstruction.exact = false`. The independent seeded
-fixture is not a replica of an imported model. Float32 reconstruction of the
-supported bundle can show identical logits on tested prompts. INT8 storage is
-lossy and cannot recover original pre-quantization weights. Reconstruction of a
-supported source bundle into an empty project and INT8 export are available in
-the GUI, CLI, MCP and service APIs. See [reconstruction](reconstruction.md).
+The metadata inspector always reports `reconstruction.exact=false`. Complete supported weights can pass finite tokenizer/logit/token comparisons; this does not prove universal input parity. Lossy INT8 or MLX 4/8-bit operations cannot recover original floating-point values. Tiny randomly initialized fixtures establish engineering behavior rather than language capability.
 
-Behavioral finding comparisons pair identical prompt strings by occurrence order
-and report unmatched samples. Exact-match benchmarks use explicit user-supplied
-text labels; they are not standardized benchmarks or semantic correctness tests.
-Probe property rankings use Wilson reference lower bounds for observed JSON
-validity and repeat equality. These intervals are not calibrated confidence for
-correlated/selected probes and provide no architectural or weight posterior.
+A forward module tree is containment rather than execution order. Activation statistics and MLP ablation quantify a particular computation/intervention; they do not identify concepts or prove mechanistic explanations.
 
-## Hardware and operating systems
+UMRRE distinguishes cases where a known affine family is identifiable from sufficient noiseless queries, constructive nonidentifiability, functionally identical different weights and approximate students on a held-out synthetic distribution. These statements do not imply all black-box extraction is impossible or all architectures are recoverable.
 
-| Platform | CPU metadata/CLI/MCP/tiny model | Desktop | Accelerators | Validation scope |
-| --- | --- | --- | --- | --- |
-| macOS Apple Silicon | Supported | PySide6 | NumPy CPU; MLX unsupported | Local acceptance host: Darwin arm64 / Python 3.12; macOS CI succeeded |
-| macOS Intel | Portable source path, dependencies permitting | PySide6 wheels permitting | CPU only | Not validated; no Intel native package |
-| Windows 10/11 x64 | Portable source path | PySide6 | CPU only; CUDA unsupported | CI test, install, package and frozen-app launch passed |
-| Linux x64 | Portable source path | PySide6 plus a working display/Qt libraries | CPU only; CUDA unsupported | CI test, install, package and frozen-app launch passed |
+## Runtime, hardware and validation
 
-Python 3.12+ is required. A GPU is unnecessary. Metadata parsing does not load
-weight payloads. New fixture construction requires 256 MiB available RAM and
-64 MiB free disk through the service. Builder memory estimates also enforce the
-configured working-memory limit before allocation. These checks are estimates,
-not OS memory reservations. The agent scheduler honors `max_workers` of 1 or 2 and admits at most two concurrent
-jobs; agent subprocesses have time, memory, and log bounds. API output-token
-budgets and agent time limits are not monetary provider-account caps.
+The native app remains a lightweight base. Heavy engines execute in a companion interpreter with sampled process RSS, elapsed-time and output bounds. Missing dependencies produce explicit errors. Memory checks/MLX allocation limits are estimates and monitored limits, not OS reservations or a sandbox for arbitrary code.
 
-Packaging, signed distribution, host integrations and executed checks have
-separate validation status in [validation](validation.md).
+Torch GPT-2/Llama CPU execution, full/LoRA training, safe reconstruction, offscreen GUI operations and activation hooks have focused local tests. Tiny Llama MPS and MLX Metal inference, quantization and adapter training/reload were exercised on the available Apple M4/16 GiB host. CUDA and CUDA QLoRA were not hardware-tested. macOS Intel has no validated native package.
+
+Windows/Linux v0.1 CI and native archives are historical evidence for that release. New v0.2 platform packages require their own acceptance record; see [validation](validation.md) and [release notes](release-notes.md). Python 3.12+ is required for source/companion environments. MLX requires macOS Apple Silicon.
+
+The queue admits one or two workers. API output caps exclude input/provider overhead and are not monetary caps. Installed trusted adapter plugins remain an explicit trusted-code extension, never automatically loaded during inspection.
+
+## Sharing boundaries
+
+Attached models remain external references. Raw training checkpoints/adapters are not automatically swept into exports. HF reconstruction or adapter merge requires explicit redistribution permission and a rights statement, producing a separate exportable `hf-reconstruction` bundle. MLX adapters currently remain local. Findings may contain authorized provider text and local paths; review before sharing.

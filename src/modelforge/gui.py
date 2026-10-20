@@ -17,6 +17,7 @@ from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
     QComboBox,
+    QDoubleSpinBox,
     QFileDialog,
     QFormLayout,
     QGraphicsScene,
@@ -29,6 +30,8 @@ from PySide6.QtWidgets import (
     QPlainTextEdit,
     QPushButton,
     QSpinBox,
+    QScrollArea,
+    QTabWidget,
     QStackedWidget,
     QVBoxLayout,
     QWidget,
@@ -307,12 +310,16 @@ class MainWindow(QMainWindow):
         subtitle.setWordWrap(True)
         subtitle.setObjectName("description")
         layout.addWidget(subtitle)
-        self.stack.addWidget(widget)
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setWidget(widget)
+        self.stack.addWidget(scroll)
         return layout
 
     def output(self, name: str, layout: QVBoxLayout) -> QPlainTextEdit:
         editor = QPlainTextEdit()
         editor.setReadOnly(True)
+        editor.setMinimumHeight(150)
         editor.setPlaceholderText("Results will appear here after an operation.")
         layout.addWidget(editor, 1)
         self.outputs[name] = editor
@@ -359,6 +366,17 @@ class MainWindow(QMainWindow):
         self.graph = GraphView()
         architecture.addWidget(self.graph, 2)
         architecture.addWidget(self.button("Load project findings", self.load_findings))
+        self.trace_prompt = QLineEdit("hello world")
+        self.trace_prompt.setPlaceholderText("Activation probe: at most 64 tokens")
+        architecture.addWidget(self.trace_prompt)
+        self.trace_ablation = QLineEdit()
+        self.trace_ablation.setPlaceholderText(
+            "Optional exact MLP name from trace ablation_modules"
+        )
+        architecture.addWidget(self.trace_ablation)
+        architecture.addWidget(
+            self.button("Trace local activations / ablate named MLP", self.trace_model)
+        )
         self.output("Architecture", architecture)
         research = self.page(
             "Research",
@@ -473,7 +491,411 @@ class MainWindow(QMainWindow):
         settings.addWidget(self.settings_editor, 1)
         settings.addWidget(self.button("Reload settings", self.load_settings))
         settings.addWidget(self.button("Save settings", self.save_settings, True))
-        self.output("Settings", settings).setMaximumHeight(110)
+        self.output("Settings", settings).setMaximumHeight(160)
+        self.build_engine_panels(reconstruction, training, research, settings)
+
+    def engine_tab(self, layout: QVBoxLayout, name: str) -> QVBoxLayout:
+        """Keep legacy controls accessible and share one visible result area."""
+        result = layout.takeAt(layout.count() - 1)
+        legacy = QWidget()
+        legacy_layout = QVBoxLayout(legacy)
+        while layout.count() > 3:
+            item = layout.takeAt(3)
+            if item is not None:
+                legacy_layout.addItem(item)
+        tabs = QTabWidget()
+        tabs.addTab(legacy, "Baseline fixture")
+        panel = QWidget()
+        panel_layout = QVBoxLayout(panel)
+        tabs.addTab(panel, name)
+        layout.addWidget(tabs)
+        if result is not None:
+            layout.addItem(result)
+        return panel_layout
+
+    def build_engine_panels(
+        self,
+        reconstruction: QVBoxLayout,
+        training: QVBoxLayout,
+        research: QVBoxLayout,
+        settings: QVBoxLayout,
+    ) -> None:
+        local = self.engine_tab(reconstruction, "Local GPT-2 / Llama / MLX")
+        self.local_source = QLineEdit()
+        self.local_source.setPlaceholderText(
+            "Local SafeTensors model folder; no remote code"
+        )
+        local.addWidget(self.local_source)
+        local.addWidget(
+            self.button("Choose local model folder…", self.browse_local_model)
+        )
+        self.local_authorized = QCheckBox("I am authorized to load and run this model")
+        local.addWidget(self.local_authorized)
+        options = QFormLayout()
+        self.local_device = QComboBox()
+        self.local_device.addItems(["cpu", "auto", "mps", "cuda"])
+        options.addRow("Torch device", self.local_device)
+        self.local_memory = QSpinBox()
+        self.local_memory.setRange(256, 65536)
+        self.local_memory.setValue(2048)
+        options.addRow("Worker memory limit (MiB)", self.local_memory)
+        self.local_backend = QComboBox()
+        self.local_backend.addItems(["hf", "mlx"])
+        options.addRow("Generation engine", self.local_backend)
+        self.local_bits = QComboBox()
+        self.local_bits.addItems(["0", "4", "8"])
+        options.addRow("MLX quantization bits (0 = original)", self.local_bits)
+        self.local_tokens = QSpinBox()
+        self.local_tokens.setRange(1, 512)
+        self.local_tokens.setValue(32)
+        options.addRow("Maximum new tokens", self.local_tokens)
+        local.addLayout(options)
+        local.addWidget(
+            self.button("Validate and attach local model", self.attach_local)
+        )
+        self.local_fixture_type = QComboBox()
+        self.local_fixture_type.addItems(["llama", "gpt2"])
+        local.addWidget(self.local_fixture_type)
+        local.addWidget(
+            self.button(
+                "Create owned offline language-model fixture", self.create_hf_fixture
+            )
+        )
+        self.local_prompt = QLineEdit("hello world")
+        local.addWidget(self.local_prompt)
+        local.addWidget(
+            self.button("Generate with selected engine", self.generate_local, True)
+        )
+        local.addWidget(self.button("Run MLX GPU benchmark", self.benchmark_mlx))
+        self.local_rights = QLineEdit()
+        self.local_rights.setPlaceholderText(
+            "License / ownership statement for redistribution"
+        )
+        local.addWidget(self.local_rights)
+        self.local_redistributable = QCheckBox(
+            "I have permission to redistribute this model"
+        )
+        local.addWidget(self.local_redistributable)
+        local.addWidget(
+            self.button("Reconstruct and check prompt parity", self.reconstruct_hf)
+        )
+
+        train = self.engine_tab(training, "Full / LoRA training")
+        train.addWidget(
+            QLabel(
+                "Uses the attached local model. Supply text you have permission to train on."
+            )
+        )
+        self.local_training_text = QPlainTextEdit()
+        self.local_training_text.setPlaceholderText("Training corpus (UTF-8 text)")
+        self.local_training_text.setMaximumHeight(130)
+        train.addWidget(self.local_training_text)
+        form = QFormLayout()
+        self.local_method = QComboBox()
+        self.local_method.addItems(["lora", "full", "qlora"])
+        form.addRow("Training method", self.local_method)
+        self.local_steps = QSpinBox()
+        self.local_steps.setRange(1, 1000)
+        self.local_steps.setValue(10)
+        form.addRow("Total target steps (including resumed steps)", self.local_steps)
+        self.local_rate = QDoubleSpinBox()
+        self.local_rate.setDecimals(6)
+        self.local_rate.setRange(0.000001, 0.999999)
+        self.local_rate.setValue(0.01)
+        form.addRow("Learning rate", self.local_rate)
+        self.local_sequence = QSpinBox()
+        self.local_sequence.setRange(2, 4096)
+        self.local_sequence.setValue(64)
+        form.addRow("Maximum sequence tokens", self.local_sequence)
+        train.addLayout(form)
+        self.training_rights = QLineEdit()
+        self.training_rights.setPlaceholderText("Dataset and model rights statement")
+        train.addWidget(self.training_rights)
+        self.training_authorized = QCheckBox(
+            "I am authorized to train this model using this corpus"
+        )
+        self.training_resume = QCheckBox("Resume the saved training checkpoint")
+        train.addWidget(self.training_authorized)
+        train.addWidget(self.training_resume)
+        train.addWidget(self.button("Train attached model", self.train_hf, True))
+        train.addWidget(self.button("Train MLX LoRA on Apple GPU", self.train_mlx))
+
+        lab = self.engine_tab(research, "Durable experiments / UMRRE")
+        lab.addWidget(
+            QLabel(
+                "API experiments use the endpoint, model, permission and token cap from the first tab."
+            )
+        )
+        self.experiment_cases = QPlainTextEdit()
+        self.experiment_cases.setPlainText(
+            '[{"kind":"capability","prompt":"Return the word hello","expected":"hello"}]'
+        )
+        self.experiment_cases.setMaximumHeight(130)
+        lab.addWidget(QLabel("Cases (JSON array)"))
+        lab.addWidget(self.experiment_cases)
+        self.experiment_requests = QSpinBox()
+        self.experiment_requests.setRange(1, 100)
+        self.experiment_requests.setValue(10)
+        lab.addWidget(QLabel("Maximum API requests"))
+        lab.addWidget(self.experiment_requests)
+        self.experiment_resume = QLineEdit()
+        self.experiment_resume.setPlaceholderText("Optional experiment ID to resume")
+        lab.addWidget(self.experiment_resume)
+        lab.addWidget(
+            self.button("Run authorized API experiment", self.experiment, True)
+        )
+        self.umrre_seed = QSpinBox()
+        self.umrre_seed.setRange(0, 2147483647)
+        self.umrre_seed.setValue(7)
+        lab.addWidget(QLabel("Local UMRRE random seed"))
+        lab.addWidget(self.umrre_seed)
+        lab.addWidget(self.button("Run local UMRRE research", self.umrre))
+
+        runtime = self.engine_tab(settings, "Optional local engines")
+        note = QLabel(
+            "Optional engines run in a separate Python environment. Source install: pip install '.[llm]' or '.[mlx]'. Missing dependencies and unsupported devices appear in the result below."
+        )
+        note.setWordWrap(True)
+        runtime.addWidget(note)
+        runtime.addWidget(
+            self.button("Check local runtime status", self.runtime_status)
+        )
+        self.runtime_python = QLineEdit()
+        self.runtime_python.setPlaceholderText(
+            "Absolute path to a Python interpreter with ModelForge and engine extras"
+        )
+        runtime.addWidget(self.runtime_python)
+        runtime.addWidget(
+            self.button("Save runtime interpreter", self.save_runtime_python)
+        )
+        self.runtime_extra = QComboBox()
+        self.runtime_extra.addItems(["llm", "mlx"])
+        runtime.addWidget(self.runtime_extra)
+        self.runtime_install_authorized = QCheckBox(
+            "Authorize downloading and installing the selected optional engine"
+        )
+        runtime.addWidget(self.runtime_install_authorized)
+        runtime.addWidget(self.button("Install optional engine", self.install_runtime))
+
+    def trace_model(self) -> None:
+        text, module = self.trace_prompt.text(), self.trace_ablation.text().strip()
+        memory, device = self.local_memory.value(), self.local_device.currentText()
+        self.project_action(
+            "Architecture",
+            "Trace local activations",
+            lambda key: self.service.trace_local_model(
+                key, text, ablate_module=module, memory_limit_mb=memory, device=device
+            ),
+        )
+
+    def browse_local_model(self) -> None:
+        path = QFileDialog.getExistingDirectory(self, "Choose local SafeTensors model")
+        if path:
+            self.local_source.setText(path)
+
+    def attach_local(self) -> None:
+        if not self.local_authorized.isChecked():
+            self.show_error(
+                "Reconstruction", "Confirm permission to load this local model."
+            )
+            return
+        source, memory, device = (
+            self.local_source.text().strip(),
+            self.local_memory.value(),
+            self.local_device.currentText(),
+        )
+        self.project_action(
+            "Reconstruction",
+            "Attach local model",
+            lambda key: self.service.attach_local_model(
+                key, source, authorized=True, memory_limit_mb=memory, device=device
+            ),
+        )
+
+    def create_hf_fixture(self) -> None:
+        model_type = self.local_fixture_type.currentText()
+        self.project_action(
+            "Reconstruction",
+            "Create local language-model fixture",
+            lambda key: self.service.create_local_fixture(key, model_type=model_type),
+        )
+
+    def generate_local(self) -> None:
+        text, tokens = self.local_prompt.text(), self.local_tokens.value()
+        memory, device = self.local_memory.value(), self.local_device.currentText()
+        backend, bits = self.local_backend.currentText(), int(
+            self.local_bits.currentText()
+        )
+        self.project_action(
+            "Reconstruction",
+            "Generate local tokens",
+            lambda key: self.service.local_generate(
+                key,
+                text,
+                max_new_tokens=tokens,
+                memory_limit_mb=memory,
+                device=device,
+                backend=backend,
+                quantize_bits=bits,
+            ),
+        )
+
+    def benchmark_mlx(self) -> None:
+        self.project_action(
+            "Reconstruction", "MLX GPU benchmark", self.service.mlx_benchmark
+        )
+
+    def reconstruct_hf(self) -> None:
+        if (
+            not self.local_redistributable.isChecked()
+            or not self.local_rights.text().strip()
+        ):
+            self.show_error(
+                "Reconstruction",
+                "Redistribution permission and a rights statement are required.",
+            )
+            return
+        prompts, rights = [self.local_prompt.text()], self.local_rights.text().strip()
+        self.project_action(
+            "Reconstruction",
+            "Reconstruct local language model",
+            lambda key: self.service.reconstruct_local(
+                key, prompts, redistributable=True, rights=rights
+            ),
+        )
+
+    def train_hf(self) -> None:
+        if (
+            not self.training_authorized.isChecked()
+            or not self.training_rights.text().strip()
+        ):
+            self.show_error(
+                "Training", "Training permission and a rights statement are required."
+            )
+            return
+        values = dict(
+            text=self.local_training_text.toPlainText(),
+            method=self.local_method.currentText(),
+            steps=self.local_steps.value(),
+            learning_rate=self.local_rate.value(),
+            max_sequence_length=self.local_sequence.value(),
+            memory_limit_mb=self.local_memory.value(),
+            device=self.local_device.currentText(),
+            authorized=True,
+            rights=self.training_rights.text().strip(),
+            resume=self.training_resume.isChecked(),
+        )
+        self.project_action(
+            "Training",
+            "Train local language model",
+            lambda key: self.service.train_local_model(key, **values),
+        )
+
+    def train_mlx(self) -> None:
+        if (
+            not self.training_authorized.isChecked()
+            or not self.training_rights.text().strip()
+        ):
+            self.show_error(
+                "Training", "Training permission and a rights statement are required."
+            )
+            return
+        if self.training_resume.isChecked():
+            self.show_error(
+                "Training",
+                "MLX checkpoint resume is not supported; clear Resume to start a new run.",
+            )
+            return
+        values = dict(
+            text=self.local_training_text.toPlainText(),
+            steps=self.local_steps.value(),
+            learning_rate=self.local_rate.value(),
+            memory_limit_mb=self.local_memory.value(),
+            authorized=True,
+            rights=self.training_rights.text().strip(),
+            quantize_bits=int(self.local_bits.currentText()),
+        )
+        self.project_action(
+            "Training",
+            "Train MLX LoRA",
+            lambda key: self.service.train_mlx_model(key, **values),
+        )
+
+    def experiment(self) -> None:
+        if not self.authorized.isChecked():
+            self.show_error(
+                "Research",
+                "Confirm endpoint ownership or testing permission before experiments.",
+            )
+            return
+        try:
+            cases = json.loads(self.experiment_cases.toPlainText())
+            if (
+                not isinstance(cases, list)
+                or not cases
+                or not all(isinstance(case, dict) for case in cases)
+            ):
+                raise ValueError("Cases must be a nonempty JSON array of objects.")
+        except (ValueError, TypeError) as exc:
+            self.show_error("Research", str(exc))
+            return
+        endpoint, model = self.endpoint.text().strip(), self.model_name.text().strip()
+        requests, budget = self.experiment_requests.value(), self.budget.value()
+        resume = self.experiment_resume.text().strip() or None
+        self.project_action(
+            "Research",
+            "Durable API experiment",
+            lambda key: self.service.run_experiment(
+                key,
+                endpoint,
+                model,
+                cases,
+                authorized=True,
+                max_requests=requests,
+                output_token_budget=budget,
+                resume_id=resume,
+            ),
+        )
+
+    def umrre(self) -> None:
+        seed = self.umrre_seed.value()
+        self.project_action(
+            "Research",
+            "Local UMRRE research",
+            lambda key: self.service.run_umrre(key, seed=seed),
+        )
+
+    def runtime_status(self) -> None:
+        self.run("Settings", "Local runtime status", self.service.local_runtime_status)
+
+    def save_runtime_python(self) -> None:
+        path = self.runtime_python.text().strip()
+        from pathlib import Path
+
+        if not Path(path).is_absolute():
+            self.show_error("Settings", "Runtime interpreter must be an absolute path.")
+            return
+        self.run(
+            "Settings",
+            "Save runtime interpreter",
+            lambda: self.service.save_settings({"runtime_python": path}),
+        )
+
+    def install_runtime(self) -> None:
+        if not self.runtime_install_authorized.isChecked():
+            self.show_error(
+                "Settings",
+                "Authorize the optional engine download and installation first.",
+            )
+            return
+        backend = self.runtime_extra.currentText()
+        self.run(
+            "Settings",
+            "Install optional engine",
+            lambda: self.service.install_local_runtime(
+                backend=backend, authorized=True
+            ),
+        )
 
     def project_id(self) -> str:
         value = self.project_combo.currentData()

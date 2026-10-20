@@ -27,8 +27,28 @@ CI builds and smoke-tests each native artifact before upload. GitHub Actions art
 
 ## Python wheel
 
-Install the wheel using `python -m pip install 'path/to/modelforge_research-0.1.0-py3-none-any.whl[desktop]'`. The wheel contains CLI, engines and MCP. Plugin manifests and installer scripts are in the source archive/repository, not the wheel.
+Install the wheel using `python -m pip install 'path/to/modelforge_research-0.2.0-py3-none-any.whl[desktop]'`. The wheel contains CLI, engines and MCP. Plugin manifests and installer scripts are in the source archive/repository, not the wheel.
 
 ## Checksums
 
 Compare `SHA256SUMS.txt` with `shasum -a 256 FILE` on macOS, `sha256sum FILE` on Linux, or `Get-FileHash FILE -Algorithm SHA256` on Windows. Hashes establish file integrity relative to that manifest, not publisher authenticity.
+
+
+## Optional language engines
+
+The native base keeps heavyweight Torch/Transformers/PEFT and MLX separate. Open
+**Settings → Optional local engines** to inspect dependencies, install `llm` or
+`mlx` after explicit consent, or save an absolute compatible Python interpreter.
+A new companion environment requires at least 3 GiB free disk, network access,
+and either `uv` or Python 3.12+. Existing engine environments are not overwritten.
+MLX requires macOS Apple Silicon. Libraries are downloaded; model weights are not.
+
+From source, install `'.[llm]'` into the dedicated environment, or
+`'.[llm,mlx]'` on Apple Silicon. Missing packages or unsupported devices fail
+explicitly. Source/companion extras are not evidence that every backend has been
+hardware-verified; see [capabilities](capabilities.md) and [MLX](mlx.md).
+
+For a dedicated Claude Code/Codex installation directly from the repository,
+including actual MCP verification, scoped connection, update and removal, use
+[packaging/bootstrap.py instructions](agent-install.md). Host registration is
+applied only when explicitly requested with `--apply`.

@@ -4,7 +4,7 @@ Primary sources reviewed on 2026-10-20. This document distinguishes published re
 
 ## Model extraction
 
-[Tramèr et al., Stealing Machine Learning Models via Prediction APIs (USENIX Security 2016)](https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/tramer) demonstrate that prediction interfaces can expose enough information to duplicate certain classifiers with high fidelity. Their experiments cover specific model classes and API properties. This does not establish a general method for recovering every large language model from chat responses. ModelForge implements authorized behavioral measurements, not this paper's extraction attacks.
+[Tramèr et al., Stealing Machine Learning Models via Prediction APIs (USENIX Security 2016)](https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/tramer) demonstrate that prediction interfaces can expose enough information to duplicate certain classifiers with high fidelity. Their experiments cover specific model classes and API properties. This does not establish a general method for recovering every large language model from chat responses. ModelForge implements authorized behavioral measurements and a separate controlled synthetic affine-identification suite; it does not implement this paper's production extraction attacks.
 
 [Carlini et al., Stealing Part of a Production Language Model (2024)](https://arxiv.org/abs/2403.06634) recover a transformer projection layer up to symmetries under the studied API conditions and identify hidden dimensions. Recovering a particular layer is different from recovering all layers, tokenizer behavior, service routing, training data or full weight tensors. ModelForge does not implement their extraction method and does not claim such access from ordinary text results.
 
@@ -18,7 +18,7 @@ Primary sources reviewed on 2026-10-20. This document distinguishes published re
 
 ## Mechanistic interpretability
 
-[Elhage et al., A Mathematical Framework for Transformer Circuits (2021)](https://transformer-circuits.pub/2021/framework/index.html) analyze small attention-only transformers through QK/OV circuits and paths through the residual stream. The work relies on access to internals and explicitly treats a limited model setting. ModelForge's small causal attention fixture enables runtime and causal masking tests, but it does not implement circuit discovery, activation patching or full TransformerLens analysis. Token-level observations alone do not provide internal activation access.
+[Elhage et al., A Mathematical Framework for Transformer Circuits (2021)](https://transformer-circuits.pub/2021/framework/index.html) analyze small attention-only transformers through QK/OV circuits and paths through the residual stream. The work relies on access to internals and explicitly treats a limited model setting. ModelForge's small causal attention fixture enables runtime and causal masking tests. Version 0.2 additionally measures bounded activations through real local GPT-2/Llama forward hooks and performs reversible named-MLP zero-output ablation with numeric logits/KL comparisons. It does not implement circuit discovery, general activation patching or full TransformerLens analysis. Token-level observations alone do not provide internal activation access.
 
 ## Architecture and the independent fixture
 
@@ -37,3 +37,5 @@ Primary sources reviewed on 2026-10-20. This document distinguishes published re
 Identifiability is the central limitation. Different internal parameterizations can implement the same observations, and a service can add sampling, hidden prompts, filters and routing. A finite set of input/output pairs cannot in general distinguish every consistent implementation. This is a mathematical scope statement, not a claim that all partial model identification is impossible. All projects should retain raw evidence and label observations, inferences and unsupported claims separately.
 
 Authorized testing does not imply permission to use service outputs for training or redistribute external assets. ModelForge provides a separate user-supplied corpus path for its own small training runtime and preserves provenance declarations; it does not automatically train on API probe results.
+
+Version 0.2 implements additional controlled owned-model studies in [UMRRE](umrre.md), with a separate [evidence and obstacle register](research-evidence.md). Their assumptions and measured synthetic results do not generalize automatically to closed production language models.
