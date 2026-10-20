@@ -24,6 +24,7 @@ parser is absent. Never report a skipped integration as validated. Consult
 
 | Module | Responsibility |
 | --- | --- |
+| `adapters.py` | Uniform modality interfaces, declared-config routing, explicit trusted entry-point registry |
 | `inspector.py` | Bounded metadata parsers and evidence-linked structure reports |
 | `builder.py` | Project-owned causal fixture, bounded loading, inference, output-head training, quantization, reconstruction/parity |
 | `research.py` | Explicitly authorized OpenAI-compatible text probes with bounded responses |
@@ -47,9 +48,16 @@ complete model from loose shard filenames. Add malformed-file and allocation
 boundary tests as well as real generated artifacts. Keep numerical comparison
 scope finite and distinguish storage-preserving reconstruction from lossy export.
 
-Separate executable modality adapter classes, general LLM runtimes, extension
-plugin loading, LoRA/QLoRA, and arbitrary training are future work, not current
-extension APIs. Review [ecosystem](ecosystem.md) before introducing a heavy
+`adapters.py` supplies separate language, multimodal, image, video, and audio
+classes with uniform inspection/inference/capability methods. Metadata-only
+adapters explicitly refuse inference; the language runtime accepts only the tiny
+project format. Plugin distributions may declare `modelforge.adapters` entry
+points whose factories return a `ModelAdapter` subclass. `list_plugins()` reads
+only declarations; `load_plugin(name, trusted=True)` imports code on explicit
+trust and rejects collisions with built-ins. Do not call it automatically from
+artifact inspection. This trusted extension mechanism is not an execution
+sandbox. General LLM runtimes, modality-specific generation, LoRA/QLoRA, and
+arbitrary training remain future work. Review [ecosystem](ecosystem.md) before introducing a heavy
 dependency. Preserve separate framework/model/dataset license records. Do not
 vendor third-party code without its required notices.
 

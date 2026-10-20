@@ -30,8 +30,19 @@ code. An optional dependency being absent produces an explicit unsupported resul
 | Images / diffusion / ViT | Compatible tensor inventories, config declarations, name-based layer categories | Diffusers pipelines and image generation |
 | Video / audio | Compatible artifact metadata only | Modality-specific probes, pipelines, and reconstruction |
 
-Separate executable modality adapter classes are not shipped. Extension candidates
-and their actual integration status appear in [ecosystem review](ecosystem.md).
+Separate `LanguageAdapter`, `MultimodalAdapter`, `ImageAdapter`, `VideoAdapter`,
+and `AudioAdapter` classes share `inspect(path)`, `infer(path, prompt)`, and a
+`capabilities` dictionary. Metadata inspection delegates to the same bounded
+inspector. Only `LanguageAdapter` runs the supported project-owned tiny bundle;
+all other inference calls raise `UnsupportedModelOperation` with a technical
+reason. Routing uses artifact declarations and remains a heuristic.
+
+Installed `modelforge.adapters` entry points can be listed without importing their
+code. Loading requires an explicit `load_plugin(name, trusted=True)` call;
+inspection never loads extensions automatically. A plugin factory must return a
+`ModelAdapter` and cannot replace a built-in modality. The plugin path is a
+trusted-code extension interface, not a sandbox. Extension candidates and their
+actual integration status appear in [ecosystem review](ecosystem.md).
 
 ## Evidence and exactness
 

@@ -114,7 +114,14 @@ class Service:
         from .inspector import inspect_model
 
         self._project(project_id)
-        return self._record(project_id, "inspection", inspect_model(path))
+        from .adapters import detect_adapter
+
+        report = inspect_model(path)
+        report["adapter"] = detect_adapter(report).capabilities
+        report["adapter"]["inference_supported_for_artifact"] = (
+            report.get("metadata", {}).get("model_type") == "modelforge-tiny-causal-v1"
+        )
+        return self._record(project_id, "inspection", report)
 
     def build(self, project_id: str) -> dict[str, Any]:
         from .builder import create_model
@@ -236,6 +243,19 @@ class Service:
             raise ValueError(
                 "Unknown settings or secret fields; API keys belong in MODELFORGE_API_KEY"
             )
+        limits = {
+            "max_workers": (1, 2),
+            "agent_timeout_seconds": (1, 300),
+            "agent_memory_mb": (64, 4096),
+        }
+        for key, (low, high) in limits.items():
+            if key in values and (
+                type(values[key]) is not int or not low <= values[key] <= high
+            ):
+                raise ValueError(f"{key} must be an integer between {low} and {high}")
+        for key in ("api_endpoint", "api_model"):
+            if key in values and not isinstance(values[key], str):
+                raise ValueError(f"{key} must be a string")
         with self._db() as db:
             for key, value in values.items():
                 db.execute(
@@ -289,6 +309,7 @@ class Service:
     def run_pending(self, wait: bool = True) -> dict[str, Any]:
         """Claim at most two jobs atomically across service processes."""
         futures = []
+        worker_limit = int(self.settings().get("max_workers", 2))
         with self._db() as db:
             db.execute("BEGIN IMMEDIATE")
             running = db.execute(
@@ -296,7 +317,7 @@ class Service:
             ).fetchone()[0]
             rows = db.execute(
                 "SELECT * FROM tasks WHERE status='queued' ORDER BY created LIMIT ?",
-                (max(0, 2 - running),),
+                (max(0, worker_limit - running),),
             ).fetchall()
             for row in rows:
                 db.execute(

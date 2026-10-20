@@ -3,6 +3,7 @@
 Third-party entry points are listed as metadata; their code is loaded only by
 an explicit trusted-plugin call. Built-in inspection never loads plugins.
 """
+
 from __future__ import annotations
 
 from importlib import metadata
@@ -60,22 +61,25 @@ class LanguageAdapter(ModelAdapter):
 
     def infer(self, path: str, prompt: str) -> dict[str, Any]:
         """Execute only the strictly validated project fixture architecture."""
-        from .builder import load_model
+        from .builder import FORMAT, load_model
 
         if not Path(path).is_dir():
-            raise UnsupportedModelOperation("Language inference requires a supported TinyCausalLM bundle directory")
+            raise UnsupportedModelOperation(
+                "Language inference requires a supported TinyCausalLM bundle directory"
+            )
         if len(prompt.encode("utf-8")) > 16000:
             raise ValueError("Prompt exceeds 16000 UTF-8 bytes")
         report = inspect_model(path)
-        if report["metadata"].get("model_type") != "modelforge_tiny_causal":
-            # Use the builder's public format constant to avoid drifting format names.
-            from .builder import FORMAT
-
-            if report["metadata"].get("model_type") != FORMAT:
-                raise UnsupportedModelOperation("Imported language architecture has no runtime adapter; only ModelForge TinyCausalLM is supported")
+        if report["metadata"].get("model_type") != FORMAT:
+            raise UnsupportedModelOperation(
+                "Imported language architecture has no runtime adapter; only ModelForge TinyCausalLM is supported"
+            )
         model = load_model(path)
-        return {"output": model.generate(prompt, max_new_tokens=32),
-                "scope": "project-owned tiny causal model", "modality": self.modality}
+        return {
+            "output": model.generate(prompt, max_new_tokens=32),
+            "scope": "project-owned tiny causal model",
+            "modality": self.modality,
+        }
 
 
 class MultimodalAdapter(ModelAdapter):
@@ -107,9 +111,14 @@ class AdapterRegistry:
 
     def __init__(self) -> None:
         self._adapters: dict[str, ModelAdapter] = {
-            item.modality: item for item in (
-                LanguageAdapter(), MultimodalAdapter(), ImageAdapter(),
-                VideoAdapter(), AudioAdapter(), ModelAdapter(),
+            item.modality: item
+            for item in (
+                LanguageAdapter(),
+                MultimodalAdapter(),
+                ImageAdapter(),
+                VideoAdapter(),
+                AudioAdapter(),
+                ModelAdapter(),
             )
         }
 
@@ -121,8 +130,10 @@ class AdapterRegistry:
 
     def list_plugins(self) -> list[dict[str, str]]:
         """List installed entry-point declarations without importing plugin code."""
-        return [{"name": point.name, "value": point.value,
-                 "group": point.group} for point in metadata.entry_points(group="modelforge.adapters")]
+        return [
+            {"name": point.name, "value": point.value, "group": point.group}
+            for point in metadata.entry_points(group="modelforge.adapters")
+        ]
 
     def load_plugin(self, name: str, *, trusted: bool = False) -> ModelAdapter:
         """Explicitly import a user-trusted adapter factory; never called on inspection.
@@ -131,8 +142,14 @@ class AdapterRegistry:
         obtain authorization for the named installed extension before opting in.
         """
         if not trusted:
-            raise PermissionError("Adapter plugins execute Python code; explicitly trust this installed plugin before loading")
-        matches = [point for point in metadata.entry_points(group="modelforge.adapters") if point.name == name]
+            raise PermissionError(
+                "Adapter plugins execute Python code; explicitly trust this installed plugin before loading"
+            )
+        matches = [
+            point
+            for point in metadata.entry_points(group="modelforge.adapters")
+            if point.name == name
+        ]
         if len(matches) != 1:
             raise ValueError("Plugin must identify exactly one installed entry point")
         factory = matches[0].load()
@@ -145,7 +162,9 @@ class AdapterRegistry:
         return candidate
 
 
-def detect_adapter(report: dict[str, Any], registry: AdapterRegistry | None = None) -> ModelAdapter:
+def detect_adapter(
+    report: dict[str, Any], registry: AdapterRegistry | None = None
+) -> ModelAdapter:
     """Select a built-in from declared config; unknown files remain unknown.
 
     This is a routing heuristic over artifact declarations, not architecture
@@ -155,18 +174,66 @@ def detect_adapter(report: dict[str, Any], registry: AdapterRegistry | None = No
     config = report.get("metadata", {})
     if not isinstance(config, dict):
         return selected.get("unknown")
-    declared = " ".join(str(config.get(key, "")) for key in (
-        "model_type", "general.architecture", "_class_name", "architectures", "pipeline_tag"
-    )).lower()
-    if "video" in declared or any(x in declared for x in ("wan", "hunyuanvideo", "cogvideo")):
+    declared = " ".join(
+        str(config.get(key, ""))
+        for key in (
+            "model_type",
+            "general.architecture",
+            "_class_name",
+            "architectures",
+            "pipeline_tag",
+        )
+    ).lower()
+    if "video" in declared or any(
+        x in declared for x in ("wan", "hunyuanvideo", "cogvideo")
+    ):
         return selected.get("video")
-    if (("vision_config" in config or "audio_config" in config) and "text_config" in config
-            or any(x in declared for x in ("llava", "qwen2_vl", "qwen2_5_vl", "multimodal", "idefics", "paligemma"))):
+    if (
+        ("vision_config" in config or "audio_config" in config)
+        and "text_config" in config
+        or any(
+            x in declared
+            for x in (
+                "llava",
+                "qwen2_vl",
+                "qwen2_5_vl",
+                "multimodal",
+                "idefics",
+                "paligemma",
+            )
+        )
+    ):
         return selected.get("multimodal")
     if any(x in declared for x in ("whisper", "wav2vec", "audio", "speech", "clap")):
         return selected.get("audio")
-    if any(x in declared for x in ("diffusion", "unet", "vit", "vision", "resnet", "flux", "image", "vae")):
+    if any(
+        x in declared
+        for x in (
+            "diffusion",
+            "unet",
+            "vit",
+            "vision",
+            "resnet",
+            "flux",
+            "image",
+            "vae",
+        )
+    ):
         return selected.get("image")
-    if any(x in declared for x in ("llama", "gpt", "mistral", "qwen", "gemma", "phi", "bert", "causal", "falcon", "bloom")):
+    if any(
+        x in declared
+        for x in (
+            "llama",
+            "gpt",
+            "mistral",
+            "qwen",
+            "gemma",
+            "phi",
+            "bert",
+            "causal",
+            "falcon",
+            "bloom",
+        )
+    ):
         return selected.get("language")
     return selected.get("unknown")

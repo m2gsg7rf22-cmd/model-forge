@@ -65,3 +65,26 @@ before the subcommand. `example` is the integrated generated-model workflow;
 Probe, quantization, reconstruction and model comparison are Python/MCP-specific
 where exposed; they do not all have dedicated CLI subcommands. See [MCP](mcp.md)
 for the exact tool list.
+
+## Modality adapters
+
+`modelforge.adapters.ModelAdapter` defines `inspect(path)`,
+`infer(path, prompt)`, and a `capabilities` property. Built-ins are
+`LanguageAdapter`, `MultimodalAdapter`, `ImageAdapter`, `VideoAdapter`, and
+`AudioAdapter`. Inspection delegates to the bounded artifact inspector and adds
+adapter capabilities. `detect_adapter(report)` routes from an already obtained
+report without inspecting twice; routing reflects declared metadata, not verified
+architecture. Unknown declarations use the generic metadata-only adapter.
+
+`LanguageAdapter.infer` runs only the generated ModelForge tiny-model format;
+other inputs raise `UnsupportedModelOperation`. Other built-ins always refuse
+inference. A language adapter's `inference=true` means it offers this narrow
+runtime, not that an arbitrary imported language model is runnable. Read
+`inference_scope`.
+
+`AdapterRegistry.get(modality)` returns a built-in or explicitly registered
+extension. `list_plugins()` returns installed `modelforge.adapters` entry-point
+names/values without importing their code. `load_plugin(name, trusted=True)`
+explicitly imports a named installed factory, validates its returned adapter,
+and rejects built-in overrides. With the default `trusted=False` it raises
+`PermissionError` before imports. Neither inspection nor routing loads plugins.
