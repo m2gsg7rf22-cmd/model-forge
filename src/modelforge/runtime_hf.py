@@ -223,21 +223,43 @@ def preflight(
     vocab = int(cfg.vocab_size)
     if config["model_type"] == "gpt2":
         inner = int(cfg.n_inner or 4 * hidden)
+        if not 0 < inner <= 131072:
+            raise ValueError("Invalid n_inner")
+        per_layer = 4 * hidden**2 + 2 * hidden * inner + 9 * hidden + inner
+        if cfg.add_cross_attention:
+            per_layer += 4 * hidden**2 + 6 * hidden
         declared_parameters = (
-            layers * (4 * hidden**2 + 2 * hidden * inner + 16 * hidden + inner)
+            layers * per_layer
             + vocab * hidden
             + int(cfg.n_positions) * hidden
             + 2 * hidden
         )
+        if not cfg.tie_word_embeddings:
+            declared_parameters += vocab * hidden
     else:
         inner = int(cfg.intermediate_size)
-        if not 0 < inner <= 131072:
-            raise ValueError("Invalid intermediate_size")
+        heads = int(cfg.num_attention_heads)
+        kv_heads = int(cfg.num_key_value_heads)
+        head_dim = int(getattr(cfg, "head_dim", None) or hidden // heads)
+        if (
+            not 0 < inner <= 131072
+            or not 0 < head_dim <= 65536
+            or not 0 < kv_heads <= heads
+        ):
+            raise ValueError(
+                "Invalid intermediate_size, head dimension or KV head count"
+            )
+        attention = 2 * hidden * head_dim * (heads + kv_heads)
+        if getattr(cfg, "attention_bias", False):
+            attention += head_dim * (heads + 2 * kv_heads) + hidden
+        mlp = 3 * hidden * inner
+        if getattr(cfg, "mlp_bias", False):
+            mlp += 2 * inner + hidden
         declared_parameters = (
-            layers * (4 * hidden**2 + 3 * hidden * inner + 2 * hidden)
-            + 2 * vocab * hidden
-            + hidden
+            layers * (attention + mlp + 2 * hidden) + vocab * hidden + hidden
         )
+        if not cfg.tie_word_embeddings:
+            declared_parameters += vocab * hidden
     declared_estimate = declared_parameters * 12 + 256 * 1024**2
     if declared_estimate > memory_limit_mb * 1024**2:
         raise ValueError(
@@ -276,6 +298,7 @@ def preflight(
         "trust_remote_code": False,
         "weights_format": "safetensors",
         "parameters_stored": parameters,
+        "declared_parameters": declared_parameters,
         "weights_bytes": disk_bytes,
         "estimated_memory_mb": math.ceil(estimate / 1024**2),
         "memory_limit_mb": memory_limit_mb,

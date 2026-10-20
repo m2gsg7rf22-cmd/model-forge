@@ -24,7 +24,7 @@ STATE = ".modelforge-bootstrap.json"
 VERIFY_SCRIPT = r"""
 import asyncio,json,os,sys
 from mcp import ClientSession,StdioServerParameters
-from mcp.client.stdio import stdio_client
+from modelforge.mcp_client import safe_stdio_client as stdio_client
 async def check():
     env=dict(os.environ)
     env.pop("PYTHONPATH",None)

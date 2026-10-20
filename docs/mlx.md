@@ -2,7 +2,7 @@
 
 The optional MLX runtime executes actual local Llama forward passes using the
 built-in `mlx_lm.models.llama.Model`. It supports CPU and Metal GPU execution,
-greedy fixed-budget generation, and real 4/8-bit `mlx.nn.QuantizedLinear` layers
+greedy bounded generation, and real 4/8-bit `mlx.nn.QuantizedLinear` layers
 with group size 32. It does not load arbitrary Python from model folders or use
 the Hub model resolver. GPT-2 is supported by the HF runtime, not this MLX path.
 
@@ -24,8 +24,10 @@ Quantization is performed in memory after the validated checkpoint is loaded.
 It reduces the linear weight representation used in computation. Embeddings
 and other modules remain floating-point; this is not a claim that every model
 tensor uses four bits. Generation uses bounded full-prefix decoding rather than
-an unbounded KV cache. The exact requested token count is generated, including
-special token IDs; text decoding may display those tokens.
+an unbounded KV cache. The requested token count is a maximum; configured EOS IDs
+stop generation earlier. Token IDs retain the terminator as evidence, while decoded
+text omits it and other special tokens. Tokenizer special-token insertion matches
+the validated local tokenizer, including its BOS processing.
 
 `runtime_mlx.benchmark(path, memory_limit_mb=2048)` measures one warm eight-token
 decode for CPU float32, GPU float32, GPU 4-bit and GPU 8-bit on the same prompt.

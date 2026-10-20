@@ -93,7 +93,7 @@ def create_server(data_dir: str | None = None) -> FastMCP:
 
     @server.tool()
     def export_project(project_id: str, destination: str) -> dict[str, Any]:
-        """Export findings and project-generated model; never copy imported weights."""
+        """Export findings and generated models, including explicitly authorized reconstruction artifacts; never copy external model paths automatically."""
         return service.export(project_id, destination)
 
     @server.tool()

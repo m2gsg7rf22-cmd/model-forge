@@ -173,3 +173,29 @@ def test_auto_device_probes_broken_advertised_accelerator(monkeypatch):
     monkeypatch.setattr(torch, "ones", denied)
     assert resolve_device("auto") == "cpu"
     assert resolve_device("cpu") == "cpu"
+
+
+def test_tied_gqa_estimate_matches_real_parameters(bundle, tmp_path):
+    import math
+    from transformers import LlamaConfig, LlamaForCausalLM, AutoTokenizer
+
+    cfg = LlamaConfig(
+        vocab_size=4096,
+        hidden_size=64,
+        intermediate_size=128,
+        num_hidden_layers=2,
+        num_attention_heads=8,
+        num_key_value_heads=2,
+        tie_word_embeddings=True,
+        max_position_embeddings=128,
+    )
+    model = LlamaForCausalLM(cfg)
+    target = tmp_path / "tied-gqa"
+    model.save_pretrained(target, safe_serialization=True)
+    AutoTokenizer.from_pretrained(bundle, local_files_only=True).save_pretrained(target)
+    count = sum(p.numel() for p in model.parameters())
+    budget = math.ceil((count * 12 + 256 * 1024**2) / 1024**2)
+    report = preflight(target, memory_limit_mb=budget, device="cpu")
+    assert report["declared_parameters"] == count
+    assert report["parameters_stored"] == count
+    assert report["estimated_memory_mb"] == budget

@@ -47,7 +47,7 @@ def _load(
     import mlx.core as mx
     import mlx.nn as nn
     from mlx_lm.models.llama import Model, ModelArgs
-    from transformers import PreTrainedTokenizerFast
+    from transformers import AutoTokenizer
 
     if quantize_bits not in {0, 4, 8}:
         raise ValueError("quantize_bits must be 0, 4, or 8")
@@ -79,7 +79,24 @@ def _load(
         )
     mx.eval(model.parameters())
     model.eval()
-    tokenizer = PreTrainedTokenizerFast(tokenizer_file=str(root / "tokenizer.json"))
+    tokenizer = AutoTokenizer.from_pretrained(
+        str(root), local_files_only=True, trust_remote_code=False, use_fast=True
+    )
+    generation_config = (
+        _json(root / "generation_config.json")
+        if (root / "generation_config.json").is_file()
+        else {}
+    )
+    eos = generation_config.get(
+        "eos_token_id", config.get("eos_token_id", tokenizer.eos_token_id)
+    )
+    eos_ids = [] if eos is None else eos if isinstance(eos, list) else [eos]
+    if len(eos_ids) > 16 or any(
+        type(value) is not int or not 0 <= value < config["vocab_size"]
+        for value in eos_ids
+    ):
+        raise ValueError("Invalid configured EOS token IDs")
+    tokenizer._modelforge_eos_ids = frozenset(eos_ids)
     return (
         model,
         tokenizer,
@@ -101,7 +118,7 @@ def _tokens(tokenizer: Any, model: Any, prompt: str, extra: int) -> list[int]:
         raise ValueError("Prompt must be nonempty and at most 16000 UTF-8 bytes")
     if not isinstance(extra, int) or not 0 <= extra <= 256:
         raise ValueError("Token budget must be between 0 and 256")
-    ids: list[int] = tokenizer.encode(prompt, add_special_tokens=False)
+    ids: list[int] = tokenizer.encode(prompt, add_special_tokens=True)
     context = min(int(model.args.max_position_embeddings or 4096), 4096)
     if not ids or len(ids) + extra > context:
         raise ValueError("Prompt and generation exceed the local context budget")
@@ -117,21 +134,29 @@ def _generate(
         raise ValueError("max_new_tokens must be between 1 and 256")
     ids = _tokens(tokenizer, model, prompt, max_new_tokens)
     generated: list[int] = []
+    eos_ids = getattr(tokenizer, "_modelforge_eos_ids", frozenset())
+    finished = False
     started = time.perf_counter()
     # Bounded full-prefix decoding avoids a backend-specific unbounded KV cache.
     for _ in range(max_new_tokens):
         logits = model(mx.array([ids + generated], dtype=mx.int32))[:, -1, :]
         token = int(cast(Any, mx.argmax(logits, axis=-1).item()))
         generated.append(token)
+        if token in eos_ids:
+            finished = True
+            break
     elapsed = time.perf_counter() - started
     return {
-        "output": tokenizer.decode(generated),
+        "output": tokenizer.decode(
+            generated[:-1] if finished else generated, skip_special_tokens=True
+        ),
         "token_ids": generated,
         "prompt_tokens": len(ids),
         "new_tokens": len(generated),
         "seconds": elapsed,
         "tokens_per_second": len(generated) / elapsed,
-        "decoding": "greedy fixed-budget full-prefix",
+        "decoding": "greedy bounded full-prefix with configured EOS",
+        "finish_reason": "eos" if finished else "length",
     }
 
 

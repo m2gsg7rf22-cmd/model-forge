@@ -144,7 +144,7 @@ def test_service_quantized_mlx_training_and_adapter_reload(service: Service) -> 
 )
 def test_real_new_mcp_tools_with_local_preflight_and_research(tmp_path: Path) -> None:
     from mcp import ClientSession, StdioServerParameters
-    from mcp.client.stdio import stdio_client
+    from modelforge.mcp_client import safe_stdio_client as stdio_client
 
     async def run() -> None:
         environment = dict(

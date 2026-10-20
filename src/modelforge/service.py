@@ -256,7 +256,7 @@ class Service:
                 archive.write(file, file.relative_to(project))
             archive.writestr(
                 "NOTICE.txt",
-                "Imported model files are not redistributed. Reports may contain local paths and provider outputs. Review before sharing.\n",
+                "External model paths are never copied automatically. Authorized reconstruction artifacts may contain accessible weights under the recorded redistribution declaration. Reports may contain local paths and provider outputs. Review rights and privacy before sharing.\n",
             )
         return {
             "path": str(target),

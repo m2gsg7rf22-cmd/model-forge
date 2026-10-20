@@ -19,6 +19,7 @@ pytestmark = pytest.mark.skipif(
     reason="Optional MLX tests require Apple Silicon and the mlx extra",
 )
 
+
 @pytest.fixture
 def llama(tmp_path: Path) -> Path:
     path = tmp_path / "llama"
@@ -135,3 +136,14 @@ def test_training_rights_and_paths(llama: Path, tmp_path: Path) -> None:
             authorized=True,
             rights="owned",
         )
+
+
+def test_actual_generation_stops_at_configured_eos(llama: Path) -> None:
+    first = generate(llama, "hello world", max_new_tokens=1)
+    config = json.loads((llama / "generation_config.json").read_text())
+    config["eos_token_id"] = [first["token_ids"][0]]
+    (llama / "generation_config.json").write_text(json.dumps(config))
+    ended = generate(llama, "hello world", max_new_tokens=10)
+    assert ended["new_tokens"] == 1
+    assert ended["finish_reason"] == "eos"
+    assert ended["output"] == ""
