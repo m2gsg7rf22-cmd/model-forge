@@ -23,12 +23,16 @@ finally:
 | `inspect(project_id, path)` | Run metadata engine and save an inspection finding |
 | `findings(project_id)` | Saved records including parsed `data` |
 | `build(project_id)` | Create one independent tiny-model bundle; refuse replacement |
+| `reconstruct(project_id, source_path)` | Reconstruct a validated supported bundle into an empty project and record finite-prompt parity |
+| `quantize(project_id)` | Save a separate lossy INT8 bundle under `quantized`; CPU compute remains float32 |
+| `compare_experiments(project_id, left_id, right_id)` | Compare two saved behavioral finding IDs in this project; save a comparison finding |
+| `benchmark(project_id, finding_id, expected)` | Score a saved behavioral finding against a prompt-to-exact-output string mapping |
 | `infer(project_id, text)` | Generated model only; prompt <=16,000 UTF-8 bytes; up to 32 new tokens |
 | `train(project_id, text, steps=100)` | Output head only; text 2–64,000 bytes; 1–1,000 steps |
 | `probe(project_id, endpoint, model, prompts, authorized, budget=1024)` | Authorized text API observations; see bounds below |
 | `export(project_id, dest)` | New ZIP of findings and generated artifacts; return path/hash/count |
 | `enqueue(project_id, kind, payload)` | Deduplicated persisted job; kind inspect/build/train/infer/agent |
-| `run_pending(wait=True)` / `tasks()` | Claim up to two jobs / return statuses and results |
+| `run_pending(wait=True)` / `tasks()` | Claim up to the configured 1–2 jobs / return statuses and results |
 | `hardware()` | Current platform, CPU, memory, disk, actual inference backend |
 | `settings()` / `save_settings(values)` | Persist allowlisted non-secret JSON preferences |
 | `close()` | Wait for worker completion and close the executor |
@@ -62,9 +66,35 @@ monetary budget. No outputs automatically enter training.
 Run `modelforge --help` for CLI commands. All commands share optional `--home`
 before the subcommand. `example` is the integrated generated-model workflow;
 `enqueue` takes a JSON object string and `run-tasks` executes one pending batch.
-Probe, quantization, reconstruction and model comparison are Python/MCP-specific
-where exposed; they do not all have dedicated CLI subcommands. See [MCP](mcp.md)
-for the exact tool list.
+Additional CLI commands expose the persisted service operations:
+
+```sh
+modelforge reconstruct PROJECT_ID /path/to/supported-source-bundle
+modelforge quantize PROJECT_ID
+modelforge compare-experiments PROJECT_ID LEFT_FINDING_ID RIGHT_FINDING_ID
+modelforge benchmark PROJECT_ID FINDING_ID '{"prompt text":"exact expected output"}'
+```
+
+Use `findings PROJECT_ID` to obtain behavioral finding IDs. Reconstruction requires
+an empty target project and supports only the validated tiny-model architecture.
+`compare-experiments` pairs exact prompt text by occurrence order and reports
+unmatched samples; it does not establish a causal version change. `benchmark`
+counts exact Unicode text matches without normalization; supplied labels are not
+independently verified and unlabeled samples are reported separately. Direct
+bundle logit comparison (`builder.compare_models`) remains a Python API. See
+[MCP](mcp.md) for the exact tool list.
+
+Probe reports include `behavioral_hypothesis_ranking`, computed from observed RFC
+JSON validity and adjacent equal-text repeats of identical prompts. Rankings use
+the lower bound of a Wilson binomial reference interval. These are descriptive
+sample properties, not calibrated model confidence or architecture/weight
+posteriors. Selected and repeated probes may be correlated. Empty evidence yields
+null rates and an insufficient-observations status rather than invented certainty.
+
+`save_settings` validates `max_workers` as integer 1 or 2,
+`agent_timeout_seconds` as integer 1–300, and `agent_memory_mb` as integer
+64–4,096. API endpoint/model preferences must be strings. The scheduler honors
+`max_workers` for new batch admission; it does not cancel already running jobs.
 
 ## Modality adapters
 

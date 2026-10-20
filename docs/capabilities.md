@@ -15,7 +15,7 @@ inspected as artifacts, not automatically executed or reconstructed.
 | Core ML `.mlmodel` | Optional `coremltools`: declared type and input/output interface | Tensor inventory and execution unsupported |
 | Core ML `.mlpackage` | Explicit unsupported result | Unsupported |
 | PyTorch/pickle checkpoints | Refused, including trusted checkpoints in this release | Unsupported; convert trusted files externally |
-| Authorized text API | Actual responses, end-to-end latency, JSON validity, repeated-prompt consistency | No structural or weight recovery |
+| Authorized text API | Responses, latency, JSON validity, repeat consistency, descriptive property ranking; saved finding comparisons and explicit-label exact-match scoring | No structural or weight recovery |
 
 [Inspector bounds and sources](inspector-sources.md) describe accepted dtypes,
 limits, and malformed-file rejection. Metadata is parsed without executing model
@@ -58,23 +58,31 @@ actual integration status appear in [ecosystem review](ecosystem.md).
 Inspection always reports `reconstruction.exact = false`. The independent seeded
 fixture is not a replica of an imported model. Float32 reconstruction of the
 supported bundle can show identical logits on tested prompts. INT8 storage is
-lossy and cannot recover original pre-quantization weights. See
-[reconstruction](reconstruction.md).
+lossy and cannot recover original pre-quantization weights. Reconstruction of a
+supported source bundle into an empty project and INT8 export are available in
+the GUI, CLI, MCP and service APIs. See [reconstruction](reconstruction.md).
+
+Behavioral finding comparisons pair identical prompt strings by occurrence order
+and report unmatched samples. Exact-match benchmarks use explicit user-supplied
+text labels; they are not standardized benchmarks or semantic correctness tests.
+Probe property rankings use Wilson reference lower bounds for observed JSON
+validity and repeat equality. These intervals are not calibrated confidence for
+correlated/selected probes and provide no architectural or weight posterior.
 
 ## Hardware and operating systems
 
 | Platform | CPU metadata/CLI/MCP/tiny model | Desktop | Accelerators | Validation scope |
 | --- | --- | --- | --- | --- |
-| macOS Apple Silicon | Supported | PySide6 | NumPy CPU; MLX unsupported | Local development and acceptance host: Darwin arm64 / Python 3.12 |
-| macOS Intel | Portable source path, dependencies permitting | PySide6 wheels permitting | CPU only | Not locally validated |
-| Windows 10/11 x64 | Portable source path | PySide6 | CPU only; CUDA unsupported | CI workflow supplied; local validation not claimed |
-| Linux x64 | Portable source path | PySide6 plus a working display/Qt libraries | CPU only; CUDA unsupported | CI workflow supplied; local validation not claimed |
+| macOS Apple Silicon | Supported | PySide6 | NumPy CPU; MLX unsupported | Local acceptance host: Darwin arm64 / Python 3.12; macOS CI succeeded |
+| macOS Intel | Portable source path, dependencies permitting | PySide6 wheels permitting | CPU only | Not validated; no Intel native package |
+| Windows 10/11 x64 | Portable source path | PySide6 | CPU only; CUDA unsupported | CI test, install, package and frozen-app launch passed |
+| Linux x64 | Portable source path | PySide6 plus a working display/Qt libraries | CPU only; CUDA unsupported | CI test, install, package and frozen-app launch passed |
 
 Python 3.12+ is required. A GPU is unnecessary. Metadata parsing does not load
 weight payloads. New fixture construction requires 256 MiB available RAM and
 64 MiB free disk through the service. Builder memory estimates also enforce the
 configured working-memory limit before allocation. These checks are estimates,
-not OS memory reservations. The agent scheduler admits at most two concurrent
+not OS memory reservations. The agent scheduler honors `max_workers` of 1 or 2 and admits at most two concurrent
 jobs; agent subprocesses have time, memory, and log bounds. API output-token
 budgets and agent time limits are not monetary provider-account caps.
 

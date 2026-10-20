@@ -3,7 +3,7 @@ recursive-include .claude-plugin *.json
 recursive-include skills *.md
 recursive-include commands *.md
 recursive-include agents *.md
-recursive-include docs *.md *.png
+recursive-include docs *.md *.png *.json
 recursive-include packaging *.py
 recursive-include tests *.py
 recursive-include examples *.md *.py

@@ -1,26 +1,34 @@
-# Validation record
+# Validation record — 2026-10-20
 
-This file is finalized with measured results before release. A passing unit test does not prove universal model equivalence.
+## Executed checks
 
-Initial macOS Apple Silicon run: Python 3.12.15; official MCP SDK 1.30.0; PySide6 6.12.0; NumPy 2.5.4. 105 pytest tests and 28 subtests passed with 95% aggregate statement coverage before final integration additions. Final results are recorded below when available.
+| Environment | Pytest result | Installation, package and frozen launch |
+| --- | --- | --- |
+| Local macOS ARM / Python 3.12.15 | **155 passed + 28 subtests**, no skips; **96% statement coverage** | Dedicated desktop install, full example, uninstall, frozen app launch passed |
+| GitHub macOS ARM runner | **154 passed, 1 skipped + 28 subtests** | Fresh core install, full CPU example, uninstall, native package and frozen launch passed |
+| GitHub Linux x64 runner | **154 passed, 1 skipped + 28 subtests** | Fresh core install, full CPU example, uninstall, native package and frozen launch passed |
+| GitHub Windows x64 runner | **145 passed, 10 skipped + 28 subtests** | Fresh core install, full CPU example, uninstall, native package and frozen launch passed |
 
-Real checks include generated SafeTensors and GGUF binary files, generated ONNX/Core ML protobufs, NumPy inference and training, independent scalar attention comparison, export/reload and reconstructed-fixture parity, SQLite persistence/concurrent claims, real SDK stdio subprocess transport and Qt offscreen service workflows.
+[Successful cross-platform run 39433685862](https://github.com/m2gsg7rf22-cmd/model-forge/actions/runs/39433685862) verifies executable source commit `cfedbfa784a70c0d20a653b80f63bf99f7ca8baa`. Windows skips comprise POSIX executable/symlink fixtures and optional Core ML. The other CI platforms skip optional Core ML; local acceptance installed coremltools and ran that test. Strict mypy and Ruff passed. Version details: [tested-dependencies.json](tested-dependencies.json).
 
-Local HTTP tests are **fixture endpoints**, not third-party paid model calls. External agent adapter tests execute **provider-named temporary fixtures**, not authenticated Claude/Codex inference. Low-memory and disk-full conditions include explicitly injected tests; they are not claims that the host ran out of physical memory. Qt tests use offscreen rendering; screenshots are real Qt renders, not a human usability study.
+The initial Windows failure was a test corpus written with the default Windows encoding. The test now explicitly writes UTF-8, matching the product's documented UTF-8 corpus loader. Corrected CI passed without changing the loader to accept incorrect encodings.
 
-Claude Code 2.1.304 was installed in an isolated workspace directory. Strict marketplace validation, plugin installation into isolated CLAUDE_CONFIG_DIR, and `claude mcp list` returning Connected passed. Codex CLI 0.155.1 registered and listed the actual stdio executable using isolated CODEX_HOME. This does not yet establish an authenticated agent research turn or the separate desktop app's plugin discovery UX.
+## Real execution versus fixtures
 
-Windows-specific provider executable fixtures and privileged symlink tests are skipped where POSIX assumptions do not apply. Optional Core ML tests skip when coremltools is absent. CI smoke tests validate boot and basic service startup, not signed-installation UX on every OS version.
+Real generated-file tests cover SafeTensors/GGUF, ONNX and Core ML protobufs, malformed inputs and shard consistency. Real NumPy tests cover causal masking, an independent scalar attention reference, loss reduction with a frozen backbone, exact float32 export/reconstruction parity and lossy quantized storage. SQLite tests exercise concurrent deduplication, atomic job claims and recovery. Official MCP SDK tests use an actual subprocess stdio connection. Qt tests use the real service and persistence, not fabricated service results.
 
-## Additional verified integration results
+Local HTTP servers are **fixture endpoints**, not paid production-model calls. Temporary provider-named executables are **agent adapter fixtures**, not authenticated Claude/Codex research. Disk-full/low-memory and some process error cases are explicitly **injected failures**. Dialog selections are patched in GUI tests while the underlying file/service operations actually execute. Qt tests and screenshots use **offscreen rendering**, not a human usability study.
 
-- Final local suite after reconstruction/quantization and evaluation integration: **155 tests passed, 28 subtests passed, 96% aggregate statement coverage**. Strict mypy and Ruff are checked separately.
-- Fresh dedicated source installation with desktop dependencies succeeded. Installed CLI executed the complete CPU example; installed GUI entry passed its timed offscreen launch. Dedicated uninstall removed the environment and retained research data.
-- Frozen macOS app built, ad-hoc signed and passed a timed offscreen launch.
-- Authenticated Codex CLI turn successfully called the real `hardware_status` MCP tool and reported observed NumPy CPU / arm64. First attempt was blocked by the noninteractive approval policy; a retry explicitly approved only that read-only tool. No blanket tool approval or persistent host-settings edit was used.
-- GitHub Actions run [39433001579](https://github.com/m2gsg7rf22-cmd/model-forge/actions/runs/39433001579) passed Linux x64 and macOS ARM test, type/lint, fresh installation/uninstallation, package and frozen-app smoke stages. Its Windows test failed and is being corrected; it is not a passing Windows release record.
+## Host integrations
 
-No authenticated Claude model turn or local Claude desktop application UI test has
-been completed. Claude CLI plugin install and real MCP connection were verified.
-No third-party production-model extraction, high-memory training, actual GPU
-backend, notarization or signed Windows installation was tested.
+Claude Code 2.1.304 was installed in a workspace-local environment. Strict marketplace validation, plugin installation into isolated `CLAUDE_CONFIG_DIR`, and `claude mcp list` reporting **Connected** passed. A separate `CODEX_HOME` registered/listed the real stdio server using Codex CLI 0.155.1.
+
+An **authenticated Codex turn** successfully invoked ModelForge's real `hardware_status` tool and reported observed `NumPy CPU` / `arm64`. The first attempt was blocked by noninteractive tool approval; the successful retry explicitly approved only that read-only tool. Existing host settings were not edited.
+
+Claude reports no authenticated account on this host. No authenticated Claude model turn or Claude desktop application plugin-discovery UI test is claimed. The user must log in with `claude auth login` to complete authenticated Claude-agent testing. The existing host Claude executable also lacks its native binary; the isolated acceptance installation works.
+
+## Distribution
+
+A fresh clone of the public repository was installed, executed the full CPU example, and uninstalled. Research data remained intact. Local macOS ZIP creation uses `ditto` to preserve framework symlinks; the archive was unpacked to a fresh temporary directory, its ad-hoc signature verified, and the extracted application launched successfully. This catches archive failures that an in-place executable smoke test cannot catch. CI's archive stage now repeats extraction/launch before uploading assets.
+
+macOS builds are ad-hoc signed, **not Developer-ID signed or notarized**. Windows artifacts are portable executable folders, **not signed MSI installers**. Source installation scripts are supplied for all three systems and were exercised on the CI runners. macOS Intel, specific Windows 10/11 client versions, GPU backends and high-memory training were not directly tested. No production-model extraction or proprietary weight reconstruction was run.
