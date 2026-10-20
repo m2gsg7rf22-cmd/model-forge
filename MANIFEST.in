@@ -1,0 +1,8 @@
+include LICENSE README.md .mcp.json
+recursive-include .claude-plugin *.json
+recursive-include skills *.md
+recursive-include commands *.md
+recursive-include agents *.md
+recursive-include docs *.md *.png
+recursive-include packaging *.py
+recursive-include tests *.py

@@ -1,0 +1,54 @@
+name: Verify and package
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-package:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest, macos-14]
+    runs-on: ${{ matrix.os }}
+    env:
+      QT_QPA_PLATFORM: offscreen
+      MODELFORGE_HOME: ${{ github.workspace }}/acceptance-data
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Linux Qt dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libopengl0 libxcb-cursor0 libxkbcommon-x11-0
+      - run: python -m pip install -e ".[desktop,dev,onnx]"
+      - run: python -m pytest -q --junitxml=acceptance.xml
+      - run: python -m mypy src/modelforge
+      - run: python -m ruff check src tests packaging
+      - run: python packaging/check_install.py
+      - run: python -m build
+      - run: python packaging/build_desktop.py
+      - name: Smoke test frozen Linux desktop
+        if: runner.os == 'Linux'
+        run: dist/ModelForge/ModelForge --smoke-test
+      - name: Smoke test frozen macOS desktop
+        if: runner.os == 'macOS'
+        run: dist/ModelForge.app/Contents/MacOS/ModelForge --smoke-test
+      - name: Smoke test frozen Windows desktop
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $p = Start-Process -FilePath dist/ModelForge/ModelForge.exe -ArgumentList '--smoke-test' -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "Frozen GUI failed: $($p.ExitCode)" }
+      - name: Archive binaries and checksums
+        run: python packaging/archive.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ModelForge-${{ runner.os }}-${{ runner.arch }}
+          path: |
+            dist/*.zip
+            dist/*.whl
+            dist/*.tar.gz
+            dist/SHA256SUMS.txt
+            acceptance.xml

@@ -1,0 +1,17 @@
+{
+  "name": "model-forge-marketplace",
+  "owner": {
+    "name": "ModelForge contributors"
+  },
+  "plugins": [
+    {
+      "name": "model-forge",
+      "source": "./",
+      "description": "Model research desktop and MCP integration",
+      "version": "0.1.0"
+    }
+  ],
+  "metadata": {
+    "description": "Evidence-based ModelForge model research tools"
+  }
+}
