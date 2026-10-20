@@ -25,6 +25,19 @@ def main() -> None:
     p.add_argument("path")
     p = sub.add_parser("build")
     p.add_argument("project_id")
+    p = sub.add_parser("reconstruct")
+    p.add_argument("project_id")
+    p.add_argument("source_path")
+    p = sub.add_parser("quantize")
+    p.add_argument("project_id")
+    p = sub.add_parser("compare-experiments")
+    p.add_argument("project_id")
+    p.add_argument("left_id")
+    p.add_argument("right_id")
+    p = sub.add_parser("benchmark")
+    p.add_argument("project_id")
+    p.add_argument("finding_id")
+    p.add_argument("expected", help="JSON mapping of prompt to exact expected output")
     p = sub.add_parser("infer")
     p.add_argument("project_id")
     p.add_argument("text")
@@ -64,6 +77,18 @@ def main() -> None:
             result = service.inspect(args.project_id, args.path)
         elif args.command == "build":
             result = service.build(args.project_id)
+        elif args.command == "reconstruct":
+            result = service.reconstruct(args.project_id, args.source_path)
+        elif args.command == "quantize":
+            result = service.quantize(args.project_id)
+        elif args.command == "compare-experiments":
+            result = service.compare_experiments(
+                args.project_id, args.left_id, args.right_id
+            )
+        elif args.command == "benchmark":
+            result = service.benchmark(
+                args.project_id, args.finding_id, json.loads(args.expected)
+            )
         elif args.command == "infer":
             result = service.infer(args.project_id, args.text)
         elif args.command == "train":

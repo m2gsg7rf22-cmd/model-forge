@@ -11,3 +11,16 @@ Local HTTP tests are **fixture endpoints**, not third-party paid model calls. Ex
 Claude Code 2.1.304 was installed in an isolated workspace directory. Strict marketplace validation, plugin installation into isolated CLAUDE_CONFIG_DIR, and `claude mcp list` returning Connected passed. Codex CLI 0.155.1 registered and listed the actual stdio executable using isolated CODEX_HOME. This does not yet establish an authenticated agent research turn or the separate desktop app's plugin discovery UX.
 
 Windows-specific provider executable fixtures and privileged symlink tests are skipped where POSIX assumptions do not apply. Optional Core ML tests skip when coremltools is absent. CI smoke tests validate boot and basic service startup, not signed-installation UX on every OS version.
+
+## Additional verified integration results
+
+- Final local suite after reconstruction/quantization and evaluation integration: **155 tests passed, 28 subtests passed, 96% aggregate statement coverage**. Strict mypy and Ruff are checked separately.
+- Fresh dedicated source installation with desktop dependencies succeeded. Installed CLI executed the complete CPU example; installed GUI entry passed its timed offscreen launch. Dedicated uninstall removed the environment and retained research data.
+- Frozen macOS app built, ad-hoc signed and passed a timed offscreen launch.
+- Authenticated Codex CLI turn successfully called the real `hardware_status` MCP tool and reported observed NumPy CPU / arm64. First attempt was blocked by the noninteractive approval policy; a retry explicitly approved only that read-only tool. No blanket tool approval or persistent host-settings edit was used.
+- GitHub Actions run [39433001579](https://github.com/m2gsg7rf22-cmd/model-forge/actions/runs/39433001579) passed Linux x64 and macOS ARM test, type/lint, fresh installation/uninstallation, package and frozen-app smoke stages. Its Windows test failed and is being corrected; it is not a passing Windows release record.
+
+No authenticated Claude model turn or local Claude desktop application UI test has
+been completed. Claude CLI plugin install and real MCP connection were verified.
+No third-party production-model extraction, high-memory training, actual GPU
+backend, notarization or signed Windows installation was tested.

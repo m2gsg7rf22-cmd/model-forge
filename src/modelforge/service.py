@@ -138,6 +138,62 @@ class Service:
             raise MemoryError("Need 256MB available memory and 64MB free disk")
         return self._record(project_id, "build", create_model(str(dest)))
 
+    def reconstruct(self, project_id: str, source_path: str) -> dict[str, Any]:
+        """Reconstruct only a validated supported fixture, preserving accessible tensors."""
+        from .builder import reconstruct_model
+
+        destination = self._project(project_id) / "model"
+        if destination.exists():
+            raise ValueError("Use an empty project for reconstruction")
+        with self._lock:
+            result = reconstruct_model(source_path, str(destination))
+        return self._record(project_id, "reconstruction", result)
+
+    def quantize(self, project_id: str) -> dict[str, Any]:
+        """Create lossy INT8 fixture storage; CPU computation remains float32."""
+        from .builder import quantize_model
+
+        project = self._project(project_id)
+        with self._lock:
+            result = quantize_model(str(project / "model"), str(project / "quantized"))
+        return self._record(project_id, "quantization", result)
+
+    def compare_experiments(
+        self, project_id: str, left_id: str, right_id: str
+    ) -> dict[str, Any]:
+        """Compare two stored behavioral reports by exact prompt matches."""
+        from .evaluation import compare_reports
+
+        reports = {
+            row["id"]: row["data"]
+            for row in self.findings(project_id)
+            if row["kind"] == "behavior"
+        }
+        if left_id not in reports or right_id not in reports:
+            raise ValueError("Choose two behavioral finding IDs in this project")
+        return self._record(
+            project_id,
+            "comparison",
+            compare_reports(reports[left_id], reports[right_id]),
+        )
+
+    def benchmark(
+        self, project_id: str, finding_id: str, expected: dict[str, str]
+    ) -> dict[str, Any]:
+        """Score a stored report using explicit user-supplied exact text labels."""
+        from .evaluation import benchmark_report
+
+        reports = {
+            row["id"]: row["data"]
+            for row in self.findings(project_id)
+            if row["kind"] == "behavior"
+        }
+        if finding_id not in reports:
+            raise ValueError("Choose a behavioral finding ID in this project")
+        return self._record(
+            project_id, "benchmark", benchmark_report(reports[finding_id], expected)
+        )
+
     def infer(self, project_id: str, text: str) -> dict[str, Any]:
         from .builder import load_model
 
@@ -183,18 +239,15 @@ class Service:
             raise ValueError("Export destination already exists")
         target.parent.mkdir(parents=True, exist_ok=True)
         # Only this application's generated model is copied. Imported files stay external.
-        model_root = project / "model"
-        files = (
-            []
-            if model_root.is_symlink()
-            else [
-                p
-                for p in model_root.rglob("*")
-                if p.is_file()
-                and not p.is_symlink()
-                and p.resolve().is_relative_to(project.resolve())
-            ]
-        )
+        files = [
+            p
+            for name in ("model", "quantized")
+            if not (project / name).is_symlink()
+            for p in (project / name).rglob("*")
+            if p.is_file()
+            and not p.is_symlink()
+            and p.resolve().is_relative_to(project.resolve())
+        ]
         findings = self.findings(project_id)
         with zipfile.ZipFile(target, "x", zipfile.ZIP_DEFLATED) as archive:
             archive.writestr("research.json", json.dumps(findings, indent=2))

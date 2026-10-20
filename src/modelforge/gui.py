@@ -348,6 +348,9 @@ class MainWindow(QMainWindow):
         file_row.addWidget(self.button("Browse…", self.browse_artifact))
         file_row.addWidget(self.button("Inspect artifact", self.inspect, True))
         explorer.addLayout(file_row)
+        explorer.addWidget(
+            self.button("Choose model folder…", self.browse_artifact_folder)
+        )
         self.output("Explorer", explorer)
         architecture = self.page(
             "Architecture",
@@ -382,11 +385,25 @@ class MainWindow(QMainWindow):
         self.output("Research", research)
         reconstruction = self.page(
             "Reconstruction",
-            "Build the independent ModelForge tiny causal fixture, then evaluate its actual response.",
+            "Reconstruct a supported ModelForge bundle in an empty project, or build an independent tiny fixture. Other imported architectures remain inspection-only.",
+        )
+        source_row = QHBoxLayout()
+        self.reconstruction_source = QLineEdit()
+        self.reconstruction_source.setPlaceholderText(
+            "Supported ModelForge source bundle directory"
+        )
+        source_row.addWidget(self.reconstruction_source, 1)
+        source_row.addWidget(
+            self.button("Choose source folder…", self.browse_reconstruction_source)
+        )
+        reconstruction.addLayout(source_row)
+        reconstruction.addWidget(
+            self.button("Reconstruct supported bundle", self.reconstruct, True)
         )
         reconstruction.addWidget(
-            self.button("Build local reconstruction", self.build, True)
+            self.button("Build independent tiny fixture", self.build)
         )
+        reconstruction.addWidget(self.button("Quantize current fixture", self.quantize))
         self.infer_text = QLineEdit()
         self.infer_text.setPlaceholderText("Enter a prompt for the local model")
         reconstruction.addWidget(self.infer_text)
@@ -598,6 +615,31 @@ class MainWindow(QMainWindow):
             apply,
         )
 
+    def browse_artifact_folder(self) -> None:
+        path = QFileDialog.getExistingDirectory(self, "Choose model folder")
+        if path:
+            self.artifact_path.setText(path)
+
+    def browse_reconstruction_source(self) -> None:
+        path = QFileDialog.getExistingDirectory(
+            self, "Choose supported ModelForge source bundle"
+        )
+        if path:
+            self.reconstruction_source.setText(path)
+
+    def reconstruct(self) -> None:
+        source = self.reconstruction_source.text().strip()
+        self.project_action(
+            "Reconstruction",
+            "Reconstruct supported bundle",
+            lambda key: self.service.reconstruct(key, source),
+        )
+
+    def quantize(self) -> None:
+        self.project_action(
+            "Reconstruction", "Quantize current fixture", self.service.quantize
+        )
+
     def load_findings(self) -> None:
         try:
             project_id = self.project_id()
@@ -623,7 +665,7 @@ class MainWindow(QMainWindow):
 
     def build(self) -> None:
         self.project_action(
-            "Reconstruction", "Build reconstruction", self.service.build
+            "Reconstruction", "Build independent tiny fixture", self.service.build
         )
 
     def infer(self) -> None:

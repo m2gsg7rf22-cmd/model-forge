@@ -35,7 +35,7 @@ def test_dialog_selected_paths_load_actual_files(
     artifact = tmp_path / "config.json"
     artifact.write_text('{"model_type":"dialog-fixture"}')
     corpus = tmp_path / "training.txt"
-    corpus.write_text("Actual UTF-8 text: café")
+    corpus.write_text("Actual UTF-8 text: café", encoding="utf-8")
     selected = iter([(str(artifact), ""), (str(corpus), ""), ("", ""), ("", "")])
     monkeypatch.setattr(
         QFileDialog, "getOpenFileName", lambda *args, **kwargs: next(selected)
@@ -44,7 +44,7 @@ def test_dialog_selected_paths_load_actual_files(
     assert window.artifact_path.text() == str(artifact)
     window.browse_training()
     drain(window, app)
-    assert window.training_text.toPlainText() == corpus.read_text()
+    assert window.training_text.toPlainText() == corpus.read_text(encoding="utf-8")
     window.browse_artifact()
     window.browse_training()
     assert window.artifact_path.text() == str(artifact)
@@ -160,3 +160,52 @@ def test_graph_actual_edges_fallback_and_zoom(app: QApplication) -> None:
     graph.set_data({"config": {"hidden_size": 32}})
     assert len(graph.graph_scene.items()) == 2
     graph.close()
+
+
+def test_supported_reconstruction_quantization_and_folder_selection(
+    tmp_path: Path, app: QApplication, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from modelforge.builder import create_model, load_model
+
+    source = tmp_path / "supported-source"
+    create_model(source, d_model=8, context_length=16)
+    service = Service(tmp_path / "workspace")
+    project = service.create_project("Supported reconstruction")["id"]
+    window = MainWindow(service)
+    drain(window, app)
+    folders = iter([str(source), "", str(source), ""])
+    monkeypatch.setattr(
+        QFileDialog, "getExistingDirectory", lambda *args, **kwargs: next(folders)
+    )
+    window.browse_artifact_folder()
+    window.browse_artifact_folder()
+    assert window.artifact_path.text() == str(source)
+    window.browse_reconstruction_source()
+    window.browse_reconstruction_source()
+    assert window.reconstruction_source.text() == str(source)
+    window.reconstruct()
+    drain(window, app)
+    result = json.loads(window.outputs["Reconstruction"].toPlainText())
+    assert result["parity"]["exact_on_all_tested_prompts"] is True
+    assert (service.root / project / "model" / "model.safetensors").is_file()
+    window.quantize()
+    drain(window, app)
+    assert isinstance(json.loads(window.outputs["Reconstruction"].toPlainText()), dict)
+    assert "Operation failed" not in window.outputs["Reconstruction"].toPlainText()
+    generated = list((service.root / project).glob("*/config.json"))
+    assert len(generated) == 2
+    quantized_dirs = [
+        path.parent
+        for path in generated
+        if json.loads(path.read_text()).get("quantization")
+    ]
+    assert len(quantized_dirs) == 1
+    assert isinstance(
+        load_model(quantized_dirs[0]).generate("hi", max_new_tokens=2), str
+    )
+    assert service.findings(project)[0]["kind"] == "quantization"
+    window.reconstruct()
+    drain(window, app)
+    assert "Operation failed" in window.outputs["Reconstruction"].toPlainText()
+    window.close()
+    service.close()

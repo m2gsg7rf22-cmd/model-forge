@@ -4,6 +4,7 @@ from __future__ import annotations
 import os
 from typing import Any
 from mcp.server.fastmcp import FastMCP
+from mcp.types import ToolAnnotations
 from .service import Service
 
 
@@ -16,7 +17,11 @@ def create_server(data_dir: str | None = None) -> FastMCP:
         """Create a persistent model research project."""
         return service.create_project(name)
 
-    @server.tool()
+    @server.tool(
+        annotations=ToolAnnotations(
+            readOnlyHint=True, destructiveHint=False, openWorldHint=False
+        )
+    )
     def list_projects() -> list[dict[str, Any]]:
         """List saved projects."""
         return service.projects()
@@ -26,7 +31,11 @@ def create_server(data_dir: str | None = None) -> FastMCP:
         """Inspect authorized local model metadata without executing model code."""
         return service.inspect(project_id, path)
 
-    @server.tool()
+    @server.tool(
+        annotations=ToolAnnotations(
+            readOnlyHint=True, destructiveHint=False, openWorldHint=False
+        )
+    )
     def read_findings(project_id: str) -> list[dict[str, Any]]:
         """Read evidence, architectural reports and experiment findings."""
         return service.findings(project_id)
@@ -35,6 +44,30 @@ def create_server(data_dir: str | None = None) -> FastMCP:
     def build_model(project_id: str) -> dict[str, Any]:
         """Build an independent tiny causal model owned by this project."""
         return service.build(project_id)
+
+    @server.tool()
+    def reconstruct_model(project_id: str, source_path: str) -> dict[str, Any]:
+        """Reconstruct supported project fixture in an empty project and compare logits."""
+        return service.reconstruct(project_id, source_path)
+
+    @server.tool()
+    def quantize_model(project_id: str) -> dict[str, Any]:
+        """Export lossy INT8 fixture weights without claiming INT8 compute acceleration."""
+        return service.quantize(project_id)
+
+    @server.tool()
+    def compare_experiments(
+        project_id: str, left_id: str, right_id: str
+    ) -> dict[str, Any]:
+        """Compare stored behavioral findings by prompt and sample occurrence."""
+        return service.compare_experiments(project_id, left_id, right_id)
+
+    @server.tool()
+    def benchmark_experiment(
+        project_id: str, finding_id: str, expected: dict[str, str]
+    ) -> dict[str, Any]:
+        """Score a stored behavioral finding against explicit exact-match text labels."""
+        return service.benchmark(project_id, finding_id, expected)
 
     @server.tool()
     def generate(project_id: str, text: str) -> dict[str, Any]:
@@ -75,12 +108,20 @@ def create_server(data_dir: str | None = None) -> FastMCP:
         """Execute up to two queued jobs with persisted status."""
         return service.run_pending()
 
-    @server.tool()
+    @server.tool(
+        annotations=ToolAnnotations(
+            readOnlyHint=True, destructiveHint=False, openWorldHint=False
+        )
+    )
     def task_status() -> list[dict[str, Any]]:
         """List persistent task statuses and results."""
         return service.tasks()
 
-    @server.tool()
+    @server.tool(
+        annotations=ToolAnnotations(
+            readOnlyHint=True, destructiveHint=False, openWorldHint=False
+        )
+    )
     def hardware_status() -> dict[str, Any]:
         """Report actual hardware and current memory."""
         return service.hardware()
