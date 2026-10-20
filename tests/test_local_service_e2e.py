@@ -203,3 +203,69 @@ def test_real_new_mcp_tools_with_local_preflight_and_research(tmp_path: Path) ->
                 assert research
 
     asyncio.run(asyncio.wait_for(run(), timeout=180))
+
+
+def test_method_training_sources_survive_switching_and_merge(
+    service: Service, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """New LoRA uses the trained model; each method resumes its original base."""
+    calls: list[tuple[str, dict[str, Any]]] = []
+    updates: dict[str, int] = {}
+
+    def engine(
+        operation: str, arguments: dict[str, Any], *limits: Any
+    ) -> dict[str, Any]:
+        calls.append((operation, dict(arguments)))
+        if operation == "hf_fixture":
+            destination = Path(arguments["destination"])
+            destination.mkdir()
+            return {"path": str(destination), "project_owned": True}
+        if operation == "train_local":
+            method = arguments["method"]
+            updates[method] = updates.get(method, 0) + 1
+            artifact = Path(arguments["destination"]) / f"checkpoint-{updates[method]}"
+            artifact.mkdir(parents=True)
+            return {"artifact_path": str(artifact), "completed_steps": updates[method]}
+        if operation == "merge_adapter":
+            destination = Path(arguments["destination"])
+            destination.mkdir()
+            return {
+                "path": str(destination),
+                "destination": str(destination),
+                "operation": "merge",
+            }
+        if operation == "hf_generate":
+            return {"token_ids": [4], "new_tokens": 1}
+        raise AssertionError(f"Unexpected operation {operation}")
+
+    monkeypatch.setattr(service, "_engine", engine)
+    project = service.create_project("Retained training bases")["id"]
+    fixture = service.create_local_fixture(project, "llama")["path"]
+    options: dict[str, Any] = {
+        "text": "owned training text",
+        "steps": 1,
+        "authorized": True,
+        "rights": "Project-owned text and random weights; MIT",
+    }
+    full = service.train_local_model(project, method="full", **options)
+    service.train_local_model(project, method="lora", **options)
+    service.train_local_model(project, method="full", resume=True, **options)
+    service.train_local_model(project, method="lora", resume=True, **options)
+    training = [
+        arguments for operation, arguments in calls if operation == "train_local"
+    ]
+    assert [row["source"] for row in training] == [
+        fixture,
+        full["artifact_path"],
+        fixture,
+        full["artifact_path"],
+    ]
+    merged = service.reconstruct_local(
+        project, ["hello"], redistributable=True, rights=options["rights"]
+    )
+    assert calls[-1][0] == "merge_adapter"
+    assert calls[-1][1]["base"] == full["artifact_path"]
+    service.local_generate(project, "hello", 1)
+    assert calls[-1][0] == "hf_generate"
+    assert calls[-1][1]["path"] == merged["destination"]
+    assert "adapter" not in calls[-1][1]

@@ -45,11 +45,19 @@ def resolve_device(device: str = "auto") -> str:
     import torch
 
     if device == "auto":
-        return (
-            "cuda"
-            if torch.cuda.is_available()
-            else "mps" if torch.backends.mps.is_available() else "cpu"
-        )
+        for candidate, available in (
+            ("cuda", torch.cuda.is_available()),
+            ("mps", torch.backends.mps.is_available()),
+        ):
+            if available:
+                try:
+                    # Some virtualized hosts advertise MPS but reject even tiny allocations.
+                    value = torch.ones((2, 2), device=candidate)
+                    float((value @ value).sum().item())
+                    return candidate
+                except RuntimeError:
+                    continue
+        return "cpu"
     if device not in {"cpu", "mps", "cuda"}:
         raise ValueError("device must be auto, cpu, mps, or cuda")
     if device == "cuda" and not torch.cuda.is_available():
@@ -300,7 +308,14 @@ def load_bundle(
         or loading.get("error_msgs")
     ):
         raise ValueError(f"Incomplete checkpoint loading: {loading}")
-    model.to(report["device"]).eval()
+    try:
+        model.to(report["device"]).eval()
+    except RuntimeError:
+        if device != "auto" or report["device"] == "cpu":
+            raise
+        model.to("cpu").eval()
+        report["device_fallback"] = "Automatic accelerator transfer failed; using CPU"
+        report["device"] = "cpu"
     tokenizer = AutoTokenizer.from_pretrained(
         report["path"], local_files_only=True, trust_remote_code=False, use_fast=True
     )

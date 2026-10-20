@@ -432,7 +432,25 @@ class MainWindow(QMainWindow):
             "Persist bounded jobs in the local task queue. Queued jobs are tracked explicitly.",
         )
         self.task_kind = QComboBox()
-        self.task_kind.addItems(["inspect", "build", "train", "infer", "agent"])
+        self.task_kind.addItems(
+            [
+                "inspect",
+                "build",
+                "train",
+                "infer",
+                "agent",
+                "create_local_fixture",
+                "attach_local_model",
+                "local_generate",
+                "train_local_model",
+                "train_mlx_model",
+                "trace_local_model",
+                "reconstruct_local",
+                "mlx_benchmark",
+                "run_umrre",
+                "run_experiment",
+            ]
+        )
         agents.addWidget(self.task_kind)
         self.task_payload = QPlainTextEdit()
         self.task_payload.setPlainText("{}")
@@ -546,7 +564,7 @@ class MainWindow(QMainWindow):
         self.local_bits.addItems(["0", "4", "8"])
         options.addRow("MLX quantization bits (0 = original)", self.local_bits)
         self.local_tokens = QSpinBox()
-        self.local_tokens.setRange(1, 512)
+        self.local_tokens.setRange(1, 256)
         self.local_tokens.setValue(32)
         options.addRow("Maximum new tokens", self.local_tokens)
         local.addLayout(options)

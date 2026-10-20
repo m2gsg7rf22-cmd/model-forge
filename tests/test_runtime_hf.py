@@ -155,3 +155,21 @@ def test_real_llama_fixture(tmp_path: Path) -> None:
     assert "not an execution graph" in loaded["module_tree_scope"]
     output = generate(report["path"], "hello world", max_new_tokens=2, device="cpu")
     assert output["new_tokens"] > 0
+
+
+def test_auto_device_probes_broken_advertised_accelerator(monkeypatch):
+    import torch
+    from modelforge.runtime_hf import resolve_device
+
+    monkeypatch.setattr(torch.cuda, "is_available", lambda: False)
+    monkeypatch.setattr(torch.backends.mps, "is_available", lambda: True)
+    original = torch.ones
+
+    def denied(*args, **kwargs):
+        if kwargs.get("device") == "mps":
+            raise RuntimeError("Virtual GPU allocation unavailable")
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(torch, "ones", denied)
+    assert resolve_device("auto") == "cpu"
+    assert resolve_device("cpu") == "cpu"

@@ -91,6 +91,19 @@ def install_runtime(
             "Engine environment exists. Use its installed engines or configure another dedicated interpreter; it will not be overwritten."
         )
     uv = shutil.which("uv")
+    if uv is None:
+        uv = next(
+            (
+                str(path)
+                for path in (
+                    Path.home() / ".local/bin/uv",
+                    Path("/opt/homebrew/bin/uv"),
+                    Path("/usr/local/bin/uv"),
+                )
+                if path.is_file() and os.access(path, os.X_OK)
+            ),
+            None,
+        )
     base = None if getattr(sys, "frozen", False) else sys.executable
     if not uv and not base:
         for candidate in ("python3.13", "python3.12", "python3"):
@@ -125,6 +138,12 @@ def install_runtime(
         if key
         not in {"PYTHONHOME", "PYTHONPATH", "DYLD_LIBRARY_PATH", "DYLD_FRAMEWORK_PATH"}
     }
+    if getattr(sys, "frozen", False):
+        env["PYINSTALLER_RESET_ENVIRONMENT"] = "1"
+        if "LD_LIBRARY_PATH_ORIG" in env:
+            env["LD_LIBRARY_PATH"] = env["LD_LIBRARY_PATH_ORIG"]
+        else:
+            env.pop("LD_LIBRARY_PATH", None)
     try:
         if uv:
             subprocess.run(

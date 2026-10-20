@@ -71,3 +71,5 @@ validation. Successful toy adaptation does not establish useful language quality
 Implementation references: [PEFT LoRA](https://huggingface.co/docs/peft/main/package_reference/lora),
 [Transformers bitsandbytes](https://huggingface.co/docs/transformers/main/en/quantization/bitsandbytes),
 and [PyTorch SGD](https://docs.pytorch.org/docs/stable/generated/torch.optim.SGD.html).
+
+Queue privacy: queued task payloads, including explicitly supplied training text, are persisted in the local SQLite task ledger for execution and recovery. The model artifact/provenance stores a text digest rather than the corpus. Project findings and queued payloads are local research data; review them before sharing.

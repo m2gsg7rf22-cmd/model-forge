@@ -453,12 +453,22 @@ class Service:
     ) -> dict[str, Any]:
         """Train actual parameters with integrity-checked immutable checkpoints."""
         binding = self._binding(project_id)
+        if binding["adapter_path"] and not resume:
+            raise ValueError(
+                "An adapter is active; merge it or use a new project before starting another training method"
+            )
+        sources = binding.setdefault("training_sources", {})
+        source = (
+            sources.get(method, binding["base_path"])
+            if resume
+            else binding["active_path"]
+        )
         destination = self._project(project_id) / "local-training" / method
         with self._lock:
             result = self._engine(
                 "train_local",
                 {
-                    "source": binding["base_path"],
+                    "source": source,
                     "destination": str(destination),
                     "text": text,
                     "method": method,
@@ -474,11 +484,13 @@ class Service:
                 memory_limit_mb,
                 1800,
             )
+            sources[method] = source
             if method == "full":
                 binding.update(active_path=result["artifact_path"], adapter_path="")
             else:
                 binding.update(
-                    active_path=binding["base_path"],
+                    base_path=source,
+                    active_path=source,
                     adapter_path=result["artifact_path"],
                 )
             binding["adapter_backend"] = "hf"
@@ -520,6 +532,13 @@ class Service:
         if operation == "merge_adapter":
             args["prompts"] = prompts
         result = self._engine(operation, args, 2048, 600)
+        binding.update(
+            base_path=str(destination),
+            active_path=str(destination),
+            adapter_path="",
+            adapter_backend="hf",
+        )
+        self._save_binding(project_id, binding)
         return self._record(project_id, "local-reconstruction", result)
 
     def mlx_benchmark(self, project_id: str) -> dict[str, Any]:
@@ -726,6 +745,8 @@ class Service:
             "attach_local_model",
             "local_generate",
             "train_local_model",
+            "train_mlx_model",
+            "trace_local_model",
             "reconstruct_local",
             "mlx_benchmark",
             "run_umrre",
