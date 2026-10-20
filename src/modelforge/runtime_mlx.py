@@ -134,7 +134,7 @@ def _generate(
         raise ValueError("max_new_tokens must be between 1 and 256")
     ids = _tokens(tokenizer, model, prompt, max_new_tokens)
     generated: list[int] = []
-    eos_ids = getattr(tokenizer, "_modelforge_eos_ids", frozenset())
+    eos_ids: frozenset[int] = getattr(tokenizer, "_modelforge_eos_ids", frozenset())
     finished = False
     started = time.perf_counter()
     # Bounded full-prefix decoding avoids a backend-specific unbounded KV cache.
