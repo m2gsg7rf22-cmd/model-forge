@@ -6,6 +6,7 @@ permissions:
   contents: read
 jobs:
   test-package:
+    timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:
