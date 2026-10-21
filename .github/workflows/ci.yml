@@ -3,6 +3,10 @@ on:
   push:
   workflow_dispatch:
     inputs:
+      tests_only:
+        description: 'Run full tests, lint, types and clean installation without native rebuilds'
+        type: boolean
+        default: false
       mcp_only:
         description: 'Verify only changed MCP startup/bootstrap paths; preserve prior full-suite evidence'
         type: boolean
@@ -44,21 +48,24 @@ jobs:
       - run: python -m mypy src/modelforge
       - run: python -m ruff check src tests packaging
       - run: python packaging/check_install.py
-      - run: python -m build
-      - run: python packaging/build_desktop.py
+      - if: github.event.inputs.tests_only != 'true'
+        run: python -m build
+      - if: github.event.inputs.tests_only != 'true'
+        run: python packaging/build_desktop.py
       - name: Smoke test frozen Linux desktop
         if: runner.os == 'Linux'
         run: dist/ModelForge/ModelForge --smoke-test
       - name: Smoke test frozen macOS desktop
-        if: runner.os == 'macOS'
+        if: runner.os == 'macOS' && github.event.inputs.tests_only != 'true'
         run: dist/ModelForge.app/Contents/MacOS/ModelForge --smoke-test
       - name: Smoke test frozen Windows desktop
-        if: runner.os == 'Windows'
+        if: runner.os == 'Windows' && github.event.inputs.tests_only != 'true'
         shell: pwsh
         run: |
           $p = Start-Process -FilePath dist/ModelForge/ModelForge.exe -ArgumentList '--smoke-test' -Wait -PassThru
           if ($p.ExitCode -ne 0) { throw "Frozen GUI failed: $($p.ExitCode)" }
       - name: Archive binaries and checksums
+        if: github.event.inputs.tests_only != 'true'
         run: python packaging/archive.py
       - uses: actions/upload-artifact@v4
         with:
