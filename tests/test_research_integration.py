@@ -130,8 +130,10 @@ def test_actual_mcp_research_and_recovery_tools(tmp_path: Path) -> None:
                 "resume_research",
                 {"repository_path": str(Path(__file__).resolve().parents[1])},
             )
+            print(f"MCP phase: resume returned; isError={resume.isError}", flush=True)
+            if resume.isError:
+                print(f"MCP resume error: {resume.content}", flush=True)
             assert not resume.isError
-            print("MCP phase: resume returned", flush=True)
             body = json.loads(resume.content[0].text)
             assert body["execution"] == "report_only"
             assert body["private_model_gate"] == "closed"

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+from collections.abc import Sequence
 import json
 import os
 from pathlib import Path
@@ -16,6 +17,8 @@ import uuid
 
 import psutil
 
+from .execution import _stop
+
 MAX_STATE_BYTES = 2 * 1024 * 1024
 MAX_LEDGER_BYTES = 64 * 1024 * 1024
 STATUSES = {"queued", "running", "completed", "failed", "interrupted"}
@@ -23,6 +26,36 @@ STATUSES = {"queued", "running", "completed", "failed", "interrupted"}
 
 class MemoryError(ValueError):
     """Invalid or inconsistent persisted evidence."""
+
+
+def _capture_command(command: Sequence[str], timeout_seconds: float = 10) -> str:
+    """Capture bounded Git text without Windows pipe-reader cleanup threads."""
+    with tempfile.TemporaryFile() as output, tempfile.TemporaryFile() as error:
+        process = subprocess.Popen(
+            list(command), stdin=subprocess.DEVNULL, stdout=output, stderr=error
+        )
+        deadline = time.monotonic() + timeout_seconds
+        try:
+            while process.poll() is None:
+                if time.monotonic() >= deadline:
+                    raise MemoryError("Git verification exceeded its time budget")
+                if (
+                    os.fstat(output.fileno()).st_size + os.fstat(error.fileno()).st_size
+                    > MAX_STATE_BYTES
+                ):
+                    raise MemoryError("Git verification exceeded its output budget")
+                time.sleep(0.01)
+        finally:
+            _stop(process)
+        if (
+            os.fstat(output.fileno()).st_size + os.fstat(error.fileno()).st_size
+            > MAX_STATE_BYTES
+        ):
+            raise MemoryError("Git verification exceeded its output budget")
+        if process.returncode:
+            raise MemoryError("Git verification failed: " + " ".join(command[-2:]))
+        output.seek(0)
+        return output.read(MAX_STATE_BYTES).decode("utf-8", errors="replace").strip()
 
 
 def canonical(value: Any) -> bytes:
@@ -290,16 +323,7 @@ class ResearchMemory:
 
     def git_info(self, state: dict[str, Any]) -> dict[str, Any]:
         def git(*args: str) -> str:
-            result = subprocess.run(
-                ["git", "-C", str(self.root), *args],
-                capture_output=True,
-                text=True,
-                timeout=10,
-                check=False,
-            )
-            if result.returncode:
-                raise MemoryError("Git verification failed: " + " ".join(args[:2]))
-            return result.stdout.strip()
+            return _capture_command(["git", "-C", str(self.root), *args])
 
         current = git("rev-parse", "HEAD")
         try:

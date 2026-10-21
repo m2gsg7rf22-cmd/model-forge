@@ -304,9 +304,9 @@ def test_cli_structured_error_on_git_timeout(
     monkeypatch.setattr(sys, "argv", [str(path), "--root", str(memory.root)])
 
     def fail(*args: Any, **kwargs: Any) -> Any:
-        raise subprocess.TimeoutExpired("git", 10)
+        raise rm.MemoryError("Git verification exceeded its time budget")
 
-    monkeypatch.setattr(subprocess, "run", fail)
+    monkeypatch.setattr(rm, "_capture_command", fail)
     assert module.main() == 1
     assert "error" in json.loads(capsys.readouterr().err)
 
@@ -532,3 +532,31 @@ def test_shallow_checkout_reports_missing_history_without_mutation(
     with pytest.raises(rm.MemoryError, match="shallow.*history"):
         rm.ResearchMemory(shallow).resume()
     assert (shallow / ".modelforge/research_state.json").read_bytes() == before
+
+
+def test_capture_does_not_wait_for_descendant_inherited_output() -> None:
+    """A descendant keeping stdout open must not extend parent cleanup indefinitely."""
+    import sys
+    import time
+
+    code = (
+        "import subprocess,sys;"
+        "subprocess.Popen([sys.executable,'-c','import time;time.sleep(2)']);"
+        "print('parent-result',flush=True)"
+    )
+    started = time.monotonic()
+    result = rm._capture_command([sys.executable, "-c", code], timeout_seconds=0.5)
+    assert result == "parent-result"
+    assert time.monotonic() - started < 1.5
+
+
+def test_capture_timeout_remains_bounded_and_fails_closed() -> None:
+    import sys
+    import time
+
+    started = time.monotonic()
+    with pytest.raises(rm.MemoryError, match="time budget"):
+        rm._capture_command(
+            [sys.executable, "-c", "import time;time.sleep(10)"], timeout_seconds=0.1
+        )
+    assert time.monotonic() - started < 2
