@@ -14,7 +14,7 @@ from typing import Any
 import warnings
 
 from anyio import BrokenResourceError, ClosedResourceError
-from mcp import StdioServerParameters
+from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client as sdk_stdio_client
 
 
@@ -36,6 +36,32 @@ async def safe_stdio_client(parameters: StdioServerParameters) -> AsyncIterator[
             raise
         warnings.warn(
             "MCP SDK closed-stream race after completed Windows session; all requested operations returned before transport shutdown",
+            RuntimeWarning,
+            stacklevel=2,
+        )
+
+
+@asynccontextmanager
+async def safe_mcp_session(
+    parameters: StdioServerParameters,
+) -> AsyncIterator[ClientSession]:
+    """Bound both SDK contexts so successful work precedes session teardown."""
+    completed = False
+    try:
+        async with sdk_stdio_client(parameters) as (reader, writer):
+            async with ClientSession(reader, writer) as session:
+                yield session
+                completed = True
+    except BaseExceptionGroup as group:
+        if not completed or sys.platform != "win32":
+            raise
+        closed, remainder = group.split((BrokenResourceError, ClosedResourceError))
+        if remainder is not None:
+            raise remainder
+        if closed is None:
+            raise
+        warnings.warn(
+            "MCP SDK closed-stream race after completed Windows session; all requested operations returned before session/transport shutdown",
             RuntimeWarning,
             stacklevel=2,
         )

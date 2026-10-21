@@ -23,37 +23,36 @@ STATE = ".modelforge-bootstrap.json"
 # Executed by the installed environment, not the checkout interpreter.
 VERIFY_SCRIPT = r"""
 import asyncio,json,os,sys
-from mcp import ClientSession,StdioServerParameters
-from modelforge.mcp_client import safe_stdio_client as stdio_client
+from mcp import StdioServerParameters
+from modelforge.mcp_client import safe_mcp_session
 async def check():
     env=dict(os.environ)
     env.pop("PYTHONPATH",None)
     env["MODELFORGE_HOME"]=sys.argv[1]
-    async with stdio_client(StdioServerParameters(command=sys.executable,args=["-m","modelforge.mcp_server"],env=env)) as (read,write):
-        async with ClientSession(read,write) as session:
-            await session.initialize()
-            tools=await session.list_tools()
-            names=sorted(t.name for t in tools.tools)
-            required={"create_project","build_model","generate","hardware_status"}
-            if not required.issubset(names):
-                raise RuntimeError("Required ModelForge engine tools are missing")
-            hardware=await session.call_tool("hardware_status",{})
-            if hardware.isError:
-                raise RuntimeError("Real hardware tool invocation failed")
-            project=await session.call_tool("create_project",{"name":"Bootstrap isolated engine verification"})
-            if project.isError:
-                raise RuntimeError("Real project tool invocation failed")
-            result=project.structuredContent
-            if not result:
-                result=json.loads(next(c.text for c in project.content if c.type=="text"))
-            if "result" in result:
-                result=result["result"]
-            project_id=result["id"]
-            built=await session.call_tool("build_model",{"project_id":project_id})
-            generated=await session.call_tool("generate",{"project_id":project_id,"text":"hello"})
-            if built.isError or generated.isError:
-                raise RuntimeError("Real build/inference invocation failed")
-            print(json.dumps({"transport":"stdio","tool_count":len(names),"tools":names,"verified_calls":["hardware_status","create_project","build_model","generate"],"engines":"project-owned byte model; optional heavyweight runtimes are listed, not certified"}))
+    async with safe_mcp_session(StdioServerParameters(command=sys.executable,args=["-m","modelforge.mcp_server"],env=env)) as session:
+        await session.initialize()
+        tools=await session.list_tools()
+        names=sorted(t.name for t in tools.tools)
+        required={"create_project","build_model","generate","hardware_status"}
+        if not required.issubset(names):
+            raise RuntimeError("Required ModelForge engine tools are missing")
+        hardware=await session.call_tool("hardware_status",{})
+        if hardware.isError:
+            raise RuntimeError("Real hardware tool invocation failed")
+        project=await session.call_tool("create_project",{"name":"Bootstrap isolated engine verification"})
+        if project.isError:
+            raise RuntimeError("Real project tool invocation failed")
+        result=project.structuredContent
+        if not result:
+            result=json.loads(next(c.text for c in project.content if c.type=="text"))
+        if "result" in result:
+            result=result["result"]
+        project_id=result["id"]
+        built=await session.call_tool("build_model",{"project_id":project_id})
+        generated=await session.call_tool("generate",{"project_id":project_id,"text":"hello"})
+        if built.isError or generated.isError:
+            raise RuntimeError("Real build/inference invocation failed")
+        print(json.dumps({"transport":"stdio","tool_count":len(names),"tools":names,"verified_calls":["hardware_status","create_project","build_model","generate"],"engines":"project-owned byte model; optional heavyweight runtimes are listed, not certified"}))
 asyncio.run(asyncio.wait_for(check(),timeout=90))
 """
 

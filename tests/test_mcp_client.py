@@ -49,3 +49,38 @@ def test_close_race_is_only_tolerated_after_successful_windows_body(
     else:
         with pytest.raises(BaseExceptionGroup):
             asyncio.run(run())
+
+
+@pytest.mark.parametrize("body_error", [False, True])
+def test_session_teardown_race_after_actual_body(
+    monkeypatch: Any, body_error: bool
+) -> None:
+    @asynccontextmanager
+    async def transport(_: Any) -> Any:
+        yield ("read", "write")
+
+    @asynccontextmanager
+    async def session(*_: Any) -> Any:
+        try:
+            yield "session"
+        finally:
+            raise ExceptionGroup("session close", [BrokenResourceError()])
+
+    monkeypatch.setattr(client, "sdk_stdio_client", transport)
+    monkeypatch.setattr(client, "ClientSession", session)
+    monkeypatch.setattr(client.sys, "platform", "win32")
+
+    async def run() -> None:
+        async with client.safe_mcp_session(
+            StdioServerParameters(command="unused")
+        ) as value:
+            assert value == "session"
+            if body_error:
+                raise RuntimeError("unfinished operation")
+
+    if body_error:
+        with pytest.raises(BaseExceptionGroup):
+            asyncio.run(run())
+    else:
+        with pytest.warns(RuntimeWarning, match="after completed"):
+            asyncio.run(run())

@@ -143,8 +143,8 @@ def test_service_quantized_mlx_training_and_adapter_reload(service: Service) -> 
     not HAS_HF, reason="Optional local engines are required for stdio workflow"
 )
 def test_real_new_mcp_tools_with_local_preflight_and_research(tmp_path: Path) -> None:
-    from mcp import ClientSession, StdioServerParameters
-    from modelforge.mcp_client import safe_stdio_client as stdio_client
+    from mcp import StdioServerParameters
+    from modelforge.mcp_client import safe_mcp_session
 
     async def run() -> None:
         environment = dict(
@@ -158,49 +158,46 @@ def test_real_new_mcp_tools_with_local_preflight_and_research(tmp_path: Path) ->
             args=["-m", "modelforge.mcp_server"],
             env=environment,
         )
-        async with stdio_client(parameters) as (reader, writer):
-            async with ClientSession(reader, writer) as client:
-                await client.initialize()
-                names = {item.name for item in (await client.list_tools()).tools}
-                assert {
-                    "create_local_fixture",
-                    "attach_local_model",
-                    "local_generate",
-                    "run_umrre",
-                    "train_mlx_model",
-                } <= names
+        async with safe_mcp_session(parameters) as client:
+            await client.initialize()
+            names = {item.name for item in (await client.list_tools()).tools}
+            assert {
+                "create_local_fixture",
+                "attach_local_model",
+                "local_generate",
+                "run_umrre",
+                "train_mlx_model",
+            } <= names
 
-                async def call(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
-                    result = await client.call_tool(name, arguments)
-                    assert not result.isError, result.content
-                    content = result.content[0]
-                    assert content.type == "text"
-                    value: dict[str, Any] = json.loads(content.text)
-                    return value
+            async def call(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
+                result = await client.call_tool(name, arguments)
+                assert not result.isError, result.content
+                content = result.content[0]
+                assert content.type == "text"
+                value: dict[str, Any] = json.loads(content.text)
+                return value
 
-                project = (await call("create_project", {"name": "Real local MCP"}))[
-                    "id"
-                ]
-                built = await call(
-                    "create_local_fixture",
-                    {"project_id": project, "model_type": "llama"},
-                )
-                checked = await call(
-                    "attach_local_model",
-                    {
-                        "project_id": project,
-                        "source_path": built["path"],
-                        "authorized": True,
-                    },
-                )
-                assert checked["complete_checkpoint"]
-                inference = await call(
-                    "local_generate",
-                    {"project_id": project, "text": "hello world", "max_new_tokens": 2},
-                )
-                assert inference["new_tokens"] == 2
-                research = await call("run_umrre", {"project_id": project})
-                assert research
+            project = (await call("create_project", {"name": "Real local MCP"}))["id"]
+            built = await call(
+                "create_local_fixture",
+                {"project_id": project, "model_type": "llama"},
+            )
+            checked = await call(
+                "attach_local_model",
+                {
+                    "project_id": project,
+                    "source_path": built["path"],
+                    "authorized": True,
+                },
+            )
+            assert checked["complete_checkpoint"]
+            inference = await call(
+                "local_generate",
+                {"project_id": project, "text": "hello world", "max_new_tokens": 2},
+            )
+            assert inference["new_tokens"] == 2
+            research = await call("run_umrre", {"project_id": project})
+            assert research
 
     asyncio.run(asyncio.wait_for(run(), timeout=180))
 
