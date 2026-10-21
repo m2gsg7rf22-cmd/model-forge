@@ -94,11 +94,17 @@ def test_actual_mcp_research_and_recovery_tools(tmp_path: Path) -> None:
     async def run() -> None:
         parameters = StdioServerParameters(
             command=sys.executable,
-            args=["-m", "modelforge.mcp_server"],
+            args=[
+                "-c",
+                "import faulthandler;faulthandler.dump_traceback_later(15,repeat=True);"
+                "from modelforge.mcp_server import main;main()",
+            ],
             env=dict(os.environ, MODELFORGE_HOME=str(tmp_path / "mcp")),
         )
         async with safe_mcp_session(parameters) as session:
+            print("MCP phase: initialize", flush=True)
             await session.initialize()
+            print("MCP phase: list tools", flush=True)
             names = {t.name for t in (await session.list_tools()).tools}
             assert {
                 "run_discovery",
@@ -107,21 +113,25 @@ def test_actual_mcp_research_and_recovery_tools(tmp_path: Path) -> None:
                 "resume_research",
                 "benchmark_mlx_cache",
             } <= names
+            print("MCP phase: create project", flush=True)
             created = await session.call_tool(
                 "create_project", {"name": "MCP attention"}
             )
             assert not created.isError
             project = json.loads(created.content[0].text)["id"]
+            print("MCP phase: attention", flush=True)
             result = await session.call_tool(
                 "run_attention_research",
                 {"project_id": project},
             )
             assert not result.isError, result.content
+            print("MCP phase: resume", flush=True)
             resume = await session.call_tool(
                 "resume_research",
                 {"repository_path": str(Path(__file__).resolve().parents[1])},
             )
             assert not resume.isError
+            print("MCP phase: resume returned", flush=True)
             body = json.loads(resume.content[0].text)
             assert body["execution"] == "report_only"
             assert body["private_model_gate"] == "closed"
