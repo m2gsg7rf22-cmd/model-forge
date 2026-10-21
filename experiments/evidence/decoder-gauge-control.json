@@ -1,0 +1,26 @@
+{
+  "experiment": "Owned Llama first-layer Q/K reciprocal scaling",
+  "public_input_seed": 20261021,
+  "shape": [
+    64,
+    8
+  ],
+  "parameters_total": 19616,
+  "q_weight_l2_change": 0.6429786682128906,
+  "k_weight_l2_change": 0.21720488369464874,
+  "max_absolute_logit_difference": 0.0,
+  "argmax_disagreements": 0,
+  "finite_logit_bit_equality": true,
+  "assumptions": "Known bias-free project-owned Llama eval; reciprocal global Q/K scaling commutes with linear RoPE; no overflow/underflow in the ideal-arithmetic identity",
+  "identity": "(R_i (c q_i))^T (R_j (k_j/c)) = (R_i q_i)^T (R_j k_j), c != 0",
+  "scope": "Explicit original-parameter ambiguity witness; finite numerical check is not universal float equivalence, model extraction or useful-language capability",
+  "elapsed_seconds": 0.06757658300921321,
+  "environment": {
+    "python": "3.12.15",
+    "torch": "2.14.1"
+  },
+  "source_sha256": "ac4f1115a2a7e9d7b236a521579599ad7aca252054bc6c512af2c547f5ba5787",
+  "training_steps": 0,
+  "external_calls": 0,
+  "weights_written": false
+}
