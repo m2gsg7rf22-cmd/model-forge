@@ -1,0 +1,285 @@
+{
+  "engine": "ModelForge Discovery Lab",
+  "protocol_version": 1,
+  "preregistration": {
+    "protocol_version": 1,
+    "public_sampling_seed": 17,
+    "family": "degree <=2 polynomial R^4 -> R^2 in canonical monomial basis",
+    "dimension": 4,
+    "outputs": 2,
+    "coefficient_count": 30,
+    "train_count": 64,
+    "validation_count": 32,
+    "sealed_test_count_per_condition": 128,
+    "input_distribution": "independent uniform[-1,1] coordinates",
+    "conditions": [
+      {
+        "name": "real_noiseless",
+        "observation": "real",
+        "noise_std": 0.0
+      },
+      {
+        "name": "real_noise_0.0001",
+        "observation": "real",
+        "noise_std": 0.0001
+      },
+      {
+        "name": "real_noise_0.1",
+        "observation": "real",
+        "noise_std": 0.1
+      },
+      {
+        "name": "sign_only",
+        "observation": "sign",
+        "noise_std": 0.0
+      }
+    ],
+    "methods": [
+      "linear_lstsq",
+      "quadratic_lstsq",
+      "quadratic_ridge_0.001"
+    ],
+    "selection": "minimum validation MSE; fixed method order breaks ties; no test access",
+    "validation_exact_retention_threshold_mse": 1e-12,
+    "exact_recovery_criteria": {
+      "heldout_mse_at_most": 1e-16,
+      "max_coefficient_error_at_most": 1e-09
+    },
+    "hypotheses": [
+      "Noiseless real outputs and full-column-rank monomial design recover canonical polynomial coefficients to tolerance.",
+      "Sign-only outputs do not identify coefficient amplitude: positive global scaling preserves all signs.",
+      "Gaussian observation noise prevents exact recovery at preregistered tolerance; residual error is measured, not silently rounded away."
+    ],
+    "max_total_seconds": 60,
+    "max_worker_rss_bytes": 536870912,
+    "remote_requests": 0,
+    "paid_api_cost_usd": 0
+  },
+  "source_sha256": {
+    "discovery_oracle.py": "57c9ac4fb01206ad160d56b04d87381973fb520ad3fc76e263027ee8da74581e",
+    "discovery.py": "83d28f238912e636034b7e515da4bc5b4b89dcf546e7dcb464600c5c8ed5fadf"
+  },
+  "commitments": {
+    "observations_sha256": "844fe385a81251e074ac8173e58346424748e54e35ce8350f4ffb70c61a86c64",
+    "private_truth_sha256": "da787faef4da9186d40cb7a41062f0ce59123340c96d111cc44fde5ccda6dada",
+    "sealed_solution_sha256": "03575e34cfb5377fc52fd7e8ec072bcef9bf807ecd6acda76bb4d7121dcb9601",
+    "manifest_sha256": "e7b8a8dcf5ee356752b493326cf408b8917fe9b78a18634c8abfe9b5ee745996"
+  },
+  "verification": {
+    "status": "completed",
+    "verifier_pid": 48835,
+    "producer_pid": 48833,
+    "solver_pid": 48834,
+    "process_separated": true,
+    "one_time_evaluation_claimed_before_truth_read": true,
+    "teachers_independent_across_conditions": true,
+    "independent_polynomial_evaluator": true,
+    "validation_selection_independently_recomputed": true,
+    "solver_inputs": [
+      "manifest.json",
+      "observations.json (train and validation only)"
+    ],
+    "sealed_test_used_for_selection": false,
+    "independent_external_scientist": false,
+    "scope": "Separate software verifier; same project authors and OS user. Not a malicious-process security sandbox."
+  },
+  "results": [
+    {
+      "condition": "real_noiseless",
+      "observation": "real",
+      "noise_std": 0.0,
+      "selected_method": "quadratic_lstsq",
+      "candidates": [
+        {
+          "method": "linear_lstsq",
+          "validation_mse": 0.5469700826692665,
+          "design_rank": 5,
+          "design_columns": 5,
+          "design_condition_number": 2.0497652213988427
+        },
+        {
+          "method": "quadratic_lstsq",
+          "validation_mse": 3.79961941519116e-29,
+          "design_rank": 15,
+          "design_columns": 15,
+          "design_condition_number": 6.2799419242368915
+        },
+        {
+          "method": "quadratic_ridge_0.001",
+          "validation_mse": 5.316144161482853e-08,
+          "design_rank": 15,
+          "design_columns": 15,
+          "design_condition_number": 6.2799419242368915
+        }
+      ],
+      "validation_retained_as_exact_candidate": true,
+      "heldout_mse": 3.8544645444550463e-29,
+      "heldout_max_abs_error": 1.176836406102666e-14,
+      "max_canonical_coefficient_error": 4.6629367034256575e-15,
+      "exact_recovery_criteria_met": true,
+      "heldout_mse_bootstrap_95_percent_interval": [
+        3.5570907779691946e-29,
+        4.1679295192204977e-29
+      ],
+      "bootstrap_replicates": 300
+    },
+    {
+      "condition": "real_noise_0.0001",
+      "observation": "real",
+      "noise_std": 0.0001,
+      "selected_method": "quadratic_lstsq",
+      "candidates": [
+        {
+          "method": "linear_lstsq",
+          "validation_mse": 0.7221560502342103,
+          "design_rank": 5,
+          "design_columns": 5,
+          "design_condition_number": 1.9170475915690408
+        },
+        {
+          "method": "quadratic_lstsq",
+          "validation_mse": 1.6171968248418068e-08,
+          "design_rank": 15,
+          "design_columns": 15,
+          "design_condition_number": 6.66037365644451
+        },
+        {
+          "method": "quadratic_ridge_0.001",
+          "validation_mse": 5.569745707826385e-08,
+          "design_rank": 15,
+          "design_columns": 15,
+          "design_condition_number": 6.66037365644451
+        }
+      ],
+      "validation_retained_as_exact_candidate": false,
+      "heldout_mse": 2.491043628820279e-09,
+      "heldout_max_abs_error": 0.00015254960471755563,
+      "max_canonical_coefficient_error": 7.852105010663912e-05,
+      "exact_recovery_criteria_met": false,
+      "heldout_mse_bootstrap_95_percent_interval": [
+        1.9019295201382184e-09,
+        3.0782837889902217e-09
+      ],
+      "bootstrap_replicates": 300
+    },
+    {
+      "condition": "real_noise_0.1",
+      "observation": "real",
+      "noise_std": 0.1,
+      "selected_method": "quadratic_lstsq",
+      "candidates": [
+        {
+          "method": "linear_lstsq",
+          "validation_mse": 2.661094764250239,
+          "design_rank": 5,
+          "design_columns": 5,
+          "design_condition_number": 2.0903085611938677
+        },
+        {
+          "method": "quadratic_lstsq",
+          "validation_mse": 0.01699464531727923,
+          "design_rank": 15,
+          "design_columns": 15,
+          "design_condition_number": 7.6972265987434
+        },
+        {
+          "method": "quadratic_ridge_0.001",
+          "validation_mse": 0.017002309439333396,
+          "design_rank": 15,
+          "design_columns": 15,
+          "design_condition_number": 7.6972265987434
+        }
+      ],
+      "validation_retained_as_exact_candidate": false,
+      "heldout_mse": 0.005709290607137218,
+      "heldout_max_abs_error": 0.20476002504494262,
+      "max_canonical_coefficient_error": 0.19737799531127287,
+      "exact_recovery_criteria_met": false,
+      "heldout_mse_bootstrap_95_percent_interval": [
+        0.004470831780769755,
+        0.007205918118898431
+      ],
+      "bootstrap_replicates": 300
+    },
+    {
+      "condition": "sign_only",
+      "observation": "sign",
+      "noise_std": 0.0,
+      "selected_method": "quadratic_ridge_0.001",
+      "candidates": [
+        {
+          "method": "linear_lstsq",
+          "validation_mse": 0.4615274755205444,
+          "design_rank": 5,
+          "design_columns": 5,
+          "design_condition_number": 2.3010223708701036
+        },
+        {
+          "method": "quadratic_lstsq",
+          "validation_mse": 0.3476675905770631,
+          "design_rank": 15,
+          "design_columns": 15,
+          "design_condition_number": 8.545261979041252
+        },
+        {
+          "method": "quadratic_ridge_0.001",
+          "validation_mse": 0.3475090897562393,
+          "design_rank": 15,
+          "design_columns": 15,
+          "design_condition_number": 8.545261979041252
+        }
+      ],
+      "validation_retained_as_exact_candidate": false,
+      "heldout_mse": 1.2392081840988438,
+      "heldout_max_abs_error": 4.473312853237886,
+      "max_canonical_coefficient_error": 1.5788741175904073,
+      "exact_recovery_criteria_met": false,
+      "heldout_mse_bootstrap_95_percent_interval": [
+        0.9502591027126815,
+        1.5444402403491595
+      ],
+      "bootstrap_replicates": 300,
+      "nonidentifiability_witness": {
+        "transformation": "multiply every canonical coefficient by positive scalar 2",
+        "observed_sign_disagreements": 0,
+        "all_input_sign_equivalence": "sign(2*f(x))=sign(f(x)) for every real x, including zero",
+        "coefficient_l2_distance": 4.567154400842187,
+        "heldout_real_output_mse_between_witnesses": 3.548029100008259
+      }
+    }
+  ],
+  "numerical_sha256": "b66a87cd2c471fcabe294ffd03314773440427b91dc48935782115c9d7af6ad8",
+  "cost": {
+    "remote_requests": 0,
+    "paid_api_cost_usd": 0,
+    "train_oracle_examples": 256,
+    "validation_oracle_examples": 128,
+    "sealed_verification_examples": 512,
+    "learner_observed_scalar_outputs": 768,
+    "candidate_count_per_condition": 3
+  },
+  "environment": {
+    "python": "3.12.15",
+    "numpy": "2.5.4",
+    "platform": "macOS-26.3-arm64-arm-64bit"
+  },
+  "conclusion": "Tests bounded identifiable canonical quadratic function recovery and negative controls; inspect each measured criterion. No neural architecture, LLM or proprietary model reconstruction claim.",
+  "uncertainty": [
+    "Float64 tolerance is not byte-identical source parameter recovery.",
+    "Bootstrap interval conditions on one owned teacher and sampled uniform inputs, not a population of architectures.",
+    "Canonical monomial coefficients remove antisymmetric quadratic-matrix ambiguity; raw original parameterization need not be unique.",
+    "Noise controls measure failure of exact recovery, not impossibility of useful approximation.",
+    "Conditions have independent teachers, so noise rows are not a paired causal estimate of noise effects.",
+    "Private truth is locally retained outside public artifact; same-user filesystem access is not isolated by OS sandbox."
+  ],
+  "references": [
+    {
+      "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html",
+      "role": "Primary implementation documentation: least squares and numerical rank"
+    },
+    {
+      "url": "https://proceedings.mlr.press/v235/carlini24a.html",
+      "role": "Related extraction research; does not establish this polynomial result or universal reconstruction"
+    }
+  ]
+}

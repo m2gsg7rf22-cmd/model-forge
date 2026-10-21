@@ -585,6 +585,9 @@ class MainWindow(QMainWindow):
             self.button("Generate with selected engine", self.generate_local, True)
         )
         local.addWidget(self.button("Run MLX GPU benchmark", self.benchmark_mlx))
+        local.addWidget(
+            self.button("Compare bounded MLX KV cache", self.benchmark_cache)
+        )
         self.local_rights = QLineEdit()
         self.local_rights.setPlaceholderText(
             "License / ownership statement for redistribution"
@@ -668,6 +671,25 @@ class MainWindow(QMainWindow):
         lab.addWidget(QLabel("Local UMRRE random seed"))
         lab.addWidget(self.umrre_seed)
         lab.addWidget(self.button("Run local UMRRE research", self.umrre))
+        lab.addWidget(
+            self.button("Run sealed Discovery Lab experiment", self.discovery)
+        )
+        lab.addWidget(
+            self.button(
+                "Run preregistered attention study (3 input seeds)",
+                self.attention_study,
+            )
+        )
+        self.research_repository = QLineEdit()
+        self.research_repository.setPlaceholderText(
+            "ModelForge repository containing the saved research checkpoint"
+        )
+        lab.addWidget(self.research_repository)
+        lab.addWidget(
+            self.button(
+                "Validate / recover repository research queue", self.resume_repository
+            )
+        )
 
         runtime = self.engine_tab(settings, "Optional local engines")
         note = QLabel(
@@ -761,6 +783,21 @@ class MainWindow(QMainWindow):
     def benchmark_mlx(self) -> None:
         self.project_action(
             "Reconstruction", "MLX GPU benchmark", self.service.mlx_benchmark
+        )
+
+    def benchmark_cache(self) -> None:
+        prompt, tokens = self.local_prompt.text(), self.local_tokens.value()
+        memory, bits = self.local_memory.value(), int(self.local_bits.currentText())
+        self.project_action(
+            "Reconstruction",
+            "Bounded MLX KV cache comparison",
+            lambda key: self.service.benchmark_mlx_cache(
+                key,
+                prompt=prompt,
+                max_new_tokens=tokens,
+                memory_limit_mb=memory,
+                quantize_bits=bits,
+            ),
         )
 
     def reconstruct_hf(self) -> None:
@@ -881,6 +918,34 @@ class MainWindow(QMainWindow):
             "Research",
             "Local UMRRE research",
             lambda key: self.service.run_umrre(key, seed=seed),
+        )
+
+    def discovery(self) -> None:
+        seed = self.umrre_seed.value()
+        self.project_action(
+            "Research",
+            "Sealed Discovery Lab",
+            lambda key: self.service.run_discovery(key, seed=seed),
+        )
+
+    def attention_study(self) -> None:
+        self.project_action(
+            "Research",
+            "Owned attention observation study",
+            self.service.run_attention_research,
+        )
+
+    def resume_repository(self) -> None:
+        path = self.research_repository.text().strip()
+        if not path:
+            self.show_error(
+                "Research", "Choose the ModelForge repository checkpoint directory"
+            )
+            return
+        self.run(
+            "Research",
+            "Validate / recover research queue",
+            lambda: self.service.resume_research(path),
         )
 
     def runtime_status(self) -> None:

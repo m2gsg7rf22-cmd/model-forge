@@ -1,0 +1,5 @@
+# Preserve immutable original mission bytes on every operating system.
+docs/MASTER_MISSION.md -text
+docs/FINAL_PRIVATE_MODEL_MISSION.md -text
+.modelforge/*.json text eol=lf
+experiments/ledger.jsonl text eol=lf

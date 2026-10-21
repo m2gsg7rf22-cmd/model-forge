@@ -25,3 +25,6 @@ private-model/
 
 .discovery-private/
 private-research/
+
+.attention-private/
+private-attention/

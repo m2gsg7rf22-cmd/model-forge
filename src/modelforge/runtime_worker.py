@@ -56,6 +56,7 @@ def dispatch(payload: dict[str, Any]) -> dict[str, Any]:
     elif operation in {
         "mlx_generate",
         "mlx_benchmark",
+        "mlx_cache_benchmark",
         "mlx_train_lora",
         "mlx_generate_adapter",
     }:
@@ -64,6 +65,7 @@ def dispatch(payload: dict[str, Any]) -> dict[str, Any]:
         name = {
             "mlx_generate": "generate",
             "mlx_benchmark": "benchmark",
+            "mlx_cache_benchmark": "benchmark_cache",
             "mlx_train_lora": "train_lora",
             "mlx_generate_adapter": "generate_adapter",
         }[str(operation)]
@@ -72,6 +74,14 @@ def dispatch(payload: dict[str, Any]) -> dict[str, Any]:
         from .interpretability import trace_local
 
         result = trace_local(**arguments)
+    elif operation == "attention_research":
+        from .attention_research import run_attention_research
+
+        result = run_attention_research(**arguments)
+    elif operation == "discovery":
+        from .discovery import run_discovery
+
+        result = run_discovery(**arguments)
     elif operation == "umrre":
         from .umrre import run_research
 

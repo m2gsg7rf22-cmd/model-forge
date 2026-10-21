@@ -1,0 +1,24 @@
+{
+  "nested_public_private_both_rejected_before_creation": true,
+  "public_evidence_excludes_teacher_weights_and_secret_seed": true,
+  "independent_alternate_baseline_recovery": [
+    {
+      "sampling_seed": 11,
+      "alternate_baseline_matrix_max_difference": 6.245004513516506e-16,
+      "reported_matrix_error": 6.106226635438361e-16
+    },
+    {
+      "sampling_seed": 23,
+      "alternate_baseline_matrix_max_difference": 3.469446951953614e-16,
+      "reported_matrix_error": 5.828670879282072e-16
+    },
+    {
+      "sampling_seed": 47,
+      "alternate_baseline_matrix_max_difference": 4.440892098500626e-16,
+      "reported_matrix_error": 2.3245294578089215e-16
+    }
+  ],
+  "source_sha256": "fe46e8ca9634f8fbf62353751d7d49d748ea1dd4cf05565b265df35715996595",
+  "elapsed_seconds": 0.3977029171073809,
+  "sampled_peak_learner_rss_bytes": 33865728
+}

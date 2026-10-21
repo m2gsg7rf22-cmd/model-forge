@@ -126,7 +126,12 @@ def _tokens(tokenizer: Any, model: Any, prompt: str, extra: int) -> list[int]:
 
 
 def _generate(
-    model: Any, tokenizer: Any, prompt: str, max_new_tokens: int
+    model: Any,
+    tokenizer: Any,
+    prompt: str,
+    max_new_tokens: int,
+    *,
+    use_cache: bool = False,
 ) -> dict[str, Any]:
     import mlx.core as mx
 
@@ -137,9 +142,22 @@ def _generate(
     eos_ids: frozenset[int] = getattr(tokenizer, "_modelforge_eos_ids", frozenset())
     finished = False
     started = time.perf_counter()
-    # Bounded full-prefix decoding avoids a backend-specific unbounded KV cache.
+    # A fresh per-call cache is bounded by _tokens' 4096-token admission limit.
+    # The reference full-prefix implementation remains available for comparison.
+    if use_cache:
+        from mlx_lm.models.cache import make_prompt_cache
+
+        cache = make_prompt_cache(model)
+    else:
+        cache = None
     for _ in range(max_new_tokens):
-        logits = model(mx.array([ids + generated], dtype=mx.int32))[:, -1, :]
+        current = (
+            (ids if not generated else [generated[-1]])
+            if use_cache
+            else ids + generated
+        )
+        inputs = mx.array([current], dtype=mx.int32)
+        logits = (model(inputs, cache=cache) if use_cache else model(inputs))[:, -1, :]
         token = int(cast(Any, mx.argmax(logits, axis=-1).item()))
         generated.append(token)
         if token in eos_ids:
@@ -155,7 +173,16 @@ def _generate(
         "new_tokens": len(generated),
         "seconds": elapsed,
         "tokens_per_second": len(generated) / elapsed,
-        "decoding": "greedy bounded full-prefix with configured EOS",
+        "decoding": (
+            "greedy bounded KV cache with configured EOS"
+            if use_cache
+            else "greedy bounded full-prefix with configured EOS"
+        ),
+        "cache_logical_bytes": (
+            sum(value.nbytes for layer in cache for value in layer.state)
+            if cache
+            else 0
+        ),
         "finish_reason": "eos" if finished else "length",
     }
 
@@ -382,3 +409,121 @@ def generate_adapter(
             "preflight": report,
             "peak_mlx_bytes": mx.get_peak_memory(),
         }
+
+
+def benchmark_cache(
+    path: str | Path,
+    prompt: str = "hello world",
+    max_new_tokens: int = 16,
+    memory_limit_mb: int = 2048,
+    repeats: int = 3,
+    quantize_bits: int = 0,
+    precision: str = "native",
+    compare_logits: bool = False,
+) -> dict[str, Any]:
+    """Compare actual fresh bounded KV decode with the existing full-prefix path.
+
+    Both paths use the same loaded model, tokenizer, prompt and greedy budget.
+    Order alternates; one warmup per path is excluded. Finite token parity is
+    measured, never described as universal or original-weight reconstruction.
+    """
+    if type(repeats) is not int or not 1 <= repeats <= 5:
+        raise ValueError("repeats must be between 1 and 5")
+    if precision not in {"native", "float32"} or type(compare_logits) is not bool:
+        raise ValueError("Use native/float32 precision and a boolean logit comparison")
+    if precision == "float32" and quantize_bits:
+        raise ValueError("Float32 control requires an unquantized base")
+    with _limits(memory_limit_mb, "gpu") as mx:
+        model, tokenizer, report = _load(path, memory_limit_mb, quantize_bits)
+        if precision == "float32":
+            model.set_dtype(mx.float32)
+            mx.eval(model.parameters())
+        _tokens(tokenizer, model, prompt, max_new_tokens)
+        for cached in (False, True):
+            _generate(
+                model, tokenizer, prompt, min(2, max_new_tokens), use_cache=cached
+            )
+        rows = []
+        for repeat in range(repeats):
+            for cached in ((False, True) if repeat % 2 == 0 else (True, False)):
+                mx.reset_peak_memory()
+                result = _generate(
+                    model, tokenizer, prompt, max_new_tokens, use_cache=cached
+                )
+                rows.append(
+                    {
+                        "repeat": repeat,
+                        "cached": cached,
+                        **result,
+                        "peak_mlx_bytes": mx.get_peak_memory(),
+                    }
+                )
+        pairs = [
+            [row for row in rows if row["repeat"] == repeat]
+            for repeat in range(repeats)
+        ]
+        parity = all(pair[0]["token_ids"] == pair[1]["token_ids"] for pair in pairs)
+        diagnostic = (
+            _compare_cache_logits(model, tokenizer, prompt, min(max_new_tokens, 32))
+            if compare_logits
+            else None
+        )
+        return {
+            "configuration": {
+                "prompt": prompt,
+                "max_new_tokens": max_new_tokens,
+                "memory_limit_mb": memory_limit_mb,
+                "repeats": repeats,
+                "quantize_bits": quantize_bits,
+                "precision": precision,
+                "compare_logits": compare_logits,
+            },
+            "precision": precision,
+            "reference_prefix_logit_comparison": diagnostic,
+            "runtime": "mlx-lm",
+            "device": "gpu",
+            "preflight": report,
+            "measurements": rows,
+            "tested_token_parity": parity,
+            "cache_scope": "Fresh per-call full KV; no rotation, quantization or cross-conversation reuse; maximum admitted total context 4096 tokens",
+            "scope": "Alternating warm same-model full generation including prefill; sampled outer RSS remains separate from MLX allocator peak. Timings are local measurements, not a general speedup or quality claim.",
+        }
+
+
+def _compare_cache_logits(
+    model: Any, tokenizer: Any, prompt: str, steps: int
+) -> dict[str, Any]:
+    """Teacher-force both algorithms on the same prefix to isolate numeric drift."""
+    import mlx.core as mx
+    from mlx_lm.models.cache import make_prompt_cache
+
+    ids = _tokens(tokenizer, model, prompt, steps)
+    cache = make_prompt_cache(model)
+    selected: list[int] = []
+    errors: list[float] = []
+    margins: list[float] = []
+    disagreements: list[int] = []
+    eos_ids: frozenset[int] = getattr(tokenizer, "_modelforge_eos_ids", frozenset())
+    for index in range(steps):
+        reference = model(mx.array([ids + selected], dtype=mx.int32))[:, -1, :]
+        inputs = ids if not selected else [selected[-1]]
+        cached = model(mx.array([inputs], dtype=mx.int32), cache=cache)[:, -1, :]
+        difference = mx.abs(reference.astype(mx.float32) - cached.astype(mx.float32))
+        errors.append(float(cast(Any, mx.max(difference).item())))
+        ordered = mx.sort(reference.astype(mx.float32), axis=-1)
+        margins.append(float(cast(Any, (ordered[0, -1] - ordered[0, -2]).item())))
+        token = int(cast(Any, mx.argmax(reference, axis=-1).item()))
+        if token != int(cast(Any, mx.argmax(cached, axis=-1).item())):
+            disagreements.append(index)
+        selected.append(token)
+        if token in eos_ids:
+            break
+    return {
+        "steps": len(selected),
+        "max_absolute_logit_error": max(errors, default=0.0),
+        "per_step_max_absolute_logit_errors": errors,
+        "reference_top_two_logit_margins": margins,
+        "argmax_disagreement_steps": disagreements,
+        "reference_chosen_token_ids": selected,
+        "scope": "Same reference-chosen prefix at each step; numerical observations, not universal equivalence proof",
+    }

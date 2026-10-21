@@ -138,6 +138,10 @@ def create_server(data_dir: str | None = None) -> FastMCP:
         "reconstruct_local",
         "mlx_benchmark",
         "run_umrre",
+        "run_discovery",
+        "run_attention_research",
+        "resume_research",
+        "benchmark_mlx_cache",
         "trace_local_model",
         "run_experiment",
     ):

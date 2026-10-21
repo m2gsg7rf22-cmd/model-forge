@@ -242,7 +242,14 @@ class Service:
         # Only this application's generated model is copied. Imported files stay external.
         files = [
             p
-            for name in ("model", "quantized", "hf-reconstruction", "umrre")
+            for name in (
+                "model",
+                "quantized",
+                "hf-reconstruction",
+                "umrre",
+                "discovery",
+                "attention-research",
+            )
             if not (project / name).is_symlink()
             for p in (project / name).rglob("*")
             if p.is_file()
@@ -551,6 +558,108 @@ class Service:
             "base_without_active_adapter" if binding["adapter_path"] else "active_base"
         )
         return self._record(project_id, "mlx-benchmark", result)
+
+    def benchmark_mlx_cache(
+        self,
+        project_id: str,
+        prompt: str = "hello world",
+        max_new_tokens: int = 16,
+        memory_limit_mb: int = 2048,
+        repeats: int = 3,
+        quantize_bits: int = 0,
+        precision: str = "native",
+        compare_logits: bool = False,
+    ) -> dict[str, Any]:
+        """Measure full-prefix versus fresh KV-cache inference on the active base."""
+        binding = self._binding(project_id)
+        if binding["adapter_path"]:
+            raise ValueError(
+                "Merge or clear the active adapter before a base cache benchmark"
+            )
+        result = self._engine(
+            "mlx_cache_benchmark",
+            {
+                "path": binding["active_path"],
+                "prompt": prompt,
+                "max_new_tokens": max_new_tokens,
+                "memory_limit_mb": memory_limit_mb,
+                "repeats": repeats,
+                "quantize_bits": quantize_bits,
+                "precision": precision,
+                "compare_logits": compare_logits,
+            },
+            memory_limit_mb,
+            timeout_seconds=180,
+        )
+        return self._record(project_id, "mlx-cache-benchmark", result)
+
+    def run_discovery(self, project_id: str, seed: int = 17) -> dict[str, Any]:
+        """Run owned hidden-teacher experiments with a separately sealed evaluator."""
+        destination = self._project(project_id) / "discovery" / uuid.uuid4().hex
+        started = time.monotonic()
+        try:
+            result = self._engine(
+                "discovery",
+                {
+                    "destination": str(destination),
+                    "seed": seed,
+                    "private_storage": str(self.root / "private-research"),
+                },
+                memory_limit_mb=512,
+                timeout_seconds=90,
+            )
+        except Exception as exc:
+            self._record(
+                project_id,
+                "discovery-failed",
+                {
+                    "seed": seed,
+                    "completed": False,
+                    "destination": str(destination),
+                    "elapsed_seconds": time.monotonic() - started,
+                    "error_type": type(exc).__name__,
+                    "error": str(exc)[:2000],
+                    "scope": "Failed controlled research run; no positive scientific result",
+                },
+            )
+            raise
+        return self._record(project_id, "discovery", result)
+
+    def run_attention_research(self, project_id: str) -> dict[str, Any]:
+        """Study score-matrix observability and Q/K ambiguity on owned attention."""
+        run_id = uuid.uuid4().hex
+        destination = self._project(project_id) / "attention-research" / run_id
+        started = time.monotonic()
+        try:
+            result = self._engine(
+                "attention_research",
+                {
+                    "destination": str(destination),
+                    "private_storage": str(self.root / "private-attention" / run_id),
+                },
+                memory_limit_mb=512,
+                timeout_seconds=90,
+            )
+        except Exception as exc:
+            self._record(
+                project_id,
+                "attention-research-failed",
+                {
+                    "completed": False,
+                    "destination": str(destination),
+                    "elapsed_seconds": time.monotonic() - started,
+                    "error_type": type(exc).__name__,
+                    "error": str(exc)[:2000],
+                },
+            )
+            raise
+        return self._record(project_id, "attention-research", result)
+
+    def resume_research(self, repository_path: str) -> dict[str, Any]:
+        """Validate repository checkpoint/ledger and report recoverable work; execute no tasks."""
+        from .research_memory import ResearchMemory
+
+        return ResearchMemory(Path(repository_path)).resume()
 
     def run_umrre(self, project_id: str, seed: int = 7) -> dict[str, Any]:
         """Run bounded owned-ground-truth experiments using the bundled NumPy engine."""

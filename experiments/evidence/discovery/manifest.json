@@ -1,0 +1,63 @@
+{
+  "preregistration": {
+    "protocol_version": 1,
+    "public_sampling_seed": 17,
+    "family": "degree <=2 polynomial R^4 -> R^2 in canonical monomial basis",
+    "dimension": 4,
+    "outputs": 2,
+    "coefficient_count": 30,
+    "train_count": 64,
+    "validation_count": 32,
+    "sealed_test_count_per_condition": 128,
+    "input_distribution": "independent uniform[-1,1] coordinates",
+    "conditions": [
+      {
+        "name": "real_noiseless",
+        "observation": "real",
+        "noise_std": 0.0
+      },
+      {
+        "name": "real_noise_0.0001",
+        "observation": "real",
+        "noise_std": 0.0001
+      },
+      {
+        "name": "real_noise_0.1",
+        "observation": "real",
+        "noise_std": 0.1
+      },
+      {
+        "name": "sign_only",
+        "observation": "sign",
+        "noise_std": 0.0
+      }
+    ],
+    "methods": [
+      "linear_lstsq",
+      "quadratic_lstsq",
+      "quadratic_ridge_0.001"
+    ],
+    "selection": "minimum validation MSE; fixed method order breaks ties; no test access",
+    "validation_exact_retention_threshold_mse": 1e-12,
+    "exact_recovery_criteria": {
+      "heldout_mse_at_most": 1e-16,
+      "max_coefficient_error_at_most": 1e-09
+    },
+    "hypotheses": [
+      "Noiseless real outputs and full-column-rank monomial design recover canonical polynomial coefficients to tolerance.",
+      "Sign-only outputs do not identify coefficient amplitude: positive global scaling preserves all signs.",
+      "Gaussian observation noise prevents exact recovery at preregistered tolerance; residual error is measured, not silently rounded away."
+    ],
+    "max_total_seconds": 60,
+    "max_worker_rss_bytes": 536870912,
+    "remote_requests": 0,
+    "paid_api_cost_usd": 0
+  },
+  "observations_sha256": "844fe385a81251e074ac8173e58346424748e54e35ce8350f4ffb70c61a86c64",
+  "private_truth_sha256": "da787faef4da9186d40cb7a41062f0ce59123340c96d111cc44fde5ccda6dada",
+  "source_sha256": {
+    "discovery_oracle.py": "57c9ac4fb01206ad160d56b04d87381973fb520ad3fc76e263027ee8da74581e",
+    "discovery.py": "83d28f238912e636034b7e515da4bc5b4b89dcf546e7dcb464600c5c8ed5fadf"
+  },
+  "producer_pid": 48833
+}

@@ -1,0 +1,40 @@
+{
+  "malformed_sealed_solutions_rejected": {
+    "scores": "Validation candidate score mismatch",
+    "selection": "Preregistered validation selection mismatch",
+    "retention": "Preregistered validation selection mismatch",
+    "coefficients": "Selected coefficients differ from whitelisted fit"
+  },
+  "clean_result_rows": [
+    {
+      "condition": "real_noiseless",
+      "heldout_mse": 1.3908910465230365e-28,
+      "max_canonical_coefficient_error": 7.105427357601002e-15,
+      "exact_recovery_criteria_met": true
+    },
+    {
+      "condition": "real_noise_0.0001",
+      "heldout_mse": 2.0591093140581576e-09,
+      "max_canonical_coefficient_error": 6.721022076439098e-05,
+      "exact_recovery_criteria_met": false
+    },
+    {
+      "condition": "real_noise_0.1",
+      "heldout_mse": 0.003182650697662209,
+      "max_canonical_coefficient_error": 0.09259915527349549,
+      "exact_recovery_criteria_met": false
+    },
+    {
+      "condition": "sign_only",
+      "heldout_mse": 0.8590153208679306,
+      "max_canonical_coefficient_error": 1.3763427798570094,
+      "exact_recovery_criteria_met": false
+    }
+  ],
+  "source_sha256": {
+    "discovery_oracle.py": "57c9ac4fb01206ad160d56b04d87381973fb520ad3fc76e263027ee8da74581e",
+    "discovery.py": "7dd1d5ec86cde0206bd6dafe6a647a75bf4ed20a8c098b569c14e3b2583f6d41"
+  },
+  "elapsed_seconds": 0.2381583749083802,
+  "sampled_peak_worker_rss_bytes": 39190528
+}

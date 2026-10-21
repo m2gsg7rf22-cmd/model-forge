@@ -1,0 +1,14 @@
+{
+  "persistent_private_truth": true,
+  "private_directory_mode": "0700",
+  "public_export_includes_inputs_solution_and_core": true,
+  "public_export_excludes_private_truth_and_seed": true,
+  "controlled_worker_failure_preserved_and_raised": true,
+  "gui_cache_dispatch_matches_controls": true,
+  "cpu_discovery_criteria": [
+    true,
+    false,
+    false,
+    false
+  ]
+}
