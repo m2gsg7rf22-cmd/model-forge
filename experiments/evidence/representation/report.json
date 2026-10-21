@@ -1,0 +1,174 @@
+{
+  "engine": "ModelForge owned decoder final-head reconstruction",
+  "protocol_version": 1,
+  "preregistration": {
+    "protocol_version": 1,
+    "family": "project-owned randomly initialized Hugging Face Llama; final untied bias-free linear lm_head only",
+    "hidden_size": 32,
+    "vocab_size": 16,
+    "sequence_length": 4,
+    "calibration_examples": 64,
+    "deficient_examples": 8,
+    "heldout_examples": 32,
+    "public_token_sampling_seed": 91,
+    "method": "float64 least squares on exposed float32 final hidden states and full float32 logits",
+    "max_weight_error": 1e-05,
+    "max_heldout_logit_error": 1e-05,
+    "max_condition_number_for_retention": 1000000.0,
+    "fixed_method_verification_max_abs_difference": 1e-10,
+    "selection": "one fixed method; no test-driven selection or retries",
+    "max_seconds": 120,
+    "max_worker_rss_bytes": 2147483648
+  },
+  "source_sha256": {
+    "representation_research.py": "a2f9049f1476c9ff69b4f017ed1d636820612970ab09f162015e79f70f58516c",
+    "runtime_hf.py": "7153ed76c6b4b9b2e3b63bc52eca038c0b0d3a2d20a80882c4617141079f4684",
+    "execution.py": "8b4c1133da3c5dcfd253b4d808714e85f7fcc9e7500f6bf5831327a3c7758f28",
+    "discovery.py": "83d28f238912e636034b7e515da4bc5b4b89dcf546e7dcb464600c5c8ed5fadf"
+  },
+  "commitments": {
+    "solution_sha256": "e97bc26f2a3db27bf8b5ae27a6d94c0aeaa286525660147ce7a7af3c125d31f2",
+    "manifest_sha256": "dfcecfa99eb8b222bf5c240eba09a078452109ea7b7091ee85f811b8d7127839",
+    "observations_sha256": "329395b41231540038aa61a65e3b04df5642e7823a4916b8ea488aaedae31201",
+    "preregistration_sha256": "167e37d9a4d79b2850a3230f9f3b739cc377184a02dfde8d530e4181fed9098a",
+    "private_weight_sha256": "23f342bf55db1407a5fb0547cba6f7bb6c5316efba9911024e70c563bd3e1523",
+    "private_heldout_inputs_sha256": "65b486c2950cba4b73afb4e3852b19113acaeb58681fa8c71a8a5f44242b8663"
+  },
+  "full_rank_recovery": {
+    "rank": 32,
+    "condition_number": 84.17264823942311,
+    "coefficient_count": 512,
+    "fixed_method_svd_verification_max_abs_difference": 1.8735013540549517e-16,
+    "max_weight_error": 6.0041829135285e-08,
+    "calibration_mse": 6.176181789960635e-17,
+    "heldout_max_logit_error": 1.779899380747324e-07,
+    "heldout_logit_mse": 4.894456635724407e-16,
+    "criteria_met": true
+  },
+  "deficient_observation_control": {
+    "observed_rows": 8,
+    "rank": 8,
+    "hidden_dimension": 32,
+    "nullspace_direction_from_calibration_only": [
+      -0.026842306601249307,
+      -0.046410695068624296,
+      0.3318062367628536,
+      0.2057412434439463,
+      -0.08320099937094864,
+      -0.1000839006792526,
+      0.08411346580574258,
+      0.13951192004033092,
+      0.0887147161520324,
+      -0.15263049936780881,
+      -0.018079634643280395,
+      0.11318352322582155,
+      0.07982400474526878,
+      0.007882208969790864,
+      -0.01889645825956996,
+      -0.12173444267529637,
+      -0.11979688357317682,
+      -0.019781684409856348,
+      0.005074970163998991,
+      -0.12330129419475293,
+      -0.11064739388214254,
+      -0.0896118200725234,
+      0.09657024317708186,
+      -0.046852220066287004,
+      -0.002845233517882339,
+      0.038978941812461684,
+      -0.11433246616767122,
+      0.028752931444313734,
+      0.04832246015827291,
+      0.08512071051148723,
+      -0.08516369481434269,
+      0.8008018254966651
+    ],
+    "weight_l2_distance": 4.184627953726724,
+    "calibration_max_logit_difference": 9.148280614542156e-16,
+    "heldout_max_logit_difference": 1.7607059640714768,
+    "conclusion": "Distinct final heads agree on rank-deficient exposed representations but differ on private heldout representations"
+  },
+  "argmax_only_control": {
+    "positive_scaling": 2,
+    "calibration_argmax_disagreements": 0,
+    "weight_l2_distance": 0.4329914456928243,
+    "all_hidden_state_argmax_identity": "argmax(2*H W)=argmax(H W) including exactly tied logits; float64 computations measured separately",
+    "conclusion": "Argmax labels alone do not identify logit scale or original linear-head weights"
+  },
+  "verification": {
+    "producer_pid": 50901,
+    "solver_pid": 50902,
+    "verifier_pid": 50903,
+    "separate_producer_solver_verifier_processes": true,
+    "one_time_evaluation_claimed_before_teacher_read": true,
+    "solver_inputs": [
+      "public manifest",
+      "public calibration hidden_states and full float logits"
+    ],
+    "teacher_weights_given_to_solver": false,
+    "heldout_used_for_fit_or_selection": false,
+    "independent_external_scientist": false,
+    "scope": "Separate software processes and retained private teacher; same project and OS user, not a malicious same-user sandbox"
+  },
+  "cost": {
+    "calibration_forward_sequences": 64,
+    "heldout_forward_sequences": 32,
+    "sequence_length": 4,
+    "observed_hidden_scalars": 2048,
+    "observed_logit_scalars": 1024,
+    "remote_requests": 0,
+    "paid_api_cost_usd": 0,
+    "elapsed_seconds": 3.3267527499701828,
+    "stages": [
+      {
+        "stage": "prepare",
+        "pid": 50901,
+        "calibration_examples": 64,
+        "sampled_peak_self_rss_bytes": 322420736,
+        "elapsed_seconds": 1.374529958004132,
+        "process_monitor_scope": "process_only_children_unavailable"
+      },
+      {
+        "stage": "solve",
+        "pid": 50902,
+        "rank": 32,
+        "sampled_peak_self_rss_bytes": 35209216,
+        "elapsed_seconds": 0.0015447079204022884,
+        "process_monitor_scope": "process_only_children_unavailable"
+      },
+      {
+        "stage": "verify",
+        "pid": 50903,
+        "verified_core_sha256": "6e71f6f57933f6da3f20e9c79ec8162fdd1b6534f4ffac9231764273f4edc812",
+        "sampled_peak_self_rss_bytes": 318717952,
+        "elapsed_seconds": 1.3509676670655608,
+        "process_monitor_scope": "process_only_children_unavailable"
+      }
+    ],
+    "sampled_peak_worker_rss_bytes": 322420736,
+    "memory_measurement": "Worker self RSS every10ms; generic execution monitor enforces 2048MiB every50ms, transient peaks may be missed"
+  },
+  "environment": {
+    "python": "3.12.15",
+    "numpy": "2.5.4",
+    "torch": "2.14.1",
+    "transformers": "4.57.6",
+    "teacher_forward_device": "cpu",
+    "teacher_forward_dtype": "float32",
+    "platform": "macOS-26.3-arm64-arm-64bit"
+  },
+  "limitations": [
+    "Randomly initialized owned decoder fixture, not pretrained intelligence",
+    "Final known linear head only; backbone/tokenizer/architecture were not reconstructed",
+    "Authorized exposed final activations and complete float logits are stronger access than ordinary text APIs",
+    "Float32 forward rounding and finite conditioning prevent byte-identical recovery claims",
+    "No output-only closed-model attack, no provider credentials, no target outputs or downloads",
+    "Deficient/argmax counterexamples concern head identifiability; no universal model reconstruction conclusion"
+  ],
+  "references": [
+    "https://huggingface.co/docs/transformers/main_classes/output",
+    "https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html",
+    "https://proceedings.mlr.press/v235/carlini24a.html"
+  ],
+  "verification_core_sha256": "6e71f6f57933f6da3f20e9c79ec8162fdd1b6534f4ffac9231764273f4edc812"
+}

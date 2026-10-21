@@ -1,0 +1,32 @@
+{
+  "source_sha256": {
+    "representation_research.py": "a2f9049f1476c9ff69b4f017ed1d636820612970ab09f162015e79f70f58516c",
+    "runtime_hf.py": "7153ed76c6b4b9b2e3b63bc52eca038c0b0d3a2d20a80882c4617141079f4684",
+    "execution.py": "8b4c1133da3c5dcfd253b4d808714e85f7fcc9e7500f6bf5831327a3c7758f28",
+    "discovery.py": "83d28f238912e636034b7e515da4bc5b4b89dcf546e7dcb464600c5c8ed5fadf"
+  },
+  "independent_qr_solution_max_difference": 3.712308238590367e-16,
+  "rank": 32,
+  "condition_number": 122.2443233909528,
+  "calibration_mse_recomputed": 8.796759436751719e-17,
+  "heldout32_unique_disjoint": true,
+  "immutable_core_hash_matches_marker_and_envelope": true,
+  "repeat_evaluation_rejected": true,
+  "public_artifacts_exclude_private_seeds_and_paths": true,
+  "nullspace_calibration_residual_recomputed": 3.3306690738754696e-16,
+  "forged_non_lstsq_student_rejected": "Sealed student differs from the whitelisted least-squares fit",
+  "full_rank_recovery": {
+    "rank": 32,
+    "condition_number": 122.2443233909528,
+    "coefficient_count": 512,
+    "fixed_method_svd_verification_max_abs_difference": 3.434752482434078e-16,
+    "max_weight_error": 8.056023284813522e-08,
+    "calibration_mse": 8.796759437073769e-17,
+    "heldout_max_logit_error": 3.3679902734090605e-07,
+    "heldout_logit_mse": 1.5548365964768841e-15,
+    "criteria_met": true
+  },
+  "elapsed_seconds": 3.4960641249781474,
+  "sampled_peak_worker_rss_bytes": 318849024,
+  "private_model_gate": "unchanged_closed"
+}

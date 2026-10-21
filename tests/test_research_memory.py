@@ -499,3 +499,36 @@ def test_process_disappearance_vs_insufficient_permission(
 
     monkeypatch.setattr(psutil, "Process", inaccessible_process)
     assert rm.identity_alive(identity) is expected
+
+
+def test_shallow_checkout_reports_missing_history_without_mutation(
+    repo: tuple[rm.ResearchMemory, dict[str, Any]], tmp_path: Path
+) -> None:
+    memory, state = repo
+    memory.checkpoint(state, {"kind": "ancestry fixture"})
+    subprocess.run(["git", "-C", str(memory.root), "add", "."], check=True)
+    subprocess.run(
+        [
+            "git",
+            "-C",
+            str(memory.root),
+            "-c",
+            "user.name=Test",
+            "-c",
+            "user.email=test@example.invalid",
+            "commit",
+            "-qm",
+            "checkpoint",
+        ],
+        check=True,
+    )
+    shallow = tmp_path.parent / (tmp_path.name + "-shallow")
+    subprocess.run(
+        ["git", "clone", "--depth", "1", memory.root.as_uri(), str(shallow)],
+        check=True,
+        capture_output=True,
+    )
+    before = (shallow / ".modelforge/research_state.json").read_bytes()
+    with pytest.raises(rm.MemoryError, match="shallow.*history"):
+        rm.ResearchMemory(shallow).resume()
+    assert (shallow / ".modelforge/research_state.json").read_bytes() == before

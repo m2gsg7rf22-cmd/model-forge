@@ -680,6 +680,11 @@ class MainWindow(QMainWindow):
                 self.attention_study,
             )
         )
+        lab.addWidget(
+            self.button(
+                "Study owned decoder output-head recovery", self.representation_study
+            )
+        )
         self.research_repository = QLineEdit()
         self.research_repository.setPlaceholderText(
             "ModelForge repository containing the saved research checkpoint"
@@ -933,6 +938,13 @@ class MainWindow(QMainWindow):
             "Research",
             "Owned attention observation study",
             self.service.run_attention_research,
+        )
+
+    def representation_study(self) -> None:
+        self.project_action(
+            "Research",
+            "Owned decoder output-head observation study",
+            self.service.run_representation_research,
         )
 
     def resume_repository(self) -> None:

@@ -74,6 +74,10 @@ def dispatch(payload: dict[str, Any]) -> dict[str, Any]:
         from .interpretability import trace_local
 
         result = trace_local(**arguments)
+    elif operation == "representation_research":
+        from .representation_research import run_representation_research
+
+        result = run_representation_research(**arguments)
     elif operation == "attention_research":
         from .attention_research import run_attention_research
 

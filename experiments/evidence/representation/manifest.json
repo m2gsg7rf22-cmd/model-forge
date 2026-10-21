@@ -1,0 +1,21 @@
+{
+  "preregistration_sha256": "167e37d9a4d79b2850a3230f9f3b739cc377184a02dfde8d530e4181fed9098a",
+  "observations_sha256": "329395b41231540038aa61a65e3b04df5642e7823a4916b8ea488aaedae31201",
+  "private_weight_sha256": "23f342bf55db1407a5fb0547cba6f7bb6c5316efba9911024e70c563bd3e1523",
+  "private_teacher_files_sha256": {
+    "config.json": "59f0daa154cf6e8e279ffac6d1e30e9d9b17b9b0f910f2ed2fbeb995cc5efb53",
+    "generation_config.json": "5301c4fc9337dc8b6f762ccb2424948b2bf526387a709d73d36f3c2814ec40d8",
+    "model.safetensors": "23f342bf55db1407a5fb0547cba6f7bb6c5316efba9911024e70c563bd3e1523",
+    "special_tokens_map.json": "fdd1575e8bd811652f3708f5d70495fd581ca5b59111e6edaa903e43783ce944",
+    "tokenizer.json": "95bb4140eadce75d55487278924c464d288053e74e7d67646418aaa8c8e480c4",
+    "tokenizer_config.json": "657ac885cfb2215e09bcc83fc2c5a8b52d48e9c105f35dd7741b1bd63115830b"
+  },
+  "private_heldout_inputs_sha256": "65b486c2950cba4b73afb4e3852b19113acaeb58681fa8c71a8a5f44242b8663",
+  "source_sha256": {
+    "representation_research.py": "a2f9049f1476c9ff69b4f017ed1d636820612970ab09f162015e79f70f58516c",
+    "runtime_hf.py": "7153ed76c6b4b9b2e3b63bc52eca038c0b0d3a2d20a80882c4617141079f4684",
+    "execution.py": "8b4c1133da3c5dcfd253b4d808714e85f7fcc9e7500f6bf5831327a3c7758f28",
+    "discovery.py": "83d28f238912e636034b7e515da4bc5b4b89dcf546e7dcb464600c5c8ed5fadf"
+  },
+  "producer_pid": 50901
+}

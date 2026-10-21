@@ -1,0 +1,19 @@
+{
+  "protocol_version": 1,
+  "family": "project-owned randomly initialized Hugging Face Llama; final untied bias-free linear lm_head only",
+  "hidden_size": 32,
+  "vocab_size": 16,
+  "sequence_length": 4,
+  "calibration_examples": 64,
+  "deficient_examples": 8,
+  "heldout_examples": 32,
+  "public_token_sampling_seed": 91,
+  "method": "float64 least squares on exposed float32 final hidden states and full float32 logits",
+  "max_weight_error": 1e-05,
+  "max_heldout_logit_error": 1e-05,
+  "max_condition_number_for_retention": 1000000.0,
+  "fixed_method_verification_max_abs_difference": 1e-10,
+  "selection": "one fixed method; no test-driven selection or retries",
+  "max_seconds": 120,
+  "max_worker_rss_bytes": 2147483648
+}

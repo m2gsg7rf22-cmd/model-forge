@@ -62,6 +62,17 @@ Use only authorized files, corpora and endpoints. Provider outputs never enter t
 
 The [v0.2 acceptance report in Hebrew](docs/acceptance-v0.2.0.he.md) maps every mission requirement to evidence and limitations. The [validation record](docs/validation.md) separately preserves historical v0.1 checks.
 
+## Ongoing reconstruction research
+
+The `discovery-lab` branch adds process-separated owned-teacher experiments, sealed evaluation and crash-recoverable research memory. These additions are source-only research; the v0.2.0 native downloads retain their published behavior.
+
+- [Discovery Lab](docs/discovery-lab.md): canonical quadratic coefficients under real-valued observations, with noise/sign controls.
+- [Attention observability](docs/attention-identifiability.md): composed score matrices from full probabilities; Q/K gauge ambiguity remains.
+- [Owned decoder output head](docs/representation-recovery.md): a tiny random Llama final linear head from exposed hidden states and logits; backbone recovery is not established.
+- [Independent review](docs/independent-review-discovery.md), [public evidence](experiments/evidence), and [resume instructions](docs/RESUME.md).
+
+The private final-model mission remains gated by unresolved full-platform and reconstruction requirements. No Luna-level model or comparative capability result is claimed. KV-cache timings and numerical controls describe one local existing licensed checkpoint; default inference remains unchanged.
+
 ## Development
 
 ```sh

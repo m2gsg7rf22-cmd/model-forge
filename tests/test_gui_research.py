@@ -194,3 +194,18 @@ def test_repository_recovery_action_persists_interruption_without_executing_jobs
     window.resume_repository()
     drain(window, app)
     assert "Operation failed" in window.outputs["Research"].toPlainText()
+
+
+def test_representation_action_runs_real_owned_decoder_worker(
+    desktop: tuple[MainWindow, Service], app: QApplication
+) -> None:
+    import importlib.util
+
+    if importlib.util.find_spec("torch") is None:
+        pytest.skip("Requires optional owned decoder CPU engine")
+    window, service = desktop
+    window.representation_study()
+    drain(window, app)
+    report = json.loads(window.outputs["Research"].toPlainText())
+    assert report["full_rank_recovery"]["criteria_met"]
+    assert service.findings(window.project_id())[0]["kind"] == "representation-research"

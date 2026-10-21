@@ -302,7 +302,15 @@ class ResearchMemory:
             return result.stdout.strip()
 
         current = git("rev-parse", "HEAD")
-        git("merge-base", "--is-ancestor", state["checkpoint_base_commit"], current)
+        try:
+            git("merge-base", "--is-ancestor", state["checkpoint_base_commit"], current)
+        except MemoryError:
+            if git("rev-parse", "--is-shallow-repository") == "true":
+                raise MemoryError(
+                    "Cannot verify checkpoint ancestry in a shallow checkout; "
+                    "fetch the full Git history (git fetch --unshallow) and retry"
+                ) from None
+            raise
         return {
             "current_commit": current,
             "checkpoint_base_commit": state["checkpoint_base_commit"],

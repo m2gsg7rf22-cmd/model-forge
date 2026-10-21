@@ -103,6 +103,7 @@ def test_actual_mcp_research_and_recovery_tools(tmp_path: Path) -> None:
             assert {
                 "run_discovery",
                 "run_attention_research",
+                "run_representation_research",
                 "resume_research",
                 "benchmark_mlx_cache",
             } <= names
@@ -112,7 +113,8 @@ def test_actual_mcp_research_and_recovery_tools(tmp_path: Path) -> None:
             assert not created.isError
             project = json.loads(created.content[0].text)["id"]
             result = await session.call_tool(
-                "run_attention_research", {"project_id": project}
+                "run_attention_research",
+                {"project_id": project},
             )
             assert not result.isError, result.content
             resume = await session.call_tool(
@@ -125,3 +127,36 @@ def test_actual_mcp_research_and_recovery_tools(tmp_path: Path) -> None:
             assert body["private_model_gate"] == "closed"
 
     asyncio.run(asyncio.wait_for(run(), timeout=45))
+
+
+def test_representation_service_exports_only_public_observations(
+    tmp_path: Path,
+) -> None:
+    """Exercise fresh owned decoder workers through the actual service boundary."""
+    import importlib.util
+    import zipfile
+
+    if importlib.util.find_spec("torch") is None:
+        pytest.skip("Requires optional owned decoder CPU engine")
+    service = Service(tmp_path / "workspace")
+    try:
+        project = service.create_project("Owned decoder head evidence")["id"]
+        result = service.run_representation_research(project)
+        assert result["full_rank_recovery"]["criteria_met"]
+        assert service.findings(project)[0]["kind"] == "representation-research"
+        assert list((service.root / "private-representation").glob("*/seal.json"))
+        archive_path = tmp_path / "representation.zip"
+        service.export(project, str(archive_path))
+        with zipfile.ZipFile(archive_path) as archive:
+            names = archive.namelist()
+            assert any(
+                name.startswith("representation-research/")
+                and name.endswith("/observations.json")
+                for name in names
+            )
+            assert not any(
+                "private-representation" in name or name.endswith(".safetensors")
+                for name in names
+            )
+    finally:
+        service.close()

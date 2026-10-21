@@ -249,6 +249,7 @@ class Service:
                 "umrre",
                 "discovery",
                 "attention-research",
+                "representation-research",
             )
             if not (project / name).is_symlink()
             for p in (project / name).rglob("*")
@@ -654,6 +655,38 @@ class Service:
             )
             raise
         return self._record(project_id, "attention-research", result)
+
+    def run_representation_research(self, project_id: str) -> dict[str, Any]:
+        """Recover an owned tiny decoder output head from exposed hidden states/logits."""
+        run_id = uuid.uuid4().hex
+        destination = self._project(project_id) / "representation-research" / run_id
+        started = time.monotonic()
+        try:
+            result = self._engine(
+                "representation_research",
+                {
+                    "destination": str(destination),
+                    "private_storage": str(
+                        self.root / "private-representation" / run_id
+                    ),
+                },
+                memory_limit_mb=2048,
+                timeout_seconds=150,
+            )
+        except Exception as exc:
+            self._record(
+                project_id,
+                "representation-research-failed",
+                {
+                    "completed": False,
+                    "destination": str(destination),
+                    "elapsed_seconds": time.monotonic() - started,
+                    "error_type": type(exc).__name__,
+                    "error": str(exc)[:2000],
+                },
+            )
+            raise
+        return self._record(project_id, "representation-research", result)
 
     def resume_research(self, repository_path: str) -> dict[str, Any]:
         """Validate repository checkpoint/ledger and report recoverable work; execute no tasks."""

@@ -11,3 +11,17 @@ Save the returned `experiment_id`; pass it as `resume_id` with the identical con
 Reports include local schema results, explicit-label exact matches, repeat observations through the existing behavioral evaluator, and transport outcomes. `compare_experiments(left, right)` uses the existing exact-prompt/occurrence comparison for repeated runs or explicitly chosen model versions. Routing, stochastic output, and timing can confound version comparisons. No internal architecture, weight extraction, causal version effect, or general capability reconstruction is established.
 
 Tests use a clearly local HTTP fixture, including response errors and a simulated interruption. No real provider calls or charges are involved.
+
+## Experimental reconstruction service operations (`discovery-lab` source branch)
+
+| Service / MCP operation | Arguments and scope |
+| --- | --- |
+| `run_discovery` | `project_id`, `seed=17`: owned quadratic suite, public observations and sealed one-time evaluator |
+| `run_attention_research` | `project_id`: known single-head composed-score recovery and ambiguity controls |
+| `run_representation_research` | `project_id`: owned tiny Llama output head from exposed hidden states/full logits; optional CPU LLM engine required |
+| `resume_research` | `repository_path`: validate/recover mission checkpoint; report queue only, no task execution |
+| `benchmark_mlx_cache` | `project_id`, `prompt`, `max_new_tokens`, `memory_limit_mb`, `repeats`, `quantize_bits`, `precision`, `compare_logits`: compare fresh KV and full-prefix paths; active adapter must be cleared/merged |
+
+The project ID comes from `modelforge --home ./research-data create NAME`. Invoke the same typed API through `modelforge --home ./research-data engine run_discovery '{"project_id":"ID","seed":17}'` (replace ID), or the named MCP tools. GUI actions are on Research; the cache comparison is on Reconstruction. Reports persist as findings and public research files. Original teacher weights, seeds and heldout inputs persist separately under the data root and are excluded from project ZIP exports. Process separation is not a sandbox against the same OS user. Resource guards sample RSS and enforce time limits; they are not a kernel memory reservation.
+
+These operations do not create the gated private final model. See the individual protocols for observation requirements, fixed thresholds, code/artifact commitments, numerical controls and limits on conclusions.
