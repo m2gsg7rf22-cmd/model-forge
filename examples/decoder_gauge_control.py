@@ -30,13 +30,17 @@ def main() -> None:
     )
     if preflight["model_type"] != "llama":
         parser.error("Requires an owned Llama fixture")
+    layer = model.model.layers[0].self_attn
+    if layer.q_proj.bias is not None or layer.k_proj.bias is not None:
+        parser.error(
+            "The weight-only scaling control requires bias-free Q/K projections"
+        )
     model.eval()
     torch.set_num_threads(1)
     generator = torch.Generator().manual_seed(20261021)
     tokens = torch.randint(0, model.config.vocab_size, (64, 8), generator=generator)
     with torch.inference_mode():
         before = model(tokens).logits.clone()
-        layer = model.model.layers[0].self_attn
         old_q = layer.q_proj.weight.clone()
         old_k = layer.k_proj.weight.clone()
         layer.q_proj.weight.mul_(2.0)
@@ -57,7 +61,7 @@ def main() -> None:
                 torch.max(torch.abs(before - after))
             ),
             "argmax_disagreements": int((before.argmax(-1) != after.argmax(-1)).sum()),
-            "finite_logit_bit_equality": bool(torch.equal(before, after)),
+            "finite_logit_exact_value_equality": bool(torch.equal(before, after)),
             "assumptions": "Known bias-free project-owned Llama eval; reciprocal global Q/K scaling commutes with linear RoPE; no overflow/underflow in the ideal-arithmetic identity",
             "identity": "(R_i (c q_i))^T (R_j (k_j/c)) = (R_i q_i)^T (R_j k_j), c != 0",
             "scope": "Explicit original-parameter ambiguity witness; finite numerical check is not universal float equivalence, model extraction or useful-language capability",

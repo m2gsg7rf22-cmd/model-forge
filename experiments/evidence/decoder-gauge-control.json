@@ -10,7 +10,6 @@
   "k_weight_l2_change": 0.21720488369464874,
   "max_absolute_logit_difference": 0.0,
   "argmax_disagreements": 0,
-  "finite_logit_bit_equality": true,
   "assumptions": "Known bias-free project-owned Llama eval; reciprocal global Q/K scaling commutes with linear RoPE; no overflow/underflow in the ideal-arithmetic identity",
   "identity": "(R_i (c q_i))^T (R_j (k_j/c)) = (R_i q_i)^T (R_j k_j), c != 0",
   "scope": "Explicit original-parameter ambiguity witness; finite numerical check is not universal float equivalence, model extraction or useful-language capability",
@@ -22,5 +21,11 @@
   "source_sha256": "ac4f1115a2a7e9d7b236a521579599ad7aca252054bc6c512af2c547f5ba5787",
   "training_steps": 0,
   "external_calls": 0,
-  "weights_written": false
+  "weights_written": false,
+  "finite_logit_exact_value_equality": true,
+  "report_postprocessing": {
+    "metric_rename": "torch.equal measures exact values, not signed-zero bit patterns; original misleading field name corrected after review",
+    "original_metric_key": "finite_logit_bit_equality",
+    "numeric_values_changed": false
+  }
 }

@@ -1,0 +1,11 @@
+{
+  "biased_fixture_rejected_before_forward_and_scaling": true,
+  "argparse_exit_code": 2,
+  "fixture_files_unchanged": true,
+  "evidence_file_not_written": true,
+  "source_sha256": "eb97501f83b7036727b624ab7d40894a3682f5265cc3f1411475854ae1090e00",
+  "whole_worker_seconds": 9.884458417072892,
+  "external_calls": 0,
+  "training_steps": 0,
+  "process_monitor_scope": "process_only_children_unavailable"
+}

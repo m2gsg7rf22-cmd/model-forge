@@ -1,0 +1,36 @@
+{
+  "experiment": "Owned Llama first-layer Q/K reciprocal scaling",
+  "public_input_seed": 20261021,
+  "shape": [
+    64,
+    8
+  ],
+  "parameters_total": 19616,
+  "q_weight_l2_change": 0.6433795690536499,
+  "k_weight_l2_change": 0.23048798739910126,
+  "max_absolute_logit_difference": 0.0,
+  "argmax_disagreements": 0,
+  "assumptions": "Known bias-free project-owned Llama eval; reciprocal global Q/K scaling commutes with linear RoPE; no overflow/underflow in the ideal-arithmetic identity",
+  "identity": "(R_i (c q_i))^T (R_j (k_j/c)) = (R_i q_i)^T (R_j k_j), c != 0",
+  "scope": "Explicit original-parameter ambiguity witness; finite numerical check is not universal float equivalence, model extraction or useful-language capability",
+  "elapsed_seconds": 0.15164104104042053,
+  "environment": {
+    "python": "3.12.15",
+    "torch": "2.14.1"
+  },
+  "source_sha256": "eb97501f83b7036727b624ab7d40894a3682f5265cc3f1411475854ae1090e00",
+  "training_steps": 0,
+  "external_calls": 0,
+  "weights_written": false,
+  "fixture_files_unchanged": true,
+  "whole_worker_seconds": 8.356654832954518,
+  "sampled_peak_self_rss_bytes": 285048832,
+  "independent_new_owned_fixture": true,
+  "process_monitor_scope": "process_only_children_unavailable",
+  "finite_logit_exact_value_equality": true,
+  "report_postprocessing": {
+    "metric_rename": "torch.equal measures exact values, not signed-zero bit patterns; original misleading field name corrected after review",
+    "original_metric_key": "finite_logit_bit_equality",
+    "numeric_values_changed": false
+  }
+}

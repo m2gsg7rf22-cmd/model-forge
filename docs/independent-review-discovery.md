@@ -135,3 +135,28 @@ callback אמיתי ב-Qt offscreen נבדק מול שירות לוכד: prompt 
 ראיה ציבורית בטוחה מקומית: `/private/tmp/mf-review-representation-p649idpc/review-results.json`. raw H/Y, student, manifest ו-core נמצאים בתיקיית public של אותה הרצה; teacher checkpoint ו-heldout inputs נשמרו בנפרד ואין לצרפם לפרסום.
 
 המשמעות המדעית מוגבלת לשכבה ליניארית ידועה, עם activations מלאים ו-logits מלאים ומטריצת כיול בעלת דרגה מלאה. float32 forward יוצר עיגול לפני fit ב-float64, ולכן אין ראיה לזהות משקלים בבתים. ביקורות nullspace ו-positive scaling מראות אי-זיהוי כאשר חסרות directions או נשמרים argmax labels בלבד; הן אינן מוכיחות ששחזור מודל שלם מכל ממשק פלט בלתי אפשרי. זו התקדמות במחקר owned fixtures, ואינה ביצוע משימת המודל הפרטי ברמת Luna או מילוי תנאי הקדם שלה.
+
+## ביקורת Q/K gauge בתוך decoder אמיתי עם RoPE ו-GQA
+
+נבדק examples/decoder_gauge_control.py ‏SHA256 ‏`eb97501f83b7036727b624ab7d40894a3682f5265cc3f1411475854ae1090e00`. זו ביקורת על דוגמה בבעלות הפרויקט; לא אימון או בנייה של מודל פרטי ברמת Luna.
+
+מבחינה אלגברית, כפל גלובלי של Q בסקלר c שאינו אפס ושל K ב-1/c מתחלף עם RoPE ליניארי לכל position, ומכפלת Q/K נשארת זהה באריתמטיקה אידיאלית. חזרת KV heads ב-GQA ליניארית ושומרת אותה זהות בכל head. V, mask ושאר הפרמטרים אינם משתנים. מכאן נובעת אי-ייחודיות פרמטרית מותנית במשפחה המוצהרת. **אין להרחיב זאת אוטומטית ל-gauge מטריציוני כללי עם RoPE:** מטריצה כללית R אינה בהכרח מתחלפת עם כל relative-position rotations.
+
+נמצא ותוקן פגם בהנחות הקלט: הדוגמה הצהירה bias-free אבל בדקה רק model_type=Llama. כאשר Q/K כוללים bias שאינו אפס, שינוי weight בלבד אינו מכפיל את כל Q/K בסקלר. כעת נבדק במפורש ששני ה-bias חסרים, לפני forward ושינוי weights. ראיית root המקורית הייתה על fixture תקין ולכן אינה נפסלת; המקור החדש קיבל בדיקה נפרדת.
+
+הביקורת יצרה **fixture חדש ב-/private/tmp**, בלי קריאת קובצי Documents, והריצה את המקור החדש דרך execution.run_json בתקציב 2GiB/120 שניות. ה-fixture כלל שתי שכבות, hidden32, ‏4 Q heads ו-2 KV heads, ‏RoPE theta=10000, ‏dropout=0 וללא attention bias. על 64 רצפים באורך 8:
+
+- שינוי נורמת משקל Q: ‏0.64337957; שינוי K: ‏0.23048799.
+- הפרש logit מרבי: ‏0; אי-הסכמות argmax: ‏0.
+- torch.equal מצא שוויון ערכים מדויק של logits **למדגם המסוים הזה** ב-float32 CPU; אין טענת זהות float לכל קלט או hardware. השם הראשוני finite_logit_bit_equality היה רחב מדי: torch.equal אינו מבחין בין +0 ו--0 ולכן אינו בדיקת בתים. הסוגיה דווחה ל-root לתיקון שם המדד או חישובו.
+- hashes של כל קובצי ה-fixture לפני ואחרי זהים. שינוי הפרמטרים היה בזיכרון בלבד.
+- לא היו צעדי אימון, GPU או API חיצוני. משך כל worker כולל יצירת fixture וייבוא: ‏8.35665 שניות; שיא RSS עצמי שנדגם כל 10ms: ‏285,048,832 בתים. תהליך הניטור החיצוני דיווח process_only_children_unavailable, ולכן אין טענה לניטור צאצאים.
+
+ביקורת שלילית נפרדת יצרה fixture חדש עם attention_bias=True ו-Q bias ‏0.125. המקור המתוקן דחה אותו עם exit code ‏2 לפני forward/scaling, לא כתב evidence של הצלחה ולא שינה אף קובץ fixture. משך worker שלילי: ‏9.88446 שניות, תחת אותה הגבלת 2GiB/120 שניות.
+
+ראיות ציבוריות בטוחות:
+
+- `/private/tmp/mf-review-decoder-gauge-lwu75bkk/review-results.json`
+- `/private/tmp/mf-review-decoder-bias-sgw83v82/review-results.json`
+
+התוצאה היא witness מפורש לכך ששני סטים שונים של פרמטרי Q/K עשויים להפיק אותו חישוב בתנאים מתאימים. היא אינה שיטה לשחזור backbone, אינה חילוץ מודל סגור ואינה מדד לאינטליגנציה או לשפה. השער למשימת המודל הפרטי נשאר סגור.
