@@ -8,6 +8,7 @@ import json
 import os
 import platform
 import sys
+import time
 import zipfile
 from pathlib import Path
 from typing import Any
@@ -155,7 +156,10 @@ def test_real_new_mcp_tools_with_local_preflight_and_research(tmp_path: Path) ->
         )
         parameters = StdioServerParameters(
             command=sys.executable,
-            args=["-m", "modelforge.mcp_server"],
+            args=[
+                "-c",
+                "import faulthandler; faulthandler.dump_traceback_later(60, repeat=True); from modelforge.mcp_server import main; main()",
+            ],
             env=environment,
         )
         async with safe_mcp_session(parameters) as client:
@@ -170,7 +174,14 @@ def test_real_new_mcp_tools_with_local_preflight_and_research(tmp_path: Path) ->
             } <= names
 
             async def call(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
+                started = time.monotonic()
+                print(f"MCP call started: {name}", file=sys.stderr, flush=True)
                 result = await client.call_tool(name, arguments)
+                print(
+                    f"MCP call returned: {name} in {time.monotonic()-started:.2f}s",
+                    file=sys.stderr,
+                    flush=True,
+                )
                 assert not result.isError, result.content
                 content = result.content[0]
                 assert content.type == "text"
