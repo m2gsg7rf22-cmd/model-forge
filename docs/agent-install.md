@@ -60,3 +60,9 @@ A fresh dedicated installation from the development checkout built and installed
 Finally, `uninstall --apply` successfully removed that isolated plugin and its marketplace at local scope, removed the dedicated virtual environment, and left the isolated settings files with empty ModelForge registration maps. The existing user configuration was never selected.
 
 Windows SDK compatibility: the isolated verifier uses the official MCP v1 transport with a narrow shutdown guard for its [known closed-stream race](https://github.com/modelcontextprotocol/python-sdk/issues/1564). Only closed-stream exceptions after every requested operation has returned are tolerated, with a warning. Initialization, operation failures, timeouts and other exceptions remain failures. No server response is fabricated or skipped.
+
+## Public v0.2 release-source acceptance
+
+A fresh clone of public branch `local-model-runtime` at `a9a82f2a8a6d8ac9b084da646d43b724bc8f219c` was installed into a new isolated prefix. The installed SDK discovered **29 tools** and completed hardware status, project creation, byte-model construction and generation. No host registration was applied by this final verification. The earlier isolated Claude plugin connection/update/removal remains a separate integration check, not an authenticated Claude model conversation. The release Bootstrap-Evidence JSON records the final tool list and invoked subset.
+
+The isolated public installation was subsequently updated from `952450aa0d972ab05c8961b3b7323efd88c96eda`, including the early NumPy initialization fix, and repeated installed SDK verification successfully with the same 29-tool schema and four actual calls. No user host registration was applied.

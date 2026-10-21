@@ -44,9 +44,9 @@ The lightweight original workflow remains available with `example --destination 
 
 - Nine PySide6 pages, background workers, local model and training tabs, durable API experiment controls and visible failures.
 - Bounded SafeTensors/GGUF and HF metadata inspection; optional ONNX/Core ML metadata. Python and pickle model files are refused.
-- Local built-in GPT-2/Llama SafeTensors loading with exact inventory checks, CPU inference and available Torch MPS/CUDA devices. Only CPU and MPS tiny-model execution have been locally verified for this development version.
+- Local built-in GPT-2/Llama SafeTensors loading with exact inventory checks, CPU inference and available Torch MPS/CUDA devices. CPU/MPS owned-fixture execution and a public licensed 135M-parameter Llama model on HF CPU were verified locally.
 - Actual full-weight and PEFT LoRA training, immutable checkpoints and deterministic HF resume. CUDA/bitsandbytes QLoRA is guarded but unverified on the available machine.
-- Apple Silicon MLX Llama inference, real 4/8-bit linear quantization, measured CPU/GPU comparison, LoRA and quantized-base LoRA training with saved-adapter reload. Tiny owned fixtures were exercised on the available GPU; this is not large-model acceptance.
+- Apple Silicon MLX Llama inference, real 4/8-bit linear quantization, measured CPU/GPU comparison, LoRA and quantized-base LoRA training with saved-adapter reload. Owned fixtures and licensed SmolLM2-135M-Instruct were exercised on Metal, including a bounded 4-bit-base LoRA run. The four strict instruction cases scored 0/4 on each inference backend; execution does not establish useful language quality.
 - Forward-hook activation statistics and reversible named-MLP ablation, with numeric logits/KL measurements and no semantic neuron claims.
 - UMRRE controlled affine recovery, nonidentifiability witnesses, neural symmetries, held-out approximation and actual compression experiments.
 - Durable authorized API request/output-token ledgers, JSON Schema checks, explicit-label scoring, context retrieval cases and resumable experiments.
@@ -60,7 +60,7 @@ API observations establish behavior for those requests, not architecture or weig
 
 Use only authorized files, corpora and endpoints. Provider outputs never enter training automatically. Attached source models stay external. Export includes reports, original generated assets and explicitly authorized reconstructed HF bundles; raw attached weights and training-checkpoint trees are not automatically copied. Review local paths and provider outputs before sharing. API keys come from `MODELFORGE_API_KEY`, not saved settings.
 
-The [validation record](docs/validation.md) preserves historical v0.1 checks. Focused v0.2 engine tests are separate from final release/CI acceptance; do not interpret a historical green run as certification of new packages.
+The [v0.2 acceptance report in Hebrew](docs/acceptance-v0.2.0.he.md) maps every mission requirement to evidence and limitations. The [validation record](docs/validation.md) separately preserves historical v0.1 checks.
 
 ## Development
 

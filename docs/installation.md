@@ -52,3 +52,11 @@ For a dedicated Claude Code/Codex installation directly from the repository,
 including actual MCP verification, scoped connection, update and removal, use
 [packaging/bootstrap.py instructions](agent-install.md). Host registration is
 applied only when explicitly requested with `--apply`.
+
+## macOS Apple Silicon: v0.2.0
+
+Download `ModelForge-0.2.0-Darwin-arm64.zip` and `SHA256SUMS.txt` from the [v0.2.0 release](https://github.com/m2gsg7rf22-cmd/model-forge/releases/tag/v0.2.0). In Terminal, change into the download directory and run `shasum -a 256 ModelForge-0.2.0-Darwin-arm64.zip`; compare the entire hash with its line in the manifest. Double-click the ZIP in Finder, drag `ModelForge.app` to Applications and open it. If Gatekeeper blocks this ad-hoc-signed app, attempt opening once, then use System Settings → Privacy & Security → Open Anyway and confirm the specific application. Do not disable Gatekeeper globally. This first-open approval path follows [Apple’s documented app-opening procedure](https://support.apple.com/en-il/102445), but has not been manually verified on a clean Mac.
+
+The base application bundles Python; pretrained weights are not included. For MLX, install `uv` or Python 3.12+ if absent, ensure at least 3 GiB free disk, then choose **Settings → Optional local engines → mlx** for the first companion installation and explicitly consent to library downloads. The `mlx` extra includes the HF/Torch dependencies used for validation. Existing companion environments are refused by the new-install action; use a compatible external interpreter or the source bootstrap update workflow instead.
+
+For an immediate offline pipeline demonstration, use the owned random Llama fixture in the builder; it is not a pretrained assistant. The release example ZIP includes that tiny owned model after LoRA and merge. For useful inference, supply a compatible authorized GPT-2/Llama SafeTensors bundle and tokenizer. MLX runs Llama on Apple Metal with a 2048 MiB per-worker configured limit. Model admission can reject larger bundles; 3 GiB installer disk space is not a promise that every model will fit.

@@ -27,6 +27,15 @@ Focused development tests are distinct from final release acceptance. Consult
 platform/package results. The historical 0.1 record below is preserved and does
 not certify 0.2 packages. Native builds are not Developer-ID signed/notarized.
 
+A licensed public SmolLM2-135M-Instruct checkpoint (134,515,008 parameters) was
+hash-verified and executed on HF CPU, MLX BF16 and MLX 4-bit. Twelve generations
+completed; strict instruction exact match was 0/4 per backend. Five 4-bit-base MLX
+LoRA steps reduced training loss from 7.09375 to 6.125 and adapter reload passed;
+this is not held-out quality evidence. Weights and adapters are not redistributed.
+
+The [Hebrew acceptance report](acceptance-v0.2.0.he.md) and versioned release JSONs
+record exact source revisions, platform results, artifacts and remaining limits.
+
 # 0.1.0 — initial research release
 
 Integrated native desktop, safe metadata inspection, evidence graph, behavioral probe lab, independent tiny causal runtime, output-head training, float32 reconstruction checks, quantized storage, persistent scheduling, real MCP server and Claude/Codex integration packaging.
