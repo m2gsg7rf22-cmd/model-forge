@@ -46,7 +46,7 @@ jobs:
         if: runner.os != 'macOS'
         run: python -m pip install "torch>=2.6,<3" --index-url https://download.pytorch.org/whl/cpu
       - run: python -m pip install -e ".[desktop,dev,onnx,llm]"
-      - run: python -m pytest -q ${{ github.event.inputs.mcp_only == 'true' && 'tests/test_mcp_client.py tests/test_local_service_e2e.py::test_real_new_mcp_tools_with_local_preflight_and_research tests/test_bootstrap.py' || '' }} --junitxml=acceptance.xml
+      - run: python -m pytest -q ${{ github.event.inputs.mcp_only == 'true' && 'tests/test_mcp_client.py tests/test_local_service_e2e.py::test_real_new_mcp_tools_with_local_preflight_and_research tests/test_bootstrap.py tests/test_research_integration.py::test_actual_mcp_research_and_recovery_tools' || '' }} --junitxml=acceptance.xml
       - run: python -m mypy src/modelforge
       - run: python -m ruff check src tests packaging
       - run: python packaging/check_install.py
