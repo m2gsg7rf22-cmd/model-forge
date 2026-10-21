@@ -147,6 +147,9 @@ def create_server(data_dir: str | None = None) -> FastMCP:
 
 
 def main() -> None:
+    # Initialize native DLLs before Windows asyncio/stdio threads start.
+    # First importing NumPy inside a later handler can deadlock in multiarray.
+    __import__("numpy")
     create_server(os.environ.get("MODELFORGE_HOME")).run(transport="stdio")
 
 
