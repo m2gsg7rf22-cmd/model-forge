@@ -1,0 +1,33 @@
+{
+  "run_id": 39644502081,
+  "source_commit": "46e96e33c07d214fd5d527c6ce13b07deadd735a",
+  "url": "https://github.com/m2gsg7rf22-cmd/model-forge/actions/runs/39644502081",
+  "linux": {
+    "passed": 328,
+    "subtests_passed": 28,
+    "skipped": 19,
+    "failed": 0,
+    "seconds": 127.163,
+    "strict_types_lint_install": "passed"
+  },
+  "macos_arm64": {
+    "passed": 328,
+    "subtests_passed": 28,
+    "skipped": 19,
+    "failed": 0,
+    "seconds": 140.037,
+    "strict_types_lint_install": "passed"
+  },
+  "windows": {
+    "passed": 318,
+    "subtests_passed": 28,
+    "skipped": 28,
+    "failed": 1,
+    "seconds": 253.84,
+    "failed_test": "test_actual_mcp_research_and_recovery_tools",
+    "observed_error": "anyio.BrokenResourceError; cause not yet established",
+    "targeted_diagnostic_run": 39646028036
+  },
+  "native_packages_rebuilt": false,
+  "full_platform_independently_verified": false
+}

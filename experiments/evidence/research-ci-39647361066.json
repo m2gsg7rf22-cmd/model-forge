@@ -1,0 +1,33 @@
+{
+  "run_id": 39647361066,
+  "source_commit": "01a27b388358402babcfdb1ad17d1f14a52402e5",
+  "url": "https://github.com/m2gsg7rf22-cmd/model-forge/actions/runs/39647361066",
+  "status": "completed",
+  "conclusion": "success",
+  "scope": "Targeted research memory, actual MCP recovery, MCP lifecycle and bootstrap regression; not a new full native release",
+  "results": {
+    "ModelForge-macOS-ARM64": {
+      "tests": 59,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 18.699
+    },
+    "ModelForge-Linux-X64": {
+      "tests": 59,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 20.742
+    },
+    "ModelForge-Windows-X64": {
+      "tests": 59,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 43.608
+    }
+  },
+  "native_packages_rebuilt": false,
+  "strict_types_lint_install": "passed on all three jobs"
+}

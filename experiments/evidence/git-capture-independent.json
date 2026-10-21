@@ -1,0 +1,9 @@
+{
+  "inherited_handle_success_seconds": 0.03608666604850441,
+  "utf8_roundtrip": true,
+  "timeout_failure": "Git verification exceeded its time budget",
+  "timeout_cleanup_seconds": 0.41811450000386685,
+  "output_budget_failure": "Git verification exceeded its output budget",
+  "known_test_descendants_cleaned": true,
+  "scope": "Actual current capture helper; process-only fallback allowed where child enumeration is denied; does not certify Windows CI outcome"
+}

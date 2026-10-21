@@ -160,3 +160,11 @@ callback אמיתי ב-Qt offscreen נבדק מול שירות לוכד: prompt 
 - `/private/tmp/mf-review-decoder-bias-sgw83v82/review-results.json`
 
 התוצאה היא witness מפורש לכך ששני סטים שונים של פרמטרי Q/K עשויים להפיק אותו חישוב בתנאים מתאימים. היא אינה שיטה לשחזור backbone, אינה חילוץ מודל סגור ואינה מדד לאינטליגנציה או לשפה. השער למשימת המודל הפרטי נשאר סגור.
+
+לאחר בדיקת הניסוח שונה המדד ל-finite_logit_exact_value_equality, בהתאם לפעולת torch.equal. קוד החישוב לא השתנה; לא נדרשה הרצת decoder נוספת לשינוי שם זה. SHA256 של המקור לאחר שינוי השם: `52dad957f42a5566ec760ed70e6260c1ec2988838a038cb41acb16b15658f957`. הראיות הקודמות נשארות משויכות למקור שבאמצעותו הופקו, והשם הישן בהן מפורש כאן כשוויון ערכים בלבד.
+
+## Windows MCP Git cleanup follow-up
+
+Diagnostic CI39646028036 captured the first resume Git rev-parse in CPython3.12 subprocess.run's Windows TimeoutExpired cleanup: its unbounded second communicate waited for stdout/stderr reader threads. The independent reproduction confirmed a descendant can keep those pipes open after the parent is killed. This establishes the cleanup mechanism; the original Git delay itself was not independently attributed.
+
+The corrected Git helper detaches stdin and captures stdout/stderr in temporary files, polling a10s command deadline and2MiB output budget. It avoids PIPE/communicate/Popen context cleanup. Nonzero returncodes and ancestry still fail closed. Independent actual-helper probes returned Hebrew UTF8 with a descendant-held output handle in0.036s, rejected a sleeping process tree in0.418s, and rejected oversized output. Cleanup may add up to10s and descendant inspection can be denied; full process-tree cleanup is not claimed without that access. UTF8 replacement is only metadata presentation, not proof of model recovery. Public-safe proofs: experiments/evidence/git-pipe-cleanup-independent.json and git-capture-independent.json. Native Windows acceptance remains a separate required check.

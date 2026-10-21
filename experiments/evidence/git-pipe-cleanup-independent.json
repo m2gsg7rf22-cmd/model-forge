@@ -1,0 +1,8 @@
+{
+  "dead_parent_pipe_still_held_by_descendant": true,
+  "second_bounded_communicate_timed_out": true,
+  "elapsed_before_cleanup": 0.5076411250047386,
+  "owned_child_pid_from_private_pidfile": true,
+  "scope": "Cross-platform reproduction of inherited-pipe cleanup mechanism; does not identify original Git descendant",
+  "cleanup_completed": true
+}
