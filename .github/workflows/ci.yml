@@ -53,7 +53,7 @@ jobs:
       - if: github.event.inputs.tests_only != 'true'
         run: python packaging/build_desktop.py
       - name: Smoke test frozen Linux desktop
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && github.event.inputs.tests_only != 'true'
         run: dist/ModelForge/ModelForge --smoke-test
       - name: Smoke test frozen macOS desktop
         if: runner.os == 'macOS' && github.event.inputs.tests_only != 'true'
