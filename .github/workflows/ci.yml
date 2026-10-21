@@ -3,6 +3,10 @@ on:
   push:
   workflow_dispatch:
     inputs:
+      platforms:
+        description: 'JSON array of runner labels for targeted acceptance'
+        type: string
+        default: '["ubuntu-22.04","windows-latest","macos-14"]'
       windows_only:
         description: 'Run only Windows when other native packages are already verified'
         type: boolean
@@ -15,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ${{ github.event.inputs.windows_only == 'true' && fromJSON('["windows-latest"]') || fromJSON('["ubuntu-22.04","windows-latest","macos-14"]') }}
+        os: ${{ github.event.inputs.windows_only == 'true' && fromJSON('["windows-latest"]') || fromJSON(github.event.inputs.platforms || '["ubuntu-22.04","windows-latest","macos-14"]') }}
     runs-on: ${{ matrix.os }}
     env:
       QT_QPA_PLATFORM: offscreen
