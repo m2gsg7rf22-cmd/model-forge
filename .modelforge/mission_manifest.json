@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "immutable_documents": {
+    "docs/MASTER_MISSION.md": "5aed43c70680dcbe1ccf5356ebc1279dfbfab7c22e803dbbaff734848602a972",
+    "docs/FINAL_PRIVATE_MODEL_MISSION.md": "37a857806259b1e592bcbe648394776d83aecb5eb52ae69043f596f3f55b2865"
+  },
+  "private_model_gate": "closed",
+  "reason": "Universal reconstruction and complete independent platform verification not demonstrated; do not begin final model task"
+}

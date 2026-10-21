@@ -13,3 +13,15 @@ dist/
 *.sqlite*
 .env
 .DS_Store
+
+# Research secrets/checkpoints never belong in public Git
+.modelforge/*.lock/
+.modelforge/*.tmp
+.modelforge/private/
+experiments/private/
+experiments/runs/
+private-model/
+*.safetensors
+
+.discovery-private/
+private-research/
