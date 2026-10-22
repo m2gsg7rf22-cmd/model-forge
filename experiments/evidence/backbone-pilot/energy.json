@@ -1,0 +1,2 @@
+{"consensus_seed_gates": 62, "free_units": 2, "exact_width_rel_loss": 0.0001117344764256545, "units_within_1pct": 52, "units_within_5pct": 63, "bijective_matching": true, "max_rel_gate_error": 1.0837858274090222}
+{"recovered_true_units": 63, "median_energy_recovered": 0.7780745842716517, "median_energy_unrecovered": 0.3730445553930832, "energy_ranks_of_unrecovered (0=largest)": [59], "energy_total_share_unrecovered": 0.006375997214939128}
