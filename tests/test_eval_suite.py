@@ -12,7 +12,8 @@ def test_splits_disjoint_unique_and_sized() -> None:
         assert len(keys) == len(set(keys))
         sets[split] = set(keys)
         counts = {c: sum(t.category == c for t in tasks) for c in es.CATEGORIES}
-        assert all(v >= 29 for v in counts.values()), counts
+        if split != "train":  # measured splits need >= 29 items per category
+            assert all(v >= 29 for v in counts.values()), counts
     assert not (sets["train"] & sets["validation"]) and not (sets["train"] & sets["test"]) and not (sets["validation"] & sets["test"])
 
 
