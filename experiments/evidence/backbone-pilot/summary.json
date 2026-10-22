@@ -1,0 +1,25 @@
+{
+ "classification": "PILOT - not sealed evidence; thresholds not yet preregistered",
+ "teacher": "project-owned random HF Llama, hidden32, vocab16, 2 layers, 4Q/2KV heads, SwiGLU 64, norm gains 1+0.3N(0,1), pilot seed 1, /private/tmp only",
+ "observation_level": "O3 sublayer: block input x_l, attention output a_l, MLP output m_l (docs/decoder-backbone-protocol.md)",
+ "analytic_forward_vs_hf_max_abs": {"attention": 1.44e-8, "mlp": 3.11e-9},
+ "reached_subspace_rank": {"block0_attention_input": 15, "block0_mlp_input": 32, "block1": 32, "prediction": "<=16 from vocabulary 16"},
+ "attention_exact_width_varpro_lbfgs": {
+  "init_0.02": {"rel_loss": [5.26e-6, 5.55e-6], "ov_rel_err": [0.787, 1.003], "qk_rel_err": [1.57, 16.4], "verdict": "functionally fitted, NOT identified (near-uniform attention)"},
+  "init_0.2": {"rel_loss": [1.02e-6, 5.78e-6], "ov_rel_err": [8.9e-4, 3.0e-3], "qk_rel_err": [0.026, 0.053], "head_perm_gqa_consistent": true, "verdict": "invariants approximately identified up to gauge; not converged to numerical precision"}
+ },
+ "mlp_exact_width64": {
+  "varpro_lbfgs_rel_loss": [1.6e-3, 3.6e-3, 1.9e-3, 7.6e-3],
+  "levenberg_marquardt_384token_subsample": {"sub_rel_loss": 7.0e-3, "full_rel_loss": 0.30, "seconds_per_restart": 153},
+  "gate_matching_bijective": false,
+  "verdict": "NEGATIVE: exact-width SwiGLU fitting stalls in spurious minima; parameters not identified"
+ },
+ "mlp_overparameterized_functional": {
+  "width64": {"cal_rel_loss": 2.87e-3, "heldout_rel_loss": 3.94e-3},
+  "width192": {"cal_rel_loss": 4.37e-8, "heldout_rel_loss": 8.54e-8, "heldout_max_abs": 5.65e-3, "output_rms": 1.53, "still_decreasing": true},
+  "heldout": "2048 disjoint token positions from 256 extra sequences",
+  "verdict": "functional reconstruction on observed domain via 3x overparameterization; not parameter identification"
+ },
+ "cost": {"pilot2_seconds_per_teacher": [862, 876], "budget_seconds": 180, "verdict": "exceeds per-job budget; sealed protocol needs faster solver or staged jobs"},
+ "remote_calls": 0, "paid_api_cost_usd": 0, "weights_written": false, "private_final_model_started": false
+}
