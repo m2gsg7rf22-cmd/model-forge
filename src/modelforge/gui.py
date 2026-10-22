@@ -215,6 +215,7 @@ class MainWindow(QMainWindow):
         "Training",
         "Export",
         "Settings",
+        "Private Chat",
     ]
 
     def __init__(self, service: Any = None) -> None:
@@ -283,6 +284,10 @@ class MainWindow(QMainWindow):
         layout.addWidget(body, 1)
         self.setCentralWidget(root)
         self.build_pages()
+        from .gui_chat import PrivateChatPage
+
+        self.private_chat = PrivateChatPage()
+        self.stack.addWidget(self.private_chat)
         self.nav.currentRowChanged.connect(self.stack.setCurrentIndex)
         self.nav.setCurrentRow(0)
         self.refresh()

@@ -148,6 +148,29 @@ def create_server(data_dir: str | None = None) -> FastMCP:
     ):
         server.tool()(getattr(service, name))
 
+    from . import private_runtime as pr
+
+    @server.tool(annotations=ToolAnnotations(readOnlyHint=True, destructiveHint=False, openWorldHint=False))
+    def private_model_status() -> dict[str, Any]:
+        """List private local models and the loaded model's memory status."""
+        return pr.MANAGER.status()
+
+    @server.tool()
+    def private_model_load(model: str, memory_limit_mb: int = pr.DEFAULT_MEMORY_LIMIT_MB) -> dict[str, Any]:
+        """Load a private local MLX model by name (or path) for chat."""
+        return pr.MANAGER.load(model, memory_limit_mb)
+
+    @server.tool()
+    def private_model_unload() -> dict[str, Any]:
+        """Unload the private model and release GPU memory."""
+        return pr.MANAGER.unload()
+
+    @server.tool()
+    def private_chat(messages: list[dict[str, Any]], model: str | None = None, max_tokens: int = 512,
+                     temperature: float = 0.0) -> dict[str, Any]:
+        """Multi-turn chat with the local private model (no hosted inference)."""
+        return pr.MANAGER.chat(messages, model=model, max_tokens=max_tokens, temperature=temperature)
+
     return server
 
 

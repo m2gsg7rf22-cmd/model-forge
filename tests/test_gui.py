@@ -37,7 +37,7 @@ def test_real_desktop_project_workflow(tmp_path: Path, app: QApplication) -> Non
     window = MainWindow(service)
     window.show()
     drain(window, app)
-    assert window.stack.count() == 9
+    assert window.stack.count() == 10
     assert '"memory_total"' in window.outputs["Dashboard"].toPlainText()
     window.project_name.setText("Desktop integration")
     window.create_project()

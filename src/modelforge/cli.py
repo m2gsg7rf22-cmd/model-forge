@@ -89,6 +89,16 @@ def main() -> None:
         "local-example", help="Real offline Llama creation, LoRA, merge and export"
     )
     p.add_argument("--destination", default="local-model-example.zip")
+    p = sub.add_parser("private", help="Private local model: list, chat, serve, eval")
+    p.add_argument("action", choices=["list", "chat", "serve", "eval"])
+    p.add_argument("--model", help="Private model name or bundle path")
+    p.add_argument("--prompt", help="One-shot prompt; omit for an interactive chat")
+    p.add_argument("--max-tokens", type=int, default=512)
+    p.add_argument("--temperature", type=float, default=0.0)
+    p.add_argument("--port", type=int, default=8765)
+    p.add_argument("--split", default="validation", choices=["validation", "test"])
+    p.add_argument("--per-category", type=int, default=8)
+    p.add_argument("--output", help="Evaluation report path")
     args = parser.parse_args()
     if args.home:
         os.environ["MODELFORGE_HOME"] = str(Path(args.home).resolve())
@@ -96,6 +106,11 @@ def main() -> None:
         from .gui import launch
 
         launch()
+        return
+    if args.command == "private":
+        from .private_cli import run_private
+
+        run_private(args)
         return
     service = Service(args.home)
     result: Any
