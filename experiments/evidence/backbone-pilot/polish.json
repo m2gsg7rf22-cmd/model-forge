@@ -1,0 +1,1 @@
+{"consensus_seed_gates": 60, "final_rel_loss": 0.00033417426156926686, "bijective_matching": false, "gates_within_1pct": 49, "gates_within_5pct": 60, "max_rel_gate_error": 0.9999889316437036, "down_up_outer_max_rel_err": null, "down_up_outer_median_rel_err": null}
