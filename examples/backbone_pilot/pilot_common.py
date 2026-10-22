@@ -111,9 +111,9 @@ def compare_attn(est, tr, z):
 def compare_mlp(est, tr, z):
     B = span_basis(z)
     Ge, Gt = est["G"] @ B, tr["G"] @ B
-    sim = torch.cdist(Ge, Gt); match = sim.argmin(1)
-    bij = len(set(match.tolist())) == 64
-    gate_err = rel(Ge, Gt[match])
+    sim = torch.cdist(Ge, Gt); pairing = sim.argmin(1)
+    bij = len(set(pairing.tolist())) == 64
+    gate_err = rel(Ge, Gt[pairing])
     W = lambda p, u: torch.outer(p["D"][:, u], p["U"][u] @ B)
-    w_err = max(rel(W(est, u), W(tr, int(match[u]))) for u in range(64)) if bij else None
+    w_err = max(rel(W(est, u), W(tr, int(pairing[u]))) for u in range(64)) if bij else None
     return {"mlp_rank_basis": B.shape[1], "gate_rel_err_matched": gate_err, "gate_matching_bijective": bij, "down_up_outer_rel_err_max": w_err}
