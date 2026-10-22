@@ -169,7 +169,7 @@ def test_mcp_exposes_private_tools(tmp_path: Path) -> None:
 
     server = create_server(str(tmp_path))
     names = {tool.name for tool in asyncio.run(server.list_tools())}
-    assert {"private_model_status", "private_model_load", "private_model_unload", "private_chat"} <= names
+    assert {"private_model_status", "private_model_load", "private_model_unload", "private_chat", "private_leaderboard"} <= names
 
 
 def test_mlx_work_runs_on_one_dedicated_thread(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

@@ -90,7 +90,7 @@ def main() -> None:
     )
     p.add_argument("--destination", default="local-model-example.zip")
     p = sub.add_parser("private", help="Private local model: list, chat, serve, eval")
-    p.add_argument("action", choices=["list", "chat", "serve", "eval"])
+    p.add_argument("action", choices=["list", "chat", "serve", "eval", "leaderboard", "experiments"])
     p.add_argument("--model", help="Private model name or bundle path")
     p.add_argument("--prompt", help="One-shot prompt; omit for an interactive chat")
     p.add_argument("--max-tokens", type=int, default=512)

@@ -67,3 +67,21 @@ def test_multi_turn_streaming_chat(monkeypatch: pytest.MonkeyPatch, tmp_path: Pa
     assert "מה שלומך" in page.transcript.toPlainText()
     page.clear()
     assert page.history == []
+
+
+def test_leaderboard_button(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    import json
+
+    app = QApplication.instance() or QApplication([])
+    monkeypatch.setenv("MODELFORGE_PRIVATE_HOME", str(tmp_path))
+    page = PrivateChatPage(pr.PrivateModelManager())
+    page.show_leaderboard()
+    assert "No evaluated" in page.status.text()
+    runs = tmp_path / "improvement" / "runs"
+    runs.mkdir(parents=True, exist_ok=True)
+    (runs / "cand--validation.json").write_text(json.dumps({
+        "name": "cand", "mean": 0.5, "pooled": {"ci95": [0.4, 0.6], "n": 10}, "strategy": "greedy", "adapter": None,
+        "generation_tps": 40.0, "peak_memory_gb": 2.5, "seconds": 60, "scores": {"math": 0.5}}))
+    page.show_leaderboard()
+    app.processEvents()
+    assert "cand: mean 0.500" in page.transcript.toPlainText()

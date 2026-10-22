@@ -24,6 +24,19 @@ def run_private(args: Any) -> None:
     if args.action == "list":
         print(json.dumps(pr.list_private_models(), indent=2, ensure_ascii=False))
         return
+    if args.action == "leaderboard":
+        from .improvement import leaderboard
+
+        print(json.dumps(leaderboard(args.split), indent=2))
+        return
+    if args.action == "experiments":
+        from .improvement import home
+
+        ledger = home() / "ledger.jsonl"
+        for line in ledger.read_text(encoding="utf-8").splitlines() if ledger.is_file() else []:
+            event = json.loads(line)
+            print(json.dumps({k: event.get(k) for k in ("kind", "name", "candidate", "mean", "keep", "p_value", "notes") if k in event}))
+        return
     if args.action == "serve":
         pr.MANAGER.load(_model(args))
         print(f"Serving private model on http://127.0.0.1:{args.port}/v1/chat/completions", flush=True)

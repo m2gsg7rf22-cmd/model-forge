@@ -92,6 +92,7 @@ class PrivateChatPage(QWidget):
         self.send_button = self._button("Send", self.send, actions, primary=True)
         self._button("Stop", self.stop, actions)
         self._button("New conversation", self.clear, actions)
+        self._button("Leaderboard", self.show_leaderboard, actions)
         actions.addStretch(1)
         layout.addLayout(actions)
         self.status = QLabel("No model loaded")
@@ -207,6 +208,19 @@ class PrivateChatPage(QWidget):
             )
 
         self._start(work, on_done, on_chunk)
+
+    def show_leaderboard(self) -> None:
+        from .improvement import leaderboard
+
+        rows = leaderboard()
+        if not rows:
+            self.status.setText("No evaluated candidates yet")
+            return
+        lines = ["Leaderboard (validation, suite v2):"] + [
+            f"{r['name']}: mean {r['mean']:.3f} CI95 {r['pooled_ci95']} · {r['strategy']} · {r['tps']} tok/s · {r['peak_gb']} GB"
+            for r in rows
+        ]
+        self.transcript.append("<pre>" + "\n".join(lines).replace("<", "&lt;") + "</pre>")
 
     def stop(self) -> None:
         self.stop_requested = True

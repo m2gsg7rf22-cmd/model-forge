@@ -160,6 +160,13 @@ def create_server(data_dir: str | None = None) -> FastMCP:
         """Load a private local MLX model by name (or path) for chat."""
         return pr.MANAGER.load(model, memory_limit_mb)
 
+    @server.tool(annotations=ToolAnnotations(readOnlyHint=True, destructiveHint=False, openWorldHint=False))
+    def private_leaderboard(split: str = "validation") -> list[dict[str, Any]]:
+        """Leaderboard of evaluated private-model candidates (suite v2, with 95% intervals)."""
+        from .improvement import leaderboard
+
+        return leaderboard(split)
+
     @server.tool()
     def private_model_unload() -> dict[str, Any]:
         """Unload the private model and release GPU memory."""
