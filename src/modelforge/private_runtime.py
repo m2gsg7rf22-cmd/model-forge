@@ -187,11 +187,26 @@ class PrivateChatModel:
         for chunk in self.stream(messages, **settings):
             parts.append(chunk["text"])
             last = chunk
-        reply = "".join(parts)
+        reasoning, reply = split_reasoning("".join(parts))
         from .capability_eval import parse_tool_calls
 
-        return {"reply": reply, "tool_calls": parse_tool_calls(reply), "seconds": time.perf_counter() - start,
-                **{k: v for k, v in last.items() if k != "text"}}
+        return {"reply": reply, "reasoning": reasoning, "tool_calls": parse_tool_calls(reply),
+                "seconds": time.perf_counter() - start, **{k: v for k, v in last.items() if k != "text"}}
+
+
+def split_reasoning(text: str) -> tuple[str, str]:
+    """Separate a reasoning model's thinking from its visible answer.
+
+    Thinking templates open ``<think>`` inside the prompt, so generations hold
+    ``thoughts</think>answer``. An unterminated block (budget exhausted while
+    thinking) yields an empty visible answer rather than leaking thoughts.
+    """
+    if "</think>" in text:
+        thought, answer = text.split("</think>", 1)
+        return thought.replace("<think>", "").strip(), answer.strip()
+    if text.lstrip().startswith("<think>"):
+        return text.replace("<think>", "").strip(), ""
+    return "", text
 
 
 class PrivateModelManager:

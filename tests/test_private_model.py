@@ -191,3 +191,10 @@ def test_mlx_work_runs_on_one_dedicated_thread(tmp_path: Path, monkeypatch: pyte
 
     time.sleep(0.3)
     assert len(seen) == 1 and threading.get_ident() not in seen
+
+
+def test_split_reasoning() -> None:
+    assert pr.split_reasoning("plan a</think>\n\nAnswer: 4") == ("plan a", "Answer: 4")
+    assert pr.split_reasoning("<think>\nx\n</think>ok") == ("x", "ok")
+    assert pr.split_reasoning("<think>unfinished") == ("unfinished", "")
+    assert pr.split_reasoning("plain") == ("", "plain")
