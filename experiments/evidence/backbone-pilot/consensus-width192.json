@@ -1,0 +1,1 @@
+{"width": 192, "loss_A": 4.539011081435797e-06, "loss_B": 2.1974836251191016e-06, "consensus_units": 47, "consensus_units_that_are_true_gates": 47, "precision": 1.0, "distinct_true_gates_covered": 46, "true_units": 64, "true_hit_units_A_total": 53}
