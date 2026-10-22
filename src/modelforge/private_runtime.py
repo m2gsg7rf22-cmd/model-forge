@@ -70,10 +70,17 @@ def bundle_digest(path: str | Path) -> str:
 
 
 class PrivateChatModel:
-    """One loaded model; thread-safe generation with explicit load/unload."""
+    """One loaded model; thread-safe generation with explicit load/unload.
+
+    MLX binds GPU streams to the thread that created them, so every MLX call
+    for this model runs on one dedicated worker thread; callers on any thread
+    (GUI workers, HTTP handlers, MCP) receive streamed chunks through a queue.
+    """
 
     def __init__(self, path: str | Path, memory_limit_mb: int = DEFAULT_MEMORY_LIMIT_MB,
                  adapter_path: str | Path | None = None) -> None:
+        from concurrent.futures import ThreadPoolExecutor
+
         if not 1024 <= memory_limit_mb <= MAX_MEMORY_LIMIT_MB:
             raise ValueError(f"memory_limit_mb must be within 1024..{MAX_MEMORY_LIMIT_MB}")
         self.path = validate_bundle(path)
@@ -82,7 +89,7 @@ class PrivateChatModel:
         self.model: Any = None
         self.tokenizer: Any = None
         self.load_seconds = 0.0
-        self._lock = threading.Lock()
+        self._executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="modelforge-mlx")
 
     @property
     def loaded(self) -> bool:
@@ -91,27 +98,32 @@ class PrivateChatModel:
     def load(self) -> dict[str, Any]:
         os.environ.setdefault("HF_HUB_OFFLINE", "1")
         os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
-        import mlx.core as mx
-        from mlx_lm import load
 
-        with self._lock:
+        def work() -> None:
+            import mlx.core as mx
+            from mlx_lm import load
+
             if not mx.metal.is_available():
                 raise RuntimeError("MLX Metal GPU is unavailable")
             mx.set_memory_limit(self.memory_limit_mb * 1024**2)
             start = time.perf_counter()
             self.model, self.tokenizer = load(str(self.path), adapter_path=self.adapter_path)
             self.load_seconds = time.perf_counter() - start
+
+        self._executor.submit(work).result()
         return self.status()
 
     def unload(self) -> None:
-        import gc
+        def work() -> None:
+            import gc
 
-        import mlx.core as mx
+            import mlx.core as mx
 
-        with self._lock:
             self.model = self.tokenizer = None
             gc.collect()
             mx.clear_cache()
+
+        self._executor.submit(work).result()
 
     def status(self) -> dict[str, Any]:
         import mlx.core as mx
@@ -137,21 +149,38 @@ class PrivateChatModel:
     def stream(self, messages: list[dict[str, Any]], *, max_tokens: int = 512, temperature: float = 0.0,
                top_p: float = 1.0, tools: list[dict[str, Any]] | None = None,
                stop: Callable[[], bool] | None = None) -> Iterator[dict[str, Any]]:
-        from mlx_lm import stream_generate
-        from mlx_lm.sample_utils import make_sampler
+        import queue
 
         if not 1 <= max_tokens <= 8192 or not 0 <= temperature <= 2 or not 0 < top_p <= 1:
             raise ValueError("Invalid generation settings")
         text = self.prompt(messages, tools)
-        with self._lock:
-            for response in stream_generate(self.model, self.tokenizer, text, max_tokens=max_tokens,
-                                             sampler=make_sampler(temp=temperature, top_p=top_p)):
-                yield {"text": response.text, "finish_reason": response.finish_reason,
-                       "prompt_tokens": response.prompt_tokens, "generation_tokens": response.generation_tokens,
-                       "prompt_tps": response.prompt_tps, "generation_tps": response.generation_tps,
-                       "peak_memory_gb": response.peak_memory}
-                if stop and stop():
-                    break
+        chunks: queue.Queue[Any] = queue.Queue()
+        done = object()
+
+        def work() -> None:
+            try:
+                from mlx_lm import stream_generate
+                from mlx_lm.sample_utils import make_sampler
+
+                for response in stream_generate(self.model, self.tokenizer, text, max_tokens=max_tokens,
+                                                 sampler=make_sampler(temp=temperature, top_p=top_p)):
+                    chunks.put({"text": response.text, "finish_reason": response.finish_reason,
+                                "prompt_tokens": response.prompt_tokens,
+                                "generation_tokens": response.generation_tokens,
+                                "prompt_tps": response.prompt_tps, "generation_tps": response.generation_tps,
+                                "peak_memory_gb": response.peak_memory})
+                    if stop and stop():
+                        break
+            except BaseException as exc:  # re-raised in the consumer thread
+                chunks.put(exc)
+            finally:
+                chunks.put(done)
+
+        self._executor.submit(work)
+        while (item := chunks.get()) is not done:
+            if isinstance(item, BaseException):
+                raise item
+            yield item
 
     def chat(self, messages: list[dict[str, Any]], **settings: Any) -> dict[str, Any]:
         start, parts, last = time.perf_counter(), [], {}

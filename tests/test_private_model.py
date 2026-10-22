@@ -170,3 +170,24 @@ def test_mcp_exposes_private_tools(tmp_path: Path) -> None:
     server = create_server(str(tmp_path))
     names = {tool.name for tool in asyncio.run(server.list_tools())}
     assert {"private_model_status", "private_model_load", "private_model_unload", "private_chat"} <= names
+
+
+def test_mlx_work_runs_on_one_dedicated_thread(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Regression: MLX GPU streams are thread-local; callers on other threads must work."""
+    bundle = tmp_path / "m"
+    bundle.mkdir()
+    (bundle / "config.json").write_text(json.dumps({"model_type": "llama"}))
+    (bundle / "model.safetensors").write_bytes(b"x")
+    model = pr.PrivateChatModel(bundle, memory_limit_mb=2048)
+    seen: set[int] = set()
+
+    def record() -> int:
+        seen.add(threading.get_ident())
+        return 1
+
+    for _ in range(3):
+        threading.Thread(target=lambda: model._executor.submit(record).result()).start()
+    import time
+
+    time.sleep(0.3)
+    assert len(seen) == 1 and threading.get_ident() not in seen

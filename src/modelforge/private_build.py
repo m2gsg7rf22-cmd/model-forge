@@ -133,3 +133,26 @@ def fuse(model: str | Path, adapter: str | Path, destination: str | Path, card: 
     card = {**card, "bundle_sha256": bundle_digest(target), "created_unix": time.time()}
     (target / "modelforge.json").write_text(json.dumps(card, indent=1, ensure_ascii=False), encoding="utf-8")
     return target
+
+
+def training_view(model: str | Path, destination: str | Path) -> Path:
+    """Symlinked copy of a bundle whose chat template matches inference formatting.
+
+    Qwen3-style templates render a trailing assistant turn with an empty
+    ``<think></think>`` block that inference prompts never contain, so masked
+    training would teach the model to emit it. The view renders that block only
+    when real reasoning content exists. Weights are symlinked, not copied.
+    """
+    source, target = Path(model).resolve(), Path(destination)
+    if target.exists():
+        raise ValueError("Training view destination must be new")
+    target.mkdir(parents=True)
+    for item in source.iterdir():
+        if item.name != "chat_template.jinja":
+            (target / item.name).symlink_to(item)
+    template_path = source / "chat_template.jinja"
+    if template_path.is_file():
+        template = template_path.read_text(encoding="utf-8")
+        old = "{%- if loop.last or (not loop.last and reasoning_content) %}"
+        (target / "chat_template.jinja").write_text(template.replace(old, "{%- if reasoning_content %}"), encoding="utf-8")
+    return target
