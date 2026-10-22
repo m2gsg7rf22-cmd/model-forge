@@ -1,0 +1,3 @@
+{"width": 192, "rel_loss": 1.7305346487938382e-05, "units_strong": 180, "strong_units_within_5pct_of_a_true_gate": 38, "true_gates_covered_within_5pct": 38, "true_units": 64, "median_rel_dist_strong": 0.9487455358681158, "seconds": 410.84539914131165}
+
+[exited with code 0]
