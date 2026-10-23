@@ -111,6 +111,9 @@ def train_lora(model: str | Path, data: str | Path, adapter: str | Path, *, iter
         raise RuntimeError(f"LoRA training failed:\n{log[-3000:]}")
     train = [float(x.split("Train loss")[1].split(",")[0]) for x in log.splitlines() if "Train loss" in x]
     val = [float(x.split("Val loss")[1].split(",")[0]) for x in log.splitlines() if "Val loss" in x]
+    if any(v != v for v in train + val):  # NaN: refuse to report a corrupted adapter as trained
+        (adapter_path / "CORRUPTED_NAN").write_text("NaN loss during training; do not use this adapter\n", encoding="utf-8")
+        raise RuntimeError("LoRA training produced NaN losses (often examples with no target tokens after truncation)")
     peak = [float(x.split("Peak mem")[1].split("GB")[0]) for x in log.splitlines() if "Peak mem" in x]
     return {"seconds": time.perf_counter() - start, "train_loss": train, "val_loss": val,
             "peak_memory_gb": max(peak) if peak else None, "iters": iters, "learning_rate": learning_rate,
@@ -156,3 +159,26 @@ def training_view(model: str | Path, destination: str | Path) -> Path:
         old = "{%- if loop.last or (not loop.last and reasoning_content) %}"
         (target / "chat_template.jinja").write_text(template.replace(old, "{%- if reasoning_content %}"), encoding="utf-8")
     return target
+
+
+def filter_by_length(model: str | Path, directory: str | Path, destination: str | Path, max_seq_length: int) -> dict[str, int]:
+    """Drop chat examples whose rendered length exceeds the training window.
+
+    Truncation can remove every assistant (target) token, which yields NaN losses
+    and corrupted adapters; such examples are dropped instead of truncated.
+    """
+    from transformers import AutoTokenizer
+
+    tok = AutoTokenizer.from_pretrained(str(model), local_files_only=True)
+    out_dir = Path(destination)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    kept: dict[str, int] = {}
+    for split in ("train", "valid"):
+        rows = [json.loads(line) for line in Path(directory, f"{split}.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
+        good = [r for r in rows if len(tok.apply_chat_template(r["messages"], tools=r.get("tools"))) <= max_seq_length]
+        kept[split] = len(good)
+        kept[f"{split}_dropped"] = len(rows) - len(good)
+        with Path(out_dir, f"{split}.jsonl").open("w", encoding="utf-8") as handle:
+            for row in good:
+                handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+    return kept
