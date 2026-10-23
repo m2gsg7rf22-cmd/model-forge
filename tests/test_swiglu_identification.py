@@ -37,3 +37,9 @@ def test_pipeline_on_small_teacher() -> None:
     assert out["result"].relative_loss < 1.0 and report["true_units"] == 6
     with pytest.raises(ValueError):
         si.fit_swiglu(z, y, 2, seed=0, seconds=1, frozen_gate=gate)
+
+
+def test_round_budget_is_load_independent() -> None:
+    z, y, gate = _teacher()
+    fit = si.fit_swiglu(z, y, 6, seed=1, seconds=1e9, max_rounds=3)
+    assert fit.rounds == 3

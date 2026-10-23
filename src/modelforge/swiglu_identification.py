@@ -27,6 +27,7 @@ class FitResult:
     down: Any
     relative_loss: float
     seconds: float
+    rounds: int = 0
 
 
 def _features(z: Any, gate: Any, up: Any) -> Any:
@@ -71,16 +72,18 @@ def fit_swiglu(z: Any, y: Any, width: int, *, seed: int, seconds: float, frozen_
         return value
 
     start = time.perf_counter()
-    for _ in range(max_rounds):
+    rounds = 0
+    for _ in range(max_rounds):  # stop at whichever budget ends first: rounds (load-independent) or seconds
         if time.perf_counter() - start >= seconds:
             break
         opt.step(closure)
+        rounds += 1
     with torch.no_grad():
         g, u = gate().detach(), up.detach()
         f = _features(z, g, u)
         d = torch.linalg.lstsq(f, y).solution.T
         rel = float(((f @ d.T - y) ** 2).mean() / norm)
-    return FitResult(g, u, d, rel, time.perf_counter() - start)
+    return FitResult(g, u, d, rel, time.perf_counter() - start, rounds)
 
 
 def consensus_gates(a: Any, b: Any, tolerance: float = 0.05) -> Any:
@@ -97,7 +100,7 @@ def consensus_gates(a: Any, b: Any, tolerance: float = 0.05) -> Any:
 
 
 def identify(z: Any, y: Any, width: int, *, over_width: int | None = None, seeds: tuple[int, ...] = (11, 23, 37),
-             seconds: float = 600.0, tolerance: float = 0.05) -> dict[str, Any]:
+             seconds: float = 600.0, tolerance: float = 0.05, max_rounds: int = 10_000) -> dict[str, Any]:
     """Full truth-free pipeline; consensus = rows of the first fit reproduced by any other seed.
 
     Three seeds recovered more gates than two on the second pilot teacher (53 vs 41 of 64 within 5%).
@@ -107,11 +110,12 @@ def identify(z: Any, y: Any, width: int, *, over_width: int | None = None, seeds
     if len(seeds) < 2:
         raise ValueError("At least two seeds are required for consensus")
     over = over_width or 3 * width
-    fits = [fit_swiglu(z, y, over, seed=s, seconds=seconds) for s in seeds]
+    fits = [fit_swiglu(z, y, over, seed=s, seconds=seconds, max_rounds=max_rounds) for s in seeds]
     others = torch.cat([f.gate for f in fits[1:]])
     consensus = consensus_gates(fits[0].gate, others, tolerance)[:width]
-    final = fit_swiglu(z, y, width, seed=seeds[0] + 1000, seconds=seconds, frozen_gate=consensus)
-    return {"result": final, "consensus_count": len(consensus), "overparameterized_losses": [f.relative_loss for f in fits]}
+    final = fit_swiglu(z, y, width, seed=seeds[0] + 1000, seconds=seconds, frozen_gate=consensus, max_rounds=max_rounds)
+    return {"result": final, "consensus_count": len(consensus), "overparameterized_losses": [f.relative_loss for f in fits],
+            "rounds": [f.rounds for f in fits] + [final.rounds]}
 
 
 def match_gates(estimate: Any, truth: Any) -> dict[str, Any]:
