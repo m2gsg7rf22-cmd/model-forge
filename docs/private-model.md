@@ -125,3 +125,5 @@ sealed test-split confirmation before promotion. Training loss is never used as 
 Measured so far (validation, suite v2): v1 0.906 (n=359); Qwen3-4B-Thinking-2507 rejected (no gain on weak
 categories, ~30× latency); v4 targeted SFT 0.919, merged validation 20 wins / 8 losses (p=0.036) — sealed test
 confirmation pending at the time of writing.
+
+Update: v4 was confirmed on the sealed test split (11/6, combined 31/14, p=0.016) and promoted as `modelforge-private-4b-v2` (default model).

@@ -24,6 +24,18 @@ def private_home() -> Path:
     return Path(os.environ.get("MODELFORGE_PRIVATE_HOME", "~/.local/share/modelforge-private")).expanduser()
 
 
+def default_model() -> str | None:
+    """Name recorded in MODELFORGE_PRIVATE_HOME/default_model (the promoted best verified model)."""
+    marker = private_home() / "default_model"
+    name = marker.read_text(encoding="utf-8").strip() if marker.is_file() else ""
+    return name if name and (private_home() / "models" / name / "config.json").is_file() else None
+
+
+def set_default_model(name: str) -> None:
+    validate_bundle(private_home() / "models" / name)
+    (private_home() / "default_model").write_text(name + "\n", encoding="utf-8")
+
+
 def list_private_models(home: str | Path | None = None) -> list[dict[str, Any]]:
     root = Path(home).expanduser() if home else private_home() / "models"
     found = []
@@ -40,6 +52,8 @@ def list_private_models(home: str | Path | None = None) -> list[dict[str, Any]]:
             "size_bytes": sum(p.stat().st_size for p in bundle.glob("*.safetensors")),
             "card": json.loads(card.read_text(encoding="utf-8")) if card.is_file() else None,
         })
+    preferred = default_model() if home is None else None
+    found.sort(key=lambda m: m["name"] != preferred)  # promoted default first, stable otherwise
     return found
 
 
@@ -69,6 +83,26 @@ def bundle_digest(path: str | Path) -> str:
     return h.hexdigest()
 
 
+_MLX_EXECUTOR: Any = None
+_MLX_EXECUTOR_LOCK = threading.Lock()
+
+
+def mlx_executor() -> Any:
+    """The single process-wide MLX worker thread.
+
+    MLX GPU streams are bound to the thread that first used them; a second
+    worker thread (e.g. after switching models) has no stream and fails. All
+    models therefore share one thread for their whole lifetime.
+    """
+    global _MLX_EXECUTOR
+    with _MLX_EXECUTOR_LOCK:
+        if _MLX_EXECUTOR is None:
+            from concurrent.futures import ThreadPoolExecutor
+
+            _MLX_EXECUTOR = ThreadPoolExecutor(max_workers=1, thread_name_prefix="modelforge-mlx")
+        return _MLX_EXECUTOR
+
+
 class PrivateChatModel:
     """One loaded model; thread-safe generation with explicit load/unload.
 
@@ -79,8 +113,6 @@ class PrivateChatModel:
 
     def __init__(self, path: str | Path, memory_limit_mb: int = DEFAULT_MEMORY_LIMIT_MB,
                  adapter_path: str | Path | None = None) -> None:
-        from concurrent.futures import ThreadPoolExecutor
-
         if not 1024 <= memory_limit_mb <= MAX_MEMORY_LIMIT_MB:
             raise ValueError(f"memory_limit_mb must be within 1024..{MAX_MEMORY_LIMIT_MB}")
         self.path = validate_bundle(path)
@@ -89,7 +121,7 @@ class PrivateChatModel:
         self.model: Any = None
         self.tokenizer: Any = None
         self.load_seconds = 0.0
-        self._executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="modelforge-mlx")
+        self._executor = mlx_executor()
 
     @property
     def loaded(self) -> bool:

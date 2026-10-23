@@ -191,6 +191,8 @@ def test_mlx_work_runs_on_one_dedicated_thread(tmp_path: Path, monkeypatch: pyte
 
     time.sleep(0.3)
     assert len(seen) == 1 and threading.get_ident() not in seen
+    other = pr.PrivateChatModel(bundle, memory_limit_mb=2048)
+    assert other._executor is model._executor  # model switching keeps the same MLX thread
 
 
 def test_split_reasoning() -> None:
@@ -198,3 +200,17 @@ def test_split_reasoning() -> None:
     assert pr.split_reasoning("<think>\nx\n</think>ok") == ("x", "ok")
     assert pr.split_reasoning("<think>unfinished") == ("unfinished", "")
     assert pr.split_reasoning("plain") == ("", "plain")
+
+
+def test_default_model_marker(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("MODELFORGE_PRIVATE_HOME", str(tmp_path))
+    for name in ("a-model", "b-model"):
+        b = tmp_path / "models" / name
+        b.mkdir(parents=True)
+        (b / "config.json").write_text(json.dumps({"model_type": "llama"}))
+        (b / "model.safetensors").write_bytes(b"x")
+    assert pr.default_model() is None and pr.list_private_models()[0]["name"] == "a-model"
+    pr.set_default_model("b-model")
+    assert pr.default_model() == "b-model" and pr.list_private_models()[0]["name"] == "b-model"
+    with pytest.raises(ValueError):
+        pr.set_default_model("missing")
