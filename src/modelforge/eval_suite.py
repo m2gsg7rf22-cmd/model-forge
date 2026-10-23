@@ -625,10 +625,14 @@ def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
 
 
 def evaluate(chat: ChatFn, split: str = "validation", per_category: int = 30,
-             categories: tuple[str, ...] = CATEGORIES, log: Callable[[str], None] | None = None) -> dict[str, Any]:
+             categories: tuple[str, ...] = CATEGORIES, log: Callable[[str], None] | None = None,
+             start_index: int = 0) -> dict[str, Any]:
+    """Score items [start_index, per_category) of every category (prefixes are stable)."""
     rows: list[dict[str, Any]] = []
     start = time.perf_counter()
     for task in build_tasks(split, per_category, categories):
+        if int(re.sub(r"\D", "", task.task_id) or 0) < start_index:
+            continue
         t0 = time.perf_counter()
         try:
             reply = run_task(chat, task)
@@ -636,7 +640,7 @@ def evaluate(chat: ChatFn, split: str = "validation", per_category: int = 30,
         except Exception as exc:  # a crashing item is a failed item, recorded
             reply, ok = f"[error] {type(exc).__name__}: {exc}", False
         rows.append({"category": task.category, "id": task.task_id, "passed": ok, "seconds": time.perf_counter() - t0,
-                     "reply": reply[-500:], "reference": task.reference})
+                     "reply": reply, "reference": task.reference})
         if log:
             log(f"{task.task_id} {'PASS' if ok else 'fail'}")
     per: dict[str, Any] = {}

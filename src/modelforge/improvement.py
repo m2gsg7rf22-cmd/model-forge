@@ -57,7 +57,7 @@ def make_chat(model: PrivateChatModel, strategy: str, system: str | None = None,
 
 def run(name: str, model_path: str, *, adapter: str | None = None, strategy: str = "greedy", system: str | None = None,
         split: str = "validation", per_category: int = 30, categories: tuple[str, ...] = es.CATEGORIES,
-        notes: str = "", budget: int = 0) -> dict[str, Any]:
+        notes: str = "", budget: int = 0, start_index: int = 0) -> dict[str, Any]:
     out = home() / "runs" / f"{name}--{split}.json"
     if out.exists():
         raise ValueError(f"Run {out.name} exists; experiments are immutable, choose a new name")
@@ -66,9 +66,9 @@ def run(name: str, model_path: str, *, adapter: str | None = None, strategy: str
     chat = make_chat(model, strategy, system, budget)
     started = time.perf_counter()
     speed = model.chat([{"role": "user", "content": "Count from 1 to 40 separated by spaces."}], max_tokens=128)
-    report = es.evaluate(chat, split, per_category, categories, log=lambda s: print(s, flush=True))
+    report = es.evaluate(chat, split, per_category, categories, log=lambda s: print(s, flush=True), start_index=start_index)
     report.update({"name": name, "model": model_path, "adapter": adapter, "strategy": strategy, "system": system,
-                   "notes": notes, "budget": budget, "generation_tps": speed.get("generation_tps"), "peak_memory_gb": model.status()["peak_memory_bytes"] / 1e9,
+                   "notes": notes, "budget": budget, "start_index": start_index, "generation_tps": speed.get("generation_tps"), "peak_memory_gb": model.status()["peak_memory_bytes"] / 1e9,
                    "wall_seconds": time.perf_counter() - started})
     out.write_text(json.dumps(report, indent=1, ensure_ascii=False), encoding="utf-8")
     _append({"kind": "run", "name": name, "split": split, "mean": report["mean"], "pooled": report["pooled"],
@@ -78,7 +78,12 @@ def run(name: str, model_path: str, *, adapter: str | None = None, strategy: str
 
 
 def load_run(name: str, split: str = "validation") -> dict[str, Any]:
-    data: dict[str, Any] = json.loads((home() / "runs" / f"{name}--{split}.json").read_text(encoding="utf-8"))
+    """Load a run; ``a+b`` merges disjoint runs (e.g. a validation extension) by rows."""
+    parts = [json.loads((home() / "runs" / f"{n}--{split}.json").read_text(encoding="utf-8")) for n in name.split("+")]
+    rows = [r for part in parts for r in part["rows"]]
+    if len({(r["category"], r["id"]) for r in rows}) != len(rows):
+        raise ValueError("Merged runs overlap")
+    data: dict[str, Any] = {**parts[0], "rows": rows, "name": name}
     return data
 
 
@@ -129,6 +134,7 @@ def main() -> None:
     p.add_argument("--categories")
     p.add_argument("--notes", default="")
     p.add_argument("--budget", type=int, default=0, help="minimum max_tokens (reasoning models)")
+    p.add_argument("--start", type=int, default=0, help="first item index per category (validation extension)")
     p = sub.add_parser("decide")
     p.add_argument("baseline")
     p.add_argument("candidate")
@@ -140,7 +146,7 @@ def main() -> None:
     if a.cmd == "run":
         cats = tuple(a.categories.split(",")) if a.categories else es.CATEGORIES
         r = run(a.name, a.model, adapter=a.adapter, strategy=a.strategy, system=a.system, split=a.split,
-                per_category=a.n, categories=cats, notes=a.notes, budget=a.budget)
+                per_category=a.n, categories=cats, notes=a.notes, budget=a.budget, start_index=a.start)
         print("RESULT", json.dumps({"mean": round(r["mean"], 4), "pooled": r["pooled"], "scores": {c: round(v, 3) for c, v in r["scores"].items()}}))
     elif a.cmd == "decide":
         print(json.dumps(decide(a.baseline, a.candidate), indent=1))
