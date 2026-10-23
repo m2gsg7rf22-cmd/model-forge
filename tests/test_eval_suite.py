@@ -57,3 +57,16 @@ def test_empty_category_excluded_from_mean() -> None:
     assert r["empty_categories"] in ([], ["factual"])
     if r["empty_categories"]:
         assert r["scores"] == {} and r["mean"] == 0.0
+
+
+def test_hard_tiers_disjoint_and_do_not_shift_existing_items() -> None:
+    cats = es.CATEGORIES + es.HARD_CATEGORIES
+    base = [t.messages for t in es.build_tasks("validation", 10)]
+    full = es.build_tasks("validation", 10, cats)
+    assert base == [t.messages for t in full if t.category in es.CATEGORIES]
+    val = {json.dumps(t.messages) for t in full if t.category in es.HARD_CATEGORIES}
+    test = {json.dumps(t.messages) for t in es.build_tasks("test", 10, es.HARD_CATEGORIES)}
+    assert len(val) == 20 and not (val & test)
+    for t in full:
+        if t.category == "math_hard":
+            assert t.check(f"Answer: {t.reference}") and not t.check("unsure")

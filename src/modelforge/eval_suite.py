@@ -37,7 +37,7 @@ CATEGORIES = (
 )
 SPLIT_SEEDS = {"train": 70_000_000, "validation": 71_000_000, "test": 72_000_000}
 # Provisional frontier-class profile on THIS suite; not a measured GPT-5.6 Luna score.
-TARGET_THRESHOLDS = {c: 0.90 for c in CATEGORIES}
+TARGET_THRESHOLDS = {c: 0.90 for c in CATEGORIES + ("math_hard", "coding_hard")}
 
 # ---------------------------------------------------------------- math
 
@@ -559,6 +559,158 @@ GENERATORS: dict[str, Callable[[random.Random, int, str], Task]] = {
 }
 
 
+# ---------------------------------------------------------------- hard tiers (appended; earlier items unchanged)
+
+def _math_hard(rng: random.Random, i: int, split: str) -> Task:
+    k = rng.randrange(8)
+    if k == 0:
+        a, b = rng.randint(4, 8), rng.randint(4, 8)
+        x, y = rng.randint(1, a - 1), rng.randint(1, b - 1)
+        q = (f"On a grid, you walk from (0,0) to ({a},{b}) using unit steps right (+x) or up (+y). How many paths avoid "
+             f"the blocked point ({x},{y})?")
+        ans = math.comb(a + b, a) - math.comb(x + y, x) * math.comb(a - x + b - y, a - x)
+    elif k == 1:
+        mods = rng.choice([(3, 5, 7), (4, 5, 9), (5, 7, 8), (3, 7, 11), (4, 9, 11)])
+        n = rng.randint(1, mods[0] * mods[1] * mods[2] - 1)
+        q = f"Find the smallest positive integer n with n mod {mods[0]} = {n % mods[0]}, n mod {mods[1]} = {n % mods[1]} and n mod {mods[2]} = {n % mods[2]}."
+        ans = n
+    elif k == 2:
+        n, a, b, c = rng.randint(500, 5000), rng.choice([3, 4, 6]), rng.choice([5, 7, 10]), rng.choice([9, 11, 15])
+        q = f"How many integers from 1 to {n} are divisible by {a} or {b}, but not by {c}?"
+        ans = sum(1 for v in range(1, n + 1) if (v % a == 0 or v % b == 0) and v % c != 0)
+    elif k == 3:
+        e = rng.randint(30, 90)
+        q = f"What is the sum of the decimal digits of 2^{e}?"
+        ans = sum(int(d) for d in str(2 ** e))
+    elif k == 4:
+        n = rng.randint(100, 3000)
+        q = f"How many trailing zeros does {n}! have?"
+        ans, p5 = 0, 5
+        while p5 <= n:
+            ans, p5 = ans + n // p5, p5 * 5
+    elif k == 5:
+        a1, a2, c1, c2, n = rng.randint(1, 5), rng.randint(1, 5), rng.randint(1, 3), rng.randint(1, 3), rng.randint(15, 40)
+        seq = [a1, a2]
+        while len(seq) < n:
+            seq.append(c1 * seq[-1] + c2 * seq[-2])
+        q = f"A sequence has a_1 = {a1}, a_2 = {a2} and a_k = {c1}*a_(k-1) + {c2}*a_(k-2). What is a_{n} mod 1000?"
+        ans = seq[n - 1] % 1000
+    elif k == 6:
+        exps = {p: rng.randint(0, 4) for p in (2, 3, 5, 7)}
+        n = math.prod(p ** e for p, e in exps.items()) * rng.choice([1, 11, 13])
+        q = f"How many positive divisors does {n} have?"
+        ans = sum(1 for d in range(1, int(math.isqrt(n)) + 1) if n % d == 0 for _ in ((0,) if d * d == n else (0, 1)))
+    else:
+        sides, target = rng.choice([4, 6, 8]), None
+        target = rng.randint(4, 2 * sides - 2)
+        ways = sum(1 for x in range(1, sides + 1) for y in range(1, sides + 1) if x + y == target)
+        g = math.gcd(ways, sides * sides)
+        q = (f"Two fair {sides}-sided dice (faces 1..{sides}) are rolled. The probability that the sum is {target} is p/q "
+             f"in lowest terms. What is p + q?")
+        ans = ways // g + sides * sides // g
+    return Task("math_hard", f"mh{i}", [{"role": "user", "content": q + ANSWER_SUFFIX}], _num_check(ans), 1536, reference=str(ans))
+
+
+def _coding_hard(rng: random.Random, i: int, split: str) -> Task:
+    k = rng.randrange(6)
+    cases: list[tuple[Any, ...]]
+    if k == 0:
+        strict = rng.random() < 0.5
+        name = "lis_length"
+        desc = f"returns the length of the longest {'strictly increasing' if strict else 'non-decreasing'} subsequence of a list of integers"
+        cases = [([rng.randint(0, 9) for _ in range(rng.randint(0, 12))],) for _ in range(6)]
+        def lis(xs: list[int]) -> int:
+            best = [1] * len(xs)
+            for j in range(len(xs)):
+                for q in range(j):
+                    if (xs[q] < xs[j]) if strict else (xs[q] <= xs[j]):
+                        best[j] = max(best[j], best[q] + 1)
+            return max(best, default=0)
+        exp = [lis(c[0]) for c in cases]
+    elif k == 1:
+        sub = rng.randint(1, 3)
+        name = "weighted_edit_distance"
+        desc = f"returns the minimum cost to turn string a into string b where insertion and deletion cost 1 and substitution costs {sub}"
+        cases = [("".join(rng.choice("abc") for _ in range(rng.randint(0, 6))), "".join(rng.choice("abc") for _ in range(rng.randint(0, 6)))) for _ in range(6)]
+        def ed(a: str, b: str) -> int:
+            dp = list(range(len(b) + 1))
+            for x in range(1, len(a) + 1):
+                prev, dp[0] = dp[0], x
+                for y in range(1, len(b) + 1):
+                    cur = min(dp[y] + 1, dp[y - 1] + 1, prev + (0 if a[x - 1] == b[y - 1] else sub))
+                    prev, dp[y] = dp[y], cur
+            return dp[len(b)]
+        exp = [ed(*c) for c in cases]
+    elif k == 2:
+        diag = rng.random() < 0.5
+        name = "count_islands"
+        desc = f"takes a grid (list of lists of 0/1) and returns the number of connected groups of 1s, where cells connect {'in all 8 directions' if diag else 'only horizontally and vertically'}"
+        cases = []
+        for _ in range(5):
+            r, c = rng.randint(1, 5), rng.randint(1, 5)
+            cases.append(([[int(rng.random() < 0.45) for _ in range(c)] for _ in range(r)],))
+        def islands(g: list[list[int]]) -> int:
+            seen, count = set(), 0
+            steps = [(dx, dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1) if (dx, dy) != (0, 0) and (diag or dx == 0 or dy == 0)]
+            for x in range(len(g)):
+                for y in range(len(g[0])):
+                    if g[x][y] and (x, y) not in seen:
+                        count += 1
+                        stack = [(x, y)]
+                        seen.add((x, y))
+                        while stack:
+                            cx, cy = stack.pop()
+                            for dx, dy in steps:
+                                nx, ny = cx + dx, cy + dy
+                                if 0 <= nx < len(g) and 0 <= ny < len(g[0]) and g[nx][ny] and (nx, ny) not in seen:
+                                    seen.add((nx, ny))
+                                    stack.append((nx, ny))
+            return count
+        exp = [islands(c[0]) for c in cases]
+    elif k == 3:
+        coins = sorted(rng.sample([1, 2, 3, 5, 7, 10, 25], rng.randint(2, 4)))
+        name = "coin_change_ways"
+        desc = f"returns the number of distinct multisets of coins with denominations {coins} (unlimited supply) that sum to a non-negative integer amount"
+        cases = [(rng.randint(0, 40),) for _ in range(6)]
+        def ways(n: int) -> int:
+            dp = [1] + [0] * n
+            for coin in coins:
+                for v in range(coin, n + 1):
+                    dp[v] += dp[v - coin]
+            return dp[n]
+        exp = [ways(c[0]) for c in cases]
+    elif k == 4:
+        touching = rng.random() < 0.5
+        name = "max_non_overlapping"
+        desc = (f"takes a list of [start, end] integer intervals and returns the maximum number of pairwise non-overlapping intervals; "
+                f"intervals that only touch at an endpoint {'count as non-overlapping' if touching else 'count as overlapping'}")
+        cases = [([[s := rng.randint(0, 15), s + rng.randint(1, 5)] for _ in range(rng.randint(0, 7))],) for _ in range(6)]
+        def sched(iv: list[list[int]]) -> int:
+            count, last = 0, -10**9
+            for s, e in sorted(iv, key=lambda t: t[1]):
+                if (s >= last) if touching else (s > last):
+                    count, last = count + 1, e
+            return count
+        exp = [sched(c[0]) for c in cases]
+    else:
+        kth = rng.randint(1, 3)
+        name = "kth_smallest_pair_sum"
+        desc = f"takes two lists of integers and returns the {kth}-th smallest value among all sums a+b with a from the first and b from the second list (counting duplicates), or None if there are fewer than {kth} sums"
+        cases = [([rng.randint(0, 9) for _ in range(rng.randint(0, 4))], [rng.randint(0, 9) for _ in range(rng.randint(0, 4))]) for _ in range(6)]
+        def kps(a: list[int], b: list[int]) -> int | None:
+            sums = sorted(x + y for x in a for y in b)
+            return sums[kth - 1] if len(sums) >= kth else None
+        exp = [kps(*c) for c in cases]
+    q = f"Write a Python function named `{name}` that {desc}. Return only the code in one ```python block."
+    return Task("coding_hard", f"ch{i}", [{"role": "user", "content": q}],
+                lambda t, n=name, c=cases, e=exp: run_python_tests(_extract_code(t), n, c, e), 1024)
+
+
+GENERATORS["math_hard"] = _math_hard
+GENERATORS["coding_hard"] = _coding_hard
+HARD_CATEGORIES = ("math_hard", "coding_hard")
+
+
 POOL_PARTITIONED = {"factual"}  # finite pools split into exact thirds by _pool
 
 
@@ -575,7 +727,8 @@ def build_tasks(split: str, per_category: int = 30, categories: tuple[str, ...] 
     if split not in SPLIT_SEEDS:
         raise ValueError("split must be train, validation or test")
     tasks: list[Task] = []
-    for c_index, category in enumerate(categories):
+    for category in categories:
+        c_index = (CATEGORIES + HARD_CATEGORIES).index(category)  # seed by global position, not by subset order
         rng = random.Random(SPLIT_SEEDS[split] + 1000 * c_index)
         seen: set[str] = set()
         made: list[Task] = []
