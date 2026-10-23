@@ -1,0 +1,1 @@
+{"consensus": 55, "over_losses": [3.0035572820434134e-07, 1.6258595276864874e-06, 4.864650436230246e-07], "final_rel_loss": 0.001241253171505642, "solution_sha256": "4f5f7ead3d31512319de6a0791f40a0b215389fb0ee1b796dce008e6389a2ae8", "within_1pct": 38, "within_5pct": 55, "true_units": 64, "bijective": false, "max_relative_error": 1.0616646888257466}

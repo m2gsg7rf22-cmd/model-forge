@@ -1,0 +1,63 @@
+{
+ "preregistration": "experiments/evidence/swiglu-sealed/preregistration.json (commit 102d634, before teachers)",
+ "results": {
+  "t1": {
+   "consensus": 17,
+   "over_losses": [
+    7.019629414517407e-05,
+    0.00011329509584537834,
+    5.8493451457815e-05
+   ],
+   "final_rel_loss": 0.0031708800126710925,
+   "solution_sha256": "53b36b4647c99505f2d72dfbfe4f88b92e31628bbbaf9a71d41faabe62b351ee",
+   "within_1pct": 0,
+   "within_5pct": 16,
+   "true_units": 64,
+   "bijective": false,
+   "max_relative_error": 0.9927237078067634
+  },
+  "t2": {
+   "consensus": 55,
+   "over_losses": [
+    3.0035572820434134e-07,
+    1.6258595276864874e-06,
+    4.864650436230246e-07
+   ],
+   "final_rel_loss": 0.001241253171505642,
+   "solution_sha256": "4f5f7ead3d31512319de6a0791f40a0b215389fb0ee1b796dce008e6389a2ae8",
+   "within_1pct": 38,
+   "within_5pct": 55,
+   "true_units": 64,
+   "bijective": false,
+   "max_relative_error": 1.0616646888257466
+  },
+  "t3": {
+   "consensus": 52,
+   "over_losses": [
+    3.215286326378307e-06,
+    1.1427840845978518e-07,
+    2.7613392664519886e-08
+   ],
+   "final_rel_loss": 0.0025608117623937424,
+   "solution_sha256": "02f2e6750f45271e7bea323792f99e56e510c8bd9ffe8ff4c2f65c6ec51789c4",
+   "within_1pct": 31,
+   "within_5pct": 52,
+   "true_units": 64,
+   "bijective": false,
+   "max_relative_error": 1.179984157260584
+  }
+ },
+ "within_5pct": [
+  16,
+  52,
+  55
+ ],
+ "median": 52,
+ "criteria": {
+  "median_ge_48": true,
+  "every_teacher_ge_40": false
+ },
+ "verdict": "FAILED preregistered criteria (teacher t1: 16/64)",
+ "observed_cause_hypothesis": "t1 overparameterized fits under-converged (losses 6e-5..1e-4 vs 1e-6..3e-8) while a concurrent GPU evaluation contended for CPU; the wall-clock fit budget in the protocol makes results load-dependent",
+ "next_protocol_change": "budget by optimizer iterations, run without concurrent jobs; preregister as v2 before new teachers"
+}
