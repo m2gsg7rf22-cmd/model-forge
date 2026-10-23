@@ -33,8 +33,33 @@ def _append(event: dict[str, Any]) -> None:
         handle.write(json.dumps({**event, "time": time.time()}, ensure_ascii=False) + "\n")
 
 
+PYTHON_TOOL = {"type": "function", "function": {
+    "name": "run_python",
+    "description": "Execute a short self-contained Python 3 program and return what it prints. Use it for long or exact arithmetic.",
+    "parameters": {"type": "object", "properties": {"code": {"type": "string"}}, "required": ["code"]}}}
+
+
+def run_python_tool(code: str, timeout: float = 10.0) -> str:
+    """Execute model-written code in an isolated child (no site, empty env, temp cwd, time limit)."""
+    import os
+    import subprocess
+    import tempfile
+
+    with tempfile.TemporaryDirectory() as tmp:
+        path = os.path.join(tmp, "tool.py")
+        with open(path, "w", encoding="utf-8") as handle:
+            handle.write(code)
+        try:
+            proc = subprocess.run([sys.executable, "-I", "-S", path], cwd=tmp, capture_output=True, text=True,
+                                  timeout=timeout, env={"PATH": "/usr/bin:/bin", "HOME": tmp})
+        except subprocess.TimeoutExpired:
+            return "error: timeout"
+    return (proc.stdout + proc.stderr)[-2000:] or "(no output)"
+
+
 def make_chat(model: PrivateChatModel, strategy: str, system: str | None = None, budget: int = 0) -> es.ChatFn:
-    """greedy | sc<k> (self-consistency: k samples, majority vote on the final number)."""
+    """greedy | sc<k> (self-consistency, majority vote on the final number) | pytool (tool-augmented:
+    a run_python tool is offered on tool-free tasks and executed in a sandbox; labelled scaffolding)."""
 
     def chat(messages: list[dict[str, Any]], tools: list[dict[str, Any]] | None, max_tokens: int) -> str:
         msgs = ([{"role": "system", "content": system}] if system else []) + messages
@@ -50,8 +75,26 @@ def make_chat(model: PrivateChatModel, strategy: str, system: str | None = None,
         best = votes.most_common(1)[0][0]
         return next(r for r in replies if _last_number(r) == best)
 
+    def pytool_chat(messages: list[dict[str, Any]], tools: list[dict[str, Any]] | None, max_tokens: int) -> str:
+        if tools:  # tasks with their own tools/environment keep them unchanged
+            return chat(messages, tools, max_tokens)
+        msgs = ([{"role": "system", "content": system}] if system else []) + list(messages)
+        reply = ""
+        for _ in range(4):
+            result = model.chat(msgs, max_tokens=max(max_tokens, budget), tools=[PYTHON_TOOL])
+            reply = str(result["reply"])
+            calls = [c for c in result["tool_calls"] if c["name"] == "run_python"]
+            if not calls:
+                return reply
+            msgs.append({"role": "assistant", "content": reply})
+            for call in calls[:2]:
+                msgs.append({"role": "tool", "content": run_python_tool(str(call["arguments"].get("code", "")))})
+        return reply
+
+    if strategy == "pytool":
+        return pytool_chat
     if strategy != "greedy" and not (strategy.startswith("sc") and strategy[2:].isdigit()):
-        raise ValueError("strategy must be greedy or sc<k>")
+        raise ValueError("strategy must be greedy, sc<k> or pytool")
     return chat
 
 

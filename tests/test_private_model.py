@@ -214,3 +214,11 @@ def test_default_model_marker(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -
     assert pr.default_model() == "b-model" and pr.list_private_models()[0]["name"] == "b-model"
     with pytest.raises(ValueError):
         pr.set_default_model("missing")
+
+
+def test_python_tool_sandbox() -> None:
+    from modelforge.improvement import run_python_tool
+
+    assert run_python_tool("print(sum(range(10)))").strip() == "45"
+    assert "timeout" in run_python_tool("while True: pass", timeout=1)
+    assert "Error" in run_python_tool("raise ValueError('x')")
