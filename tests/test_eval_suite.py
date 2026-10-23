@@ -50,3 +50,10 @@ def test_agentic_tool_loop_and_compare() -> None:
 def test_code_checker_accepts_correct_reference_solution() -> None:
     task = Task("coding", "x", [{"role": "user", "content": "x"}], lambda t: True)
     assert task.check("anything")
+
+
+def test_empty_category_excluded_from_mean() -> None:
+    r = es.evaluate(lambda m, t, x: "x", "validation", 60, ("factual",), start_index=59)
+    assert r["empty_categories"] in ([], ["factual"])
+    if r["empty_categories"]:
+        assert r["scores"] == {} and r["mean"] == 0.0

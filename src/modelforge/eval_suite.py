@@ -650,9 +650,11 @@ def evaluate(chat: ChatFn, split: str = "validation", per_category: int = 30,
         per[c] = {"score": k / n if n else 0.0, "passed": k, "n": n, "ci95": wilson(k, n)}
     total_k, total_n = sum(r["passed"] for r in rows), len(rows)
     return {"suite_version": SUITE_VERSION, "split": split, "per_category": per_category, "categories": per,
-            "scores": {c: v["score"] for c, v in per.items()}, "mean": sum(v["score"] for v in per.values()) / len(per),
+            "scores": {c: v["score"] for c, v in per.items() if v["n"]},
+            "mean": sum(v["score"] for v in per.values() if v["n"]) / max(1, sum(1 for v in per.values() if v["n"])),
             "pooled": {"passed": total_k, "n": total_n, "ci95": wilson(total_k, total_n)},
-            "meets_target": {c: per[c]["score"] >= TARGET_THRESHOLDS[c] for c in categories},
+            "meets_target": {c: per[c]["score"] >= TARGET_THRESHOLDS[c] for c in categories if per[c]["n"]},
+            "empty_categories": [c for c in categories if not per[c]["n"]],
             "target_profile": "provisional ModelForge thresholds on suite v2; not a measured GPT-5.6 Luna comparison",
             "seconds": time.perf_counter() - start, "rows": rows}
 

@@ -104,6 +104,9 @@ def leaderboard(split: str = "validation") -> list[dict[str, Any]]:
     rows = []
     for path in sorted((home() / "runs").glob(f"*--{split}.json")):
         r = json.loads(path.read_text(encoding="utf-8"))
+        cats = {c: v for c, v in r["categories"].items() if v["n"]}  # empty categories never count as zero
+        r["mean"] = sum(v["score"] for v in cats.values()) / max(1, len(cats))
+        r["scores"] = {c: v["score"] for c, v in cats.items()}
         rows.append({"name": r["name"], "mean": round(r["mean"], 4), "pooled_ci95": [round(x, 3) for x in r["pooled"]["ci95"]],
                      "n": r["pooled"]["n"], "strategy": r["strategy"], "adapter": r["adapter"],
                      "tps": round(r.get("generation_tps") or 0, 1), "peak_gb": round(r.get("peak_memory_gb") or 0, 2),
