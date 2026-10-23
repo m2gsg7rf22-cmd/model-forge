@@ -66,7 +66,7 @@ def test_hard_tiers_disjoint_and_do_not_shift_existing_items() -> None:
     assert base == [t.messages for t in full if t.category in es.CATEGORIES]
     val = {json.dumps(t.messages) for t in full if t.category in es.HARD_CATEGORIES}
     test = {json.dumps(t.messages) for t in es.build_tasks("test", 10, es.HARD_CATEGORIES)}
-    assert len(val) == 20 and not (val & test)
+    assert len(val) == 10 * len(es.HARD_CATEGORIES) and not (val & test)
     for t in full:
         if t.category == "math_hard":
             assert t.check(f"Answer: {t.reference}") and not t.check("unsure")

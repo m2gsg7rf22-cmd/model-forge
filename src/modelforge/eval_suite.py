@@ -37,7 +37,7 @@ CATEGORIES = (
 )
 SPLIT_SEEDS = {"train": 70_000_000, "validation": 71_000_000, "test": 72_000_000}
 # Provisional frontier-class profile on THIS suite; not a measured GPT-5.6 Luna score.
-TARGET_THRESHOLDS = {c: 0.90 for c in CATEGORIES + ("math_hard", "coding_hard")}
+TARGET_THRESHOLDS = {c: 0.90 for c in CATEGORIES + ("math_hard", "coding_hard", "coding_expert")}
 
 # ---------------------------------------------------------------- math
 
@@ -708,7 +708,11 @@ def _coding_hard(rng: random.Random, i: int, split: str) -> Task:
 
 GENERATORS["math_hard"] = _math_hard
 GENERATORS["coding_hard"] = _coding_hard
-HARD_CATEGORIES = ("math_hard", "coding_hard")
+
+from .coding_expert import coding_expert as _coding_expert  # noqa: E402
+
+GENERATORS["coding_expert"] = _coding_expert
+HARD_CATEGORIES = ("math_hard", "coding_hard", "coding_expert")
 
 
 POOL_PARTITIONED = {"factual"}  # finite pools split into exact thirds by _pool
