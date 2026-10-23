@@ -1,0 +1,12 @@
+{
+ "protocol": "sealed truth-free SwiGLU gate identification v1",
+ "frozen_before_any_sealed_teacher_was_generated": "2026-10-23",
+ "teachers": "3 fresh project-owned HF Llama teachers (hidden 32, vocab 16, 2 layers, 4Q/2KV, SwiGLU 64, norm gains 1+0.3N), initializer_range 0.2, seeds from secrets.randbits, stored only in private storage",
+ "observations_given_to_solver": "block-0 MLP normalized input z = rmsnorm_unit(x + a) and output m on 512x8 public random token sequences (seed 91); nothing else",
+ "solver": "modelforge.swiglu_identification.identify(width=64, over_width=192, seeds=(11,23,37), seconds=600), separate process, no teacher access",
+ "verifier": "separate process after solver output is hashed; loads teacher, compares norm-absorbed gate rows",
+ "primary_metric": "number of true gate rows (of 64) matched within 5% relative distance",
+ "success_criteria": {"median_within_5pct_at_least": 48, "every_teacher_within_5pct_at_least": 40},
+ "secondary": ["within_1pct", "bijective", "final relative loss"],
+ "no_retries_no_threshold_changes": true
+}
