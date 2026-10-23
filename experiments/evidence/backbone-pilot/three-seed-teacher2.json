@@ -1,0 +1,1 @@
+{"teacher_seed": 2, "seeds": 3, "consensus": 56, "over_losses": [4.082088823105154e-06, 3.289408494549299e-07, 4.04917658116195e-08], "final_rel_loss": 0.003297358136739243, "within_1pct": 29, "within_5pct": 53, "true_units": 64, "bijective": false, "max_relative_error": 1.0003095773953612}
