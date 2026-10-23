@@ -185,7 +185,7 @@ class PrivateChatModel:
                stop: Callable[[], bool] | None = None) -> Iterator[dict[str, Any]]:
         import queue
 
-        if not 1 <= max_tokens <= 8192 or not 0 <= temperature <= 2 or not 0 < top_p <= 1:
+        if not 1 <= max_tokens <= 32768 or not 0 <= temperature <= 2 or not 0 < top_p <= 1:
             raise ValueError("Invalid generation settings")
         text = self.prompt(messages, tools)
         chunks: queue.Queue[Any] = queue.Queue()
@@ -354,7 +354,7 @@ def serve_api(host: str = "127.0.0.1", port: int = 8765) -> None:
                     raise ValueError("Request body too large or empty")
                 req = json.loads(self.rfile.read(length))
                 result = MANAGER.chat(openai_messages(req["messages"]), model=req.get("model"),
-                                      max_tokens=int(req.get("max_tokens", 512)),
+                                      max_tokens=int(req.get("max_tokens") or 4096),
                                       temperature=float(req.get("temperature") or 0.0), tools=req.get("tools") or None)
             except Exception as exc:  # reported to the client, server stays up
                 self._send(400, {"error": str(exc)})
