@@ -222,3 +222,15 @@ def test_python_tool_sandbox() -> None:
     assert run_python_tool("print(sum(range(10)))").strip() == "45"
     assert "timeout" in run_python_tool("while True: pass", timeout=1)
     assert "Error" in run_python_tool("raise ValueError('x')")
+
+
+def test_openai_client_message_normalization() -> None:
+    msgs = pr.openai_messages([
+        {"role": "user", "content": [{"type": "text", "text": "hi"}]},
+        {"role": "assistant", "content": None, "tool_calls": [{"id": "c1", "type": "function",
+                                                               "function": {"name": "f", "arguments": '{"a": 1}'}}]},
+        {"role": "tool", "tool_call_id": "c1", "content": "2"}])
+    assert msgs[0]["content"] == "hi" and msgs[1]["content"] == ""
+    assert msgs[1]["tool_calls"][0]["function"]["arguments"] == {"a": 1}
+    out = pr.openai_tool_calls([{"name": "f", "arguments": {"a": 1}}])
+    assert out[0]["type"] == "function" and json.loads(out[0]["function"]["arguments"]) == {"a": 1} and out[0]["id"]

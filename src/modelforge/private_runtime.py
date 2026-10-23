@@ -10,8 +10,10 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import threading
 import time
+import uuid
 from pathlib import Path
 from typing import Any, Callable, Iterator
 
@@ -287,6 +289,37 @@ class PrivateModelManager:
 MANAGER = PrivateModelManager()
 
 
+def openai_messages(messages: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Normalize OpenAI-client messages (null/list content, JSON-string tool arguments) for chat templates."""
+    out = []
+    for msg in messages:
+        m = dict(msg)
+        content = m.get("content")
+        if isinstance(content, list):
+            content = "\n".join(str(part.get("text", "")) for part in content if isinstance(part, dict))
+        m["content"] = content or ""
+        if m.get("tool_calls"):
+            calls = []
+            for call in m["tool_calls"]:
+                fn = dict(call.get("function", call))
+                if isinstance(fn.get("arguments"), str):
+                    try:
+                        fn["arguments"] = json.loads(fn["arguments"] or "{}")
+                    except json.JSONDecodeError:
+                        fn["arguments"] = {}
+                calls.append({"type": "function", "function": fn})
+            m["tool_calls"] = calls
+        out.append(m)
+    return out
+
+
+def openai_tool_calls(calls: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Parsed <tool_call> blocks in OpenAI response format (string arguments, call ids)."""
+    return [{"id": f"call_{i}_{uuid.uuid4().hex[:8]}", "type": "function",
+             "function": {"name": c["name"], "arguments": json.dumps(c.get("arguments", {}), ensure_ascii=False)}}
+            for i, c in enumerate(calls)]
+
+
 def serve_api(host: str = "127.0.0.1", port: int = 8765) -> None:
     """Minimal local OpenAI-style /v1/chat/completions endpoint (loopback only)."""
     from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -320,16 +353,20 @@ def serve_api(host: str = "127.0.0.1", port: int = 8765) -> None:
                 if not 0 < length <= 1_000_000:
                     raise ValueError("Request body too large or empty")
                 req = json.loads(self.rfile.read(length))
-                result = MANAGER.chat(req["messages"], model=req.get("model"),
+                result = MANAGER.chat(openai_messages(req["messages"]), model=req.get("model"),
                                       max_tokens=int(req.get("max_tokens", 512)),
-                                      temperature=float(req.get("temperature", 0.0)), tools=req.get("tools"))
+                                      temperature=float(req.get("temperature") or 0.0), tools=req.get("tools") or None)
             except Exception as exc:  # reported to the client, server stays up
                 self._send(400, {"error": str(exc)})
                 return
+            calls = openai_tool_calls(result["tool_calls"])
+            message: dict[str, Any] = {"role": "assistant", "content": result["reply"]}
+            if calls:
+                message["tool_calls"] = calls
+                message["content"] = re.sub(r"<tool_call>.*?(</tool_call>|$)", "", result["reply"], flags=re.S).strip()
             self._send(200, {"object": "chat.completion", "model": str(MANAGER.current.path.name if MANAGER.current else ""),
-                             "choices": [{"index": 0, "finish_reason": result.get("finish_reason"),
-                                          "message": {"role": "assistant", "content": result["reply"],
-                                                      "tool_calls": result["tool_calls"]}}],
+                             "choices": [{"index": 0, "finish_reason": "tool_calls" if calls else result.get("finish_reason"),
+                                          "message": message}],
                              "usage": {"prompt_tokens": result.get("prompt_tokens"),
                                        "completion_tokens": result.get("generation_tokens")},
                              "metrics": {"generation_tps": result.get("generation_tps"),
