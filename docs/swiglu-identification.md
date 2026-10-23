@@ -14,7 +14,8 @@ U and D are identified only as rank-one products D[:,u] U[u]; units are identifi
 4. Freezing consensus gates and refitting at exact width: teacher 1 reached 63/64 gates within 5% with a bijective
    match; the unrecovered unit carried 0.64% of unit output energy. Teacher 2 reached only 41/64.
 5. Three seeds instead of two raised teacher 2 from 41/64 to 53/64 within 5%.
-6. Duplicate replacement and unfrozen polish did not improve over the frozen refit.
+6. Teacher 3 with three seeds: 52/64 within 5%. Typical identification across three teachers ≈ 80%.
+7. Duplicate replacement and unfrozen polish did not improve over the frozen refit.
 
 ## Interpretation
 
