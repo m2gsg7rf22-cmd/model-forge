@@ -99,3 +99,29 @@ Copy or build a private bundle into `~/.local/share/modelforge-private/models/<n
 ```bash
 .venv/bin/modelforge gui
 ```
+
+## Improvement engine and suite v2 (2026-10-23)
+
+`eval_suite` (v2) replaces the saturated v1 suite for decisions: 12 categories (+ appended `math_hard`,
+`coding_hard` tiers), ≥29 items per category per split, SHA-256 hash partition of prompts into
+train/validation/test, Wilson intervals and paired exact sign tests. `improvement` keeps immutable runs, a private
+ledger and a leaderboard in `MODELFORGE_PRIVATE_HOME/improvement/`:
+
+```bash
+python -m modelforge.improvement run <name> <model> [--adapter A] [--strategy greedy|sc5] [--budget N] [--split validation|test] [--n 30] [--start 0]
+```
+
+```bash
+python -m modelforge.improvement decide <baseline[+ext]> <candidate[+ext]>
+```
+
+```bash
+modelforge private leaderboard
+```
+
+Retain rule: paired improvement with p < 0.05 and no category losing ≥3 more items than it gains; then a single
+sealed test-split confirmation before promotion. Training loss is never used as evidence.
+
+Measured so far (validation, suite v2): v1 0.906 (n=359); Qwen3-4B-Thinking-2507 rejected (no gain on weak
+categories, ~30× latency); v4 targeted SFT 0.919, merged validation 20 wins / 8 losses (p=0.036) — sealed test
+confirmation pending at the time of writing.
