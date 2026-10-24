@@ -1,0 +1,21 @@
+{
+  "source_archive_local_only": "modelforge_research-0.2.0.tar.gz",
+  "sha256": "a06d2d0cc087a85a82dab73fd1fee1800b95af1dd41db158446544575023181d",
+  "verified_resources": [
+    "skills/model-forge/SKILL.md",
+    "skills/model-forge/references/antipodal.md",
+    "skills/model-forge/references/reconstruction.md",
+    "skills/model-forge/references/research.md",
+    "skills/model-forge/agents/openai.yaml",
+    "src/modelforge/antipodal.py",
+    "src/modelforge/antipodal_io.py",
+    "experiments/preregistrations/antipodal-even-v1.json",
+    ".modelforge/research_state.json",
+    "experiments/ledger.jsonl",
+    "experiments/evidence/antipodal-even-v1/junit-linux.xml",
+    "experiments/evidence/antipodal-even-v1/junit-macos.xml",
+    "experiments/evidence/antipodal-even-v1/junit-windows.xml"
+  ],
+  "private_weight_files_found": [],
+  "native_packages_rebuilt": false
+}

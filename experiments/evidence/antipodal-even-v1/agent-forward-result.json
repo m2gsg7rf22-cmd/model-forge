@@ -1,0 +1,77 @@
+{
+  "actions": [
+    {
+      "action": "Read skill and reconstruction/antipodal references",
+      "outcome": "Selected supplied isolated GLU observation route; no teacher/internal data used"
+    },
+    {
+      "action": "CLI create",
+      "outcome": "project 77fd66982578496eaee600bcdd5f9ff9"
+    },
+    {
+      "action": "CLI local_runtime_status",
+      "outcome": "ok; optional engines absent; NumPy route remained usable"
+    },
+    {
+      "action": "CLI reconstruct_antipodal with supplied observations_path",
+      "outcome": "ok; persisted public observations, quadratic-even.json, report.json"
+    },
+    {
+      "action": "CLI findings",
+      "outcome": "reconstruction recorded"
+    },
+    {
+      "action": "CLI export",
+      "outcome": "reconstruction.zip created; all five member names inspected, four JSON documents parsed"
+    },
+    {
+      "action": "Standalone run_even.py reload/evaluate and verify.py",
+      "outcome": {
+        "calibration_pairs": 528,
+        "calibration_max_abs_error": 1.3877787807814457e-17,
+        "evenness_probe_max_abs_error": 0.0,
+        "verification_seconds": 9.90849483400234,
+        "verification_python_peak_bytes": 2052262,
+        "independent_heldout_verified": false,
+        "numeric_certificate": false,
+        "archive_members": [
+          "research.json",
+          "antipodal-reconstruction/065f549ad1d8402ba37970a772e76e0d/report.json",
+          "antipodal-reconstruction/065f549ad1d8402ba37970a772e76e0d/quadratic-even.json",
+          "antipodal-reconstruction/065f549ad1d8402ba37970a772e76e0d/observations.json",
+          "NOTICE.txt"
+        ]
+      }
+    }
+  ],
+  "scope": "Even quadratic component only, conditional on declared isolated bias-free SwiGLU assumptions",
+  "report": {
+    "method": "canonical antipodal quadratic reconstruction",
+    "family_declared": "bias_free_swiglu",
+    "dimension": 32,
+    "outputs": 32,
+    "signed_observation_rows": 1056,
+    "observations_sha256": "878f0089af3dd043297dd9fbba00f73a2c21e9c501570f448f2169c88d3442c7",
+    "quadratic_artifact_sha256": "d0fb575052d34c85790dd39f27194863c7494de0530cae597812875d25da27c7",
+    "source_sha256": {
+      "antipodal_io.py": "9e9a2e3d101e4168b859651f52d5b18d1927684d40bd571c9e51a47899eae84f",
+      "antipodal.py": "a27938c25397ee3013a94a23310ed44ec15c0370cd26f59e5f4a830c4abf2d43"
+    },
+    "scope": "Even component E(x)=(f(x)+f(-x))/2 of a declared isolated bias-free GLU; assumptions are not certified by input metadata",
+    "full_glu_recovered": false,
+    "original_weights_recovered": false,
+    "heldout_verified": false,
+    "observation_precision": "unspecified; float64 JSON decoding is not a source-precision certificate",
+    "numeric_certificate": false,
+    "remote_calls": 0,
+    "reference": "https://arxiv.org/abs/2608.06631"
+  },
+  "limitations": [
+    "No independent heldout paired queries available; heldout_verified remains false",
+    "Full GLU, odd component and original parameters not reconstructed",
+    "Input metadata does not certify family, bias-free implementation, canonical probe provenance or source numeric precision",
+    "Verification timing and traced Python memory only; no reconstruction resource accounting beyond returned report",
+    "No complete model reconstruction route supported from these observations alone"
+  ],
+  "source_scope": "Pre-format pilot source hashes are retained verbatim; sealed report pins the final formatted source."
+}

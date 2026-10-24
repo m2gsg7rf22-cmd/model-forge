@@ -1,0 +1,12 @@
+{
+  "condition": "gate_bias_0.7_misspecification_control",
+  "sources": {
+    "antipodal_research.py": "b65e763b70ff5e2f6a176e823f6db4fa94507758b26de355c7e95445e02990a8",
+    "antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "antipodal_io.py": "5d5685779bec82aeee59d808628cce3072dcac3897684b5fa981fcce944c4191"
+  },
+  "observations_sha256": "a3d56aa06fb2b11f20a5dbe4c266f9627ffe721ec59a8a8b51a163fa7305aeb7",
+  "registration_sha256": "b54173a8b47a4a9082596bc597b179977c420302284e695a68de70ef00dfdab7",
+  "teacher_sha256": "5691824d92f31d190aefaee18e4c6f80ea11b47226a3b22d8d330dd4949d9723",
+  "heldout_sha256": "ad778f0179772f485183d7d667a882326df72ad82c0575a9e8073911b138678c"
+}

@@ -1,0 +1,21 @@
+{
+  "method": "canonical antipodal quadratic reconstruction",
+  "family_declared": "bias_free_swiglu",
+  "dimension": 32,
+  "outputs": 32,
+  "signed_observation_rows": 1056,
+  "observations_sha256": "b0c589006aba26a676c2d3e8b0f54aa44e0353d40c0b64c0d089caebd3e26c3c",
+  "quadratic_artifact_sha256": "e682217884a5c65e9e68495bcb9086491413e43f91ad1c9ce184b4d70cf5fac6",
+  "source_sha256": {
+    "antipodal_io.py": "5d5685779bec82aeee59d808628cce3072dcac3897684b5fa981fcce944c4191",
+    "antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "scope": "Even component E(x)=(f(x)+f(-x))/2 of a declared isolated bias-free GLU; assumptions are not certified by input metadata",
+  "full_glu_recovered": false,
+  "original_weights_recovered": false,
+  "heldout_verified": false,
+  "observation_precision": "unspecified; float64 JSON decoding is not a source-precision certificate",
+  "numeric_certificate": false,
+  "remote_calls": 0,
+  "reference": "https://arxiv.org/abs/2608.06631"
+}

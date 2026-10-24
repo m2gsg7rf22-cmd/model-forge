@@ -1,0 +1,14 @@
+{
+  "bias_free": {
+    "public_commitments_match": true,
+    "coefficient_whitelist_error": 0.0,
+    "repeat_rejected_before_any_read": true,
+    "reported_criteria": true
+  },
+  "gate_bias_0.7_misspecification_control": {
+    "public_commitments_match": true,
+    "coefficient_whitelist_error": 0.0,
+    "repeat_rejected_before_any_read": true,
+    "reported_criteria": false
+  }
+}

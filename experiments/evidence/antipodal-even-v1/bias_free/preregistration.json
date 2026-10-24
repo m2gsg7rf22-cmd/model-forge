@@ -1,0 +1,26 @@
+{
+  "protocol": "owned-antipodal-even-v1",
+  "input_dimension": 32,
+  "hidden_width": 64,
+  "output_dimension": 32,
+  "activation": "silu",
+  "conditions": [
+    "bias_free",
+    "gate_bias_0.7_misspecification_control"
+  ],
+  "teacher_scale": 0.2,
+  "calibration_probes": "e_i and e_i+e_j, both signs",
+  "calibration_evaluations_per_teacher": 1056,
+  "heldout_rows": 64,
+  "heldout_distribution": "private independent standard normal vectors",
+  "max_abs_even_heldout_error": 1e-10,
+  "max_abs_quadratic_coefficient_error_bias_free": 1e-10,
+  "validation_for_selection": false,
+  "single_sealed_verifier": true,
+  "original_weights_claim": false,
+  "full_glu_claim": false,
+  "max_worker_rss_mib": 512,
+  "max_total_seconds": 120,
+  "external_calls": 0,
+  "private_final_model_gate": "closed"
+}

@@ -1,0 +1,20 @@
+{
+  "condition": "bias_free",
+  "max_abs_even_heldout_error": 2.3314683517128287e-15,
+  "coefficient_error_vs_bias_free_formula": 7.632783294297951e-17,
+  "even_component_criteria_met": true,
+  "max_abs_error_if_student_mislabeled_full_glu": 3.8982703929648945,
+  "full_glu_recovered": false,
+  "original_weights_recovered": false,
+  "heldout_rows": 64,
+  "calibration_evaluations": 1056,
+  "sealed_test_evaluations": 128,
+  "manifest_sha256": "b9c0aaa0e9314139ea99bdc26eba85ed6084410eadf1e3d340165a57c2ed0e35",
+  "solution_sha256": "e682217884a5c65e9e68495bcb9086491413e43f91ad1c9ce184b4d70cf5fac6",
+  "source_sha256": {
+    "antipodal_research.py": "b65e763b70ff5e2f6a176e823f6db4fa94507758b26de355c7e95445e02990a8",
+    "antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "antipodal_io.py": "5d5685779bec82aeee59d808628cce3072dcac3897684b5fa981fcce944c4191"
+  },
+  "private_model_gate": "closed"
+}

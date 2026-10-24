@@ -1,0 +1,35 @@
+{
+  "seed": 8632749,
+  "dimension": 32,
+  "width": 64,
+  "outputs": 32,
+  "signed_rows": 1056,
+  "fresh_heldout_rows": 137,
+  "max_q_error": 4.85722573273506e-17,
+  "max_even_error": 3.1086244689504383e-15,
+  "max_full_teacher_error": 1.336606068330398,
+  "conditional_signs_correct": 64,
+  "full_teacher_counterexample_max_difference": 0.40486684824010455,
+  "worker_flags": {
+    "ok": true,
+    "method": "canonical antipodal quadratic reconstruction",
+    "family_declared": "bias_free_swiglu",
+    "dimension": 32,
+    "outputs": 32,
+    "signed_observation_rows": 1056,
+    "observations_sha256": "878f0089af3dd043297dd9fbba00f73a2c21e9c501570f448f2169c88d3442c7",
+    "quadratic_artifact_sha256": "d0fb575052d34c85790dd39f27194863c7494de0530cae597812875d25da27c7",
+    "source_sha256": {
+      "antipodal_io.py": "6eb80f33e4e219f8104aab180e24b62aea27f60ad011d964a9c822c49a867777",
+      "antipodal.py": "a27938c25397ee3013a94a23310ed44ec15c0370cd26f59e5f4a830c4abf2d43"
+    },
+    "scope": "Even component E(x)=(f(x)+f(-x))/2 of a declared isolated bias-free GLU; assumptions are not certified by input metadata",
+    "full_glu_recovered": false,
+    "original_weights_recovered": false,
+    "heldout_verified": false,
+    "remote_calls": 0,
+    "reference": "https://arxiv.org/abs/2608.06631"
+  },
+  "elapsed_seconds": 0.07437137499800883,
+  "peak_rss_bytes": 74416128
+}

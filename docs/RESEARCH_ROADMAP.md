@@ -27,3 +27,7 @@ Priority queue:
 9. Private final model: BLOCKED. Target 'Luna 5.6' has no unambiguous provider/model ID/evaluation reference yet. No private weights or implementation will enter public Git. No benchmark parity or frontier label is justified. Gate cannot open on a passing software suite or a signed report alone; underlying scientific scope must actually be achieved and independently checked.
 
 Scientific outcomes must be classified ENGINEERING COMPLETE / SCIENTIFICALLY PROVEN (under explicit assumptions) / RESEARCH IN PROGRESS / UNRESOLVED. Last two are not failures to be hidden. No scheduling or execution outside an active session is implied by this graph.
+
+## 2026-10-24 main-platform update
+
+The isolated continuous-query antipodal **even component** route is implemented and sealed-tested, with an explicit failing bias control and independent protocol review. See docs/antipodal-reconstruction.md. This stronger observation access is not implied by O3 data or final text/logits. Full gate/coupling discovery, odd component, attention composition and arbitrary-model recovery remain open. Preserve the sealed SwiGLU v1 failure; preregister iteration-budget v2 before fresh teachers. Historical private-model work does not open the final prerequisite.

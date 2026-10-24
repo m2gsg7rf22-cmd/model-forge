@@ -1,0 +1,39 @@
+{
+  "run_id": 40104672110,
+  "url": "https://github.com/m2gsg7rf22-cmd/model-forge/actions/runs/40104672110",
+  "source_commit": "6417880e5e7724bf94e3d736a606832ace74883a",
+  "conclusion": "success",
+  "platforms": [
+    {
+      "platform": "Linux",
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 2.007
+    },
+    {
+      "platform": "Windows",
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 2.94
+    },
+    {
+      "platform": "macOS",
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 2.323
+    }
+  ],
+  "checks": [
+    "26 algebra/artifact/worker/MCP tests per platform",
+    "mypy: six changed backend modules, follow-imports=silent",
+    "ruff: new backend modules and focused tests"
+  ],
+  "native_builds": false,
+  "full_suite_claimed": false
+}

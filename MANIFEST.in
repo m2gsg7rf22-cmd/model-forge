@@ -12,6 +12,6 @@ include AGENTS.md .gitattributes
 include .modelforge/mission_manifest.json .modelforge/research_state.json
 include experiments/ledger.jsonl
 recursive-include scripts *.py
-recursive-include experiments/evidence *.json *.md
+recursive-include experiments/evidence *.json *.md *.xml
 
 recursive-include experiments/preregistrations *.json

@@ -1,0 +1,53 @@
+{
+  "protocol": "owned-antipodal-even-v1",
+  "preregistration_sha256": "8add268774e99d0e9171a532be66b3fee7a1d20397716f0923eff5ebc0482776",
+  "results": [
+    {
+      "condition": "bias_free",
+      "max_abs_even_heldout_error": 2.3314683517128287e-15,
+      "coefficient_error_vs_bias_free_formula": 7.632783294297951e-17,
+      "even_component_criteria_met": true,
+      "max_abs_error_if_student_mislabeled_full_glu": 3.8982703929648945,
+      "full_glu_recovered": false,
+      "original_weights_recovered": false,
+      "heldout_rows": 64,
+      "calibration_evaluations": 1056,
+      "sealed_test_evaluations": 128,
+      "manifest_sha256": "b9c0aaa0e9314139ea99bdc26eba85ed6084410eadf1e3d340165a57c2ed0e35",
+      "solution_sha256": "e682217884a5c65e9e68495bcb9086491413e43f91ad1c9ce184b4d70cf5fac6",
+      "source_sha256": {
+        "antipodal_research.py": "b65e763b70ff5e2f6a176e823f6db4fa94507758b26de355c7e95445e02990a8",
+        "antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+        "antipodal_io.py": "5d5685779bec82aeee59d808628cce3072dcac3897684b5fa981fcce944c4191"
+      },
+      "private_model_gate": "closed",
+      "process_monitor_scope": "process_and_children",
+      "learner_process_monitor_scope": "process_and_children"
+    },
+    {
+      "condition": "gate_bias_0.7_misspecification_control",
+      "max_abs_even_heldout_error": 1.6174222522202282,
+      "coefficient_error_vs_bias_free_formula": 0.07657613467564302,
+      "even_component_criteria_met": false,
+      "max_abs_error_if_student_mislabeled_full_glu": 5.873652701124833,
+      "full_glu_recovered": false,
+      "original_weights_recovered": false,
+      "heldout_rows": 64,
+      "calibration_evaluations": 1056,
+      "sealed_test_evaluations": 128,
+      "manifest_sha256": "4580a74dcacbd2f6588d3a52ef814cbd9aad0d3a0b6d9d0b7934df4749441b49",
+      "solution_sha256": "7f212a69bb6045a26c0b93f3a2536ff035adf390ebd0930c1de6cf23c21f0fb8",
+      "source_sha256": {
+        "antipodal_research.py": "b65e763b70ff5e2f6a176e823f6db4fa94507758b26de355c7e95445e02990a8",
+        "antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+        "antipodal_io.py": "5d5685779bec82aeee59d808628cce3072dcac3897684b5fa981fcce944c4191"
+      },
+      "private_model_gate": "closed",
+      "process_monitor_scope": "process_and_children",
+      "learner_process_monitor_scope": "process_and_children"
+    }
+  ],
+  "elapsed_seconds": 0.797235666992492,
+  "external_calls": 0,
+  "scope": "Even component only under isolated paired-query access; misspecification control deliberately violates the bias-free assumption"
+}

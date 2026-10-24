@@ -1,0 +1,8 @@
+{
+  "input_dimension_65": "dimension must be an integer in 1..64",
+  "outputs_65": "output count must be in 1..64",
+  "design_cap": "orientation design exceeds the resource element limit",
+  "misdeclared_nonquadratic_heldout_error": 12.0,
+  "unauthorized_metadata": "Explicit authorization for these observations is required",
+  "extra_weights_field": "Observation schema requires exactly the documented public fields"
+}

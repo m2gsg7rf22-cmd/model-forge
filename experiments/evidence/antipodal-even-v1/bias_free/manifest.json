@@ -1,0 +1,12 @@
+{
+  "condition": "bias_free",
+  "sources": {
+    "antipodal_research.py": "b65e763b70ff5e2f6a176e823f6db4fa94507758b26de355c7e95445e02990a8",
+    "antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "antipodal_io.py": "5d5685779bec82aeee59d808628cce3072dcac3897684b5fa981fcce944c4191"
+  },
+  "observations_sha256": "b0c589006aba26a676c2d3e8b0f54aa44e0353d40c0b64c0d089caebd3e26c3c",
+  "registration_sha256": "b54173a8b47a4a9082596bc597b179977c420302284e695a68de70ef00dfdab7",
+  "teacher_sha256": "36440557885d0058f603c8623153f34d07a5c2e9914b51c04ea640b98bbe4d2b",
+  "heldout_sha256": "fe6106e3fda5d5357d9fe6cb27e3de46b56649e5422b7e7fd8c55e2993923d27"
+}
