@@ -3,3 +3,9 @@ docs/MASTER_MISSION.md -text
 docs/FINAL_PRIVATE_MODEL_MISSION.md -text
 .modelforge/*.json text eol=lf
 experiments/ledger.jsonl text eol=lf
+# Frozen scientific commitments are raw-byte hashes, including on Windows.
+experiments/preregistrations/*.json -text
+experiments/evidence/isolated-glu-runner/*.json -text
+examples/isolated_glu/*.py -text
+src/modelforge/execution.py -text
+src/modelforge/antipodal.py -text

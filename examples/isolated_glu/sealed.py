@@ -95,7 +95,11 @@ def require_readiness(path: Path) -> None:
         raise ValueError("Runner readiness review commitment mismatch")
     if read(review).get("status") != "approved_for_fresh_teacher_generation":
         raise ValueError("Runner readiness review not approved")
-    for p in [*sources(), str(path.relative_to(ROOT)), str(review.relative_to(ROOT))]:
+    for p in [
+        *sources(),
+        path.relative_to(ROOT).as_posix(),
+        review.relative_to(ROOT).as_posix(),
+    ]:
         committed = subprocess.check_output(
             ["git", "show", "HEAD:" + p], cwd=ROOT, timeout=10
         )
