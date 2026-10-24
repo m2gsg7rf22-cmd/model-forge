@@ -1,0 +1,135 @@
+{
+  "protocol": "owned-isolated-swiglu-fullmap-v2",
+  "status": "Preregistered transport repair after v1 engineering failure; fresh teachers only after new source review/readiness commit",
+  "prior_development_source": "eeb4b4f8a6827927c5642632c5e6577b3806e2ed",
+  "solver_source_sha256": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11"
+  },
+  "hypothesis": "A fixed query-only Hessian candidate search with public-residual tangent refinement and multiscale coupling approximation generalizes to fresh owned bias-free SwiGLU teachers under isolated continuous-query access.",
+  "scope": "Full isolated block approximation and identifiable gate/rank-one coupling diagnostics, not whole Transformer, final-text API extraction, original U/D factor values or universal reconstruction.",
+  "teacher_count": 3,
+  "teacher_weight_scales": [
+    0.1,
+    0.2,
+    0.4
+  ],
+  "input_dimension": 32,
+  "hidden_width": 64,
+  "output_dimension": 32,
+  "teacher_distribution": "Independent Gaussian G[64,32],U[64,32],D[32,64], each std=specified scale. Fresh secret seed per teacher from OS entropy; no rejection/resampling based on difficulty.",
+  "teacher_forward": "float64; z=x@G.T; (z*0.5*(1+tanh(z/2))*(x@U.T))@D.T, no biases",
+  "authorized_access": "Chosen continuous block inputs and complete float64 vector forward responses only; no teacher weights, activations, analytic gradients or true directions to learner.",
+  "hessian": {
+    "probe_count": 64,
+    "probe_distribution": "Gaussian coordinate std4, fixed public probe seed20261024",
+    "step": 0.003,
+    "pairs": "i<=j, four symmetric calls each",
+    "vector_queries": 135168,
+    "subspace_rank": 128,
+    "relative_singular_floor": 1e-10,
+    "required_gap_s128_over_s129": 100
+  },
+  "direction_solver": {
+    "public_seed": 20261024,
+    "random_starts": 256,
+    "adam_iterations": 1600,
+    "adam_step": 0.02,
+    "tangent_gauss_newton_iterations": 12,
+    "lstsq_rcond": 1e-10,
+    "backtracking": [
+      1,
+      0.5,
+      0.25,
+      0.125,
+      0.0625,
+      0.03125
+    ],
+    "acceptance": "strict decrease of saved public Hessian residual only",
+    "residual_squared_threshold": 1e-08,
+    "duplicate_absolute_cosine": 0.9995,
+    "required_retained_count": 64,
+    "no_truth_based_selection": true
+  },
+  "multiscale": {
+    "probe_seed": 931082,
+    "small_rows": 4096,
+    "small_scale": 0.001,
+    "large_rows": 512,
+    "large_scale": 1000,
+    "canonical_even_vector_queries": 1056,
+    "small_design_required_rank": 2048,
+    "magnitude_and_orientation_required_rank": 64,
+    "nonpositive_magnitude": "failure",
+    "coupling_constraint": "per-unit best rank-one SVD projection",
+    "orientation": "least squares then sign rounding",
+    "additional_vector_queries": 10272
+  },
+  "total_calibration_vector_queries_per_teacher": 145440,
+  "sealed_evaluation": {
+    "rows_per_scale": 512,
+    "scales": [
+      0.04,
+      1,
+      4,
+      30
+    ],
+    "vector_queries_per_teacher": 2048,
+    "inputs": "fresh secret independent normal draws, fixed before learner runs",
+    "matching": "descending global absolute cosine greedy one-to-one, exactly64 candidates required; never used by fitting",
+    "functional_metric": "norm(student-target)_F / norm(target)_F for each scale",
+    "secondary": [
+      "absolute maximum error per scale",
+      "relative error percentiles with explicit denominator floor",
+      "coupling Frobenius error per matched unit",
+      "orientation failures",
+      "calibration residual and query count",
+      "elapsed time and sampled process-tree RSS/limit",
+      "source/data/solution hashes"
+    ]
+  },
+  "success_criteria": {
+    "every_teacher_every_scale_relative_frobenius_error_at_most": 0.001,
+    "every_teacher_one_to_one_gate_absolute_cosine_min": 0.9995,
+    "every_teacher_max_relative_oriented_gate_error_at_most": 0.01,
+    "every_teacher_max_relative_coupling_error_at_most": 0.01,
+    "every_teacher_orientations_correct": 64,
+    "all_three_teachers_must_pass": true
+  },
+  "boundaries": [
+    "Teacher truth and heldout inputs stored outside Git and learner argv/env/data",
+    "Preparation commits source/registration/teacher/public-observation/heldout hashes before solve",
+    "Freeze solution hash before evaluator starts",
+    "Exclusive consumed-marker creation before any private or heldout read; no repeat evaluation or tuning",
+    "Record failure/budget stop/ill-conditioning, no automatic retry, added starts, rescues or threshold changes",
+    "Logical process separation on same OS account, not adversarial isolation",
+    "Independent verifier reviews code/commitments and reports applicability limitations before any success claim"
+  ],
+  "budget": {
+    "max_process_tree_rss_mib": 512,
+    "max_seconds_per_teacher": 180,
+    "parallel_teachers": 1,
+    "blas_threads": 1,
+    "gpu_jobs": 0,
+    "external_calls": 0,
+    "paid_calls": 0,
+    "model_downloads": 0
+  },
+  "unchanged_negative_evidence": "O3 sealed SwiGLU v1 remains failed (16/64,55/64,52/64). Its iteration-budget v2 is a separate experiment with different access/data; no comparison as equal-access arms.",
+  "private_final_model_gate": "closed",
+  "runner_readiness_gate": "New v2 registration and transport-fixed runner must be committed, source-hashed and independently reviewed; create3 fresh teachers, never retry v1 teachers or consume old heldout labels.",
+  "previous_registration": {
+    "path": "experiments/preregistrations/isolated-glu-fullmap-v1.json",
+    "sha256": "cf9921199370a5c204e2f27fb04ee2ee9f1f98ef331c3609c538e4633ee5e3a4",
+    "outcome": "FAILED ENGINEERING: frozen first solver writes solve.json without stdout, wrapper required stdout JSON;436320 calibration and0 sealed evaluation calls; no method success/failure result",
+    "evidence": "experiments/evidence/isolated-glu-fullmap-v1/report.json",
+    "old_teachers_retried": false
+  },
+  "v2_changes": [
+    "JSON transport adapter reads the unchanged frozen first-stage solver output file",
+    "End-to-end public-development learner contract must pass before fresh teacher generation",
+    "Structured capped JSON errors retain failure cause",
+    "No algorithm, query budget, random restart count, success threshold or statistical selection changes"
+  ]
+}

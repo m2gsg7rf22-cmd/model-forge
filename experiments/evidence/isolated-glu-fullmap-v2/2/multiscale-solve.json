@@ -1,0 +1,15 @@
+{
+  "development_pilot_not_sealed": true,
+  "small_design_rank": 2048,
+  "small_design_columns": 2048,
+  "small_design_condition": 55.378598481957845,
+  "magnitude_design_rank": 64,
+  "magnitude_min": 1.7109249047799113,
+  "magnitude_max": 2.9150099641019276,
+  "coupling_rank1_max_relative_tail": 0.00022801475769516772,
+  "orientation_rank": 64,
+  "orientation_max_distance_from_sign": 7.054890604885067e-05,
+  "orientation_rounded_relative_residual": 0.00010112781851182723,
+  "seconds": 1.413156666996656,
+  "public_only_fit": true
+}

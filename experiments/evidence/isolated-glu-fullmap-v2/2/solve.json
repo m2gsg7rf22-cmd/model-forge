@@ -1,0 +1,11 @@
+{
+  "candidates": 62,
+  "residual_min": 1.952690271560807e-12,
+  "residual_median": 3.5408334517680224e-09,
+  "singular_128": 28.860345881778102,
+  "singular_129": 0.00015012351370035122,
+  "seconds": 0.8747635830077343,
+  "iterations": 1600,
+  "starts": 256,
+  "subspace_rank": 128
+}

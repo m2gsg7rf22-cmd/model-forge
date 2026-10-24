@@ -29,3 +29,23 @@ The adapter executes the unchanged frozen first-stage solver and returns its str
 experiments/preregistrations/isolated-glu-fullmap-v2.json preserves every numerical method, probe/restart/query budget and success criterion from v1. It records the v1 failure and requires3 fresh secret teachers after a new independent source review and committed readiness certificate. V1 teacher truth/heldout remain untouched. The old readiness certificate was archived and the active certificate explicitly invalidated while v2 is reviewed. Never retry the failed v1 roots, tune on sealed labels, or change thresholds to manufacture a passing replication.
 
 Public reports, corrected CI and reviews: experiments/evidence/isolated-glu-runner/ and experiments/evidence/isolated-glu-fullmap-v1/. Large public observations and private teacher/heldout arrays stay in durable local application data outside Git. The earlier public-seed full-map pilot remains developmental evidence only.
+
+## Actual v2 outcome: preregistered overall criterion FAILED
+
+The v2 source/readiness certificate was independently approved and committed before entropy. CI40108932281 passed40 focused tests per Linux/macOS/Windows, including the actual public-only learner pipeline; all source/type/lint checks passed. Source ec2623a. The registered v2 experiment ran once on3fresh teachers, without revisiting v1 data.
+
+| Teacher std | Directions after refinement | Sealed points | Largest scale-group relative Frobenius error | Outcome |
+| --- | ---: | ---: | ---: | --- |
+| .1 | 63 | 0 | not evaluated | failed candidate-count/rank contract |
+| .2 | 64 | 2048 | 5.254969789963266e-5 | passed every registered per-teacher criterion |
+| .4 | 64 | 2048 | 1.1724223427309546e-4 | passed every registered per-teacher criterion |
+
+All3 teachers were required to pass, so v2 is **FAILED** overall. The .1 teacher's63 candidates are not confirmed63true gates: no truth comparison occurred there. Its small-scale design had2016 rather than2048columns and magnitude/orientation rank63; coupling rank-one tail .273 and rounded orientation residual .094 also warn that a low Hessian residual alone is insufficient. We do not infer the missing true gate's identity.
+
+The two evaluated teachers each had64 correct orientations. Maximum relative gate/coupling errors were7.375e-5/8.838e-5 at .2 and2.346e-4/1.501e-4 at .4. This is parameter/finite-domain evidence under explicitly isolated continuous-vector access, not original U/D-factor recovery or a general theorem. Maximum absolute error across evaluated scale groups was10.678786705517268; relative group norms do not guarantee a per-input absolute or relative bound.
+
+Measured controller wall time13.4276s, outer worker-tree sampled peaks289.86/293.25/275.77MiB, all teacher budgets satisfied. Executed436320calibration+4096sealed vector calls=440416. Only the two completed teachers consumed heldout; the first teacher's consumed marker is absent. Neither old nor completed heldout data will be read/evaluated again. Independent outcome review matched public source/data/student/audit commitments and global rejection; it used no private arrays and did not refit.
+
+Frozen stage reports retain their original `development_pilot_not_sealed` literal because their modules originated in the pilot; that literal is not used as an evidence certificate. Actual preparation commitments, evaluator consumption and final verification reports describe this experiment's sealed boundary. All raw reports are retained unchanged.
+
+Public evidence: experiments/evidence/isolated-glu-fullmap-v2/. Next research is reliable candidate coverage: investigate unexplained Hessian-subspace energy and residual-guided direction discovery using calibration-only development data, then freeze a distinct protocol before any fresh sealed test. Preserve v2 failure and both positive cases; do not add starts, run rescues or relax thresholds and relabel v2. Whole-decoder reconstruction, weaker observation access, finite-precision robustness and universal reconstruction remain unresolved.

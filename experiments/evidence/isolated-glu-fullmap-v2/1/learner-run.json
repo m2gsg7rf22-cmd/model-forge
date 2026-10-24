@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "seconds": 3.8957528339960845,
+  "stages": [
+    {
+      "script": "hessian_pilot.py",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 145178624,
+      "memory_samples": 17,
+      "memory_limit_mb": 512
+    },
+    {
+      "script": "refine.py",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 97681408,
+      "memory_samples": 18,
+      "memory_limit_mb": 512
+    },
+    {
+      "script": "multiscale.py",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 248053760,
+      "memory_samples": 26,
+      "memory_limit_mb": 512
+    }
+  ],
+  "source_sha256": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/sealed.py": "76405b0ee0fcd3fb3bb40f623c95b6ae73aaa855fc559ee70fc23b22ef5560ae",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "manifest_sha256": "960ec7fc5c87bda0a395f55b3e90c8f1b2ff95fd51a0a57199044eb12a64e631",
+  "solution_sha256": "1a56fb5d1c80ae4e6e31ffade5832d4bf97f264dd915d5f8fa16a90ff3d0345c",
+  "rss_limit_mib": 512,
+  "peak_rss_recorded": true,
+  "heldout_read": false,
+  "audit_sha256": {
+    "solve.json": "46c78f40854808344ac6a8ff5db5339baa804f6c2b1b5ee6deef36f7d83bf6c7",
+    "refine.json": "759f3b5d909fd08819dcaa1414f20b0b1f85132567977f97a6a4099046c9c20b",
+    "multiscale-solve.json": "5a0666b8c436801412cf0e967caed5cc73d3776f05c11c126bdd343a7fe42f96",
+    "refined-solution.npz": "c63280f01be5b505a23dbe5781a7702db2b8b1ddcfe55fd2bb4c55d1893a04e0",
+    "solution.npz": "cef7796a51e81f89a2beea298a4b440583cc82c886790d58e183ded8ae5a1dd3"
+  }
+}

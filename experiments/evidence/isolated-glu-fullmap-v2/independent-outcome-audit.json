@@ -1,0 +1,120 @@
+{
+  "status": "independent_public_audit_confirms_v2_protocol_failure_with_two_per_teacher_passes",
+  "source_commit": "ec2623a",
+  "sources": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/sealed.py": "76405b0ee0fcd3fb3bb40f623c95b6ae73aaa855fc559ee70fc23b22ef5560ae",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "registration_sha256": "88f8034ebcb3769db539e5ca86cf927fa183ef67708108b618d4723ad870315b",
+  "public_directory": "/Users/adamfaruhi123/.local/share/modelforge-research/experiments/isolated-glu-fullmap-v2-20261024-ec2623a/public",
+  "public_report_sha256": "7434e8521244f4c00af9c0c9193ba0042550299717916bb0cc42b0278a53458a",
+  "criteria_met": false,
+  "per_teacher_passes": 2,
+  "teacher_count": 3,
+  "all_three_required": true,
+  "teachers": [
+    {
+      "index": 0,
+      "weight_scale": 0.1,
+      "criteria_met": false,
+      "resource_peak_sampled_rss_mib": 289.859375,
+      "elapsed_seconds": 4.071824458995252,
+      "checks": {
+        "manifest_sha256": "e923d46ac979a60bddc40d34acbcd061cc72c46c7c4684e21f74048e277b224b",
+        "public_source_data_commitments_match": true,
+        "initial_count": 62,
+        "retained_count": 63,
+        "small_design_rank": 2016,
+        "magnitude_rank": 63,
+        "orientation_rank": 63,
+        "sealed_evaluation_present": false,
+        "reason": "63 retained directions versus required64; guard rejects shape/count before seal/verify"
+      }
+    },
+    {
+      "index": 1,
+      "weight_scale": 0.2,
+      "criteria_met": true,
+      "resource_peak_sampled_rss_mib": 293.25,
+      "elapsed_seconds": 4.577339791008853,
+      "checks": {
+        "manifest_sha256": "960ec7fc5c87bda0a395f55b3e90c8f1b2ff95fd51a0a57199044eb12a64e631",
+        "public_source_data_commitments_match": true,
+        "initial_count": 63,
+        "retained_count": 64,
+        "small_design_rank": 2048,
+        "magnitude_rank": 64,
+        "orientation_rank": 64,
+        "sealed_evaluation_present": true,
+        "learner_audit_hashes_match": true,
+        "actual_retained_residual_and_rank_audit_passes": true,
+        "functional_errors": [
+          4.929165197765494e-05,
+          5.236464970222594e-05,
+          5.123547603690205e-05,
+          5.254969789963266e-05
+        ],
+        "minimum_gate_absolute_cosine": 0.9999999976479517,
+        "max_oriented_gate_error": 7.375026826338327e-05,
+        "max_coupling_error": 8.838337786647033e-05,
+        "orientations_correct": 64
+      }
+    },
+    {
+      "index": 2,
+      "weight_scale": 0.4,
+      "criteria_met": true,
+      "resource_peak_sampled_rss_mib": 275.765625,
+      "elapsed_seconds": 4.505697250002413,
+      "checks": {
+        "manifest_sha256": "fc9558b7ba540c97028d77a56d3c028d898c363edaa9138e182d39a97f7d816d",
+        "public_source_data_commitments_match": true,
+        "initial_count": 62,
+        "retained_count": 64,
+        "small_design_rank": 2048,
+        "magnitude_rank": 64,
+        "orientation_rank": 64,
+        "sealed_evaluation_present": true,
+        "learner_audit_hashes_match": true,
+        "actual_retained_residual_and_rank_audit_passes": true,
+        "functional_errors": [
+          0.00011266460845616852,
+          0.00011594724194302739,
+          0.00011432854192495979,
+          0.00011724223427309546
+        ],
+        "minimum_gate_absolute_cosine": 0.9999999817980523,
+        "max_oriented_gate_error": 0.00023457455359465992,
+        "max_coupling_error": 0.00015011032072094797,
+        "orientations_correct": 64
+      }
+    }
+  ],
+  "query_accounting": {
+    "calibration": 436320,
+    "sealed_evaluation": 4096,
+    "total": 440416,
+    "evidence": "All3 preparation manifests and public observation digests match; only indices1,2 reached verify and contain complete public verification outputs. Index0 has no verification output and failed before learner completion/seal.",
+    "zero_index0_heldout_access": "Source-order inference and public artifacts; no independent private-path inspection."
+  },
+  "total_elapsed_seconds_reported": 13.427598708003643,
+  "all_observed_resources_within_registered_limits": true,
+  "false_global_success_claim_found": false,
+  "next_missing_capability": "Fixed candidate search plus tangent refinement must reliably retain all64 distinct gate directions under preregistered continuous-query access. Scale.1 returned63; public evidence cannot identify the missing true gate or prove remaining63 correct. Investigate candidate coverage using public calibration/development evidence, then preregister and independently review a new experiment with fresh teachers; do not retry old teachers or consume index0 heldout.",
+  "limitations": [
+    "Public-report metrics were checked against criteria and commitments; verifier did not recompute truth-dependent metrics from private teacher/heldout arrays.",
+    "Private seal/teacher/heldout hashes cannot be independently checked without accessing private paths and were deliberately not read.",
+    "Source,data,student and learner-audit public commitments match; logical separation remains same-account rather than adversarial OS isolation.",
+    "RSS sampling can miss brief peaks; teacher worker descendants monitored, lightweight launcher excluded.",
+    "Two finite isolated-block successes do not meet all3 protocol, imply whole Transformer/universal recovery,original U/D recovery or Luna-level capability."
+  ],
+  "no_private_arrays_or_heldout_labels_accessed": true,
+  "no_refitting_or_new_teacher_created": true,
+  "old_v1_data_not_read": true,
+  "production_source_unchanged": true,
+  "private_scientific_model_gate": "closed"
+}

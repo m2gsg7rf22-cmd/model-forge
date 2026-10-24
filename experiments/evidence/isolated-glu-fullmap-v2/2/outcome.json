@@ -1,0 +1,117 @@
+{
+  "index": 2,
+  "weight_scale": 0.4,
+  "criteria_met": true,
+  "validation": [
+    {
+      "scale": 0.04,
+      "rows": 512,
+      "relative_frobenius_error": 0.00011266460845616852,
+      "max_absolute_error": 9.363382234700568e-06,
+      "row_relative_percentiles": [
+        0.00010758942561268416,
+        0.0001781788629409982,
+        0.00023585027326388834,
+        0.00033275223884487206
+      ],
+      "row_denominator_floor": 1e-30
+    },
+    {
+      "scale": 1,
+      "rows": 512,
+      "relative_frobenius_error": 0.00011594724194302739,
+      "max_absolute_error": 0.011716864203185295,
+      "row_relative_percentiles": [
+        0.00010770290968887977,
+        0.00020645624108321295,
+        0.00025749965588815857,
+        0.00038497635738403603
+      ],
+      "row_denominator_floor": 1e-30
+    },
+    {
+      "scale": 4,
+      "rows": 512,
+      "relative_frobenius_error": 0.00011432854192495979,
+      "max_absolute_error": 0.23432891084917173,
+      "row_relative_percentiles": [
+        0.00010283215058315954,
+        0.00019690460566508443,
+        0.0002989903624946271,
+        0.00043411059409611066
+      ],
+      "row_denominator_floor": 1e-30
+    },
+    {
+      "scale": 30,
+      "rows": 512,
+      "relative_frobenius_error": 0.00011724223427309546,
+      "max_absolute_error": 10.678786705517268,
+      "row_relative_percentiles": [
+        0.0001067514823485348,
+        0.00021151897200361657,
+        0.00026027157614339164,
+        0.000483121315575481
+      ],
+      "row_denominator_floor": 1e-30
+    }
+  ],
+  "one_to_one_min_absolute_cosine": 0.9999999817980523,
+  "max_relative_oriented_gate_error": 0.00023457455359465992,
+  "max_relative_coupling_error": 0.00015011032072094797,
+  "orientations_correct": 64,
+  "calibration_vector_queries": 145440,
+  "sealed_evaluation_vector_queries": 2048,
+  "manifest_sha256": "fc9558b7ba540c97028d77a56d3c028d898c363edaa9138e182d39a97f7d816d",
+  "solution_sha256": "a4867c07f954f2ccd52dfe57b420e0c7b6d5f8639e419bf614d1e5c53fe153a4",
+  "source_sha256": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/sealed.py": "76405b0ee0fcd3fb3bb40f623c95b6ae73aaa855fc559ee70fc23b22ef5560ae",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "private_model_gate": "closed",
+  "whole_transformer_reconstructed": false,
+  "original_weights_recovered": false,
+  "all_inputs_equivalence_proven": false,
+  "process_monitor_scope": "process_and_children",
+  "peak_sampled_rss_bytes": 289161216,
+  "memory_samples": 69,
+  "memory_limit_mb": 512,
+  "elapsed_seconds": 4.505697250002413,
+  "rss_limit_mib": 512,
+  "peak_rss_recorded": true,
+  "roles": [
+    {
+      "role": "prepare",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 52576256,
+      "memory_samples": 3,
+      "memory_limit_mb": 512
+    },
+    {
+      "role": "solve",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 250642432,
+      "memory_samples": 59,
+      "memory_limit_mb": 512
+    },
+    {
+      "role": "seal",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 82313216,
+      "memory_samples": 2,
+      "memory_limit_mb": 512
+    },
+    {
+      "role": "verify",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 105922560,
+      "memory_samples": 3,
+      "memory_limit_mb": 512
+    }
+  ],
+  "memory_scope": "teacher worker and all descendants, including preparation, learning, sealing and verification; top-level launcher excluded"
+}

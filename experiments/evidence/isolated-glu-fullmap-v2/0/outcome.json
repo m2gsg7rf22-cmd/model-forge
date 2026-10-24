@@ -1,0 +1,21 @@
+{
+  "index": 0,
+  "criteria_met": false,
+  "failure_type": "RuntimeError",
+  "failure": "ValueError: Invalid finite float64 array: directions",
+  "elapsed_seconds": 4.071824458995252,
+  "roles_completed": [
+    {
+      "role": "prepare",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 52215808,
+      "memory_samples": 3,
+      "memory_limit_mb": 512
+    }
+  ],
+  "process_monitor_scope": "process_and_children",
+  "peak_sampled_rss_bytes": 303939584,
+  "memory_samples": 61,
+  "memory_limit_mb": 512,
+  "memory_scope": "teacher worker and all descendants, including preparation, learning, sealing and verification; top-level launcher excluded"
+}

@@ -1,0 +1,33 @@
+{
+  "run_id": 40108932281,
+  "source": "ec2623a679fc9dadb19f510added37decc3a4041",
+  "conclusion": "success",
+  "platforms": [
+    {
+      "platform": "Antipodal-core-Windows",
+      "tests": 40,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 22.065
+    },
+    {
+      "platform": "Antipodal-core-Linux",
+      "tests": 40,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 18.284
+    },
+    {
+      "platform": "Antipodal-core-macOS",
+      "tests": 40,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 19.715
+    }
+  ],
+  "native_packages_rebuilt": false,
+  "full_suite_claimed": false
+}

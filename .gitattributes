@@ -9,3 +9,6 @@ experiments/evidence/isolated-glu-runner/*.json -text
 examples/isolated_glu/*.py -text
 src/modelforge/execution.py -text
 src/modelforge/antipodal.py -text
+
+# Evidence contains raw-byte commitments; retain originals across checkouts.
+experiments/evidence/** -text

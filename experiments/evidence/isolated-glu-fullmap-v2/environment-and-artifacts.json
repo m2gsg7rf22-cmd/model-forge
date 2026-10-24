@@ -1,0 +1,33 @@
+{
+  "python": "3.12.15 (main, Oct  9 2026, 15:10:57) [Clang 22.1.3 ]",
+  "platform": "macOS-26.3-arm64-arm-64bit",
+  "machine": "arm64",
+  "numpy": "2.5.4",
+  "psutil": "7.2.2",
+  "float_dtype": "float64",
+  "source_commit": "ec2623a679fc9dadb19f510added37decc3a4041",
+  "controller_elapsed_seconds": 13.427598708003643,
+  "artifacts": [
+    {
+      "index": 0,
+      "student_artifact_sha256": "553683f600710cb903112bacd2d87e6abf1def991f8db8411136117406727391",
+      "private_consumption_marker_exists": false,
+      "raw_arrays_copied_to_git": false
+    },
+    {
+      "index": 1,
+      "student_artifact_sha256": "1a56fb5d1c80ae4e6e31ffade5832d4bf97f264dd915d5f8fa16a90ff3d0345c",
+      "private_consumption_marker_exists": true,
+      "raw_arrays_copied_to_git": false
+    },
+    {
+      "index": 2,
+      "student_artifact_sha256": "a4867c07f954f2ccd52dfe57b420e0c7b6d5f8639e419bf614d1e5c53fe153a4",
+      "private_consumption_marker_exists": true,
+      "raw_arrays_copied_to_git": false
+    }
+  ],
+  "teacher_truth_or_heldout_read_for_this_metadata": false,
+  "external_calls": 0,
+  "private_final_model_gate": "closed"
+}
