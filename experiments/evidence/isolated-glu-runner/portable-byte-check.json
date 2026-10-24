@@ -1,0 +1,17 @@
+{
+  "readiness_committed_and_verified": true,
+  "core_autocrlf": true,
+  "all_frozen_exported_bytes_equal": {
+    "examples/isolated_glu/multiscale.py": true,
+    "examples/isolated_glu/refine.py": true,
+    "examples/isolated_glu/hessian_pilot.py": true,
+    "examples/isolated_glu/sealed.py": true,
+    "src/modelforge/execution.py": true,
+    "src/modelforge/antipodal.py": true,
+    "experiments/preregistrations/isolated-glu-fullmap-v1.json": true,
+    "experiments/preregistrations/isolated-glu-runner-readiness.json": true,
+    "experiments/evidence/isolated-glu-runner/independent-review-portable.json": true
+  },
+  "unhashed_gitattributes_itself_converted_to_crlf": true,
+  "fresh_teachers_generated": 0
+}

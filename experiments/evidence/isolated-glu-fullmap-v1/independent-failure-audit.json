@@ -1,0 +1,129 @@
+{
+  "status": "v1_failed_engineering_transport_no_scientific_success",
+  "reviewer": "independent agent sealed_runner_review",
+  "public_directory": "/Users/adamfaruhi123/.local/share/modelforge-research/experiments/isolated-glu-fullmap-v1-20261024-9f1ad27/public",
+  "report_sha256": "4be82d4a87475b8eacbc3fd4afbd49a17e55f1dc39551c07d83de9f3e9a11ca6",
+  "frozen_sources": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/sealed.py": "b29738228a0146b6683910e65924b07a4e21c509e0d9cd46a984792dca3ef33a",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "registration_sha256": "cf9921199370a5c204e2f27fb04ee2ee9f1f98ef331c3609c538e4633ee5e3a4",
+  "findings": [
+    {
+      "id": "silent-first-solver-stdout",
+      "severity": "blocking_for_future_runs",
+      "verified": true,
+      "detail": "Frozen hessian_pilot.py solve branch writes solve.json and solution.npz but prints no JSON. sealed.solve invokes it through run_json, which unconditionally parses stdout as JSON. The inner transport therefore fails after the first solver, before refinement or verification."
+    },
+    {
+      "id": "nested-error-obscures-cause",
+      "severity": "engineering",
+      "detail": "solve role terminates with an uncaught inner RuntimeError; the outer run_json records only Engine did not return JSON (exit1), losing the inner empty-stdout/exit0 explanation. Raw temporary logs are removed by run_json."
+    },
+    {
+      "id": "prior-review-coverage-gap",
+      "severity": "review_process",
+      "detail": "My prior approval tested source, aggregate, monitored execution, seal/verify and the known exact-teacher fixture, but did not exercise the actual three-stage learner subprocess pipeline. It missed the silent first-stage stdout contract. Future review must run the real learner pipeline on the already public development teacher before fresh teacher preparation."
+    }
+  ],
+  "teachers": [
+    {
+      "index": 0,
+      "weight_scale": 0.1,
+      "manifest_sha256": "207e603e7085ad512dbe1a9795f787395ec062c2e98d35daedb1fcd9524b75d9",
+      "calibration_vector_queries": 145440,
+      "public_observation_hashes_match": true,
+      "solve_report_sha256": "63f706c139298096d8b2633164e5dff93b70db3376aaacf7ee1008914ea1ba1f",
+      "learner_solution_sha256": "0169cc7c38228a5aacd53382b57749962f4fa683a91643c6de90d923d3d0fc2a",
+      "retained_candidates_before_refinement": 58,
+      "adam_starts": 256,
+      "adam_iterations": 1600,
+      "public_downstream_artifacts_absent": [
+        "refined-solution.npz",
+        "refine.json",
+        "multiscale-solution.npz",
+        "multiscale-solve.json",
+        "learner-run.json",
+        "verification.json"
+      ],
+      "failure": "Engine did not return JSON (exit 1); check optional runtime installation",
+      "tree_peak_sampled_rss_bytes": 207798272,
+      "elapsed_seconds": 1.3500608330068644
+    },
+    {
+      "index": 1,
+      "weight_scale": 0.2,
+      "manifest_sha256": "bf394d17eb1baf042038e2f6bef25e3e9aee9cbdcf2393f41646c1d002e0526c",
+      "calibration_vector_queries": 145440,
+      "public_observation_hashes_match": true,
+      "solve_report_sha256": "61f1bc2e39023b8cdfff5ede6aec22bae78858fa5965d59814640c97c0b26428",
+      "learner_solution_sha256": "d4c6095745e0a2cef53e551f934f2379c151aec478049136451bc7e95753d233",
+      "retained_candidates_before_refinement": 60,
+      "adam_starts": 256,
+      "adam_iterations": 1600,
+      "public_downstream_artifacts_absent": [
+        "refined-solution.npz",
+        "refine.json",
+        "multiscale-solution.npz",
+        "multiscale-solve.json",
+        "learner-run.json",
+        "verification.json"
+      ],
+      "failure": "Engine did not return JSON (exit 1); check optional runtime installation",
+      "tree_peak_sampled_rss_bytes": 205340672,
+      "elapsed_seconds": 1.3523412920039846
+    },
+    {
+      "index": 2,
+      "weight_scale": 0.4,
+      "manifest_sha256": "ea71fa6885a748ced61323affe0a46a2a8d8bcd011ce26e745c2badf77006d1e",
+      "calibration_vector_queries": 145440,
+      "public_observation_hashes_match": true,
+      "solve_report_sha256": "8ed521364db8b61048e68433c6883c6835186b2a247343d79119f10c0553f6ee",
+      "learner_solution_sha256": "907debcaa38f9a4778bea61c732809852c97e551541fbfc6a94457efea302a9d",
+      "retained_candidates_before_refinement": 61,
+      "adam_starts": 256,
+      "adam_iterations": 1600,
+      "public_downstream_artifacts_absent": [
+        "refined-solution.npz",
+        "refine.json",
+        "multiscale-solution.npz",
+        "multiscale-solve.json",
+        "learner-run.json",
+        "verification.json"
+      ],
+      "failure": "Engine did not return JSON (exit 1); check optional runtime installation",
+      "tree_peak_sampled_rss_bytes": 205209600,
+      "elapsed_seconds": 1.406286875004298
+    }
+  ],
+  "executed_query_accounting": {
+    "calibration_vector_queries": 436320,
+    "sealed_test_vector_queries": 0,
+    "calibration_evidence": "All three preparation roles completed; their committed public manifests and observation digests match; the frozen materialize counter requires145440 each.",
+    "zero_test_evidence": "Inference from deterministic source ordering, failure at first solve transport, and absence of all downstream public outputs. Parent separately reports absent consumed markers; reviewer did not inspect private paths.",
+    "private_marker_absence": "parent reported only; not independently accessed"
+  },
+  "criteria_met": false,
+  "hypothesis_rejected_by_scientific_metrics": false,
+  "hypothesis_test_completed": false,
+  "false_success_claim_found": false,
+  "no_private_arrays_or_labels_read": true,
+  "no_refit_or_new_experiment_run": true,
+  "v1_must_remain_failed_without_retry": true,
+  "future_requirements": [
+    "Preserve v1 failures and exact executed counts; do not present this as numerical reconstruction failure or a passing experiment.",
+    "Add narrow transport adapter for first frozen solver report without changing its algorithm, public seeds,starts,iteration budget or thresholds.",
+    "Exercise the actual learner subprocess pipeline using only the already public development teacher.",
+    "Commit,source-hash and independently review changed runner and a fresh preregistered v2 before generating fresh teachers; old readiness certificate must reject changed source."
+  ],
+  "limitations": [
+    "Public artifacts and frozen source establish execution-stage ordering, not independent OS-level proof of zero private-file reads.",
+    "No sealed verification occurred and no gate/coupling/fullmap accuracy is certified.",
+    "Private scientific model gate remains closed."
+  ]
+}

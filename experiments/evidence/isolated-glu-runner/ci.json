@@ -1,0 +1,47 @@
+{
+  "results": [
+    {
+      "run": 40107650898,
+      "platform": "Antipodal-core-Windows",
+      "source": "60d299f",
+      "tests": 39,
+      "failures": 3,
+      "errors": 3,
+      "skipped": 0,
+      "seconds": 4.351
+    },
+    {
+      "run": 40107650898,
+      "platform": "Antipodal-core-Linux",
+      "source": "60d299f",
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 4.852
+    },
+    {
+      "run": 40107650898,
+      "platform": "Antipodal-core-macOS",
+      "source": "60d299f",
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 5.075
+    },
+    {
+      "run": 40108011173,
+      "platform": "Antipodal-core-Windows",
+      "source": "9f1ad27",
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 6.097
+    }
+  ],
+  "windows_initial_cause": "Git CRLF conversion changed raw registration/source bytes; strict guard refused execution",
+  "repair": "-text frozen-byte attributes and POSIX Git paths; Windows-only rerun",
+  "native_builds": false
+}

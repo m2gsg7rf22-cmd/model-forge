@@ -1,18 +1,18 @@
 {
   "ready": true,
-  "scope": "Owned isolated GLU experiment runner only; private final-model gate remains closed",
+  "scope": "Transport-repaired owned isolated GLU v2 only; private final-model gate closed",
   "sources": {
     "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
     "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
     "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
-    "examples/isolated_glu/sealed.py": "b29738228a0146b6683910e65924b07a4e21c509e0d9cd46a984792dca3ef33a",
+    "examples/isolated_glu/sealed.py": "76405b0ee0fcd3fb3bb40f623c95b6ae73aaa855fc559ee70fc23b22ef5560ae",
     "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
     "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
   },
-  "registration_sha256": "cf9921199370a5c204e2f27fb04ee2ee9f1f98ef331c3609c538e4633ee5e3a4",
-  "review_path": "experiments/evidence/isolated-glu-runner/independent-review-portable.json",
-  "review_sha256": "9ccb7f446444b21a87c0d00535e44979c17f82e834262eb7f919a4b01c0bf678",
-  "reviewed_code_commit": "ad7992d",
-  "fresh_teachers_generated_before_certificate": 0,
-  "portability_review": "Raw-byte commitments preserved with -text; Git object paths use POSIX spelling; Windows CI retry pending"
+  "registration_sha256": "88f8034ebcb3769db539e5ca86cf927fa183ef67708108b618d4723ad870315b",
+  "review_path": "experiments/evidence/isolated-glu-runner/independent-review-v2.json",
+  "review_sha256": "a176acf207177662a74585bd7c0ada50bf9a5804cc7cf94477489e5bbfe5c1b2",
+  "source_reviewed_before_commit": true,
+  "fresh_v2_teachers_generated_before_certificate": 0,
+  "previous_v1_outcome": "engineering failure preserved, no retries or sealed evaluation"
 }

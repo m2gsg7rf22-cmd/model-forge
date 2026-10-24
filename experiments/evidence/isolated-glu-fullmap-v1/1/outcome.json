@@ -1,0 +1,21 @@
+{
+  "index": 1,
+  "criteria_met": false,
+  "failure_type": "RuntimeError",
+  "failure": "Engine did not return JSON (exit 1); check optional runtime installation",
+  "elapsed_seconds": 1.3523412920039846,
+  "roles_completed": [
+    {
+      "role": "prepare",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 54165504,
+      "memory_samples": 3,
+      "memory_limit_mb": 512
+    }
+  ],
+  "process_monitor_scope": "process_and_children",
+  "peak_sampled_rss_bytes": 205340672,
+  "memory_samples": 21,
+  "memory_limit_mb": 512,
+  "memory_scope": "teacher worker and all descendants, including preparation, learning, sealing and verification; top-level launcher excluded"
+}

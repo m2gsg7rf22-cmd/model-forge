@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="3" failures="3" skipped="0" tests="39" time="4.351" timestamp="2026-10-24T15:36:03.264757+00:00" hostname="runnervmdaln5"><testcase classname="tests.test_glu_sealed" name="test_unreviewed_runner_cannot_generate_teacher" time="0.023" /><testcase classname="tests.test_glu_sealed" name="test_repeat_verifier_refuses_before_read" time="0.003" /><testcase classname="tests.test_glu_sealed" name="test_nonfinite_json_and_zero_denominators_rejected" time="0.003" /><testcase classname="tests.test_glu_sealed" name="test_summary_needs_three_distinct_successes" time="0.002"><failure message="ValueError: Preregistration changed">def test_summary_needs_three_distinct_successes() -&gt; None:
+        m = module()
+        with pytest.raises(ValueError):
+            m.aggregate([{"index": 0, "criteria_met": True}] * 3)
+        assert (
+&gt;           m.aggregate([{"index": i, "criteria_met": False} for i in range(3)])[
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                "criteria_met"
+            ]
+            is False
+        )
+
+tests\test_glu_sealed.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+examples\isolated_glu\sealed.py:623: in aggregate
+    "protocol": registration()["protocol"],
+                ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def registration() -&gt; dict[str, Any]:
+        if digest(REG) != REG_SHA:
+&gt;           raise ValueError("Preregistration changed")
+E           ValueError: Preregistration changed
+
+examples\isolated_glu\sealed.py:63: ValueError</failure></testcase><testcase classname="tests.test_glu_sealed" name="test_summary_does_not_trust_true_flag_without_metrics" time="0.002"><failure message="ValueError: Preregistration changed">def test_summary_does_not_trust_true_flag_without_metrics() -&gt; None:
+        m = module()
+        rows = [
+            {
+                "index": i,
+                "criteria_met": True,
+                "process_monitor_scope": "process_and_children",
+            }
+            for i in range(3)
+        ]
+&gt;       assert m.aggregate(rows)["criteria_met"] is False
+               ^^^^^^^^^^^^^^^^^
+
+tests\test_glu_sealed.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+examples\isolated_glu\sealed.py:604: in aggregate
+    accepted = all(
+examples\isolated_glu\sealed.py:606: in &lt;genexpr&gt;
+    and r.get("source_sha256") == sources()
+                                  ^^^^^^^^^
+examples\isolated_glu\sealed.py:68: in sources
+    paths = list(registration()["solver_source_sha256"]) + [
+                 ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def registration() -&gt; dict[str, Any]:
+        if digest(REG) != REG_SHA:
+&gt;           raise ValueError("Preregistration changed")
+E           ValueError: Preregistration changed
+
+examples\isolated_glu\sealed.py:63: ValueError</failure></testcase><testcase classname="tests.test_glu_sealed" name="test_verifier_accepts_exact_known_teacher_without_fitting" time="0.013"><error message="failed on setup with &quot;ValueError: Preregistration changed&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001F3843F79E0&gt;, _basetemp=Wi...'C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def known_case(tmp_path_factory):
+        m = module()
+        root = tmp_path_factory.mktemp("public-development-verifier-fixture")
+        public, private = root / "public", root / "private"
+        rng = np.random.default_rng(572041)
+        teacher = {
+            "gate": rng.normal(size=(64, 32)) * 0.2,
+            "up": rng.normal(size=(64, 32)) * 0.2,
+            "down": rng.normal(size=(32, 64)) * 0.2,
+        }
+        # Public test inputs and the previously public teacher, never fresh secret teachers.
+        rng = np.random.default_rng(73191)
+        held = np.stack([rng.normal(size=(512, 32)) * scale for scale in [0.04, 1, 4, 30]])
+&gt;       m.materialize(public, private, 1, teacher, held)
+
+tests\test_glu_sealed.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+examples\isolated_glu\sealed.py:164: in materialize
+    reg = registration()
+          ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def registration() -&gt; dict[str, Any]:
+        if digest(REG) != REG_SHA:
+&gt;           raise ValueError("Preregistration changed")
+E           ValueError: Preregistration changed
+
+examples\isolated_glu\sealed.py:63: ValueError</error></testcase><testcase classname="tests.test_glu_sealed" name="test_verifier_rejects_changed_audit_after_seal" time="0.000"><error message="failed on setup with &quot;ValueError: Preregistration changed&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001F3843F79E0&gt;, _basetemp=Wi...'C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def known_case(tmp_path_factory):
+        m = module()
+        root = tmp_path_factory.mktemp("public-development-verifier-fixture")
+        public, private = root / "public", root / "private"
+        rng = np.random.default_rng(572041)
+        teacher = {
+            "gate": rng.normal(size=(64, 32)) * 0.2,
+            "up": rng.normal(size=(64, 32)) * 0.2,
+            "down": rng.normal(size=(32, 64)) * 0.2,
+        }
+        # Public test inputs and the previously public teacher, never fresh secret teachers.
+        rng = np.random.default_rng(73191)
+        held = np.stack([rng.normal(size=(512, 32)) * scale for scale in [0.04, 1, 4, 30]])
+&gt;       m.materialize(public, private, 1, teacher, held)
+
+tests\test_glu_sealed.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+examples\isolated_glu\sealed.py:164: in materialize
+    reg = registration()
+          ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def registration() -&gt; dict[str, Any]:
+        if digest(REG) != REG_SHA:
+&gt;           raise ValueError("Preregistration changed")
+E           ValueError: Preregistration changed
+
+examples\isolated_glu\sealed.py:63: ValueError</error></testcase><testcase classname="tests.test_glu_sealed" name="test_verifier_rejects_nonfinite_student_even_with_updated_hashes" time="0.000"><error message="failed on setup with &quot;ValueError: Preregistration changed&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001F3843F79E0&gt;, _basetemp=Wi...'C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def known_case(tmp_path_factory):
+        m = module()
+        root = tmp_path_factory.mktemp("public-development-verifier-fixture")
+        public, private = root / "public", root / "private"
+        rng = np.random.default_rng(572041)
+        teacher = {
+            "gate": rng.normal(size=(64, 32)) * 0.2,
+            "up": rng.normal(size=(64, 32)) * 0.2,
+            "down": rng.normal(size=(32, 64)) * 0.2,
+        }
+        # Public test inputs and the previously public teacher, never fresh secret teachers.
+        rng = np.random.default_rng(73191)
+        held = np.stack([rng.normal(size=(512, 32)) * scale for scale in [0.04, 1, 4, 30]])
+&gt;       m.materialize(public, private, 1, teacher, held)
+
+tests\test_glu_sealed.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+examples\isolated_glu\sealed.py:164: in materialize
+    reg = registration()
+          ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def registration() -&gt; dict[str, Any]:
+        if digest(REG) != REG_SHA:
+&gt;           raise ValueError("Preregistration changed")
+E           ValueError: Preregistration changed
+
+examples\isolated_glu\sealed.py:63: ValueError</error></testcase><testcase classname="tests.test_glu_sealed" name="test_all_worker_failures_still_persist_negative_summary" time="0.007"><failure message="ValueError: Preregistration changed">tmp_path = WindowsPath('C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_all_worker_failures_still0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001F3860AA9F0&gt;
+
+    def test_all_worker_failures_still_persist_negative_summary(tmp_path, monkeypatch):
+        m = module()
+        monkeypatch.setattr(m, "require_readiness", lambda _: None)
+    
+        def fail(*args, **kwargs):
+            raise RuntimeError("controlled worker startup failure")
+    
+        monkeypatch.setattr(m, "run_json", fail)
+        output = tmp_path / "negative-run"
+&gt;       result = m.run(output)
+                 ^^^^^^^^^^^^^
+
+tests\test_glu_sealed.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+examples\isolated_glu\sealed.py:728: in run
+    report = aggregate(rows)
+             ^^^^^^^^^^^^^^^
+examples\isolated_glu\sealed.py:623: in aggregate
+    "protocol": registration()["protocol"],
+                ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def registration() -&gt; dict[str, Any]:
+        if digest(REG) != REG_SHA:
+&gt;           raise ValueError("Preregistration changed")
+E           ValueError: Preregistration changed
+
+examples\isolated_glu\sealed.py:63: ValueError</failure></testcase><testcase classname="tests.test_execution" name="test_json_roundtrip_and_private_file_cleanup" time="0.061" /><testcase classname="tests.test_execution" name="test_bad_worker_results_are_bounded[print('not json; private-log-marker')-did not return JSON]" time="0.060" /><testcase classname="tests.test_execution" name="test_bad_worker_results_are_bounded[print('[]')-JSON object]" time="0.062" /><testcase classname="tests.test_execution" name="test_bad_worker_results_are_bounded[print('{&quot;ok&quot;:false,&quot;error&quot;:&quot;controlled failure&quot;}')-controlled failure]" time="0.060" /><testcase classname="tests.test_execution" name="test_bad_worker_results_are_bounded[print('{}'); raise SystemExit(3)-execution failed]" time="0.060" /><testcase classname="tests.test_execution" name="test_timeout_kills_and_reaps_process" time="0.172" /><testcase classname="tests.test_execution" name="test_memory_budget_by_injected_rss_without_allocating" time="0.007" /><testcase classname="tests.test_execution" name="test_child_inspection_permission_denial_is_recorded" time="0.208" /><testcase classname="tests.test_execution" name="test_output_limit_is_enforced_even_after_fast_exit" time="0.061" /><testcase classname="tests.test_execution" name="test_invalid_limits[options0]" time="0.002" /><testcase classname="tests.test_execution" name="test_invalid_limits[options1]" time="0.003" /><testcase classname="tests.test_execution" name="test_invalid_limits[options2]" time="0.002" /><testcase classname="tests.test_execution" name="test_payload_bound" time="0.007" /><testcase classname="tests.test_execution" name="test_reports_sampled_process_tree_peak" time="0.166" /><testcase classname="tests.test_runtime_manager" name="test_actual_worker_status_without_loading_heavy_models" time="0.115" /><testcase classname="tests.test_runtime_manager" name="test_missing_interpreter_and_wrong_program_fail_explicitly" time="0.081" /><testcase classname="tests.test_runtime_manager" name="test_frozen_worker_restores_external_library_environment" time="0.002" /><testcase classname="tests.test_runtime_manager" name="test_install_requires_consent_and_refuses_existing_environment" time="0.003" /><testcase classname="tests.test_runtime_manager" name="test_linux_install_selects_cpu_torch_and_restores_library_path" time="0.005" /><testcase classname="tests.test_runtime_manager" name="test_install_rollback_removes_only_new_environment" time="0.005" /><testcase classname="tests.test_runtime_manager" name="test_finder_launch_finds_user_uv_outside_path" time="0.005" /><testcase classname="tests.test_runtime_manager" name="test_frozen_package_reports_missing_embedded_wheel" time="0.006" /><testcase classname="tests.test_runtime_manager" name="test_source_python_fallback_without_uv" time="0.004" /><testcase classname="tests.test_antipodal_io" name="test_actual_service_reconstruction_and_export" time="0.430" /><testcase classname="tests.test_antipodal_io" name="test_invalid_or_unauthorized_observations_create_no_artifact[change0]" time="0.003" /><testcase classname="tests.test_antipodal_io" name="test_invalid_or_unauthorized_observations_create_no_artifact[change1]" time="0.005" /><testcase classname="tests.test_antipodal_io" name="test_invalid_or_unauthorized_observations_create_no_artifact[change2]" time="0.003" /><testcase classname="tests.test_antipodal_io" name="test_invalid_or_unauthorized_observations_create_no_artifact[change3]" time="0.003" /><testcase classname="tests.test_antipodal_io" name="test_refuse_overwrite_and_record_failed_service_call" time="0.349" /><testcase classname="tests.test_antipodal_io" name="test_real_mcp_antipodal_tool" time="1.799" /></testsuite></testsuites>

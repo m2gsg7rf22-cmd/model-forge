@@ -21,8 +21,8 @@ from modelforge.execution import run_json
 
 Array = NDArray[np.float64]
 ROOT = Path(__file__).resolve().parents[2]
-REG = ROOT / "experiments/preregistrations/isolated-glu-fullmap-v1.json"
-REG_SHA = "cf9921199370a5c204e2f27fb04ee2ee9f1f98ef331c3609c538e4633ee5e3a4"
+REG = ROOT / "experiments/preregistrations/isolated-glu-fullmap-v2.json"
+REG_SHA = "88f8034ebcb3769db539e5ca86cf927fa183ef67708108b618d4723ad870315b"
 READY = ROOT / "experiments/preregistrations/isolated-glu-runner-readiness.json"
 AUDIT_FILES = [
     "solve.json",
@@ -372,6 +372,27 @@ def fit_audit(public: Path) -> None:
     )
 
 
+def first_fit(public: Path) -> dict[str, Any]:
+    """Adapt the frozen file-output solver to the JSON process protocol."""
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "examples/isolated_glu/hessian_pilot.py"),
+            "solve",
+            str(public),
+        ],
+        cwd=public,
+        stdin=subprocess.DEVNULL,
+        capture_output=True,
+        text=True,
+        env=environment(),
+        timeout=175,
+    )
+    if result.returncode:
+        raise RuntimeError("Frozen Hessian solver failed: " + result.stderr[-1500:])
+    return read(public / "solve.json")
+
+
 def solve(public: Path) -> dict[str, Any]:
     write(public / "learner-attempt.json", {"started": True})
     started = time.monotonic()
@@ -385,9 +406,14 @@ def solve(public: Path) -> dict[str, Any]:
         remaining = 180 - (time.monotonic() - started)
         if remaining <= 0:
             raise TimeoutError("Learner budget exhausted")
+        command = [sys.executable, str(ROOT / "examples/isolated_glu" / name), *args]
+        payload = {}
+        if name == "hessian_pilot.py":
+            command = [sys.executable, str(Path(__file__).resolve()), "first-fit"]
+            payload = {"public": str(public)}
         result = run_json(
-            [sys.executable, str(ROOT / "examples/isolated_glu" / name), *args],
-            {},
+            command,
+            payload,
             cwd=public / "monitor",
             env=environment(),
             memory_limit_mb=512,
@@ -735,10 +761,14 @@ def run(output: Path) -> dict[str, Any]:
 
 
 def main() -> None:
-    if sys.argv[1] in {"prepare", "solve", "verify", "seal", "teacher"}:
+    if sys.argv[1] in {"prepare", "solve", "verify", "seal", "teacher", "first-fit"}:
         payload = json.load(sys.stdin)
         public = Path(payload["public"])
-        if sys.argv[1] == "solve":
+        if sys.argv[1] == "first-fit":
+            if set(payload) != {"public"}:
+                raise ValueError("First fit payload must contain public only")
+            result = first_fit(public)
+        elif sys.argv[1] == "solve":
             if set(payload) != {"public"}:
                 raise ValueError("Learner payload must contain public only")
             result = solve(public)
@@ -759,4 +789,13 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as exc:
+        print(
+            json.dumps(
+                {"ok": False, "error": type(exc).__name__ + ": " + str(exc)[:1500]},
+                allow_nan=False,
+            )
+        )
+        raise SystemExit(1)

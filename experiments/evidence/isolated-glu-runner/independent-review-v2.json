@@ -1,0 +1,85 @@
+{
+  "status": "approved_for_fresh_teacher_generation",
+  "reviewer": "independent agent sealed_runner_review",
+  "review_kind": "v2 transport repair after preserved v1 engineering failure",
+  "wrapper_sha256": "76405b0ee0fcd3fb3bb40f623c95b6ae73aaa855fc559ee70fc23b22ef5560ae",
+  "execution_sha256": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+  "sources": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/sealed.py": "76405b0ee0fcd3fb3bb40f623c95b6ae73aaa855fc559ee70fc23b22ef5560ae",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "registration_sha256": "88f8034ebcb3769db539e5ca86cf927fa183ef67708108b618d4723ad870315b",
+  "registration_path": "experiments/preregistrations/isolated-glu-fullmap-v2.json",
+  "fresh_sealed_experiment_run": false,
+  "old_sealed_teacher_data_accessed": false,
+  "old_teachers_retried": false,
+  "independent_checks": {
+    "integrity_execution_and_actual_learner_tests": {
+      "passed": 24,
+      "failed": 0,
+      "seconds": 5.49,
+      "process_inspection_scope": "authorized full process inspection"
+    },
+    "actual_public_only_learner_contract": {
+      "development_teacher_seed": 572041,
+      "stages": [
+        {
+          "script": "hessian_pilot.py",
+          "process_monitor_scope": "process_and_children",
+          "peak_sampled_rss_bytes": 155910144,
+          "memory_samples": 20,
+          "memory_limit_mb": 512
+        },
+        {
+          "script": "refine.py",
+          "process_monitor_scope": "process_and_children",
+          "peak_sampled_rss_bytes": 97779712,
+          "memory_samples": 18,
+          "memory_limit_mb": 512
+        },
+        {
+          "script": "multiscale.py",
+          "process_monitor_scope": "process_and_children",
+          "peak_sampled_rss_bytes": 184172544,
+          "memory_samples": 26,
+          "memory_limit_mb": 512
+        }
+      ],
+      "learner_seconds": 4.060336624999763,
+      "heldout_read": false,
+      "perfect_teacher_outputs_removed_before_pipeline": true
+    },
+    "protocol_numeric_and_algorithm_fields_identical_to_v1": true,
+    "changed_registration_keys": [
+      "previous_registration",
+      "protocol",
+      "runner_readiness_gate",
+      "status",
+      "v2_changes"
+    ],
+    "all_frozen_solver_and_execution_antipodal_hashes_unchanged": true,
+    "adapter_nonzero_exit_prevents_reading_stale_report": true,
+    "adapter_public_only_argv_and_environment": true,
+    "cli_rejects_private_payload_extra_field": true,
+    "cli_failure_structured_bounded_json": true,
+    "readiness_false_prevents_generation": true
+  },
+  "blocking_source_findings": [],
+  "prior_failure": "v1 remains FAILED ENGINEERING with436320calibration/0sealedtest calls; no v1 teacher retry or scientific accuracy conclusion",
+  "runtime_conditions": [
+    "Commit v2 registration, exact reviewed source, independent review and matching readiness certificate before fresh entropy.",
+    "Run only standard run entrypoint for fresh experiment; it monitors teacher worker plus all descendants, including the first-fit adapter child, under180seconds/512MiB.",
+    "Require complete process_and_children monitoring and preserve any failure as failure without retry or threshold changes."
+  ],
+  "limitations": [
+    "Logical same-account process/dataflow separation, not adversarial OS sandbox.",
+    "RSS is sampled and excludes the lightweight top-level launcher.",
+    "Public known-teacher integration success establishes transport function, not sealed reconstruction success.",
+    "Finite isolated bias-free SwiGLU vector-query approximation scope; no whole Transformer, universal recovery, all-input proof or original U/D factor claims.",
+    "Private scientific model gate remains closed."
+  ]
+}

@@ -224,3 +224,21 @@ def test_all_worker_failures_still_persist_negative_summary(tmp_path, monkeypatc
     assert (
         json.loads((output / "public/report.json").read_text())["criteria_met"] is False
     )
+
+
+def test_actual_public_only_learner_contract(known_case, tmp_path):
+    m = module()
+    public, private = copy_case(known_case, tmp_path)
+    for name in [*m.AUDIT_FILES, "multiscale-solution.npz", "learner-run.json"]:
+        (public / name).unlink()
+    result = m.solve(public)
+    assert result["ok"] is True
+    assert result["heldout_read"] is False
+    assert [x["script"] for x in result["stages"]] == [
+        "hessian_pilot.py",
+        "refine.py",
+        "multiscale.py",
+    ]
+    assert all(x["memory_samples"] > 0 for x in result["stages"])
+    # Solver receives public only and cannot create a private consumption marker.
+    assert not (private / "evaluation-consumed.json").exists()
