@@ -1,6 +1,6 @@
 # Execute the reconstruction routes
 
-Use an installed ModelForge environment or run from its source checkout with `PYTHONPATH=src`. The optional source bootstrap is `python packaging/bootstrap.py install --client codex|claude --prefix PATH`; applying host registration is a separate user-requested connection. Existing installation guidance is `docs/agent-install.md`; preserve unrelated host configuration.
+Use an installed ModelForge environment or run from its source checkout with `PYTHONPATH=src`. If the executable is absent from PATH, check the existing research interpreter at `~/.local/share/modelforge-research/runtime/bin/python` (Windows: the recorded prefix\Scripts\python.exe) before installing anything. Do not assume system Python has the backend. The optional source bootstrap is `python packaging/bootstrap.py install --client codex|claude --prefix PATH`; applying host registration is a separate user-requested connection. Existing installation guidance is `docs/agent-install.md`; preserve unrelated host configuration.
 
 Create a persistent workspace/project through MCP `create_project(name)` or:
 
