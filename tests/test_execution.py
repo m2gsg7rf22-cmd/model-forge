@@ -135,3 +135,12 @@ def test_payload_bound(tmp_path: Path) -> None:
         execution.run_json(
             command("print('{}')"), {"text": "x" * 2_000_000}, cwd=tmp_path
         )
+
+
+def test_reports_sampled_process_tree_peak(tmp_path):
+    result = execution.run_json(
+        command("import time; time.sleep(.1); print('{}')"), {}, cwd=tmp_path
+    )
+    assert result["peak_sampled_rss_bytes"] > 0
+    assert result["memory_samples"] >= 1
+    assert result["memory_limit_mb"] == 2048

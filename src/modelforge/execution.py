@@ -66,6 +66,8 @@ def run_json(
         request.write_bytes(encoded)
         start = time.monotonic()
         monitor_scope = "process_and_children"
+        peak_rss = 0
+        memory_samples = 0
         with (
             request.open("rb") as incoming,
             output.open("wb") as outgoing,
@@ -100,6 +102,8 @@ def run_json(
                                 pass
                     except psutil.NoSuchProcess:
                         continue
+                    peak_rss = max(peak_rss, rss)
+                    memory_samples += 1
                     if rss > memory_limit_mb * 1024**2:
                         raise MemoryError(
                             "Engine exceeded its process memory budget; process terminated"
@@ -130,4 +134,7 @@ def run_json(
                 str(result.get("error", "Engine execution failed"))[:2000]
             )
         result["process_monitor_scope"] = monitor_scope
+        result["peak_sampled_rss_bytes"] = peak_rss
+        result["memory_samples"] = memory_samples
+        result["memory_limit_mb"] = memory_limit_mb
         return result
