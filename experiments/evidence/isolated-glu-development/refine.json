@@ -1,0 +1,14 @@
+{
+  "development_pilot_not_sealed": true,
+  "input_solution_sha256": "4b70998bb06f6ac9961d97f403e00ed9f97505a2c1882b1bcf0a20813e32efc6",
+  "algorithm": "public-residual tangent Gauss-Newton,12steps,backtracking only on calibration Hessian residual",
+  "directions_retained": 64,
+  "before_max": 1.552033859306948e-05,
+  "after_max": 2.84737521040556e-15,
+  "before_median": 3.8002341480735835e-09,
+  "after_median": 4.837546416533951e-16,
+  "max_objective_increase": -5.5499626540125446e-14,
+  "seconds": 0.9949980840028729,
+  "teacher_read_for_fit": false,
+  "full_glu_recovered": false
+}

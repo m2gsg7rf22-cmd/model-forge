@@ -1,0 +1,10 @@
+{
+  "affected_report": "multiscale-report.json",
+  "affected_field": "orientation_rounded_relative_residual",
+  "original_mixed_norm_value": 3.3597727535171495e-05,
+  "consistent_upper_triangle_value": 4.6153321852932825e-05,
+  "consistent_frobenius_value": 4.557383564971661e-05,
+  "solution_changed": false,
+  "fixed_in": "examples/isolated_glu/multiscale.py",
+  "regression": "tests/test_glu_pilot.py::test_public_pipeline_and_consistent_orientation_metric"
+}

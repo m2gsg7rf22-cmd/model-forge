@@ -1,0 +1,48 @@
+{
+  "development_only": true,
+  "fit_modified": false,
+  "original_sealed_data_read": false,
+  "solution_sha256": "12eb0bc79974c653ee674d0f103e7bf6cd54bdd8f415128a59407d9fbdcf37b0",
+  "fresh_validation_seed": 970061184,
+  "fresh_validation_total_queries": 2048,
+  "validation": [
+    {
+      "scale": 0.04,
+      "rows": 512,
+      "relative_frobenius_error": 5.29068328384414e-05,
+      "max_abs_error": 4.7250812450390367e-07,
+      "mean_abs_error": 6.870104894069204e-08
+    },
+    {
+      "scale": 1.0,
+      "rows": 512,
+      "relative_frobenius_error": 5.3174416792534015e-05,
+      "max_abs_error": 0.00048592229800847875,
+      "mean_abs_error": 5.109957003178263e-05
+    },
+    {
+      "scale": 4.0,
+      "rows": 512,
+      "relative_frobenius_error": 5.19241506479853e-05,
+      "max_abs_error": 0.008994487391338346,
+      "mean_abs_error": 0.0009308370555181927
+    },
+    {
+      "scale": 30.0,
+      "rows": 512,
+      "relative_frobenius_error": 5.409993345545166e-05,
+      "max_abs_error": 0.6176177079814806,
+      "mean_abs_error": 0.05300868081781123
+    }
+  ],
+  "one_to_one_gate_min_abs_cosine": 0.999999997533729,
+  "positive_orientations": 64,
+  "max_relative_gate_error": 7.2541435587112e-05,
+  "max_relative_coupling_error": 7.814531701049775e-05,
+  "orientation_residual_reported_mixed_norm": 3.3597727535169415e-05,
+  "orientation_residual_consistent_upper": 4.6153321852932825e-05,
+  "orientation_residual_consistent_frobenius": 4.557383564971661e-05,
+  "known_calibration_queries": 145440,
+  "elapsed_seconds": 0.07722037499479484,
+  "peak_rss_bytes": 38387712
+}

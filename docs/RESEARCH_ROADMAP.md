@@ -31,3 +31,5 @@ Scientific outcomes must be classified ENGINEERING COMPLETE / SCIENTIFICALLY PRO
 ## 2026-10-24 main-platform update
 
 The isolated continuous-query antipodal **even component** route is implemented and sealed-tested, with an explicit failing bias control and independent protocol review. See docs/antipodal-reconstruction.md. This stronger observation access is not implied by O3 data or final text/logits. Full gate/coupling discovery, odd component, attention composition and arbitrary-model recovery remain open. Preserve the sealed SwiGLU v1 failure; preregister iteration-budget v2 before fresh teachers. Historical private-model work does not open the final prerequisite.
+
+Isolated GLU full-map development now has a positive owned width64/d32 pilot, independent multiscale checks and explicit quartic-flatness diagnosis. Advance to preregistered fresh-teacher replication before integration. Keep O3 finite observations, isolated continuous queries and final text/logits as distinct access regimes. This changes the next experiment, not the universal objective or closed private gate.

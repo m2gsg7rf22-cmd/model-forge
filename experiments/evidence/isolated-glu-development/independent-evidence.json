@@ -1,0 +1,42 @@
+{
+  "seed": 831662,
+  "component_rank": 128,
+  "component_singular_ratio": 5.958271262483783,
+  "quartic_flat_direction": [
+    {
+      "t": 0.1,
+      "loss": 6.609579452373699e-05,
+      "cosine": 0.9950371902099893,
+      "loss_over_t4": 0.6609579452373697
+    },
+    {
+      "t": 0.03,
+      "loss": 5.451552708853309e-07,
+      "cosine": 0.999550303522367,
+      "loss_over_t4": 0.6730311986238655
+    },
+    {
+      "t": 0.01,
+      "loss": 6.741083715214013e-09,
+      "cosine": 0.9999500037496877,
+      "loss_over_t4": 0.6741083715214012
+    },
+    {
+      "t": 0.003,
+      "loss": 5.461271616159463e-11,
+      "cosine": 0.9999955000303751,
+      "loss_over_t4": 0.6742310637233905
+    },
+    {
+      "t": 0.001,
+      "loss": 6.742418514988716e-13,
+      "cosine": 0.999999500000375,
+      "loss_over_t4": 0.6742418514988715
+    }
+  ],
+  "tangent_gradient_fd_error": 2.022117195910056e-11,
+  "zero_probe_hessian_rank": 32,
+  "collinear_components_rank": 64,
+  "elapsed_seconds": 0.02143570799671579,
+  "peak_rss_bytes": 39223296
+}

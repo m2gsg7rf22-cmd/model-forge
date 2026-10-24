@@ -1,0 +1,28 @@
+{
+  "classification": "development pilot, not sealed",
+  "development_teacher_seed_public": 572041,
+  "frozen_initial_prototype_source_sha256": {
+    "modelforge-hessian-pilot.py": "2cdc42ce4472513e348d4b992a6b6fb3a8552df0cfe9a94245a22cb7fddffa58",
+    "modelforge-hessian-refine.py": "5bb375e4fec6c1ed3e34583420a91bdbac55e4d7c416bceb6b86616606320d6d",
+    "modelforge-glu-multiscale.py": "c30ddec6b134fcfc0e4f753d1f24edf4af59d17ff48fa2e5dcc5d4c7971cae8b"
+  },
+  "portable_source_sha256": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11"
+  },
+  "difference": "Formatting/paths, Hessian rank+gap rejection and consistent orientation metric; no new scientific success threshold",
+  "new_portable_pipeline_tests_passed": 3,
+  "existing_sealed_test_reused": false,
+  "full_model_reconstruction_claimed": false,
+  "target_api_access_assumed": false,
+  "native_builds_performed": false,
+  "verification": {
+    "local_tests": 3,
+    "local_result": "passed",
+    "strict_mypy": "3 example source files passed using fresh isolated cache",
+    "ruff": "3 example scripts and focused tests passed",
+    "full_suite_rerun": false,
+    "cross_platform_new_tests_run": false
+  }
+}

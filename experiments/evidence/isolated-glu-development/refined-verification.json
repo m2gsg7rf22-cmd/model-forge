@@ -1,0 +1,11 @@
+{
+  "development_pilot_not_sealed": true,
+  "matching": "descending global cosine greedy one-to-one",
+  "direction_count": 64,
+  "one_to_one_cosine_above_0_9995": 64,
+  "min_assigned_cosine": 0.9999999975337291,
+  "median_assigned_cosine": 0.9999999997643201,
+  "full_glu_recovered": false,
+  "gate_magnitudes_recovered": false,
+  "teacher_truth_used_only_after_fit": true
+}
