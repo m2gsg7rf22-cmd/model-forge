@@ -93,7 +93,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, windows-latest, macos-14]
+        os: ${{ fromJSON(github.event.inputs.platforms || '["ubuntu-22.04","windows-latest","macos-14"]') }}
     runs-on: ${{ matrix.os }}
     env:
       MODELFORGE_PRIVATE_HOME: ${{ github.workspace }}/unused-private
