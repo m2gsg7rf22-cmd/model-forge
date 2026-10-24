@@ -74,6 +74,10 @@ def dispatch(payload: dict[str, Any]) -> dict[str, Any]:
         from .interpretability import trace_local
 
         result = trace_local(**arguments)
+    elif operation == "antipodal_reconstruct":
+        from .antipodal_io import reconstruct_observations
+
+        result = reconstruct_observations(**arguments)
     elif operation == "representation_research":
         from .representation_research import run_representation_research
 

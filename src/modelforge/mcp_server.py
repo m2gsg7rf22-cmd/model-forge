@@ -141,6 +141,7 @@ def create_server(data_dir: str | None = None) -> FastMCP:
         "run_discovery",
         "run_attention_research",
         "run_representation_research",
+            "reconstruct_antipodal",
         "resume_research",
         "benchmark_mlx_cache",
         "trace_local_model",

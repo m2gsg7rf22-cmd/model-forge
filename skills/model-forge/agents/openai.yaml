@@ -1,0 +1,6 @@
+interface:
+  display_name: "ModelForge Reconstruction"
+  short_description: "Reconstruct authorized models with measured evidence"
+  default_prompt: "Use $model-forge to reconstruct my authorized model and verify the result against its requested scope."
+policy:
+  allow_implicit_invocation: true

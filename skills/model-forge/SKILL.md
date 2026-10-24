@@ -1,49 +1,33 @@
 ---
 name: model-forge
-description: Inspect authorized AI artifacts, execute compatible local GPT-2/Llama models, run bounded reconstruction research and training, and retain evidence through ModelForge MCP.
+description: Reconstruct authorized AI model artifacts or investigate inaccessible models with ModelForge's real CLI/MCP engines, observation-specific methods, and reproducible evidence.
 ---
-Use the model-forge MCP server. Begin with hardware_status and list_projects or
-create_project. For an authorized artifact use inspect_model and read_findings.
-Distinguish measured metadata, configuration declarations, runtime measurements,
-behavioral observations, inferred structure and unknowns. API outputs do not
-identify original architecture or weights.
 
-The original lightweight owned example uses build_model, generate and train_model
-(output-head training on a NumPy byte fixture). For a real local language engine,
-check local_runtime_status, then create_local_fixture (llama/gpt2) or obtain
-explicit authorization for attach_local_model. Use local_generate and authorized
-train_local_model for HF full/LoRA updates and resume. Apple Silicon MLX supports
-local Llama inference, 4/8-bit linear quantization, benchmarks and train_mlx_model
-with adapter reload. MLX resume/merge is unsupported. CUDA QLoRA is guarded but
-not hardware-verified on the development host. Missing dependencies or unsupported
-architectures/devices must be reported as errors, never substituted silently.
+# ModelForge
 
-Optional engine installation requires explicit permission to download/install
-libraries through install_local_runtime. It creates a dedicated companion Python
-environment; it does not download model weights. Repository bootstrap instructions
-are in docs/agent-install.md and use packaging/bootstrap.py. Apply host registration
-only when the user has requested connection; do not replace unrelated entries.
+Work toward the user's requested reconstruction, including unresolved cases. Determine what evidence is actually accessible and choose a method that uses only that evidence. Do not turn a successful component experiment into a claim of universal reconstruction.
 
-trace_local_model measures bounded activation statistics and optionally zeroes an
-exact reported MLP for a second forward pass. Do not claim neuron semantics or
-hidden internals from API behavior. run_umrre executes small owned NumPy research
-experiments: exact affine recovery under stated assumptions, nonidentifiability,
-symmetry, held-out approximation and compression. Its name is not a universal
-closed-model recovery claim.
+## Enter the actual backend
 
-probe_model and run_experiment require explicit endpoint testing authorization.
-Use request/output-token caps; input costs and provider overhead are additional,
-and these are not dollar caps. Durable experiment resume does not retry reserved
-unknown/failed requests automatically. Never train on API outputs automatically;
-obtain separate model/corpus rights before training.
+Use ModelForge MCP when connected: `hardware_status`, `list_projects` / `create_project`, `inspect_model`, `read_findings`. Discover the available tool schemas; an older installed server may lack research operations. With source or an installed package, the same operations are available through `python -m modelforge.cli --home DATA ...`. Read [execution and observation routes](references/reconstruction.md) for commands, prerequisites and interpretation.
 
-reconstruct_local requires explicit redistribution permission and a rights
-statement, including for HF adapter merge. Finite prompt parity is not universal
-identity. Attached model files and raw training trees are excluded from export;
-explicitly reconstructed HF bundles are exportable. MLX adapters remain local.
-Review report paths/provider responses before export_project and sharing.
+On resuming this repository's mission, read `AGENTS.md`, `docs/RESUME.md` and `.modelforge/research_state.json`, inspect Git status, then call `resume_research(repository_path)` or `scripts/resume_research.py`. Resume validates/recovers the queue; it does not execute arbitrary saved commands. Preserve the private final-model gate and current user authorization. Do not start the gated private model or access its assets as a side effect of reconstruction research.
 
-External Claude/Codex jobs require explicit authorization and an installed
-account-authenticated CLI. Provider billing remains external. Read task_status
-for failures. Do not describe fixtures, approximate students, quantized outputs or
-unsupported operations as exact recovery of inaccessible weights.
+## Route by what the agent can observe
+
+- **Complete authorized weights:** inspect compatibility, then `attach_local_model`, `reconstruct_local`, reload and independently compare. This imports accessible computation; it is not recovery from a closed API.
+- **Exposed hidden states/full logits:** `run_representation_research` demonstrates an owned decoder final-head recovery; it does not recover the backbone.
+- **Attention inputs/full probabilities:** `run_attention_research` studies composed-score recovery and factor ambiguity.
+- **Queryable isolated GLU block with full vector responses at signed continuous inputs:** read [the antipodal contract](references/antipodal.md), collect the exact documented probes, then call `reconstruct_antipodal`. It reconstructs the even component for any supported hidden width, not all GLU weights. Use independent heldout checks; input metadata is no certificate.
+- **Only final logits or generated text:** use explicitly authorized `probe_model` / `run_experiment`, retain observations and investigate weaker-access methods. Do not synthesize hidden states, isolate internal blocks without evidence, or claim original weights from finite matching.
+- **Unknown architecture/modality/access:** retain the full objective, identify the missing observation/algorithm, search primary research, preregister a discriminating owned experiment and add a real tested backend before advertising another reconstruction route. Read [research leads](references/research.md) only when needed.
+
+Distinguish original parameters, equivalent parameterizations, defined-domain function equivalence and finite approximation. Record which was requested and which is supported. Preserve failed runs, source/artifact digests, calibration versus sealed-test boundaries, numerical error, time, memory and query cost. A verifier must not trust fitting-side success labels. Unknowns remain unknown; passing software tests is not a scientific equivalence certificate.
+
+## Preserve existing workflows and rights
+
+The base `build_model`/`generate`/`train_model` workflow is an owned NumPy fixture. Supported GPT-2/Llama engines provide actual inference, full/LoRA training and adapter resume; Apple Silicon MLX provides local inference, 4/8-bit quantization and saved-adapter reload. Use `local_runtime_status` first. Install optional engines only with existing authorization; model weights are a separate download. Unsupported architectures/devices and missing engines must remain explicit errors. MLX adapter resume/merge and hardware-unverified CUDA QLoRA must not be invented.
+
+`trace_local_model` measures activation statistics and reversible ablation, not semantic neuron meaning. `run_umrre`/`run_discovery` execute owned bounded reconstruction studies. `benchmark_mlx_cache` compares actual cache paths; numerical divergence must not be hidden or defaults changed without verification.
+
+Endpoint testing, training on provider outputs, redistribution and external Claude/Codex jobs have separate authorization/rights requirements. Request/output-token caps exclude input costs and overhead; unknown/failed reserved requests are not automatically retried. No source-inspection operation silently starts training. Keep teacher truth, proprietary weights/implementation, secrets and heldout data outside public export/Git. `export_project` exports findings and allowed generated artifacts; inspect the actual archive before sharing.

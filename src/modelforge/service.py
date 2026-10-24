@@ -250,6 +250,7 @@ class Service:
                 "discovery",
                 "attention-research",
                 "representation-research",
+                "antipodal-reconstruction",
             )
             if not (project / name).is_symlink()
             for p in (project / name).rglob("*")
@@ -687,6 +688,23 @@ class Service:
             )
             raise
         return self._record(project_id, "representation-research", result)
+
+    def reconstruct_antipodal(self, project_id: str, observations_path: str) -> dict[str, Any]:
+        """Reconstruct an isolated GLU even component from authorized paired responses."""
+        destination = self._project(project_id) / "antipodal-reconstruction" / uuid.uuid4().hex
+        try:
+            result = self._engine(
+                "antipodal_reconstruct",
+                {"observations_path": observations_path, "destination": str(destination)},
+                memory_limit_mb=512,
+                timeout_seconds=60,
+            )
+        except Exception as exc:
+            self._record(project_id, "antipodal-reconstruction-failed", {
+                "completed": False, "error_type": type(exc).__name__, "error": str(exc)[:2000],
+            })
+            raise
+        return self._record(project_id, "antipodal-reconstruction", result)
 
     def resume_research(self, repository_path: str) -> dict[str, Any]:
         """Validate repository checkpoint/ledger and report recoverable work; execute no tasks."""
