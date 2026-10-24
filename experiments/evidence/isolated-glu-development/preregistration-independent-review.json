@@ -1,0 +1,20 @@
+{
+  "scope": "read-only preregistration audit; no teacher generated or evaluated",
+  "registration_sha256": "cf9921199370a5c204e2f27fb04ee2ee9f1f98ef331c3609c538e4633ee5e3a4",
+  "solver_hashes_match": true,
+  "contradictory_success_criteria_found": false,
+  "calibration_queries_per_teacher": 145440,
+  "evaluation_queries_per_teacher": 2048,
+  "total_queries_per_teacher": 147488,
+  "total_queries_all_three_teachers": 442464,
+  "leakage_finding": "No leakage required by specification; prototype public-seed preparation is explicitly forbidden for sealed generation.",
+  "readiness": "Specification coherent; fresh teacher generation remains blocked pending committed source-hashed independently reviewed wrapper.",
+  "wrapper_review_requirements": [
+    "Reject all nonfinite arrays/metrics and undefined/zero metric denominators; fail closed on missing criteria.",
+    "Enforce all spectral-gap, rank, count, orientation, resource and all-teachers success gates.",
+    "Apply greedy global one-to-one matching exactly as preregistered, with oriented gate errors.",
+    "Never call prototype teacher preparation; use OS-entropy secret teachers and holdouts committed before fitting.",
+    "Treat partial execution, timeout, failed teacher, missing report or consumed-marker conflict as failure, never success."
+  ],
+  "production_files_modified": false
+}
