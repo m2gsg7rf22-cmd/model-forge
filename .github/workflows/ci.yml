@@ -3,6 +3,10 @@ on:
   push:
   workflow_dispatch:
     inputs:
+      reconstruction_only:
+        description: Run only the bounded NumPy reconstruction core
+        type: boolean
+        default: false
       tests_only:
         description: 'Run full tests, lint, types and clean installation without native rebuilds'
         type: boolean
@@ -23,6 +27,7 @@ permissions:
   contents: read
 jobs:
   test-package:
+    if: github.event.inputs.reconstruction_only != 'true'
     timeout-minutes: 25
     strategy:
       fail-fast: false
@@ -78,3 +83,33 @@ jobs:
             dist/*.tar.gz
             dist/SHA256SUMS.txt
             acceptance.xml
+  reconstruction-core:
+    if: github.event.inputs.reconstruction_only == 'true'
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest, macos-14]
+    runs-on: ${{ matrix.os }}
+    env:
+      MODELFORGE_PRIVATE_HOME: ${{ runner.temp }}/unused-private
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install core only
+        run: python -m pip install . pytest mypy ruff pyyaml
+      - name: Actual algebra, artifacts and MCP
+        run: python -m pytest tests/test_antipodal.py tests/test_antipodal_io.py -q --junitxml=antipodal-acceptance.xml
+      - name: Changed backend types
+        run: python -m mypy --follow-imports=silent src/modelforge/antipodal.py src/modelforge/antipodal_io.py src/modelforge/service.py src/modelforge/runtime_worker.py src/modelforge/mcp_server.py src/modelforge/cli.py
+      - name: Changed source lint
+        run: python -m ruff check src/modelforge/antipodal.py src/modelforge/antipodal_io.py examples/antipodal_research.py tests/test_antipodal.py tests/test_antipodal_io.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Antipodal-core-${{ runner.os }}
+          path: antipodal-acceptance.xml
