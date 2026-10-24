@@ -1,0 +1,11 @@
+# Agent reconstruction skill and antipodal operator (2026-10-24)
+
+The user goal remains any-model reconstruction by any agent. This increment connects the existing discovery/head/attention/resume operations to the previously stale skill and adds a real any-width bias-free GLU even-component reconstruction operator. It does not certify the universal goal or start the gated final private model.
+
+Options considered: increase existing nonlinear fit budgets (already failed to identify every gate); add a new language without a missing expressiveness requirement (does not create missing observations); use antipodal algebra to supply new exact constraints while retaining numerical optimization for unresolved parameters. Selected: third option, with portable JSON observations and actual CLI/MCP execution. This is an implementation choice within the user's autonomous research authorization.
+
+Observation contract: known dimension and full-vector outputs at canonical e_i, e_i+e_j and their negatives, legally queryable isolated bias-free GLU block. This is stronger access than passive O3 traces or final text APIs. Supported activations satisfy sigma(t)-sigma(-t)=t (SiLU and the specified GELU forms). Full logits/text do not supply these responses automatically.
+
+Deliverables: NumPy operator recovering the symmetric quadratic even component for all units jointly; conditional orientation solver only when candidate gate magnitudes/directions and coupling matrices have independent learner provenance; strict public JSON CLI/MCP reconstruction path; updated skill references/metadata; fresh owned width64/d32 experiments, misspecification controls, independent verification and actual agent forward-test. Full GLU/gate discovery, whole decoder and universal reconstruction remain open. No new programming language is claimed necessary; JSON is an artifact schema, not a language that defeats identifiability.
+
+Model output is Q[k,i,j], E(x)=x^T Q[k]x. Store finite evidence and explicit scope separately from original weights. Reject malformed/nonfinite/oversized observations, refuse artifact replacement, retain failures, and exclude teacher/heldout truth from export. No pickle, remote code, provider queries, model downloads or training. Initial bound512MiB/120s, one CPU research worker. Stable binaries unchanged.
