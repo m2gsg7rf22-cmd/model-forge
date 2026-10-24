@@ -1,0 +1,9 @@
+{
+  "classification": "calibration-only development; not preregistered sealed validation",
+  "source_base_commit": "f8a3d3cda2ed8249081ff70704d68a6714d3438c",
+  "raw_artifacts_outside_git": "/Users/adamfaruhi123/.local/share/modelforge-research/experiments/isolated-glu-coverage-development-v1-20261024",
+  "student_sha256": "cceb4eeeecf2a33556df9f1254f09eadac9d88c5bb3a428b8876ab95eb603b4e",
+  "formal_v2_result_unchanged": "FAILED",
+  "private_final_model_gate": "closed",
+  "raw_teacher_or_heldout_copied": false
+}

@@ -1,0 +1,30 @@
+{
+  "protocol": "owned-isolated-swiglu-fullmap-v3-residual-rescue",
+  "status": "DRAFT; NOT READY; no fresh teachers until executable sources and independent readiness are committed",
+  "base_protocol": "experiments/preregistrations/isolated-glu-fullmap-v2.json",
+  "preserve_v2_failure": true,
+  "change": "Fixed calibration-only residual rescue after frozen refinement, only if exactly63 retained directions;64 skips rescue; other counts fail",
+  "rescue_source_sha256": "2b96cbec27c662481e16fe506c9467646ad24859eacb131f065c90081488dda8",
+  "rescue_configuration": {
+    "angles": 64,
+    "eigenvectors_per_angle": 2,
+    "gn_steps": 24,
+    "rank": 128,
+    "known_count": 63,
+    "duplicate_abs_cosine": 0.9995,
+    "residual_threshold": 1e-08
+  },
+  "all_other_numerical_budgets_and_thresholds": "inherit v2 unchanged, including total180s/512MiB teacher process tree cap",
+  "selection": "saved public residual only; no teacher truth/heldout access; require exactly64 total nonduplicates",
+  "fresh_teachers_required": 3,
+  "old_teacher_reuse_allowed": false,
+  "overall_success": "all three fresh teachers pass all unchanged v2 criteria",
+  "prerequisites": [
+    "Implement distinct source-hashed wrapper and public audit of rescue artifacts",
+    "Test actual learner pipeline, rescue skip/failure/tamper/repeat and time/RSS guards",
+    "Independent protocol/source review and committed readiness certificate",
+    "Commit final preregistration before entropy; no difficulty-based teacher resampling"
+  ],
+  "private_final_model_gate": "closed",
+  "universal_reconstruction_claim": false
+}

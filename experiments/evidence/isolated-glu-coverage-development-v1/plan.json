@@ -1,0 +1,27 @@
+{
+  "hypothesis": "Tangent-intersection residual subspace can initialize an additional nonduplicate low-residual rank-one candidate on original V",
+  "calibration_only": true,
+  "changes_formal_v2_result": false,
+  "private_teacher_or_heldout_access": false,
+  "new_queries": 0,
+  "configuration": {
+    "angles": 64,
+    "eigenvectors_per_angle": 2,
+    "gn_steps": 24,
+    "rank": 128,
+    "known_count": 63,
+    "duplicate_abs_cosine": 0.9995,
+    "residual_threshold": 1e-08
+  },
+  "limits": {
+    "seconds": 180,
+    "rss_mib": 512
+  },
+  "source_sha256": "2b96cbec27c662481e16fe506c9467646ad24859eacb131f065c90081488dda8",
+  "claims_excluded": [
+    "original teacher match",
+    "full map fidelity",
+    "universal recovery",
+    "residual dimension as coverage proof"
+  ]
+}

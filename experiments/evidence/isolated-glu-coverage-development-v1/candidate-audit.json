@@ -1,0 +1,42 @@
+{
+  "scope": "Independent public-array diagnostics only; no fitting and no private/heldout/teacher arrays",
+  "checks": {
+    "source_hash_matches": true,
+    "hessians_hash_matches": true,
+    "known_hash_matches": true,
+    "monitor_report_matches": true,
+    "finite": true,
+    "count64": true,
+    "prefix_exactly_preserved": true,
+    "reported_new_loss_agrees": true,
+    "reported_new_tangent_agrees": true,
+    "no_truth_claims": true
+  },
+  "source_sha256": "2b96cbec27c662481e16fe506c9467646ad24859eacb131f065c90081488dda8",
+  "output_sha256": "cceb4eeeecf2a33556df9f1254f09eadac9d88c5bb3a428b8876ab95eb603b4e",
+  "count": 64,
+  "max_unit_norm_error": 2.220446049250313e-16,
+  "max_pairwise_absolute_cosine": 0.5441882717870441,
+  "new_max_absolute_cosine_known": 0.4138916754849132,
+  "new_original_V_rank1_loss": 4.7003181767686573e-17,
+  "all_original_V_rank1_loss_max": 1.6407122775595472e-16,
+  "new_tangent_smallest_three": [
+    6.855860419395248e-09,
+    1.6372570410969342e-07,
+    0.6760737181351743
+  ],
+  "known_second_tangent_max": 4.409219616701485e-05,
+  "tangent_isometry_error_max": 4.680397109856029e-15,
+  "V_isometry_error": 2.869706150795197e-14,
+  "component_rank_at_1e-8_relative": 128,
+  "component_smallest_singular": 0.5292209114499034,
+  "original_hessian_rank128_tail_ratio": 2.6189888339949426e-07,
+  "hessian_top128_condition": 12.208554824512571,
+  "teacher_identity_verified": false,
+  "functional_recovery_verified": false,
+  "v2_outcome_changed": false,
+  "elapsed_seconds": 0.3094377079978585,
+  "own_process_ru_maxrss_bytes": 109625344,
+  "run_monitor_reported_peak_rss_bytes": 100171776,
+  "run_monitor_reported_controller_seconds": 1.586968125004205
+}

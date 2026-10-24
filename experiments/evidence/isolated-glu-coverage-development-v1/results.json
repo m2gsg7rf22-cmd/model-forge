@@ -1,0 +1,90 @@
+{
+  "seed": 20261024,
+  "d": 32,
+  "h": 64,
+  "basis_condition": 3.394672034630856,
+  "noise_checks": [
+    {
+      "eps": 0.1,
+      "tangent_two": [
+        0.08678245071874774,
+        0.008959204668638528
+      ],
+      "rank1_objective": 0.015474062981432543
+    },
+    {
+      "eps": 0.01,
+      "tangent_two": [
+        0.008717978852444035,
+        9.126878436513351e-05
+      ],
+      "rank1_objective": 0.00015572754535979588
+    },
+    {
+      "eps": 0.001,
+      "tangent_two": [
+        0.0008717920461787193,
+        9.135223641427829e-07
+      ],
+      "rank1_objective": 1.5562481975958731e-06
+    },
+    {
+      "eps": 0.0001,
+      "tangent_two": [
+        8.717873973393425e-05,
+        9.135970493176457e-09
+      ],
+      "rank1_objective": 1.5561252836528945e-08
+    }
+  ],
+  "exact_tangent_smallest": [
+    0.7269956586035866,
+    0.7097234978542603,
+    0.684194537536189,
+    8.1047323516978e-16,
+    5.01615060282451e-16
+  ],
+  "deflation": [
+    {
+      "eps": 0,
+      "residual_singular_first4": [
+        1.0000000000000002,
+        0.9999999999999999,
+        3.2178620098870022e-15,
+        3.036526495028334e-15
+      ],
+      "residual_frobenius": 1.4142135623730945,
+      "missing_projected_rank1_tail": 0.5188416889410578,
+      "one_basis_top_eigen_cosine_missing": 0.7828894914633631
+    },
+    {
+      "eps": 0.001,
+      "residual_singular_first4": [
+        0.9999999999999999,
+        0.9999999999999997,
+        2.714254979613919e-15,
+        2.5651011731135847e-15
+      ],
+      "residual_frobenius": 1.4142135623730956,
+      "missing_projected_rank1_tail": 0.5188051731758053,
+      "one_basis_top_eigen_cosine_missing": 0.9050212932782187
+    },
+    {
+      "eps": 0.01,
+      "residual_singular_first4": [
+        1.0000000000000004,
+        0.9999999999999999,
+        2.9578961410373124e-15,
+        2.760964247185103e-15
+      ],
+      "residual_frobenius": 1.414213562373095,
+      "missing_projected_rank1_tail": 0.519077074207538,
+      "one_basis_top_eigen_cosine_missing": 0.6896506482323457
+    }
+  ],
+  "full_space_counterexample": {
+    "d": 3,
+    "intersection_dimension": 3
+  },
+  "elapsed_seconds": 0.37732904200674966
+}
