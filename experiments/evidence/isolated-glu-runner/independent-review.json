@@ -1,0 +1,47 @@
+{
+  "status": "approved_for_fresh_teacher_generation",
+  "reviewer": "independent agent sealed_runner_review",
+  "wrapper_sha256": "33c9902c40fbeb2b18a86f063dff29bd5f83aa4195557c93b06cab4f595e66ca",
+  "execution_sha256": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+  "sources": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/sealed.py": "33c9902c40fbeb2b18a86f063dff29bd5f83aa4195557c93b06cab4f595e66ca",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "registration_sha256": "cf9921199370a5c204e2f27fb04ee2ee9f1f98ef331c3609c538e4633ee5e3a4",
+  "fresh_sealed_experiment_run": false,
+  "private_assets_accessed": false,
+  "independent_checks": {
+    "integrity_and_execution_tests": {
+      "passed": 23,
+      "failed": 0,
+      "seconds": 1.47,
+      "scope": "unsandboxed owned fixture process inspection",
+      "earlier_restricted_sandbox": "22 passed,1 failed because macOS sandbox denied child inspection; corrected environment and repeated all23 successfully"
+    },
+    "controlled_public_teacher_seed": 572041,
+    "cli_seal_verify_and_repeat_refusal": true,
+    "synthetic_aggregate_negative_mutations": 14,
+    "aggregate_boolean_without_metrics_rejected": true,
+    "query_counts": {
+      "calibration": 145440,
+      "evaluation": 2048
+    }
+  },
+  "blocking_source_findings": [],
+  "runtime_conditions": [
+    "Fresh run requires committed unchanged source, registration, review and readiness certificate before prepare entropy.",
+    "Only standard run entrypoint establishes complete 180s/512MiB teacher-worker descendant monitoring.",
+    "process_and_children monitoring must be available. The restricted reviewer sandbox denied one short-lived child inspection; all23 tests passed with authorized full process-inspection scope."
+  ],
+  "limitations": [
+    "Logical same-account process/dataflow separation only, not adversarial OS isolation.",
+    "Sampled RSS can miss brief peaks; limit applies teacher worker plus descendants, excluding top-level lightweight launcher.",
+    "Only isolated bias-free continuous-vector-query SwiGLU finite-domain approximation and gate/coupling diagnostics.",
+    "No whole Transformer, universal reconstruction, original U/D factors, all-input equivalence or Luna-level claim.",
+    "Private scientific model gate remains closed."
+  ]
+}
