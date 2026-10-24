@@ -92,7 +92,7 @@ jobs:
         os: [ubuntu-22.04, windows-latest, macos-14]
     runs-on: ${{ matrix.os }}
     env:
-      MODELFORGE_PRIVATE_HOME: ${{ runner.temp }}/unused-private
+      MODELFORGE_PRIVATE_HOME: ${{ github.workspace }}/unused-private
     steps:
       - uses: actions/checkout@v4
         with:
