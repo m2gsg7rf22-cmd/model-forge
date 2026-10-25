@@ -1,0 +1,37 @@
+{
+  "draft_math_design_reviewed": true,
+  "mathematics_correct_with_stated_scope": true,
+  "implementation_approved": false,
+  "experiment_approved": false,
+  "source_sha256": {
+    "docs/glu-scaling-observation-domain-draft.md": "0d63cfd75dfde512d163e7414d1027e5ff0921789045becb2c72aa5a21369973"
+  },
+  "product_rule_verified_by_symbolic_reasoning": true,
+  "span_upper_bound": "min(2m,n(n+1)/2), not equality or identifiability theorem",
+  "query_count": 1454080,
+  "query_count_assumptions": "2teachers*2channels*2steps*4calls*64probes*sum(p=10,36,136,528), no dedup or extra Richardson calls",
+  "resolved_design_ambiguities": [
+    "four-corner arithmetic order and effective diagonal2h/4h",
+    "svec sqrt2 offdiagonal/Frobenius residuals",
+    "zero/full rank and zero-next gap null handling",
+    "FP32 smooth rounded-weight ideal reference distinct from rounded execution",
+    "FD rank inflation not analytic-fullspan proof",
+    "profile conditioning confound descriptive only",
+    "sequential <=8MiBshards/proposed1GiBceiling/2GiBfree-space preflight"
+  ],
+  "remaining_requirements": [
+    "Implement exact ordered stencil/channel rounding/input generation/rank/projector conventions and independently review source",
+    "Freeze raw atom dictionary scaling, SVD orientation and exact strict relative-rank threshold; full spectra preserved",
+    "Meaningful synthetic analytic/fullspace/deficient/zero/rank-gap/stencil/partialfailure controls before any diagnosticteacher",
+    "Worst-size sequential disk/artifact transport and bounded180s/512MiBpre-data process_and_children protocol",
+    "Exact preregistration/sourceapproval/cleancommit/exclusive no-retry markers and accurate attempt/return/persist counters",
+    "Postrun saved-array audit with privileged teacher diagnostics kept separate from learner access"
+  ],
+  "no_experiment_or_probe_generation": true,
+  "teacher_queries": 0,
+  "after_941033_optimization": false,
+  "broad_precision_access_scaling_task_complete": false,
+  "universal_reconstruction_demonstrated": false,
+  "private_gate": "closed",
+  "review_md_sha256": "4669cfababfcdc59490963e2b24e64f714ef4c07c7a4356157cf913b64f2171f"
+}

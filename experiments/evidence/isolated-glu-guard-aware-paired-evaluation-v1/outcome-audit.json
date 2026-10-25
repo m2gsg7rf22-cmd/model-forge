@@ -1,0 +1,105 @@
+{
+  "approved": true,
+  "scope": "saved paired PUBLIC941033evaluation evidence VALID; quality criterion FAILED; no promotion",
+  "report_sha256": "f9f652f42abcfb05ad49bf43f7265f2ba5ae73ec04eb1a8d9809716bd9840275",
+  "validation_sha256": "e7c3350cc40b287afcb7ef007ea341366b09010de83bc68bd3ec65cac5c88458",
+  "source_commit": "9357159266033fc23dfd3e4f8e7bd0a143bea104",
+  "source_files_verified": 13,
+  "all7_original_input_files_rehashed": {
+    "candidate": "7f7d69552fe3ad8c27ad17b5f8326038fd7d26a2171ad84d8660d07560aa0a06",
+    "baseline": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+    "fit_controller": "25a5b96608f39d64dc7b2e9fe26ea2b8f1d5c369799272d545a2178b20fbbc54",
+    "fit_worker": "d79ec6411b56893a3118b0954005dd18464297e4b1cc941211ad76ed202f2b56",
+    "fit_step": "777f4527490e44e048e18d5f51c587efc1194de8e66b945b9fb0a2fd098acc44",
+    "fit_artifact_manifest": "153e9ca176bd2f691c6825020eaac100a7478538214f11789ea7b2b49fd0ad4a",
+    "outcome_audit": "00f58664507ce71f3067ac839c2b06c172c5c41f340caf74e8631a29a1b28efa"
+  },
+  "inputs_before_after_exact": true,
+  "fitroot_unchanged_except_exact_marker": true,
+  "all_worker_files_inventory_hashes_verified": true,
+  "persistent_marker_sha256": "b1655300e8e7e073df5fa6cf1edaf3ab80bceff134e188dbc01cff078c051d12",
+  "seed_status": "941033_CONSUMED_NO_RETRY",
+  "reserved_attempted_returned_persisted": [
+    2048,
+    2048,
+    2048,
+    2048
+  ],
+  "all4_groups_raw_aggregate_byteidentical": true,
+  "all2048_rng_points_byteidentical": true,
+  "reference_fp32_values_stored_exact_fp64": true,
+  "independent_sigmoid_einsum_relative_errors": {
+    "candidate": 3.8621284335127016e-16,
+    "baseline": 3.8075506171344918e-16
+  },
+  "groups": [
+    {
+      "scale": 0.01,
+      "relative_frobenius": 0.001711691208039371,
+      "max_absolute": 1.2890221087424295e-06,
+      "baseline_relative_frobenius": 0.0020232877774355004,
+      "baseline_max_absolute": 1.3341341554900594e-06,
+      "relative_difference": -0.00031159656939612934,
+      "max_absolute_difference": -4.5112046747629894e-08,
+      "relative_regressed": false,
+      "max_absolute_regressed": false
+    },
+    {
+      "scale": 1.0,
+      "relative_frobenius": 0.0018130226644210371,
+      "max_absolute": 0.01432208816042646,
+      "baseline_relative_frobenius": 0.0021770092458164437,
+      "baseline_max_absolute": 0.018487388817252537,
+      "relative_difference": -0.0003639865813954066,
+      "max_absolute_difference": -0.004165300656826076,
+      "relative_regressed": false,
+      "max_absolute_regressed": false
+    },
+    {
+      "scale": 10.0,
+      "relative_frobenius": 0.0018100743443787925,
+      "max_absolute": 1.5732781515338274,
+      "baseline_relative_frobenius": 0.0021847839507537865,
+      "baseline_max_absolute": 2.4370536484327374,
+      "relative_difference": -0.00037470960637499403,
+      "max_absolute_difference": -0.86377549689891,
+      "relative_regressed": false,
+      "max_absolute_regressed": false
+    },
+    {
+      "scale": 100.0,
+      "relative_frobenius": 0.0018053882769509602,
+      "max_absolute": 241.721156181864,
+      "baseline_relative_frobenius": 0.002164464832785856,
+      "baseline_max_absolute": 249.28129876355342,
+      "relative_difference": -0.00035907655583489574,
+      "max_absolute_difference": -7.560142581689433,
+      "relative_regressed": false,
+      "max_absolute_regressed": false
+    }
+  ],
+  "all4_relative_improve": true,
+  "all4_maxabs_improve": true,
+  "all4_relative_FAIL_fixed_0_001": true,
+  "quality_criterion_met": false,
+  "worker_peak_sampled_tree_rss_bytes": 44236800,
+  "worker_memory_samples": 7,
+  "preflight_peak_sampled_tree_rss_bytes": 17006592,
+  "preflight_memory_samples": 3,
+  "elapsed_seconds_before_final_report": 0.713559333991725,
+  "new_reference_queries_in_audit": 0,
+  "new_fits": 0,
+  "older_consumed_validation_reads": 0,
+  "private_gate": "closed",
+  "audit_probe_sha256": "ab982c8dcf75a07dd7a86d3c5baaba59b7890c4f06b4487bc59149c73f2cd8d5",
+  "audit_elapsed_seconds": 0.44727412500651553,
+  "audit_maxrss_platform_units": 84688896,
+  "limitations": [
+    "QualityFAIL despite allpaired relative and absolute improvements; no criterion relaxation or extra evaluation",
+    "Owned public fixture informed by prior development, not blind hidden-teacher/fullTransformer/universal equivalence",
+    "Sampled worker-tree RSS does not prove continuous peak or parent-controller memory",
+    "elapsed_seconds_before_final_report excludes final report write; approximate wall-time evidence only",
+    "Marker and terminal consumed status prohibit retry; counts are saved execution evidence not a crash-proof transactional oracle",
+    "Prior quality failures and monitor failures preserved; final private mission gate remains closed"
+  ]
+}
