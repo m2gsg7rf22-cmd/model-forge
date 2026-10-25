@@ -1,0 +1,19 @@
+{
+  "strict_duplicate_boundary_absdot_equal_0_9995_rejected": true,
+  "negative_sign_duplicate_uses_lowest_loss_representative": true,
+  "loss_equal_threshold_accepted": true,
+  "loss_just_above_threshold_excluded": true,
+  "relaxed_control_selection_indices": [
+    1,
+    3,
+    4
+  ],
+  "original_arrays_unchanged": true,
+  "no64_truncation_orthogonal74_retained": true,
+  "greedy_not_transitive_equivalence_classes_control": [
+    0,
+    2
+  ],
+  "empty_selection_valid": true,
+  "no_real_telemetry_grid_inspected_optimizer_kernel_replay_queries_or_private_access": true
+}

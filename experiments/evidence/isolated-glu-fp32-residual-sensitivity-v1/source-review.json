@@ -1,0 +1,88 @@
+{
+  "approved": true,
+  "status": "approved_for_fixed_read_only_public_residual_sensitivity",
+  "sources": {
+    "examples/isolated_glu/residual_sensitivity.py": "ef73bd3720c2f806f3d04a81e24c665040e1bd5d288aeebb91c2e1b1de5b26cb",
+    "experiments/preregistrations/isolated-glu-fp32-residual-sensitivity-v1.json": "aeaef8ca875bac471f6743e2bd82ff32998a79a96267ab6d817ba58c3d198573",
+    "tests/test_glu_residual_sensitivity.py": "eaa4d9a611800759817f1a8dab850c2d666714719750901ae77259078dd005ae",
+    "docs/superpowers/plans/2026-10-25-fp32-residual-sensitivity.md": "2b8c01577f65a30b6f08e49b7e42be991481ede614a9a85eb5d580f3ad801113",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  },
+  "scope": "Source/protocol/controller inspection and tiny synthetic selectioncontrols only; realtelemetry counterfactualgrid not inspected or executed by reviewer. No optimizer, directions kernelreplay, teachertruth, targetresponses, evaluation or privateassets.",
+  "blocking_findings": [],
+  "selection_rule_review": {
+    "frozen_rule": "For np.argsort(storedlosses), include candidate iff loss<=cutoff and every priorselected absolute dot<.9995. Same sorting/threshold/strictduplicate relation as frozen glu32.merge with empty known.",
+    "no_truncation": "Select returns every greedyindex, even if count>64; orthogonal74 syntheticcontrol retained74.",
+    "baseline": "StrictNPZ known52,v256,residual256,initial_loss256,b128x528; finiteFP64, unitv and orthonormalb, recomputed originalbasis residual consistency, baseline1e-8selectedv must bitwisematchknown.",
+    "grid": "Exactly14prospectivelyfrozen cutoffs1e-10..1e-3; any changedgrid/duplicate/baseline/acceptanceflag rejected.",
+    "output": "Counts, selectedindices,maxselectedloss and all256lossquantiles only; no optimizeddirections, modelstudent or acceptedcandidate."
+  },
+  "independent_controls": {
+    "sha256": "80f1070090b62219261db876c0934f2d14d08fd68738621459b55b95d81ff9b7",
+    "result": {
+      "strict_duplicate_boundary_absdot_equal_0_9995_rejected": true,
+      "negative_sign_duplicate_uses_lowest_loss_representative": true,
+      "loss_equal_threshold_accepted": true,
+      "loss_just_above_threshold_excluded": true,
+      "relaxed_control_selection_indices": [
+        1,
+        3,
+        4
+      ],
+      "original_arrays_unchanged": true,
+      "no64_truncation_orthogonal74_retained": true,
+      "greedy_not_transitive_equivalence_classes_control": [
+        0,
+        2
+      ],
+      "empty_selection_valid": true,
+      "no_real_telemetry_grid_inspected_optimizer_kernel_replay_queries_or_private_access": true
+    }
+  },
+  "local_tests_inspected": {
+    "tests": 4,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "xml_sha256": "0e4300b567e84dde7b426df7f70a599e910d87f7fcbf8ccc36f80781f40e333a",
+    "note": "Parent-produced XML inspected; no pytest or realgrid repeated by reviewer."
+  },
+  "controller_review": {
+    "sha256": "1f6b41a24d7b809dac5d98a1c2b2715fd865746b39c320b982879cba1cf824d9",
+    "approved": true,
+    "checks": [
+      "All approvedsource/dependencyhashes before execution and cleancommit required.",
+      "Unique commitnamed siblingroot; worker reads only hash-bound telemetry from sourceexperiment.",
+      "Allsourceexperimentfilehashes and exactinventory checked beforeandafter worker; mismatchfails.",
+      "run_json180seconds/512MiBtree/singleBLASthread; requires process_and_children.",
+      "Asserts zerooptimizer/query and noacceptedcandidate; no retryloop."
+    ],
+    "limits": [
+      "180s/512MiB cap applies to worker tree; lightweight controllerRSS excluded."
+    ]
+  },
+  "counterfactual_interpretation": [
+    "Count is a greedyrepresentative diagnostic under a changedhypothetical cutoff, not a count of truegates, exactequivalenceclasses or independentmodelrecoveries.",
+    "No cutoff yielding64 may be accepted or promoted into oldprotocol; any newacceptance method requires separate prospectivevalidation.",
+    "Increasingcutoff merely scans existing256refinedstarts. It does not explore missingdirections or evaluate freshcoverage/generalization.",
+    "Sortedgreedyrepresentatives are not transitive cosinegraph components; independentchaincontrol demonstrates that distinction."
+  ],
+  "approval_conditions": [
+    "Commit exactreview/source/protocol/frozendeps before onebounded read-onlydiagnostic; verify hashes and cleancommit.",
+    "Retain all14rows and every selectedindex, including zero or>64 counts; no bestcutoff reporting without fullgrid.",
+    "Verify sourceexperimentinventory/telemetry hashes unchanged after run.",
+    "Outcomeaudit may independently recompute all14greedyselections from savedarrays only, without optimizer/kernel/query replay.",
+    "Keep originalFP32failure and production1e-8criterion unchanged; do not label any diagnosticcount as recoveredmodel."
+  ],
+  "limits": [
+    "Finiteprecision residual and candidate multiplicity alone do not establish architectureidentifiability, gateidentity, storedweights or functionalaccuracy.",
+    "Telemetry is from a prior disclosedreplay; no retrospectiveassertion of originalrun finalcount.",
+    "No freshteacher, heldout or universalreconstruction evidence."
+  ],
+  "private_final_model_gate": "closed",
+  "accepted_candidate": false,
+  "universal_reconstruction_demonstrated": false
+}

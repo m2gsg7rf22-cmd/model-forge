@@ -1,0 +1,9 @@
+# Read-only FP32 residual sensitivity
+
+Goal: determine whether the existing256refined starts contain additional nonduplicate low-residual lines excluded by1e-8. This does not establish truegate identities, solver completeness, acceptance, or functional reconstruction.
+
+Freeze the14threshold grid [1e-10,3e-10,1e-9,3e-9,1e-8,3e-8,1e-7,3e-7,1e-6,3e-6,1e-5,3e-5,1e-4,1e-3] before looking at counterfactual counts. Apply the ORIGINAL argsort/squaredloss<=threshold/absdot<.9995 greedy rule to savedv/residual only, preservingallcounts even>64. No truncation or optimized/refitted directions. These are greedy nonduplicate counts, not mathematical equivalence classes.
+
+1. New examples/isolated_glu/residual_sensitivity.py loads hash-bound telemetry known52x32,v256x32,residual256,initial_loss256,b128x528 via strictIO. Recompute residuals and verifyunit/basis/finite/norm consistency, original1e-8selection bitwiseequalsknown. No teachertruth, oldfit/kernelreplay, targetqueries, newcandidate or evaluation.
+2. Tests before code: sortedgreedydedup/threshold boundary; no64truncation (70orthogonal lines remain70); malformed/nonfinite/negative values fail. Strictmypy/Ruffnewpaths; independent source review before commit and onebounded worker180s/512MiB/BLAS1. Preserve sourceoldfiles/telemetry unchanged, separateoutputdirectory, JSONcounts/selectedindices/quantiles only (no student or exported candidatevectors).
+3. Independent outcome audit recomputes all14grid selections from stored arrays without optimizing/querying. Record plateau/sensitivity only as public diagnostic. If a new noise-aware selection/acceptance method is warranted, it needs a DISTINCT prospective protocol/source review and calibration validation BEFORE any newfit/eval, then freshsealed science. ExistingFP32rejection and FP64productionprofile/criterion remain unchanged; universal/fullmodel/privategate unmet/closed.
