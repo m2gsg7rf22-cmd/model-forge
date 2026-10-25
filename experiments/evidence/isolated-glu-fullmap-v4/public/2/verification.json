@@ -1,0 +1,80 @@
+{
+  "index": 2,
+  "weight_scale": 0.4,
+  "criteria_met": true,
+  "validation": [
+    {
+      "scale": 0.04,
+      "rows": 512,
+      "relative_frobenius_error": 0.00011521719524704446,
+      "max_absolute_error": 1.12007753330437e-05,
+      "row_relative_percentiles": [
+        0.00010663361654451777,
+        0.00018458679991439748,
+        0.0002749352115138191,
+        0.00041600681740551536
+      ],
+      "row_denominator_floor": 1e-30
+    },
+    {
+      "scale": 1,
+      "rows": 512,
+      "relative_frobenius_error": 0.00011527661334740065,
+      "max_absolute_error": 0.012287914835560798,
+      "row_relative_percentiles": [
+        0.00010246847641810806,
+        0.00020166849890153134,
+        0.00028144708991531656,
+        0.0006120726401097955
+      ],
+      "row_denominator_floor": 1e-30
+    },
+    {
+      "scale": 4,
+      "rows": 512,
+      "relative_frobenius_error": 0.00011340158275468127,
+      "max_absolute_error": 0.1460079160998191,
+      "row_relative_percentiles": [
+        0.00010373346755314966,
+        0.00020610905852404615,
+        0.0002801028384716389,
+        0.0003289287815920604
+      ],
+      "row_denominator_floor": 1e-30
+    },
+    {
+      "scale": 30,
+      "rows": 512,
+      "relative_frobenius_error": 0.00010857788213013646,
+      "max_absolute_error": 9.08716206477402,
+      "row_relative_percentiles": [
+        9.835910949351507e-05,
+        0.00019613876752283752,
+        0.00025862852859250533,
+        0.0003571601519820813
+      ],
+      "row_denominator_floor": 1e-30
+    }
+  ],
+  "one_to_one_min_absolute_cosine": 0.99999998950343,
+  "max_relative_oriented_gate_error": 0.00017971808347242414,
+  "max_relative_coupling_error": 0.00016062952192008126,
+  "orientations_correct": 64,
+  "calibration_vector_queries": 145440,
+  "sealed_evaluation_vector_queries": 2048,
+  "manifest_sha256": "4927e75ab5cbe8749d7fc2fc1e5fdfc9d06a19ecddf2317ad8d3612e2117adb8",
+  "solution_sha256": "86778f9a8e82928bddfb74a25b841debd91381396301db250683074da70bd665",
+  "source_sha256": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/coverage_multi.py": "f8fb10036b622cf5fc5ec4e48fff17f0166f82a27901083879e8d25b6b249b59",
+    "examples/isolated_glu/sealed_v4.py": "bc89f5ca46d7bfed32c032a6394f8e6e1a077ed1dcc226b0b7f15a9034a02784",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "private_model_gate": "closed",
+  "whole_transformer_reconstructed": false,
+  "original_weights_recovered": false,
+  "all_inputs_equivalence_proven": false
+}

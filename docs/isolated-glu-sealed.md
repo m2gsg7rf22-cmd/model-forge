@@ -54,3 +54,8 @@ Public evidence: experiments/evidence/isolated-glu-fullmap-v2/. Next research is
 ## Actual v3 outcome (2026-10-25)
 
 The separately preregistered residual-rescue v3 also FAILED overall:60/62/61candidates, all rejected before its63-only rescue branch and before coupling/heldout evaluation.436320calibration/0sealed calls. Sourcea0d0556; CI40162660787 passed12changed-path tests on each OS. Independent public outcome audit is experiments/evidence/isolated-glu-fullmap-v3/outcome-audit.json. This exposes the need for multi-direction coverage. A separate public-calibration-only development study then obtained64/64/64, with no teacher matching or heldout/fullmap proof; see docs/isolated-glu-multi-coverage.md. Do not relabel or rerun v3.
+
+
+## Actual v4 outcome (2026-10-25)
+
+Three entirely fresh owned isolated FP64 SwiGLU blocks passed all registered v4 criteria after fixed multi-rescue (61→64,60→64,62→64). Max group relative error1.15277e-4; maxabsolute9.08716.442464total vector evaluations. Independent public commitment/audit review passed without reading sealed labels again. See docs/isolated-glu-v4-result.md and experiments/evidence/isolated-glu-fullmap-v4/. V1/v2/v3failures preserved. No universal/fullTransformer/originalweights/private-final acceptance. Next ship the verified numerical profile through a real bounded candidate backend and skill route, then investigate precision/access/scaling limitations.

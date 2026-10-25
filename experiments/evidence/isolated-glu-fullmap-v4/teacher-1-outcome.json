@@ -1,0 +1,118 @@
+{
+  "index": 1,
+  "weight_scale": 0.2,
+  "criteria_met": true,
+  "validation": [
+    {
+      "scale": 0.04,
+      "rows": 512,
+      "relative_frobenius_error": 5.656165247746996e-05,
+      "max_absolute_error": 5.385664573606327e-07,
+      "row_relative_percentiles": [
+        5.366589325378426e-05,
+        8.748360522147804e-05,
+        0.00010966567275365608,
+        0.00013725745145657878
+      ],
+      "row_denominator_floor": 1e-30
+    },
+    {
+      "scale": 1,
+      "rows": 512,
+      "relative_frobenius_error": 5.5778943833814205e-05,
+      "max_absolute_error": 0.0004405355841932135,
+      "row_relative_percentiles": [
+        5.534036135192204e-05,
+        9.67559444667787e-05,
+        0.00013576234062535823,
+        0.00016693609644035485
+      ],
+      "row_denominator_floor": 1e-30
+    },
+    {
+      "scale": 4,
+      "rows": 512,
+      "relative_frobenius_error": 5.2491581531330377e-05,
+      "max_absolute_error": 0.007965084295932456,
+      "row_relative_percentiles": [
+        4.997237780273716e-05,
+        8.837568262546404e-05,
+        0.0001243598969184173,
+        0.00018587238798562845
+      ],
+      "row_denominator_floor": 1e-30
+    },
+    {
+      "scale": 30,
+      "rows": 512,
+      "relative_frobenius_error": 5.595867275403724e-05,
+      "max_absolute_error": 0.4944648708653858,
+      "row_relative_percentiles": [
+        5.2315903929845034e-05,
+        0.00010053966995179827,
+        0.0001396185196403389,
+        0.00016494184335299358
+      ],
+      "row_denominator_floor": 1e-30
+    }
+  ],
+  "one_to_one_min_absolute_cosine": 0.9999999972129756,
+  "max_relative_oriented_gate_error": 9.560391431085969e-05,
+  "max_relative_coupling_error": 9.298044469471873e-05,
+  "orientations_correct": 64,
+  "calibration_vector_queries": 145440,
+  "sealed_evaluation_vector_queries": 2048,
+  "manifest_sha256": "b6d73803a1f91c2b87e6861d4a2af5d070b5253907928967c7a9e4cb8f4407d2",
+  "solution_sha256": "5468bc8d6a86eb477b60eaf40816468c6442656f730a9f64df6535ce2e7e6313",
+  "source_sha256": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/coverage_multi.py": "f8fb10036b622cf5fc5ec4e48fff17f0166f82a27901083879e8d25b6b249b59",
+    "examples/isolated_glu/sealed_v4.py": "bc89f5ca46d7bfed32c032a6394f8e6e1a077ed1dcc226b0b7f15a9034a02784",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "private_model_gate": "closed",
+  "whole_transformer_reconstructed": false,
+  "original_weights_recovered": false,
+  "all_inputs_equivalence_proven": false,
+  "process_monitor_scope": "process_and_children",
+  "peak_sampled_rss_bytes": 347717632,
+  "memory_samples": 146,
+  "memory_limit_mb": 512,
+  "elapsed_seconds": 8.732998292020056,
+  "rss_limit_mib": 512,
+  "peak_rss_recorded": true,
+  "roles": [
+    {
+      "role": "prepare",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 90259456,
+      "memory_samples": 4,
+      "memory_limit_mb": 512
+    },
+    {
+      "role": "solve",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 308396032,
+      "memory_samples": 128,
+      "memory_limit_mb": 512
+    },
+    {
+      "role": "seal",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 116113408,
+      "memory_samples": 5,
+      "memory_limit_mb": 512
+    },
+    {
+      "role": "verify",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 117178368,
+      "memory_samples": 5,
+      "memory_limit_mb": 512
+    }
+  ],
+  "memory_scope": "teacher worker and all descendants, including preparation, learning, sealing and verification; top-level launcher excluded"
+}

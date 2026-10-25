@@ -1,0 +1,15 @@
+{
+  "branch": "multi",
+  "input_count": 62,
+  "base_solution_sha256": "96b0336c83ba8f31ff541ed46e5722cbe2ba23f8faf6aebe43d5618d76323100",
+  "base_refine_sha256": "c6066df3f5f089eb1ca2886d012da58e5b5b799d30463ca1537bd986d23f63cd",
+  "heldout_read": false,
+  "new_queries": 0,
+  "coverage_certified": false,
+  "rescue_monitor": {
+    "process_monitor_scope": "process_and_children",
+    "peak_sampled_rss_bytes": 104873984,
+    "memory_samples": 53,
+    "memory_limit_mb": 512
+  }
+}
