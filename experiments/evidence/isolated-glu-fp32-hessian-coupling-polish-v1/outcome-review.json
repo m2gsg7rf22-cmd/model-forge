@@ -1,0 +1,81 @@
+{
+  "approved": true,
+  "scope": "independent saved-array outcome audit; quality FAIL, no promotion",
+  "report_sha256": "93d0ce1df1ca4e450fa2ae5811a502efefadc8e5e890c99b99e0af702f6869c9",
+  "source_commit": "0c457453aac3bef72c2a3ae53ae9994c4c79f17f",
+  "source_and_dependency_count": 11,
+  "old_inventory_count_unchanged": 13,
+  "primary_inputs_verified": {
+    "hessians": "5792c142ea2de8a1eb77e5423b77455835170fd7737e84186a45326d6eb7bdc7",
+    "calibration_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+    "candidate": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+    "fit_report": "c0d30f830e6304b902b5bfda0138c01a60b55c71885bd084c0e7213dafd7ea77"
+  },
+  "candidate_sha256": "4cb69ff19745128450850d9fd85657898178ff98b5360a56f8cefce800d3ae37",
+  "proposal_sha256": "5b093b216c450b2732a0808be050a625b0d6bf0b0fb03a214272e0e3df90d2b1",
+  "all64_proposal_costs_verified": true,
+  "max_screening_cost_absolute_discrepancy": 3.1086244689504383e-15,
+  "selected_and_accepted": [
+    37,
+    15,
+    6,
+    1,
+    13,
+    46,
+    2,
+    8
+  ],
+  "all8_retention_decisions_verified": true,
+  "local_solves_reported": 72,
+  "initial_cost": 0.8014022253480334,
+  "final_cost": 0.575671015622887,
+  "relative_cost_reduction": 0.281670305603551,
+  "fresh_initial_residual_relative_discrepancy": 1.0829455520223306e-13,
+  "fresh_final_residual_relative_discrepancy": 1.2981777941597834e-13,
+  "gates_byte_identical": true,
+  "all_couplings_rankone_nonzero_finite": true,
+  "candidate_forward_relative_discrepancy": 4.166705696186546e-16,
+  "evaluation_seed": 941029,
+  "evaluation_points": 2048,
+  "quality": "FAILED",
+  "groups": [
+    {
+      "scale": 0.01,
+      "relative_frobenius": 0.004428674775447879,
+      "max_absolute": 4.109954563793136e-06
+    },
+    {
+      "scale": 1.0,
+      "relative_frobenius": 0.004471065028259619,
+      "max_absolute": 0.08234478278802171
+    },
+    {
+      "scale": 10.0,
+      "relative_frobenius": 0.004395552572750339,
+      "max_absolute": 5.241529841965729
+    },
+    {
+      "scale": 100.0,
+      "relative_frobenius": 0.00468101274842247,
+      "max_absolute": 965.1415995347343
+    }
+  ],
+  "new_oracle_queries_by_reviewer": 0,
+  "new_coupling_solves_by_reviewer": 0,
+  "old_evaluation_arrays_read": false,
+  "resources": {
+    "seconds": 1.2655891250178684,
+    "build_sampled_rss_bytes": 209436672,
+    "build_samples": 18,
+    "evaluation_sampled_rss_bytes": 41058304,
+    "evaluation_samples": 2,
+    "actual_peak_known": false
+  },
+  "limitations": [
+    "Saved-Hessian objective reduction does not establish forward generalization.",
+    "Different public validation points prevent causal comparison with the prior candidate on prior points.",
+    "Seed941029 now consumed; do not reuse as independent validation.",
+    "Polled RSS cannot prove continuous hard memory bound."
+  ],
+  "private_gate": "closed"
+}
