@@ -1,0 +1,15 @@
+{
+  "all72x256_raw_solutions_verified_without_new_solves": true,
+  "analytic_diagonal_boundary_solutions_verified": true,
+  "raw_solutions": 18432,
+  "trial_rows": 64,
+  "total_trace_bytes": 32605104,
+  "compact_monitored_receipt_bytes": 714,
+  "monitor_scope": "process_only_children_unavailable",
+  "peak_sampled_rss_bytes": 38010880,
+  "memory_samples": 44,
+  "tree_monitor_scope_observed": false,
+  "continuous_tree_memory_bound_claimed": false,
+  "actual_candidate_fit": false,
+  "actual_target_queries": 0
+}

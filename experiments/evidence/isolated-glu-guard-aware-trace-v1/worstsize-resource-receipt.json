@@ -1,0 +1,19 @@
+{
+  "method": "guard-aware-step-evidence-v1",
+  "status": "completed",
+  "proposal_count": 72,
+  "subset_count": 18432,
+  "subset_linear_solves_attempted": 18432,
+  "trial_count": 64,
+  "manifest_sha256": "650039fa3fddfdb446b8f434aa9d27dffebf1041be3865e0033e77a17e02e52a",
+  "numeric_sha256": "a44a59cf496af623e6d6694abae3b38a256e2d4c7c39ba7e9d12a7d07345ce1a",
+  "summary_sha256": "b535cc163d051fb17fdde836ea3aa11b58459caac9fd5d69da016a1712975cf2",
+  "counter_scope": "evidence_helper_only_not_caller_fit",
+  "actual_target_queries": 0,
+  "actual_candidate_updates": 0,
+  "private_gate": "closed",
+  "process_monitor_scope": "process_only_children_unavailable",
+  "peak_sampled_rss_bytes": 38010880,
+  "memory_samples": 44,
+  "memory_limit_mb": 512
+}

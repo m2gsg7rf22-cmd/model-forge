@@ -1,0 +1,41 @@
+{
+  "scope": "changed telemetry prerequisite only; full fit protocol incomplete",
+  "pytest": {
+    "command": "python -m pytest tests/test_glu_guard_aware_trace.py tests/test_glu_guard_step_evidence.py -q",
+    "passed": 15,
+    "seconds": 2.75
+  },
+  "mypy": {
+    "strict": true,
+    "modules": 2,
+    "passed": true
+  },
+  "ruff": {
+    "files": 4,
+    "passed": true
+  },
+  "regression_red_then_green": [
+    "problem write failstop",
+    "final numeric evidence write failstop",
+    "final receipt write failstop",
+    "failing geometry spectrum/rank preservation",
+    "nonfinite byte encoding schema",
+    "invalid proposal id type failstop"
+  ],
+  "actual_calibration_or_candidate_reads": 0,
+  "actual_target_queries": 0,
+  "actual_candidate_updates": 0,
+  "evaluation_seeds_reserved": [],
+  "private_gate": "closed",
+  "source_sha256": {
+    "examples/isolated_glu/guard_aware_trace.py": "7d862726ed7162594ad4c8692a2acec4441bd0671b75be6094215b9779ee6be5",
+    "examples/isolated_glu/guard_step_evidence.py": "66f1e3d5149d480718b5750d9adf9c115f35a75429e08d5b51c8782aae967ea6",
+    "tests/test_glu_guard_aware_trace.py": "493bfb2062d67a15317297c85e521d58800c36478b631d5473075bd76a1ec2a1",
+    "tests/test_glu_guard_step_evidence.py": "ca0dac83853da35bccf1b5484ee8b7abe8d0cdeb665f1e5233abbcb00c2cb48d",
+    "docs/glu-guard-aware-trace.md": "1b0898ea7eb420353ec3b571eb1666512b5d08c7a193aa5120e0a40c60a635a4",
+    "examples/isolated_glu/guard_aware_direction.py": "289fd53178e2adabd12e6f74a8f8d2ba9000addc181b64f7c5233de7c9c192ed",
+    "examples/isolated_glu/evidence_transport.py": "40b61e48075329a22b81a143fcf5373c5e86bd9a0e528869285531dce80714da",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  }
+}

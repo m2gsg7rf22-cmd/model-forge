@@ -1,0 +1,19 @@
+# ביקורת תכנון — עקבות cone solver ותעבורה
+
+נדרשת הפרדה בין אישור תיעוד/עקבות סינתטי לבין אישור optimizer אמיתי. נקראה התוכנית docs/superpowers/plans/2026-10-25-guard-aware-gate-step.md. לא נקראו נתוני מועמד/כיול אמיתיים, מורה, אימותים שנצרכו או נכסים פרטיים; לא בוצע fit/solve אמיתי.
+
+העתקת cone_direction עם arithmetic/selection קפואים אפשרית, אך יוצרת סיכון drift. יש להשוות AST או תוכן מתמטי אחרי הסרת פעולות תיעוד בלבד, ולבצע differential synthetic controls מול המקור הקפוא: z/duals/objectives/selected_mask/סטטוסים וסדר masks, exactdependency exception, near-domain global failure, no-certificate failure, finite/overflow guards ו־preclip/postclip scope. אין לשנות threshold, tie ordering, קנה מידה או חריגה מדעית כדי שהלוג יהיה נוח. Hash המקור הקפוא וכל certificate/rank/constants המחולצים חייבים להיות מחויבים. העתקה אינה בפני עצמה ראיה לשקילות; exception מסוג TraceError יכול לשנות את המעטפת אך חייב לשמר את משמעות הכשל.
+
+לכל subset יש לאתחל raw_z/raw_mu ל־None בתחילתו, כדי שחריגה לפני פתרון לא תתעד בטעות פתרון מה־mask הקודם. רשומה צריכה להבדיל: not attempted, skipped exactdependent, globally rejected geometry, solve raised, nonfinite result, KKT rejected, KKT passed. אחרי solve שהחזיר מערכים יש לשמור rawz ו־normalizedmu לפני בדיקת finite; מכפילים מחוץ ל־active subset נשארים אפס עם הגדרת צורה גלויה. צריך לשמר גם את ה־mask שגרם לחריגה גלובלית, spectra/rank/reason, ואת העובדה שאסור להחזיר candidate קודם שעבר כאשר בעיה מאוחרת גילתה near-geometry.
+
+TraceError צריך לשאת stage, proposal/unit/screen-or-sequential identifiers, partial records, failed/current mask וחתימות/הפניות לקלטים. כשל validation לפני קלט מאושר יכול לשמור shape/dtype/finite-mask/סיבה; אין לסריאליזציה להקצות או לכתוב קלט בלתי־מוגבל לפני bounds validation. כשל metadata/evidence אינו כשל QP רגיל שמותר להתעלם ממנו ולהמשיך; trace-write failure חייב לעצור ניסיון עתידי בלי קידום candidate.
+
+NaN/Inf אינם JSON תקין תחת allow_nan=False. אם rawsolve החזיר ערך כזה, אין להחליפו ב־0 או לשנותו לפני KKT. אפשר לשמור nullable values עם indexed IEEE754 uint64 hex bits ו־finite-mask, או raw-bit sidecar בעל schema מחויב. פירוש כל rawfield חייב להיות חד־משמעי; אין להכניס NaN לפרימיטיב transport שמתחייב ל־finiteFP64 ולהרחיב אותו בשקט. failure classification והביטים הם evidence, לא מספר תקף להמשך אופטימיזציה.
+
+לוג JSONL אופציונלי צריך סכימה, ordinal מונוטוני, run/proposal/subset identifiers ושלבים ברורים. commit של אירוע בסוף שורה מלאה ו־flush מוגדר שומרים prefix ב־kill. write/flush exception חייב להתפשט ככשל תעבורה ולעצור, לא להיעלם ב־except של subset ולהמשיך solve נוסף. לוג שנקטע בשורה האחרונה נשמר כמות שהוא: parse prefix + דיווח truncated tail, ללא תיקון קובץ או טענת complete. final manifest/hash/end marker נכתבים רק אחרי סיום מתאים; בהיעדרם זו ראיה חלקית, ללא retry אוטומטי. sink אינו מקבל סמכות לשנות arithmetic או להפעיל queries.
+
+נפח לכל subset צריך להכיל z/mu/mask/status/scalarchecks והפניה ל־K,d,A המאוחסנים פעם אחת לכל proposal. שכפול K32×32 ו־normal provenance בכל אחד מ־18,432subsets עלול לשבור512MiB גם אם rawNPZ קטן. את בדיקות stationarity/complementarity אפשר לשחזר מהקלטים ו־z/mu בלי לפתור כיוונים חדשים; אין הכרח לשכפל כל רכיב raw בכל רשומה אם ה־schema והתחייבויות מאפשרים שחזור. יש למדוד worst-size transport אמיתי72×256 עם פתרונות,64trial gates/provenance והמסלול שבו details מלאים חיצוניים; לא רק summary או מערך dummy.
+
+החזרה לעובד נשארת receipt מתחת2KiB עם hashes/counts/paths קבועים. detailsJSON/NPZ/JSONL וה־manifest נמצאים מחוץ stdout/Git, עם schema, hashes, attempts בלעדיים וגבולות קלט/פלט. strictmetadata reader אינו אמור לקבל את כל ה־trace. כשל אינו היתר להריץ fitter מחדש כדי לקבל קבלה או trace מלא.
+
+לפרוטוקול אמיתי עתידי עדיין חסרים source/controller/preregistration/אישור נפרדים. preflight סינתטי של process_and_children חייב להתרחש לפני קריאת נתוני הניסוי ולהיכלל בתקציב הכולל. האבחון הקודם נשאר FAILED ולא חוזרים עליו. אף תיעוד משופר לא משלים בדיעבד את RSS הבנייה החסר. אין רישום או צריכת941033 בשלב תשתית זה; השער הפרטי סגור.
