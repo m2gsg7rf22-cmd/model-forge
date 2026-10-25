@@ -1,0 +1,15 @@
+{
+  "stage": "prepare",
+  "channel": "fp32_compute",
+  "vector_calls": 280608,
+  "files": {
+    "hessians.npz": "5792c142ea2de8a1eb77e5423b77455835170fd7737e84186a45326d6eb7bdc7",
+    "multiscale.npz": "b017d253cc1c08f2afa2ec25be14559d5053717dfb12c08689d809b05251554f",
+    "curvature-pair.npz": "1071faad164eb96e3e3a8ae126eeebf8a997b82413bc2f7cb935109edb196b7d"
+  },
+  "manifest_sha256": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+  "process_monitor_scope": "process_and_children",
+  "peak_sampled_rss_bytes": 164216832,
+  "memory_samples": 4,
+  "memory_limit_mb": 512
+}

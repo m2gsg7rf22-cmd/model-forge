@@ -1,0 +1,7 @@
+{
+  "candidate_built": false,
+  "stage": "directions",
+  "calibration_manifest_sha256": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+  "sealed": false,
+  "error": "Multi-rescue failed exactly64candidate requirement"
+}

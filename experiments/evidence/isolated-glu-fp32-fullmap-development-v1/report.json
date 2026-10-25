@@ -1,0 +1,55 @@
+{
+  "source_commit": "8d2d457ad804a1298aa03f9dfce5a7624dca1d06",
+  "reviewed_sources": {
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "experiments/preregistrations/isolated-glu-fp32-fullmap-development-v1.json": "bd556adbbb9a354c3cb7913a989775a3133a2aeeeb349cb9b5df51be700ccd63",
+    "tests/test_glu_fp32_development.py": "121832a4ebf84557caad4c3170a9c7ae7a29bb904a5cad763507d1d6c2adf4d9",
+    "docs/superpowers/plans/2026-10-25-fp32-fullmap-development.md": "5d8bfdfda7204ee7afdc46d052129e61c32fdf1706f856ed0adcaa53a9a3d675",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  },
+  "frozen_dependencies": {
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  },
+  "numpy_version": "2.5.4",
+  "stages": {
+    "prepare": {
+      "stage": "prepare",
+      "channel": "fp32_compute",
+      "vector_calls": 280608,
+      "files": {
+        "hessians.npz": "5792c142ea2de8a1eb77e5423b77455835170fd7737e84186a45326d6eb7bdc7",
+        "multiscale.npz": "b017d253cc1c08f2afa2ec25be14559d5053717dfb12c08689d809b05251554f",
+        "curvature-pair.npz": "1071faad164eb96e3e3a8ae126eeebf8a997b82413bc2f7cb935109edb196b7d"
+      },
+      "manifest_sha256": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 164216832,
+      "memory_samples": 4,
+      "memory_limit_mb": 512
+    },
+    "fit": {
+      "candidate_built": false,
+      "stage": "directions",
+      "calibration_manifest_sha256": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+      "sealed": false,
+      "error": "Multi-rescue failed exactly64candidate requirement",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 142082048,
+      "memory_samples": 223,
+      "memory_limit_mb": 512
+    }
+  },
+  "status": "candidate_rejected",
+  "private_gate": "closed",
+  "sealed": false,
+  "controller_seconds": 14.763533165998524,
+  "max_stage_peak_sampled_rss_bytes": 164216832
+}

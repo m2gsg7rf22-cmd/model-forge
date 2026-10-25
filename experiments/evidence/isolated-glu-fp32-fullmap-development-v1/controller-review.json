@@ -1,0 +1,17 @@
+{
+  "approved": true,
+  "controller_sha256": "26f1d14853d77ceb163bcc9cc9ea748cd1dc61afb4ec3c7273481dbc567b2bfa",
+  "static_checks": [
+    "Approved review and every reviewed/frozen dependency byte hash checked before root creation.",
+    "Repository must be clean; exclusive commit-named root prevents silently rerunning same checkpoint.",
+    "Sequential prepare/fit/evaluate only; falsecandidate prevents evaluate.",
+    "Monotonic180s remaining budget shared across all worker calls.",
+    "Each stage child and descendants capped512MiB, monitorprocess_and_children required; stage receipts and finalfailure report saved.",
+    "No retry loop; failedstage/noncandidate outcome preserved."
+  ],
+  "limits": [
+    "512MiB cap applies to each sequential worker tree, not independently to the lightweight top-level controller process.",
+    "run_jsonfailure before returning does not yield normal resource receipt for failedstage; error/finalreport retained."
+  ],
+  "no_pilot_execution_by_reviewer": true
+}
