@@ -1,0 +1,8 @@
+{
+  "valid_synthetic": "accepted",
+  "negative_squared_loss": "Rescue squared losses must be nonnegative",
+  "zero_candidate": "Invalid rescue candidate norms",
+  "reported_zero_actual_nonzero": "Rescue losses do not match original subspace",
+  "unlisted_retained_direction": "Rescue selection does not match registered residual/duplicate rule",
+  "extra_65th_not_truncated": "Rescue selection does not match registered residual/duplicate rule"
+}

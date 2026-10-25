@@ -1,0 +1,60 @@
+{
+  "status": "changes_requested",
+  "scope": "Static and synthetic boundary review only; no private or heldout reads; no new teacher generation or fit rerun",
+  "registration_sha256": "1f1d0a1751feea2c0fe6f34778ef0ec92fa05439ab163e622ecd12ab0951d1be",
+  "sources": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/coverage.py": "2b96cbec27c662481e16fe506c9467646ad24859eacb131f065c90081488dda8",
+    "examples/isolated_glu/sealed_v3.py": "4e45bbf6204d57290252adaf5b996b0c6d2da17b2a74f9f4c8ff4df47c54a093",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "inherited_protocol_equal": {
+    "teacher_count": true,
+    "teacher_weight_scales": true,
+    "input_dimension": true,
+    "hidden_width": true,
+    "output_dimension": true,
+    "teacher_distribution": true,
+    "teacher_forward": true,
+    "authorized_access": true,
+    "hessian": true,
+    "direction_solver": true,
+    "multiscale": true,
+    "total_calibration_vector_queries_per_teacher": true,
+    "sealed_evaluation": true,
+    "success_criteria": true,
+    "budget": true
+  },
+  "blocking_findings": [
+    {
+      "id": "R1",
+      "summary": "Rescue arrays were only copied/committed, not independently selection-consistency audited",
+      "probe": "probe.py; synthetic selector accepts zero starts/all_directions, negative squared residuals and retained64th not present in rescue results",
+      "required": "Recompute128 original-subspace residuals, check normalized candidate/start arrays and finite nonnegative losses, reconstruct exact registered greedy selection and compare retained arrays."
+    }
+  ],
+  "secondary_findings": [
+    {
+      "id": "R2",
+      "summary": "Readiness validates review status/hash but not review source/registration equality",
+      "required": "Require independent review sources and registration_sha256 equal active sources()/REG_SHA."
+    }
+  ],
+  "positive_boundaries": [
+    "Fresh entropy occurs after readiness; committed registration/source/certificate/review bytes are checked.",
+    "Learner and selector argv/env receive public path only, fixed frozen rescue script.",
+    "63/64 branching refuses other counts; exclusive learner/selection attempt markers prohibit retry.",
+    "64 branch preserves exact base bytes and rejects rescue directory.",
+    "Verify creates consumed marker before any read; all private reads occur in verifier only.",
+    "No truncation of extra rescue candidates; exactly64 required.",
+    "Actual retained residual/norm/duplicate checks use original Hessian subspace.",
+    "Teacher parent monitors all stage descendants with180s/512MiB outer budget.",
+    "Per-teacher error is preserved as failure, aggregate requires all3pass.",
+    "Full-map thresholds/access/query count/teacher distribution preserved fromv2."
+  ],
+  "private_final_model_gate": "closed",
+  "approval_prerequisite": "Resolve R1; review exact repaired bytes and issue committed matching readiness before any fresh teacher generation."
+}
