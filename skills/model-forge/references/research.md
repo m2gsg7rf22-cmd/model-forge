@@ -38,3 +38,6 @@ Precision development update: one fixed public diagnostic now measures the FP32/
 
 
 2026-10-25 residualsensitivity shows terminal finite-pool saturation, not a validatedadaptivecutoff; preserve all14rows and withdrawalofwidestplateauproposal. Next reviewed all-pool calibrationhypothesis pilot, not an advertisedFP32backend. Read [precision triage](precision.md).
+
+
+2026-10-25 all-pool candidate passedstructuralcalibration but FAILEDpublicfunctionalcriterion(.002615maxgroup>.001). Rawmetric/independentforward audit completed; no promotion. Next prospective normalizedcubicRichardson conditioning research, separatepublicseed941028; broadfreshscience/privategateunchanged. Read [precision triage](precision.md).
