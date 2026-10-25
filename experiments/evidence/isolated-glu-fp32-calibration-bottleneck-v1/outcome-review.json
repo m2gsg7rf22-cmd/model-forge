@@ -1,0 +1,111 @@
+{
+  "approved": true,
+  "scope": "independent saved-public-calibration outcome audit only; not candidate acceptance or causal attribution",
+  "report_sha256": "2a76d110e4a70634532822134febba73fdfbbcc4a53765823df299ec38671da6",
+  "source_commit": "94107291dd408f9d04c934ada63a896934fb828c",
+  "sources_verified": {
+    "docs/superpowers/plans/2026-10-25-fp32-calibration-bottleneck.md": "1e6d773a44d360c7fe6a48b9d26112ff5e3e489a5e2f37e290a76e3c845a0fce",
+    "examples/isolated_glu/calibration_bottleneck.py": "58fa0831b7a8e97ec2fb5ca4f90947a5b3889784226ac3673826444e7b38e2b8",
+    "tests/test_glu_calibration_bottleneck.py": "343136b30036ca0d28427f81b191d316d2c3d0df4ce91b3f85de09404dd7cebb",
+    "experiments/preregistrations/isolated-glu-fp32-calibration-bottleneck-v1.json": "ce7450c58e46e8fb06e1a13ffad5f29f0b8a3123f8b6efdfee912526ed6fec40",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c"
+  },
+  "arrays_sha256": "0134b14319d64c3a63ca23a28f336ad35e5bca417238e638aaa9a44eb7c788b3",
+  "seven_inputs_verified_unchanged": {
+    "multiscale": "b017d253cc1c08f2afa2ec25be14559d5053717dfb12c08689d809b05251554f",
+    "old_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+    "signed": "6d595c11f75703da915ba4ea3e08f2861319894f230c5b9f9139a7e1918fab51",
+    "additional_manifest": "4b41de611a3de3f82887bca955c65d23604f2e6fdd1b2cfc517fcac9f5f207c1",
+    "derived": "0a1ce6e5a243e76b6a8a54e97ad6422d202b05e313cd7f62b9a8be5580d95498",
+    "candidate": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+    "fit_report": "c0d30f830e6304b902b5bfda0138c01a60b55c71885bd084c0e7213dafd7ea77"
+  },
+  "independent_einsum_component_relative_discrepancy": {
+    "cubic": 5.55851590354039e-16,
+    "even": 1.847432123129942e-16,
+    "even_observed": 0.0,
+    "large_odd": 4.579309292521851e-16,
+    "large_saturation": 4.571191387975677e-16,
+    "large_observed": 0.0
+  },
+  "comparisons": {
+    "old_rhs_vs_new_rhs": {
+      "rows": 4096,
+      "outputs": 32,
+      "reference_frobenius": 1602.5880883996372,
+      "prediction_frobenius": 1602.590391516824,
+      "relative_frobenius": 0.00010526560030716201,
+      "max_absolute": 0.006249778110674953
+    },
+    "candidate_cubic_vs_old_rhs": {
+      "rows": 4096,
+      "outputs": 32,
+      "reference_frobenius": 1602.590391516824,
+      "prediction_frobenius": 1603.0259143497497,
+      "relative_frobenius": 0.0027201905829588374,
+      "max_absolute": 0.1657098802893202
+    },
+    "candidate_cubic_vs_new_rhs": {
+      "rows": 4096,
+      "outputs": 32,
+      "reference_frobenius": 1602.5880883996372,
+      "prediction_frobenius": 1603.0259143497497,
+      "relative_frobenius": 0.0027180644925990072,
+      "max_absolute": 0.16592303889942173
+    },
+    "candidate_even_vs_saved_even": {
+      "rows": 528,
+      "outputs": 32,
+      "reference_frobenius": 8.185091339101746,
+      "prediction_frobenius": 8.187356568826996,
+      "relative_frobenius": 0.0024748099195026378,
+      "max_absolute": 0.0008412468566355163
+    },
+    "candidate_exact_odd_vs_saved_large_odd": {
+      "rows": 512,
+      "outputs": 32,
+      "reference_frobenius": 131846383.51249646,
+      "prediction_frobenius": 131900903.01817904,
+      "relative_frobenius": 0.0027326976342466522,
+      "max_absolute": 16641.902303941548
+    },
+    "candidate_saturation_vs_saved_large_odd": {
+      "rows": 512,
+      "outputs": 32,
+      "reference_frobenius": 131846383.51249646,
+      "prediction_frobenius": 131900899.81081443,
+      "relative_frobenius": 0.0027324803572481723,
+      "max_absolute": 16641.90230400767
+    },
+    "candidate_saturation_vs_candidate_exact_odd": {
+      "rows": 512,
+      "outputs": 32,
+      "reference_frobenius": 131900903.01817904,
+      "prediction_frobenius": 131900899.81081443,
+      "relative_frobenius": 1.710911359497792e-05,
+      "max_absolute": 296.7457261760719
+    }
+  },
+  "queries": 0,
+  "fits": 0,
+  "optimizers": 0,
+  "evaluation_arrays_read": 0,
+  "preprojection_coefficients_absent": true,
+  "candidate_quality": "FAILED",
+  "private_gate": "closed",
+  "resources": {
+    "controller_seconds": 0.1309392920229584,
+    "peak_sampled_worker_tree_rss_bytes": 40517632,
+    "samples": 2,
+    "actual_peak_known": false
+  },
+  "limitations": [
+    "Calibration estimates are not exact teacher truth.",
+    "Residual patterns do not isolate gate error versus coupling or projection effects.",
+    "Preprojection arrays were not retained; only logged tail is available.",
+    "Two RSS samples cannot establish actual peak or continuous bound."
+  ]
+}
