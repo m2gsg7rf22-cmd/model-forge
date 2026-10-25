@@ -1,0 +1,35 @@
+{
+  "stage": "public_development_evaluation",
+  "vector_calls": 2048,
+  "groups": [
+    {
+      "scale": 0.01,
+      "relative_frobenius": 0.0025306738639205434,
+      "max_absolute": 2.2058065685114396e-06
+    },
+    {
+      "scale": 1.0,
+      "relative_frobenius": 0.0025224611327318773,
+      "max_absolute": 0.02199013817562051
+    },
+    {
+      "scale": 10.0,
+      "relative_frobenius": 0.0026589140105763003,
+      "max_absolute": 3.2445919144936113
+    },
+    {
+      "scale": 100.0,
+      "relative_frobenius": 0.0026587772502533677,
+      "max_absolute": 291.06910446707116
+    }
+  ],
+  "candidate_sha256": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+  "validation_sha256": "8a32bd29dc4c70c6b2791955a1942c4afa62e268ca84cafc528ceff1e4603ccd",
+  "development_max_group_relative": 0.001,
+  "all_groups_relative_at_most_1e_minus3": false,
+  "sealed": false,
+  "original_weights_recovered": false,
+  "all_inputs_equivalence_proven": false,
+  "universal_reconstruction": false,
+  "private_gate": "closed"
+}

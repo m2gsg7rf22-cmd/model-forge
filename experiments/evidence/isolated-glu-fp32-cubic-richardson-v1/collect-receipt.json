@@ -1,0 +1,13 @@
+{
+  "channel": "fp32_compute",
+  "rho": 0.03,
+  "coarse_rho": 0.06,
+  "vector_calls": 16384,
+  "calibration_manifest_sha256": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+  "raw_sha256": "6d595c11f75703da915ba4ea3e08f2861319894f230c5b9f9139a7e1918fab51",
+  "manifest_sha256": "4b41de611a3de3f82887bca955c65d23604f2e6fdd1b2cfc517fcac9f5f207c1",
+  "process_monitor_scope": "process_and_children",
+  "peak_sampled_rss_bytes": 95993856,
+  "memory_samples": 3,
+  "memory_limit_mb": 512
+}

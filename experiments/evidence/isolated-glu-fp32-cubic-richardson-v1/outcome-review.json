@@ -1,0 +1,143 @@
+{
+  "approved": true,
+  "status": "verified_public_cubic_richardson_quality_failure",
+  "report_sha256": "e4d27cdb23fa1c5e65ac414ba10dbf88a8476d47e267c8ea9a2c07415f59e052",
+  "source_commit": "188a03ad9d13c33a71eb24ab6b987f633d584bfc",
+  "source_current_and_commit_hashes_match": {
+    "examples/isolated_glu/cubic_observe.py": true,
+    "examples/isolated_glu/cubic_candidate.py": true,
+    "examples/isolated_glu/cubic_evaluate.py": true,
+    "experiments/preregistrations/isolated-glu-fp32-cubic-richardson-v1.json": true,
+    "tests/test_glu_cubic_richardson.py": true,
+    "docs/superpowers/plans/2026-10-25-fp32-cubic-richardson.md": true,
+    "src/modelforge/glu32.py": true,
+    "src/modelforge/glu32_io.py": true,
+    "src/modelforge/antipodal.py": true,
+    "src/modelforge/execution.py": true,
+    "examples/isolated_glu/precision.py": true,
+    "examples/isolated_glu/fp32_fullmap.py": true,
+    "examples/isolated_glu/pool_candidate.py": true,
+    "examples/isolated_glu/pool_evaluate.py": true
+  },
+  "all13old_input_files_unchanged": true,
+  "old_input_inventory": {
+    "fp32-fullmap-dev-v1-20261025-8d2d457/fit-attempt.json": "1958e27f8c44f81d153b900d22e9ea4c0754cd073765ca67eb0821ba3a04309a",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/fit-receipt.json": "79a8d1f5907dbaceb06b7509500d844851f24876bdf36b7a2a4b7c2329554fd1",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/fit-report.json": "64ded2e01c4a8db4dff38a248b40bb4e6e36095f54097b0f61f00ef30ada916e",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/prepare-receipt.json": "dec103703b8f9d6ecc9973028d6bf4191c85b3c008b20c3bd45fa25e94c65e01",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/curvature-pair.npz": "1071faad164eb96e3e3a8ae126eeebf8a997b82413bc2f7cb935109edb196b7d",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/hessians.npz": "5792c142ea2de8a1eb77e5423b77455835170fd7737e84186a45326d6eb7bdc7",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/manifest.json": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/multiscale.npz": "b017d253cc1c08f2afa2ec25be14559d5053717dfb12c08689d809b05251554f",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/report.json": "819e35cb25894c6515b6be25396ccaee26de4b089f79934e3dc6c8d4d5b0bd84",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/diagnostic/replay-attempt.json": "62b29ef97f40d296fa47a013d61b6e7e0c5c89cb57c2a76caa3c04b691857004",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/diagnostic/report.json": "2b41a102e4c897f3c0e28bba078f42d9d037d4ecb8b72d341d1abf7a198628a4",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/diagnostic/telemetry.npz": "e043e538a58187a9171a997bc889da2c0ab7518ffb99badc75fa1bc53c8fe6a9",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/report.json": "7e3b89c6a43c7f781b1d42bc25de6fb2dbe754b5154f471a8cb59483717716ca"
+  },
+  "new_signed_raw_sha256": "6d595c11f75703da915ba4ea3e08f2861319894f230c5b9f9139a7e1918fab51",
+  "new_collector_manifest_sha256": "4b41de611a3de3f82887bca955c65d23604f2e6fdd1b2cfc517fcac9f5f207c1",
+  "derived_rhs_sha256": "0a1ce6e5a243e76b6a8a54e97ad6422d202b05e313cd7f62b9a8be5580d95498",
+  "raw_signed_shapes_finite_fp64_and_fp32_response_representation_verified": true,
+  "small_x_bitwise_matches_old_calibration": true,
+  "Richardson_rhs_bitwise_recomputed": true,
+  "bridge_bitwise_recomputed": true,
+  "independent_closed_form_rhs_relative_difference": 1.1314482867049655e-16,
+  "derived_rhs_semantics": "Algebraic normalized-odd Richardson bridge, not physical0.001targetresponses.",
+  "all_pool_indices_exactly_recomputed": true,
+  "hypothesis_count": 64,
+  "candidate_sha256": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+  "candidate_unit_factors_collinear_with_saved_directions": true,
+  "candidate_rankone_max_relative_tail": 2.542922558692441e-16,
+  "reported_multiscale_ranks": [
+    2048,
+    64,
+    64
+  ],
+  "unprojected_coupling_tail_reported": 0.004732379123732702,
+  "validation_sha256": "8a32bd29dc4c70c6b2791955a1942c4afa62e268ca84cafc528ceff1e4603ccd",
+  "all2048inputs_match_new_public941028seed_scales": true,
+  "reference_values_exactly_fp32_representable": true,
+  "independent_einsum_candidate_prediction_relative_difference": 4.2012617986218426e-16,
+  "independent_einsum_candidate_prediction_max_abs_difference": 5.093170329928398e-11,
+  "groups": [
+    {
+      "scale": 0.01,
+      "rows": 512,
+      "relative_frobenius": 0.0025306738639205434,
+      "max_absolute": 2.2058065685114396e-06,
+      "passes_fixed_public_criterion": false
+    },
+    {
+      "scale": 1.0,
+      "rows": 512,
+      "relative_frobenius": 0.0025224611327318773,
+      "max_absolute": 0.02199013817562051,
+      "passes_fixed_public_criterion": false
+    },
+    {
+      "scale": 10.0,
+      "rows": 512,
+      "relative_frobenius": 0.0026589140105763003,
+      "max_absolute": 3.2445919144936113,
+      "passes_fixed_public_criterion": false
+    },
+    {
+      "scale": 100.0,
+      "rows": 512,
+      "relative_frobenius": 0.0026587772502533677,
+      "max_absolute": 291.06910446707116,
+      "passes_fixed_public_criterion": false
+    }
+  ],
+  "all_groups_pass_fixed_development_criterion": false,
+  "max_group_relative_frobenius": 0.0026589140105763003,
+  "max_absolute_error": 291.06910446707116,
+  "new_calibration_vector_calls": 16384,
+  "builder_target_queries": 0,
+  "new_direction_optimizer_calls": 0,
+  "multiscale_fits": 1,
+  "new_public_evaluation_vector_calls": 2048,
+  "new_total_vector_calls": 18432,
+  "new_public941028_status": "consumed; no repeat as independentvalidation",
+  "controller_seconds": 1.853032292012358,
+  "maximum_sampled_worker_tree_rss_bytes": 283525120,
+  "worker_resources": {
+    "collect": {
+      "peak_sampled_rss_bytes": 95993856,
+      "memory_samples": 3,
+      "memory_limit_mb": 512,
+      "process_monitor_scope": "process_and_children"
+    },
+    "build": {
+      "peak_sampled_rss_bytes": 283525120,
+      "memory_samples": 26,
+      "memory_limit_mb": 512,
+      "process_monitor_scope": "process_and_children"
+    },
+    "evaluate": {
+      "peak_sampled_rss_bytes": 458752,
+      "memory_samples": 1,
+      "memory_limit_mb": 512,
+      "process_monitor_scope": "process_and_children"
+    }
+  },
+  "no_teacher_queries_weights_privateaccess_refit_or_consumed_eval_repetition_by_reviewer": true,
+  "bounded_conclusions": [
+    "Actual16384newFP32responses produced a correctlycomputed derivedcubicRHS and64structurallyvalidcandidate; everypublicqualitygroup stillfails.001.",
+    "The intervention is insufficient to meet fixeddevelopmentcriterion on thispublicfixture. It does not prove or refute FP32cancellation as a solecause.",
+    "Different941028publicpoints prevent causalbefore/after comparison to prior941027groupmetrics; no improvementclaim.",
+    "Nextwork should diagnose savedcalibration residuals/conditioning/projection without newblindtrial or consumedvalidationreuse."
+  ],
+  "limits": [
+    "Approvedhere means auditvalid, not modelqualityaccepted; all4criterionflags arefalse.",
+    "Directcandidate forward and metrics recomputed without teacherweights ororacle calls; savedreferencevalues authenticated through reviewedsourceprovenance, not requeries.",
+    "UnprojectedB/LScoefficients are not saved; rank/magnitude/projection diagnostics inspected from unchangedguardedsource, no hiddenrefit.",
+    "Evaluatorhad only1RSSsample458752bytes, below plausible post-importarraymemory; actualevaluatorpeakunknown. Overall283525120is sampledworkerRSS, not hardwhole-run memoryproof.",
+    "512MiB is a polledcheck on each sequentialworker tree; lightweightcontrollerRSS excluded.",
+    "No freshhidden teacher, storedweight, wholeTransformer, productionFP32 or universalreconstruction success. OriginalFP32/allpoolfailures remain unchanged."
+  ],
+  "private_final_model_gate": "closed",
+  "production_fp32_profile_validated": false,
+  "universal_reconstruction_demonstrated": false
+}

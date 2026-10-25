@@ -1,0 +1,8 @@
+{
+  "channel": "fp32_compute",
+  "rho": 0.03,
+  "coarse_rho": 0.06,
+  "vector_calls": 16384,
+  "calibration_manifest_sha256": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+  "raw_sha256": "6d595c11f75703da915ba4ea3e08f2861319894f230c5b9f9139a7e1918fab51"
+}

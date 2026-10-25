@@ -41,3 +41,6 @@ Precision development update: one fixed public diagnostic now measures the FP32/
 
 
 2026-10-25 all-pool candidate passedstructuralcalibration but FAILEDpublicfunctionalcriterion(.002615maxgroup>.001). Rawmetric/independentforward audit completed; no promotion. Next prospective normalizedcubicRichardson conditioning research, separatepublicseed941028; broadfreshscience/privategateunchanged. Read [precision triage](precision.md).
+
+
+Public normalized-cubic Richardson development FAILED fixed.001criterion (maxrelative0.002658914, maxabsolute291.0691) after16384newFP32signedcalresponses. DerivedRHSbridge is NOT a physical.001response. Onepublicteacher/cached64directions is not blindfullharvesting or productionFP32support. Publicseed941028 nowCONSUMED; preserveallpriorfailures and do not tune/re-evaluate on it. Next saved-calibration bottleneck diagnosis without queries/refit or consumedpublicset reuse; freshblindtrial remains premature. [Evidence](https://github.com/m2gsg7rf22-cmd/model-forge/blob/discovery-lab/docs/glu-fp32-cubic-richardson.md). PrivategateCLOSED.
