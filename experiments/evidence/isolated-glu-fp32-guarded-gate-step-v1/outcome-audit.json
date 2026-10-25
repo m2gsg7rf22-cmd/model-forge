@@ -1,0 +1,126 @@
+{
+  "approved": true,
+  "scope": "independent saved public evaluation-only recovery audit; quality FAILED",
+  "report_sha256": "eb656cc88020103962b5f691c82fc2bcb508bf3023c2eac32d45755d2a29656b",
+  "original_failed_report_sha256": "59b322483abc634bbdac0e1db64581db6bc4c202e2536460b84528a5b7e43295",
+  "source_commit": "e633b6ccc51514016583a63a7fb4d6286186a403",
+  "original_source_and_dependency_count": 13,
+  "recovery_preregistration_verified": true,
+  "original_six_artifacts_unchanged": {
+    "failed_report": "59b322483abc634bbdac0e1db64581db6bc4c202e2536460b84528a5b7e43295",
+    "fit_report": "d79a4c7818b5269feb89fcef0da8a197257c17162de5a9acdc30ed5c941a377b",
+    "candidate": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+    "baseline": "3fa13a8f6337bfc9d317a95dde95cd0d87ab6ae04568a392bf6b227a517f40b3",
+    "fit_evidence": "13a5bc50a069dc5c1d253bf7eec7730d08f8a9e83d7085ee4f818a8f07a9e607",
+    "manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96"
+  },
+  "old_inventory_unchanged": 13,
+  "fit_audit_sha256": "6411f8d6e12ab33262a171e284b53660fb1d142625d6330dc79fe4af8bb0d8f9",
+  "compact_projection_byte_exact": true,
+  "copied_candidate_baseline_manifest_byte_exact": true,
+  "validation_sha256": "85c798f807af59bbc283eed448f11925b363eea9b5773ba867340116c3b98454",
+  "candidate_sha256": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+  "seed941032_inputs_verified": true,
+  "evaluation_seed_consumed": 941032,
+  "evaluation_points": 2048,
+  "paired_same_reference": true,
+  "independent_sigmoid_einsum_forward_discrepancies": {
+    "prediction": 4.284794672911318e-16,
+    "baseline_prediction": 4.2627632185124835e-16
+  },
+  "metrics": {
+    "prediction": [
+      {
+        "scale": 0.01,
+        "relative_frobenius": 0.002002736139247514,
+        "max_absolute": 1.3261547391463897e-06
+      },
+      {
+        "scale": 1.0,
+        "relative_frobenius": 0.0021176382436677,
+        "max_absolute": 0.02494547781349965
+      },
+      {
+        "scale": 10.0,
+        "relative_frobenius": 0.0022783326788382583,
+        "max_absolute": 2.243454213594191
+      },
+      {
+        "scale": 100.0,
+        "relative_frobenius": 0.0021800866392582443,
+        "max_absolute": 236.99819744182605
+      }
+    ],
+    "baseline_prediction": [
+      {
+        "scale": 0.01,
+        "relative_frobenius": 0.0020109183893870135,
+        "max_absolute": 1.3267527880440118e-06
+      },
+      {
+        "scale": 1.0,
+        "relative_frobenius": 0.002131884576298766,
+        "max_absolute": 0.024944387761983933
+      },
+      {
+        "scale": 10.0,
+        "relative_frobenius": 0.0022929682098844816,
+        "max_absolute": 2.2433965646688137
+      },
+      {
+        "scale": 100.0,
+        "relative_frobenius": 0.0021953430798125136,
+        "max_absolute": 232.42114820890856
+      }
+    ]
+  },
+  "all_relative_groups_improved": true,
+  "maximum_absolute_worsened_scales": [
+    1.0,
+    10.0,
+    100.0
+  ],
+  "all_four_groups_fail_fixed_0_001": true,
+  "quality": "FAILED",
+  "candidate_promoted": false,
+  "original_controller_remains_failed": true,
+  "original_build_RSS_unknown": true,
+  "recorded_original_zero_RSS_is_missing_not_zero_memory": true,
+  "resources": {
+    "evaluation_seconds": 0.18661804200382903,
+    "total_active_controller_seconds": 0.499113583995495,
+    "evaluation_peak_sampled_worker_tree_rss_bytes": 43581440,
+    "evaluation_samples": 3,
+    "actual_peak_known": false
+  },
+  "reviewer_new_target_queries": 0,
+  "reviewer_new_direction_solves": 0,
+  "reviewer_refits": 0,
+  "old_validation_arrays_read": false,
+  "private_gate": "closed",
+  "limitations": [
+    "Finite paired relative improvement coexists with three maximum-absolute regressions.",
+    "One disclosed public fixture is not sealed or universal equivalence evidence.",
+    "Adaptive guard remains calibration.",
+    "Seed941032 now consumed; no optimizer choices against these new labels.",
+    "Evaluation-only receipt does not restore missing original build resource evidence.",
+    "Three RSS samples do not prove continuous hard memory bound."
+  ],
+  "calibration_trial_rejection_taxonomy": {
+    "all57_training_decreased": true,
+    "all57_relative_current_and_initial_passed": true,
+    "rejected_by_current_maximum_absolute": 55,
+    "also_violate_initial_maximum_absolute": 52,
+    "accepted_alphas": [
+      {
+        "unit": 45,
+        "alpha": 0.0078125
+      },
+      {
+        "unit": 40,
+        "alpha": 1.0
+      }
+    ],
+    "scope": "observed calibration filtering only; no stationary-floor or causal-generalization conclusion"
+  }
+}

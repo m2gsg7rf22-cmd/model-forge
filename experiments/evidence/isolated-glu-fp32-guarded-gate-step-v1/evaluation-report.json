@@ -1,0 +1,59 @@
+{
+  "stage": "public_development_evaluation",
+  "vector_calls": 2048,
+  "groups": [
+    {
+      "scale": 0.01,
+      "relative_frobenius": 0.002002736139247514,
+      "max_absolute": 1.3261547391463897e-06
+    },
+    {
+      "scale": 1.0,
+      "relative_frobenius": 0.0021176382436677,
+      "max_absolute": 0.02494547781349965
+    },
+    {
+      "scale": 10.0,
+      "relative_frobenius": 0.0022783326788382583,
+      "max_absolute": 2.243454213594191
+    },
+    {
+      "scale": 100.0,
+      "relative_frobenius": 0.0021800866392582443,
+      "max_absolute": 236.99819744182605
+    }
+  ],
+  "baseline_groups": [
+    {
+      "scale": 0.01,
+      "relative_frobenius": 0.0020109183893870135,
+      "max_absolute": 1.3267527880440118e-06
+    },
+    {
+      "scale": 1.0,
+      "relative_frobenius": 0.002131884576298766,
+      "max_absolute": 0.024944387761983933
+    },
+    {
+      "scale": 10.0,
+      "relative_frobenius": 0.0022929682098844816,
+      "max_absolute": 2.2433965646688137
+    },
+    {
+      "scale": 100.0,
+      "relative_frobenius": 0.0021953430798125136,
+      "max_absolute": 232.42114820890856
+    }
+  ],
+  "paired_same_reference": true,
+  "baseline_sha256": "3fa13a8f6337bfc9d317a95dde95cd0d87ab6ae04568a392bf6b227a517f40b3",
+  "candidate_sha256": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+  "validation_sha256": "85c798f807af59bbc283eed448f11925b363eea9b5773ba867340116c3b98454",
+  "development_max_group_relative": 0.001,
+  "all_groups_relative_at_most_1e_minus3": false,
+  "sealed": false,
+  "original_weights_recovered": false,
+  "all_inputs_equivalence_proven": false,
+  "universal_reconstruction": false,
+  "private_gate": "closed"
+}

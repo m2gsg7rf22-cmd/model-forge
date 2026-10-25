@@ -1,0 +1,35 @@
+{
+  "method": "isolated-glu-fp32-guarded-gate-step-v1",
+  "candidate_built": true,
+  "baseline_sha256": "3fa13a8f6337bfc9d317a95dde95cd0d87ab6ae04568a392bf6b227a517f40b3",
+  "calibration_manifest_sha256": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+  "forward_manifest_sha256": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+  "forward_raw_sha256": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+  "new_calibration_calls": 0,
+  "reused_calibration_calls": 2048,
+  "private_gate": "closed",
+  "sealed": false,
+  "couplings_updated": false,
+  "starting_experimental_candidate_quality_failed": true,
+  "evidence_files": {
+    "gate-step-evidence.npz": "13a5bc50a069dc5c1d253bf7eec7730d08f8a9e83d7085ee4f818a8f07a9e607"
+  },
+  "candidate_sha256": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+  "inputs_before": {
+    "baseline": "3fa13a8f6337bfc9d317a95dde95cd0d87ab6ae04568a392bf6b227a517f40b3",
+    "fit_report": "adb81af048751dbd100829912f9020b643986333aa01a8c92d68b84adda5118d",
+    "old_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+    "forward_manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+    "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210"
+  },
+  "inputs_after": {
+    "baseline": "3fa13a8f6337bfc9d317a95dde95cd0d87ab6ae04568a392bf6b227a517f40b3",
+    "fit_report": "adb81af048751dbd100829912f9020b643986333aa01a8c92d68b84adda5118d",
+    "old_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+    "forward_manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+    "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210"
+  },
+  "inputs_unchanged": true,
+  "full_fit_report_sha256": "d79a4c7818b5269feb89fcef0da8a197257c17162de5a9acdc30ed5c941a377b",
+  "full_fit_details_preserved_externally": true
+}

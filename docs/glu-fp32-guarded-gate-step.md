@@ -20,7 +20,28 @@ This isolated owned NumPy GLU32/64/32 experiment does not establish original-wei
 
 ## Execution and outcome
 
-Pending source freeze and the one registered run. Outcome must be filled from preserved receipts and independent audit, including negative outcomes.
+The fit ran once at source3d3b622 and saved a changed candidate.64screen+8sequential=72linear solves;57fixed-alpha trials; only units45(alpha1/128) and40(alpha1) were retained. Training cost 1.51718319754e-05→1.47016205401e-05, a3.09923967% decrease. Couplings remained byte-identical, finite/nonzero/rank one.
+
+The original controller FAILED after completion of fitting because its full JSON result exceeded the2MB engine output limit. The preserved full fit report is3,095,641bytes and also exceeds the strict evaluator metadata-reader limit. This engineering failure was not hidden or repaired by fitting again. An independent saved-fit audit checked all64screen/8sequential gradients/Grams/eigenspectra, Newton equations Kdelta0=-.5d WITHOUT solving new directions, every trial gate and full-forward cost/guard decision, first acceptance and residuals.
+
+A separately preregistered/reviewed evaluation-only recovery was committed at sourcee633b6c. It staged1976byte metadata derived from the full report plus byte-identical candidate/incumbent/manifest, preserved all originals and ran the EXACT unchanged evaluator once. No refit, additional direction solve or metadata parser-limit relaxation. Fresh PUBLIC941032used2048responses paired on identical references. All relative errors improved but **all four FAILED the unchanged.001quality criterion**. Maximum candidate relative error0.00227833267884; no promotion.
+
+| Scale | Incumbent relative | Candidate relative | Incumbent max absolute | Candidate max absolute |
+|---:|---:|---:|---:|---:|
+| 0.01 | 0.00201091838939 | 0.00200273613925 | 1.32675278804e-06 | 1.32615473915e-06 |
+| 1 | 0.0021318845763 | 0.00211763824367 | 0.024944387762 | 0.0249454778135 |
+| 10 | 0.00229296820988 | 0.00227833267884 | 2.24339656467 | 2.24345421359 |
+| 100 | 0.00219534307981 | 0.00218008663926 | 232.421148209 | 236.998197442 |
+
+Maximum absolute errors WORSENED at scales1,10and100, including232.421148209→236.998197442at100. Calibration guards did not guarantee unseen maximum-error retention.941032is now CONSUMED. There were no additional fits, evaluations or candidate changes after viewing these labels.
+
+Saved calibration trial diagnostics: all57trials reduced training and passed relative-current/initial guards;55were rejected by the current maxabsolute guard,52also violated the initial maxabsolute guard. This is observed filtering, not a proof of a stationary floor or justification for relaxing guards. A separate synthetic guard-aware direction hypothesis is drafted in docs/superpowers/plans/2026-10-25-guard-aware-gate-direction.md. No actual constrained fit or target access is enabled by it.
+
+Independent final outcome audit verified original13source/dependency commitments plus recovery preregistration, six original artifacts,13oldinventoryfiles, compact metadata byte projection and staged copies. Seed941032inputs and every paired metric were recomputed from saved references. Independent sigmoid/einsum forwards for incumbent/candidate differed by at most4.29e-16relative. No new teacher queries/refits/direction solves/oldvalidation reads by the verifier.
+
+New target calls:0calibration+2048public evaluation. Recovery evaluation lasted0.186618042s with3worker-tree samples and43581440bytes largest sampled RSS; actual peak unknown. Combined active controller time0.499113584s excludes the intervening review/checkpoint work. Original build receipt is UNAVAILABLE after output-budget failure: the recorded0RSS is missing evidence, not zero memory. Do not claim a verified exact build peak, end-to-end uninterrupted wall time or a fully successful original controller.
+
+Raw full fit/proposal arrays remain outside Git at/Users/adamfaruhi123/.local/share/modelforge-research/experiments/fp32-guarded-gate-step-v1-20261025-3d3b622/candidate/; evaluation arrays at/Users/adamfaruhi123/.local/share/modelforge-research/experiments/fp32-guarded-gate-step-v1-20261025-3d3b622/evaluation-recovery/candidate/. CandidateSHA2562f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b; validationSHA25685c798f807af59bbc283eed448f11925b363eea9b5773ba867340116c3b98454. Small reports/audit scripts/markers/compact metadata and exact controllers are in experiments/evidence/isolated-glu-fp32-guarded-gate-step-v1/.8focused software tests/strict mypy/Ruff and independent synthetic controls passed; no broad repeated regression/native rebuild/CI. Finite owned-fixture improvement is not reconstruction of a frontier model. Universal reconstruction remains open; private gate CLOSED.
 
 
 2026-10-25 actualguardedgate fit source3d3b622 saved candidate2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b, but controller FAILED receiving >2MB fitterstdout. Evaluation didNOTstart;941032UNCONSUMED. DO NOTREFIT. Independent savedfit audit verified64screen+8sequential equations WITHOUT solving,57fullforwardtrialcost/guards,2retainedunits45/40, traincost-3.09923967%, Cbyteidentical/rank1,13sources/5inputs/13oldinventory. Original failedreport preserved; buildresource receipt unavailable:0RSSfield meansUNKNOWNnotzero. Exactunchangedevaluator also has2MBmetadata bound; separately reviewed prospective recovery stages1976byte compact metadata plus byteidenticalcandidate/baseline/manifest, retaining full3,095,641byte report and numericNPZ outsideGit. Next execute ONLY frozen evaluation-recovery-controller.py once, no fit/newdirection/oldvalidationreads; then independent savedpairedoutcomeaudit. No qualityclaim yet/privategateCLOSED.
