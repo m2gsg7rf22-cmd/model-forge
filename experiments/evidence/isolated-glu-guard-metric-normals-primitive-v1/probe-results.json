@@ -1,0 +1,15 @@
+{
+  "complex_step_full_other_units_selected_unit_gradients_verified": true,
+  "max_relative_gradient_error": 1.895384293713946e-14,
+  "max_signed_Jacobian_error": 8.041723599978071e-13,
+  "nonuniform_group_scales_and_rowmajor_provenance_verified": true,
+  "single_tie_plane_counterexample_verified": true,
+  "exact_and_near_flags_verified": true,
+  "negative_response_scaling_verified": true,
+  "computed_zero_records_omitted_without_budget_bypass": true,
+  "nonzero_error_metric_underflows_rejected": true,
+  "provenance_bounds_checked": true,
+  "actual_saved_arrays_read": 0,
+  "teacher_queries": 0,
+  "actual_fits": 0
+}

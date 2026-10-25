@@ -1,0 +1,13 @@
+{
+  "focused_tests_passed": 10,
+  "test_file": "tests/test_glu_guard_metric_normals.py",
+  "strict_mypy": "passed1newmodule",
+  "ruff": "passed2source_test_files",
+  "metric_underflow_regressions_red_then_green": 2,
+  "actual_saved_arrays_read": 0,
+  "teacher_queries": 0,
+  "actual_fits": 0,
+  "candidate_updates": 0,
+  "native_rebuilds": 0,
+  "private_gate": "closed"
+}

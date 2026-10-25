@@ -1,0 +1,49 @@
+{
+  "approved": true,
+  "scope": "synthetic-only physical guard-metric derivative mapping and tie/provenance policy; no actual optimizer/fit approval",
+  "sources": {
+    "examples/isolated_glu/guard_metric_normals.py": "50e15502584660371d42dfd8bbfd169a37b03a3474e8ec9575925ae25f2db1a8",
+    "tests/test_glu_guard_metric_normals.py": "6770741f8195ea885d2b62fc9c7d370405eada58e2b556a8b00054da0f39ee03",
+    "docs/superpowers/plans/2026-10-25-guard-metric-normals.md": "6b4decd2bdbe250f3487129971a2ef6bbdc7df951a1bf7b688444ab16cecbe8a",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e",
+    "docs/glu-guard-metric-normals.md": "2cb80b61cc802f096c48a9f3500c561f76fedb7c2e5cab1e4623562908f6d834"
+  },
+  "blocking_findings": [],
+  "resolved_findings": [
+    "Nonzero physical error squared norm could underflow to zero; now explicitly rejected.",
+    "Nonzero representable squared-error divided by large reference norm could underflow squared-relative metric to zero; now explicitly rejected."
+  ],
+  "probe_sha256": "36367078138bc18c96a5c52f9f1ce27c526123018ebc627bf847f3703df146ac",
+  "probe_results_sha256": "4eb507f8341ef36aaa94f04de2e01f92453e001187cc10072e36268b1cd32fa1",
+  "independent_probe": {
+    "complex_step_full_other_units_selected_unit_gradients_verified": true,
+    "max_relative_gradient_error": 1.895384293713946e-14,
+    "max_signed_Jacobian_error": 8.041723599978071e-13,
+    "nonuniform_group_scales_and_rowmajor_provenance_verified": true,
+    "single_tie_plane_counterexample_verified": true,
+    "exact_and_near_flags_verified": true,
+    "negative_response_scaling_verified": true,
+    "computed_zero_records_omitted_without_budget_bypass": true,
+    "nonzero_error_metric_underflows_rejected": true,
+    "provenance_bounds_checked": true,
+    "actual_saved_arrays_read": 0,
+    "teacher_queries": 0,
+    "actual_fits": 0
+  },
+  "limitations": [
+    "Physical unweighted Y/error is a caller provenance contract; values alone cannot detect preweighting.",
+    "All near-active signed max normals are conservative planes, not exact active derivatives of nonmax coordinates.",
+    "Four relative plus at least four max records fill logical budget8; any extra tie rejects the full profile without truncation.",
+    "Computed FP64 zero normals remain logical records but are omitted from A; no exact-zero or finite-retention claim.",
+    "Current and initial bounds concern the same current metric, not derivatives at different candidate points.",
+    "No finite nonlinear-step, unseen-quality, target-gradient or universal reconstruction claim.",
+    "An actual guard adapter/experiment requires separately reviewed source/protocol and exact full-forward trial checks; old labels stay consumed.",
+    "Prior failures preserved/private gate closed."
+  ],
+  "doc_only_refresh": {
+    "source_test_dependency_hashes_unchanged": true,
+    "successful_probes_and_tests_not_repeated": true,
+    "official_reference_verified": "https://web.stanford.edu/class/ee392o/subgrad.pdf",
+    "clarification": "guard_normals full mapping verified synthetically only; actual saved-data use requires separately preregistered read-only geometry diagnostic, and optimizer requires its own review"
+  }
+}

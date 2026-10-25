@@ -1,0 +1,11 @@
+# Independent synthetic guard-metric derivative validation
+
+The signed contract/plan snapshot in docs/glu-guard-metric-normals.md said pending review before this outcome; this validation and signed evidence supersede that status without modifying reviewed bytes.
+
+10NEWfocused controls passed, with strict mypy and Ruff. Independent complex-step differentiation of a3unit complete candidate with4nonuniform groups and selectedunit1 checked squared-relative gradients within1.89538429371e-14maximum relative error. Independent coordinate Jacobians checked signed maximum-residual normals within8.04172359998e-13maximum relative error. Complete other-unit residuals, group/row/output provenance, negative response scaling, exact/near tie flags and a counterexample defeating one-argmax selection were verified.
+
+Computed FP64 zero normals remain recorded, consume the logical8plane budget and can be omitted only from the constraint matrix. A zero maximum is rejected. Two RED→GREEN underflow controls reject a nonzero residual losing its squared norm or a nonzero squared error losing its relative metric. Finite/profile/offset/bool guards and no zero-omission budget bypass were independently checked. A four-group profile with anyextra exact/near tie rejects instead of truncating; no tied full-profileQP is supported.
+
+This is a SYNTHETIC prerequisite only:0actual saved candidate/calibration/evaluation arrays read,0teacher queries,0fits,0candidate updates. Currentfirst-order planes do not ensure any nonlinear finite-step guard, unseen reliability or productionFP32fidelity. Actual saved-data use needs a prospective read-only geometry diagnostic protocol/source review first; an optimizer needs a further separate protocol. Current and initial bounds constrain the same current metric. Priorqualityfailures/consumed941027..941032/unknownoriginalbuildRSS remain unchanged. Universal reconstruction remains open/privatefinalmodelgateCLOSED.
+
+Evidence: experiments/evidence/isolated-glu-guard-metric-normals-primitive-v1/. The standard max-of-active-affine-direction calculus is discussed in [Stanford subgradient notes](https://web.stanford.edu/class/ee392o/subgrad.pdf); it is not a global convexity statement about a GLU model.
