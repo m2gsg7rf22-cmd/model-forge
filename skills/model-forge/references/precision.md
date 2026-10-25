@@ -28,3 +28,6 @@ Read-only saved FP32 calibration diagnostics independently found old/new normali
 
 
 A fixed-gate Hessian factor primitive now has independent SYNTHETIC verification of its operator, adjoint, Gram and whitened rank-at-most-one local solve. [Contract and proof](https://github.com/m2gsg7rf22-cmd/model-forge/blob/discovery-lab/docs/glu-hessian-factor-primitive.md). It has not improved an actual FP32 candidate. Full Hessian Frobenius weighting, positive definite whitening and no-ridge guards matter; near-condition-limit floating point has no optimality certificate. Actual saved-H coupling polish needs a separate prospective protocol/retention/unit-selection/budget and new evaluation points. Fixed gates cannot repair direction error. Private gate closed.
+
+
+Actual saved-H coupling polish completed but public quality FAILED despite28.167%Hessian-cost reduction (maxrelative.004681>.001, maxabsolute965.142). Outcome independent audit is PENDING after verifier usage-limit interruption; source/protocol review is not outcome verification. Do not promote or repeat the experiment. Publicseed941029 nowCONSUMED. [Terminal report](https://github.com/m2gsg7rf22-cmd/model-forge/blob/discovery-lab/docs/glu-fp32-hessian-coupling-polish.md). Complete saved-array audit before claims or another actual-fit protocol. Privategateclosed.
