@@ -1,0 +1,36 @@
+{
+  "method": "independent complex-step sigmoid/einsum, no target oracle",
+  "cases": [
+    {
+      "dimension": 1,
+      "gate_gradient_relative_error": 9.197576005577841e-17,
+      "coupling_gradient_relative_error": 1.1827821896698528e-16,
+      "gram_relative_error": 4.1649141457171433e-16,
+      "jvp_relative_error": 3.639751528547616e-16
+    },
+    {
+      "dimension": 3,
+      "gate_gradient_relative_error": 2.9063901679143725e-16,
+      "coupling_gradient_relative_error": 3.2329335486006555e-16,
+      "gram_relative_error": 3.137685745408592e-16,
+      "jvp_relative_error": 2.1045185455023866e-16
+    },
+    {
+      "dimension": 5,
+      "gate_gradient_relative_error": 2.930907113515816e-16,
+      "coupling_gradient_relative_error": 2.6016971763161764e-16,
+      "gram_relative_error": 4.549448336041119e-16,
+      "jvp_relative_error": 2.6022219213829423e-16
+    }
+  ],
+  "all_gate_and_coupling_coordinates_verified": true,
+  "twice_JstarE_equals_gate_gradient": true,
+  "Gram_equals_explicit_JstarJ": true,
+  "weight_doubling_scales_loss_and_both_gradients_by_four": true,
+  "inputs_unmodified": true,
+  "zero_coupling_singular_gram_is_allowed": true,
+  "actual_experiment_arrays_read": 0,
+  "teacher_queries": 0,
+  "saved_candidate_fits": 0,
+  "candidate_updates": 0
+}

@@ -1,0 +1,20 @@
+{
+  "approved": true,
+  "scope": "synthetic-only known-candidate forward loss gradients, gate JVP and local Gram; no actual update",
+  "sources": {
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e",
+    "tests/test_glu_gate_gradient.py": "91be278fe6bdbed6118c4a6b7b457ac9927d20268758bf7a76cdb4ef5da221f4",
+    "docs/glu-gate-gradient-primitive.md": "21f5cd448e5b9022e1d524099293481600f5bf88ce09743eb14864a9e268f220"
+  },
+  "blocking_findings": [],
+  "probe_sha256": "f8a8c76a24071699140df109d819244ffb838b6066139fa80fa043435babd2c7",
+  "probe_results_sha256": "4fd0a68a6397c72e6ea1886aa47b24a3d39bd60a8bcedbb1ecf196b4e2d157d9",
+  "limitations": [
+    "Y is physical unweighted and weights are fixed residual multipliers; caller provenance must establish that contract.",
+    "The unconstrained coupling gradient does not preserve rank-one couplings.",
+    "Gate Gram may be singular; no inverse, damping or update is implemented or approved.",
+    "Smooth analytic derivatives in FP64 are not certificates for rounded saturated bit patterns, descent, stationarity or generalization.",
+    "No evidence that gate-direction error caused prior quality failures; future actual protocol needs separate review.",
+    "Prior failures preserved; universal reconstruction unproved and private gate closed."
+  ]
+}
