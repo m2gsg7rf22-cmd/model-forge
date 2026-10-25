@@ -1,0 +1,103 @@
+{
+  "approved": true,
+  "status": "approved_for_fixed_public_precision_diagnostic",
+  "sources": {
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "experiments/preregistrations/isolated-glu-precision-development-v1.json": "b0735df73c77da1e148c9b36fceb9c2a195a49714138cabc534e558d448d827d",
+    "tests/test_glu_precision.py": "2ca12a3001b77a3f399e12b318a2329f3e5d4e7df052db1bbd5f9e1e96e1285c",
+    "docs/superpowers/specs/2026-10-25-glu-precision-design.md": "a1500f3491d57f97a25f219392fe012924869e1dda314e25b75defe74b661bb9",
+    "docs/superpowers/plans/2026-10-25-glu-precision-diagnostic.md": "81fcc7b96048631730e2826e5ec38220336ca6162c0d62ca97630ab3d99d8f48"
+  },
+  "scope": "Source/protocol review and tiny independent mathematical controls only. Full sweep has not been run by reviewer; no fitting, fresh secret teachers, private arrays, heldout or model-provider queries.",
+  "blocking_findings": [],
+  "resolved_findings": [
+    {
+      "id": "PRECISION-R1",
+      "summary": "A positive analytic reference singular128 alone does not establish a stable rank128 reference subspace.",
+      "resolution": "metrics now records reference singular_rank/next/gap and rejects reference gap<100; run validates fixed reference_gap_min100 from preregistration. Estimate gap remains diagnostic and unthresholded.",
+      "independent_evidence": "reference-guard-results.json rejects an analytic reference with a nearby third direction, before any sweep."
+    }
+  ],
+  "mathematical_review": {
+    "analytic_derivative": "Product rule for s(gx)*(ux) yields s_second(gx)*(ux)*g*gT + s_first(gx)*(g*uT+u*gT), summed over down coefficients. Axis order[probe,output,input,input] and finite difference assignment reviewed.",
+    "independent_complex_step_gradient_max_abs_error": 1.0408340855860843e-17,
+    "richardson": "Stencil has O(h^2) leading truncation for both mixed terms and diagonal effective2h; (4H(h)-H(2h))/3 cancels it for smooth functions.",
+    "independent_mixed_diagonal_quartic_max_abs_error": 2.042810365310288e-14,
+    "packing": "sqrt2 uppertriangle packing preserves symmetric Frobenius inner product; independent norm control passed.",
+    "subspace_metric": "RMS of principal-angle sines is ||V-V E^T E||F/sqrt(rank); independent knownangle.3 control matched0.17061867086689825.",
+    "channels": "Returned FP32/FP16 round only FP64 outputs. fp32_compute casts inputs/weights and performs NumPy array arithmetic inFP32, then returns FP64 for subtraction. Independent tiny probe confirms compute channel differs from output-only FP32 rounding."
+  },
+  "query_inventory": {
+    "probes": 64,
+    "dimension": 32,
+    "symmetric_pairs": 528,
+    "calls_per_H": 135168,
+    "H_per_channel_step": 2,
+    "steps": 6,
+    "channels": 4,
+    "expected_vector_calls": 6488064,
+    "expected_records": 48,
+    "central_records": 24,
+    "richardson_records": 24,
+    "fits": 0,
+    "heldout_calls": 0,
+    "fresh_secret_teachers": 0,
+    "note": "Counts include repeated diagonal-center rows as actual forward evaluations. Analytic derivatives are separately identified diagnostic computations, not oracle responses."
+  },
+  "resource_review": {
+    "external_process_tree_timeout_seconds": 180,
+    "external_process_tree_memory_limit_mib": 512,
+    "single_blas_thread_required": true,
+    "feasibility": "Sequential fixed arrays and48SVD metric records appear compatible with declared cap; actual resource success must come from monitored execution, not this static estimate.",
+    "required_monitor_scope": "process_and_children",
+    "failure_policy": "Record timeout/memory/incomplete-monitor or numerical-reference failure as failure; no automatic retry or result selection."
+  },
+  "local_tests_inspected": {
+    "tests": 5,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "xml_sha256": "bf7946aa8c3f2ef66fab19528158c356ba6722d972fc324831fb7ecb04f3c68b",
+    "note": "Parent-produced XML inspected; reviewer did not repeat pytest."
+  },
+  "independent_evidence": {
+    "probe-results.json": {
+      "sha256": "4fed1eb5e336d77565164bd5e3af34390704091b5d43f4c79732154e62449f93",
+      "result": {
+        "analytic_hessian_max_abs_difference_from_independent_complex_step_gradient": 1.0408340855860843e-17,
+        "mixed_and_diagonal_quartic_Richardson_max_abs_error": 2.042810365310288e-14,
+        "tiny_curvature_vectorcalls_each": 24,
+        "symmetric_packing_preserves_frobenius_norm": true,
+        "known_principal_angle_rms_sine": 0.17061867086689828,
+        "expected_rms_sine": 0.17061867086689825,
+        "fp32_compute_distinct_from_fp64_return_rounding": true,
+        "fixed_expected_vectorcalls": 6488064,
+        "record_count": 48,
+        "no_sweep_fitting_or_secret_heldout_access": true
+      }
+    },
+    "reference-guard-results.json": {
+      "sha256": "86f5e41f954e6d0e16b2509bf34ec4e967e5c4b71a841322763f8d80352b5f5e",
+      "result": {
+        "reference_extra_direction_rejected": "Analytic reference rank not spectrally separated"
+      }
+    }
+  },
+  "approval_conditions": [
+    "Commit exact reviewed source/protocol/review before execution; controller must verify matching hashes before one bounded sweep.",
+    "Require process_and_children monitoring,180seconds/512MiB total worker tree and singleBLASthread.",
+    "Retain all48records and all failed outcomes; no beststep may be presented as independent validation.",
+    "Do not feed analytic truth into reconstruction learner or use any private/oldheldout labels; fixed publicseed572041 only."
+  ],
+  "limits": [
+    "FP32 analytic reference is a smooth FP64-arithmetic model using FP32-rounded stored weights at continuous input points; it is not a classical derivative of the piecewise-rounded runtime map. Runtime error includes input and intermediate arithmetic rounding.",
+    "NumPy FP32 is not hardware BF16/TF32 and output-only FP16 is not FP16 model execution.",
+    "Richardson cancellation assumes smooth truncation; it may amplify rounding noise.",
+    "No estimator spectral-gap acceptance threshold: degradation is the subject of the diagnostic, not a failure to hide.",
+    "One publicteacher/knownprobe grid, no recovery/parameter/heldout/generalization claim.",
+    "No new wholemodel or universal reconstruction evidence; frozenv4/GLU32 and earlier failures remain unchanged."
+  ],
+  "private_final_model_gate": "closed",
+  "full_map_recovery_verified": false,
+  "universal_reconstruction_demonstrated": false
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "isolated-glu-precision-development-v1",
+  "scope": "public development diagnostic; no sealed success criteria",
+  "teacher_seed": 572041,
+  "weight_std": 0.2,
+  "input_dim": 32,
+  "width": 64,
+  "output_dim": 32,
+  "probe_seed": 20261024,
+  "probe_count": 64,
+  "probe_std": 4,
+  "steps": [
+    0.003,
+    0.01,
+    0.03,
+    0.1,
+    0.3,
+    1.0
+  ],
+  "channels": [
+    "fp64",
+    "fp64_return_fp32",
+    "fp64_return_fp16",
+    "fp32_compute"
+  ],
+  "methods": [
+    "central",
+    "richardson"
+  ],
+  "rank": 128,
+  "expected_vector_calls": 6488064,
+  "timeout_seconds": 180,
+  "memory_limit_mb": 512,
+  "fresh_secret_teachers": false,
+  "fits": 0,
+  "heldout_calls": 0,
+  "private_final_model_gate": "closed",
+  "primary_source": "https://arxiv.org/html/2608.06631v1",
+  "claims_excluded": [
+    "full_map_recovery",
+    "stored_weight_recovery",
+    "full_model_recovery",
+    "universal_reconstruction",
+    "heldout_validation"
+  ],
+  "reference_gap_min": 100
+}

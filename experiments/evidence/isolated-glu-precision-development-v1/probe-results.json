@@ -1,0 +1,12 @@
+{
+  "analytic_hessian_max_abs_difference_from_independent_complex_step_gradient": 1.0408340855860843e-17,
+  "mixed_and_diagonal_quartic_Richardson_max_abs_error": 2.042810365310288e-14,
+  "tiny_curvature_vectorcalls_each": 24,
+  "symmetric_packing_preserves_frobenius_norm": true,
+  "known_principal_angle_rms_sine": 0.17061867086689828,
+  "expected_rms_sine": 0.17061867086689825,
+  "fp32_compute_distinct_from_fp64_return_rounding": true,
+  "fixed_expected_vectorcalls": 6488064,
+  "record_count": 48,
+  "no_sweep_fitting_or_secret_heldout_access": true
+}
