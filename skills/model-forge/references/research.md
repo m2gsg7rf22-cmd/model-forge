@@ -32,3 +32,6 @@ Actual v2 outcome: the all-three criterion FAILED (63/64/64 candidate directions
 
 
 Precision development update: one fixed public diagnostic now measures the FP32/output-rounding bottleneck and a Richardson step-size tradeoff; read [precision triage](precision.md). No new full-map recovery or production precision profile is established. Preserve all48outcomes and the FP16negative control; next test full-map fitting using one consistent FP32 channel and persisted calibration evidence before fresh-teacher protocol.
+
+
+2026-10-25 FP32 rejection telemetry: disclosedsaved-datareplay plus independentarrayaudit observed52retained,4rescue roundsnoaddition; no newtargetqueries, no fullmapcandidate. See [precision triage](precision.md). Next saved-refinement residual/cluster sensitivity; broadscaled/wholemodelaccessscience remainsopen.

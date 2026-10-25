@@ -10,3 +10,6 @@ Reproducible source/results: [precision development report](https://github.com/m
 
 
 Actual subsequent public FP32full-map pilot was REJECTED despite saved-H gap797.35: frozen direction search failed exactly64candidate requirement. No candidate or evaluation exists. The final count was not saved, so neither missing nor extra candidates are established. Keep all calibration and the one-attempt marker; do not claim successful FP32reconstruction or bypass existingFP64productionprofile. Further noise/count telemetry needs an explicitly distinct reviewed public diagnostic, with any replay disclosed. [Negative full-map evidence](https://github.com/m2gsg7rf22-cmd/model-forge/blob/discovery-lab/docs/glu-fp32-fullmap-development.md).
+
+
+A distinct disclosed zero-query replay now observed52retained candidates from256starts, with four512startrescue rounds addingnone. Independent audit reconstructed initial52bitwiseequalfinalknown; this is new replay telemetry, not proof of52truegates or a recorded originalcount. Alloldfilesunchanged. Read [count diagnostics](https://github.com/m2gsg7rf22-cmd/model-forge/blob/discovery-lab/docs/glu-fp32-count-diagnostic.md). Next inspect residual/cluster sensitivity fromsavedarrays without refitting or accepting changedthresholds; originalFP32rejection remains.
