@@ -1,0 +1,32 @@
+{
+  "method": "isolated-glu-fp32-guard-aware-gate-step-v1",
+  "status": "completed",
+  "candidate_built": true,
+  "private_gate": "closed",
+  "inputs_before": {
+    "candidate": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+    "compact_metadata": "5aad40a6f33ab0b374e95086e4ab977f5b8e17a1d73d5d761ab03f7a039ba624",
+    "full_fit_report": "d79a4c7818b5269feb89fcef0da8a197257c17162de5a9acdc30ed5c941a377b",
+    "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+    "manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+    "original_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96"
+  },
+  "changed": true,
+  "new_target_queries": 0,
+  "reused_calibration_vectors": 2048,
+  "candidate_updates": 8,
+  "trials": 9,
+  "original_full_fit_report_read_mode": "hash_only",
+  "step_report_sha256": "777f4527490e44e048e18d5f51c587efc1194de8e66b945b9fb0a2fd098acc44",
+  "artifact_manifest_sha256": "153e9ca176bd2f691c6825020eaac100a7478538214f11789ea7b2b49fd0ad4a",
+  "candidate_sha256": "7f7d69552fe3ad8c27ad17b5f8326038fd7d26a2171ad84d8660d07560aa0a06",
+  "inputs_unchanged": true,
+  "inputs_after": {
+    "candidate": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+    "compact_metadata": "5aad40a6f33ab0b374e95086e4ab977f5b8e17a1d73d5d761ab03f7a039ba624",
+    "full_fit_report": "d79a4c7818b5269feb89fcef0da8a197257c17162de5a9acdc30ed5c941a377b",
+    "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+    "manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+    "original_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96"
+  }
+}

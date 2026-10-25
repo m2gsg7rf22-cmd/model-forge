@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "evidence_file": "numeric-evidence.npz",
+  "evidence_sha256": "c856c530f6436c0b3ce633df51329596ca32d91ab80171ad70cbcea66d15b94c",
+  "evidence_bytes": 2930514,
+  "arrays": {
+    "initial_G": {
+      "shape": [
+        64,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "final_G": {
+      "shape": [
+        64,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "fixed_C": {
+      "shape": [
+        64,
+        32,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "physical_train_x": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "physical_train_y": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "physical_guard_x": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "physical_guard_y": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "weights": {
+      "shape": [
+        1024
+      ],
+      "dtype": "float64"
+    },
+    "weighted_target": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "initial_train_residual": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "final_train_residual": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "initial_guard_error": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "final_guard_error": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "trial_gates": {
+      "shape": [
+        9,
+        32
+      ],
+      "dtype": "float64"
+    }
+  },
+  "metadata": {
+    "method": "isolated-glu-fp32-guard-aware-gate-step-v1",
+    "root_report": "../report.json",
+    "scope": "supplied_data_only_not_heldout"
+  }
+}
