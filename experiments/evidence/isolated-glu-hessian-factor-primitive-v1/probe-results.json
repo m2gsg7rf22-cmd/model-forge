@@ -1,0 +1,58 @@
+{
+  "approved": true,
+  "synthetic_cases": 9,
+  "zero_residual_cases": 9,
+  "max_solution_relative_error": 1.4954576118208056e-15,
+  "explicit_basis_and_cholesky_verified": true,
+  "nonsymmetric_full_frobenius_verified": true,
+  "saved_experiment_reads": 0,
+  "teacher_queries": 0,
+  "actual_candidate_fits": 0,
+  "cases": [
+    {
+      "dimension": 1,
+      "solution_relative_error": 1.6802603662661725e-16,
+      "objective": 6.8543168713815685
+    },
+    {
+      "dimension": 1,
+      "solution_relative_error": 4.241107718802032e-16,
+      "objective": 19.538671205532573
+    },
+    {
+      "dimension": 1,
+      "solution_relative_error": 0.0,
+      "objective": 17.397482211139327
+    },
+    {
+      "dimension": 2,
+      "solution_relative_error": 1.9441614998614034e-16,
+      "objective": 80.84236926652748
+    },
+    {
+      "dimension": 2,
+      "solution_relative_error": 1.0976840007420164e-15,
+      "objective": 80.16600515624671
+    },
+    {
+      "dimension": 2,
+      "solution_relative_error": 5.111935104840359e-16,
+      "objective": 92.64236134425825
+    },
+    {
+      "dimension": 4,
+      "solution_relative_error": 1.4954576118208056e-15,
+      "objective": 274.7377473774728
+    },
+    {
+      "dimension": 4,
+      "solution_relative_error": 8.534081395749343e-16,
+      "objective": 236.7007340074173
+    },
+    {
+      "dimension": 4,
+      "solution_relative_error": 5.508889420327903e-16,
+      "objective": 222.59729449153332
+    }
+  ]
+}
