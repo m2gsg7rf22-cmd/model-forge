@@ -1,0 +1,80 @@
+{
+  "status": "verified_public_calibration_integration",
+  "source_sha256": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+  "plan_sha256": "615cd062f4852142d943b2c99e46344d1a0c642fe8435a2ae0dd9074465de182",
+  "results": [
+    {
+      "index": 0,
+      "source_observation_direction_commitments_match": true,
+      "prefix_and_directions_identical": true,
+      "solution_sha256": "95d9d216e7961d7ea5cf0f2305193362222c6fe2aa63731c04af240745565cad",
+      "student_arrays_finite": true,
+      "student_rankone_max_relative_tail": 1.6948896810828557e-16,
+      "small_design_independent_rank": 2048,
+      "small_design_independent_condition": 58.75983012159859,
+      "orientation_design_independent_rank": 64,
+      "magnitude_design_reported_rank": 64,
+      "magnitude_design_exact_reaudit_not_available": "UnprojectedBcoefficients are not saved; no refit performed.",
+      "orientation_rounded_independent_residual": 2.5957538693667008e-05,
+      "calibration_only_student_metrics": {
+        "small_saved_odd_relative_frobenius_error": 3.010777139935947e-05,
+        "large_saved_odd_relative_frobenius_error": 2.8853238906733548e-05
+      },
+      "seconds": 1.4345330409996677,
+      "peak_sampled_rss_bytes": 209764352
+    },
+    {
+      "index": 1,
+      "source_observation_direction_commitments_match": true,
+      "prefix_and_directions_identical": true,
+      "solution_sha256": "2d47c50114c9b1b0d59561802d543cbb73cd0952b0e0d8d7bba9a33e4e31a3da",
+      "student_arrays_finite": true,
+      "student_rankone_max_relative_tail": 1.606921591818904e-16,
+      "small_design_independent_rank": 2048,
+      "small_design_independent_condition": 57.920238620448565,
+      "orientation_design_independent_rank": 64,
+      "magnitude_design_reported_rank": 64,
+      "magnitude_design_exact_reaudit_not_available": "UnprojectedBcoefficients are not saved; no refit performed.",
+      "orientation_rounded_independent_residual": 4.469196069795369e-05,
+      "calibration_only_student_metrics": {
+        "small_saved_odd_relative_frobenius_error": 4.9451608022934225e-05,
+        "large_saved_odd_relative_frobenius_error": 4.9783192222896e-05
+      },
+      "seconds": 1.4060530830174685,
+      "peak_sampled_rss_bytes": 247824384
+    },
+    {
+      "index": 2,
+      "source_observation_direction_commitments_match": true,
+      "prefix_and_directions_identical": true,
+      "solution_sha256": "0f8bbbeab2f9d7739e74a5754fcd9763ef686db971febd65b08c145568e4815c",
+      "student_arrays_finite": true,
+      "student_rankone_max_relative_tail": 1.495478373551963e-16,
+      "small_design_independent_rank": 2048,
+      "small_design_independent_condition": 50.37704989180644,
+      "orientation_design_independent_rank": 64,
+      "magnitude_design_reported_rank": 64,
+      "magnitude_design_exact_reaudit_not_available": "UnprojectedBcoefficients are not saved; no refit performed.",
+      "orientation_rounded_independent_residual": 7.108122712152247e-05,
+      "calibration_only_student_metrics": {
+        "small_saved_odd_relative_frobenius_error": 8.581729916920588e-05,
+        "large_saved_odd_relative_frobenius_error": 8.180905526354224e-05
+      },
+      "seconds": 1.4064693330146838,
+      "peak_sampled_rss_bytes": 220315648
+    }
+  ],
+  "audit_seconds": 3.8686524590011686,
+  "no_fitting_or_new_queries": true,
+  "no_private_teacher_or_heldout_read": true,
+  "teacher_identity_or_fullmap_validated": false,
+  "formal_v3_outcome_changed": false,
+  "private_final_model_gate": "closed",
+  "blocking_findings": [],
+  "limits": [
+    "Allmetrics are on saved calibration inputs and thus cannot establish heldout generalization.",
+    "Rankonecouplings are a projected structural constraint, not teacherparameter recovery evidence.",
+    "Magnitude-design rank64 is a recorded solver diagnostic; original unprojectedB coefficients not saved, so exact independent recomputation would require forbidden refit.",
+    "Freshprotocolv4 not yet independently evaluated."
+  ]
+}

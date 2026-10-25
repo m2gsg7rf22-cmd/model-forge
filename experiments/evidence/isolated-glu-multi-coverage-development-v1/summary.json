@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "index": 0,
+      "input_count": 60,
+      "retained_count": 64,
+      "seconds": 3.7219495000026654,
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 104972288,
+      "memory_samples": 61
+    },
+    {
+      "index": 1,
+      "input_count": 62,
+      "retained_count": 64,
+      "seconds": 3.393256500014104,
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 104808448,
+      "memory_samples": 56
+    },
+    {
+      "index": 2,
+      "input_count": 61,
+      "retained_count": 64,
+      "seconds": 3.2261815829842817,
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 104529920,
+      "memory_samples": 53
+    }
+  ],
+  "controller_seconds": 10.908386374998372,
+  "formal_v3_outcome_changed": false,
+  "heldout_read": false
+}

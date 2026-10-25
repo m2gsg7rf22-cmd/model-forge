@@ -1,0 +1,22 @@
+{
+  "development_pilot_not_sealed": true,
+  "small_design_rank": 2048,
+  "small_design_columns": 2048,
+  "small_design_condition": 50.377049891806394,
+  "magnitude_design_rank": 64,
+  "magnitude_min": 1.799139110780598,
+  "magnitude_max": 2.941284063803036,
+  "coupling_rank1_max_relative_tail": 0.00018308932994134803,
+  "orientation_rank": 64,
+  "orientation_max_distance_from_sign": 4.493124883997446e-05,
+  "orientation_rounded_relative_residual": 7.108122712151908e-05,
+  "seconds": 1.4064693330146838,
+  "public_only_fit": true,
+  "process_monitor_scope": "process_and_children",
+  "peak_sampled_rss_bytes": 220315648,
+  "memory_samples": 24,
+  "memory_limit_mb": 512,
+  "index": 2,
+  "input_direction_sha256": "f480abf2bee3dba4363f65596ec053de79202b89a6b81d5b9fa8b308bdbfb552",
+  "observation_sha256": "efb364c8ab20b0655865d64ceb78219ad77dbead200e2eaedea3669444a7b780"
+}

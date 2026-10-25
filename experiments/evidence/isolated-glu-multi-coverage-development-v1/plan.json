@@ -1,0 +1,34 @@
+{
+  "hypothesis": "Multi-dimensional unexplained Hessian-subspace mixtures initialize multiple missing rank-one directions",
+  "classification": "post-failure calibration-only development, NOT sealed replication",
+  "source_sha256": "f8fb10036b622cf5fc5ec4e48fff17f0166f82a27901083879e8d25b6b249b59",
+  "input_counts": [
+    60,
+    62,
+    61
+  ],
+  "public_inputs": "saved v3 public Hessians/refined directions, indices0,1,2 only",
+  "new_queries": 0,
+  "private_teacher_or_heldout_access": false,
+  "configuration": {
+    "public_seed": 20261025,
+    "max_rounds": 4,
+    "mixtures_per_round": 256,
+    "eigenvectors_per_mixture": 2,
+    "gn_steps": 24,
+    "residual_threshold": 1e-08,
+    "duplicate_abs_cosine": 0.9995,
+    "no_truncation": true
+  },
+  "limits_each": {
+    "seconds": 180,
+    "rss_mib": 512
+  },
+  "formal_v3_outcome_changed": false,
+  "excluded_claims": [
+    "teacher match",
+    "full map fidelity",
+    "universal reconstruction",
+    "private final model"
+  ]
+}

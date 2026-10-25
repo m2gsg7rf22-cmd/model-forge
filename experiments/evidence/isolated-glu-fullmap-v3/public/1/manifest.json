@@ -1,0 +1,23 @@
+{
+  "index": 1,
+  "weight_scale": 0.2,
+  "source_sha256": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/coverage.py": "2b96cbec27c662481e16fe506c9467646ad24859eacb131f065c90081488dda8",
+    "examples/isolated_glu/sealed_v3.py": "31e0cf4aea86dcc13eafb45bd277e132479d7098392199a4033f726f595d7994",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "registration_sha256": "1f1d0a1751feea2c0fe6f34778ef0ec92fa05439ab163e622ecd12ab0951d1be",
+  "calibration_vector_queries": 145440,
+  "public_sha256": {
+    "hessians.npz": "284ae253379b09cc02f8d908369f32be44d174be3faafe7d9af5c6c0948b7569",
+    "multiscale-observations.npz": "8bcd2dae6fe9c8ba8d538de0b23b2906ccf7599859d0036e8446e4d24e8f0eeb"
+  },
+  "private_sha256": {
+    "teacher.npz": "481f21a9d8d83daa319fc5fc58c685add2bc464897cdb69c761abdb2708e6465",
+    "heldout.npz": "9bc90a173600fe6ee5115066837acd78e69a6c428c1180de79a0234fc080e3c6"
+  }
+}

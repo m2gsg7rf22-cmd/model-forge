@@ -1,0 +1,15 @@
+{
+  "classification": "additional public-calibration-only integration after multi-candidate development; not fresh or sealed validation",
+  "source_sha256": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+  "input": "new multi-coverage directions and saved public v3 multiscale observations only",
+  "indices": [
+    0,
+    1,
+    2
+  ],
+  "new_queries": 0,
+  "teacher_or_heldout_access": false,
+  "limit_seconds_each": 180,
+  "limit_rss_mib_each": 512,
+  "changes_formal_v3_outcome": false
+}

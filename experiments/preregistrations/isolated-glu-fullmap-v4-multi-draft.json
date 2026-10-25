@@ -1,0 +1,36 @@
+{
+  "protocol": "owned-isolated-swiglu-fullmap-v4-multi-rescue",
+  "status": "DRAFT NOT READY; no fresh teacher until reviewed source/readiness committed",
+  "base_protocol": "experiments/preregistrations/isolated-glu-fullmap-v3.json",
+  "base_outcome": "FAILED60/62/61, preserved unchanged",
+  "multi_rescue_source_sha256": "f8fb10036b622cf5fc5ec4e48fff17f0166f82a27901083879e8d25b6b249b59",
+  "configuration": {
+    "public_seed": 20261025,
+    "max_rounds": 4,
+    "mixtures_per_round": 256,
+    "eigenvectors_per_mixture": 2,
+    "gn_steps": 24,
+    "branch": "n=1..63multi-rescue;64skip; otherwisefail",
+    "require_component_rank": "2n",
+    "require_residual_dimension": "128-2n",
+    "success_requires_exactly64": true,
+    "truncate_extras": false
+  },
+  "unchanged_from_v3": [
+    "three fresh owned Gaussian teachers std.1,.2,.4",
+    "d32,width64,out32,bias-free",
+    "continuous isolated vector queries only",
+    "145440calibrationqueries/teacher, no additional rescue queries",
+    "heldout/scientific thresholds including all-threepass",
+    "180s/512MiB whole teacher tree including all4possible rescue rounds"
+  ],
+  "before_fresh_teacher": [
+    "Implement distinct wrapper; pin source and every round artifact",
+    "Audit all round residuals, initialization provenance, exact selected arrays/prefix and no extras",
+    "Test actual branch integration including later rounds/stall/65+,tamper,readiness,repeatedconsumption,budget stops",
+    "Independent source/protocol review and committed exact readiness",
+    "Run matching changed-path CI without native rebuilds"
+  ],
+  "old_teacher_or_label_reuse": false,
+  "private_final_model_gate": "closed"
+}

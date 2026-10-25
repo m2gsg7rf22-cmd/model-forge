@@ -1,0 +1,8 @@
+{
+  "classification": "post-v3-failure public calibration development only",
+  "formal_v3_result": "FAILED unchanged60/62/61; no rescue/fullmap/heldout stages",
+  "raw_artifacts_outside_git": "/Users/adamfaruhi123/.local/share/modelforge-research/experiments/isolated-glu-multi-coverage-development-v1-20261025",
+  "teacher_or_heldout_copied": false,
+  "source_sha256": "f8fb10036b622cf5fc5ec4e48fff17f0166f82a27901083879e8d25b6b249b59",
+  "private_final_model_gate": "closed"
+}

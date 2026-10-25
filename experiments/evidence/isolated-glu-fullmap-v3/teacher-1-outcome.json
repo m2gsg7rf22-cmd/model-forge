@@ -1,0 +1,21 @@
+{
+  "index": 1,
+  "criteria_met": false,
+  "failure_type": "RuntimeError",
+  "failure": "RuntimeError: ValueError: Direction selection requires63 or64 inputs",
+  "elapsed_seconds": 2.685045958001865,
+  "roles_completed": [
+    {
+      "role": "prepare",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 49856512,
+      "memory_samples": 3,
+      "memory_limit_mb": 512
+    }
+  ],
+  "process_monitor_scope": "process_and_children",
+  "peak_sampled_rss_bytes": 243957760,
+  "memory_samples": 43,
+  "memory_limit_mb": 512,
+  "memory_scope": "teacher worker and all descendants, including preparation, learning, sealing and verification; top-level launcher excluded"
+}

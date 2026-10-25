@@ -1,0 +1,83 @@
+{
+  "protocol": "owned-isolated-swiglu-fullmap-v3-residual-rescue",
+  "results": [
+    {
+      "index": 0,
+      "criteria_met": false,
+      "failure_type": "RuntimeError",
+      "failure": "RuntimeError: ValueError: Direction selection requires63 or64 inputs",
+      "elapsed_seconds": 2.781224874983309,
+      "roles_completed": [
+        {
+          "role": "prepare",
+          "process_monitor_scope": "process_and_children",
+          "peak_sampled_rss_bytes": 50282496,
+          "memory_samples": 3,
+          "memory_limit_mb": 512
+        }
+      ],
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 244727808,
+      "memory_samples": 44,
+      "memory_limit_mb": 512,
+      "memory_scope": "teacher worker and all descendants, including preparation, learning, sealing and verification; top-level launcher excluded"
+    },
+    {
+      "index": 1,
+      "criteria_met": false,
+      "failure_type": "RuntimeError",
+      "failure": "RuntimeError: ValueError: Direction selection requires63 or64 inputs",
+      "elapsed_seconds": 2.685045958001865,
+      "roles_completed": [
+        {
+          "role": "prepare",
+          "process_monitor_scope": "process_and_children",
+          "peak_sampled_rss_bytes": 49856512,
+          "memory_samples": 3,
+          "memory_limit_mb": 512
+        }
+      ],
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 243957760,
+      "memory_samples": 43,
+      "memory_limit_mb": 512,
+      "memory_scope": "teacher worker and all descendants, including preparation, learning, sealing and verification; top-level launcher excluded"
+    },
+    {
+      "index": 2,
+      "criteria_met": false,
+      "failure_type": "RuntimeError",
+      "failure": "RuntimeError: ValueError: Direction selection requires63 or64 inputs",
+      "elapsed_seconds": 2.597852667007828,
+      "roles_completed": [
+        {
+          "role": "prepare",
+          "process_monitor_scope": "process_and_children",
+          "peak_sampled_rss_bytes": 48218112,
+          "memory_samples": 3,
+          "memory_limit_mb": 512
+        }
+      ],
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 246857728,
+      "memory_samples": 41,
+      "memory_limit_mb": 512,
+      "memory_scope": "teacher worker and all descendants, including preparation, learning, sealing and verification; top-level launcher excluded"
+    }
+  ],
+  "criteria_met": false,
+  "source_sha256": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/coverage.py": "2b96cbec27c662481e16fe506c9467646ad24859eacb131f065c90081488dda8",
+    "examples/isolated_glu/sealed_v3.py": "31e0cf4aea86dcc13eafb45bd277e132479d7098392199a4033f726f595d7994",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "registration_sha256": "1f1d0a1751feea2c0fe6f34778ef0ec92fa05439ab163e622ecd12ab0951d1be",
+  "external_calls": 0,
+  "private_model_gate": "closed",
+  "whole_transformer_reconstructed": false,
+  "original_weights_recovered": false
+}

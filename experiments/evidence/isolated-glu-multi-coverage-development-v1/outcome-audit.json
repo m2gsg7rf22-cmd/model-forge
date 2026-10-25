@@ -1,0 +1,109 @@
+{
+  "status": "verified_calibration_only_geometry",
+  "source_sha256": "f8fb10036b622cf5fc5ec4e48fff17f0166f82a27901083879e8d25b6b249b59",
+  "plan_sha256": "b062f5bcd8de800457849333560d22f9fb8c332cd731b9c0ee9d66be0dd82478",
+  "summary_sha256": "575b5d88142f23eb3beb77172c6fbe15f302c7ad1e76837f2d08b37426f18f32",
+  "copied_geometric_helpers_ast_identical": {
+    "pack": true,
+    "unpack": true,
+    "tangent": true,
+    "residual_subspace": true,
+    "refine": true
+  },
+  "results": [
+    {
+      "index": 0,
+      "input_count": 60,
+      "retained_count": 64,
+      "rounds": [
+        {
+          "round": 0,
+          "input_count": 60,
+          "retained_count": 64,
+          "component_rank": 120,
+          "residual_dimension": 8,
+          "all512_loss_consistent": true,
+          "initialization_min_absolute_cosine": 0.9999999999999974,
+          "max_after_minus_before_squared_loss": -0.026297966451839433,
+          "selection_exact_no_truncation": true,
+          "artifact_sha256": "f6c6becc4d1ee818f3b1ef299dc20c09385091b8f9464a38aaee5ef42e226972"
+        }
+      ],
+      "max_retained_original_subspace_squared_loss": 1.862717900558431e-16,
+      "max_pairwise_absolute_cosine": 0.6024554135349102,
+      "prefix_unchanged": true,
+      "source_input_round_hashes_match": true,
+      "final_solution_sha256": "36113606a01c6521dcbbefbcadef7bca766b7e4a334fba5421b4bcbe206c4b60",
+      "seconds": 3.7219495000026654,
+      "peak_sampled_rss_bytes": 104972288
+    },
+    {
+      "index": 1,
+      "input_count": 62,
+      "retained_count": 64,
+      "rounds": [
+        {
+          "round": 0,
+          "input_count": 62,
+          "retained_count": 64,
+          "component_rank": 124,
+          "residual_dimension": 4,
+          "all512_loss_consistent": true,
+          "initialization_min_absolute_cosine": 0.9999999999999972,
+          "max_after_minus_before_squared_loss": -0.01697050757966796,
+          "selection_exact_no_truncation": true,
+          "artifact_sha256": "1d148c5930451178aaf8a32fbd2940c54bddcb5f3cf9d86b34f6d9498fd517e7"
+        }
+      ],
+      "max_retained_original_subspace_squared_loss": 1.3623066889709554e-14,
+      "max_pairwise_absolute_cosine": 0.5171343523946952,
+      "prefix_unchanged": true,
+      "source_input_round_hashes_match": true,
+      "final_solution_sha256": "2e11bfe93924defa6b4f47ff48a38f52d43f18573707c60b6c5b36be66df2b38",
+      "seconds": 3.393256500014104,
+      "peak_sampled_rss_bytes": 104808448
+    },
+    {
+      "index": 2,
+      "input_count": 61,
+      "retained_count": 64,
+      "rounds": [
+        {
+          "round": 0,
+          "input_count": 61,
+          "retained_count": 64,
+          "component_rank": 122,
+          "residual_dimension": 6,
+          "all512_loss_consistent": true,
+          "initialization_min_absolute_cosine": 0.9999999999999968,
+          "max_after_minus_before_squared_loss": -0.01985155460113512,
+          "selection_exact_no_truncation": true,
+          "artifact_sha256": "8a266833902db813c5e57ffb691f1d36648c90ad5d7fc056c4aef1cbef2ba4f8"
+        }
+      ],
+      "max_retained_original_subspace_squared_loss": 1.9580557101297707e-13,
+      "max_pairwise_absolute_cosine": 0.5225574057640637,
+      "prefix_unchanged": true,
+      "source_input_round_hashes_match": true,
+      "final_solution_sha256": "f480abf2bee3dba4363f65596ec053de79202b89a6b81d5b9fa8b308bdbfb552",
+      "seconds": 3.2261815829842817,
+      "peak_sampled_rss_bytes": 104529920
+    }
+  ],
+  "audit_seconds": 0.47990500001469627,
+  "no_fitting_or_queries": true,
+  "no_private_teacher_or_heldout_access": true,
+  "teacher_identity_verified": false,
+  "fullmap_verified": false,
+  "formal_v3_outcome_changed": false,
+  "private_final_model_gate": "closed",
+  "blocking_findings": [],
+  "limits": [
+    "Postfailure calibration-only development using old publicH, not fresh replication.",
+    "64 candidates, rank and tiny residual do not prove all true gates or fullmap fidelity.",
+    "Checks replay initialization geometry and greedy selection but not GN fitting; iteration count and algorithm supported by frozen source.",
+    "Synthetic controls and these3development inputs do not establish generality.",
+    "search returns extras or stalled counts; any fresh protocol must explicitly require exactly64 and reject65plus.",
+    "Runtime uses process-tree sampledRSS, not reserved or continuouslymeasured peak."
+  ]
+}

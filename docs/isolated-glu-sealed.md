@@ -49,3 +49,8 @@ Measured controller wall time13.4276s, outer worker-tree sampled peaks289.86/293
 Frozen stage reports retain their original `development_pilot_not_sealed` literal because their modules originated in the pilot; that literal is not used as an evidence certificate. Actual preparation commitments, evaluator consumption and final verification reports describe this experiment's sealed boundary. All raw reports are retained unchanged.
 
 Public evidence: experiments/evidence/isolated-glu-fullmap-v2/. Next research is reliable candidate coverage: investigate unexplained Hessian-subspace energy and residual-guided direction discovery using calibration-only development data, then freeze a distinct protocol before any fresh sealed test. Preserve v2 failure and both positive cases; do not add starts, run rescues or relax thresholds and relabel v2. Whole-decoder reconstruction, weaker observation access, finite-precision robustness and universal reconstruction remain unresolved.
+
+
+## Actual v3 outcome (2026-10-25)
+
+The separately preregistered residual-rescue v3 also FAILED overall:60/62/61candidates, all rejected before its63-only rescue branch and before coupling/heldout evaluation.436320calibration/0sealed calls. Sourcea0d0556; CI40162660787 passed12changed-path tests on each OS. Independent public outcome audit is experiments/evidence/isolated-glu-fullmap-v3/outcome-audit.json. This exposes the need for multi-direction coverage. A separate public-calibration-only development study then obtained64/64/64, with no teacher matching or heldout/fullmap proof; see docs/isolated-glu-multi-coverage.md. Do not relabel or rerun v3.
