@@ -3,6 +3,10 @@ on:
   push:
   workflow_dispatch:
     inputs:
+      glu_v4_only:
+        description: Verify only new bounded multi-rescue v4 source and controls
+        type: boolean
+        default: false
       glu_v3_only:
         description: Verify only new residual-rescue v3 source and controls
         type: boolean
@@ -114,11 +118,11 @@ jobs:
       - name: Install core only
         run: python -m pip install . pytest mypy ruff pyyaml
       - name: Actual algebra, artifacts and MCP
-        run: python -m pytest ${{ github.event.inputs.glu_v3_only == 'true' && 'tests/test_glu_v3.py tests/test_glu_coverage.py' || github.event.inputs.sealed_glu_only == 'true' && 'tests/test_glu_sealed.py tests/test_execution.py tests/test_runtime_manager.py tests/test_antipodal_io.py' || 'tests/test_antipodal.py tests/test_antipodal_io.py' }} -q --junitxml=antipodal-acceptance.xml
+        run: python -m pytest ${{ github.event.inputs.glu_v4_only == 'true' && 'tests/test_glu_v4.py tests/test_glu_multi_coverage.py' || github.event.inputs.glu_v3_only == 'true' && 'tests/test_glu_v3.py tests/test_glu_coverage.py' || github.event.inputs.sealed_glu_only == 'true' && 'tests/test_glu_sealed.py tests/test_execution.py tests/test_runtime_manager.py tests/test_antipodal_io.py' || 'tests/test_antipodal.py tests/test_antipodal_io.py' }} -q --junitxml=antipodal-acceptance.xml
       - name: Changed backend types
-        run: python -m mypy --follow-imports=silent ${{ github.event.inputs.glu_v3_only == 'true' && 'examples/isolated_glu/sealed_v3.py examples/isolated_glu/coverage.py' || github.event.inputs.sealed_glu_only == 'true' && 'examples/isolated_glu/sealed.py src/modelforge/execution.py' || 'src/modelforge/antipodal.py src/modelforge/antipodal_io.py src/modelforge/service.py src/modelforge/runtime_worker.py src/modelforge/mcp_server.py src/modelforge/cli.py' }}
+        run: python -m mypy --follow-imports=silent ${{ github.event.inputs.glu_v4_only == 'true' && 'examples/isolated_glu/sealed_v4.py examples/isolated_glu/coverage_multi.py' || github.event.inputs.glu_v3_only == 'true' && 'examples/isolated_glu/sealed_v3.py examples/isolated_glu/coverage.py' || github.event.inputs.sealed_glu_only == 'true' && 'examples/isolated_glu/sealed.py src/modelforge/execution.py' || 'src/modelforge/antipodal.py src/modelforge/antipodal_io.py src/modelforge/service.py src/modelforge/runtime_worker.py src/modelforge/mcp_server.py src/modelforge/cli.py' }}
       - name: Changed source lint
-        run: python -m ruff check ${{ github.event.inputs.glu_v3_only == 'true' && 'examples/isolated_glu/sealed_v3.py examples/isolated_glu/coverage.py tests/test_glu_v3.py tests/test_glu_coverage.py' || github.event.inputs.sealed_glu_only == 'true' && 'examples/isolated_glu/sealed.py src/modelforge/execution.py tests/test_glu_sealed.py tests/test_execution.py' || 'src/modelforge/antipodal.py src/modelforge/antipodal_io.py examples/antipodal_research.py tests/test_antipodal.py tests/test_antipodal_io.py' }}
+        run: python -m ruff check ${{ github.event.inputs.glu_v4_only == 'true' && 'examples/isolated_glu/sealed_v4.py examples/isolated_glu/coverage_multi.py tests/test_glu_v4.py tests/test_glu_multi_coverage.py tests/glu_v4_fixture.py' || github.event.inputs.glu_v3_only == 'true' && 'examples/isolated_glu/sealed_v3.py examples/isolated_glu/coverage.py tests/test_glu_v3.py tests/test_glu_coverage.py' || github.event.inputs.sealed_glu_only == 'true' && 'examples/isolated_glu/sealed.py src/modelforge/execution.py tests/test_glu_sealed.py tests/test_execution.py' || 'src/modelforge/antipodal.py src/modelforge/antipodal_io.py examples/antipodal_research.py tests/test_antipodal.py tests/test_antipodal_io.py' }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
