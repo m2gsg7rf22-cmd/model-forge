@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "isolated-glu-fp32-guarded-gate-step-v1",
+  "inputs": {
+    "baseline": "3fa13a8f6337bfc9d317a95dde95cd0d87ab6ae04568a392bf6b227a517f40b3",
+    "fit_report": "adb81af048751dbd100829912f9020b643986333aa01a8c92d68b84adda5118d",
+    "old_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+    "forward_manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+    "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210"
+  },
+  "max_local_solves": 72,
+  "guard_current_and_initial_additive_tolerance": 1e-10,
+  "training_margin_relative": 1e-12,
+  "training_margin_absolute": 1e-24,
+  "new_calibration_calls": 0,
+  "reused_calibration_calls": 2048,
+  "evaluation_seed": 941032,
+  "evaluation_calls_if_changed_candidate": 2048,
+  "paired_incumbent_predictions": true,
+  "scales": [
+    0.01,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "max_group_relative_criterion": 0.001,
+  "timeout_seconds": 180,
+  "memory_limit_mb": 512,
+  "sealed": false,
+  "private_gate": "closed",
+  "frozen_dependencies": {
+    "examples/isolated_glu/forward_factor.py": "2d92db73e5b6c1e674c8776b6b3e8c4db693cc4354448d6404b7565a428d029c",
+    "examples/isolated_glu/guarded_forward.py": "1d0d4e2a77f798672d7dacf194d7b1338c6447355e7188a27e8b24ad77529818",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e"
+  },
+  "screened_units": 64,
+  "max_selected_units": 8,
+  "max_trials": 64,
+  "alpha_factors": [
+    1.0,
+    0.5,
+    0.25,
+    0.125,
+    0.0625,
+    0.03125,
+    0.015625,
+    0.0078125
+  ],
+  "trust_norm_fraction": 0.05,
+  "gram_min_eigenvalue_relative_exclusive": 1e-12,
+  "gate_direction": "-.5 solve(K, gradient); clipped; linearized score",
+  "couplings_byte_identical": true,
+  "guard_max_absolute_tolerance": "1e-10 max(1,initial_group_maxabs), current AND initial",
+  "calibration_adaptively_reused": true
+}

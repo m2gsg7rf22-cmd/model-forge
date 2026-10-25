@@ -1,0 +1,11 @@
+{
+  "focused_tests_passed": 8,
+  "files": [
+    "tests/test_glu_guarded_gate_step.py"
+  ],
+  "strict_mypy": "passed2files",
+  "ruff": "passed3files",
+  "actual_fit_performed": false,
+  "native_rebuilds": 0,
+  "unrelated_successful_tests_repeated": false
+}

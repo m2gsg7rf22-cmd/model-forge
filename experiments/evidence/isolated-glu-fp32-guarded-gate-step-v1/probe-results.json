@@ -1,0 +1,14 @@
+{
+  "independent_complex_step_gradient_and_Gram_verified": true,
+  "minus_half_Ksolve_and_trust_cap_verified": true,
+  "first_accepted_trial_alpha": 0.5,
+  "preceding_rejected_trials": 1,
+  "all_trial_costs_and_guards_independently_verified": true,
+  "cached_full_prediction_verified": true,
+  "four_guard_families_challenged": true,
+  "evaluator_ast_only_method_seed_change": true,
+  "actual_saved_candidate_reads": 0,
+  "actual_target_queries": 0,
+  "actual_fits": 0,
+  "old_evaluation_reads": 0
+}

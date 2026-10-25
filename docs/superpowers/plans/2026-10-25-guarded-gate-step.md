@@ -1,4 +1,4 @@
-# Bounded guarded gate step — DRAFT, not ready to fit
+# Bounded guarded gate step — implementation awaiting source freeze
 
 The synthetic gate-gradient/JVP/Gram primitive must be independently verified before actual use. This plan proposes a DISTINCT experiment, not an extension of the capped fixed-gate run. The previous candidate failed quality and does not prove a stationary or gate-error floor.
 
@@ -15,3 +15,6 @@ Use per-unit prediction deltas to evaluate a trial without constructing a huge f
 Before any actual fit, implement and independently review/freeze a separate runner/controller/preregistration and synthetic branch controls. Only a changed candidate receives a disjoint NEW PUBLIC941032evaluation:2048target responses,512points each scale.01/1/10/100. Freeze incumbent/new hashes first; report paired relative AND maximum-absolute errors on identical references, retaining regressions. The candidate passes only if all four relative errors<=.001, unchanged.941027..941031are consumed;941032becomes consumed once queried. No extra optimization after reading it.
 
 Any failure, budget stop, singularity or nochange is preserved without relabeling it success. A gradient of known computation does not give target-gradient access or original-weight identifiability. Finite paired improvement is not universal/full-model/productionFP32evidence. Private final-model gate CLOSED.
+
+
+Implementation: examples/isolated_glu/guarded_gate_step.py and separate guarded_gate_step_evaluate.py; preregistration isolated-glu-fp32-guarded-gate-step-v1.json.8focused synthetic controls passed; no actual fit yet. See docs/glu-fp32-guarded-gate-step.md for failure-evidence limits. Source review and clean commit remain required before execution.

@@ -1,0 +1,50 @@
+{
+  "approved": true,
+  "scope": "prospective single-pass fixed-C gate-vector PUBLIC calibration step; not actual fit or quality acceptance",
+  "sources": {
+    "examples/isolated_glu/guarded_gate_step.py": "2cf84f0ed1685991bf0dcafd499ea867944b81cfac2ff2cb9abfdded4c8fe5c8",
+    "examples/isolated_glu/guarded_gate_step_evaluate.py": "bae295192f616220e2159d9e4c51b99cde4636ef33ebaa26c2ff3b84c408f97d",
+    "tests/test_glu_guarded_gate_step.py": "8334584ad4b5208596786e00692fe4efd329ddc0334758d623f9861efd114f1b",
+    "experiments/preregistrations/isolated-glu-fp32-guarded-gate-step-v1.json": "efba4c6e0a0f65887aabfffaabeb21d35b498c639adf07666879d8566167f319",
+    "docs/superpowers/plans/2026-10-25-guarded-gate-step.md": "f57107a6ef7cf8db0be77817725b1ab7f2e3f22dc740a6b71c882d7657407c06",
+    "examples/isolated_glu/forward_factor.py": "2d92db73e5b6c1e674c8776b6b3e8c4db693cc4354448d6404b7565a428d029c",
+    "examples/isolated_glu/guarded_forward.py": "1d0d4e2a77f798672d7dacf194d7b1338c6447355e7188a27e8b24ad77529818",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e"
+  },
+  "controller_sha256": "6295f17b8bae24d3e405969d8a908a846ac6ad0eb9b0e5c1d4d08bb853c0f57f",
+  "blocking_findings": [],
+  "independent_synthetic_probes": {
+    "independent_complex_step_gradient_and_Gram_verified": true,
+    "minus_half_Ksolve_and_trust_cap_verified": true,
+    "first_accepted_trial_alpha": 0.5,
+    "preceding_rejected_trials": 1,
+    "all_trial_costs_and_guards_independently_verified": true,
+    "cached_full_prediction_verified": true,
+    "four_guard_families_challenged": true,
+    "evaluator_ast_only_method_seed_change": true,
+    "actual_saved_candidate_reads": 0,
+    "actual_target_queries": 0,
+    "actual_fits": 0,
+    "old_evaluation_reads": 0
+  },
+  "prerequisites": [
+    "Freeze exact reviewed sources/protocol/dependencies in clean commit before fitting.",
+    "One run only:64screen+atmost8sequential linear solves, atmost8trials each,72solves/64trials total.",
+    "Current and initial guard bounds apply separately to relative and maximum-absolute metrics; retain first passing alpha only.",
+    "Outcome audit recomputes full trial/final predictions and retention to verify numerical cached/full agreement; no new direction solve needed.",
+    "Only changed committed candidate receives one paired fresh941032 final evaluation; previous labels forbidden."
+  ],
+  "limitations": [
+    "Direction is clipped local Gauss-Newton proposal, not exact constrained trust-region minimizer or nonlinear descent proof.",
+    "Singular/nonfinite ValueError rejects before candidate/evaluation; partial screening/trial evidence may be absent on early exception, so completeness must not be claimed then.",
+    "Prediction allclose uses roundoff tolerance; it is not by itself a complete cost/guard certificate.",
+    "Reused train/guard remain adaptive calibration; candidate gradient is not target-gradient access.",
+    "Sampled worker-tree RSS does not establish continuous hard memory bound.",
+    "Prior quality failures preserved, universal reconstruction open, private gate closed."
+  ]
+}
