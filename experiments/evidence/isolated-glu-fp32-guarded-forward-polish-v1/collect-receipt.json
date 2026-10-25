@@ -1,0 +1,21 @@
+{
+  "method": "isolated-glu-fp32-guarded-forward-polish-v1",
+  "channel": "fp32_compute",
+  "train_seed": 882030,
+  "guard_seed": 882031,
+  "scales": [
+    0.01,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "group_rows": 256,
+  "vector_calls": 2048,
+  "baseline_sha256": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+  "raw_sha256": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+  "manifest_sha256": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+  "process_monitor_scope": "process_and_children",
+  "peak_sampled_rss_bytes": 30375936,
+  "memory_samples": 2,
+  "memory_limit_mb": 512
+}

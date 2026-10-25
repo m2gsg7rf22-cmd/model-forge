@@ -1,0 +1,119 @@
+{
+  "approved": true,
+  "scope": "saved-public-array audit only; paired finite improvement with quality FAILED",
+  "report_sha256": "28bba13e3d48e3f8b70d961758a8227c870b68a29de268c5b2af732933249fa2",
+  "source_commit": "db8fb33470f8ac1a9ebbf1fcb2567110e834c2bc",
+  "source_and_dependency_count": 12,
+  "old_inventory_count_unchanged": 13,
+  "baseline_inputs_unchanged": {
+    "baseline": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+    "fit_report": "c0d30f830e6304b902b5bfda0138c01a60b55c71885bd084c0e7213dafd7ea77",
+    "old_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96"
+  },
+  "forward_raw_sha256": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+  "forward_manifest_sha256": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+  "candidate_sha256": "b31ce967cab997e9a5fd2652ab63db28f32204638a7f3f7ca58f4c1673e4d0b2",
+  "raw_train_guard_seeds_verified": [
+    882030,
+    882031
+  ],
+  "raw_calibration_calls_reported": 2048,
+  "weights_applied_once_exact": true,
+  "all64_proposal_costs_verified": true,
+  "max_screen_cost_absolute_discrepancy": 5.082197683525802e-20,
+  "selected_and_accepted": [
+    51,
+    37,
+    15,
+    39,
+    14,
+    56,
+    28,
+    8
+  ],
+  "all8_training_and_guard_decisions_verified": true,
+  "initial_cost": 2.6447800131760357e-05,
+  "final_cost": 2.069314138655356e-05,
+  "relative_training_cost_reduction": 0.21758553514990464,
+  "final_train_residual_relative_discrepancy": 2.318475075968886e-13,
+  "final_guard_residual_relative_discrepancy": 1.7688795953629451e-13,
+  "gates_byte_identical": true,
+  "all_couplings_finite_nonzero_rankone": true,
+  "independent_forward_discrepancy": {
+    "prediction": 4.1817497351759925e-16,
+    "baseline_prediction": 4.158114957021355e-16
+  },
+  "paired_same_point_metrics": {
+    "prediction": [
+      {
+        "scale": 0.01,
+        "relative_frobenius": 0.0022866612814991306,
+        "max_absolute": 1.5172876532766247e-06
+      },
+      {
+        "scale": 1.0,
+        "relative_frobenius": 0.0024047116090800268,
+        "max_absolute": 0.018274433329118933
+      },
+      {
+        "scale": 10.0,
+        "relative_frobenius": 0.002357100116209847,
+        "max_absolute": 2.1311888856329233
+      },
+      {
+        "scale": 100.0,
+        "relative_frobenius": 0.0024161949783574853,
+        "max_absolute": 254.03727246905328
+      }
+    ],
+    "baseline_prediction": [
+      {
+        "scale": 0.01,
+        "relative_frobenius": 0.0025189369835888057,
+        "max_absolute": 1.673608502989908e-06
+      },
+      {
+        "scale": 1.0,
+        "relative_frobenius": 0.002639685556648388,
+        "max_absolute": 0.028924148352547085
+      },
+      {
+        "scale": 10.0,
+        "relative_frobenius": 0.0025490040218258546,
+        "max_absolute": 2.4866913433415334
+      },
+      {
+        "scale": 100.0,
+        "relative_frobenius": 0.002681560380364896,
+        "max_absolute": 261.8008842485069
+      }
+    ]
+  },
+  "all4_groups_finite_paired_improvement": true,
+  "all4_groups_quality_failed": true,
+  "fixed_quality_threshold": 0.001,
+  "evaluation_seed_consumed": 941030,
+  "evaluation_points": 2048,
+  "guard_is_calibration": true,
+  "reviewer_queries": 0,
+  "reviewer_new_coupling_solves": 0,
+  "old_evaluation_arrays_read": false,
+  "resources": {
+    "controller_seconds": 0.4532379170123022,
+    "max_sampled_worker_tree_rss_bytes": 40894464,
+    "samples_by_stage": {
+      "collect": 2,
+      "build": 2,
+      "evaluate": 2
+    },
+    "actual_peak_known": false
+  },
+  "quality": "FAILED",
+  "private_gate": "closed",
+  "limitations": [
+    "Finite paired comparison on one owned public block, not universal or sealed equivalence.",
+    "Guard selects updates and is calibration.",
+    "Public941030 now consumed; no retry or selection from final evaluation.",
+    "Two samples per stage do not prove actual peak RSS or a continuous hard bound."
+  ]
+}

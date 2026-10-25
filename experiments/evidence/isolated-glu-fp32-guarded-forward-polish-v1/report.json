@@ -1,0 +1,788 @@
+{
+  "source_commit": "db8fb33470f8ac1a9ebbf1fcb2567110e834c2bc",
+  "reviewed_sources": {
+    "examples/isolated_glu/forward_observe.py": "52eef368b1ac1a30ea724065f68ae1755c65c4de069a4645cf67ac9de8dcfe37",
+    "examples/isolated_glu/guarded_forward.py": "1d0d4e2a77f798672d7dacf194d7b1338c6447355e7188a27e8b24ad77529818",
+    "examples/isolated_glu/guarded_forward_evaluate.py": "f2e4c185127ed8c160b6a14327af79cf6e1e7738ee98a9599ab41d435cc57148",
+    "tests/test_glu_guarded_forward.py": "064e225c03494b44554fb40335634bb47bc143ed683f679c034c6e6f4bc87f35",
+    "experiments/preregistrations/isolated-glu-fp32-guarded-forward-polish-v1.json": "01db8112e4ad9b9a96af5835088110ff8da930771e24a8ec861723f4c4eb8c30",
+    "docs/superpowers/plans/2026-10-25-fp32-guarded-forward-polish.md": "4cf7188d1e8c8e05193687da06d8c0a9411344925ba15a0521f0cdbbeb24f825",
+    "examples/isolated_glu/forward_factor.py": "2d92db73e5b6c1e674c8776b6b3e8c4db693cc4354448d6404b7565a428d029c",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb"
+  },
+  "frozen_dependencies": {
+    "examples/isolated_glu/forward_factor.py": "2d92db73e5b6c1e674c8776b6b3e8c4db693cc4354448d6404b7565a428d029c",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb"
+  },
+  "numpy_version": "2.5.4",
+  "input_inventory_before": {
+    "fp32-fullmap-dev-v1-20261025-8d2d457/fit-attempt.json": "1958e27f8c44f81d153b900d22e9ea4c0754cd073765ca67eb0821ba3a04309a",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/fit-receipt.json": "79a8d1f5907dbaceb06b7509500d844851f24876bdf36b7a2a4b7c2329554fd1",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/fit-report.json": "64ded2e01c4a8db4dff38a248b40bb4e6e36095f54097b0f61f00ef30ada916e",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/prepare-receipt.json": "dec103703b8f9d6ecc9973028d6bf4191c85b3c008b20c3bd45fa25e94c65e01",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/curvature-pair.npz": "1071faad164eb96e3e3a8ae126eeebf8a997b82413bc2f7cb935109edb196b7d",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/hessians.npz": "5792c142ea2de8a1eb77e5423b77455835170fd7737e84186a45326d6eb7bdc7",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/manifest.json": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/multiscale.npz": "b017d253cc1c08f2afa2ec25be14559d5053717dfb12c08689d809b05251554f",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/report.json": "819e35cb25894c6515b6be25396ccaee26de4b089f79934e3dc6c8d4d5b0bd84",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/diagnostic/replay-attempt.json": "62b29ef97f40d296fa47a013d61b6e7e0c5c89cb57c2a76caa3c04b691857004",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/diagnostic/report.json": "2b41a102e4c897f3c0e28bba078f42d9d037d4ecb8b72d341d1abf7a198628a4",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/diagnostic/telemetry.npz": "e043e538a58187a9171a997bc889da2c0ab7518ffb99badc75fa1bc53c8fe6a9",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/report.json": "7e3b89c6a43c7f781b1d42bc25de6fb2dbe754b5154f471a8cb59483717716ca"
+  },
+  "stages": {
+    "collect": {
+      "method": "isolated-glu-fp32-guarded-forward-polish-v1",
+      "channel": "fp32_compute",
+      "train_seed": 882030,
+      "guard_seed": 882031,
+      "scales": [
+        0.01,
+        1.0,
+        10.0,
+        100.0
+      ],
+      "group_rows": 256,
+      "vector_calls": 2048,
+      "baseline_sha256": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+      "raw_sha256": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+      "manifest_sha256": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 30375936,
+      "memory_samples": 2,
+      "memory_limit_mb": 512
+    },
+    "build": {
+      "method": "isolated-glu-fp32-guarded-forward-polish-v1",
+      "candidate_built": true,
+      "baseline_sha256": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+      "calibration_manifest_sha256": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+      "forward_manifest_sha256": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+      "forward_raw_sha256": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+      "new_calibration_calls": 0,
+      "additional_calibration_calls_used": 2048,
+      "private_gate": "closed",
+      "sealed": false,
+      "direction_updates": 0,
+      "polish": {
+        "initial_cost": 2.644780013176033e-05,
+        "final_cost": 2.069314138655357e-05,
+        "train_group_norms": [
+          0.009497179532106527,
+          113.04884630796903,
+          13415.537806854678,
+          1343265.3734611445
+        ],
+        "initial_guard_relative": [
+          0.0025433643557019143,
+          0.002720627635008243,
+          0.002551776947461704,
+          0.0025483173905717503
+        ],
+        "final_guard_relative": [
+          0.0023080734354025277,
+          0.002512162485617269,
+          0.0024156017945524133,
+          0.0023785374047870524
+        ],
+        "screening": [
+          {
+            "unit": 0,
+            "initial_proposed_cost": 2.6284851669553635e-05,
+            "initial_decrease": 1.629484622066951e-07,
+            "gram_condition": 10.398763200086842
+          },
+          {
+            "unit": 1,
+            "initial_proposed_cost": 2.617787991164265e-05,
+            "initial_decrease": 2.699202201176798e-07,
+            "gram_condition": 7.58609126208173
+          },
+          {
+            "unit": 2,
+            "initial_proposed_cost": 2.6207309331499084e-05,
+            "initial_decrease": 2.404908002612463e-07,
+            "gram_condition": 7.71375952022185
+          },
+          {
+            "unit": 3,
+            "initial_proposed_cost": 2.6062790048680213e-05,
+            "initial_decrease": 3.8501008308011657e-07,
+            "gram_condition": 8.201803383558554
+          },
+          {
+            "unit": 4,
+            "initial_proposed_cost": 2.6057179413521025e-05,
+            "initial_decrease": 3.906207182393047e-07,
+            "gram_condition": 9.160633200222835
+          },
+          {
+            "unit": 5,
+            "initial_proposed_cost": 2.62661408982781e-05,
+            "initial_decrease": 1.8165923348222954e-07,
+            "gram_condition": 7.511843929663631
+          },
+          {
+            "unit": 6,
+            "initial_proposed_cost": 2.6141576670734323e-05,
+            "initial_decrease": 3.0622346102600646e-07,
+            "gram_condition": 7.660260080169446
+          },
+          {
+            "unit": 7,
+            "initial_proposed_cost": 2.6094520899215358e-05,
+            "initial_decrease": 3.5327923254497223e-07,
+            "gram_condition": 7.2069542463788
+          },
+          {
+            "unit": 8,
+            "initial_proposed_cost": 2.586010012765614e-05,
+            "initial_decrease": 5.877000041041909e-07,
+            "gram_condition": 10.011985166608884
+          },
+          {
+            "unit": 9,
+            "initial_proposed_cost": 2.616950578240403e-05,
+            "initial_decrease": 2.7829434935630027e-07,
+            "gram_condition": 6.9143311661249784
+          },
+          {
+            "unit": 10,
+            "initial_proposed_cost": 2.6194402238202802e-05,
+            "initial_decrease": 2.5339789355752795e-07,
+            "gram_condition": 8.420449878404096
+          },
+          {
+            "unit": 11,
+            "initial_proposed_cost": 2.6160384065269287e-05,
+            "initial_decrease": 2.8741606649104325e-07,
+            "gram_condition": 8.170484068178597
+          },
+          {
+            "unit": 12,
+            "initial_proposed_cost": 2.6146324638562895e-05,
+            "initial_decrease": 3.014754931974344e-07,
+            "gram_condition": 7.076922646574137
+          },
+          {
+            "unit": 13,
+            "initial_proposed_cost": 2.6179394228055783e-05,
+            "initial_decrease": 2.684059037045465e-07,
+            "gram_condition": 7.111272182045717
+          },
+          {
+            "unit": 14,
+            "initial_proposed_cost": 2.5681462481734353e-05,
+            "initial_decrease": 7.663376500259766e-07,
+            "gram_condition": 9.313241557075878
+          },
+          {
+            "unit": 15,
+            "initial_proposed_cost": 2.5527694856210688e-05,
+            "initial_decrease": 9.201052755496419e-07,
+            "gram_condition": 6.968785637429856
+          },
+          {
+            "unit": 16,
+            "initial_proposed_cost": 2.6184929060280634e-05,
+            "initial_decrease": 2.6287107147969534e-07,
+            "gram_condition": 7.254239855746124
+          },
+          {
+            "unit": 17,
+            "initial_proposed_cost": 2.6128648896658267e-05,
+            "initial_decrease": 3.191512351020629e-07,
+            "gram_condition": 8.376190645716623
+          },
+          {
+            "unit": 18,
+            "initial_proposed_cost": 2.6259550358159186e-05,
+            "initial_decrease": 1.882497736011437e-07,
+            "gram_condition": 9.322938714523282
+          },
+          {
+            "unit": 19,
+            "initial_proposed_cost": 2.6294792908402184e-05,
+            "initial_decrease": 1.5300722335814554e-07,
+            "gram_condition": 7.6145715932341
+          },
+          {
+            "unit": 20,
+            "initial_proposed_cost": 2.6268313878200754e-05,
+            "initial_decrease": 1.7948625355957595e-07,
+            "gram_condition": 7.2231488789828155
+          },
+          {
+            "unit": 21,
+            "initial_proposed_cost": 2.6264047698157582e-05,
+            "initial_decrease": 1.8375243360274735e-07,
+            "gram_condition": 8.455815325264135
+          },
+          {
+            "unit": 22,
+            "initial_proposed_cost": 2.6175958979340462e-05,
+            "initial_decrease": 2.718411524198673e-07,
+            "gram_condition": 6.851182536892034
+          },
+          {
+            "unit": 23,
+            "initial_proposed_cost": 2.6260608548722437e-05,
+            "initial_decrease": 1.8719158303789302e-07,
+            "gram_condition": 7.624594507251496
+          },
+          {
+            "unit": 24,
+            "initial_proposed_cost": 2.6210973499035264e-05,
+            "initial_decrease": 2.3682663272506533e-07,
+            "gram_condition": 6.034178026135136
+          },
+          {
+            "unit": 25,
+            "initial_proposed_cost": 2.6112553071824897e-05,
+            "initial_decrease": 3.35247059935433e-07,
+            "gram_condition": 7.556854054756475
+          },
+          {
+            "unit": 26,
+            "initial_proposed_cost": 2.6094477958798642e-05,
+            "initial_decrease": 3.5332217296168736e-07,
+            "gram_condition": 8.86243436167114
+          },
+          {
+            "unit": 27,
+            "initial_proposed_cost": 2.5900321808160648e-05,
+            "initial_decrease": 5.47478323599682e-07,
+            "gram_condition": 7.214336508421824
+          },
+          {
+            "unit": 28,
+            "initial_proposed_cost": 2.5778586171766016e-05,
+            "initial_decrease": 6.69213959994314e-07,
+            "gram_condition": 7.6328975695963885
+          },
+          {
+            "unit": 29,
+            "initial_proposed_cost": 2.6111246951904934e-05,
+            "initial_decrease": 3.365531798553957e-07,
+            "gram_condition": 7.071561536343345
+          },
+          {
+            "unit": 30,
+            "initial_proposed_cost": 2.5953372325303672e-05,
+            "initial_decrease": 4.944278064566576e-07,
+            "gram_condition": 8.878661218346851
+          },
+          {
+            "unit": 31,
+            "initial_proposed_cost": 2.6206565157174903e-05,
+            "initial_decrease": 2.4123497458542633e-07,
+            "gram_condition": 7.19007096585205
+          },
+          {
+            "unit": 32,
+            "initial_proposed_cost": 2.6207598025331056e-05,
+            "initial_decrease": 2.402021064292734e-07,
+            "gram_condition": 9.731900276603318
+          },
+          {
+            "unit": 33,
+            "initial_proposed_cost": 2.6267664677577597e-05,
+            "initial_decrease": 1.8013545418273322e-07,
+            "gram_condition": 8.600396366231983
+          },
+          {
+            "unit": 34,
+            "initial_proposed_cost": 2.617592366152356e-05,
+            "initial_decrease": 2.7187647023676887e-07,
+            "gram_condition": 7.61861095586419
+          },
+          {
+            "unit": 35,
+            "initial_proposed_cost": 2.623594160313723e-05,
+            "initial_decrease": 2.1185852862310025e-07,
+            "gram_condition": 6.606481559628375
+          },
+          {
+            "unit": 36,
+            "initial_proposed_cost": 2.621053967496762e-05,
+            "initial_decrease": 2.3726045679271099e-07,
+            "gram_condition": 6.712940680257527
+          },
+          {
+            "unit": 37,
+            "initial_proposed_cost": 2.518416660838336e-05,
+            "initial_decrease": 1.2636335233769684e-06,
+            "gram_condition": 6.893408004357406
+          },
+          {
+            "unit": 38,
+            "initial_proposed_cost": 2.616173762485148e-05,
+            "initial_decrease": 2.8606250690884925e-07,
+            "gram_condition": 7.2276911395011805
+          },
+          {
+            "unit": 39,
+            "initial_proposed_cost": 2.561258964566094e-05,
+            "initial_decrease": 8.352104860993902e-07,
+            "gram_condition": 9.986039069258018
+          },
+          {
+            "unit": 40,
+            "initial_proposed_cost": 2.606270500484477e-05,
+            "initial_decrease": 3.8509512691555815e-07,
+            "gram_condition": 7.3844769625727364
+          },
+          {
+            "unit": 41,
+            "initial_proposed_cost": 2.5927277590152264e-05,
+            "initial_decrease": 5.205225416080653e-07,
+            "gram_condition": 6.5432917722562935
+          },
+          {
+            "unit": 42,
+            "initial_proposed_cost": 2.5999796099265042e-05,
+            "initial_decrease": 4.480040324952881e-07,
+            "gram_condition": 7.506608647676038
+          },
+          {
+            "unit": 43,
+            "initial_proposed_cost": 2.609849618071761e-05,
+            "initial_decrease": 3.493039510427199e-07,
+            "gram_condition": 7.085517040797926
+          },
+          {
+            "unit": 44,
+            "initial_proposed_cost": 2.600503651908166e-05,
+            "initial_decrease": 4.427636126786707e-07,
+            "gram_condition": 8.32023853984947
+          },
+          {
+            "unit": 45,
+            "initial_proposed_cost": 2.5993178391037605e-05,
+            "initial_decrease": 4.5462174072272445e-07,
+            "gram_condition": 8.165619671980103
+          },
+          {
+            "unit": 46,
+            "initial_proposed_cost": 2.612495891922269e-05,
+            "initial_decrease": 3.2284121253764114e-07,
+            "gram_condition": 7.277140595737351
+          },
+          {
+            "unit": 47,
+            "initial_proposed_cost": 2.6143270699637687e-05,
+            "initial_decrease": 3.04529432122643e-07,
+            "gram_condition": 7.6288149894388155
+          },
+          {
+            "unit": 48,
+            "initial_proposed_cost": 2.5999660911677402e-05,
+            "initial_decrease": 4.4813922008292745e-07,
+            "gram_condition": 7.80920826192559
+          },
+          {
+            "unit": 49,
+            "initial_proposed_cost": 2.598918665454223e-05,
+            "initial_decrease": 4.586134772180998e-07,
+            "gram_condition": 6.799063496289735
+          },
+          {
+            "unit": 50,
+            "initial_proposed_cost": 2.620900634091685e-05,
+            "initial_decrease": 2.387937908434812e-07,
+            "gram_condition": 7.638914769516614
+          },
+          {
+            "unit": 51,
+            "initial_proposed_cost": 2.478633717788329e-05,
+            "initial_decrease": 1.6614629538770398e-06,
+            "gram_condition": 7.633708377126241
+          },
+          {
+            "unit": 52,
+            "initial_proposed_cost": 2.622368909661848e-05,
+            "initial_decrease": 2.241110351418488e-07,
+            "gram_condition": 7.214232494061558
+          },
+          {
+            "unit": 53,
+            "initial_proposed_cost": 2.6260351905022235e-05,
+            "initial_decrease": 1.874482267380947e-07,
+            "gram_condition": 8.104053892228803
+          },
+          {
+            "unit": 54,
+            "initial_proposed_cost": 2.6066126132752637e-05,
+            "initial_decrease": 3.816739990076931e-07,
+            "gram_condition": 6.650393925382956
+          },
+          {
+            "unit": 55,
+            "initial_proposed_cost": 2.6149097078244064e-05,
+            "initial_decrease": 2.987030535162659e-07,
+            "gram_condition": 8.95421559488761
+          },
+          {
+            "unit": 56,
+            "initial_proposed_cost": 2.5729054017274358e-05,
+            "initial_decrease": 7.187461144859722e-07,
+            "gram_condition": 7.812439264980371
+          },
+          {
+            "unit": 57,
+            "initial_proposed_cost": 2.6097277473855474e-05,
+            "initial_decrease": 3.5052265790485543e-07,
+            "gram_condition": 9.83783749803609
+          },
+          {
+            "unit": 58,
+            "initial_proposed_cost": 2.599677791378682e-05,
+            "initial_decrease": 4.5102221797351023e-07,
+            "gram_condition": 7.988283522687701
+          },
+          {
+            "unit": 59,
+            "initial_proposed_cost": 2.6140167386504543e-05,
+            "initial_decrease": 3.076327452557869e-07,
+            "gram_condition": 7.385257231992749
+          },
+          {
+            "unit": 60,
+            "initial_proposed_cost": 2.6019739849177097e-05,
+            "initial_decrease": 4.280602825832329e-07,
+            "gram_condition": 8.60789790325666
+          },
+          {
+            "unit": 61,
+            "initial_proposed_cost": 2.6191061801521905e-05,
+            "initial_decrease": 2.567383302384249e-07,
+            "gram_condition": 11.007396209398788
+          },
+          {
+            "unit": 62,
+            "initial_proposed_cost": 2.6284703601980424e-05,
+            "initial_decrease": 1.6309652977990535e-07,
+            "gram_condition": 7.918870948745952
+          },
+          {
+            "unit": 63,
+            "initial_proposed_cost": 2.625108205284246e-05,
+            "initial_decrease": 1.967180789178702e-07,
+            "gram_condition": 7.032400412013474
+          }
+        ],
+        "selected_units": [
+          51,
+          37,
+          15,
+          39,
+          14,
+          56,
+          28,
+          8
+        ],
+        "accepted_units": [
+          51,
+          37,
+          15,
+          39,
+          14,
+          56,
+          28,
+          8
+        ],
+        "decisions": [
+          {
+            "unit": 51,
+            "old_cost": 2.644780013176033e-05,
+            "proposed_cost": 2.478633717788329e-05,
+            "required_decrease": 2.644780013176033e-17,
+            "guard_before": [
+              0.0025433643557019143,
+              0.002720627635008243,
+              0.002551776947461704,
+              0.0025483173905717503
+            ],
+            "guard_after": [
+              0.002476473680749262,
+              0.002647611977346817,
+              0.002505401590619068,
+              0.002489428723324215
+            ],
+            "training_decreased": true,
+            "guard_passed": true,
+            "accepted": true,
+            "gram_condition": 7.633708377126241
+          },
+          {
+            "unit": 37,
+            "old_cost": 2.478633717788329e-05,
+            "proposed_cost": 2.363189489516164e-05,
+            "required_decrease": 2.478633717788329e-17,
+            "guard_before": [
+              0.002476473680749262,
+              0.002647611977346817,
+              0.002505401590619068,
+              0.002489428723324215
+            ],
+            "guard_after": [
+              0.0024157855945358907,
+              0.002617522100905469,
+              0.0024728324618375165,
+              0.002474807517074198
+            ],
+            "training_decreased": true,
+            "guard_passed": true,
+            "accepted": true,
+            "gram_condition": 6.893408004357406
+          },
+          {
+            "unit": 15,
+            "old_cost": 2.363189489516164e-05,
+            "proposed_cost": 2.2907801189375487e-05,
+            "required_decrease": 2.363189489516164e-17,
+            "guard_before": [
+              0.0024157855945358907,
+              0.002617522100905469,
+              0.0024728324618375165,
+              0.002474807517074198
+            ],
+            "guard_after": [
+              0.002408750264273943,
+              0.002590512365917528,
+              0.0024671615146965213,
+              0.002453197619998455
+            ],
+            "training_decreased": true,
+            "guard_passed": true,
+            "accepted": true,
+            "gram_condition": 6.968785637429856
+          },
+          {
+            "unit": 39,
+            "old_cost": 2.2907801189375487e-05,
+            "proposed_cost": 2.2240731124020847e-05,
+            "required_decrease": 2.2907801189375485e-17,
+            "guard_before": [
+              0.002408750264273943,
+              0.002590512365917528,
+              0.0024671615146965213,
+              0.002453197619998455
+            ],
+            "guard_after": [
+              0.002363223508616411,
+              0.002575898004846047,
+              0.0024411868546874993,
+              0.002426696244018263
+            ],
+            "training_decreased": true,
+            "guard_passed": true,
+            "accepted": true,
+            "gram_condition": 9.986039069258018
+          },
+          {
+            "unit": 14,
+            "old_cost": 2.2240731124020847e-05,
+            "proposed_cost": 2.1826768105665234e-05,
+            "required_decrease": 2.2240731124020845e-17,
+            "guard_before": [
+              0.002363223508616411,
+              0.002575898004846047,
+              0.0024411868546874993,
+              0.002426696244018263
+            ],
+            "guard_after": [
+              0.002341588041190373,
+              0.0025683169999628653,
+              0.002439062902473759,
+              0.0024144504580390774
+            ],
+            "training_decreased": true,
+            "guard_passed": true,
+            "accepted": true,
+            "gram_condition": 9.313241557075878
+          },
+          {
+            "unit": 56,
+            "old_cost": 2.1826768105665234e-05,
+            "proposed_cost": 2.1480590137031582e-05,
+            "required_decrease": 2.1826768105665233e-17,
+            "guard_before": [
+              0.002341588041190373,
+              0.0025683169999628653,
+              0.002439062902473759,
+              0.0024144504580390774
+            ],
+            "guard_after": [
+              0.0023321333241179496,
+              0.002556442001567126,
+              0.002435061197317855,
+              0.0024016827807042903
+            ],
+            "training_decreased": true,
+            "guard_passed": true,
+            "accepted": true,
+            "gram_condition": 7.812439264980371
+          },
+          {
+            "unit": 28,
+            "old_cost": 2.1480590137031582e-05,
+            "proposed_cost": 2.1225277688733703e-05,
+            "required_decrease": 2.148059013703158e-17,
+            "guard_before": [
+              0.0023321333241179496,
+              0.002556442001567126,
+              0.002435061197317855,
+              0.0024016827807042903
+            ],
+            "guard_after": [
+              0.0023127352180934285,
+              0.002539074108561346,
+              0.0024177305413636326,
+              0.002391912079984193
+            ],
+            "training_decreased": true,
+            "guard_passed": true,
+            "accepted": true,
+            "gram_condition": 7.6328975695963885
+          },
+          {
+            "unit": 8,
+            "old_cost": 2.1225277688733703e-05,
+            "proposed_cost": 2.069314138655357e-05,
+            "required_decrease": 2.1225277688733704e-17,
+            "guard_before": [
+              0.0023127352180934285,
+              0.002539074108561346,
+              0.0024177305413636326,
+              0.002391912079984193
+            ],
+            "guard_after": [
+              0.0023080734354025277,
+              0.002512162485617269,
+              0.0024156017945524133,
+              0.0023785374047870524
+            ],
+            "training_decreased": true,
+            "guard_passed": true,
+            "accepted": true,
+            "gram_condition": 10.011985166608884
+          }
+        ],
+        "local_rankone_solves": 72,
+        "sweeps": 1,
+        "direction_updates": 0,
+        "guard_is_calibration": true
+      },
+      "arrays_sha256": "ca34ac54b7bdf2434b8aef957061fb000df77ab260173b6f0143b67a2235afa3",
+      "candidate_sha256": "b31ce967cab997e9a5fd2652ab63db28f32204638a7f3f7ca58f4c1673e4d0b2",
+      "inputs_before": {
+        "baseline": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+        "fit_report": "c0d30f830e6304b902b5bfda0138c01a60b55c71885bd084c0e7213dafd7ea77",
+        "old_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96"
+      },
+      "inputs_after": {
+        "baseline": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+        "fit_report": "c0d30f830e6304b902b5bfda0138c01a60b55c71885bd084c0e7213dafd7ea77",
+        "old_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96"
+      },
+      "inputs_unchanged": true,
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 40894464,
+      "memory_samples": 2,
+      "memory_limit_mb": 512
+    },
+    "evaluate": {
+      "stage": "public_development_evaluation",
+      "vector_calls": 2048,
+      "groups": [
+        {
+          "scale": 0.01,
+          "relative_frobenius": 0.0022866612814991306,
+          "max_absolute": 1.5172876532766247e-06
+        },
+        {
+          "scale": 1.0,
+          "relative_frobenius": 0.0024047116090800268,
+          "max_absolute": 0.018274433329118933
+        },
+        {
+          "scale": 10.0,
+          "relative_frobenius": 0.002357100116209847,
+          "max_absolute": 2.1311888856329233
+        },
+        {
+          "scale": 100.0,
+          "relative_frobenius": 0.0024161949783574853,
+          "max_absolute": 254.03727246905328
+        }
+      ],
+      "baseline_groups": [
+        {
+          "scale": 0.01,
+          "relative_frobenius": 0.0025189369835888057,
+          "max_absolute": 1.673608502989908e-06
+        },
+        {
+          "scale": 1.0,
+          "relative_frobenius": 0.002639685556648388,
+          "max_absolute": 0.028924148352547085
+        },
+        {
+          "scale": 10.0,
+          "relative_frobenius": 0.0025490040218258546,
+          "max_absolute": 2.4866913433415334
+        },
+        {
+          "scale": 100.0,
+          "relative_frobenius": 0.002681560380364896,
+          "max_absolute": 261.8008842485069
+        }
+      ],
+      "paired_same_reference": true,
+      "baseline_sha256": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+      "candidate_sha256": "b31ce967cab997e9a5fd2652ab63db28f32204638a7f3f7ca58f4c1673e4d0b2",
+      "validation_sha256": "f153a968e36198a26f68910c7c0f6a2204eb498b56dda92481d1f2f1389489b6",
+      "development_max_group_relative": 0.001,
+      "all_groups_relative_at_most_1e_minus3": false,
+      "sealed": false,
+      "original_weights_recovered": false,
+      "all_inputs_equivalence_proven": false,
+      "universal_reconstruction": false,
+      "private_gate": "closed",
+      "process_monitor_scope": "process_and_children",
+      "peak_sampled_rss_bytes": 38387712,
+      "memory_samples": 2,
+      "memory_limit_mb": 512
+    }
+  },
+  "private_gate": "closed",
+  "sealed": false,
+  "status": "public_candidate_evaluated",
+  "input_inventory_after": {
+    "fp32-fullmap-dev-v1-20261025-8d2d457/fit-attempt.json": "1958e27f8c44f81d153b900d22e9ea4c0754cd073765ca67eb0821ba3a04309a",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/fit-receipt.json": "79a8d1f5907dbaceb06b7509500d844851f24876bdf36b7a2a4b7c2329554fd1",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/fit-report.json": "64ded2e01c4a8db4dff38a248b40bb4e6e36095f54097b0f61f00ef30ada916e",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/prepare-receipt.json": "dec103703b8f9d6ecc9973028d6bf4191c85b3c008b20c3bd45fa25e94c65e01",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/curvature-pair.npz": "1071faad164eb96e3e3a8ae126eeebf8a997b82413bc2f7cb935109edb196b7d",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/hessians.npz": "5792c142ea2de8a1eb77e5423b77455835170fd7737e84186a45326d6eb7bdc7",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/manifest.json": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/public/multiscale.npz": "b017d253cc1c08f2afa2ec25be14559d5053717dfb12c08689d809b05251554f",
+    "fp32-fullmap-dev-v1-20261025-8d2d457/report.json": "819e35cb25894c6515b6be25396ccaee26de4b089f79934e3dc6c8d4d5b0bd84",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/diagnostic/replay-attempt.json": "62b29ef97f40d296fa47a013d61b6e7e0c5c89cb57c2a76caa3c04b691857004",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/diagnostic/report.json": "2b41a102e4c897f3c0e28bba078f42d9d037d4ecb8b72d341d1abf7a198628a4",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/diagnostic/telemetry.npz": "e043e538a58187a9171a997bc889da2c0ab7518ffb99badc75fa1bc53c8fe6a9",
+    "fp32-count-diagnostic-v1-20261025-9e5c51f/report.json": "7e3b89c6a43c7f781b1d42bc25de6fb2dbe754b5154f471a8cb59483717716ca"
+  },
+  "old_inputs_unchanged": true,
+  "controller_seconds": 0.4532379170123022,
+  "max_worker_tree_sampled_rss_bytes": 40894464
+}
