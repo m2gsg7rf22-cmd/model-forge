@@ -23,3 +23,6 @@ The completed gate fit produced a3,095,641byte report and exceeded the2MB engine
 ## Primary mathematical source
 
 The constrained quadratic/KKT basis is standard convex optimization, not a new reconstruction theorem: [Boyd and Vandenberghe, Convex Optimization, official Stanford book](https://www.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf), quadratic optimization and optimality conditions. The ModelForge-specific mapping from guard derivatives to a bounded experimental direction is a prospective hypothesis, not established by that source.
+
+
+Implementation checkpoint (SYNTHETIC ONLY): guard_aware_direction.py and evidence_transport.py;18newfocused controls/types/lint passed. Full derivation, componentwise numeric scales and conservative exact-rational near-rank domain restriction: docs/glu-guard-aware-direction-primitive.md. Independent source/geometric review pending. No actual adapter/fit/query.

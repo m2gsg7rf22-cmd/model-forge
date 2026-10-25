@@ -1,0 +1,99 @@
+{
+  "geometry_cases": [
+    {
+      "constraints": 0,
+      "geometry_solution_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "constraints": 0,
+      "geometry_solution_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "constraints": 0,
+      "geometry_solution_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "constraints": 1,
+      "geometry_solution_absolute_error": 1.1112474618513298e-16
+    },
+    {
+      "constraints": 1,
+      "geometry_solution_absolute_error": 0.0
+    },
+    {
+      "constraints": 1,
+      "geometry_solution_absolute_error": 9.485749680535094e-16
+    },
+    {
+      "constraints": 2,
+      "geometry_solution_absolute_error": 3.115183399319118e-17
+    },
+    {
+      "constraints": 2,
+      "geometry_solution_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "constraints": 2,
+      "geometry_solution_absolute_error": 5.721958498152797e-17
+    },
+    {
+      "constraints": 3,
+      "geometry_solution_absolute_error": 6.206335383118183e-17
+    },
+    {
+      "constraints": 3,
+      "geometry_solution_absolute_error": 0.0
+    },
+    {
+      "constraints": 3,
+      "geometry_solution_absolute_error": 1.933543372173927e-17
+    },
+    {
+      "constraints": 5,
+      "geometry_solution_absolute_error": 6.740927003953293e-17
+    },
+    {
+      "constraints": 5,
+      "geometry_solution_absolute_error": 1.7238802307749945e-14
+    },
+    {
+      "constraints": 5,
+      "geometry_solution_absolute_error": 1.0801101794603239e-17
+    },
+    {
+      "constraints": 8,
+      "geometry_solution_absolute_error": 2.0636774022093076e-15
+    },
+    {
+      "constraints": 8,
+      "geometry_solution_absolute_error": 4.627015530556803e-15
+    },
+    {
+      "constraints": 8,
+      "geometry_solution_absolute_error": 8.433804912625072e-18
+    }
+  ],
+  "max_geometry_error": 1.7238802307749945e-14,
+  "all256_empty_interior_duplicate_opposite_case_passed": true,
+  "no_KKT_candidate_failure_branch_verified": true,
+  "near_independent_geometry_cases": [
+    {
+      "epsilon": 1e-14,
+      "status": "rejected"
+    },
+    {
+      "epsilon": 1e-11,
+      "status": "rejected"
+    }
+  ],
+  "general_exact_dependency_supported": true,
+  "seven_dimensional_separable_coordinate_cone_verified": true,
+  "negative_dual_regression_passed": true,
+  "overflow_scale_regression_passed": true,
+  "normalization_and_original_dual_scaling_verified": true,
+  "preclip_only_KKT_and_radial_feasibility_verified": true,
+  "independent_transport_hash_and_arrays_verified": true,
+  "actual_experiment_arrays_read": 0,
+  "teacher_queries": 0,
+  "actual_fits": 0
+}

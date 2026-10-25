@@ -1,0 +1,20 @@
+{
+  "focused_tests_passed": 18,
+  "focused_test_files": [
+    "tests/test_glu_guard_aware_direction.py",
+    "tests/test_glu_evidence_transport.py"
+  ],
+  "strict_mypy": "passed2modules",
+  "ruff": "passed4source_test_files",
+  "large_evidence_control": {
+    "synthetic_float64_values": 600000,
+    "raw_array_bytes": 4800000,
+    "engine_output_bound_bytes": 2048,
+    "metadata_and_reload_hash_verified": true,
+    "production_parser_limits_changed": false
+  },
+  "native_rebuilds": 0,
+  "actual_saved_data_fits": 0,
+  "target_queries": 0,
+  "private_gate": "closed"
+}

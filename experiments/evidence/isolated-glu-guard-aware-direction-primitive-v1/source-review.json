@@ -1,0 +1,136 @@
+{
+  "approved": true,
+  "scope": "synthetic-only cone-QP primitive and bounded evidence transport; no real guard mapping or actual fitting",
+  "sources": {
+    "examples/isolated_glu/guard_aware_direction.py": "289fd53178e2adabd12e6f74a8f8d2ba9000addc181b64f7c5233de7c9c192ed",
+    "examples/isolated_glu/evidence_transport.py": "40b61e48075329a22b81a143fcf5373c5e86bd9a0e528869285531dce80714da",
+    "tests/test_glu_guard_aware_direction.py": "326263fea7e56184d374e0a594a51db4183d46958e53a730d60ecff31b5d6f9b",
+    "tests/test_glu_evidence_transport.py": "935387474f88424a6d75ebd975b110600dd3537d93928192bc3d43a1218da76e",
+    "docs/superpowers/plans/2026-10-25-guard-aware-gate-direction.md": "6be27f2e24a582820231a47517242f5ca28135a3606454c0b8f4d3faa9232764",
+    "docs/glu-guard-aware-direction-primitive.md": "ef405471544b03c9e926c7c75c20c108eb70b245d4635350419119dab7b1d888",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  },
+  "blocking_findings": [],
+  "resolved_findings": [
+    "Global dual norm could hide a negative component; independently reproduced RED and corrected componentwise dual check.",
+    "Overflowed/global norms could hide stationarity or primal violation; corrected componentwise residual scales with explicit floors.",
+    "Raw residuals/scales and original versus normalized dual/certificate details now reported.",
+    "Near-independent normals could conceal large cone geometry error; final conservative1e-5 independent-normal domain guard rejects globally with exact original-FP64 dependency exception."
+  ],
+  "probe_sha256": "23cf7c05eb8167ec721e3e67468100682a34220e537563ae57c5ff42b2357624",
+  "probe_results_sha256": "841ae2d30be293813ce32828e6d49af4ec0e704a27634d3a10cd46e69c30227f",
+  "design_review_sha256": "333fa1b7cf40bc2175157fe490daf8c52958d291ae03051706144eb3e8b612a5",
+  "independent_probe_summary": {
+    "geometry_cases": [
+      {
+        "constraints": 0,
+        "geometry_solution_absolute_error": 3.469446951953614e-17
+      },
+      {
+        "constraints": 0,
+        "geometry_solution_absolute_error": 5.551115123125783e-17
+      },
+      {
+        "constraints": 0,
+        "geometry_solution_absolute_error": 3.469446951953614e-17
+      },
+      {
+        "constraints": 1,
+        "geometry_solution_absolute_error": 1.1112474618513298e-16
+      },
+      {
+        "constraints": 1,
+        "geometry_solution_absolute_error": 0.0
+      },
+      {
+        "constraints": 1,
+        "geometry_solution_absolute_error": 9.485749680535094e-16
+      },
+      {
+        "constraints": 2,
+        "geometry_solution_absolute_error": 3.115183399319118e-17
+      },
+      {
+        "constraints": 2,
+        "geometry_solution_absolute_error": 2.220446049250313e-16
+      },
+      {
+        "constraints": 2,
+        "geometry_solution_absolute_error": 5.721958498152797e-17
+      },
+      {
+        "constraints": 3,
+        "geometry_solution_absolute_error": 6.206335383118183e-17
+      },
+      {
+        "constraints": 3,
+        "geometry_solution_absolute_error": 0.0
+      },
+      {
+        "constraints": 3,
+        "geometry_solution_absolute_error": 1.933543372173927e-17
+      },
+      {
+        "constraints": 5,
+        "geometry_solution_absolute_error": 6.740927003953293e-17
+      },
+      {
+        "constraints": 5,
+        "geometry_solution_absolute_error": 1.7238802307749945e-14
+      },
+      {
+        "constraints": 5,
+        "geometry_solution_absolute_error": 1.0801101794603239e-17
+      },
+      {
+        "constraints": 8,
+        "geometry_solution_absolute_error": 2.0636774022093076e-15
+      },
+      {
+        "constraints": 8,
+        "geometry_solution_absolute_error": 4.627015530556803e-15
+      },
+      {
+        "constraints": 8,
+        "geometry_solution_absolute_error": 8.433804912625072e-18
+      }
+    ],
+    "max_geometry_error": 1.7238802307749945e-14,
+    "all256_empty_interior_duplicate_opposite_case_passed": true,
+    "no_KKT_candidate_failure_branch_verified": true,
+    "near_independent_geometry_cases": [
+      {
+        "epsilon": 1e-14,
+        "status": "rejected"
+      },
+      {
+        "epsilon": 1e-11,
+        "status": "rejected"
+      }
+    ],
+    "general_exact_dependency_supported": true,
+    "seven_dimensional_separable_coordinate_cone_verified": true,
+    "negative_dual_regression_passed": true,
+    "overflow_scale_regression_passed": true,
+    "normalization_and_original_dual_scaling_verified": true,
+    "preclip_only_KKT_and_radial_feasibility_verified": true,
+    "independent_transport_hash_and_arrays_verified": true,
+    "actual_experiment_arrays_read": 0,
+    "teacher_queries": 0,
+    "actual_fits": 0
+  },
+  "primary_reference": "https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf sections5.2.3 and5.5.3",
+  "limitations": [
+    "Independent normals with SVD ratio<=1e-5 reject the entire problem unless exact original-FP64 rational dependency is established; this is a conservative domain policy, not a derived forward-error bound.",
+    "Expressions intended as dependent may be exact-independent after FP64 rounding and are conservatively rejected.",
+    "Exact-arithmetic independent-support proof does not establish floating-point enumeration completeness after geometry/solve rejection.",
+    "Passing scaled KKT residuals is numerical evidence, not an exact feasibility/optimality or interval certificate.",
+    "Original-coordinate certificate details are informational because row-normalization changes componentwise tolerance scales.",
+    "KKT checks apply preclip only; radial clipping preserves homogeneous feasibility in exact arithmetic but is not exact trust-region minimization.",
+    "Transport primitive validates finite FP64 evidence, hashes and compact bounds; it is not an approved actual experiment runner.",
+    "At most8 future selected guard planes cannot certify every nonlinear guard metric or coordinate.",
+    "No saved experiment arrays, teacher/oracle, consumed validation or private assets read; no actual fit performed.",
+    "Previous failures preserved; universal reconstruction unproved and private gate closed."
+  ]
+}

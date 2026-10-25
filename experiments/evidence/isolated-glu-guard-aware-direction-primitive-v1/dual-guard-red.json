@@ -1,0 +1,11 @@
+{
+  "source_sha256": "e80f93535744b64268c25b861fa316272302829b5333d5a08f658d3992d57191",
+  "checks": {
+    "primal": 0.0,
+    "dual": 1e-12,
+    "stationarity": 0.0,
+    "complementarity": 0.0
+  },
+  "all_pass": true,
+  "negative_dual_component": -1.0
+}
