@@ -1,0 +1,28 @@
+{
+  "run_id": 40167761243,
+  "url": "https://github.com/m2gsg7rf22-cmd/model-forge/actions/runs/40167761243",
+  "source_commit": "84ce7206af7acd0b8473ad1737cecf3601311b30",
+  "conclusion": "success",
+  "platforms": {
+    "Antipodal-core-Windows": {
+      "tests": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "Antipodal-core-Linux": {
+      "tests": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "Antipodal-core-macOS": {
+      "tests": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "native_rebuilds": false,
+  "full_suite": false
+}
