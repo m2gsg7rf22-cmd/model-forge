@@ -23,6 +23,8 @@ On resuming this repository's mission, read `AGENTS.md`, `docs/RESUME.md` and `.
 - **Only final logits or generated text:** use explicitly authorized `probe_model` / `run_experiment`, retain observations and investigate weaker-access methods. Do not synthesize hidden states, isolate internal blocks without evidence, or claim original weights from finite matching.
 - **Unknown architecture/modality/access:** retain the full objective, identify the missing observation/algorithm, search primary research, preregister a discriminating owned experiment and add a real tested backend before advertising another reconstruction route. Read [research leads](references/research.md) only when needed.
 
+Declare computation precision and returned-output precision separately; float64 NPZ storage does not imply FP64 computation. For rounded or low-precision observations, read [precision triage](references/precision.md) before choosing or advertising a route.
+
 Distinguish original parameters, equivalent parameterizations, defined-domain function equivalence and finite approximation. Record which was requested and which is supported. Preserve failed runs, source/artifact digests, calibration versus sealed-test boundaries, numerical error, time, memory and query cost. A verifier must not trust fitting-side success labels. Unknowns remain unknown; passing software tests is not a scientific equivalence certificate.
 
 ## Preserve existing workflows and rights

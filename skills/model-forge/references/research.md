@@ -29,3 +29,6 @@ Actual v2 outcome: the all-three criterion FAILED (63/64/64 candidate directions
 
 
 2026-10-25 delivery update: fixed-profile isolated GLU32 is now ported to core/CLI/MCP; use [the exact saved-observation contract](glu32.md). Local25 integration tests and clean installed-wheel CLI/MCP passed; independent reviewer approved, and CI40167761243 passed25tests on each of Linux/macOS/Windows plus changed-source types/lint. Historical experimental-only statements above describe earlier checkpoints. Universal and token-API reduction remain open.
+
+
+Precision development update: one fixed public diagnostic now measures the FP32/output-rounding bottleneck and a Richardson step-size tradeoff; read [precision triage](precision.md). No new full-map recovery or production precision profile is established. Preserve all48outcomes and the FP16negative control; next test full-map fitting using one consistent FP32 channel and persisted calibration evidence before fresh-teacher protocol.

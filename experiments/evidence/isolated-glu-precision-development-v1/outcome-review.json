@@ -1,0 +1,194 @@
+{
+  "status": "verified_fixed_public_precision_diagnostic",
+  "report_sha256": "e976cbbb77689a360c72ec1d2a153b1d615cdbf4044da6f2fa89b800c3358ec4",
+  "source_commit": "e6bc6f40a89cd39c4b8dedbfcd94004de8456f0c",
+  "reviewed_sources": {
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "experiments/preregistrations/isolated-glu-precision-development-v1.json": "b0735df73c77da1e148c9b36fceb9c2a195a49714138cabc534e558d448d827d",
+    "tests/test_glu_precision.py": "2ca12a3001b77a3f399e12b318a2329f3e5d4e7df052db1bbd5f9e1e96e1285c",
+    "docs/superpowers/specs/2026-10-25-glu-precision-design.md": "a1500f3491d57f97a25f219392fe012924869e1dda314e25b75defe74b661bb9",
+    "docs/superpowers/plans/2026-10-25-glu-precision-diagnostic.md": "81fcc7b96048631730e2826e5ec38220336ca6162c0d62ca97630ab3d99d8f48"
+  },
+  "source_and_commit_bytes_match": {
+    "examples/isolated_glu/precision.py": true,
+    "experiments/preregistrations/isolated-glu-precision-development-v1.json": true,
+    "tests/test_glu_precision.py": true,
+    "docs/superpowers/specs/2026-10-25-glu-precision-design.md": true,
+    "docs/superpowers/plans/2026-10-25-glu-precision-diagnostic.md": true
+  },
+  "complete_grid48_unique": true,
+  "all_spectral_ratios_finite_and_consistent": true,
+  "all_reference_gaps_at_least100": true,
+  "by_channel_public_grid": {
+    "fp64": {
+      "rows": 12,
+      "constant_reference_spectrum": true,
+      "best_gap_on_public_grid": {
+        "channel": "fp64",
+        "step": 0.01,
+        "method": "richardson",
+        "reference_singular_rank": 3.3167917435616903,
+        "reference_singular_next": 2.778249740464962e-14,
+        "reference_rank_gap": 119384218605437.5,
+        "hessian_relative_error": 4.99288294784002e-10,
+        "subspace_rms_sine": 1.7119588259681585e-10,
+        "singular_rank": 3.316791743507766,
+        "singular_next": 6.922426157118566e-09,
+        "rank_gap": 479137179.39728343
+      },
+      "best_hessian_error_on_public_grid": {
+        "channel": "fp64",
+        "step": 0.01,
+        "method": "richardson",
+        "reference_singular_rank": 3.3167917435616903,
+        "reference_singular_next": 2.778249740464962e-14,
+        "reference_rank_gap": 119384218605437.5,
+        "hessian_relative_error": 4.99288294784002e-10,
+        "subspace_rms_sine": 1.7119588259681585e-10,
+        "singular_rank": 3.316791743507766,
+        "singular_next": 6.922426157118566e-09,
+        "rank_gap": 479137179.39728343
+      },
+      "number_of_records_with_estimated_gap_ge100": 10
+    },
+    "fp64_return_fp32": {
+      "rows": 12,
+      "constant_reference_spectrum": true,
+      "best_gap_on_public_grid": {
+        "channel": "fp64_return_fp32",
+        "step": 0.3,
+        "method": "richardson",
+        "reference_singular_rank": 3.3167917435616903,
+        "reference_singular_next": 2.778249740464962e-14,
+        "reference_rank_gap": 119384218605437.5,
+        "hessian_relative_error": 9.192815227493251e-05,
+        "subspace_rms_sine": 3.2512611447523035e-05,
+        "singular_rank": 3.316765594200446,
+        "singular_next": 0.0023863955512251583,
+        "rank_gap": 1389.8641373588055
+      },
+      "best_hessian_error_on_public_grid": {
+        "channel": "fp64_return_fp32",
+        "step": 0.3,
+        "method": "richardson",
+        "reference_singular_rank": 3.3167917435616903,
+        "reference_singular_next": 2.778249740464962e-14,
+        "reference_rank_gap": 119384218605437.5,
+        "hessian_relative_error": 9.192815227493251e-05,
+        "subspace_rms_sine": 3.2512611447523035e-05,
+        "singular_rank": 3.316765594200446,
+        "singular_next": 0.0023863955512251583,
+        "rank_gap": 1389.8641373588055
+      },
+      "number_of_records_with_estimated_gap_ge100": 4
+    },
+    "fp64_return_fp16": {
+      "rows": 12,
+      "constant_reference_spectrum": true,
+      "best_gap_on_public_grid": {
+        "channel": "fp64_return_fp16",
+        "step": 1.0,
+        "method": "central",
+        "reference_singular_rank": 3.3167917435616903,
+        "reference_singular_next": 2.778249740464962e-14,
+        "reference_rank_gap": 119384218605437.5,
+        "hessian_relative_error": 0.03866758973848709,
+        "subspace_rms_sine": 0.012143671493378694,
+        "singular_rank": 3.2811121233198803,
+        "singular_next": 0.3598650619204574,
+        "rank_gap": 9.117617881018745
+      },
+      "best_hessian_error_on_public_grid": {
+        "channel": "fp64_return_fp16",
+        "step": 1.0,
+        "method": "richardson",
+        "reference_singular_rank": 3.3167917435616903,
+        "reference_singular_next": 2.778249740464962e-14,
+        "reference_rank_gap": 119384218605437.5,
+        "hessian_relative_error": 0.036055799486258804,
+        "subspace_rms_sine": 0.012196927427523041,
+        "singular_rank": 3.319914492600124,
+        "singular_next": 0.4586894533577708,
+        "rank_gap": 7.237826089737104
+      },
+      "number_of_records_with_estimated_gap_ge100": 0
+    },
+    "fp32_compute": {
+      "rows": 12,
+      "constant_reference_spectrum": true,
+      "best_gap_on_public_grid": {
+        "channel": "fp32_compute",
+        "step": 0.3,
+        "method": "richardson",
+        "reference_singular_rank": 3.316791751355198,
+        "reference_singular_next": 2.6651610316046235e-14,
+        "reference_rank_gap": 124449956757706.48,
+        "hessian_relative_error": 0.00030442181768477187,
+        "subspace_rms_sine": 0.00010461364606150012,
+        "singular_rank": 3.3168124797874814,
+        "singular_next": 0.004159804076955883,
+        "rank_gap": 797.3482448756823
+      },
+      "best_hessian_error_on_public_grid": {
+        "channel": "fp32_compute",
+        "step": 0.3,
+        "method": "richardson",
+        "reference_singular_rank": 3.316791751355198,
+        "reference_singular_next": 2.6651610316046235e-14,
+        "reference_rank_gap": 124449956757706.48,
+        "hessian_relative_error": 0.00030442181768477187,
+        "subspace_rms_sine": 0.00010461364606150012,
+        "singular_rank": 3.3168124797874814,
+        "singular_next": 0.004159804076955883,
+        "rank_gap": 797.3482448756823
+      },
+      "number_of_records_with_estimated_gap_ge100": 3
+    }
+  },
+  "small_step_noise_amplification": {
+    "fp64_return_fp32": {
+      "central_hessian_relative_error": 0.35777909941656977,
+      "richardson_hessian_relative_error": 0.47714886779781607,
+      "ratio_richardson_over_central": 1.3336409772843145,
+      "central_sine": 0.20930097533622705,
+      "richardson_sine": 0.30682037823794345
+    },
+    "fp64_return_fp16": {
+      "central_hessian_relative_error": 2759.1141641896293,
+      "richardson_hessian_relative_error": 3638.695091469478,
+      "ratio_richardson_over_central": 1.318791059353714,
+      "central_sine": 0.8306166101119007,
+      "richardson_sine": 0.8313348236735333
+    },
+    "fp32_compute": {
+      "central_hessian_relative_error": 2.1324472210043792,
+      "richardson_hessian_relative_error": 2.8413435587019347,
+      "ratio_richardson_over_central": 1.3324332394795058,
+      "central_sine": 0.7231303600761463,
+      "richardson_sine": 0.7728311460319732
+    }
+  },
+  "total_vector_calls": 6488064,
+  "records": 48,
+  "seconds": 7.622845499980031,
+  "peak_sampled_rss_bytes": 187596800,
+  "memory_samples": 128,
+  "no_sweep_rerun_or_fitting_by_reviewer": true,
+  "bounded_conclusions": [
+    "Originalh.003FP32compute centralHerror2.1324472/gap1.001765 demonstrates noisy curvature on this publicfixture.",
+    "At h.3Richardson FP32compute Herror0.0003044218177/gap797.348/sine0.000104613646 shows publicgrid improvement, not recovery.",
+    "ReturnedFP32h.3Richardson Herror9.192815e-5/gap1389.864 is a differentaccesschannel from actualFP32compute.",
+    "Every returnedFP16 record has gap<100; bestgap9.11761788 at centralh1. This finitegrid provides negativeevidence for direct frozenGLU32 spectralguard, not an impossibilityproof.",
+    "SmallhRichardson worsens rounded/computedchannelHerror and subspacedistance; it is not uniformly beneficial."
+  ],
+  "limits": [
+    "No rawHessian estimates persisted, so outcomeaudit verifies committedsource/formulacontrols/grid/ratios/provenance rather than recomputing reportedHerror or principalangles from rawarrays. No sweep or reference-derivative rerun.",
+    "Analyticreference truth used only by this diagnostic, never fitting. Besth on this publicgrid is not independentvalidation.",
+    "Samepublicteacher seed572041 and fixedprobes; no freshteacher, heldout, storedweight or fullmaprecovery claim.",
+    "FP32smoothreference uses FP32roundedweights with FP64 arithmetic; runtime includes input/intermediate rounding, and returnedFP16 is not nativeFP16model execution.",
+    "A futuregaponly selector needs its own protocol; gap does not establish candidatecoverage or functionalaccuracy. All observationchannels, including multiscale/even, must be declared for any endtoendprecisionclaim."
+  ],
+  "private_final_model_gate": "closed",
+  "full_map_recovery_verified": false,
+  "universal_reconstruction_demonstrated": false
+}
