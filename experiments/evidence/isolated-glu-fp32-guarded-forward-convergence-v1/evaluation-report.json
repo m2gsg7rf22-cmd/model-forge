@@ -1,0 +1,59 @@
+{
+  "stage": "public_development_evaluation",
+  "vector_calls": 2048,
+  "groups": [
+    {
+      "scale": 0.01,
+      "relative_frobenius": 0.0020204217895486713,
+      "max_absolute": 1.3973951301531117e-06
+    },
+    {
+      "scale": 1.0,
+      "relative_frobenius": 0.0022207190393672407,
+      "max_absolute": 0.02316460025864575
+    },
+    {
+      "scale": 10.0,
+      "relative_frobenius": 0.0022680777120121917,
+      "max_absolute": 2.6206567466217905
+    },
+    {
+      "scale": 100.0,
+      "relative_frobenius": 0.002161533863285798,
+      "max_absolute": 287.31333051187903
+    }
+  ],
+  "baseline_groups": [
+    {
+      "scale": 0.01,
+      "relative_frobenius": 0.002249772748373022,
+      "max_absolute": 1.310385579626278e-06
+    },
+    {
+      "scale": 1.0,
+      "relative_frobenius": 0.0023682250031171782,
+      "max_absolute": 0.02305882222728961
+    },
+    {
+      "scale": 10.0,
+      "relative_frobenius": 0.002448703034147836,
+      "max_absolute": 2.752446616996508
+    },
+    {
+      "scale": 100.0,
+      "relative_frobenius": 0.0023055364347266518,
+      "max_absolute": 311.7928419173768
+    }
+  ],
+  "paired_same_reference": true,
+  "baseline_sha256": "b31ce967cab997e9a5fd2652ab63db28f32204638a7f3f7ca58f4c1673e4d0b2",
+  "candidate_sha256": "3fa13a8f6337bfc9d317a95dde95cd0d87ab6ae04568a392bf6b227a517f40b3",
+  "validation_sha256": "b72eb08407a1c9789441c4f4ccaf31224ffa1d0d97f95347d5d820e7483c2540",
+  "development_max_group_relative": 0.001,
+  "all_groups_relative_at_most_1e_minus3": false,
+  "sealed": false,
+  "original_weights_recovered": false,
+  "all_inputs_equivalence_proven": false,
+  "universal_reconstruction": false,
+  "private_gate": "closed"
+}

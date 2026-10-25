@@ -1,0 +1,148 @@
+{
+  "approved": true,
+  "scope": "independent saved-array public outcome audit; quality FAIL, bounded four-sweep result only",
+  "report_sha256": "436cfe98f33e127161b917840f57588649d37bb35f9a3033fbca2e25a026ae25",
+  "source_commit": "4da51d4e55ee8a19d58d1bd16d4a2014d9fba4e8",
+  "sources_verified": 12,
+  "unchanged_old_inventory_files": 13,
+  "five_inputs_verified": {
+    "baseline": "b31ce967cab997e9a5fd2652ab63db28f32204638a7f3f7ca58f4c1673e4d0b2",
+    "fit_report": "e0adc7af7c9385b689297f726ee88084a971d1823cf87ef46730a45eaf477e90",
+    "old_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+    "forward_manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+    "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210"
+  },
+  "candidate_sha256": "3fa13a8f6337bfc9d317a95dde95cd0d87ab6ae04568a392bf6b227a517f40b3",
+  "once_weighted_targets_exact": true,
+  "screen_proposals_audited": 256,
+  "sequential_proposals_audited": 252,
+  "max_screen_cost_absolute_discrepancy": 3.218725199566341e-20,
+  "sweeps": [
+    {
+      "index": 0,
+      "screened": 64,
+      "selected": 63,
+      "accepted": 32,
+      "final_cost": 1.574445236154706e-05
+    },
+    {
+      "index": 1,
+      "screened": 64,
+      "selected": 63,
+      "accepted": 15,
+      "final_cost": 1.526677075075287e-05
+    },
+    {
+      "index": 2,
+      "screened": 64,
+      "selected": 63,
+      "accepted": 3,
+      "final_cost": 1.5250612558796453e-05
+    },
+    {
+      "index": 3,
+      "screened": 64,
+      "selected": 63,
+      "accepted": 2,
+      "final_cost": 1.5171831975394049e-05
+    }
+  ],
+  "accepted_per_sweep": [
+    32,
+    15,
+    3,
+    2
+  ],
+  "accepted_total": 52,
+  "reported_local_solves": 508,
+  "stop_reason": "max_sweeps",
+  "convergence_or_stationary_floor_proven": false,
+  "current_and_initial_guard_bounds_all_verified": true,
+  "initial_cost": 2.069314138655356e-05,
+  "final_cost": 1.5171831975394037e-05,
+  "relative_training_cost_reduction": 0.26681832922415927,
+  "independent_final_train_residual_discrepancy": 2.7098003596525856e-13,
+  "independent_final_guard_residual_discrepancy": 1.9246970772654452e-13,
+  "gates_byte_identical": true,
+  "couplings_finite_nonzero_rankone": true,
+  "independent_forward_discrepancies": {
+    "prediction": 4.08411539102522e-16,
+    "baseline_prediction": 4.1081607466306765e-16
+  },
+  "paired_same_point_metrics": {
+    "prediction": [
+      {
+        "scale": 0.01,
+        "relative_frobenius": 0.0020204217895486713,
+        "max_absolute": 1.3973951301531117e-06
+      },
+      {
+        "scale": 1.0,
+        "relative_frobenius": 0.0022207190393672407,
+        "max_absolute": 0.02316460025864575
+      },
+      {
+        "scale": 10.0,
+        "relative_frobenius": 0.0022680777120121917,
+        "max_absolute": 2.6206567466217905
+      },
+      {
+        "scale": 100.0,
+        "relative_frobenius": 0.002161533863285798,
+        "max_absolute": 287.31333051187903
+      }
+    ],
+    "baseline_prediction": [
+      {
+        "scale": 0.01,
+        "relative_frobenius": 0.002249772748373022,
+        "max_absolute": 1.310385579626278e-06
+      },
+      {
+        "scale": 1.0,
+        "relative_frobenius": 0.0023682250031171782,
+        "max_absolute": 0.02305882222728961
+      },
+      {
+        "scale": 10.0,
+        "relative_frobenius": 0.002448703034147836,
+        "max_absolute": 2.752446616996508
+      },
+      {
+        "scale": 100.0,
+        "relative_frobenius": 0.0023055364347266518,
+        "max_absolute": 311.7928419173768
+      }
+    ]
+  },
+  "all_relative_groups_improved": true,
+  "absolute_maximum_worsened_scales": [
+    0.01,
+    1.0
+  ],
+  "all_four_relative_groups_failed": true,
+  "quality_criterion": 0.001,
+  "evaluation_seed_consumed": 941031,
+  "new_calibration_calls": 0,
+  "reported_new_public_evaluation_calls": 2048,
+  "reviewer_new_coupling_solves": 0,
+  "reviewer_queries": 0,
+  "old_evaluation_arrays_read": false,
+  "resources": {
+    "controller_seconds": 0.7005749170202762,
+    "build_sampled_rss_bytes": 49610752,
+    "build_samples": 8,
+    "evaluation_sampled_rss_bytes": 33308672,
+    "evaluation_samples": 2,
+    "actual_peak_known": false
+  },
+  "quality": "FAILED",
+  "private_gate": "closed",
+  "limitations": [
+    "Reused train/guard remain adaptive calibration.",
+    "Four-sweep cap and guard vetoes do not prove convergence, stationary floor, or coupling versus direction cause.",
+    "Finite paired relative improvement has two absolute-maximum regressions.",
+    "New941031 now consumed; no evaluation reuse or unregistered sweep extension.",
+    "RSS sampling is not a continuous hard memory-bound proof."
+  ]
+}
