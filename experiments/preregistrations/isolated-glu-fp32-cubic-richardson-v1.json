@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "isolated-glu-fp32-cubic-richardson-v1",
+  "rho": 0.03,
+  "coarse_rho": 0.06,
+  "new_calibration_vector_calls": 16384,
+  "telemetry_sha256": "e043e538a58187a9171a997bc889da2c0ab7518ffb99badc75fa1bc53c8fe6a9",
+  "calibration_manifest_sha256": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+  "expected_files": {
+    "hessians.npz": "5792c142ea2de8a1eb77e5423b77455835170fd7737e84186a45326d6eb7bdc7",
+    "multiscale.npz": "b017d253cc1c08f2afa2ec25be14559d5053717dfb12c08689d809b05251554f",
+    "curvature-pair.npz": "1071faad164eb96e3e3a8ae126eeebf8a997b82413bc2f7cb935109edb196b7d"
+  },
+  "derived_rhs_not_physical_small_odd": true,
+  "width": 64,
+  "direction_optimizer_calls": 0,
+  "multiscale_fits": 1,
+  "evaluation_seed": 941028,
+  "evaluation_calls_if_candidate": 2048,
+  "scales": [
+    0.01,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "max_group_relative_criterion": 0.001,
+  "sealed": false,
+  "private_gate": "closed",
+  "timeout_seconds": 180,
+  "memory_limit_mb": 512,
+  "frozen_dependencies": {
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/pool_candidate.py": "dace5f9d8cff7c07d45e16cf1be5b2e1a33ef0ef444bdbb11e4ca7ca64664abb",
+    "examples/isolated_glu/pool_evaluate.py": "e966d4bf8085203bc91203ae4242e82317752efb5d219ebaa52e551c639c989e"
+  }
+}

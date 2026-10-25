@@ -1,0 +1,123 @@
+{
+  "approved": true,
+  "status": "approved_for_one_public_normalized_cubic_richardson_pilot",
+  "sources": {
+    "examples/isolated_glu/cubic_observe.py": "53f546e600a710a0ecf1144fac242a24940f7483950924d5a54ad963c96aad89",
+    "examples/isolated_glu/cubic_candidate.py": "37005ed0fafd0639c909019eea8afbcdc1c6bd859f49c90c904374f1ece535ff",
+    "examples/isolated_glu/cubic_evaluate.py": "d44da099d6b5d29da8e01e783b2c8ba951c53efe548178f8e298633597af150c",
+    "experiments/preregistrations/isolated-glu-fp32-cubic-richardson-v1.json": "687341eb4f2785588a89c54323704b89f592b196c7465a9bae6effa91ea9d0fb",
+    "tests/test_glu_cubic_richardson.py": "51d6d5605e336b1786e6cabf25415e1a4d7b61cd5831e276ffcbf33493eb5b75",
+    "docs/superpowers/plans/2026-10-25-fp32-cubic-richardson.md": "01bccea87f64a345c3be88d4fcd29da9eb1532339b8769ff525dba65c3d9d96e",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/pool_candidate.py": "dace5f9d8cff7c07d45e16cf1be5b2e1a33ef0ef444bdbb11e4ca7ca64664abb",
+    "examples/isolated_glu/pool_evaluate.py": "e966d4bf8085203bc91203ae4242e82317752efb5d219ebaa52e551c639c989e"
+  },
+  "controller_sha256": "9848ed8a90713b2829e054a5fed3ffb44419909225c767591baa0d967cf4071c",
+  "scope": "Static mathematical/source/protocol/controller review plus tiny synthetic polynomial/callback/hash-guard controls only. No actual publicteacher collection, multiscale fitting, functionalevaluation, privateassets or consumed941027queries by reviewer.",
+  "blocking_findings": [],
+  "resolved_findings": [
+    {
+      "id": "CUBIC-R1",
+      "summary": "Additional manifest raw_sha256 null could reach optional expected_hash=None and bypass signed-array commitment.",
+      "resolution": "required_digest now requires lowercase64hexstring before signed.npz loader. Independent nullmetadata probe rejects before signedloader or fitting."
+    },
+    {
+      "id": "CUBIC-R2",
+      "summary": "Builder counter could be read as making16384newqueries despite teacherfree build.",
+      "resolution": "Builder now states new_calibration_calls0 and additional_calibration_calls_used16384; only collector reports16384 actualresponses. Counters no longer imply doublecount."
+    }
+  ],
+  "mathematical_review": {
+    "odd_normalization": "For smooth biasfreeSwiGLU, signedodd O(rho*x)=rho^3C3+rho^5C5+rho^7C7+...; dividing by.25rho^3 yields cubicRHS plus O(rho^2).",
+    "Richardson": "(4A(rho)-A(2rho))/3 cancels the leadingrho^2 term; no cancellation of runtimeFP32 noise is mathematically guaranteed.",
+    "independent_septic_control": "For O=.25C*rho^3+Q*rho^5+S*rho^7, estimator equals C-16S*rho^4; tiny independent control maxerror3.735900477863652e-14.",
+    "bridge": "Multiplying R by .25*.001^3 supplies unchangedmultiscale division with derivedR. This is algebraic interface compatibility, not a physical response at.001.",
+    "reuse": "Oldsmall_x/large/even remain hashbound and unchanged. New signedresponses use .03/.06 on the same4096small_x. Directions remain existingallpool64hypotheses, not new directionoptimization."
+  },
+  "static_equivalence": {
+    "sha256": "4a7dc1525ea84bb455279f93865290b9014e35a40a6d374cc3f921be9b890fcc",
+    "result": {
+      "pool_indices_ast_identical_to_frozen_public_allpool_method": true,
+      "evaluator_ast_identical_except_method_label_and_new941028seed": true
+    }
+  },
+  "independent_probes": {
+    "sha256": "93be84dba1b05aa71d37e027134d9f291efd396989d5ec5ed5f9e1809e9f0e1f",
+    "result": {
+      "normalized_cubic_Richardson_septic_remainder_max_abs_error": 3.735900477863652e-14,
+      "quintic_term_cancelled_and_septic_expected_negative16rho4_verified": true,
+      "bridge_recovers_rhs_and_is_not_physical0_001_observation": true,
+      "tinycollector_signed_batches_match_rhos": true,
+      "tinycollector_actual_rows": 44,
+      "null_rawhash_guard": {
+        "null_rawhash_rejected": "Missing or invalid raw calibration SHA256",
+        "signed_loader_reached": false
+      },
+      "no_actual_teacherqueries_fitting_or_evaluation": true
+    }
+  },
+  "dataflow_review": [
+    "Collector reserves exclusiveattempt/newdir beforeinputfailure, checks oldmanifest/files, then alone loads ownedpublicteacher and actualFP32oracle. Saves all4signed4096x32 arrays plus originalsmall_x and manifest/rawhash.",
+    "Builder reserves separateexclusiveattempt, validates oldcalibration/telemetry and collector-returned additionalmanifestSHA, requiredrawSHA, finiteFP64shapes and bitwiseinputequality.",
+    "Teacherfree builder computes R/bridge only in memory, saves derived-cubic.npz withhash and explicit small_odd_semantics=derived_rhs_bridge_not_physical_0.001_response.",
+    "Allpoolgreedy helper is ASTidentical to reviewedallpoolmethod: noresidualacceptance or plateauconfidence, known64guard afterselection/no truncation.",
+    "Unchangedmultiscale uses derivedsmallRHS plus originallarge/even; rank2048/64/64,positivemagnitude,finite/nonzero/rankone guards preserved.",
+    "Separate evaluator is ASTidentical to reviewedpool evaluator except methodlabel and NEWpublicseed941028. Candidate/method/oldcalmanifestchecks precede teacheraccess; oneexclusiveevalattempt.",
+    "All2048newpublicinputs/reference/predictions andgroupmetrics saved withhash;941027 remains consumed and untouched."
+  ],
+  "query_and_fit_inventory": {
+    "newcalibration_responses": 16384,
+    "calibration_derivation": "4096rows*4signedresponses",
+    "newdirectionoptimizer_calls": 0,
+    "multiscale_fits": 1,
+    "public_evaluation_calls_only_if_candidate": 2048,
+    "newtotal_if_evaluated": 18432,
+    "builder_actualqueries": 0
+  },
+  "local_tests_inspected": {
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xml_sha256": "0c2a99c3602d2701264532fa9864e88aa6373b0b7a8f457dd9f32dcbd1db9221",
+    "note": "Parent-produced XML inspected, no fullfit/eval repeated by reviewer."
+  },
+  "controller_review": {
+    "approved": true,
+    "sha256": "9848ed8a90713b2829e054a5fed3ffb44419909225c767591baa0d967cf4071c",
+    "checks": [
+      "Exact14reviewedsource/protocol/dependencyhashes and cleancommit beforeexecution.",
+      "Unique newouterroot; exclusivecollect/build/evaluateattempts; no retryloop.",
+      "Sequentialcollect/build/evaluate share monotonic180sremainingbudget,512MiBperworker tree,BLAS1 and process_and_children.",
+      "Actual collector manifestSHA is passed into builder, binding newly collecteddata before fitting.",
+      "Evaluation omitted on buildrejection; stage/negative receipts and rawarrays preserved.",
+      "All13priorcalibration/telemetry files and exactinventory compared beforeandafter, with mismatch failure."
+    ],
+    "limits": [
+      "Top-levelcontrollerRSS excluded from worker-tree memorycap.",
+      "Executionstatus public_candidate_evaluated does not mean qualitycriterion passed."
+    ]
+  },
+  "approval_conditions": [
+    "Commit exactreview/source/protocol/dependencies beforeoneboundedrun; parentmust verify controller_sha256 immediatelybeforeexecution.",
+    "Do not mutate oldexperiments/attempts, oldproductionprofile, originalFP32failures, known941027consumedstatus or frozenlearnerthresholds.",
+    "Report actual16384calibration and conditional2048publiceval counts, derivedRHS semantics and allfailedoutcomes.",
+    "Retain rawsigned/derived/candidate/publicvalidationarrays outsideGit for independent arithmetic/metric audit without teacherrequeries or fitting.",
+    "Read newqualityflag and all4metrics; no scientificsuccess label if any grouprelative>.001."
+  ],
+  "limits": [
+    "Publicdata-informed prototype on one knownteacher; no freshhidden identitytest, productionFP32profile or universal/fullmodel reconstruction claim.",
+    "Even if improvement occurs, changedrho and Richardson/transformedRHS are combined interventions; result alone does not prove FP32cancellation causality.",
+    "AnalyticTaylor reasoning applies to the smooth ideal, while actualFP32input/weight/intermediate rounding is not smooth.",
+    "Rankonecouplings are projected and parameterfactorization is nonunique; not exactstoredweight recovery.",
+    "Fresh941028 is a newPUBLICdevelopment split, not a sealedgeneralization benchmark."
+  ],
+  "private_final_model_gate": "closed",
+  "production_fp32_profile_validated": false,
+  "universal_reconstruction_demonstrated": false
+}

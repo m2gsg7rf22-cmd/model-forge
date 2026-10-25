@@ -1,0 +1,12 @@
+{
+  "normalized_cubic_Richardson_septic_remainder_max_abs_error": 3.735900477863652e-14,
+  "quintic_term_cancelled_and_septic_expected_negative16rho4_verified": true,
+  "bridge_recovers_rhs_and_is_not_physical0_001_observation": true,
+  "tinycollector_signed_batches_match_rhos": true,
+  "tinycollector_actual_rows": 44,
+  "null_rawhash_guard": {
+    "null_rawhash_rejected": "Missing or invalid raw calibration SHA256",
+    "signed_loader_reached": false
+  },
+  "no_actual_teacherqueries_fitting_or_evaluation": true
+}
