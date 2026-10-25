@@ -1,0 +1,12 @@
+# Consistent-channel FP32 full-map development
+
+Goal: test the actual frozen GLU32 learner after the public precision diagnostic, retaining the universal goal and private gate. This is one already-public seed572041 d32/w64/o32 case, not fresh sealed science.
+
+Approach: freeze h=.3 Richardson from the previous diagnostic; use actual NumPyFP32 for EVERY Hessian/multiscale/even response. Do not mix previous FP64 observations, change the learner, relabel the production FP64 profile or tune heldout. Alternative threshold relaxation is deferred until a failure identifies the bottleneck. Old sweep is not rerun; only the chosen two curvature observations are collected because that diagnostic retained statistics, not arrays.
+
+Parent owns repository files. Independent reviewer owns external evidence only.
+
+1. tests/test_glu_fp32_development.py before examples/isolated_glu/fp32_fullmap.py: channel/calibration counts, candidate-rejection evaluation refusal and commitment tamper rejection. Use tiny fake polynomial callbacks for wrapper controls, no fitting/private labels in tests. Run new tests, strict mypy/Ruff only.
+2. Separate prepare/fit/evaluate JSON stages: prepare in a process that exits before fitting; fitting receives ONLY saved selected-H/multiscale arrays. Persist H(h),H(2h),RichardsonH, multiscale and hash manifest outsideGit. Fit invokes unchanged packaged directions then multiscale; record explicit rejection stage; evaluate only a hash-bound candidate after success. Publicteacher source is known and accessible, so this is an operational separation, not an adversarial secrecy claim.
+3. Commit matching independent source/protocol review before one bounded run. Entire controller180s, each sequential worker512MiB, oneBLASthread, process_and_children required. No retry/backgroundjob. Prep270336curvature+10272multiscale=280608vectorcalls. Evaluation after success only:2048public points(seed941027,512per .01/1/10/100 scale), no secret heldout. Record each group relative Frobenius and maxabsolute error; no acceptance threshold or success certificate from these development metrics.
+4. Independently audit saved Richardson recombination, shapes/hashes/fullchannel provenance and outcome without refitting/requerying. Preserve failure or public candidate and all precision limits. Update docs/skill/state/ledger; broader precision/scaling fresh-teacher protocol remains open. Stable releases, productionkernel and private assets unchanged.

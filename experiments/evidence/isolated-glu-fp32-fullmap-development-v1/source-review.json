@@ -1,0 +1,100 @@
+{
+  "approved": true,
+  "status": "approved_for_one_fixed_public_fp32_fullmap_pilot",
+  "sources": {
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "experiments/preregistrations/isolated-glu-fp32-fullmap-development-v1.json": "bd556adbbb9a354c3cb7913a989775a3133a2aeeeb349cb9b5df51be700ccd63",
+    "tests/test_glu_fp32_development.py": "121832a4ebf84557caad4c3170a9c7ae7a29bb904a5cad763507d1d6c2adf4d9",
+    "docs/superpowers/plans/2026-10-25-fp32-fullmap-development.md": "5d8bfdfda7204ee7afdc46d052129e61c32fdf1706f856ed0adcaa53a9a3d675",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  },
+  "scope": "Static protocol/stage/dataflow review and tiny synthetic callback/interruption probes only; no fullpilot, fitting, secretteacher, privateassets or oldheldout use by reviewer.",
+  "blocking_findings": [],
+  "resolved_findings": [
+    {
+      "id": "FP32-FULLMAP-R1",
+      "initial": "Candidate/fitreport existence alone did not block retry after interruption before those outputs.",
+      "resolution": "fit() now exclusively creates fit-attempt.json as its firstoperation, before manifest/arrayreads or learner entry.",
+      "independent_evidence": "Synthetic interrupted learner entered once across2fit calls; second call rejects via FileExistsError and persistentattemptmarker."
+    }
+  ],
+  "channel_and_counts_review": {
+    "teacher": "Fixed knownpublicseed572041 with std.2,32/64/32; operational stage separation, not secretmodel isolation.",
+    "channel": "prepare() uses precision.forward(...fp32_compute) for every fine/coarse curvature, smallodd,largeodd,even response; evaluate() uses samechannel. FP32storedweights/inputs/intermediate arithmetic, FP64 returnedarrays for subtraction/learner.",
+    "curvature_calls": 270336,
+    "multiscale_calls": 10272,
+    "total_calibration_vector_calls": 280608,
+    "evaluation_vector_calls_only_if_candidate": 2048,
+    "total_if_evaluated": 282656,
+    "raw_retention": [
+      "public/curvature-pair.npz fine/coarse",
+      "public/hessians.npz Richardson recombination",
+      "public/multiscale.npz six public observation arrays",
+      "public/manifest.json threefilehashes"
+    ],
+    "note": "Selectedh.3Richardson is frozen from prior publicdiagnostic, not independently validatedselection. Recollecting selectedH necessary because earlierdiagnostic retained statistics only."
+  },
+  "boundary_review": [
+    "Prepare process exits before fit stage; fit consumes savedarray files and calls only unchangedglu32.directions/multiscale.",
+    "Observationmanifest requires exactchannel/inventory and everyfilehash; read_arrays bounds bytes/header shape/dtype beforeallocation and requiresfiniteFP64.",
+    "Frozen dependency hashes include glu32,precision,glu32_io,antipodal,execution; source/protocol review bound by externalcontroller beforeoneboundedrun.",
+    "Fitattempt marker persists on inputfailure, modelrejection or processdeath; no automaticretry or thresholdchanges.",
+    "Learner rejection returns candidate_built false with stageerror and controller must stop before evaluate.",
+    "Evaluate checks candidate_built, candidatehash, calibrationmanifesthash and finitecandidatearrays before loading fixedpublicweights or collectingpublictestresponses.",
+    "Fourpublicevaluationgroups512rows at .01,1,10,100 use seed941027; no acceptancecriterion, sealedclaim or originalweightsuccess label."
+  ],
+  "resources": {
+    "entire_controller_timeout_seconds": 180,
+    "each_sequential_worker_tree_memory_limit_mib": 512,
+    "required_scope": "process_and_children",
+    "blas_threads": 1,
+    "approval_requires": "Controller must enforce monotonicremainingbudget acrossprepare/fit/evaluate and stop on rejection/timeout/incomplete monitoring; staticreview does not guarantee runtimebudget success."
+  },
+  "independent_probe": {
+    "sha256": "bdcd7a582c81509ee37fb2986d88cf9b33a873e528ec918551e11ced2a7daecd",
+    "result": {
+      "multiscale_actual_callback_row_calls": 10272,
+      "callback_batch_inventory": [
+        4096,
+        4096,
+        512,
+        512,
+        528,
+        528
+      ],
+      "all_saved_channels_match_synthetic_fp32_response_difference": true,
+      "rejection_refuses_before_teacher_access": true,
+      "interrupted_mock_learner_entries": 1,
+      "fit_attempt_marker_exists": true,
+      "no_actual_fitting_queries_or_private_access": true
+    }
+  },
+  "local_tests_inspected": {
+    "tests": 4,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "xml_sha256": "0169cadbf73d71ebe6ca093ee10d7d0e18cb14a842b426c7abfac0a7e6597c6c",
+    "note": "Parent-produced newpathXML inspected, no pytest or realfitting repeated by reviewer."
+  },
+  "approval_conditions": [
+    "Commit exact review/source/protocol/dependencies before a singleexecution; controller verifies sources and cleancommit.",
+    "Use unique durable outputdirectory, sequentialstage receipts,180stotalremainingbudget and512MiB process-tree monitoring with singleBLASthread.",
+    "On learner rejection, retain arrays/attempt/report/error and stop without evaluation; no retries/rescue/thresholdrelaxation.",
+    "Outcomeauditor should recompute savedRichardson fromfine/coarse and verifymanifest/channel/stage/candidate/reporthashes, without refitting/requerying.",
+    "Preserve everynegative precision result and label anypubliccandidatefunctionerrors as developmentmetrics, not passedsealedscience."
+  ],
+  "limits": [
+    "Allteacher/source/evaluationseeds are public. Separateprocesses are operational leakagecontrol, not adversarial secrecy.",
+    "Frozenlearner was demonstrated underFP64 observations; thispilot does not change its supportedproductionprofile or justifyprecisiongeneralization.",
+    "Finiteprecision access may fail count/rank/conditioning/coupling gates; no guaranteedrecovery from improvedHessian gap.",
+    "ActualFP32evaluation compared against FP64candidate computation is functionalapproximation at declaredinputs, not nativeFP32student arithmetic equivalence.",
+    "No freshteacher, privateheldout, originalstoredweight, wholeTransformer, textAPI or universalreconstruction claim."
+  ],
+  "private_final_model_gate": "closed",
+  "universal_reconstruction_demonstrated": false
+}

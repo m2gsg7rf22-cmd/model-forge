@@ -1,0 +1,38 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_fit_attempt_blocks_repeat_after_input_failure ______________
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-48/test_fit_attempt_blocks_repeat0')
+
+    def test_fit_attempt_blocks_repeat_after_input_failure(tmp_path):
+        with pytest.raises(ValueError):
+            m.fit(tmp_path)
+        with pytest.raises(FileExistsError):
+>           m.fit(tmp_path)
+
+tests/test_glu_fp32_development.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+examples/isolated_glu/fp32_fullmap.py:105: in fit
+    meta = read_json(public / "manifest.json")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/modelforge/glu32_io.py:53: in read_json
+    r = json.loads(raw(path, 2_000_000), object_pairs_hook=unique)
+                   ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-48/test_fit_attempt_blocks_repeat0/public/manifest.json')
+maximum = 2000000
+
+    def raw(path: Path, maximum: int = MAX_BYTES) -> bytes:
+        if (
+            any(p.is_symlink() for p in (path, *path.parents))
+            or not path.is_file()
+            or path.stat().st_size > maximum
+        ):
+>           raise ValueError("Requires bounded regular artifact without symlink ancestors")
+E           ValueError: Requires bounded regular artifact without symlink ancestors
+
+src/modelforge/glu32_io.py:32: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_glu_fp32_development.py::test_fit_attempt_blocks_repeat_after_input_failure
+1 failed in 0.06s

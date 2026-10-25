@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "isolated-glu-fp32-fullmap-development-v1",
+  "teacher_seed": 572041,
+  "channel": "fp32_compute",
+  "step": 0.3,
+  "method": "richardson",
+  "calibration_vector_calls": 280608,
+  "evaluation_vector_calls_if_candidate": 2048,
+  "evaluation_seed": 941027,
+  "scales": [
+    0.01,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "fits": 1,
+  "timeout_seconds": 180,
+  "memory_limit_mb": 512,
+  "sealed": false,
+  "private_gate": "closed",
+  "frozen_dependencies": {
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  },
+  "stop_rule": "Any learner rejection stops before evaluation; no threshold relaxation or automatic retry",
+  "scope": "One known public32/64/32fixture; no stored-weight or universal claim"
+}

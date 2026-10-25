@@ -1,0 +1,16 @@
+{
+  "multiscale_actual_callback_row_calls": 10272,
+  "callback_batch_inventory": [
+    4096,
+    4096,
+    512,
+    512,
+    528,
+    528
+  ],
+  "all_saved_channels_match_synthetic_fp32_response_difference": true,
+  "rejection_refuses_before_teacher_access": true,
+  "interrupted_mock_learner_entries": 1,
+  "fit_attempt_marker_exists": true,
+  "no_actual_fitting_queries_or_private_access": true
+}
