@@ -1,0 +1,17 @@
+{
+  "fake_operation_calls": 1,
+  "exact_role_return_events": [
+    "merge",
+    "merge",
+    "search",
+    "directions"
+  ],
+  "final_count_on_exception": 4,
+  "copies_do_not_mutate_operation_inputs": true,
+  "five_snapshot_arrays_captured": true,
+  "preexisting_profiler_restored": true,
+  "unexpected_exception_propagates_and_profiler_restored": true,
+  "known_angle_rms_sine": 0.29477217127637245,
+  "expected_rms_sine": 0.2947721712763724,
+  "no_real_kernel_replay_fitting_queries_or_private_access": true
+}

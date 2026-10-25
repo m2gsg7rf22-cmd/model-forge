@@ -1,0 +1,93 @@
+{
+  "approved": true,
+  "status": "approved_for_one_disclosed_saved_calibration_direction_replay",
+  "sources": {
+    "examples/isolated_glu/count_diagnostic.py": "9379fd3ee9a958b82b19b167d8998523fd54deb6c4993018cb76f382d8854912",
+    "experiments/preregistrations/isolated-glu-fp32-count-diagnostic-v1.json": "dffd3970cfe81c084b2b4eee65f1161a12919f5b1fc15f29db720a435ac75f36",
+    "tests/test_glu_count_diagnostic.py": "e6e4db9d738a7d5997c9e55a3af250e4b9e4c8909c4c92fa9af22384ad7557f9",
+    "docs/superpowers/plans/2026-10-25-fp32-count-diagnostic.md": "5835dc1740d11a1ecb56b0c851649e3c8d9b7dbe77c35743dcac563281c7049e",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  },
+  "scope": "Static source/protocol/controller review and tinyfakeoperation profiler controls only. Reviewer did not execute frozen direction kernel, replay, fitting, teacherresponse, privateassets or heldout.",
+  "blocking_findings": [],
+  "semantic_clarifications": [
+    "This explicitly invokes unchanged glu32.directions once again on the old savedH. It is a new disclosed numerical replay, not an independent replication or a retroactively recorded original count.",
+    "prior_fit_entrypoint_called=false is literal: old fp32_fullmap.fit and its fit-attempt marker are untouched. direct_frozen_direction_replay=true prevents interpreting that as no learner replay.",
+    "Only directions and arraytelemetry are retained; no candidate/student export or functional evaluation."
+  ],
+  "reviewed_boundaries": [
+    "Source manifest and all3saved filehashes required; strictNPZ shape/dtype/finite guards and bitwiseRichardson recombination before replay.",
+    "Fine/coarse/Richardson spectra and top128subspace disagreement are computed from savedH only; disagreement_is_certified_noise=false correctly excludes a pure-noiseinterpretation.",
+    "Exactly one direct frozen directions call inside operation; profiler observes return events restricted to frozen directions/search/merge code objects.",
+    "Profiler reads locals and copies5arrays; does not assign frame locals, mutate arrayarguments, alter thresholds or use teachertruth.",
+    "ValueError from kernel is retained with events and final knowncount; finally restores any preexisting profiler. Unexpectedexceptions propagate while restoring profiler.",
+    "Exclusive newoutput directory and replay-attempt marker reserve one separate disclosedcall. Sourcecode performs no write under oldsource root.",
+    "Externalcontroller validates every approvedsource/dependencyhash and cleancommit; distinct commitnamedouterroot protects oldexperiment.",
+    "Externalcontroller hashes all oldfiles and exactinventory beforeandafter worker, not only calibrationarrays; mismatch marksfailure.",
+    "Worker180s/512MiBtree, singleBLASthread, process_and_children required; topcontrollerRSS excluded; no retry loop."
+  ],
+  "math_review": {
+    "spectrum": "Same sqrt2uppertriangle Frobeniuspacking and top128SVD as frozenkernel.",
+    "subspace_distance": "||A-(A B^T)B||F/sqrt(128) for orthonormal equalrankrows; knownangle control matched0.2947721712763724.",
+    "retained_loss": "For each copiedknown direction, projects pack(vvT) onto copied originalHbasisb and reports squaredresidual quantiles and count<=1e-8, matching frozenrule.",
+    "limit": "Lowresidual/dedup counts are diagnostic only, not truegate/functionalcoverage evidence."
+  },
+  "independent_profiler_probe": {
+    "sha256": "991a9194e3d6b54fea6a6bc5a3d17d162d548d771ac180b4d02e617fd376287b",
+    "result": {
+      "fake_operation_calls": 1,
+      "exact_role_return_events": [
+        "merge",
+        "merge",
+        "search",
+        "directions"
+      ],
+      "final_count_on_exception": 4,
+      "copies_do_not_mutate_operation_inputs": true,
+      "five_snapshot_arrays_captured": true,
+      "preexisting_profiler_restored": true,
+      "unexpected_exception_propagates_and_profiler_restored": true,
+      "known_angle_rms_sine": 0.29477217127637245,
+      "expected_rms_sine": 0.2947721712763724,
+      "no_real_kernel_replay_fitting_queries_or_private_access": true
+    }
+  },
+  "local_tests_inspected": {
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xml_sha256": "bfb9495e46fae43ea7fee6e9663be6a7433645d9155ce5a9b0e0526ec100421a",
+    "note": "Parent-produced XML inspected, no pytest or fullkernel repeated by reviewer."
+  },
+  "controller_static_review": {
+    "sha256": "89596dfa447368d7c26b53e54585efcd40f21685b1b29fad9405f862c9996d56",
+    "approved": true,
+    "checks": [
+      "All approved/dependencyhashes before run; cleancommit.",
+      "Exclusive new outerroot, distinct diagnostic child.",
+      "Before/after alloldfilehashes and exactinventory equality.",
+      "run_json180seconds/512MiB/singleBLAS tree; zeroquery/oneprofiledcall asserts.",
+      "Failure stored with automatic_retryfalse."
+    ]
+  },
+  "approval_conditions": [
+    "Commit exact source/protocol/review/dependencies before one monitoredrun; verify sourcehashes and cleancommit first.",
+    "Use siblingoutputroot, preserve everyoldfile/inventory/fit-attempt hash.",
+    "Do not invoke old fit entrypoint, teacherforward, publicweights, multiscale fit, evaluation or privateassets.",
+    "Report counts only as observed in thisreplay; preserve old publicpilot rejection and do not invent a priorcount.",
+    "If profiler/expectedlocals, numerical/resource or inventoryguard fails, retainfailure without retry or successclaim."
+  ],
+  "limits": [
+    "Profiler may change timing/memory overhead; unchanged source and passivity do not mathematically prove bitwiseidentical outcome to previous unprofiledrun.",
+    "Samepubliccalibration reused for a disclosed kernelreplay, not a fresh teacher or independentfittingreplication.",
+    "Code-local telemetry depends on exact reviewed kernelbytehash and existing localnames; futureporting requires newreview.",
+    "No certifiednoise estimate, truegateidentity, storedweight, fullmap, heldout, wholeTransformer or universalreconstruction result.",
+    "Top-levelcontroller memory excluded from512MiB worker-tree cap."
+  ],
+  "private_final_model_gate": "closed",
+  "universal_reconstruction_demonstrated": false
+}
