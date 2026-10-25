@@ -1,0 +1,61 @@
+{
+  "approved": true,
+  "scope": "independent saved fit audit only, suitable for separately reviewed evaluation-only recovery; quality remains unevaluated",
+  "report_sha256": "59b322483abc634bbdac0e1db64581db6bc4c202e2536460b84528a5b7e43295",
+  "fit_report_sha256": "d79a4c7818b5269feb89fcef0da8a197257c17162de5a9acdc30ed5c941a377b",
+  "evidence_sha256": "13a5bc50a069dc5c1d253bf7eec7730d08f8a9e83d7085ee4f818a8f07a9e607",
+  "source_commit": "3d3b622fa4b0579f3eed614eeee846f33eeeb6ab",
+  "candidate_sha256": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+  "sources_verified": 13,
+  "five_inputs_verified": {
+    "baseline": "3fa13a8f6337bfc9d317a95dde95cd0d87ab6ae04568a392bf6b227a517f40b3",
+    "fit_report": "adb81af048751dbd100829912f9020b643986333aa01a8c92d68b84adda5118d",
+    "old_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+    "forward_manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+    "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210"
+  },
+  "old_inventory_unchanged": 13,
+  "screening_records_verified": 64,
+  "sequential_records_verified": 8,
+  "Newton_equations_verified_without_solving": true,
+  "trust_cap_and_scores_verified": true,
+  "trial_count": 57,
+  "first_accepted_rule_and_all_trial_cost_guards_verified": true,
+  "selected_units": [
+    43,
+    37,
+    15,
+    1,
+    13,
+    45,
+    51,
+    40
+  ],
+  "accepted_units": [
+    45,
+    40
+  ],
+  "initial_cost": 1.5171831975394037e-05,
+  "final_cost": 1.4701620540064233e-05,
+  "relative_training_cost_reduction": 0.0309923967054474,
+  "couplings_byte_identical_and_finite_nonzero_rankone": true,
+  "cached_and_full_prediction_evidence_verified": true,
+  "evaluation_started": false,
+  "evaluation_seed941032_consumed": false,
+  "original_controller_status": "failed output/log budget",
+  "build_worker_receipt_available": false,
+  "build_peak_rss_known": false,
+  "recorded_zero_rss_is_missing_not_zero_memory": true,
+  "original_controller_seconds": 0.31249554199166596,
+  "reviewer_direction_solves": 0,
+  "reviewer_refits": 0,
+  "reviewer_queries": 0,
+  "old_evaluation_arrays_read": false,
+  "private_gate": "closed",
+  "limitations": [
+    "Saved candidate audit does not repair the failed controller receipt or prove original worker resource peak.",
+    "No public final quality measurement exists yet; only evaluation-only recovery may continue after separate review.",
+    "Reused guard is adaptive calibration, not independent validation.",
+    "No fitter rerun or new direction solve is permitted."
+  ]
+}

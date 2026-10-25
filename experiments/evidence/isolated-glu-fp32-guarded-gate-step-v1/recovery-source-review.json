@@ -1,0 +1,45 @@
+{
+  "approved": true,
+  "scope": "one prospective evaluation-only recovery of the saved audited gate candidate; no fitting or direction solving",
+  "sources": {
+    "examples/isolated_glu/guarded_gate_step.py": "2cf84f0ed1685991bf0dcafd499ea867944b81cfac2ff2cb9abfdded4c8fe5c8",
+    "examples/isolated_glu/guarded_gate_step_evaluate.py": "bae295192f616220e2159d9e4c51b99cde4636ef33ebaa26c2ff3b84c408f97d",
+    "tests/test_glu_guarded_gate_step.py": "8334584ad4b5208596786e00692fe4efd329ddc0334758d623f9861efd114f1b",
+    "experiments/preregistrations/isolated-glu-fp32-guarded-gate-step-v1.json": "efba4c6e0a0f65887aabfffaabeb21d35b498c639adf07666879d8566167f319",
+    "docs/superpowers/plans/2026-10-25-guarded-gate-step.md": "f57107a6ef7cf8db0be77817725b1ab7f2e3f22dc740a6b71c882d7657407c06",
+    "examples/isolated_glu/forward_factor.py": "2d92db73e5b6c1e674c8776b6b3e8c4db693cc4354448d6404b7565a428d029c",
+    "examples/isolated_glu/guarded_forward.py": "1d0d4e2a77f798672d7dacf194d7b1338c6447355e7188a27e8b24ad77529818",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e",
+    "experiments/preregistrations/isolated-glu-fp32-guarded-gate-step-v1-evaluation-recovery.json": "b82213d4499968e24186082d6ba8186c987ce50b549871a33581a8449d2f6d1c"
+  },
+  "controller_sha256": "9a125b7ee81911fcbd84151247dfdf7fe0e58279879d1e5b39797e0797239277",
+  "fit_audit_sha256": "6411f8d6e12ab33262a171e284b53660fb1d142625d6330dc79fe4af8bb0d8f9",
+  "candidate_sha256": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+  "compact_fit_report_sha256": "5aad40a6f33ab0b374e95086e4ab977f5b8e17a1d73d5d761ab03f7a039ba624",
+  "compact_fit_report_bytes": 1976,
+  "blocking_findings": [],
+  "checks": [
+    "Original six committed fitting artifacts verified; original13source hashes unchanged.",
+    "Compact projection independently recomputed byte-for-byte; removes only gate_step and adds full-report provenance.",
+    "Staged candidate/baseline/manifest copied byte-identically; original report and fit evidence preserved.",
+    "Only unchanged941032 evaluator invoked;2048 fresh references and fixed0.001 criterion.",
+    "Exclusive recovery output and evaluator marker; no fitter, retry, new direction solve or parser-bound relaxation.",
+    "Input changes after evaluation explicitly produce failed InputCommitmentChanged report."
+  ],
+  "prerequisites": [
+    "Clean commit including exact recovery preregistration before execution.",
+    "One evaluation only; no final-label access before freezing candidate and review."
+  ],
+  "limitations": [
+    "Original controller stays failed; saved-fit audit does not restore missing resource receipt.",
+    "Original build peak RSS remains unknown; zero is missing evidence.",
+    "Recovery resource monitoring is sampled worker-tree RSS, not continuous hard-bound proof.",
+    "Final quality is still unevaluated until recovery finishes; adaptive guard remains calibration.",
+    "Prior failures preserved; universal reconstruction unproved/private gate closed."
+  ]
+}

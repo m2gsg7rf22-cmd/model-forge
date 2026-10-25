@@ -21,3 +21,6 @@ This isolated owned NumPy GLU32/64/32 experiment does not establish original-wei
 ## Execution and outcome
 
 Pending source freeze and the one registered run. Outcome must be filled from preserved receipts and independent audit, including negative outcomes.
+
+
+2026-10-25 actualguardedgate fit source3d3b622 saved candidate2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b, but controller FAILED receiving >2MB fitterstdout. Evaluation didNOTstart;941032UNCONSUMED. DO NOTREFIT. Independent savedfit audit verified64screen+8sequential equations WITHOUT solving,57fullforwardtrialcost/guards,2retainedunits45/40, traincost-3.09923967%, Cbyteidentical/rank1,13sources/5inputs/13oldinventory. Original failedreport preserved; buildresource receipt unavailable:0RSSfield meansUNKNOWNnotzero. Exactunchangedevaluator also has2MBmetadata bound; separately reviewed prospective recovery stages1976byte compact metadata plus byteidenticalcandidate/baseline/manifest, retaining full3,095,641byte report and numericNPZ outsideGit. Next execute ONLY frozen evaluation-recovery-controller.py once, no fit/newdirection/oldvalidationreads; then independent savedpairedoutcomeaudit. No qualityclaim yet/privategateCLOSED.
