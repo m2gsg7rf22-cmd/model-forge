@@ -1,0 +1,11 @@
+{
+  "generic_seeds": [
+    29,
+    30
+  ],
+  "same_fit_new_output_still_refused": true,
+  "failed_marker_write_still_blocks_retry": true,
+  "partial_marker_does_not_prove_completed_reservation_metadata": true,
+  "actual_seed_marker_created": false,
+  "actual_reference_factory_calls": 0
+}

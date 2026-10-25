@@ -1,0 +1,24 @@
+{
+  "synthetic_seeds": [
+    33,
+    34,
+    35
+  ],
+  "shared_output_buffers_now_detached": true,
+  "complete_counter_profile": [
+    8,
+    8,
+    8,
+    8
+  ],
+  "failed_second_query_counter_profile": [
+    8,
+    4,
+    2,
+    2
+  ],
+  "reference_preserved_before_predict_failure": true,
+  "actual_seed_generation": false,
+  "actual_reference_factory_calls": 0,
+  "actual_markers_created": false
+}

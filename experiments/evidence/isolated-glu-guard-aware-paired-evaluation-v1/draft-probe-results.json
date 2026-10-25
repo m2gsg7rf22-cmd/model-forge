@@ -1,0 +1,8 @@
+{
+  "synthetic_seed": 25,
+  "actual_queries": 0,
+  "actual_seed_generation": false,
+  "nonzero_delta_underflow_reported_zero_relative": true,
+  "maximum_absolute_nonzero": 1e-200,
+  "query_mutation_causes_completed_mismatched_saved_inputs": true
+}

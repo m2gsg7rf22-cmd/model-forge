@@ -1,0 +1,115 @@
+{
+  "approved": true,
+  "actual_evaluation_protocol_approved": true,
+  "scope": "ONE prospective paired PUBLIC941033evaluation of exact candidate7f7d vs baseline2f207,2048references ONLY, AFTER reviewed-source clean discovery-lab commit and successful pre-data tree preflight; no fitting or retry",
+  "source_sha256": {
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/guard_aware_eval_controller.py": "bd1716336d0e61b5e6613433ae378c76962d3235146b15761d61f53826f7c2f8",
+    "examples/isolated_glu/guard_aware_evaluate.py": "a9808ef4d3dbe898bdf04e2d899f3f49d0cd036263cf9177c4ba57dd7b078463",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "experiments/preregistrations/isolated-glu-fp32-guard-aware-paired-evaluation-v1.json": "329e5542ab1c0b6bfeeab536ec2e378ea11a01c09b05328107b4e220a5e244f6",
+    "docs/glu-guard-aware-paired-evaluation-protocol.md": "c98352e49789c65b2cd499f2c32f0d6b8dbd5128fa3f60f9760487dd1db4b793",
+    "docs/superpowers/plans/2026-10-25-guard-aware-paired-evaluation.md": "7f7e9a70649d8401b6c3b1edbd51f35ef89ae60202c379bd36c3493b41c2c383",
+    "tests/test_glu_guard_aware_evaluate.py": "3ab77c57eda96f62d5325dabedfa924d6c081b0caa168b5f2da4ca4d9d18ef03",
+    "tests/test_glu_guard_aware_eval_controller.py": "c1e089b54302d1011938ab4dc66ad5251485f0aff5464d41d70f7bfb2cee12c8"
+  },
+  "sources": {
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/guard_aware_eval_controller.py": "bd1716336d0e61b5e6613433ae378c76962d3235146b15761d61f53826f7c2f8",
+    "examples/isolated_glu/guard_aware_evaluate.py": "a9808ef4d3dbe898bdf04e2d899f3f49d0cd036263cf9177c4ba57dd7b078463",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "experiments/preregistrations/isolated-glu-fp32-guard-aware-paired-evaluation-v1.json": "329e5542ab1c0b6bfeeab536ec2e378ea11a01c09b05328107b4e220a5e244f6",
+    "docs/glu-guard-aware-paired-evaluation-protocol.md": "c98352e49789c65b2cd499f2c32f0d6b8dbd5128fa3f60f9760487dd1db4b793",
+    "docs/superpowers/plans/2026-10-25-guard-aware-paired-evaluation.md": "7f7e9a70649d8401b6c3b1edbd51f35ef89ae60202c379bd36c3493b41c2c383",
+    "tests/test_glu_guard_aware_evaluate.py": "3ab77c57eda96f62d5325dabedfa924d6c081b0caa168b5f2da4ca4d9d18ef03",
+    "tests/test_glu_guard_aware_eval_controller.py": "c1e089b54302d1011938ab4dc66ad5251485f0aff5464d41d70f7bfb2cee12c8"
+  },
+  "blocking_findings": [],
+  "resolved_findings": [
+    "Unreadable progress no longer masks original exception or prevents after-input checks; counts unknown explicitly",
+    "Nonzero norm/relative underflow fails closed",
+    "Input mutation detected after query/baseline/student; references detached",
+    "Reused predictor buffers copied immediately; per-group and aggregate outputs agree",
+    "Reservation creation_started/metadata_persisted distinguishes unavailable marker metadata"
+  ],
+  "independent_probe_summary": {
+    "underflow_red_to_green": true,
+    "all3_callback_mutations_red_to_green": true,
+    "reused_prediction_buffer_red_to_green": true,
+    "generic_marker_exclusive_and_partialwrite_blocks_retry": true,
+    "second_query_failure_counts": [
+      8,
+      4,
+      2,
+      2
+    ],
+    "reference_persisted_before_prediction_failure": true,
+    "controller_cases": [
+      "quality_pass_completed",
+      "quality_fail_completed",
+      "worker_scope_failed",
+      "input_mutation_failed",
+      "wrong_counts_failed",
+      "marker_tamper_failed"
+    ],
+    "controller_marker_metadata_virtual_only": true,
+    "synthetic_probe_seeds": [
+      25,
+      27,
+      28,
+      29,
+      30,
+      33,
+      34,
+      35
+    ],
+    "actual941033_points_generated": false,
+    "actual_reference_factory_calls": 0,
+    "actual941033_markers_created": false,
+    "actual_saved_or_consumed_validation_reads": 0
+  },
+  "prerequisites": [
+    "Freeze exact reviewed13files including8runtime dependencies/prereg in clean discovery-lab commit before execution",
+    "New exclusive durable output, successful process_and_children preflight before scientific input hash/content reads, same180s/512MiBpolledtree/BLAS1/2KiB budget",
+    "Validate exact7inputhashes/auditedfit terminalsuccess/inventory/source before atomic persistent reservation; marker survives all failures",
+    "Exactly2048vector slots reserved in originalfitroot; no rerun/recovery/newoutput bypass after marker creation",
+    "Require final worker tree scope plus exact input/source/marker/counter/raw-output commitments",
+    "After run independently audit saved arrays only before quality claims; mark seed consumed/reserved appropriately even on failure"
+  ],
+  "not_authorized": [
+    "Any fitting/gradient/optimization/new calibration",
+    "Additional reference calls, alternate seed, threshold change or retry",
+    "Private models/weights publication or finalprivate model mission",
+    "Universal/frontier/sealed-equivalence claim"
+  ],
+  "limitations": [
+    "Finite owned PUBLIC fixture evaluation informed by earlier public development; not hidden-teacher or universal proof",
+    "Residual metrics can be audited independently only after saved labels exist; no labels accessed in this review",
+    "Approximate/polled RSS is not continuous peak or parent-controller memory; final write/hash work is included operationally but no hard realtime guarantee",
+    "External kill/IO failure may leave partial artifacts/counters; progress lower bounds are not exact executed-call counts",
+    "open(x)/flush/atomic rename are not fsync or transactional power-loss guarantees",
+    "FixedC byteidentity is checked directly and bound to pinned exact input digests and prior outcome audit",
+    "Criterion failure is a valid completed evaluation and must be preserved with all relative/absolute regressions",
+    "Private scientific gate remains closed"
+  ],
+  "probe_sha256": {
+    "draft_probe.py": "b98a05e38df1dfb7c956ecaaf7aa37f06f8db64530491c50b3b8623b833fec44",
+    "draft-probe-results.json": "b5d91881f9babe7fbbb245d3fcb814d568f59b1d730a52d8f9b74f051e7936b5",
+    "fixed_probe.py": "761054c97cb3c6512dadbe5044f84dd783ab979b4a8930a8789303bdf2c08e17",
+    "fixed-probe-results.json": "b7821303fe8977314f4e978256d316b092c34bd071ff8297903b9dec81e8ed70",
+    "marker_probe.py": "9a28be768c9ce56eb72aca6b2829a4f78726a3e78396a32953e9856e50912dee",
+    "marker-probe-results.json": "5d0980db00d0e7e1d852d9e5b4355ea8c70323e061f634932e3e91cdeeb936fe",
+    "final_batch_probe.py": "3c5bbf044ad68d83818ebeecc879aa22f6b76722f3bac29da5f74eb6c15bd2b6",
+    "final-batch-probe-results.json": "1244053f72f9006ab4f50d86e7e9e62fa9e7fb0762d803706fef2e38c9bea6c9",
+    "final_controller_probe.py": "03a18bdefc4dab030e874a73870d980bb07bbd7c3c8e1be383c7beb1c2db785d",
+    "final-controller-probe-results.json": "f84e5c1949932470ae5d5ca99e7f7ba79c7ba9f420afc303a396f8e875790ab4"
+  }
+}

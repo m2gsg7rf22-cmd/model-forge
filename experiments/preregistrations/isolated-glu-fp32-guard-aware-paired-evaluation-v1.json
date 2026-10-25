@@ -1,0 +1,48 @@
+{
+  "id": "isolated-glu-fp32-guard-aware-paired-evaluation-v1",
+  "fit_source_commit": "195d9a67e0993dbefb5bb6fb3b26a95fe15db3a6",
+  "inputs": {
+    "candidate": "7f7d69552fe3ad8c27ad17b5f8326038fd7d26a2171ad84d8660d07560aa0a06",
+    "baseline": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+    "fit_controller": "25a5b96608f39d64dc7b2e9fe26ea2b8f1d5c369799272d545a2178b20fbbc54",
+    "fit_worker": "d79ec6411b56893a3118b0954005dd18464297e4b1cc941211ad76ed202f2b56",
+    "fit_step": "777f4527490e44e048e18d5f51c587efc1194de8e66b945b9fb0a2fd098acc44",
+    "fit_artifact_manifest": "153e9ca176bd2f691c6825020eaac100a7478538214f11789ea7b2b49fd0ad4a",
+    "outcome_audit": "00f58664507ce71f3067ac839c2b06c172c5c41f340caf74e8631a29a1b28efa"
+  },
+  "evaluation_seed": 941033,
+  "rows_per_group": 512,
+  "scales": [
+    0.01,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "new_reference_vector_budget": 2048,
+  "same_points_and_reference": true,
+  "quality_criterion": 0.001,
+  "criterion": "all4candidate_relative_at_most_1e_minus3",
+  "report_all_relative_and_maxabs_differences_and_regressions": true,
+  "new_fits": 0,
+  "new_direction_solves": 0,
+  "private_gate": "closed",
+  "sealed": false,
+  "automatic_retry": false,
+  "after_evaluation_optimization": false,
+  "persistent_marker_relative_to_fitroot": "public941033-evaluation-attempt.json",
+  "timeout_seconds": 180,
+  "memory_limit_mb": 512,
+  "worker_output_limit_bytes": 2048,
+  "blas_threads": 1,
+  "required_monitor_scope_before_data_and_after_worker": "process_and_children",
+  "frozen_dependencies": {
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/guard_aware_eval_controller.py": "bd1716336d0e61b5e6613433ae378c76962d3235146b15761d61f53826f7c2f8",
+    "examples/isolated_glu/guard_aware_evaluate.py": "a9808ef4d3dbe898bdf04e2d899f3f49d0cd036263cf9177c4ba57dd7b078463",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b"
+  }
+}

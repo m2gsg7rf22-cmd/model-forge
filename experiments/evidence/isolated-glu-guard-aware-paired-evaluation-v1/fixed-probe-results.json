@@ -1,0 +1,11 @@
+{
+  "underflow_now_rejected": true,
+  "all3_input_mutation_stages_rejected": true,
+  "new_reused_prediction_buffer_gap": true,
+  "synthetic_seeds": [
+    27,
+    28
+  ],
+  "actual941033_generated": false,
+  "actual_reference_factory_calls": 0
+}

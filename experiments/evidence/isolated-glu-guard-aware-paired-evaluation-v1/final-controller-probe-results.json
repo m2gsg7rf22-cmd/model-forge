@@ -1,0 +1,31 @@
+{
+  "quality_pass": {
+    "status": "completed",
+    "quality_criterion_met": true
+  },
+  "quality_fail": {
+    "status": "completed",
+    "quality_criterion_met": false
+  },
+  "resource_fail": {
+    "status": "failed",
+    "quality_criterion_met": null
+  },
+  "input_mutation": {
+    "status": "failed",
+    "quality_criterion_met": null
+  },
+  "wrong_counts": {
+    "status": "failed",
+    "quality_criterion_met": null
+  },
+  "marker_tamper": {
+    "status": "failed",
+    "quality_criterion_met": null
+  },
+  "actual_marker_created": false,
+  "actual_reference_factory_calls": 0,
+  "actual_seed_points_generated": false,
+  "source_gate_replaced_for_synthetic_flow_only": true,
+  "marker_contents_in_memory_only": true
+}
