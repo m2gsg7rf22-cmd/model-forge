@@ -1,0 +1,18 @@
+{
+  "independent_sigmoid_full_residual_checks": true,
+  "weighted_once_exact": true,
+  "all_screen_costs_ranking_and_sequence_verified": true,
+  "one_worsened_guard_group_vetoes": true,
+  "synthetic_selected": [
+    1,
+    2
+  ],
+  "synthetic_accepted": [
+    1,
+    2
+  ],
+  "actual_calibration_calls": 0,
+  "saved_candidate_fits": 0,
+  "teacher_queries": 0,
+  "evaluation_arrays_read": 0
+}

@@ -1,0 +1,52 @@
+{
+  "approved": true,
+  "scope": "prospective one-time owned PUBLIC FP32 guarded-forward calibration and polish experiment; not outcome or quality acceptance",
+  "sources": {
+    "examples/isolated_glu/forward_observe.py": "52eef368b1ac1a30ea724065f68ae1755c65c4de069a4645cf67ac9de8dcfe37",
+    "examples/isolated_glu/guarded_forward.py": "1d0d4e2a77f798672d7dacf194d7b1338c6447355e7188a27e8b24ad77529818",
+    "examples/isolated_glu/guarded_forward_evaluate.py": "f2e4c185127ed8c160b6a14327af79cf6e1e7738ee98a9599ab41d435cc57148",
+    "tests/test_glu_guarded_forward.py": "064e225c03494b44554fb40335634bb47bc143ed683f679c034c6e6f4bc87f35",
+    "experiments/preregistrations/isolated-glu-fp32-guarded-forward-polish-v1.json": "01db8112e4ad9b9a96af5835088110ff8da930771e24a8ec861723f4c4eb8c30",
+    "docs/superpowers/plans/2026-10-25-fp32-guarded-forward-polish.md": "4cf7188d1e8c8e05193687da06d8c0a9411344925ba15a0521f0cdbbeb24f825",
+    "examples/isolated_glu/forward_factor.py": "2d92db73e5b6c1e674c8776b6b3e8c4db693cc4354448d6404b7565a428d029c",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb"
+  },
+  "controller_sha256": "baacdbb9240ad47ab7d75e4af4407f4c505ca875a62d8efd4e0dceda2067f7be",
+  "blocking_findings": [],
+  "independent_probes": {
+    "independent_sigmoid_full_residual_checks": true,
+    "weighted_once_exact": true,
+    "all_screen_costs_ranking_and_sequence_verified": true,
+    "one_worsened_guard_group_vetoes": true,
+    "synthetic_selected": [
+      1,
+      2
+    ],
+    "synthetic_accepted": [
+      1,
+      2
+    ],
+    "actual_calibration_calls": 0,
+    "saved_candidate_fits": 0,
+    "teacher_queries": 0,
+    "evaluation_arrays_read": 0
+  },
+  "prerequisites": [
+    "Commit exact reviewed sources/protocol/dependencies and require clean checkout before collection.",
+    "One exclusive output, fixed2048 owned calibration calls; train882030 and guard882031 remain distinct.",
+    "At most64 initial screenings+8 current-residual solves, one fixed-selection sweep, all proposals retained.",
+    "Only a retained changed candidate receives one paired fresh941030 final evaluation; hashes of baseline and candidate bound before target access.",
+    "Outcome audit verifies raw source/manifest hashes, once-weighting, all screen/guard decisions and paired final metrics without refit."
+  ],
+  "limitations": [
+    "Guard is calibration used for update selection, not independent final validation.",
+    "Per-step guard tolerance1e-10 may accumulate over at most8 retained steps; no final criterion change.",
+    "Full-forward residual is floating-point; fresh independent complete-residual audit needed.",
+    "Sampled worker-tree RSS does not prove continuous hard memory bound.",
+    "Earlier quality failures and fixed-gate direction limitations remain; private gate closed, universal reconstruction unproved."
+  ]
+}

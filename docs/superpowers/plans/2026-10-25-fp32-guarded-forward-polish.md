@@ -1,6 +1,6 @@
-# Guarded forward coupling polish — DRAFT, not ready for collection
+# Guarded forward coupling polish — prospective protocol
 
-The weighted full-forward factor primitive first needs independent synthetic verification. This plan does not authorize actual fitting or data collection: a separate implemented runner, prospective protocol, source review and committed hashes are required. The goal is to test forward quality after the audited Hessian-only failure, preserving the fixed .001 final public criterion and every earlier negative outcome.
+The weighted full-forward factor primitive has independent synthetic verification at sourcefa45a9e. Actual fitting or collection requires independent review and a clean committed hash of the implemented runner, preregistration and controller. The goal is to test forward quality after the audited Hessian-only failure, preserving the fixed .001 final public criterion and every earlier negative outcome.
 
 Starting point: the original pre-Hessian-polish cubic-Richardson candidate (source188a03a, SHA256b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e). The failed Hessian-polished candidate is not promoted or used as an implicit new baseline. Gates remain fixed.
 

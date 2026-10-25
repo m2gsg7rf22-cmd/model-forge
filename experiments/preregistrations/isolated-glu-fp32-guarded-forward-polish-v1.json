@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "isolated-glu-fp32-guarded-forward-polish-v1",
+  "baseline_sha256": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+  "fit_report_sha256": "c0d30f830e6304b902b5bfda0138c01a60b55c71885bd084c0e7213dafd7ea77",
+  "old_manifest_sha256": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+  "train_seed": 882030,
+  "guard_seed": 882031,
+  "group_rows": 256,
+  "scales": [
+    0.01,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "new_calibration_calls": 2048,
+  "screened_units": 64,
+  "max_selected_units": 8,
+  "max_local_rankone_solves": 72,
+  "sweeps": 1,
+  "training_objective": "sum squared group-relative Frobenius errors, multipliers1/train-groupnorm, targetweightedonce",
+  "train_margin_relative": 1e-12,
+  "train_margin_absolute": 1e-24,
+  "guard_every_group_additive_tolerance": 1e-10,
+  "evaluation_seed": 941030,
+  "evaluation_calls_if_changed_candidate": 2048,
+  "paired_baseline_predictions": true,
+  "max_group_relative_criterion": 0.001,
+  "timeout_seconds": 180,
+  "memory_limit_mb": 512,
+  "sealed": false,
+  "private_gate": "closed",
+  "frozen_dependencies": {
+    "examples/isolated_glu/forward_factor.py": "2d92db73e5b6c1e674c8776b6b3e8c4db693cc4354448d6404b7565a428d029c",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb"
+  }
+}
