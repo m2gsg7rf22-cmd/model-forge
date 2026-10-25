@@ -1,0 +1,99 @@
+{
+  "approved": true,
+  "status": "approved_for_one_prospective_public_all_pool_hypothesis_pilot",
+  "sources": {
+    "examples/isolated_glu/pool_candidate.py": "dace5f9d8cff7c07d45e16cf1be5b2e1a33ef0ef444bdbb11e4ca7ca64664abb",
+    "examples/isolated_glu/pool_evaluate.py": "e966d4bf8085203bc91203ae4242e82317752efb5d219ebaa52e551c639c989e",
+    "experiments/preregistrations/isolated-glu-fp32-all-pool-candidate-v1.json": "e16c6ca0d9b4833eef2984ef5e1da5ced14fa4834bd46f1da40590885290aa68",
+    "tests/test_glu_pool_candidate.py": "36db0497a8a062532d392ea58aaa0a00c6522ee71756f6be7518041c70f39a5c",
+    "docs/superpowers/plans/2026-10-25-fp32-all-pool-candidate.md": "1688f5342bb44c391c6958fecf4dd67c49abe9c2e2fc784d75f4738bb66457c2",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c"
+  },
+  "scope": "Static source/protocol/controller inspection and tiny synthetic selection/invalid-evaluator boundary controls only. Reviewer performs no actualmultiscale fit, teacherresponse, directionoptimization, functionalevaluation, privateasset or oldheldout access.",
+  "blocking_findings": [],
+  "new_method_review": [
+    "Explicit newallpool hypothesis method, not a changedresidualthreshold inside the failedprotocol. Everyfinite unit savedstart eligible regardless ofresidual; sortedloss chooses greedy angularrepresentatives.",
+    "Knownwidth64 checked only after fullgreedyselection; undercount/overcount is failure, never truncation or alternatecutoff search.",
+    "No plateau-confidence, residualacceptance, truegate or noise-bound claim; priorterminalplateau withdrawn as reliabilityevidence.",
+    "Buildprocess imports only purekernel/strictIO, consumes hash-bound originalFP32multiscale observations and telemetry; no teacher/evaluator import or newdirectionoptimizer.",
+    "Unchanged glu32.multiscale enforces2048/64/64 designranks andpositive magnitudes; builder also requiresfinite/nonzerogates and rankonecouplings.",
+    "Exclusive newoutput/hypothesisattempt reserves one multiscalefit; failures are retained without replacing originalFP32failure or oldfitmarker."
+  ],
+  "evaluation_review": [
+    "Distinct pool_evaluate worker launches only if buildreturns candidate_built.",
+    "Exclusive evaluationattempt before reads; candidatehash, exactmethodlabel and copiedcalibrationmanifesthash checked before loadingpublicteacher.",
+    "Teacher seed572041 andFP32arithmetic forward preserved; evaluationinput seed941027,512rows at each .01/1/10/100scale.",
+    "All2048inputs/reference/prediction arrays saved outsideGit withvalidationhash; everygroupFrobenius/maxabsolute error reported.",
+    "Prospective publicdevelopment criterion all4grouprelative<=1e-3 is an experimentalqualityresult, not sealedacceptance or allinputequivalence.",
+    "Rawvalidation retained permits laterindependent recomputation ofmetrics andcandidatepredictions without teacherqueries."
+  ],
+  "independent_controls": {
+    "sha256": "3a64d38c3d552547b3523878a35db008fc1e20ca7333e830a78555d93065759e",
+    "result": {
+      "high_losses_not_filtered": true,
+      "minimum_loss_antipodal_representative_selected": true,
+      "sorted_greedy_indices": [
+        1,
+        3,
+        2
+      ],
+      "under_and_over_knownwidth_rejected_without_truncation": true,
+      "over75_to64_rejected": true,
+      "input_vectors_unchanged": true,
+      "method_calibration_checks_before_reference": {
+        "wrong-method": "Method/calibration commitment changed",
+        "wrong-method_repeat": "FileExistsError",
+        "wrong-calibration": "Method/calibration commitment changed",
+        "wrong-calibration_repeat": "FileExistsError"
+      },
+      "reference_function_calls": 0,
+      "no_actual_fit_or_evaluation_queries": true
+    }
+  },
+  "local_tests_inspected": {
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xml_sha256": "d43e2121cac983543ffcf0e1614ad67eb3ef5302c85ce3a4b4d2d462792f661f",
+    "note": "Parent-produced XML inspected; no actualfit/eval tests repeated by reviewer."
+  },
+  "controller_review": {
+    "approved": true,
+    "sha256": "22be20c268897ef97744e7743af2c3ea1925432a84ed37b71ff88f9353eddf08",
+    "checks": [
+      "Exact11reviewedsource/dependencyhashes, cleancommit beforeexecution.",
+      "Unique commitnamedouterroot and exclusive candidatechild; no retry loop.",
+      "Shared monotonic180sremainingbudget across build/evaluate,512MiBperworker tree, singleBLASthread and process_and_children mandatory.",
+      "No evaluation aftercandidate rejection; stageresource/JSONreceipts persisted.",
+      "Everyfile ofboth priorcalibration andtelemetryexperiments hashed beforeandafter with exactinventory equality.",
+      "Finalstatus distinguishes hypothesisrejection/workerfailure/publiccandidateevaluated; numericalqualityflag must still be read."
+    ],
+    "limits": [
+      "LightweightcontrollerRSS excluded from worker-tree memorycap.",
+      "A public_candidate_evaluated status means executioncomplete, not thatdevelopmentqualitycriterion passed."
+    ]
+  },
+  "approval_conditions": [
+    "Commit exactsource/protocol/review and6frozendependencies beforeoneboundedrun; verify hashes/cleancommit.",
+    "Do not invoke newdirectionoptimization, recollectcalibration, inspectprivateassets or relax anyfrozenmultiscale/rankguard.",
+    "Retain allfailedoutcomes andall4publicevaluationgroups/rawarrays; no repeatedevaluation/tuningonthisresult.",
+    "Independentoutcomeaudit should verify oldinventories unchanged, selectedindices/multiscalediagnostics/candidatehash and rawvalidationmetrics, without refitting/requerying.",
+    "Keep originalFP32failure andproductionFP64profile unchanged, even if publicdevelopmentcriterion passes."
+  ],
+  "limits": [
+    "Method is data-informed from onepublicpool alreadyobserved to give64unfilteredgreedyrepresentatives; knownwidthguard is a hypothesis constraint, not discoveryproof.",
+    "Publicseeded evaluation is not hidden/unseen teacher validation or independentgeneralization; no universal/fullmodel/storedweight recovery claim.",
+    "Couplingrankone is projected structuralconstraint; it does not verify originalU/Dfactors.",
+    "Finitepool selection may merge nearunits or retainspuriousdirections under othermodels/precisionconditions. Fresh fullpipeline/freshteacher preregistration and independenttruthcontrols remain necessary.",
+    "Developmentcriterion thresholdsgroupnorms, not perinputrelativeerror or maxabsoluteerror guarantees."
+  ],
+  "private_final_model_gate": "closed",
+  "production_fp32_profile_validated": false,
+  "universal_reconstruction_demonstrated": false
+}
