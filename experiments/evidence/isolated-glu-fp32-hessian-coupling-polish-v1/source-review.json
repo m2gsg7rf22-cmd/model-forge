@@ -1,0 +1,88 @@
+{
+  "approved": true,
+  "scope": "prospective one-sweep PUBLIC saved-Hessian fixed-gate coupling polish, not outcome or quality acceptance",
+  "sources": {
+    "examples/isolated_glu/hessian_polish.py": "15dad89fff9f0f864344fe52243e343d173bef93ebc7888b62a6da1042f832b9",
+    "examples/isolated_glu/hessian_polish_evaluate.py": "915bc70eeaba7ceaa225aae915656f33fcb3ff6e6765319ac919dc6e3c984ff0",
+    "tests/test_glu_hessian_polish.py": "a35e504b91b816036e86241ec7ea351e164e909ef722d48fdcf895e2b0ebc206",
+    "experiments/preregistrations/isolated-glu-fp32-hessian-coupling-polish-v1.json": "db935c15bdb5ff1b757c54db85885a71ef3839f0cfefbdd5368b41afe88083f7",
+    "docs/superpowers/plans/2026-10-25-fp32-hessian-coupling-polish.md": "10f5cb20ef5d3525330ff9aea876ecc41819aac231142e3c5f5ff7a1b3b59217",
+    "examples/isolated_glu/hessian_factor.py": "6ba34943328e55e07901e3a21db299d9421fc9009d89e82b29e1a3e921865848",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb"
+  },
+  "controller_sha256": "09f54726ca173c544e3bff1e60166406b5c025714a879d354a53c9980c27b71f",
+  "blocking_findings": [],
+  "synthetic_probes": {
+    "proposal_evidence_shape_and_cost_verified": true,
+    "empty_sequence_shape_verified": true,
+    "cases": [
+      {
+        "selected": [
+          0,
+          3,
+          1
+        ],
+        "accepted": [
+          0,
+          3,
+          1
+        ],
+        "fresh_residual_discrepancy": 2.8010206968338643e-15,
+        "initial_cost": 33.8243820333425,
+        "final_cost": 2.4215650208613004
+      },
+      {
+        "selected": [
+          2,
+          0,
+          3
+        ],
+        "accepted": [
+          2,
+          0,
+          3
+        ],
+        "fresh_residual_discrepancy": 3.842787565371191e-15,
+        "initial_cost": 10.708585662572482,
+        "final_cost": 1.9519011765923813
+      },
+      {
+        "selected": [
+          3,
+          4,
+          2
+        ],
+        "accepted": [
+          3,
+          4,
+          2
+        ],
+        "fresh_residual_discrepancy": 1.609225245028879e-15,
+        "initial_cost": 18.278424009280442,
+        "final_cost": 6.356461695615489
+      }
+    ],
+    "tiny_synthetic_only": true,
+    "actual_saved_hessian_reads": 0,
+    "teacher_queries": 0,
+    "evaluation_reads": 0,
+    "evaluator_ast_matches_only_method_and_seed_change": true
+  },
+  "prerequisites": [
+    "Clean commit of exact reviewed sources/dependencies before a single run in a new output directory.",
+    "At most64 initial screenings plus8 recomputed sequential local solves, fixed initial selection, full residual margin retention.",
+    "Independent outcome audit recomputes complete residual from final candidate; arithmetic drift must not be mistaken for descent.",
+    "Only retained changed candidate receives one new public seed941029 evaluation; previous evaluation arrays remain forbidden."
+  ],
+  "limitations": [
+    "Calibration Hessians are FP32 finite-difference estimates, not exact teacher truth.",
+    "Local screening and retained calibration descent do not prove forward generalization or repair gate direction errors.",
+    "Incremental complete residual is floating-point arithmetic; independent fresh residual verification remains required.",
+    "512MiB is polled worker-tree monitoring; parent RSS and missed peaks are not hard bounded by sampled observations.",
+    "Existing quality failures remain, universal reconstruction unproved, private gate closed."
+  ]
+}

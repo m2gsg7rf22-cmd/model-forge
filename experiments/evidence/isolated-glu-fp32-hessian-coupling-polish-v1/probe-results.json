@@ -1,0 +1,56 @@
+{
+  "proposal_evidence_shape_and_cost_verified": true,
+  "empty_sequence_shape_verified": true,
+  "cases": [
+    {
+      "selected": [
+        0,
+        3,
+        1
+      ],
+      "accepted": [
+        0,
+        3,
+        1
+      ],
+      "fresh_residual_discrepancy": 2.8010206968338643e-15,
+      "initial_cost": 33.8243820333425,
+      "final_cost": 2.4215650208613004
+    },
+    {
+      "selected": [
+        2,
+        0,
+        3
+      ],
+      "accepted": [
+        2,
+        0,
+        3
+      ],
+      "fresh_residual_discrepancy": 3.842787565371191e-15,
+      "initial_cost": 10.708585662572482,
+      "final_cost": 1.9519011765923813
+    },
+    {
+      "selected": [
+        3,
+        4,
+        2
+      ],
+      "accepted": [
+        3,
+        4,
+        2
+      ],
+      "fresh_residual_discrepancy": 1.609225245028879e-15,
+      "initial_cost": 18.278424009280442,
+      "final_cost": 6.356461695615489
+    }
+  ],
+  "tiny_synthetic_only": true,
+  "actual_saved_hessian_reads": 0,
+  "teacher_queries": 0,
+  "evaluation_reads": 0,
+  "evaluator_ast_matches_only_method_and_seed_change": true
+}
