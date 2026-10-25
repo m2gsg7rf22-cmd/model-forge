@@ -13,3 +13,6 @@ Actual subsequent public FP32full-map pilot was REJECTED despite saved-H gap797.
 
 
 A distinct disclosed zero-query replay now observed52retained candidates from256starts, with four512startrescue rounds addingnone. Independent audit reconstructed initial52bitwiseequalfinalknown; this is new replay telemetry, not proof of52truegates or a recorded originalcount. Alloldfilesunchanged. Read [count diagnostics](https://github.com/m2gsg7rf22-cmd/model-forge/blob/discovery-lab/docs/glu-fp32-count-diagnostic.md). Next inspect residual/cluster sensitivity fromsavedarrays without refitting or accepting changedthresholds; originalFP32rejection remains.
+
+
+Read-only cutoff sensitivity found52at1e-8and64from3e-8upward. However ALL256storedlosses are already below3e-8: the broad64plateau is terminal finite-pool saturation, not independent noise/coverage evidence. Do not select a trusted cutoff by widestterminalplateau; that proposal was withdrawn before implementation. Any all-pool candidate-generation hypothesis needs a distinct reviewed protocol, unchanged calibration guards and separate evaluation before claims. [Sensitivity evidence](https://github.com/m2gsg7rf22-cmd/model-forge/blob/discovery-lab/docs/glu-fp32-residual-sensitivity.md). OriginalFP32failure/productioncriteria remain unchanged.

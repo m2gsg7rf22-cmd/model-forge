@@ -35,3 +35,6 @@ Precision development update: one fixed public diagnostic now measures the FP32/
 
 
 2026-10-25 FP32 rejection telemetry: disclosedsaved-datareplay plus independentarrayaudit observed52retained,4rescue roundsnoaddition; no newtargetqueries, no fullmapcandidate. See [precision triage](precision.md). Next saved-refinement residual/cluster sensitivity; broadscaled/wholemodelaccessscience remainsopen.
+
+
+2026-10-25 residualsensitivity shows terminal finite-pool saturation, not a validatedadaptivecutoff; preserve all14rows and withdrawalofwidestplateauproposal. Next reviewed all-pool calibrationhypothesis pilot, not an advertisedFP32backend. Read [precision triage](precision.md).
