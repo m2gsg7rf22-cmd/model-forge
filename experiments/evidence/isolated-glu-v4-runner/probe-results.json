@@ -1,0 +1,8 @@
+{
+  "four_round_valid_result": 2304,
+  "changed_input_prefix": "Rescue round input prefix changed",
+  "changed_initialization": "Rescue initialization mismatch",
+  "negative_loss": "Rescue squared losses must be nonnegative",
+  "wrong_positive_loss": "Rescue losses do not match original subspace",
+  "wrong_geometry_result": 2304
+}

@@ -1,0 +1,94 @@
+{
+  "status": "approved_for_fresh_teacher_generation",
+  "reviewer": "independent v4 reviewer",
+  "registration_sha256": "5c94ae413cc831f1df0dd3a7529115ade8cf0184a30d4c0994d3cd65b437cce6",
+  "sources": {
+    "examples/isolated_glu/multiscale.py": "97b219e5df1e0d4840a5141e0c375e59562f7971b9939bb473e706a78527ce65",
+    "examples/isolated_glu/refine.py": "77bea348a95efb6039fafb4a3fed668d472e9f187a49d320b662e39c75e37391",
+    "examples/isolated_glu/hessian_pilot.py": "fff419a16050b8bfaa0e177cbf1fcaf6d5444de7e80969b9102cab80553a6d11",
+    "examples/isolated_glu/coverage_multi.py": "f8fb10036b622cf5fc5ec4e48fff17f0166f82a27901083879e8d25b6b249b59",
+    "examples/isolated_glu/sealed_v4.py": "bc89f5ca46d7bfed32c032a6394f8e6e1a077ed1dcc226b0b7f15a9034a02784",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b"
+  },
+  "test_sources": {
+    "tests/test_glu_v4.py": "9ed38be77155bb8a8badf99a9e13fc87cadee271f5ad02e17dc7ed55272bdb20",
+    "tests/glu_v4_fixture.py": "e800e258f5b7f3b3b5c669618285a69e090c8e514428934f2b3100af5ffe9a17"
+  },
+  "inherited_scientific_fields_equal_to_v3": {
+    "teacher_count": true,
+    "teacher_weight_scales": true,
+    "input_dimension": true,
+    "hidden_width": true,
+    "output_dimension": true,
+    "teacher_distribution": true,
+    "teacher_forward": true,
+    "authorized_access": true,
+    "hessian": true,
+    "direction_solver": true,
+    "multiscale": true,
+    "total_calibration_vector_queries_per_teacher": true,
+    "sealed_evaluation": true,
+    "success_criteria": true,
+    "budget": true
+  },
+  "scope": "Static source/protocol inspection and independent synthetic-only public-array audit probes. No model fitting, new teacher generation, teachertruth, private arrays, heldout labels, verify(), materialize() or queries.",
+  "changed_path_test_evidence": {
+    "path": "/private/tmp/modelforge-v4-tests.xml",
+    "sha256": "c7f2d3fc7f3831b6d006d27fe17cc83fec140f05ff0210f21f08915b06323ef0",
+    "tests": 15,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "note": "Parent-produced XML inspected, not rerun by reviewer; includes actual public learner,60rescue and full4round chain."
+  },
+  "independent_probes": {
+    "four_round_chain": "60->61->62->63->64; actual selection_audit accepted all_count2304",
+    "two_round_chain": "60->62->64; actual selection_audit accepted all_count1280",
+    "three_round_chain": "60->61->62->64; actual selection_audit accepted all_count1792",
+    "rehash_deep_tamper_rejected": [
+      "round2 inputprefix",
+      "round2 seededinitialization",
+      "negative squaredloss",
+      "positive incorrect originalV loss"
+    ],
+    "geometry_repair": "Initially accepted falsegeometry component_rank0/residual_dimension999; after source repair exact same rehashed probe rejects with Rescue round geometry report mismatch."
+  },
+  "resolved_findings": [
+    {
+      "id": "V4-R1",
+      "summary": "Round geometry diagnostic fields were not consistency-audited.",
+      "resolution": "selection_audit now requires row.geometry dictionary, component_rank==2*n, residual_dimension==128-2*n; actual replay separately verifies tangentcomponent rank."
+    }
+  ],
+  "blocking_findings": [],
+  "positive_boundaries": [
+    "Readiness validates exact source/registration/reviewerapproval and committed unchanged bytes before entropy.",
+    "Frozen public-only multi solver path, no privatepath in learner argv/environment.",
+    "Known64 skips without modifying base; inputs1..63 enter fixed multirescue; counts0/65 reject.",
+    "Exclusive learner/selector attempts prohibit same-run automatic retry.",
+    "Exactly1..4 ordered rounds and exact rescue inventory, no path substitution or silent extra artifacts.",
+    "Every round validates input chain/prefix/hash/shapes/finitearrays, unit candidates, nonnegative recomputed originalV loss, exact sorted threshold/duplicate merge and continuous public seeded initialization replay.",
+    "Final64 required; no truncation of65plus, final below64 rejected; later rounds forbidden after64.",
+    "Final augmented candidate/residual concatenation and all referenced JSON/NPZ artifacts included in learner/seal commitments.",
+    "One-time consumedmarker precedes any evaluator read, existing numericcriteria recomputed across all3teachers.",
+    "512MiB/180s outer teacher process-tree monitor covers preparation, solver, auditor, seal and verify."
+  ],
+  "approval_conditions": [
+    "Commit exact reviewed source/registration/review and matching v4 readiness before freshteacher entropy.",
+    "Complete parent strict type/lint and planned crossplatform checks before launch; reviewer inspected15passing localtests, not crossplatformresults.",
+    "Use3freshowned teachers fixed beforefitting, no v1/v2/v3 teachertruth or heldout reuse.",
+    "Record full negative outcome if coverage, conditioning, rank, resources or heldout criteria fail; never substitute count/residual success for full preregistered success."
+  ],
+  "limits": [
+    "Only owned isolated continuousquery biasfreeGLU blocks; no wholeTransformer/finaltextAPI/universal claim.",
+    "Count64 and low subspaceresidual do not prove teacheridentity.",
+    "Fixed512starts perround and4rounds are empirical finitebudget search; no completecoverage proof.",
+    "Synthetic2/3/4round artifacts verify audit machinery, not independent scientificreplication.",
+    "GN optimizer is not replayed by verifier; source commitments and bounded process execution supply method provenance.",
+    "Sameaccount logicalseparation, not adversarial isolation.",
+    "RSS is periodically sampled, not a reserved/continuouspeak guarantee."
+  ],
+  "private_final_model_gate": "closed",
+  "universal_reconstruction_demonstrated": false
+}
