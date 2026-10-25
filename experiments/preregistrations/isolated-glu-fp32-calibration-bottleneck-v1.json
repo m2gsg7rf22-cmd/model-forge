@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "id": "isolated-glu-fp32-calibration-bottleneck-v1",
+  "inputs": {
+    "multiscale": "b017d253cc1c08f2afa2ec25be14559d5053717dfb12c08689d809b05251554f",
+    "old_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96",
+    "signed": "6d595c11f75703da915ba4ea3e08f2861319894f230c5b9f9139a7e1918fab51",
+    "additional_manifest": "4b41de611a3de3f82887bca955c65d23604f2e6fdd1b2cfc517fcac9f5f207c1",
+    "derived": "0a1ce6e5a243e76b6a8a54e97ad6422d202b05e313cd7f62b9a8be5580d95498",
+    "candidate": "b2d5fdd4cf8be40954562c2ce9393cd5b9a3c3cbd3cd8cbfa9bc18728d1de41e",
+    "fit_report": "c0d30f830e6304b902b5bfda0138c01a60b55c71885bd084c0e7213dafd7ea77"
+  },
+  "frozen_dependencies": {
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c"
+  },
+  "target_queries": 0,
+  "fits": 0,
+  "optimizers": 0,
+  "evaluation_reads": 0,
+  "timeout_seconds": 180,
+  "memory_limit_mb": 512,
+  "private_gate": "closed",
+  "sealed": false
+}

@@ -1,0 +1,36 @@
+{
+  "approved": true,
+  "scope": "prospective source review for one read-only calibration diagnostic; not diagnostic outcome or candidate acceptance",
+  "sources": {
+    "docs/superpowers/plans/2026-10-25-fp32-calibration-bottleneck.md": "1e6d773a44d360c7fe6a48b9d26112ff5e3e489a5e2f37e290a76e3c845a0fce",
+    "examples/isolated_glu/calibration_bottleneck.py": "58fa0831b7a8e97ec2fb5ca4f90947a5b3889784226ac3673826444e7b38e2b8",
+    "tests/test_glu_calibration_bottleneck.py": "343136b30036ca0d28427f81b191d316d2c3d0df4ce91b3f85de09404dd7cebb",
+    "experiments/preregistrations/isolated-glu-fp32-calibration-bottleneck-v1.json": "ce7450c58e46e8fb06e1a13ffad5f29f0b8a3123f8b6efdfee912526ed6fec40",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c"
+  },
+  "controller_sha256": "df1ff4b2b7ddb2ae20a3ab4cff3fedd6d34a984a09ef4e6b03300c899b1120f9",
+  "blocking_findings": [],
+  "probe_results": {
+    "synthetic_parity_max_absolute": 7.105427357601002e-15,
+    "synthetic_cubic_limit_relative": 1.8017855208975471e-10,
+    "canonical_order_independently_verified": true,
+    "real_saved_arrays_read": false,
+    "queries": 0,
+    "fits": 0,
+    "optimizer_calls": 0
+  },
+  "prerequisites": [
+    "Commit exact reviewed source/protocol/dependencies and require clean checkout before execution.",
+    "Execute once in a new directory under reviewed controller; no teacher/evaluation arrays, fitting or optimizer access."
+  ],
+  "limitations": [
+    "Residuals compare frozen candidate with noisy calibration estimators, not unknown exact teacher coefficients.",
+    "Saturation-minus-exact measures candidate approximation discrepancy, not teacher error.",
+    "Preprojection coefficients absent: logged tail only; no independent projection-effect measurement.",
+    "Candidate quality remains failed; private gate closed.",
+    "Resource monitor is sampled process-tree RSS, not continuous hard-bound proof."
+  ]
+}

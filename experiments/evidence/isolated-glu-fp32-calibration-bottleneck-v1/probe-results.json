@@ -1,0 +1,9 @@
+{
+  "synthetic_parity_max_absolute": 7.105427357601002e-15,
+  "synthetic_cubic_limit_relative": 1.8017855208975471e-10,
+  "canonical_order_independently_verified": true,
+  "real_saved_arrays_read": false,
+  "queries": 0,
+  "fits": 0,
+  "optimizer_calls": 0
+}
