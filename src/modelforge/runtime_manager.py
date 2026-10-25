@@ -55,6 +55,8 @@ def engine_call(
         TOKENIZERS_PARALLELISM="false",
         OMP_NUM_THREADS="2",
     )
+    if operation in {"glu32_reconstruct", "glu32_predict"}:
+        environment.update(OMP_NUM_THREADS="1", OPENBLAS_NUM_THREADS="1", VECLIB_MAXIMUM_THREADS="1")
     return run_json(
         [executable, "-m", "modelforge.runtime_worker"],
         {"operation": operation, "arguments": arguments},

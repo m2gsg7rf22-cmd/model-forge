@@ -258,6 +258,8 @@ class Service:
             and not p.is_symlink()
             and p.resolve().is_relative_to(project.resolve())
         ]
+        from .glu32_io import export_files as glu32_export_files
+        files.extend(glu32_export_files(project / "glu32-reconstruction", self._accepted_glu32(project_id)))
         findings = self.findings(project_id)
         with zipfile.ZipFile(target, "x", zipfile.ZIP_DEFLATED) as archive:
             archive.writestr("research.json", json.dumps(findings, indent=2))
@@ -688,6 +690,40 @@ class Service:
             )
             raise
         return self._record(project_id, "representation-research", result)
+
+    def _accepted_glu32(self, project_id: str) -> dict[str, str]:
+        return {str(f["data"]["artifact_id"]): str(f["data"]["manifest_sha256"]) for f in self.findings(project_id)
+                if f["kind"] == "glu32-reconstruction" and f["data"].get("candidate_built") is True
+                and f["data"].get("process_monitor_scope") == "process_and_children"
+                and isinstance(f["data"].get("artifact_id"), str)
+                and isinstance(f["data"].get("manifest_sha256"), str)}
+
+    def reconstruct_glu32(self, project_id: str, observations_path: str) -> dict[str, Any]:
+        """Build a fixed isolated bias-free FP64 SwiGLU32/64/32 candidate from authorized saved observations."""
+        artifact_id = uuid.uuid4().hex
+        destination = self._project(project_id) / "glu32-reconstruction" / artifact_id
+        try:
+            result = self._engine("glu32_reconstruct", {"observations_path": observations_path, "destination": str(destination)},
+                                  memory_limit_mb=512, timeout_seconds=180)
+            if result.get("process_monitor_scope") != "process_and_children":
+                raise ValueError("Incomplete GLU32 process-tree monitoring")
+        except Exception as exc:
+            self._record(project_id, "glu32-reconstruction-failed", {"completed":False,"error_type":type(exc).__name__,"error":str(exc)[:2000]})
+            raise
+        return self._record(project_id, "glu32-reconstruction", {**result,"artifact_id":artifact_id})
+
+    def predict_glu32(self, project_id: str, artifact_id: str, inputs: list[list[float]]) -> dict[str, Any]:
+        """Reload a generated GLU32 candidate and predict locally; no reference-model query."""
+        if len(artifact_id)!=32 or any(c not in "0123456789abcdef" for c in artifact_id):
+            raise ValueError("Invalid GLU32 artifact id")
+        accepted = self._accepted_glu32(project_id)
+        if artifact_id not in accepted:
+            raise ValueError("GLU32 candidate was not accepted by a completed bounded operation")
+        directory = self._project(project_id) / "glu32-reconstruction" / artifact_id
+        from .glu32_io import require_commitment
+        require_commitment(directory, accepted[artifact_id])
+        result = self._engine("glu32_predict", {"artifact_directory":str(directory),"inputs":inputs,"manifest_sha256":accepted[artifact_id]},memory_limit_mb=512,timeout_seconds=30)
+        return self._record(project_id,"glu32-prediction",result)
 
     def reconstruct_antipodal(self, project_id: str, observations_path: str) -> dict[str, Any]:
         """Reconstruct an isolated GLU even component from authorized paired responses."""

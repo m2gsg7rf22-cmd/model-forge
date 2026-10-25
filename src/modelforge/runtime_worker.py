@@ -74,6 +74,10 @@ def dispatch(payload: dict[str, Any]) -> dict[str, Any]:
         from .interpretability import trace_local
 
         result = trace_local(**arguments)
+    elif operation in {"glu32_reconstruct", "glu32_predict"}:
+        from . import glu32_io
+        result = (glu32_io.reconstruct_observations(**arguments) if operation == "glu32_reconstruct"
+                  else glu32_io.predict_candidate(**arguments))
     elif operation == "antipodal_reconstruct":
         from .antipodal_io import reconstruct_observations
 

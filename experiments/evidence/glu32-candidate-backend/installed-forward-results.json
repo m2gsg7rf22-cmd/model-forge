@@ -1,0 +1,13 @@
+{
+  "status": "verified_installed_wheel_cli_forward_only",
+  "installed_kernel": "/private/tmp/modelforge-glu32-clean/lib/python3.12/site-packages/modelforge/glu32.py",
+  "python": "/private/tmp/modelforge-glu32-clean/bin/python",
+  "external_cwd": "/private/tmp/modelforge-glu32-independent-review",
+  "pythonpath_absent": true,
+  "heavy_engines_absent": true,
+  "new_independent_input_rows": 17,
+  "frozen_public_reference_prediction_relative_difference": 0.0,
+  "reference_verified_flag": false,
+  "no_fitting_queries_or_private_heldout_reads": true,
+  "comparison_scope": "Already public development candidate vsfrozenpubliclearner output; no teachertruth or heldout evaluation."
+}

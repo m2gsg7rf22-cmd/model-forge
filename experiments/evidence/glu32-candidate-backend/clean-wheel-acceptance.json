@@ -1,0 +1,31 @@
+{
+  "installed_kernel": "/private/tmp/modelforge-glu32-clean/lib/python3.12/site-packages/modelforge/glu32.py",
+  "python": "/private/tmp/modelforge-glu32-clean/bin/python",
+  "heavy_engines_absent": true,
+  "cli_create_reconstruct_predict_export_reload": true,
+  "mcp_actual_flow": {
+    "schema": {
+      "properties": {
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "observations_path": {
+          "title": "Observations Path",
+          "type": "string"
+        }
+      },
+      "required": [
+        "project_id",
+        "observations_path"
+      ],
+      "title": "reconstruct_glu32Arguments",
+      "type": "object"
+    },
+    "memory_samples": 56,
+    "peak_sampled_rss_bytes": 282083328
+  },
+  "frozen_reference_prediction_relative_difference": 0.0,
+  "cli_peak_sampled_rss_bytes": 289718272,
+  "no_new_sealed_science": true
+}

@@ -1,0 +1,12 @@
+{
+  "student": {
+    "self_consistent_changed_artifact_loads": true,
+    "predict_rejected": "Accepted candidate commitment changed",
+    "export_rejected": "Accepted candidate commitment changed"
+  },
+  "report": {
+    "self_consistent_changed_artifact_loads": true,
+    "predict_rejected": "Accepted candidate commitment changed",
+    "export_rejected": "Accepted candidate commitment changed"
+  }
+}

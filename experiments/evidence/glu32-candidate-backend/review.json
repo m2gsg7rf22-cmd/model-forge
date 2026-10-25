@@ -1,0 +1,180 @@
+{
+  "status": "approved_for_packaged_glu32_delivery_subject_ci",
+  "reviewer": "independent GLU32 port/delivery reviewer",
+  "sources": {
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/service.py": "b4c6e9f154f20782c17b0fc147f47b35ede97911bcc3f362a3ad52229a22d121",
+    "src/modelforge/runtime_manager.py": "c04448a575534808ca955cba711deae06d61000cd3f2772b281e5f36d800b897",
+    "src/modelforge/runtime_worker.py": "34da36b179226b9ea931dcfa34dd73fe54cc4965e3aee63ebe440d5010e30202",
+    "src/modelforge/cli.py": "b4c86ad453fc230cfee6d5a082c65c001bcc15780d5d9f32ed2f268d642a70d4",
+    "src/modelforge/mcp_server.py": "25f950537c06c726809a2beb13455e9e343bf98a1d34a85405c54ef3f758ecfb"
+  },
+  "test_source_sha256": "887da040d006511f904462e72668d128667e21a4a580bc7820860df96084b380",
+  "scope": "Packageport and strictIOboundaries, Service/CLI/MCP/worker/predict/export wiring; no new sealedscientific experiment. Reviewer did no fitting, teachercreation, privatearrays, heldout or referencequeries.",
+  "resolved_findings": [
+    {
+      "id": "GLU32-R1",
+      "initial": "Rejected reconstruction can leave a complete candidate accidentally exportable.",
+      "resolution": "Only artifactIDs from successful candidate_built/process_and_children service findings may predict/export. Rejected files preserved as evidence but excluded.",
+      "independent_evidence": "Both incomplete-monitor and timeoutafterwrite rejectpredict/export; acceptedpositivecontrol exports3files."
+    },
+    {
+      "id": "GLU32-R2",
+      "initial": "DuplicateJSON keys silently collapse before strictschema validation.",
+      "resolution": "read_json uses duplicate-rejecting object_pairs_hook. Independent repairedduplicateprobe rejects."
+    },
+    {
+      "id": "GLU32-R3",
+      "initial": "Selfconsistent rehashedstudent/report could lose connection to completedoperation provenance.",
+      "resolution": "Successfulservicefinding stores manifestsha256; serviceexport/predict and workerpredict check exactmanifestcommitment first.",
+      "independent_evidence": "Rehashedstudent and rehashedreport both still load as selfconsistent standalonecandidate but fail servicepredict/export."
+    },
+    {
+      "id": "GLU32-R4",
+      "initial": "Parent flagged nullable/missing candidatecommitments and kernel optionalfilesystemoutput.",
+      "resolution": "Exactmanifestkeys/intversion/64hexhashes required; purekernel no filesystemread/write."
+    }
+  ],
+  "blocking_findings": [],
+  "math_equivalence": {
+    "ast_identical_helpers": [
+      "pack",
+      "unpack",
+      "tangent",
+      "residual_subspace",
+      "merge"
+    ],
+    "refine": "AST identical after replacing literal24 with steps parameter(default24); initialstage uses12 as registered.",
+    "search": "AST identical after removing optionalfilesystemoutput branch.",
+    "adam_and_multiscale": "Static equations/seeds/constants/thresholds match frozenv4; parentknownpublicfixture numericregression covers actualsolver output.",
+    "limit": "AST/staticcomparison is not a proof of numericalidentifiability or arbitraryinput equivalence."
+  },
+  "independent_evidence": {
+    "math-static-results.json": {
+      "sha256": "01d0ed83fab505cda1aba30dd5721ed0bdc8e72f190f67d0f81c991a299ceaba",
+      "result": {
+        "pack": true,
+        "unpack": true,
+        "tangent": true,
+        "residual_subspace": true,
+        "merge": true,
+        "refine_identical_after_parameterizing_fixed_steps_default24": true,
+        "search_identical_after_removing_optional_filesystem_output": true
+      }
+    },
+    "io-probe-results.json": {
+      "sha256": "bc4a8cb8f4b25140c2d9e5f0ea1e5506173690c9b06a1985130ad6a6cadd41f4",
+      "result": {
+        "version2_huge": "ValueError: Invalid finite float64 array shape/dtype",
+        "object_dtype": "ValueError: Invalid finite float64 array shape/dtype",
+        "infinite_values": "ValueError: Nonfinite observation array",
+        "wrong_hash": "ValueError: Array commitment mismatch",
+        "symlink_ancestor": "ValueError: Requires bounded regular artifact without symlink ancestors",
+        "json_exponent_overflow": "ValueError: Out of range float values are not JSON compliant: inf",
+        "duplicate_json_fields_current_result": {
+          "schema_version": 1
+        }
+      }
+    },
+    "repaired-export-results.json": {
+      "sha256": "d245037b77627e12a3f5dbb2f114697da126092b26d9a9f051d06015241d3489",
+      "result": {
+        "incomplete-monitor": {
+          "valid_candidate_preserved_as_evidence": true,
+          "export_file_count": 0,
+          "accepted_ids": [],
+          "prediction_rejected": true
+        },
+        "timeout": {
+          "valid_candidate_preserved_as_evidence": true,
+          "export_file_count": 0,
+          "accepted_ids": [],
+          "prediction_rejected": true
+        },
+        "accepted-control": {
+          "valid_candidate_preserved_as_evidence": true,
+          "export_file_count": 3,
+          "accepted_ids": [
+            "8bc691c964b343d095163e0738813d55"
+          ],
+          "prediction_rejected": false
+        },
+        "duplicate_json_rejected": "Duplicate JSON key"
+      }
+    },
+    "provenance-results.json": {
+      "sha256": "4bb8b9ed3735753c421e39939199de5ac7d0cd7fed8353f30f5ec84bfc848fdd",
+      "result": {
+        "student": {
+          "self_consistent_changed_artifact_loads": true,
+          "predict_rejected": "Accepted candidate commitment changed",
+          "export_rejected": "Accepted candidate commitment changed"
+        },
+        "report": {
+          "self_consistent_changed_artifact_loads": true,
+          "predict_rejected": "Accepted candidate commitment changed",
+          "export_rejected": "Accepted candidate commitment changed"
+        }
+      }
+    },
+    "installed-forward-results.json": {
+      "sha256": "fe0fa36bf70b0702d6ef7b078912e8feb04f54098a242abea26fbcf0b0b5e2d7",
+      "result": {
+        "status": "verified_installed_wheel_cli_forward_only",
+        "installed_kernel": "/private/tmp/modelforge-glu32-clean/lib/python3.12/site-packages/modelforge/glu32.py",
+        "python": "/private/tmp/modelforge-glu32-clean/bin/python",
+        "external_cwd": "/private/tmp/modelforge-glu32-independent-review",
+        "pythonpath_absent": true,
+        "heavy_engines_absent": true,
+        "new_independent_input_rows": 17,
+        "frozen_public_reference_prediction_relative_difference": 0.0,
+        "reference_verified_flag": false,
+        "no_fitting_queries_or_private_heldout_reads": true,
+        "comparison_scope": "Already public development candidate vsfrozenpubliclearner output; no teachertruth or heldout evaluation."
+      }
+    }
+  },
+  "parent_validation_inspected": {
+    "integration_xml_sha256": "d68beabb4a2f65c44322a02b76b83f2536aea2eaa1eb6c53eaf43073822a8ff1",
+    "tests": 25,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "scope": "GLU32newtests plus existingantipodalIObehavior; includes actualpublicfrozenlearner/port/service/CLI/MCP/export/reload. No broadregression claim.",
+    "cleanwheel_parent_report_path": "/private/tmp/modelforge-glu32-clean-acceptance-resolved/report.json",
+    "cleanwheel_parent_report_sha256": "b2b385f4107ac6d6d52f6174c56e7cf08545edbdfdcb6aadc838239e1f8d36ab",
+    "mypy_ruff": "Parent reports strictmypy7andRuffgreen; no independentrerun."
+  },
+  "wheel": {
+    "sha256": "d7d917af2cde3796e14c351ebce08209bcaff94105f1105ae2cfb42034d8e06b",
+    "all7reviewedsources_match_wheel_bytes": {
+      "src/modelforge/glu32.py": true,
+      "src/modelforge/glu32_io.py": true,
+      "src/modelforge/service.py": true,
+      "src/modelforge/runtime_manager.py": true,
+      "src/modelforge/runtime_worker.py": true,
+      "src/modelforge/cli.py": true,
+      "src/modelforge/mcp_server.py": true
+    },
+    "independent_installed_forward": "17newinputs via installedCLI under externalcwd/PYTHONPATHabsent, noheavyengines, exact0difference vsalreadypublicfrozenlearnercandidate.",
+    "model_downloads": 0
+  },
+  "approval_conditions": [
+    "Commit exact reviewed source and evidence; require planned3OS CI25testscope success before claiming crossplatformpackageddelivery.",
+    "No new scientificsuccess claim from publicdevelopment regression; keep frozenv4result scope separate.",
+    "Document exactcontinuousblockinputprofile, authorizedsavedobservations, resourcecaps, candidateflags and selfcontainedexportreload.",
+    "No broadGUI/nativepackageverification or rebuild claim; existing stablev0.1/v0.2 preserved."
+  ],
+  "limitations": [
+    "Only fixed isolatedbiasfreeFP64SwiGLU input32,width64,output32 continuousvectorquery calibrationprofile; not finaltextAPI, wholeTransformer, arbitrarymodel recovery or privatefrontiermodel.",
+    "Candidatemetadata/inputauthorized flag is a declaration, not proof ofrights/architecture/coverage.",
+    "Heldout_verified,numeric_certificate,original_weights_recovered,all_inputs_equivalence_proven remainfalse in generatedcandidate; predict reference_verified remainsfalse.",
+    "Independentinstalledforward compares publiccandidateoutputs; no privateheldout re-evaluation or newscientificreplication.",
+    "Standalonecandidatehashes give selfconsistency; servicefindingmanifestcommitment anchors acceptedoperation provenance. No sameaccount adversarialisolation or cryptographicsigner claim.",
+    "Fixedfinite search may fail coverage, ranks, memory or time and must recordfailure without silently retrying or exporting rejectedoperation.",
+    "CrossplatformCI is pending this approval; local25tests/wheel evidence do not establish allOSsuccess."
+  ],
+  "private_final_model_gate": "closed",
+  "universal_reconstruction_demonstrated": false
+}

@@ -1,0 +1,11 @@
+{
+  "version2_huge": "ValueError: Invalid finite float64 array shape/dtype",
+  "object_dtype": "ValueError: Invalid finite float64 array shape/dtype",
+  "infinite_values": "ValueError: Nonfinite observation array",
+  "wrong_hash": "ValueError: Array commitment mismatch",
+  "symlink_ancestor": "ValueError: Requires bounded regular artifact without symlink ancestors",
+  "json_exponent_overflow": "ValueError: Out of range float values are not JSON compliant: inf",
+  "duplicate_json_fields_current_result": {
+    "schema_version": 1
+  }
+}

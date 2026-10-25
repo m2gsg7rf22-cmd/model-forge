@@ -1,0 +1,23 @@
+{
+  "incomplete-monitor": {
+    "valid_candidate_preserved_as_evidence": true,
+    "export_file_count": 0,
+    "accepted_ids": [],
+    "prediction_rejected": true
+  },
+  "timeout": {
+    "valid_candidate_preserved_as_evidence": true,
+    "export_file_count": 0,
+    "accepted_ids": [],
+    "prediction_rejected": true
+  },
+  "accepted-control": {
+    "valid_candidate_preserved_as_evidence": true,
+    "export_file_count": 3,
+    "accepted_ids": [
+      "8bc691c964b343d095163e0738813d55"
+    ],
+    "prediction_rejected": false
+  },
+  "duplicate_json_rejected": "Duplicate JSON key"
+}
