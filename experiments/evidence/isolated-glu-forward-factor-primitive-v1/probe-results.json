@@ -1,0 +1,26 @@
+{
+  "synthetic_cases": [
+    {
+      "dimension": 1,
+      "qr_solution_relative_error": 2.6926963043558937e-16,
+      "weighted_objective": 159.65756570603062
+    },
+    {
+      "dimension": 3,
+      "qr_solution_relative_error": 1.18768381822291e-15,
+      "weighted_objective": 94.17602008090856
+    },
+    {
+      "dimension": 5,
+      "qr_solution_relative_error": 1.036560310983215e-14,
+      "weighted_objective": 89.05280487278569
+    }
+  ],
+  "independent_qr_coordinate_solution": true,
+  "ill_conditioned_guard_rejected": true,
+  "invalid_weights_rejected": true,
+  "physical_y_weighted_once": true,
+  "actual_experiment_arrays_read": 0,
+  "teacher_queries": 0,
+  "saved_candidate_fits": 0
+}

@@ -1,0 +1,19 @@
+{
+  "approved": true,
+  "scope": "synthetic-only weighted fixed-gate full-forward rank-at-most-one local quadratic primitive",
+  "sources": {
+    "examples/isolated_glu/forward_factor.py": "2d92db73e5b6c1e674c8776b6b3e8c4db693cc4354448d6404b7565a428d029c",
+    "tests/test_glu_forward_factor.py": "11bc81953bb6c0a7bb8f48ea4b22078c0efc86b9618211c05060f863bca4d549",
+    "docs/glu-forward-factor-primitive.md": "e6e5b154544967911e9ff5e124074ead7101fa87050d2b2a15e398b35ecf2641"
+  },
+  "blocking_findings": [],
+  "independent_probe_sha256": "2ed95d749b551e7a6ba5b8554c0f6715a3a028d553486f556dc3229afb24118a",
+  "probe_results_sha256": "1681cd2ff479d5c596c9736bbc6b709c635d205cbda287228ca68602022c54a8",
+  "limitations": [
+    "Mathematical local minimizer in exact arithmetic; no floating-point certificate near condition threshold.",
+    "Response arrays must already have residual multipliers applied once; squared objective uses w squared.",
+    "No saved-data fit, forward-quality improvement, guard selection or universal reconstruction established.",
+    "A future actual protocol must freeze independent calibration train/guard data, ranking, retention, sweeps, resource bounds and a fresh one-time public evaluation.",
+    "Previous Hessian-polish quality failure preserved; private gate closed."
+  ]
+}
