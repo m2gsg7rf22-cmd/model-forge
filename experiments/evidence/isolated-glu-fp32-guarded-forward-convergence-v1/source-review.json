@@ -1,0 +1,48 @@
+{
+  "approved": true,
+  "scope": "prospective bounded four-sweep fixed-gate convergence study on reused PUBLIC calibration; not outcome/quality acceptance",
+  "sources": {
+    "examples/isolated_glu/forward_convergence.py": "4567cbcbd84e6cbeb16d360566561e3a7f3ba770c3b8445ff55fa41210ca8819",
+    "examples/isolated_glu/forward_convergence_evaluate.py": "60744635021805e04e242da3e847f3f4c8c5dcd8a4b1e7d9bdfccbc853de2d9d",
+    "tests/test_glu_forward_convergence.py": "18e22de31053a747e1e51b4d8a04e2eb2603369879fda3a7aa024ffbef20cab0",
+    "experiments/preregistrations/isolated-glu-fp32-guarded-forward-convergence-v1.json": "50dfb7772881d55c958352bd5a8109858ededa572a65f9e2f1e7af196ebe04ca",
+    "docs/superpowers/plans/2026-10-25-guarded-forward-convergence.md": "10f5619085f4478476af1013a6dfcfef2fcdf33664e97e2867a5956cdd5f4b26",
+    "examples/isolated_glu/forward_factor.py": "2d92db73e5b6c1e674c8776b6b3e8c4db693cc4354448d6404b7565a428d029c",
+    "examples/isolated_glu/guarded_forward.py": "1d0d4e2a77f798672d7dacf194d7b1338c6447355e7188a27e8b24ad77529818",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "examples/isolated_glu/fp32_fullmap.py": "51914ccd5ab0f5c2c7fcb15942f5f1769e7856d1bae1e7a735e3a276ac4f6d5c",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb"
+  },
+  "controller_sha256": "7bf23a9838393bdcafdf49e8e674458a2b881753f23e75c79535df8d91ed14cd",
+  "blocking_findings": [],
+  "independent_synthetic_probes": {
+    "synthetic_full_four_sweeps_verified": true,
+    "synthetic_solves": 21,
+    "synthetic_accepted": 9,
+    "all_proposal_costs_ranking_sequence_and_dual_guards_verified": true,
+    "initial_and_current_guard_ceilings_challenged": true,
+    "zero_accept_first_sweep_stop_verified": true,
+    "evaluator_ast_only_method_seed_changed": true,
+    "actual_saved_data_reads": 0,
+    "teacher_queries": 0,
+    "saved_candidate_fits": 0,
+    "evaluation_reads": 0
+  },
+  "prerequisites": [
+    "Commit exact reviewed bytes and require clean checkout before a single new run.",
+    "Five source-data inputs stay hash-bound; previously failed experimental starting candidate is not promoted.",
+    "Maximum4sweeps,64screens+atmost64sequential per sweep,512local solves; zero-accepted sweep ends run.",
+    "Every accepted update decreases current training objective and satisfies both current and initial-run per-group guard bounds.",
+    "Preserve all per-sweep proposal matrices and logs; independent audit reconstructs intermediate residuals without new coupling solves.",
+    "Only changed candidate gets fresh once-only paired941031 evaluation, fixed0.001 criterion."
+  ],
+  "limitations": [
+    "Train and guard are reused calibration; no new hidden or independent fitting observations.",
+    "Convergence is bounded study, not proof of optimizer convergence or global minimum.",
+    "Fixed gates cannot repair direction errors; lower calibration objective not forward-quality acceptance.",
+    "Sampled process-tree RSS cannot prove actual peak or continuous hard bound.",
+    "Earlier failures preserved; universal reconstruction unproved and private gate closed."
+  ]
+}

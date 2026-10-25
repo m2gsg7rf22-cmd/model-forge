@@ -1,0 +1,13 @@
+{
+  "synthetic_full_four_sweeps_verified": true,
+  "synthetic_solves": 21,
+  "synthetic_accepted": 9,
+  "all_proposal_costs_ranking_sequence_and_dual_guards_verified": true,
+  "initial_and_current_guard_ceilings_challenged": true,
+  "zero_accept_first_sweep_stop_verified": true,
+  "evaluator_ast_only_method_seed_changed": true,
+  "actual_saved_data_reads": 0,
+  "teacher_queries": 0,
+  "saved_candidate_fits": 0,
+  "evaluation_reads": 0
+}
