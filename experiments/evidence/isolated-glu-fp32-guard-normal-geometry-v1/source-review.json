@@ -1,0 +1,55 @@
+{
+  "approved": true,
+  "scope": "prospective single read-only PUBLIC calibration guard-normal geometry diagnostic; no fitting/direction solve/evaluation",
+  "sources": {
+    "examples/isolated_glu/guard_normal_geometry.py": "9605b54e39119b0fa0c5dcc977214084d33a0e9b58c95d88cc04923ac5c45b29",
+    "tests/test_glu_guard_normal_geometry.py": "15aa4b17200e591d40ba37b7badfa3a31434855e3f8b654a68be10827e2efa71",
+    "experiments/preregistrations/isolated-glu-fp32-guard-normal-geometry-v1.json": "39ffb4b4c73f6c145cbd7831feba29ea5ce6e9866051ede6207ffddd6b3d3bb1",
+    "docs/glu-guard-normal-geometry-diagnostic.md": "6a0ba9c36052a830da389436a97e354d23f14c3a7daac360541e96afa604a0e2",
+    "docs/superpowers/plans/2026-10-25-guard-normal-geometry-diagnostic.md": "e5d2fb1f35d31ce13a6b94f89e2d44749ac033dfdb1b5be86b585681ac52b4af",
+    "examples/isolated_glu/guard_metric_normals.py": "50e15502584660371d42dfd8bbfd169a37b03a3474e8ec9575925ae25f2db1a8",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e",
+    "examples/isolated_glu/guard_aware_direction.py": "289fd53178e2adabd12e6f74a8f8d2ba9000addc181b64f7c5233de7c9c192ed",
+    "examples/isolated_glu/evidence_transport.py": "40b61e48075329a22b81a143fcf5373c5e86bd9a0e528869285531dce80714da",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  },
+  "controller_sha256": "97d898a00463a7dbea00d1f304db83c738ba8cd8db9fddb9367b4b99cd226e96",
+  "blocking_findings": [],
+  "independent_synthetic_probes": {
+    "all_units_preserved": true,
+    "independent_full_forward_and_normals_max_relative_error": 1.2056933019346444e-16,
+    "all_masks_padded_spectra_status_codes_checked": true,
+    "separated_spectra_independent_Gram_eigen_check": true,
+    "near_vs_exact_dependency_classification_checked": true,
+    "failed_group_remaining_records_and_null_logical_count_preserved": true,
+    "valid_empty_geometry_mask0_preserved": true,
+    "small_persistence_hashes_and_receipt_checked": true,
+    "verified_worstsize_engine_test_not_repeated": true,
+    "no_solve_and_no_cone_direction_enforced": true,
+    "actual_saved_arrays_read": 0,
+    "teacher_queries": 0,
+    "actual_fits": 0,
+    "all_subset_failures_retained_with_masks_verified": true
+  },
+  "probe_sha256": "15eefa1b8101c0bb2bea77e0c9eaf4ea015b6e2142aab31563103d308986b4be",
+  "error_control_probe_sha256": "53d316daa275a49208c375d774498258b5f285865debd288bb2467779571064f",
+  "probe_results_sha256": "2a5b0bdbce7931f710c0ba675f9d34b8bddf9e6b3c313cea825b958d0e2c4ce8",
+  "prerequisites": [
+    "Freeze exact reviewed source/protocol/dependencies in clean commit before any saved-data use.",
+    "Six source-data files stay hash-bound; original3MBfitreport hash-only and compact parser semantics unchanged.",
+    "All64units retained; mapping failures separate from geometry failure/domain categories.",
+    "Fixed1e-5geometry and1e-12near-tie thresholds; no postdata adjustment or silent plane truncation.",
+    "Only SVD/exact-original-rank inspection, no cone/QP/KKT/direction solve, candidate update, target query or consumed-validation access.",
+    "One exclusive run under180s/512MiB polled process-tree/BLAS1; independent saved-array outcome audit afterward without refit or query."
+  ],
+  "limitations": [
+    "Full profile mapping fails on any extra tie under logical8 cap; failed-profile storage capacity32 does not enlarge the optimizer domain.",
+    "ZeroMlogical count null; valid omitted-zero empty A is a different explicit mask0 case.",
+    "Raw profile/error provenance survives failed groups, but complete computed normals for those failed groups do not exist.",
+    "Domain applicability is not numerical completeness, optimizer usefulness, quality improvement or universal reconstruction evidence.",
+    "Worstsize transport control was reviewed, not unnecessarily rerun; independent smaller persistence hashes checked.",
+    "Polled RSS may miss true peak; failures and incomplete resource scope remain failures.",
+    "Existing failed controller/missing original build RSS and all quality failures preserved; private gate closed."
+  ]
+}

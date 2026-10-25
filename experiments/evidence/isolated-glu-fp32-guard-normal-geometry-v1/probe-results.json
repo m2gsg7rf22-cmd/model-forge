@@ -1,0 +1,16 @@
+{
+  "all_units_preserved": true,
+  "independent_full_forward_and_normals_max_relative_error": 1.2056933019346444e-16,
+  "all_masks_padded_spectra_status_codes_checked": true,
+  "separated_spectra_independent_Gram_eigen_check": true,
+  "near_vs_exact_dependency_classification_checked": true,
+  "failed_group_remaining_records_and_null_logical_count_preserved": true,
+  "valid_empty_geometry_mask0_preserved": true,
+  "small_persistence_hashes_and_receipt_checked": true,
+  "verified_worstsize_engine_test_not_repeated": true,
+  "no_solve_and_no_cone_direction_enforced": true,
+  "actual_saved_arrays_read": 0,
+  "teacher_queries": 0,
+  "actual_fits": 0,
+  "all_subset_failures_retained_with_masks_verified": true
+}

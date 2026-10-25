@@ -1,0 +1,15 @@
+{
+  "focused_tests_passed": 8,
+  "test_file": "tests/test_glu_guard_normal_geometry.py",
+  "strict_mypy": "passed1module",
+  "ruff": "passed2files",
+  "synthetic_worstsize_full_unit_subset_records": 16384,
+  "synthetic_worstsize_logical_records": 512,
+  "details_larger_than_2MB": true,
+  "engine_output_bound_bytes": 2048,
+  "actual_saved_data_read": false,
+  "direction_solves": 0,
+  "target_queries": 0,
+  "candidate_updates": 0,
+  "private_gate": "closed"
+}

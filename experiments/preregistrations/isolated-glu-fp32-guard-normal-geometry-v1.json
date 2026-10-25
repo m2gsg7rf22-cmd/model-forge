@@ -1,0 +1,40 @@
+{
+  "id": "isolated-glu-fp32-guard-normal-geometry-v1",
+  "inputs": {
+    "candidate": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+    "compact_metadata": "5aad40a6f33ab0b374e95086e4ab977f5b8e17a1d73d5d761ab03f7a039ba624",
+    "full_fit_report": "d79a4c7818b5269feb89fcef0da8a197257c17162de5a9acdc30ed5c941a377b",
+    "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+    "manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+    "original_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96"
+  },
+  "unit_count": 64,
+  "max_subsets_per_unit": 256,
+  "max_subsets_total": 16384,
+  "logical_plane_cap_before_zero_omission": 8,
+  "geometry_ratio_threshold": 1e-05,
+  "near_max_relative_tolerance": 1e-12,
+  "direction_solves": 0,
+  "new_target_queries": 0,
+  "candidate_updates": 0,
+  "new_evaluation_calls": 0,
+  "guard_seed": 882031,
+  "reused_guard_vectors": 1024,
+  "guard_is_adaptive_calibration": true,
+  "timeout_seconds": 180,
+  "memory_limit_mb": 512,
+  "worker_output_limit_bytes": 2048,
+  "blas_threads": 1,
+  "full_fit_report_read_mode": "hash_only",
+  "automatic_retry": false,
+  "sealed": false,
+  "private_gate": "closed",
+  "frozen_dependencies": {
+    "examples/isolated_glu/guard_metric_normals.py": "50e15502584660371d42dfd8bbfd169a37b03a3474e8ec9575925ae25f2db1a8",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e",
+    "examples/isolated_glu/guard_aware_direction.py": "289fd53178e2adabd12e6f74a8f8d2ba9000addc181b64f7c5233de7c9c192ed",
+    "examples/isolated_glu/evidence_transport.py": "40b61e48075329a22b81a143fcf5373c5e86bd9a0e528869285531dce80714da",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  }
+}
