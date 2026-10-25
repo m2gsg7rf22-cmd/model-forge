@@ -1,0 +1,282 @@
+{
+  "approved": true,
+  "scope": "independent saved-array scientific findings audit only; original execution protocol remains FAILED",
+  "report_sha256": "86f4b2d9a18736ea36f0df5ef9e51b23351e72ec87d3f92e7d80ae33071ce6d7",
+  "details_sha256": "98f6f617286dc127f00aca2ef0cd465f74a5e351a5ab16cb22cf31c86c22fd1c",
+  "numeric_sha256": "e6373b0961c8b3d0f6aecefbd9984198eea631dca523f8e4cc2dd8935fda3569",
+  "summary_sha256": "8cb337d31ee804b327f5cf4146320f8d95d12a6aba3298f6d4afdb55a745241a",
+  "source_commit": "a55755f11a398effa009ae7f2e6e20f1f1d91e2f",
+  "sources_verified": 11,
+  "six_inputs_unchanged": {
+    "candidate": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+    "compact_metadata": "5aad40a6f33ab0b374e95086e4ab977f5b8e17a1d73d5d761ab03f7a039ba624",
+    "full_fit_report": "d79a4c7818b5269feb89fcef0da8a197257c17162de5a9acdc30ed5c941a377b",
+    "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+    "manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+    "original_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96"
+  },
+  "full_3MB_fit_report_read_mode": "hash_only",
+  "independent_sigmoid_einsum_prediction_relative_error": 4.190221352981367e-16,
+  "independent_normals_max_relative_error": 1.0000706370097766e-15,
+  "all64_unit_mapping_and_provenance_verified": true,
+  "counts": {
+    "units": 64,
+    "mapping_succeeded": 64,
+    "mapping_failed": 0,
+    "geometry_in_domain": 64,
+    "geometry_outside_domain": 0,
+    "geometry_failed": 0,
+    "empty_geometry": 0
+  },
+  "normal_count_distribution": {
+    "8": 37,
+    "7": 27
+  },
+  "logical_records_per_unit": 8,
+  "computed_zero_omissions": 27,
+  "computed_zero_omissions_by_metric": {
+    "maximum_absolute": 27
+  },
+  "computed_zero_records": [
+    {
+      "unit": 1,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 2,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 4,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 7,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 10,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 11,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 13,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 15,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 20,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 23,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 24,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 25,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 26,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 27,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 32,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 34,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 35,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 36,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 39,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 45,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 46,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 48,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 50,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 52,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 57,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 58,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    },
+    {
+      "unit": 63,
+      "group": 3,
+      "metric": "maximum_absolute",
+      "row": 789,
+      "output": 4
+    }
+  ],
+  "all_subsets_audited": 12928,
+  "subset_status_counts": {
+    "empty": 64,
+    "independent_within_domain": 12864
+  },
+  "minimum_independent_normalized_singular_ratio": 0.05189049023726976,
+  "minimum_ratio_unit": 47,
+  "minimum_ratio_mask": 255,
+  "geometry_threshold": 1e-05,
+  "exact_rank_checks_required": 0,
+  "exact_rank_not_applicable_reason": "All nonempty normalized subsets exceeded fixed geometry threshold; none required exact-rank branch.",
+  "padded_npz_arrays_and_hashes_verified": true,
+  "original_controller_status": "FAILED",
+  "failure_reason": "strict required process_and_children monitor scope not available",
+  "protocol_success": false,
+  "scientific_findings": "64 mapped unit normal sets pass frozen numerical geometry domain only",
+  "resources": {
+    "seconds": 0.39474937500199303,
+    "monitor_scope": "process_only_children_unavailable",
+    "peak_sampled_PROCESS_rss_bytes": 83279872,
+    "samples": 7,
+    "tree_peak_known": false,
+    "512MiB_tree_bound_verified": false
+  },
+  "reviewer_direction_solves": 0,
+  "reviewer_fits": 0,
+  "reviewer_queries": 0,
+  "public_validation_arrays_read": false,
+  "new_evaluation_seed_reserved_or_consumed": false,
+  "candidate_updates": 0,
+  "private_gate": "closed",
+  "limitations": [
+    "Calibration-only domain measurement, not optimizer usefulness, nonlinear feasibility, model quality or universal reconstruction.",
+    "Computed_FP64_zero omissions are not ideal exact-zero derivative certificates.",
+    "All normals individually passing geometry does not permit dropping planes or changing frozen policies.",
+    "Controller FAILED due monitor scope; process RSS is not process-tree peak or continuous memory bound.",
+    "No rerun is authorized to recover resource evidence; prior failures remain."
+  ],
+  "computed_zero_omissions_by_group": {
+    "3": 27
+  },
+  "omissions_with_source_FP64_prime_zero": 27,
+  "separate_future_monitor_preflight": {
+    "receipt_sha256": "f4496759c30a56a148e503d9f7c97673d30502d8fedde24dc3605d44af115cda",
+    "synthetic_only": true,
+    "monitor_scope": "process_and_children",
+    "sampled_tree_rss_bytes": 16924672,
+    "samples": 4,
+    "original_failed_protocol_repaired": false,
+    "preflight_not_repeated": true
+  }
+}

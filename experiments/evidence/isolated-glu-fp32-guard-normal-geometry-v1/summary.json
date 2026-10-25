@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "evidence_file": "numeric-evidence.npz",
+  "evidence_sha256": "e6373b0961c8b3d0f6aecefbd9984198eea631dca523f8e4cc2dd8935fda3569",
+  "evidence_bytes": 2887990,
+  "arrays": {
+    "guard_x": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "guard_y": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "prediction": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "physical_error": {
+      "shape": [
+        1024,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "normals": {
+      "shape": [
+        64,
+        32,
+        32
+      ],
+      "dtype": "float64"
+    },
+    "normal_counts": {
+      "shape": [
+        64
+      ],
+      "dtype": "float64"
+    },
+    "mapping_valid": {
+      "shape": [
+        64
+      ],
+      "dtype": "float64"
+    },
+    "subset_counts": {
+      "shape": [
+        64
+      ],
+      "dtype": "float64"
+    },
+    "subset_singular_values": {
+      "shape": [
+        64,
+        256,
+        8
+      ],
+      "dtype": "float64"
+    },
+    "subset_spectrum_lengths": {
+      "shape": [
+        64,
+        256
+      ],
+      "dtype": "float64"
+    },
+    "subset_status_codes": {
+      "shape": [
+        64,
+        256
+      ],
+      "dtype": "float64"
+    }
+  },
+  "metadata": {
+    "method": "isolated-glu-fp32-guard-normal-geometry-v1",
+    "details_file": "details.json",
+    "details_sha256": "98f6f617286dc127f00aca2ef0cd465f74a5e351a5ab16cb22cf31c86c22fd1c",
+    "details_bytes": 7013272,
+    "counts": {
+      "units": 64,
+      "mapping_succeeded": 64,
+      "mapping_failed": 0,
+      "geometry_in_domain": 64,
+      "geometry_outside_domain": 0,
+      "geometry_failed": 0,
+      "empty_geometry": 0
+    },
+    "inputs": {
+      "candidate": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+      "compact_metadata": "5aad40a6f33ab0b374e95086e4ab977f5b8e17a1d73d5d761ab03f7a039ba624",
+      "full_fit_report": "d79a4c7818b5269feb89fcef0da8a197257c17162de5a9acdc30ed5c941a377b",
+      "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+      "manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+      "original_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96"
+    },
+    "direction_solves": 0,
+    "target_queries": 0,
+    "candidate_updates": 0,
+    "private_gate": "closed"
+  }
+}

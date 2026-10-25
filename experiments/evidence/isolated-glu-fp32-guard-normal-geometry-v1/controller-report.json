@@ -1,0 +1,76 @@
+{
+  "source_commit": "a55755f11a398effa009ae7f2e6e20f1f1d91e2f",
+  "reviewed_sources": {
+    "examples/isolated_glu/guard_normal_geometry.py": "9605b54e39119b0fa0c5dcc977214084d33a0e9b58c95d88cc04923ac5c45b29",
+    "tests/test_glu_guard_normal_geometry.py": "15aa4b17200e591d40ba37b7badfa3a31434855e3f8b654a68be10827e2efa71",
+    "experiments/preregistrations/isolated-glu-fp32-guard-normal-geometry-v1.json": "39ffb4b4c73f6c145cbd7831feba29ea5ce6e9866051ede6207ffddd6b3d3bb1",
+    "docs/glu-guard-normal-geometry-diagnostic.md": "6a0ba9c36052a830da389436a97e354d23f14c3a7daac360541e96afa604a0e2",
+    "docs/superpowers/plans/2026-10-25-guard-normal-geometry-diagnostic.md": "e5d2fb1f35d31ce13a6b94f89e2d44749ac033dfdb1b5be86b585681ac52b4af",
+    "examples/isolated_glu/guard_metric_normals.py": "50e15502584660371d42dfd8bbfd169a37b03a3474e8ec9575925ae25f2db1a8",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e",
+    "examples/isolated_glu/guard_aware_direction.py": "289fd53178e2adabd12e6f74a8f8d2ba9000addc181b64f7c5233de7c9c192ed",
+    "examples/isolated_glu/evidence_transport.py": "40b61e48075329a22b81a143fcf5373c5e86bd9a0e528869285531dce80714da",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  },
+  "frozen_dependencies": {
+    "examples/isolated_glu/guard_metric_normals.py": "50e15502584660371d42dfd8bbfd169a37b03a3474e8ec9575925ae25f2db1a8",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e",
+    "examples/isolated_glu/guard_aware_direction.py": "289fd53178e2adabd12e6f74a8f8d2ba9000addc181b64f7c5233de7c9c192ed",
+    "examples/isolated_glu/evidence_transport.py": "40b61e48075329a22b81a143fcf5373c5e86bd9a0e528869285531dce80714da",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  },
+  "inputs_before": {
+    "candidate": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+    "compact_metadata": "5aad40a6f33ab0b374e95086e4ab977f5b8e17a1d73d5d761ab03f7a039ba624",
+    "full_fit_report": "d79a4c7818b5269feb89fcef0da8a197257c17162de5a9acdc30ed5c941a377b",
+    "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+    "manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+    "original_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96"
+  },
+  "status": "failed",
+  "direction_solves": 0,
+  "target_queries": 0,
+  "candidate_updates": 0,
+  "private_gate": "closed",
+  "diagnostic": {
+    "method": "isolated-glu-fp32-guard-normal-geometry-v1",
+    "units": 64,
+    "counts": {
+      "units": 64,
+      "mapping_succeeded": 64,
+      "mapping_failed": 0,
+      "geometry_in_domain": 64,
+      "geometry_outside_domain": 0,
+      "geometry_failed": 0,
+      "empty_geometry": 0
+    },
+    "subsets": 12928,
+    "details_bytes": 7013272,
+    "details_sha256": "98f6f617286dc127f00aca2ef0cd465f74a5e351a5ab16cb22cf31c86c22fd1c",
+    "numeric_sha256": "e6373b0961c8b3d0f6aecefbd9984198eea631dca523f8e4cc2dd8935fda3569",
+    "summary_sha256": "8cb337d31ee804b327f5cf4146320f8d95d12a6aba3298f6d4afdb55a745241a",
+    "direction_solves": 0,
+    "target_queries": 0,
+    "candidate_updates": 0,
+    "private_gate": "closed",
+    "process_monitor_scope": "process_only_children_unavailable",
+    "peak_sampled_rss_bytes": 83279872,
+    "memory_samples": 7,
+    "memory_limit_mb": 512
+  },
+  "error_type": "AssertionError",
+  "error": "",
+  "automatic_retry": false,
+  "inputs_after": {
+    "candidate": "2f207b106c8dae1f31348c1b46b4ea4bbd08d1f667a5ddb78fa1c86a8002378b",
+    "compact_metadata": "5aad40a6f33ab0b374e95086e4ab977f5b8e17a1d73d5d761ab03f7a039ba624",
+    "full_fit_report": "d79a4c7818b5269feb89fcef0da8a197257c17162de5a9acdc30ed5c941a377b",
+    "observations": "c8414e9215ac3e14967c23bccf4f0240efe83c6265b5339398f1851b074be210",
+    "manifest": "350c8650cd20facef31915b9b31622b9bc19f2b35d77285b64d07611821e4372",
+    "original_manifest": "b0141882daf5def2a20e70e32051be46399c94e17c094e05dc35d54267501a96"
+  },
+  "inputs_unchanged": true,
+  "seconds": 0.39474937500199303
+}
