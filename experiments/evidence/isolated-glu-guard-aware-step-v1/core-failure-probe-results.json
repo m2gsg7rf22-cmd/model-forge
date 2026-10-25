@@ -1,0 +1,10 @@
+{
+  "synthetic_only": true,
+  "cache_failure_raw_predictions_preserved": true,
+  "failure_inventory_all_hashes_verified": true,
+  "derived_initial_weighted_once_verified": true,
+  "all8_nonlinear_guard_rejections": true,
+  "no_candidate_on_nochange": true,
+  "actual_data_reads": 0,
+  "target_queries": 0
+}

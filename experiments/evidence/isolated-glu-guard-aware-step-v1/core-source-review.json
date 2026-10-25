@@ -1,0 +1,54 @@
+{
+  "approved": true,
+  "scope": "core supplied-data computation and synthetic branch evidence ONLY; controller/protocol/actual fitting NOT approved",
+  "sources": {
+    "examples/isolated_glu/guard_aware_step.py": "68e80cb287bbcc645fcd72e7899be536556c02ae21728973144060ac56f50909",
+    "tests/test_glu_guard_aware_step.py": "e2aff1e2a49d0f0c17f3fe146924f9b7538a2e95aa2ab4f8694d7b715d38d514",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e",
+    "examples/isolated_glu/guard_metric_normals.py": "50e15502584660371d42dfd8bbfd169a37b03a3474e8ec9575925ae25f2db1a8",
+    "examples/isolated_glu/guarded_gate_step.py": "2cf84f0ed1685991bf0dcafd499ea867944b81cfac2ff2cb9abfdded4c8fe5c8",
+    "examples/isolated_glu/guarded_forward.py": "1d0d4e2a77f798672d7dacf194d7b1338c6447355e7188a27e8b24ad77529818",
+    "examples/isolated_glu/guard_aware_trace.py": "7d862726ed7162594ad4c8692a2acec4441bd0671b75be6094215b9779ee6be5",
+    "examples/isolated_glu/guard_aware_direction.py": "289fd53178e2adabd12e6f74a8f8d2ba9000addc181b64f7c5233de7c9c192ed",
+    "examples/isolated_glu/guard_step_evidence.py": "66f1e3d5149d480718b5750d9adf9c115f35a75429e08d5b51c8782aae967ea6",
+    "examples/isolated_glu/evidence_transport.py": "40b61e48075329a22b81a143fcf5373c5e86bd9a0e528869285531dce80714da",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b"
+  },
+  "source_sha256": {
+    "examples/isolated_glu/guard_aware_step.py": "68e80cb287bbcc645fcd72e7899be536556c02ae21728973144060ac56f50909",
+    "tests/test_glu_guard_aware_step.py": "e2aff1e2a49d0f0c17f3fe146924f9b7538a2e95aa2ab4f8694d7b715d38d514",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e",
+    "examples/isolated_glu/guard_metric_normals.py": "50e15502584660371d42dfd8bbfd169a37b03a3474e8ec9575925ae25f2db1a8",
+    "examples/isolated_glu/guarded_gate_step.py": "2cf84f0ed1685991bf0dcafd499ea867944b81cfac2ff2cb9abfdded4c8fe5c8",
+    "examples/isolated_glu/guarded_forward.py": "1d0d4e2a77f798672d7dacf194d7b1338c6447355e7188a27e8b24ad77529818",
+    "examples/isolated_glu/guard_aware_trace.py": "7d862726ed7162594ad4c8692a2acec4441bd0671b75be6094215b9779ee6be5",
+    "examples/isolated_glu/guard_aware_direction.py": "289fd53178e2adabd12e6f74a8f8d2ba9000addc181b64f7c5233de7c9c192ed",
+    "examples/isolated_glu/guard_step_evidence.py": "66f1e3d5149d480718b5750d9adf9c115f35a75429e08d5b51c8782aae967ea6",
+    "examples/isolated_glu/evidence_transport.py": "40b61e48075329a22b81a143fcf5373c5e86bd9a0e528869285531dce80714da",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b"
+  },
+  "blocking_findings": [],
+  "resolved_findings": [
+    "Derived initial weights/predictions/residuals persisted before screen",
+    "Raw full/cache trial predictions persisted before cache comparisons",
+    "Proposal raw gradient persisted before Gram calculation",
+    "Terminal failed status and inventory dominate any existing candidate"
+  ],
+  "independent_probes": {
+    "complex_step_gradient_relative_error": 2.421570440025062e-16,
+    "cache_failure_raw_predictions_preserved": true,
+    "failure_inventory_all_hashes_verified": true,
+    "nonlinear_all8_reject_no_candidate": true,
+    "actual_saved_data_reads": 0,
+    "target_queries": 0
+  },
+  "actual_fit_approved": false,
+  "limitations": [
+    "Controller/preflight-before-input/deadline/resource receipts/preregistration/input commitments require separate review",
+    "No whole-process or tree-memory measurement claimed for these tiny probes",
+    "Previously completed worstsize transport not rerun",
+    "Failure recording remains best effort under filesystem errors or external kill",
+    "Physical observations supplied by caller cannot be identified as unweighted from values alone; provenance must enforce contract",
+    "Universal reconstruction unproved; private gate closed"
+  ]
+}

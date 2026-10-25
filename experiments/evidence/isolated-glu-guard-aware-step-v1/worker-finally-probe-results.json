@@ -1,0 +1,20 @@
+{
+  "stable": {
+    "inputs_unchanged": true,
+    "original_exception_preserved": true,
+    "before_persisted_before_loader_return": true
+  },
+  "mutated": {
+    "inputs_unchanged": false,
+    "original_exception_preserved": true,
+    "before_persisted_before_loader_return": true
+  },
+  "missing": {
+    "inputs_unchanged": null,
+    "original_exception_preserved": true,
+    "before_persisted_before_loader_return": true
+  },
+  "actual_input_reads": 0,
+  "actual_fits": 0,
+  "target_queries": 0
+}

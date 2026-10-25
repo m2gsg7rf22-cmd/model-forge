@@ -1,0 +1,108 @@
+{
+  "approved": true,
+  "actual_fitting_protocol_approved": true,
+  "scope": "Exactly one bounded supplied PUBLIC calibration fitting attempt under reviewed controller AFTER exact-source clean discovery-lab commit and successful pre-data process_and_children preflight; NO evaluation authorized",
+  "source_sha256": {
+    "examples/isolated_glu/evidence_transport.py": "40b61e48075329a22b81a143fcf5373c5e86bd9a0e528869285531dce80714da",
+    "examples/isolated_glu/forward_factor.py": "2d92db73e5b6c1e674c8776b6b3e8c4db693cc4354448d6404b7565a428d029c",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e",
+    "examples/isolated_glu/guard_aware_controller.py": "4508eb7e6045eb31a841ff1109b4f2d02b1352ee5875bd7b4c59213f83c16a0b",
+    "examples/isolated_glu/guard_aware_direction.py": "289fd53178e2adabd12e6f74a8f8d2ba9000addc181b64f7c5233de7c9c192ed",
+    "examples/isolated_glu/guard_aware_step.py": "68e80cb287bbcc645fcd72e7899be536556c02ae21728973144060ac56f50909",
+    "examples/isolated_glu/guard_aware_trace.py": "7d862726ed7162594ad4c8692a2acec4441bd0671b75be6094215b9779ee6be5",
+    "examples/isolated_glu/guard_aware_worker.py": "9e979a4bdd623550d72294873a137400b1130ed3966f8e754b452df15df9500f",
+    "examples/isolated_glu/guard_metric_normals.py": "50e15502584660371d42dfd8bbfd169a37b03a3474e8ec9575925ae25f2db1a8",
+    "examples/isolated_glu/guard_step_evidence.py": "66f1e3d5149d480718b5750d9adf9c115f35a75429e08d5b51c8782aae967ea6",
+    "examples/isolated_glu/guarded_forward.py": "1d0d4e2a77f798672d7dacf194d7b1338c6447355e7188a27e8b24ad77529818",
+    "examples/isolated_glu/guarded_gate_step.py": "2cf84f0ed1685991bf0dcafd499ea867944b81cfac2ff2cb9abfdded4c8fe5c8",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "experiments/preregistrations/isolated-glu-fp32-guard-aware-gate-step-v1.json": "eade1a7abf1351e7d2685abc4a5e7c7b42bd732ea83dc269c5af4cdf67393752",
+    "tests/test_glu_guard_aware_step.py": "e2aff1e2a49d0f0c17f3fe146924f9b7538a2e95aa2ab4f8694d7b715d38d514",
+    "tests/test_glu_guard_aware_controller.py": "bf78575adfa0eecbc67d5055bcb067375f3e9722212edc1d368ccdca7c92c708",
+    "tests/test_glu_guard_aware_worker.py": "7b2c06830f5ad151d42ef087bc33bbfde903509a0ec6690471864eda2f446b75",
+    "docs/glu-guard-aware-step-protocol.md": "94e081b2ae9c3bc93ef0aadfb56bce1ca4b6fee5cfc3e71f8732fff950235c7b",
+    "docs/superpowers/plans/2026-10-25-guard-aware-gate-step.md": "ed24259eb18e4e065973485aed3b465e26d90f2a4e3e0702c70f5590c4651c05"
+  },
+  "sources": {
+    "examples/isolated_glu/evidence_transport.py": "40b61e48075329a22b81a143fcf5373c5e86bd9a0e528869285531dce80714da",
+    "examples/isolated_glu/forward_factor.py": "2d92db73e5b6c1e674c8776b6b3e8c4db693cc4354448d6404b7565a428d029c",
+    "examples/isolated_glu/gate_gradient.py": "91ac340f9e78fb52645420bed0fc6b4247b3f1a264b466186c584a1cd9da411e",
+    "examples/isolated_glu/guard_aware_controller.py": "4508eb7e6045eb31a841ff1109b4f2d02b1352ee5875bd7b4c59213f83c16a0b",
+    "examples/isolated_glu/guard_aware_direction.py": "289fd53178e2adabd12e6f74a8f8d2ba9000addc181b64f7c5233de7c9c192ed",
+    "examples/isolated_glu/guard_aware_step.py": "68e80cb287bbcc645fcd72e7899be536556c02ae21728973144060ac56f50909",
+    "examples/isolated_glu/guard_aware_trace.py": "7d862726ed7162594ad4c8692a2acec4441bd0671b75be6094215b9779ee6be5",
+    "examples/isolated_glu/guard_aware_worker.py": "9e979a4bdd623550d72294873a137400b1130ed3966f8e754b452df15df9500f",
+    "examples/isolated_glu/guard_metric_normals.py": "50e15502584660371d42dfd8bbfd169a37b03a3474e8ec9575925ae25f2db1a8",
+    "examples/isolated_glu/guard_step_evidence.py": "66f1e3d5149d480718b5750d9adf9c115f35a75429e08d5b51c8782aae967ea6",
+    "examples/isolated_glu/guarded_forward.py": "1d0d4e2a77f798672d7dacf194d7b1338c6447355e7188a27e8b24ad77529818",
+    "examples/isolated_glu/guarded_gate_step.py": "2cf84f0ed1685991bf0dcafd499ea867944b81cfac2ff2cb9abfdded4c8fe5c8",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "experiments/preregistrations/isolated-glu-fp32-guard-aware-gate-step-v1.json": "eade1a7abf1351e7d2685abc4a5e7c7b42bd732ea83dc269c5af4cdf67393752",
+    "tests/test_glu_guard_aware_step.py": "e2aff1e2a49d0f0c17f3fe146924f9b7538a2e95aa2ab4f8694d7b715d38d514",
+    "tests/test_glu_guard_aware_controller.py": "bf78575adfa0eecbc67d5055bcb067375f3e9722212edc1d368ccdca7c92c708",
+    "tests/test_glu_guard_aware_worker.py": "7b2c06830f5ad151d42ef087bc33bbfde903509a0ec6690471864eda2f446b75",
+    "docs/glu-guard-aware-step-protocol.md": "94e081b2ae9c3bc93ef0aadfb56bce1ca4b6fee5cfc3e71f8732fff950235c7b",
+    "docs/superpowers/plans/2026-10-25-guard-aware-gate-step.md": "ed24259eb18e4e065973485aed3b465e26d90f2a4e3e0702c70f5590c4651c05"
+  },
+  "blocking_findings": [],
+  "resolved_findings": [
+    "Worker inventory persisted before metadata/array decoding",
+    "Handled failures rehash in finally; original error retained with separate input_check_error; unchanged true/false/unknown represented explicitly",
+    "Core initial derived/raw trial failure evidence persisted and terminal failure dominates leftover candidate"
+  ],
+  "independent_evidence": {
+    "core_complex_step_gradient_relative_error": 2.421570440025062e-16,
+    "core_cache_failure_inventory_verified": true,
+    "core_nonlinear_8reject_verified": true,
+    "controller_synthetic_cases": [
+      "changed_success",
+      "nochange_success_ineligible",
+      "leftovercandidate_failure",
+      "inventorymutation_failure",
+      "failedroot_failure",
+      "worker_scope_failure"
+    ],
+    "worker_finally_cases": [
+      "stable_hashes_true",
+      "mutated_hashes_false",
+      "missing_input_hashes_unknown"
+    ],
+    "actual_saved_input_reads": 0,
+    "actual_candidate_fits": 0,
+    "target_queries": 0,
+    "old_transport_reruns": 0
+  },
+  "prerequisites": [
+    "Commit exact reviewed sources/tests/docs/prereg and this approval; require clean discovery-lab HEAD",
+    "Use new exclusive durable output; never resume or retry the attempt",
+    "Require preflight process_and_children before scientific input contents/hash reads and same shared180s/512MiB/BLAS1 budget",
+    "Worker receipt must independently have process_and_children; any failure makes fitting protocol failed regardless of candidate files",
+    "Independent saved-outcome audit required before any separate prospective evaluation protocol"
+  ],
+  "not_authorized": [
+    "PUBLIC941033 reservation or evaluation",
+    "Queries/new calibration/teacher weights/private assets/consumed validation access",
+    "Retry after failure or resource receipt repair",
+    "Any private Luna-level model work or promotion"
+  ],
+  "limitations": [
+    "Polling is not a continuous peak guarantee; worker-tree RSS does not measure parent-controller RSS",
+    "External kill may prevent finally/after checks and only partial raw artifacts may survive",
+    "Filesystem failure may prevent failure report writing; no fsync/transactional crash durability claimed",
+    "Componentwise approximate KKT and geometry domain checks are not exact optimality or forward-error proof",
+    "Guard data is reused adaptive calibration, not independent validation",
+    "Successful fit would not establish quality/frontier capability/universal reconstruction; private gate remains closed"
+  ],
+  "evidence_sha256": {
+    "core_probe.py": "8b7e7b48ae42c86507f6bd92ac11df83127ae385c81186c0e49c5c5bd3a30d0f",
+    "core-probe-results.json": "e2c26bf9196d5b7ad6915134ea449d3d2fea85ed8aee4d5c84f8a052f4bd62ec",
+    "core_failure_probe.py": "25f2c64945ebf8936da9b37d7a4e688910012fc798b36fa646ad6c01e926224d",
+    "core-failure-probe-results.json": "4d192a15632af4a7dcc2ff1ab7e063931938b83c0376b8124a706f3afed1548f",
+    "controller_probe.py": "1edeb3b461237ff1f3901716712b83de21ed7b39dba49edeb5486198e5bdb20f",
+    "controller-probe-results.json": "d3a369f0ddf2bdce588e913b62779a5f3059d354a81d5796b5fe505d698609a3",
+    "worker_finally_probe.py": "bf83f87e34fc899cfd679db028c5b871cc05ec0ebaca8aa54dccb31ec4c6d7d8",
+    "worker-finally-probe-results.json": "cf222546c8a884d7a572cfe51d83a48b9556627071c08c5b0a33c5db424aee4a"
+  }
+}

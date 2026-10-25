@@ -1,0 +1,29 @@
+{
+  "changed": {
+    "status": "completed",
+    "evaluation_eligible": true
+  },
+  "nochange": {
+    "status": "completed",
+    "evaluation_eligible": false
+  },
+  "leftover": {
+    "status": "failed",
+    "evaluation_eligible": false
+  },
+  "mutated": {
+    "status": "failed",
+    "evaluation_eligible": false
+  },
+  "failedroot": {
+    "status": "failed",
+    "evaluation_eligible": false
+  },
+  "scopefailure": {
+    "status": "failed",
+    "evaluation_eligible": false
+  },
+  "actual_input_reads": 0,
+  "target_queries": 0,
+  "real_engine_calls": 0
+}

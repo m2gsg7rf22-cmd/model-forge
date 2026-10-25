@@ -1,0 +1,8 @@
+{
+  "synthetic_only": true,
+  "queries": 0,
+  "actual_fits": 0,
+  "independent_complex_step_gradient_relative_error": 2.421570440025062e-16,
+  "initial_guard_not_replaced_by_current": true,
+  "approved_actual_fit": false
+}
