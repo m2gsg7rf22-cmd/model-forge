@@ -1,0 +1,13 @@
+{
+  "approved": true,
+  "audit_sha256": "f62d1f20e7c5cf917cca46858f5e386b90905839e832cbd7ce13a37986db1cc4",
+  "cases": 16,
+  "shards": 4704,
+  "vector_slots": 1454080,
+  "raw_forward_values_requeried": false,
+  "audit_elapsed_seconds": 4.571295333007583,
+  "process_monitor_scope": "process_and_children",
+  "peak_sampled_rss_bytes": 238370816,
+  "memory_samples": 72,
+  "memory_limit_mb": 512
+}

@@ -1,0 +1,901 @@
+{
+  "approved": true,
+  "scope": "Independent saved-array diagnostic audit only; no raw forward/oracle value replay, fitting or recovery claim",
+  "controller_report_sha256": "ec13f57abb5253522be6d9ea591392578c03a59dbeb62d711eea40a71e764dcf",
+  "worker_report_sha256": "914b731a06cba7469ba90f9d65fe5d47c2f2e698fde9f8ce68a6cdf6ac5c102f",
+  "artifact_manifest_sha256": "9c2f1b8ae520024f19a10e2011f7dadbee18315302a69ab3d3efd2f6ca31a609",
+  "marker_sha256": "eab113db73a2fd4d35fec6404ae577e880ea90cecab576eee0637bb0104f925b",
+  "source_commit": "01b45d9e112781ef39b61f710e7b9c6af39cdf3a",
+  "source_files_verified": 20,
+  "all16cases_and4704shards_verified": true,
+  "counts_reserved_attempted_returned_persisted": [
+    1454080,
+    1454080,
+    1454080,
+    1454080
+  ],
+  "raw_vector_slots_recombined": 1454080,
+  "batch_callback_inventory": 2048,
+  "raw_output_scalars": 39731200,
+  "all_querypoint_rows_sign_order_diagonals_byteidentical": true,
+  "all64probe_original_rounding_and_direction_bindings": true,
+  "RNG_array_bindings_verified": 80,
+  "raw_response_schemas_finite_checked": true,
+  "fp32_outputs_exactly_stored_f64": true,
+  "all_saved_H_and_Richardson_byteidentical_to_raw_recombination": true,
+  "analytic_product_rule_max_absolute_error": 4.440892098500626e-16,
+  "all_full_spectra_ranks_gaps_projectors_controls_metrics_verified": true,
+  "store_bytes_including_manifest": 995846384,
+  "current_attempt_total_bytes": 1001333511,
+  "reported_bytes_before_final": 1001298380,
+  "worker_peak_sampled_tree_rss_bytes": 290045952,
+  "worker_memory_samples": 110,
+  "elapsed_before_final_report_seconds": 7.953062999993563,
+  "cases": [
+    {
+      "case": "p0-t0-fp64",
+      "n": 4,
+      "p": 10,
+      "analytic_recompute_relative_error": 1.5014209654683862e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.940266956786737e-16,
+          "random_residual_max": 2.0771414033870913e-15,
+          "gate_residual_max": 1.8439841282029177e-15
+        },
+        "reference": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.529512225236442e-16,
+          "random_residual_max": 1.3213993475971138e-15,
+          "gate_residual_max": 1.043796247647026e-15
+        },
+        "fine": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 4.08865160135725e-16,
+          "random_residual_max": 1.1916325557808115e-15,
+          "gate_residual_max": 1.0606310034808685e-15,
+          "hessian_relative_error": 0.002007693360999519
+        },
+        "coarse": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 4.181799121793884e-16,
+          "random_residual_max": 1.1502040806083945e-15,
+          "gate_residual_max": 9.642129274524796e-16,
+          "hessian_relative_error": 0.0079196031118912
+        },
+        "richardson": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.4669415403115275e-16,
+          "random_residual_max": 1.505344216326676e-15,
+          "gate_residual_max": 1.367280168083198e-15,
+          "hessian_relative_error": 4.33583818044031e-05
+        }
+      }
+    },
+    {
+      "case": "p0-t0-fp32",
+      "n": 4,
+      "p": 10,
+      "analytic_recompute_relative_error": 1.445130519577699e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 4.550567665005853e-16,
+          "random_residual_max": 1.608187035656533e-15,
+          "gate_residual_max": 1.2893471543301368e-15
+        },
+        "reference": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.1049127327307216e-16,
+          "random_residual_max": 1.3999379669858416e-15,
+          "gate_residual_max": 1.2522733157012119e-15
+        },
+        "fine": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 5.495761671766055e-16,
+          "random_residual_max": 1.0404639454301456e-15,
+          "gate_residual_max": 1.016376246239897e-15,
+          "hessian_relative_error": 0.0020075175199988802
+        },
+        "coarse": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 4.0608835428777945e-16,
+          "random_residual_max": 1.7626019804651478e-15,
+          "gate_residual_max": 1.6085667161433658e-15,
+          "hessian_relative_error": 0.00791959478124363
+        },
+        "richardson": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 2.8844440295753455e-16,
+          "random_residual_max": 1.5131850789263589e-15,
+          "gate_residual_max": 1.3051024644893102e-15,
+          "hessian_relative_error": 6.361125833677515e-05
+        }
+      }
+    },
+    {
+      "case": "p0-t1-fp64",
+      "n": 4,
+      "p": 10,
+      "analytic_recompute_relative_error": 1.5311244369863415e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.6142246537544436e-16,
+          "random_residual_max": 1.0368597634594853e-15,
+          "gate_residual_max": 9.551507811106233e-16
+        },
+        "reference": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.2554155565065078e-16,
+          "random_residual_max": 9.703789455978161e-16,
+          "gate_residual_max": 8.295679100460486e-16
+        },
+        "fine": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.33066907387547e-16,
+          "random_residual_max": 1.1844201674547699e-15,
+          "gate_residual_max": 6.189817216670157e-16,
+          "hessian_relative_error": 0.0019459684660380696
+        },
+        "coarse": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.972404240428979e-16,
+          "random_residual_max": 8.840573611254141e-16,
+          "gate_residual_max": 7.978219391693747e-16,
+          "hessian_relative_error": 0.007683895732549058
+        },
+        "richardson": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 2.498001805406602e-16,
+          "random_residual_max": 8.313294628470663e-16,
+          "gate_residual_max": 8.045527044939628e-16,
+          "hessian_relative_error": 4.05953588855444e-05
+        }
+      }
+    },
+    {
+      "case": "p0-t1-fp32",
+      "n": 4,
+      "p": 10,
+      "analytic_recompute_relative_error": 1.3303722981108837e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 4.645044015745518e-16,
+          "random_residual_max": 1.4295279938807446e-15,
+          "gate_residual_max": 1.516684121884354e-15
+        },
+        "reference": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 4.178064475935988e-16,
+          "random_residual_max": 1.4006439229393694e-15,
+          "gate_residual_max": 1.4180491722555718e-15
+        },
+        "fine": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.1463121132764933e-16,
+          "random_residual_max": 1.1353523293578857e-15,
+          "gate_residual_max": 1.0559893170862144e-15,
+          "hessian_relative_error": 0.001945599821740427
+        },
+        "coarse": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 4.0980616289968964e-16,
+          "random_residual_max": 1.2150001244332512e-15,
+          "gate_residual_max": 1.0533543204218273e-15,
+          "hessian_relative_error": 0.0076839046943428324
+        },
+        "richardson": {
+          "rank": 10,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 4.014526437311808e-16,
+          "random_residual_max": 8.760718525029365e-16,
+          "gate_residual_max": 8.419826675941385e-16,
+          "hessian_relative_error": 4.504248922318559e-05
+        }
+      }
+    },
+    {
+      "case": "p1-t0-fp64",
+      "n": 8,
+      "p": 36,
+      "analytic_recompute_relative_error": 2.0281674972657542e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 32,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.013159324652025019,
+          "random_residual_max": 0.5934976098600925,
+          "gate_residual_max": 2.2724327978847744e-15
+        },
+        "reference": {
+          "rank": 32,
+          "gap": 57150472054155.09,
+          "gap_reason": null,
+          "random_residual_min": 0.013159324652025182,
+          "random_residual_max": 0.5934976098600929,
+          "gate_residual_max": 1.93092801807258e-15
+        },
+        "fine": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 7.213004674367629e-16,
+          "random_residual_max": 1.4312767196410634e-15,
+          "gate_residual_max": 1.4871073192929415e-15,
+          "hessian_relative_error": 0.0024147137061962935
+        },
+        "coarse": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 8.854285053577889e-16,
+          "random_residual_max": 1.7677700411810332e-15,
+          "gate_residual_max": 1.6082973020586949e-15,
+          "hessian_relative_error": 0.009526571100745791
+        },
+        "richardson": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 8.79404101545805e-16,
+          "random_residual_max": 1.5803778346110707e-15,
+          "gate_residual_max": 1.519538706490755e-15,
+          "hessian_relative_error": 5.632557386245279e-05
+        }
+      }
+    },
+    {
+      "case": "p1-t0-fp32",
+      "n": 8,
+      "p": 36,
+      "analytic_recompute_relative_error": 1.9328319926154883e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 32,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.013159334018108548,
+          "random_residual_max": 0.5934976146514229,
+          "gate_residual_max": 2.1546969499938467e-15
+        },
+        "reference": {
+          "rank": 32,
+          "gap": 57150474499694.984,
+          "gap_reason": null,
+          "random_residual_min": 0.013159334018108633,
+          "random_residual_max": 0.5934976146514227,
+          "gate_residual_max": 2.0316244493782207e-15
+        },
+        "fine": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 9.029556468960226e-16,
+          "random_residual_max": 1.7890836581706103e-15,
+          "gate_residual_max": 1.8495427073246433e-15,
+          "hessian_relative_error": 0.0024147259651232504
+        },
+        "coarse": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 9.660525362533058e-16,
+          "random_residual_max": 1.8217855947883486e-15,
+          "gate_residual_max": 1.7844917514390046e-15,
+          "hessian_relative_error": 0.009526701636914605
+        },
+        "richardson": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 7.595080991723529e-16,
+          "random_residual_max": 1.707595388236505e-15,
+          "gate_residual_max": 1.5408612311041074e-15,
+          "hessian_relative_error": 7.533559643319019e-05
+        }
+      }
+    },
+    {
+      "case": "p1-t1-fp64",
+      "n": 8,
+      "p": 36,
+      "analytic_recompute_relative_error": 1.9563908783088204e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 32,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.0973611763870281,
+          "random_residual_max": 0.6830708961365619,
+          "gate_residual_max": 1.4306446296757684e-15
+        },
+        "reference": {
+          "rank": 32,
+          "gap": 44049803194531.87,
+          "gap_reason": null,
+          "random_residual_min": 0.0973611763870277,
+          "random_residual_max": 0.6830708961365621,
+          "gate_residual_max": 1.5323727665379636e-15
+        },
+        "fine": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 6.899054367310063e-16,
+          "random_residual_max": 1.672324772199959e-15,
+          "gate_residual_max": 1.559871663197032e-15,
+          "hessian_relative_error": 0.0023625517568076054
+        },
+        "coarse": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.0149942659764678e-15,
+          "random_residual_max": 1.789545627020482e-15,
+          "gate_residual_max": 1.8057363194228156e-15,
+          "hessian_relative_error": 0.00930914176243868
+        },
+        "richardson": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 8.071872327003939e-16,
+          "random_residual_max": 1.6250738147114245e-15,
+          "gate_residual_max": 1.6709205550818698e-15,
+          "hessian_relative_error": 6.120667555075491e-05
+        }
+      }
+    },
+    {
+      "case": "p1-t1-fp32",
+      "n": 8,
+      "p": 36,
+      "analytic_recompute_relative_error": 1.8615494151755416e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 32,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.09736117044536606,
+          "random_residual_max": 0.6830709063266354,
+          "gate_residual_max": 1.4895338141721107e-15
+        },
+        "reference": {
+          "rank": 32,
+          "gap": 44049805368660.92,
+          "gap_reason": null,
+          "random_residual_min": 0.09736117044536576,
+          "random_residual_max": 0.6830709063266355,
+          "gate_residual_max": 1.526003677197658e-15
+        },
+        "fine": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 9.086026598015194e-16,
+          "random_residual_max": 1.558443114532237e-15,
+          "gate_residual_max": 1.4896881667024885e-15,
+          "hessian_relative_error": 0.0023629388107815003
+        },
+        "coarse": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 8.034594445253651e-16,
+          "random_residual_max": 1.444462221908306e-15,
+          "gate_residual_max": 1.6400001668085926e-15,
+          "hessian_relative_error": 0.009309044580892406
+        },
+        "richardson": {
+          "rank": 36,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 8.834326739057629e-16,
+          "random_residual_max": 1.4754384056643207e-15,
+          "gate_residual_max": 1.5619570413389928e-15,
+          "hessian_relative_error": 8.02889507481436e-05
+        }
+      }
+    },
+    {
+      "case": "p2-t0-fp64",
+      "n": 16,
+      "p": 136,
+      "analytic_recompute_relative_error": 2.3883340907737067e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 64,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.45403017867863943,
+          "random_residual_max": 0.8980888296644569,
+          "gate_residual_max": 2.3708346959469315e-15
+        },
+        "reference": {
+          "rank": 64,
+          "gap": 57942957651524.84,
+          "gap_reason": null,
+          "random_residual_min": 0.4540301786786392,
+          "random_residual_max": 0.8980888296644569,
+          "gate_residual_max": 2.9232217636351467e-15
+        },
+        "fine": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.5450146157794464e-15,
+          "random_residual_max": 2.143940693878736e-15,
+          "gate_residual_max": 2.4568785430245377e-15,
+          "hessian_relative_error": 0.0027558432149593125
+        },
+        "coarse": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.5066441114869713e-15,
+          "random_residual_max": 2.451075071308324e-15,
+          "gate_residual_max": 2.144581186740249e-15,
+          "hessian_relative_error": 0.010819055503868944
+        },
+        "richardson": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.5683358335378709e-15,
+          "random_residual_max": 2.145130420926637e-15,
+          "gate_residual_max": 2.195188058566023e-15,
+          "hessian_relative_error": 8.661504662367887e-05
+        }
+      }
+    },
+    {
+      "case": "p2-t0-fp32",
+      "n": 16,
+      "p": 136,
+      "analytic_recompute_relative_error": 2.2970616737404765e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 64,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.4540301769767704,
+          "random_residual_max": 0.8980888312054174,
+          "gate_residual_max": 2.2776015585810367e-15
+        },
+        "reference": {
+          "rank": 64,
+          "gap": 56738382459208.24,
+          "gap_reason": null,
+          "random_residual_min": 0.45403017697677006,
+          "random_residual_max": 0.8980888312054174,
+          "gate_residual_max": 3.1424696142970958e-15
+        },
+        "fine": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.5014914423179435e-15,
+          "random_residual_max": 2.2965986062195164e-15,
+          "gate_residual_max": 2.0367366649235565e-15,
+          "hessian_relative_error": 0.002757794324423769
+        },
+        "coarse": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.6107738487773577e-15,
+          "random_residual_max": 2.148541980043474e-15,
+          "gate_residual_max": 2.062543543833696e-15,
+          "hessian_relative_error": 0.0108191160842344
+        },
+        "richardson": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.630918519241557e-15,
+          "random_residual_max": 2.2338983244701775e-15,
+          "gate_residual_max": 2.437130883297973e-15,
+          "hessian_relative_error": 0.0001522190097969035
+        }
+      }
+    },
+    {
+      "case": "p2-t1-fp64",
+      "n": 16,
+      "p": 136,
+      "analytic_recompute_relative_error": 2.3769033179157235e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 64,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.5473509759093954,
+          "random_residual_max": 0.8952189019736073,
+          "gate_residual_max": 2.288649615645933e-15
+        },
+        "reference": {
+          "rank": 64,
+          "gap": 126917278537775.77,
+          "gap_reason": null,
+          "random_residual_min": 0.5473509759093954,
+          "random_residual_max": 0.8952189019736072,
+          "gate_residual_max": 2.5572907279794973e-15
+        },
+        "fine": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.6591650099514466e-15,
+          "random_residual_max": 2.327997885417724e-15,
+          "gate_residual_max": 2.5179402198439953e-15,
+          "hessian_relative_error": 0.0023995652297014174
+        },
+        "coarse": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.691266060396554e-15,
+          "random_residual_max": 2.222073220505833e-15,
+          "gate_residual_max": 2.489125694646439e-15,
+          "hessian_relative_error": 0.009429324263333308
+        },
+        "richardson": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.4161388347260203e-15,
+          "random_residual_max": 2.1117413790087206e-15,
+          "gate_residual_max": 2.092908328268883e-15,
+          "hessian_relative_error": 8.28473278543513e-05
+        }
+      }
+    },
+    {
+      "case": "p2-t1-fp32",
+      "n": 16,
+      "p": 136,
+      "analytic_recompute_relative_error": 2.3067305059108944e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 64,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.5473509784683884,
+          "random_residual_max": 0.8952188984074886,
+          "gate_residual_max": 2.1678904698295892e-15
+        },
+        "reference": {
+          "rank": 64,
+          "gap": 133667585891995.77,
+          "gap_reason": null,
+          "random_residual_min": 0.5473509784683883,
+          "random_residual_max": 0.8952188984074886,
+          "gate_residual_max": 2.307623545508502e-15
+        },
+        "fine": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.7044323390461078e-15,
+          "random_residual_max": 2.308065813639437e-15,
+          "gate_residual_max": 2.3214128156810046e-15,
+          "hessian_relative_error": 0.0024015718236638185
+        },
+        "coarse": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.588318121373478e-15,
+          "random_residual_max": 2.1390739443349847e-15,
+          "gate_residual_max": 2.0705449672166102e-15,
+          "hessian_relative_error": 0.00942943941065048
+        },
+        "richardson": {
+          "rank": 136,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 1.7095500657882792e-15,
+          "random_residual_max": 2.3041213159090926e-15,
+          "gate_residual_max": 2.213109259195627e-15,
+          "hessian_relative_error": 0.00014406211982638024
+        }
+      }
+    },
+    {
+      "case": "p3-t0-fp64",
+      "n": 32,
+      "p": 528,
+      "analytic_recompute_relative_error": 3.119453681678574e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 128,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.792748916137076,
+          "random_residual_max": 0.9338623863095084,
+          "gate_residual_max": 2.7792019820153482e-15
+        },
+        "reference": {
+          "rank": 128,
+          "gap": 85628010387050.86,
+          "gap_reason": null,
+          "random_residual_min": 0.7927489161370761,
+          "random_residual_max": 0.9338623863095084,
+          "gate_residual_max": 4.268819855001372e-15
+        },
+        "fine": {
+          "rank": 437,
+          "gap": 1.03666954282912,
+          "gap_reason": null,
+          "random_residual_min": 0.3429646086111993,
+          "random_residual_max": 0.49642504728795056,
+          "gate_residual_max": 3.870447514430737e-10,
+          "hessian_relative_error": 0.002527042097631439
+        },
+        "coarse": {
+          "rank": 516,
+          "gap": 1.2184291530504767,
+          "gap_reason": null,
+          "random_residual_min": 0.06344077803377385,
+          "random_residual_max": 0.24789817871269296,
+          "gate_residual_max": 2.105969495773767e-10,
+          "hessian_relative_error": 0.009933116365104914
+        },
+        "richardson": {
+          "rank": 402,
+          "gap": 1.0575507609351251,
+          "gap_reason": null,
+          "random_residual_min": 0.4072338579438589,
+          "random_residual_max": 0.6051796246143417,
+          "gate_residual_max": 2.6990173916795067e-10,
+          "hessian_relative_error": 7.85171896760281e-05
+        }
+      }
+    },
+    {
+      "case": "p3-t0-fp32",
+      "n": 32,
+      "p": 528,
+      "analytic_recompute_relative_error": 3.0541830712146667e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 128,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.7927489141469333,
+          "random_residual_max": 0.9338623855772529,
+          "gate_residual_max": 2.757019889168632e-15
+        },
+        "reference": {
+          "rank": 128,
+          "gap": 86658629459827.05,
+          "gap_reason": null,
+          "random_residual_min": 0.7927489141469334,
+          "random_residual_max": 0.9338623855772529,
+          "gate_residual_max": 4.1671659537117375e-15
+        },
+        "fine": {
+          "rank": 528,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.038660380292107e-15,
+          "random_residual_max": 3.619842885330326e-15,
+          "gate_residual_max": 3.2877811712911524e-15,
+          "hessian_relative_error": 0.0025377991235714576
+        },
+        "coarse": {
+          "rank": 528,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 2.9338378174664608e-15,
+          "random_residual_max": 3.480122358177529e-15,
+          "gate_residual_max": 3.4288706118950335e-15,
+          "hessian_relative_error": 0.009933244147294682
+        },
+        "richardson": {
+          "rank": 528,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.098189331738326e-15,
+          "random_residual_max": 3.720826243015166e-15,
+          "gate_residual_max": 3.662173283777563e-15,
+          "hessian_relative_error": 0.00032505198470218614
+        }
+      }
+    },
+    {
+      "case": "p3-t1-fp64",
+      "n": 32,
+      "p": 528,
+      "analytic_recompute_relative_error": 3.1749180062005594e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 128,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.789315351974805,
+          "random_residual_max": 0.9166685413886668,
+          "gate_residual_max": 2.6268102153628103e-15
+        },
+        "reference": {
+          "rank": 128,
+          "gap": 102408303612708.33,
+          "gap_reason": null,
+          "random_residual_min": 0.7893153519748048,
+          "random_residual_max": 0.916668541388667,
+          "gate_residual_max": 4.232652759467479e-15
+        },
+        "fine": {
+          "rank": 429,
+          "gap": 1.0540430238426355,
+          "gap_reason": null,
+          "random_residual_min": 0.31432383936094416,
+          "random_residual_max": 0.5304599849864539,
+          "gate_residual_max": 3.129685536570986e-10,
+          "hessian_relative_error": 0.002257162916415105
+        },
+        "coarse": {
+          "rank": 513,
+          "gap": 1.058254224711284,
+          "gap_reason": null,
+          "random_residual_min": 0.08807648482930909,
+          "random_residual_max": 0.24849619962188663,
+          "gate_residual_max": 5.102897614949774e-10,
+          "hessian_relative_error": 0.008900262622470102
+        },
+        "richardson": {
+          "rank": 398,
+          "gap": 1.1475956100308464,
+          "gap_reason": null,
+          "random_residual_min": 0.38621187062822276,
+          "random_residual_max": 0.5732126924320811,
+          "gate_residual_max": 1.3405371775627742e-09,
+          "hessian_relative_error": 5.620593372235084e-05
+        }
+      }
+    },
+    {
+      "case": "p3-t1-fp32",
+      "n": 32,
+      "p": 528,
+      "analytic_recompute_relative_error": 3.1173735568556805e-16,
+      "spaces": {
+        "atoms": {
+          "rank": 128,
+          "gap": null,
+          "gap_reason": "zero_next_singular",
+          "random_residual_min": 0.7893153523783654,
+          "random_residual_max": 0.9166685407629419,
+          "gate_residual_max": 2.9457699793062404e-15
+        },
+        "reference": {
+          "rank": 128,
+          "gap": 99198795972503.8,
+          "gap_reason": null,
+          "random_residual_min": 0.7893153523783654,
+          "random_residual_max": 0.9166685407629417,
+          "gate_residual_max": 4.400713235903444e-15
+        },
+        "fine": {
+          "rank": 528,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 2.9785228482068454e-15,
+          "random_residual_max": 3.5438259841563947e-15,
+          "gate_residual_max": 3.4140866810903648e-15,
+          "hessian_relative_error": 0.0022702628267153883
+        },
+        "coarse": {
+          "rank": 528,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.0379168192442883e-15,
+          "random_residual_max": 3.571659712118819e-15,
+          "gate_residual_max": 3.4665644823635622e-15,
+          "hessian_relative_error": 0.00890046681402629
+        },
+        "richardson": {
+          "rank": 528,
+          "gap": null,
+          "gap_reason": "full_space",
+          "random_residual_min": 3.103006233097643e-15,
+          "random_residual_max": 3.716638427296816e-15,
+          "gate_residual_max": 3.614333855777437e-15,
+          "hessian_relative_error": 0.00032926467367969364
+        }
+      }
+    }
+  ],
+  "maximum_normalized_comparison_errors": {
+    "preactivations": 0,
+    "preactivation_statistics": 0,
+    "analytic_product_rule": 4.0435124848754615e-16,
+    "full_singular_spectra": 0,
+    "projector": 0,
+    "gate_residual": 5.952010750406702e-16,
+    "random_residual": 4.1438875472062436e-16,
+    "relative_hessian_error": 4.14029704617902e-18,
+    "projector_distance": 0,
+    "gap": 0
+  },
+  "registered_contexts_invocations": 0,
+  "new_reference_forward_calls": 0,
+  "new_fits": 0,
+  "consumed941xxx_reads": 0,
+  "marker_status": "CONSUMED_NO_RETRY",
+  "private_gate": "closed",
+  "audit_elapsed_seconds": 4.570600332983304,
+  "audit_probe_sha256": "8edaab0497eb0f29c16600084b2b3715d0bf2f89a38786e5d872da2fde0c407a",
+  "limitations": [
+    "Saved raw oracle outputs were NOT independently re-evaluated against model forward values; their integrity, input/channel schema, commitments and downstream mathematics are verified; sourceoracle inspected only",
+    "Expected public RNG arrays were regenerated solely for bytewise binding checks; no new experimental teacher/query",
+    "All ranks/projectors/membership outcomes numerical at fixed1e-10; not exact ideal-rank or full-map identifiability claims",
+    "FDspan inflation combines finite-step truncation and runtime rounding; fullFDspace does not prove fullanalyticspace",
+    "Fullspace random rank-one residual near machine precision demonstrates failure of membership discrimination here, not global nonidentifiability",
+    "Profiles change preactivation conditioning withsqrt(n) and use distinct teachers; descriptive family effect, not causal dimension-only result",
+    "Original and audit RSS are sampled tree values, not continuous peak or parent-controller RSS; elapsed excludes final report write",
+    "Privileged weights/analytic references stay outsideGit and are not learner observations; broader bias/HVP/weaker-access/universal science stillOPEN"
+  ],
+  "probe_results_sha256": "f62d1f20e7c5cf917cca46858f5e386b90905839e832cbd7ce13a37986db1cc4",
+  "audit_resource_receipt_sha256": "4f76aa0618e7648893f73af6475d43787cdf0116525cd2e349e84b622862a63b",
+  "audit_process_monitor_scope": "process_and_children",
+  "audit_peak_sampled_tree_rss_bytes": 238370816,
+  "audit_memory_samples": 72,
+  "audit_memory_limit_mb": 512,
+  "audit_launcher_sha256": "d3dcd26b7d6583f9f5b3f5859b25116a197f9a8235609d10b576ed9c1112470d",
+  "diagnostic_operation_completed": true,
+  "scientific_reconstruction_success": false,
+  "broad_precision_access_task_complete": false,
+  "raw_forward_value_equivalence_independently_verified": false,
+  "bounded_scientific_findings": [
+    "At fixed numerical tolerance1e-10, analytic ranks10/32/64/128 match the tested atom dictionary ranks; equality is measured here, not a general theorem",
+    "n4 analytic observed span full10; every tested rank-one control is numerically in that span",
+    "n8 andn16 fine/coarse/Richardson observed spans full36/136 in BOTHFP64andFP32 despite analytic ranks32/64: finite-step rankinflation cannot be attributed solely toFP32rounding",
+    "n32FP32allFDvariants full528 vs analytic128; random Richardson residuals\u22483e-15 show membership discrimination failure for this observedspan",
+    "n32FP64Richardson ranks402/398 vs analytic128 and random residuals0.386..0.605: inflated numerical domain without evidence of universal nonidentifiability",
+    "No learner was run or recovered parameters; no new backend/quality/frontier claim follows"
+  ]
+}
