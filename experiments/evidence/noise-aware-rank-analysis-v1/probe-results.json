@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "gap10_nextafter_boundary_ranks": [
+    null,
+    1,
+    1
+  ],
+  "computed_score_tie_smallest_index": true,
+  "nonbool_nan_masks_rejected": true,
+  "prefix_RMS_against_explicit_projectors_max_error": 7.216449660063518e-16,
+  "small_and_large_rotation_stable_choices": [
+    1,
+    null
+  ],
+  "leading_relative_resolution_orthogonal_entry_basis_invariant_control": true,
+  "independent_view_scale_invariance_1eplusminus200": true,
+  "spiky_full_signal_common_bias_noncertificate": true,
+  "zero_full_rowlimited_p1_controls": true,
+  "source_sha256": "1382f141fd4adf7a80106df75ccedfba4b55b9dd2b877ba4399becc4646f870b",
+  "actual_saved_observation_reads": 0,
+  "registered_seeds_or_RNG": 0,
+  "teacher_or_forward_calls": 0,
+  "fitting": 0
+}

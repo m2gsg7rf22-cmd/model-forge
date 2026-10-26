@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "short_write_rejected_before_final_seal_exists": true,
+  "actual_data_reads": 0,
+  "queries": 0,
+  "fits": 0,
+  "RNG": 0,
+  "source_sha256": "d958eb7bfbf56a30b4dfee1c63fc14ae9965e0597a19617fbb2a023f89317894"
+}

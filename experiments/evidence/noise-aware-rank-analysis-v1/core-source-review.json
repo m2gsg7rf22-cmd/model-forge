@@ -1,0 +1,71 @@
+{
+  "approved": true,
+  "observation_rank_core_approved": true,
+  "rank_analysis_full_protocol_approved": false,
+  "actual_saved_analysis_approved": false,
+  "scope": "Pure observation-only rank-selection mathematics and hand-sized literal synthetic controls ONLY; no loader/pipeline/controller approval",
+  "source_sha256": {
+    "examples/isolated_glu/rank_selection.py": "1382f141fd4adf7a80106df75ccedfba4b55b9dd2b877ba4399becc4646f870b",
+    "tests/test_glu_rank_selection.py": "c44475cc7facca75d93506c0af592e90f7a6d74533c18993ed584d959ae830d3"
+  },
+  "sources": {
+    "examples/isolated_glu/rank_selection.py": "1382f141fd4adf7a80106df75ccedfba4b55b9dd2b877ba4399becc4646f870b",
+    "tests/test_glu_rank_selection.py": "c44475cc7facca75d93506c0af592e90f7a6d74533c18993ed584d959ae830d3"
+  },
+  "reviewed_plan_sha256": {
+    "docs/superpowers/plans/2026-10-26-observation-rank-analysis.md": "a61adeb886b00bbb8781a715c7ebd1c5f1f67991d1301f7296693ec8a7a1e50b"
+  },
+  "blocking_core_findings": [],
+  "document_alignment_before_full_protocol": "Plan stable/loggap wording must match implemented ratio>=10-before-log(ratio); no source or threshold change needed",
+  "resolved_core_findings": [
+    "Exact computed gap10 now passes by ratio comparison before logarithm; no widened tolerance",
+    "Nonbool/nan candidate masks fail rather than silently truthify",
+    "Resolution floor normalized to eachview leading singular1 aftermaxabs-protectedSVD; not a noise bound"
+  ],
+  "independent_probes": {
+    "passed": true,
+    "gap10_nextafter_boundary_ranks": [
+      null,
+      1,
+      1
+    ],
+    "computed_score_tie_smallest_index": true,
+    "nonbool_nan_masks_rejected": true,
+    "prefix_RMS_against_explicit_projectors_max_error": 7.216449660063518e-16,
+    "small_and_large_rotation_stable_choices": [
+      1,
+      null
+    ],
+    "leading_relative_resolution_orthogonal_entry_basis_invariant_control": true,
+    "independent_view_scale_invariance_1eplusminus200": true,
+    "spiky_full_signal_common_bias_noncertificate": true,
+    "zero_full_rowlimited_p1_controls": true,
+    "source_sha256": "1382f141fd4adf7a80106df75ccedfba4b55b9dd2b877ba4399becc4646f870b",
+    "actual_saved_observation_reads": 0,
+    "registered_seeds_or_RNG": 0,
+    "teacher_or_forward_calls": 0,
+    "fitting": 0
+  },
+  "probe_sha256": "d710a7c64df9a9e3714c9e36c4a5d1e76a7032f45e20fb769898d2c55a942798",
+  "probe_results_sha256": "3c69b0dd04c257825a6c0e42231829a7006e327c87151775dce7acf7551a125b",
+  "review_md_sha256": "b991c2a94a114e06fc1fed7141d577b64c6e182a28b8d3aa4f2b55de6fe7b4d3",
+  "all20_frozen_dimensiondomain_source_files_unchanged": true,
+  "limitations": [
+    "Every candidate remains certificatefalse; strict numerical rank is not intrinsic truthrank",
+    "Stable cross-step gaps cannot exclude common structured bias or a full-rank spiky signal",
+    "Computed-logscore exact tie rule is floating-score tie handling, not an ideal spectral equality theorem",
+    "Relative-leading floor is an arithmetic convention, not a forward/error/noise bound",
+    "Prefix distances use cancellation-sensitive floating trace formula with bounded clipping; no exact small-angle certificate",
+    "Rowlimited structuralzero-next may select observed rowrank and is flagged clipped, not truewidth",
+    "No actualsavedobservations/context/reference/width/RNG/model/forward/teacher/private/941xxxdata used",
+    "Data-view isolation, sealing, privileged controls, resource gates, source/prereg freeze remain future independent review",
+    "Public exploratory dataset is not blind/hidden validation; broader model reconstruction/private mission unmet"
+  ],
+  "remaining_requirements": [
+    "Freeze consistent final plan/protocol and remaining pipeline/controller/prereg sources",
+    "Whitelist observation-only loading and sealALLchoices before any privileged read",
+    "Persist every outcome/null/diagnostic and requested/effective/clipped metadata controls",
+    "Independent whole-source approval+cleancommit+predata resource/source/input gates beforeONEactualsavedanalysis"
+  ],
+  "private_gate": "closed"
+}

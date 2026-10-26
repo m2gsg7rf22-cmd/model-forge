@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "checks": {
+    "full_literal_48_output_528_input_schema": true,
+    "report_seal_disagreement": true,
+    "evaluation_order_mismatch": true,
+    "postworker_selected_input_mutation": true,
+    "persistent_marker_wrong_commit": true,
+    "mocked_controller_complete": true,
+    "mocked_controller_worker_scope": true,
+    "mocked_controller_source_after": true,
+    "mocked_controller_transport": true,
+    "signed_document_mutation_rejected": true
+  },
+  "registered_data_reads": 0,
+  "model_forwards": 0,
+  "RNG": 0,
+  "private_or_941xxx_reads": 0,
+  "actual_protocol_execution": false,
+  "resource_scope": "tiny literal probes; no process-tree budget claim"
+}

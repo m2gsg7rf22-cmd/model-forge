@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "all2case_choices_saved_and_sealed_before_truth": true,
+  "unweighted_geometric_lost_signal_sqrt_half_extra_zero_verified": true,
+  "requested_effective_clipped_metadata_collisions_verified": true,
+  "null_digest_schema_rejected": true,
+  "mutations": {
+    "observation": "stopped_before_privileged_read",
+    "choice": "stopped_before_privileged_read"
+  },
+  "synthetic_cases": 2,
+  "actual_saved_input_reads": 0,
+  "actual_reference_or_forward_queries": 0,
+  "registered_RNG": 0,
+  "private_or941xxx_reads": 0
+}

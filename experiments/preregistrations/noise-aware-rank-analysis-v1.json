@@ -1,0 +1,50 @@
+{
+  "frozen_dependencies": {
+    "examples/isolated_glu/rank_analysis.py": "d958eb7bfbf56a30b4dfee1c63fc14ae9965e0597a19617fbb2a023f89317894",
+    "examples/isolated_glu/rank_analysis_controller.py": "50fe1982fed05f5740e0c5d11281eebb1d2dbaad1b0af95b6d352f10759364b2",
+    "examples/isolated_glu/rank_analysis_run.py": "d00cd2f7e9141475c54ec804de04fad1cc512de72c533f9beaaa70c5d65e466e",
+    "examples/isolated_glu/rank_selection.py": "1382f141fd4adf7a80106df75ccedfba4b55b9dd2b877ba4399becc4646f870b",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b"
+  },
+  "inventory_plan": {
+    "cases": 16,
+    "conservative_total_bytes_upper_bound": 369098752,
+    "output_shards": 48,
+    "per_output_shard_ceiling": 7340032,
+    "selected_input_shards": 528
+  },
+  "legacy": {
+    "directory": "dimension-domain-v1-20261026-01b45d9",
+    "manifest_sha256": "9c2f1b8ae520024f19a10e2011f7dadbee18315302a69ab3d3efd2f6ca31a609"
+  },
+  "policy": {
+    "blas_threads": 1,
+    "blind_claim": false,
+    "cases": 16,
+    "certificate": false,
+    "gap_ratio": 10,
+    "id": "noise-aware-rank-analysis-v1",
+    "memory_limit_mb": 512,
+    "minimum_free_disk_bytes": 1073741824,
+    "new_fits": 0,
+    "new_reference_queries": 0,
+    "private_gate": "closed",
+    "resolution_multiplier": 64,
+    "rules": [
+      "strict",
+      "gap",
+      "stable"
+    ],
+    "stability_rms_sine": 0.01,
+    "strict_rank_rtol": 1e-10,
+    "timeout_seconds": 180,
+    "worker_output_limit_bytes": 2048
+  },
+  "private_gate": "closed",
+  "scope": "PUBLIC saved-observation exploratory development only; no blind validation/reconstruction/certificates"
+}
