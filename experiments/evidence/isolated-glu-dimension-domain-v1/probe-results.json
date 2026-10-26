@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "cases": {
+    "fp64": {
+      "shards": 18,
+      "counts": [
+        48,
+        48,
+        48,
+        48
+      ],
+      "raw_to_curvature_to_Richardson_verified": true,
+      "projectors_independent_SVD_verified": true
+    },
+    "fp32_compute": {
+      "shards": 18,
+      "counts": [
+        48,
+        48,
+        48,
+        48
+      ],
+      "raw_to_curvature_to_Richardson_verified": true,
+      "projectors_independent_SVD_verified": true
+    }
+  },
+  "relative_ratio_underflow_rejected": true,
+  "oversized_response_precedes_copy": true,
+  "shape_inventory": {
+    "cases": 16,
+    "shards": 4704,
+    "vector_calls": 1454080,
+    "largest_shard_upper_bound": 2251904,
+    "manifest_bytes_upper_bound": 884352,
+    "bytes_upper_bound": 1025028544
+  },
+  "actual_registered_context_calls": 0,
+  "registered_RNG_calls": 0,
+  "actual_reference_queries": 0,
+  "synthetic_callback_batches": 8,
+  "synthetic_vector_slots": 96,
+  "actual_or_consumed_data_reads": 0
+}

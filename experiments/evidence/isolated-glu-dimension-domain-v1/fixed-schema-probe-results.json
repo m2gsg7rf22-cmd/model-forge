@@ -1,0 +1,8 @@
+{
+  "oversized_return_view_now_rejected_before_copy": true,
+  "nonzero_relative_ratio_underflow_returns_zero": true,
+  "literal_tiny_difference": 5e-324,
+  "registered_seeds_used": 0,
+  "reference_queries": 0,
+  "rng_calls": 0
+}

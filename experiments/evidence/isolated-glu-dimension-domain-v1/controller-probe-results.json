@@ -1,0 +1,36 @@
+{
+  "schema_success": true,
+  "schema_wrong_counts": false,
+  "schema_marker_source": false,
+  "schema_missing_artifact_name": false,
+  "flow_success": {
+    "status": "completed",
+    "engine_calls": 3,
+    "diagnostic_completed": true
+  },
+  "flow_scope_failure": {
+    "status": "failed",
+    "engine_calls": 1,
+    "diagnostic_completed": false
+  },
+  "flow_transport_failure": {
+    "status": "failed",
+    "engine_calls": 2,
+    "diagnostic_completed": false
+  },
+  "flow_worker_tree_failure": {
+    "status": "failed",
+    "engine_calls": 3,
+    "diagnostic_completed": false
+  },
+  "flow_post_source_change": {
+    "status": "failed",
+    "engine_calls": 3,
+    "diagnostic_completed": false
+  },
+  "actual_registered_contexts_called": 0,
+  "actual_worker_processes": 0,
+  "registered_RNG_calls": 0,
+  "scientific_global_markers_created": 0,
+  "virtual_inventory_and_marker_used_for_schema": true
+}

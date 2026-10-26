@@ -1,0 +1,184 @@
+{
+  "approved": true,
+  "dimension_domain_full_protocol_approved": true,
+  "scope": "ONE complete prospective registered PUBLIC owned dimension-domain diagnostic under reviewed controller AFTER exact-source clean discovery-lab commit and pre-data tree/disk/transport gates; NOT reconstruction or broad mission completion",
+  "source_sha256": {
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "examples/isolated_glu/scaling_domain_controller.py": "74c1bf8ff798ce01066da18d340d0df711ad9cb0beded743bca0f6052ee2ff40",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "examples/isolated_glu/scaling_domain_run.py": "a9c44f8fffa274ad37b50ab15424f0e7200cc538ac98fc50d6790083ee4d928b",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "experiments/preregistrations/isolated-glu-dimension-domain-v1.json": "91fc4c021c9847164ca5174df3e7dac69bea60d27a2042b658484ec22c7e288e",
+    "docs/glu-scaling-domain-protocol.md": "db019ab2a151e8d964c3ba8c99fbf1ca829ea8470c68e8d40af17e46fd338304",
+    "docs/glu-scaling-domain-runner-validation.md": "7924042ba2ba3eecaa2d7dc7d59fee4dafd860a1e022bd451cf6d79ace8ab03a",
+    "docs/superpowers/plans/2026-10-26-dimension-domain-runner.md": "5fa5083a145d77d9056a9c5521acbe0e16a36a9476e3c7e86d3740ac2a929ccd",
+    "tests/test_glu_scaling_domain_run.py": "c80e628171da709af33316eb9caba3933242c120305e02f448b24e057bbcbdfc",
+    "tests/test_glu_scaling_domain_controller.py": "2f26579da9cf44e714714a72907b3e1c89699de21ee68296396dd5eaf653c36d",
+    "tests/test_glu_scaling_domain_math.py": "ef4b18431875acd9ac0e567b5953893b5ff7799ba975e6e1321053b39b5790fb",
+    "docs/superpowers/plans/2026-10-25-dimension-domain-math.md": "30a645bb35ac5d41ff83d1fad69b393da7647e0e9cd62bdb701e0cd16b396120",
+    "docs/glu-scaling-domain-math-validation.md": "73e65226ac5aa62afd2dfa9fcca7960d315db400de612df19e272669fc25c97b",
+    "docs/glu-scaling-observation-domain-draft.md": "0d63cfd75dfde512d163e7414d1027e5ff0921789045becb2c72aa5a21369973",
+    "tests/test_glu_scaling_domain_store.py": "347f6b17866f54b85091f0a080a6253c59b86578f943a10288dc50f29a5a216d",
+    "docs/superpowers/plans/2026-10-26-dimension-domain-transport.md": "a6d1d5a520d0a12ed5ab7a146845a0361b0852327ed0d97c374e0beb827a24ab",
+    "docs/glu-scaling-domain-transport-validation.md": "d34a1b73bda3427c997a98d0af4a77aee4bfc486b507d87208c9bb193d450195"
+  },
+  "sources": {
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "examples/isolated_glu/scaling_domain_controller.py": "74c1bf8ff798ce01066da18d340d0df711ad9cb0beded743bca0f6052ee2ff40",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "examples/isolated_glu/scaling_domain_run.py": "a9c44f8fffa274ad37b50ab15424f0e7200cc538ac98fc50d6790083ee4d928b",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "experiments/preregistrations/isolated-glu-dimension-domain-v1.json": "91fc4c021c9847164ca5174df3e7dac69bea60d27a2042b658484ec22c7e288e",
+    "docs/glu-scaling-domain-protocol.md": "db019ab2a151e8d964c3ba8c99fbf1ca829ea8470c68e8d40af17e46fd338304",
+    "docs/glu-scaling-domain-runner-validation.md": "7924042ba2ba3eecaa2d7dc7d59fee4dafd860a1e022bd451cf6d79ace8ab03a",
+    "docs/superpowers/plans/2026-10-26-dimension-domain-runner.md": "5fa5083a145d77d9056a9c5521acbe0e16a36a9476e3c7e86d3740ac2a929ccd",
+    "tests/test_glu_scaling_domain_run.py": "c80e628171da709af33316eb9caba3933242c120305e02f448b24e057bbcbdfc",
+    "tests/test_glu_scaling_domain_controller.py": "2f26579da9cf44e714714a72907b3e1c89699de21ee68296396dd5eaf653c36d",
+    "tests/test_glu_scaling_domain_math.py": "ef4b18431875acd9ac0e567b5953893b5ff7799ba975e6e1321053b39b5790fb",
+    "docs/superpowers/plans/2026-10-25-dimension-domain-math.md": "30a645bb35ac5d41ff83d1fad69b393da7647e0e9cd62bdb701e0cd16b396120",
+    "docs/glu-scaling-domain-math-validation.md": "73e65226ac5aa62afd2dfa9fcca7960d315db400de612df19e272669fc25c97b",
+    "docs/glu-scaling-observation-domain-draft.md": "0d63cfd75dfde512d163e7414d1027e5ff0921789045becb2c72aa5a21369973",
+    "tests/test_glu_scaling_domain_store.py": "347f6b17866f54b85091f0a080a6253c59b86578f943a10288dc50f29a5a216d",
+    "docs/superpowers/plans/2026-10-26-dimension-domain-transport.md": "a6d1d5a520d0a12ed5ab7a146845a0361b0852327ed0d97c374e0beb827a24ab",
+    "docs/glu-scaling-domain-transport-validation.md": "d34a1b73bda3427c997a98d0af4a77aee4bfc486b507d87208c9bb193d450195"
+  },
+  "component_review_sha256": {
+    "modelforge-domain-math-review": "08fd7de80d330492bbf6e44ae6a430259220a14c94d2666e743adade6d7e7a0a",
+    "modelforge-domain-store-review": "27bde853f5bbcae159a670d980b2bbe77d01e1338ede1a73859f609602e8b055"
+  },
+  "all9_previous_component_signed_files_unchanged": true,
+  "blocking_findings": [],
+  "resolved_findings": [
+    "Returned response native dtype/shape/nbytes now validated before copy; invalid returned evidence is explicitly not persisted and counters remain distinct",
+    "Nonzero relative-error numerator with zero quotient fails closed instead of reporting exact0",
+    "Rejected resource receipts retained before scope rejection"
+  ],
+  "independent_core_probes": {
+    "passed": true,
+    "cases": {
+      "fp64": {
+        "shards": 18,
+        "counts": [
+          48,
+          48,
+          48,
+          48
+        ],
+        "raw_to_curvature_to_Richardson_verified": true,
+        "projectors_independent_SVD_verified": true
+      },
+      "fp32_compute": {
+        "shards": 18,
+        "counts": [
+          48,
+          48,
+          48,
+          48
+        ],
+        "raw_to_curvature_to_Richardson_verified": true,
+        "projectors_independent_SVD_verified": true
+      }
+    },
+    "relative_ratio_underflow_rejected": true,
+    "oversized_response_precedes_copy": true,
+    "shape_inventory": {
+      "cases": 16,
+      "shards": 4704,
+      "vector_calls": 1454080,
+      "largest_shard_upper_bound": 2251904,
+      "manifest_bytes_upper_bound": 884352,
+      "bytes_upper_bound": 1025028544
+    },
+    "actual_registered_context_calls": 0,
+    "registered_RNG_calls": 0,
+    "actual_reference_queries": 0,
+    "synthetic_callback_batches": 8,
+    "synthetic_vector_slots": 96,
+    "actual_or_consumed_data_reads": 0
+  },
+  "independent_controller_probes": {
+    "schema_success": true,
+    "schema_wrong_counts": false,
+    "schema_marker_source": false,
+    "schema_missing_artifact_name": false,
+    "flow_success": {
+      "status": "completed",
+      "engine_calls": 3,
+      "diagnostic_completed": true
+    },
+    "flow_scope_failure": {
+      "status": "failed",
+      "engine_calls": 1,
+      "diagnostic_completed": false
+    },
+    "flow_transport_failure": {
+      "status": "failed",
+      "engine_calls": 2,
+      "diagnostic_completed": false
+    },
+    "flow_worker_tree_failure": {
+      "status": "failed",
+      "engine_calls": 3,
+      "diagnostic_completed": false
+    },
+    "flow_post_source_change": {
+      "status": "failed",
+      "engine_calls": 3,
+      "diagnostic_completed": false
+    },
+    "actual_registered_contexts_called": 0,
+    "actual_worker_processes": 0,
+    "registered_RNG_calls": 0,
+    "scientific_global_markers_created": 0,
+    "virtual_inventory_and_marker_used_for_schema": true
+  },
+  "evidence_sha256": {
+    "probe.py": "917a47db7367cc848778af607b952c59fd0eb530a9b1601c67c21177ec781c45",
+    "probe-results.json": "e2dc7901d2a909a013419785e743abeda41382a54877e4879e65f39785815362",
+    "controller_probe.py": "f0407e6d14bf40a24524cda9c3193ceb97c0482aeb1542eae2307752078216d9",
+    "controller-probe-results.json": "37247ba2fb53c71f79e8535349f30984e7556ba9b316b560c903f1df3e101e72",
+    "fixed_schema_probe.py": "a9bc9eb4122489c336e7196abf7bb5eed99f2c06c8f08f216d19f1cf9e4dd2b1",
+    "fixed-schema-probe-results.json": "3abf529320f251a08b66e849c5a0bbf699c7cd75f0bc56cb5c5c838fc86ec3fd",
+    "review.md": "d08a6a0c058bd903c603acbb70262e0018c70aa987212861e29d3c1d27707f46"
+  },
+  "frozen_inventory": {
+    "bytes_upper_bound": 1025028544,
+    "cases": 16,
+    "largest_shard_upper_bound": 2251904,
+    "manifest_bytes_upper_bound": 884352,
+    "shards": 4704,
+    "vector_calls": 1454080
+  },
+  "prerequisites": [
+    "Commit exact reviewed runtime/preregistration/docs/tests/plan/component files and approval; require clean discovery-lab HEAD",
+    "New exclusive durable output, real free-disk check and monitored synthetic transport plus scope preflight before ANY registered_contexts/RNG/teacher/probe",
+    "Same shared180s/512MiBpolledtree/BLAS1/2KiBstdout limits; preserve failed receipts and stop without automatic retry",
+    "Create persistent canonical global marker before registered data; failed/partial marker blocks all new output attempts",
+    "Full completion requires16cases/exact4704shards/1454080reserved-attempted-returned-persisted slots/immutable hashes/final worker tree/source/deadline/totalbytes",
+    "Independent saved-raw outcome audit REQUIRED before drawing scientific or backend conclusions; no repeat queries/teachers or result-driven redesign within this protocol"
+  ],
+  "not_authorized": [
+    "Any reuse or optimization on consumed941027..941033",
+    "Fitting, learner recovery, hidden/private data or paid external calls",
+    "Changing fixed batching/seeds/profile/steps/rank criteria/row count from results",
+    "Rerunning registered teachers to repair resource/failure receipts",
+    "Private final model mission, frontier equivalence or universal reconstruction claim"
+  ],
+  "limitations": [
+    "Vector budget1454080 means full-vector rows, not callback invocation count; fixed batching gives2048callbacks",
+    "Program/source review and literal probes do not establish actual full scientific resource success; real receipts remain pending",
+    "RSS polling is not continuous peak, parent-controller RSS or hard realtime reservation; final-report write outside elapsed receipt",
+    "Shape upper bound is conservative with header reserve; runtime caps/checks and saved audit must verify actual inventory",
+    "External kill or IO failure may leave partial files/unknown counters and no terminal report; no fsync or transactional power-loss guarantee",
+    "FP32 rounded execution has no smooth derivative; reference uses rounded weights at continuousFP64points",
+    "Numerical SVD ranks/projectors/computed zeros and full FD span are not ideal identifiability or recovery proofs",
+    "Owned profile conditioning varies withn; descriptive diagnostic not causal dimension-only or nestedprojection evidence",
+    "Privileged weights/atoms/analytic truths remain outsideGit and are not learner-access observations",
+    "Remainingbias/HVP/weaker-oracle/fullbackbone science remains open; private gate closed"
+  ],
+  "private_gate": "closed"
+}

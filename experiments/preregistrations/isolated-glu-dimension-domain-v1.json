@@ -1,0 +1,94 @@
+{
+  "frozen_dependencies": {
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "examples/isolated_glu/scaling_domain_controller.py": "74c1bf8ff798ce01066da18d340d0df711ad9cb0beded743bca0f6052ee2ff40",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "examples/isolated_glu/scaling_domain_run.py": "a9c44f8fffa274ad37b50ab15424f0e7200cc538ac98fc50d6790083ee4d928b",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b"
+  },
+  "inventory_plan": {
+    "bytes_upper_bound": 1025028544,
+    "cases": 16,
+    "largest_shard_upper_bound": 2251904,
+    "manifest_bytes_upper_bound": 884352,
+    "shards": 4704,
+    "vector_calls": 1454080
+  },
+  "policy": {
+    "batching": "sign_major_4p_per_probe_step_no_dedup",
+    "blas_threads": 1,
+    "channels": [
+      "fp64",
+      "fp32_compute"
+    ],
+    "id": "isolated-glu-dimension-domain-v1",
+    "memory_limit_mb": 512,
+    "probe_count": 64,
+    "probe_seeds": [
+      684033,
+      684133,
+      684233,
+      684333
+    ],
+    "probe_std": 4,
+    "profiles": [
+      [
+        4,
+        8,
+        4
+      ],
+      [
+        8,
+        16,
+        8
+      ],
+      [
+        16,
+        32,
+        16
+      ],
+      [
+        32,
+        64,
+        32
+      ]
+    ],
+    "random_direction_seeds": [
+      684034,
+      684134,
+      684234,
+      684334
+    ],
+    "rank_rtol": 1e-10,
+    "steps": [
+      0.3,
+      0.6
+    ],
+    "teacher_seeds": [
+      [
+        684031,
+        684032
+      ],
+      [
+        684131,
+        684132
+      ],
+      [
+        684231,
+        684232
+      ],
+      [
+        684331,
+        684332
+      ]
+    ],
+    "timeout_seconds": 180,
+    "vector_calls": 1454080,
+    "weight_std": 0.2,
+    "worker_output_limit_bytes": 2048
+  },
+  "private_gate": "closed",
+  "scope": "public privileged owned diagnostic only; no learner/fitting/recovery claim"
+}
