@@ -1,0 +1,7 @@
+{
+  "finite_checked_before_oversized_payload_rejection": true,
+  "conflicting_duplicate_json_key_accepted": true,
+  "registered_seeds_or_data": false,
+  "rng_calls": 0,
+  "queries": 0
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "oversized_payload_precedes_finite_scan": true,
+  "serialized_npz_overhead_rejected_before_disk": true,
+  "profile_basis_528_shape_roundtrip": true,
+  "profile_shard_serialized_bytes": 2235022,
+  "streaming_verifier_no_npz_readall": true,
+  "duplicate_json_keys_rejected": true,
+  "short_manifest_append_terminal_reservation_preserved": true,
+  "manifest_symlink_append_blocked": true,
+  "registered_teachers": 0,
+  "rng_calls": 0,
+  "reference_queries": 0,
+  "actual_or_consumed_data_reads": 0,
+  "source_sha256": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945"
+}

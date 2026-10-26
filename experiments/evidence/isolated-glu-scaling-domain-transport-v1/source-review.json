@@ -1,0 +1,72 @@
+{
+  "approved": true,
+  "artifact_transport_component_approved": true,
+  "actual_experiment_approved": false,
+  "runner_or_controller_approved": false,
+  "scope": "Bounded immutable NPZ-shard evidence transport ONLY; full scientific protocol remains QUEUED",
+  "source_sha256": {
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "tests/test_glu_scaling_domain_store.py": "347f6b17866f54b85091f0a080a6253c59b86578f943a10288dc50f29a5a216d",
+    "docs/superpowers/plans/2026-10-26-dimension-domain-transport.md": "a6d1d5a520d0a12ed5ab7a146845a0361b0852327ed0d97c374e0beb827a24ab",
+    "docs/glu-scaling-domain-transport-validation.md": "d34a1b73bda3427c997a98d0af4a77aee4bfc486b507d87208c9bb193d450195"
+  },
+  "sources": {
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "tests/test_glu_scaling_domain_store.py": "347f6b17866f54b85091f0a080a6253c59b86578f943a10288dc50f29a5a216d",
+    "docs/superpowers/plans/2026-10-26-dimension-domain-transport.md": "a6d1d5a520d0a12ed5ab7a146845a0361b0852327ed0d97c374e0beb827a24ab",
+    "docs/glu-scaling-domain-transport-validation.md": "d34a1b73bda3427c997a98d0af4a77aee4bfc486b507d87208c9bb193d450195"
+  },
+  "blocking_findings": [],
+  "resolved_findings": [
+    "Aggregate native payload bounds now precede finite-mask allocation/serialization",
+    "Strict duplicate JSON keys rejected rather than last-value-wins",
+    "Manifest symlink/ancestry and expected length checked before subsequent shard creation"
+  ],
+  "independent_probes": {
+    "passed": true,
+    "oversized_payload_precedes_finite_scan": true,
+    "serialized_npz_overhead_rejected_before_disk": true,
+    "profile_basis_528_shape_roundtrip": true,
+    "profile_shard_serialized_bytes": 2235022,
+    "streaming_verifier_no_npz_readall": true,
+    "duplicate_json_keys_rejected": true,
+    "short_manifest_append_terminal_reservation_preserved": true,
+    "manifest_symlink_append_blocked": true,
+    "registered_teachers": 0,
+    "rng_calls": 0,
+    "reference_queries": 0,
+    "actual_or_consumed_data_reads": 0,
+    "source_sha256": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945"
+  },
+  "limits": {
+    "shard_serialized_bytes": 8388608,
+    "store_with_manifest_bytes": 1072693248,
+    "manifest_bytes": 1048576,
+    "manifest_records": 8192,
+    "future_reports_reserved_bytes": 1048576,
+    "synthetic_free_disk_min_bytes": 2147483648
+  },
+  "probe_sha256": "9f7106a0d314d3c070d3aae467d833b80946590bb6e1bf4a25605ce100cee97d",
+  "probe_results_sha256": "b507a6bfaa0426c1e964219c6732f488f1e286d9af67ec38a9650b4a0662fe89",
+  "draft_red_probe_sha256": "c14ba9c7c46598ff7d91c1e3620be2aecb6f9c4fd0b961aac9f660367b8c5c78",
+  "draft_red_results_sha256": "36b2e632ad9af9bc22d7df4871c3aa41b40a64aa5cef359fe703a0f7378155c1",
+  "review_md_sha256": "3f3e539c9d7090ba45b06de5044fba80e1a227d9b8848a066d9e3e8aa3d487c5",
+  "limitations": [
+    "8192record maximum does not guarantee allrecords fit independent1MiBmanifest cap",
+    "Full combined scientific inventory/serialized disk size still unimplemented and unverified",
+    "Individual shape transport is not measured total scientific RAM/time/disk or process-tree resource proof",
+    "No hard RSS, fsync/crash durability, transactionality or adversarial concurrent-writer guarantee",
+    "Partial artifacts/reservations remain failed evidence; object terminal flag may be lost on external kill but exclusive root prevents restart reuse",
+    "Hash verification checks raw inventory only, not NPZ decompression/schema/numerical truth",
+    "Injected free_bytes seam is test-only; real controller must omit it and perform monitored pre-data disk/resource checks",
+    "No global scientific one-time marker, counters, source/preregistration gate or data runner approved here",
+    "No teacher/RNG/query/actual941xxx/private access; broader reconstruction and private mission prerequisites remain unmet"
+  ],
+  "remaining_prerequisites": [
+    "Freeze complete sequential scientific inventory/shards and prospective preregistration",
+    "Implement independentlyreviewed no-retry runner/controller/counters/reservations",
+    "Pre-data monitored transport/disk/tree preflight +shared180s512MiBlimits before registered generation",
+    "Independent saved-output audit after any future authorized diagnostic"
+  ],
+  "private_gate": "closed"
+}
