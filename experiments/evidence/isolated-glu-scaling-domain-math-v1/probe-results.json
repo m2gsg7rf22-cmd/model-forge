@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "hessian_complexstep_max_absolute_error": 8.326672684688674e-17,
+  "svec_isometry_and_interleaved_atoms": true,
+  "strict_rank_boundary_and_all_gap_reasons": true,
+  "full_zero_deficient_span_controls": true,
+  "tiny_representable_residual": 1e-200,
+  "direction_outer_underflow_failclosed": true,
+  "four_corner_diagonal2h_quartic_and_richardson": true,
+  "global_svd_scaling_extremes": true,
+  "registered_seeds_used": 0,
+  "rng_calls": 0,
+  "teacher_queries": 0,
+  "fitting": 0,
+  "actual_or_consumed_data_reads": 0
+}

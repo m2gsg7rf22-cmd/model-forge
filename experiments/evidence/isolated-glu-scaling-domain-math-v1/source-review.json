@@ -1,0 +1,72 @@
+{
+  "approved": true,
+  "pure_math_core_approved": true,
+  "actual_experiment_approved": false,
+  "runner_or_controller_approved": false,
+  "scope": "Pure supplied-array privileged diagnostic mathematics only; broader scaling protocol remains QUEUED",
+  "source_sha256": {
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "tests/test_glu_scaling_domain_math.py": "ef4b18431875acd9ac0e567b5953893b5ff7799ba975e6e1321053b39b5790fb",
+    "docs/superpowers/plans/2026-10-25-dimension-domain-math.md": "30a645bb35ac5d41ff83d1fad69b393da7647e0e9cd62bdb701e0cd16b396120",
+    "docs/glu-scaling-domain-math-validation.md": "73e65226ac5aa62afd2dfa9fcca7960d315db400de612df19e272669fc25c97b",
+    "docs/glu-scaling-observation-domain-draft.md": "0d63cfd75dfde512d163e7414d1027e5ff0921789045becb2c72aa5a21369973"
+  },
+  "sources": {
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "tests/test_glu_scaling_domain_math.py": "ef4b18431875acd9ac0e567b5953893b5ff7799ba975e6e1321053b39b5790fb",
+    "docs/superpowers/plans/2026-10-25-dimension-domain-math.md": "30a645bb35ac5d41ff83d1fad69b393da7647e0e9cd62bdb701e0cd16b396120",
+    "docs/glu-scaling-domain-math-validation.md": "73e65226ac5aa62afd2dfa9fcca7960d315db400de612df19e272669fc25c97b",
+    "docs/glu-scaling-observation-domain-draft.md": "0d63cfd75dfde512d163e7414d1027e5ff0921789045becb2c72aa5a21369973"
+  },
+  "blocking_findings": [],
+  "resolved_findings": [
+    {
+      "finding": "Nonzero direction projection residual around1e-200 was returned0 by squared norm underflow",
+      "resolution": "Scaled per-row residual norm; explicit atom/projection arithmetic guards",
+      "independent_verification": "tiny residual1e-200 preserved; direction outer underflow rejects"
+    },
+    {
+      "finding": "Plan global underflow statement exceeded analytic einsum behavior",
+      "resolution": "Narrowed documented scope; analytic contractions/computed zeros explicitly approximate and no ideal-rank truth",
+      "independent_verification": "literal g=u1e-100,d1e-200,x0 returns computed0 for ideal1e-400; caveat documented rather than false repair claim"
+    }
+  ],
+  "independent_probes": {
+    "passed": true,
+    "hessian_complexstep_max_absolute_error": 8.326672684688674e-17,
+    "svec_isometry_and_interleaved_atoms": true,
+    "strict_rank_boundary_and_all_gap_reasons": true,
+    "full_zero_deficient_span_controls": true,
+    "tiny_representable_residual": 1e-200,
+    "direction_outer_underflow_failclosed": true,
+    "four_corner_diagonal2h_quartic_and_richardson": true,
+    "global_svd_scaling_extremes": true,
+    "registered_seeds_used": 0,
+    "rng_calls": 0,
+    "teacher_queries": 0,
+    "fitting": 0,
+    "actual_or_consumed_data_reads": 0
+  },
+  "probe_sha256": "355e3c7ed14d3df7c63ee8a0c53725d02dd4e8369781ad196ef34a076b9fde87",
+  "probe_results_sha256": "df42448723ea55abd97e8dd4eed9007e6cdee270351b5ce40676eb7f082b628c",
+  "review_md_sha256": "8b4f1f6d20c0a337e041bda6a892836977f5dd3665955c5aacf2695fa517fca8",
+  "no_registered_seed_generation": true,
+  "no_reference_queries_or_fitting": true,
+  "no_actual_or_consumed_data_reads": true,
+  "limitations": [
+    "Floating arithmetic/SVD/projectors and rank threshold are numerical, not exact membership/identifiability or forward-error certificates",
+    "Analytic smooth reference can contain computed zeros; it is not derivative of rounded FP32 execution or exact ideal rank truth",
+    "No global underflow guarantee for every BLAS/einsum contraction",
+    "Explicit arrays may be converted to FP64; future runner must enforce strict bounded input schema/channel semantics",
+    "No runner/resource/disk/transport/reservation/counters/preregistration reviewed or authorized here",
+    "No scientific teacher or observations generated; software tests do not prove recovery/quality",
+    "Broad precision/access/scaling/HVP/bias/weaker-oracle work remains open; private gate closed"
+  ],
+  "remaining_prerequisites": [
+    "Separately implement/review bounded sequential sharded runner/controller",
+    "Meaningful artifact transport/disk/resource/pre-data tree preflights and exact no-retry accounting",
+    "Freeze full source/preregistration in clean commit before any diagnosticteacher generation",
+    "Postrun independent saved-array audit with privileged truths kept separate from learner observations"
+  ],
+  "private_gate": "closed"
+}
