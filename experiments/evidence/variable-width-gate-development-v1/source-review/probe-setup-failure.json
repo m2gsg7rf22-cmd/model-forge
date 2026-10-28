@@ -1,0 +1,8 @@
+{
+  "status": "reviewer_fixture_setup_failed",
+  "attempt": 1,
+  "cause": "Used worstshape607finalarrays while declaringcount1; validator correctly rejected Final count/shape mismatch before any controller cases.",
+  "source_bug": false,
+  "registered_data_RNG_queries_or_fits": false,
+  "corrected_fixture": "Use actual1row final/count and3x1view arrays; no product source change."
+}

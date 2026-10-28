@@ -1,0 +1,66 @@
+{
+  "files": {
+    "basis-binding-probe-results-red.json": {
+      "sha256": "75752b17702e1efc9b95027a5104a808f57a2e944756e9ef13dc466561b36891",
+      "bytes": 397
+    },
+    "basis-binding-probe-results.json": {
+      "sha256": "9df2642502d73d088446f6b5f271276c2cac755cb88889bebb136072247f7712",
+      "bytes": 237
+    },
+    "basis_binding_probe.py": {
+      "sha256": "51cc2786c6dbe3dddd9c172e141ddcd9e27c825772a1a773c64e103022393760",
+      "bytes": 3136
+    },
+    "inventory-probe-results.json": {
+      "sha256": "6593f77b0c389fa2a19ee3bdb8efe61cb375eabd84c857e18f3fd12b9dd0d166",
+      "bytes": 636
+    },
+    "inventory_probe.py": {
+      "sha256": "f6cb7529e9b863e0aed67d4de33c5e865a51263c3cfc1bdd0a6b8e38a36e4bde",
+      "bytes": 4060
+    },
+    "preliminary-probe-results.json": {
+      "sha256": "6c6f6b18ab96fb4dbb850ee81874e900f5ec869b14b8ec194fabaf883220211b",
+      "bytes": 1094
+    },
+    "preliminary-review.json": {
+      "sha256": "3b3b8ab5c1e691a708a1fa87b643f6a5b6da59dc9dbb13e8b816a1293c591ef4",
+      "bytes": 3769
+    },
+    "preliminary_probe.py": {
+      "sha256": "86f90a0f7ee56a910c67d71a934c40829c7bf9ddcfdecce893b44c6a73812d66",
+      "bytes": 5209
+    },
+    "probe-setup-api-change.json": {
+      "sha256": "67b9fa3a738a3ed624096b63ad84dfcc7b4ddabebf7183e2414b53b48f5fa81b",
+      "bytes": 360
+    },
+    "probe-setup-attempt01.py": {
+      "sha256": "87749d272bc16a410d115b7e896fa2046507114d9aae914cadfeb967ac557677",
+      "bytes": 4884
+    },
+    "probe-setup-attempt02.py": {
+      "sha256": "6ae45d7ed800528a8d27cb2fb5be4fed32c634b26bab576411c97f8fa05c57b1",
+      "bytes": 4969
+    },
+    "probe-setup-failure.json": {
+      "sha256": "507de685cfcfab324cfacd8479713f4ffa229b79ad021afbb4501f063c62a784",
+      "bytes": 385
+    },
+    "final-source-review.json": {
+      "sha256": "6ff724f534d1ebb4b631ebf954d429ae3d21a42ec0d4aa75979fa8566e9fbffd",
+      "bytes": 12178
+    },
+    "full-review.md": {
+      "sha256": "9ed61e72b8470b2dcaaf5cc50f762fd9ac30962c4088a0941b6b9e3dd6daea01",
+      "bytes": 5603
+    },
+    "sign_final.py": {
+      "sha256": "616e9407f3829ce982d9e15b1b1ab5b5f51b2eb6188e3ca3fd9821502aa864c4",
+      "bytes": 15078
+    }
+  },
+  "large_arrays_copied": false,
+  "all_setup_failures_retained": true
+}

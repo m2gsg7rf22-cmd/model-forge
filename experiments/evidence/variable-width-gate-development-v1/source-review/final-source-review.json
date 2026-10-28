@@ -1,0 +1,142 @@
+{
+  "approved": true,
+  "full_source_approved": true,
+  "full_variable_gate_protocol_approved": true,
+  "approval_scope": "One future default variable_gate_controller.py CLI attempt only, conditional on exact clean committed reviewed bytes and all actual runtime gates; separate explicit dispatch authorization remains required.",
+  "source_sha256": {
+    "docs/glu-variable-width-gate-adapter.md": "dd7fdadf754f144080d320432461dd846096e9b5201f2ff5e924cf0c1de624ea",
+    "docs/glu-variable-width-gate-development-design.md": "38c5de8ecb7a994de5342f01e8b4ee50cd62f5cabd954cca7d2870d1c92365fa",
+    "docs/glu-variable-width-gate-development-protocol.md": "fdc22e7c25cc86a51a7cf83568f0ad9d5c17779072d05c1a97cfae45a4f35970",
+    "docs/glu-variable-width-gate-search.md": "c768645f0341daa2fce8fecf5df905c66ed2317ca94c0187b7d36366eb18cae5",
+    "docs/superpowers/plans/2026-10-28-variable-width-gate-development.md": "09c0bc3225a28ae21d20ded27f6d3081685cf8a0b77d9f89935c1f361796f7dd",
+    "examples/isolated_glu/fresh_rank_common.py": "d1ed586a224556a0d3bab1fa2dd05b928ebac485dc9026f1bd762c2f8f058b0b",
+    "examples/isolated_glu/row_acquisition_view.py": "6b89a496733ced75fde476a841a422c234bd8c4938d90066a3c1539f902ec635",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "examples/isolated_glu/variable_gate_common.py": "dffc4e241ff6843b4f425dc795b9c1e1b69298a8488a7ab140a7f9b166ee95d2",
+    "examples/isolated_glu/variable_gate_controller.py": "fedad93c9b2338454e998354c38960f57abe3cbbfbe0a1cde43d6f3d34eee549",
+    "examples/isolated_glu/variable_gate_inventory.py": "f982576e8424696df016f24ed7689a72a75025bce8166441496b37c0b9297c6b",
+    "examples/isolated_glu/variable_gate_search.py": "ba636c22ef27aa449d125d16f25d6ddd9b49a844517e502792dd0dc9d1841716",
+    "examples/isolated_glu/variable_gate_view.py": "999e89d9161c064242ae53235e3b03a727a63f5ca9f43c61952c4ab8437036ce",
+    "experiments/evidence/paired-row-acquisition-v1/actual/collection/collection-report.json": "eba75ce5156e0ee13ca1e5cdac060bcb6d9028389b7d6d26a8cff2deeeb35167",
+    "experiments/evidence/paired-row-acquisition-v1/actual/collection/public/cases.json": "2d51bfe26130a1eebb054d71f1817a7e246005e9ea5a6f5824edc04cebc64cd6",
+    "experiments/evidence/paired-row-acquisition-v1/actual/estimator/choices-sealed.json": "f436992bc2f3b24fd593a373c2127235124626a58c82f95a5626594af2f76901",
+    "experiments/evidence/paired-row-acquisition-v1/actual/estimator/estimator-report.json": "bf546c416a65e4d46b6fbd544cf0d19b130c17cf2f799a55f2cd365c5a51d2ec",
+    "experiments/evidence/paired-row-acquisition-v1/outcome-audit/outcome-audit.json": "363e46db8c437b40e435ef9d3873e6f834d5a877fb688136d024d7d05aa553c7",
+    "experiments/preregistrations/variable-width-gate-development-v1.json": "f8d85c9aba42c405c3a7dfe99fec97fd577a2c91a5ebcbdd410afd1bba8a2194",
+    "src/modelforge/__init__.py": "163f8b506a895a97f81ec473ea9d8d4c22d83372c803dee29e4050ed2d801067",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "tests/test_variable_gate_protocol.py": "dba0f8e33211368c7dfabe0882fdfff9d617869528720d6fdbe0d5a43314c070",
+    "tests/test_variable_gate_search.py": "0bf05e5a3b7b3fa2c289ed4c1805bb2264b536e124add143d501715faf824919",
+    "tests/test_variable_gate_view.py": "b5f24b8524c95c49a39da7a5352002b5c4e9f4154c5f1d8da8c05679cf4f6467"
+  },
+  "signed_file_count": 28,
+  "runtime_dependency_count": 14,
+  "required_review_set_count": 27,
+  "preregistration_sha256": "f8d85c9aba42c405c3a7dfe99fec97fd577a2c91a5ebcbdd410afd1bba8a2194",
+  "actual_execution_started": false,
+  "actual_resource_proof": false,
+  "actual_registered_input_arrays_loaded_during_review": false,
+  "registered_seed_generators_instantiated_during_review": false,
+  "model_queries_forward_or_fitting_during_full_review": false,
+  "scientific_success_claim": false,
+  "method_promotion_approved": false,
+  "certificate": false,
+  "coverage_certified": false,
+  "private_gate": "closed",
+  "blocking_findings": [],
+  "addressed_findings": [
+    {
+      "id": "V1",
+      "status": "closed",
+      "finding": "Existing scope/transport receipts couldbe lost whenlatergates failed.",
+      "resolution": "Eachreceipt persisted immediatelybeforeitsTREE/transport/diskchecks. IndependentbadTREEfakeengine control confirmsreceipt survives andRNGflagfalse; parentunavailablediskfixture preservesscopeandtransport."
+    },
+    {
+      "id": "V2",
+      "status": "closed",
+      "finding": "Completed case couldcontainpartialchunks orcontradictorychunk/aggregateevidence.",
+      "resolution": "Allchunks require complete1/count8/attempted8; pre/aggregate/chunk directions,mixtures,eigenvalues/vectors/indices,chosenstarts andmerge losses linked. Partitionedlosscomparisons use explicitatol1e-14/rtol1e-12. Independentpartial/chunk/pre/mergeloss/boolcontrols pass."
+    },
+    {
+      "id": "V3",
+      "status": "closed",
+      "finding": "Savedjob-basistrace notcompared withactualoptimizerjob, allowing zeroedtracebasis tobe accepted.",
+      "resolution": "Exactarrayequality binds savedbasis to job.basis. IndependentliteralIOstub RED onsourcec14b0d14 andGREEN onfedad93c preserved; parentcontrolledfixture also RED→GREEN."
+    }
+  ],
+  "source_and_contract_review": [
+    "Fourfixedpublicmetadata pins andparentdirectory/source/audit lineage validated fromcopiedrepometadata only; no actualparentarrays/truth traversal.",
+    "Fullregistered6/12/54/24adapter commitmentboundary, selectedstablep17basis[:r],properpositiveevenr<=192,n32andopaquejobIDs; no teacherwidth/channelmetadata entersoptimizer.",
+    "Previouslyreviewedkernel/adapter andall31parent sourcebytes unchanged;14runtime dependencies repinned andtests/docs/prereg/provenance requiredset fullysigned.",
+    "Defaultouter monitorscontroller/imports/search/validators/children; innerTREEscope/20transportfamilies/disk2GiB/source/config/reviewbeforeexclusivefsyncedmarker andregisteredRNG.",
+    "All6canonicaljobs persistbasis/pre/post/chunks/partials/RNG/merge/geometry/views; scientificzero/overshoot/geometry/exhaustion continues, operationalfailure aborts withnot_started/failed_or_partial.",
+    "Inputdomain/pin/odd/full/nulladapterfailure terminatesbeforeRNG ratherthan fabricatingasearchoutcome; ordinarycasefailures handledseparately asclarifiedprotocol.",
+    "Completedcase validatesexactbranchtraceinventory/headers/hashes,fullchunks/aggregates/counttrajectory/finaloriginalbasisgeometry/reportRNG/jobID/maxloss/viewcount.",
+    "Finalparentpublicbundle/source/marker/transport revalidated; exactownfiles/directories/metadata/manifest/bytecaps; outerfailure/receiptwritefailure dominatesinnercompletion.",
+    "Completedpipeline canhonestlyreportzero candidate_target jobs; no success required andno production/universal claim."
+  ],
+  "independent_evidence_summary": [
+    "Sevenliteralinvariant controls: validtargetcase, partialchunk rejection, chunkrow mismatch, merge-loss mismatch, pretrace mismatch, nativeboolbasecount andfailedTREEreceipt preservation.",
+    "Basisbinding isolatedRED→GREEN fixture usesonlyliteral2Dcoordinates andIOstubs, no optimizer/RNG orregistereddata.",
+    "Independentliteral shapes reconstructevery5988maximaltracefieldshape andall20transportfamilies; exactbyte/header/manifesttotal agrees859224431. No arraysorRNG allocated byinventoryprobe.",
+    "Two reviewerfixture setupfailures retained: incorrect607row/count1setup wascorrectly rejected; thenconcurrentAPIrequiredjob/RNG/maxloss fieldsneededfixtureupdate. Neitherwasproductfailure orregisteredattempt."
+  ],
+  "parent_validation_attributed_not_repeated": {
+    "targeted_integration_tests_passed": 78,
+    "elapsed_seconds": 24.41,
+    "protocol_fixtures": 26,
+    "mypy_variable_modules_passed_beforeV3": 5,
+    "mypy_new_modules_passed_afterV3": 3,
+    "ruff_passed": true,
+    "all_six_scientific_zero_outcomes_pipeline_fixture_passed": true,
+    "fixture_streams": "literal11/12injected;productionseedconstructorsandrealinputloadingnotused"
+  },
+  "inventory_verified": {
+    "trace_shards": 5988,
+    "trace_bytes_upper_bound": 306834564,
+    "manifest_bytes_upper_bound": 772596,
+    "largest_shard_upper_bound": 3124232,
+    "preflight_shards": 20,
+    "preflight_bytes_upper_bound": 9020691,
+    "metadata_reserve_bytes": 8388608,
+    "parent_retained_bytes_upper_bound": 534980568,
+    "bytes_upper_bound": 859224431,
+    "minimum_free_disk_bytes": 2147483648
+  },
+  "future_runtime_conditions": [
+    "Exactcurrentreview/config/source incleancommitteddiscovery-lab; verify_source mustpassagain beforeactualattempt andbetweenjobs.",
+    "One newdurable directexperimentoutput andexclusiveglobalmarker; nooverwrite, seedretry,newoutputbypassorautomaticretry.",
+    "DefaultCLIouter180s/512MiBprocess_and_children/BLAS1/2KiB required; directrun_protocol/controlled_run isnotfullresourcecompliance.",
+    "ActualTREEscope and20maximumliteraltransport preflight plusactual>=2GiBfree beforemarker/registereddata/RNG; read-onlydiskobservation isnotresourceproof.",
+    "Persistactualouter/innerreceipts andpartialprogress; polledRSSmaymissshortpeaks andisnotOSreservation. Inventorydoesnotprove6jobsfit180s.",
+    "Terminalcheckpoint thenindependentboundedSAVEDoutcomeaudit withnofit/requery/teachertruth/heldoutuse; do notpromote numericreports beforeaudit."
+  ],
+  "limits": [
+    "ThisisdisclosedPUBLICdevelopment on3teachers/dependentchannels,notfreshorheldoutvalidation.",
+    "r/2isgenerichypothesisonly; quarticflatness/count-vscoverage/duplicate/nearparallel/noise limitationsremain. Candidatecountandlowresidualdonotidentifygates/magnitude/couplings/fullfunction/storedweights.",
+    "Allviewresiduals descriptive becauseselectionalreadyusedthem; independentchannelseeds prohibitcausalprecisionclaims.",
+    "Floatingreduction/BLASpartition/batchednormandnp.sum differences acknowledged; fixedthresholds unchanged,nogeneralbitparitypromise.",
+    "Hardkillmayleave8uncommittedoutputsunknown; sink/flush/reportfailurecanpreventafterstate. Preserveunknowns ratherthanfalsezeros/completion.",
+    "Logicalpublicinput/opaqueID boundaryisnotOSsecurity orstatisticalblinding; canonicaljoborder isknown.",
+    "Historicalparentretainedbound534980568usedconservatively,no newprivateparentroot traversal implied.",
+    "No fullfunction/privateLunamodelwork/nativebuild/paidAPI/backgroundschedule authorized; broaderuniversal/backbone/bias/HVP/weakeraccess goalsremainopen."
+  ],
+  "evidence_sha256": {
+    "basis-binding-probe-results-red.json": "75752b17702e1efc9b95027a5104a808f57a2e944756e9ef13dc466561b36891",
+    "basis-binding-probe-results.json": "9df2642502d73d088446f6b5f271276c2cac755cb88889bebb136072247f7712",
+    "basis_binding_probe.py": "51cc2786c6dbe3dddd9c172e141ddcd9e27c825772a1a773c64e103022393760",
+    "inventory-probe-results.json": "6593f77b0c389fa2a19ee3bdb8efe61cb375eabd84c857e18f3fd12b9dd0d166",
+    "inventory_probe.py": "f6cb7529e9b863e0aed67d4de33c5e865a51263c3cfc1bdd0a6b8e38a36e4bde",
+    "preliminary-probe-results.json": "6c6f6b18ab96fb4dbb850ee81874e900f5ec869b14b8ec194fabaf883220211b",
+    "preliminary-review.json": "3b3b8ab5c1e691a708a1fa87b643f6a5b6da59dc9dbb13e8b816a1293c591ef4",
+    "preliminary_probe.py": "86f90a0f7ee56a910c67d71a934c40829c7bf9ddcfdecce893b44c6a73812d66",
+    "probe-setup-api-change.json": "67b9fa3a738a3ed624096b63ad84dfcc7b4ddabebf7183e2414b53b48f5fa81b",
+    "probe-setup-attempt01.py": "87749d272bc16a410d115b7e896fa2046507114d9aae914cadfeb967ac557677",
+    "probe-setup-attempt02.py": "6ae45d7ed800528a8d27cb2fb5be4fed32c634b26bab576411c97f8fa05c57b1",
+    "probe-setup-failure.json": "507de685cfcfab324cfacd8479713f4ffa229b79ad021afbb4501f063c62a784"
+  }
+}

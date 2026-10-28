@@ -1,0 +1,79 @@
+{
+  "approved": false,
+  "full_variable_gate_protocol_approved": false,
+  "execution_approved": false,
+  "preliminary_review_only": true,
+  "source_sha256": {
+    "examples/isolated_glu/variable_gate_controller.py": "c14b0d14bd459b529c6941924a0c7b2331ec0dc7f7759b7311ae6b7e68b370e5",
+    "examples/isolated_glu/variable_gate_common.py": "dffc4e241ff6843b4f425dc795b9c1e1b69298a8488a7ab140a7f9b166ee95d2",
+    "examples/isolated_glu/variable_gate_inventory.py": "f982576e8424696df016f24ed7689a72a75025bce8166441496b37c0b9297c6b",
+    "tests/test_variable_gate_protocol.py": "47d192e5cd640a80152b0434053242b5b66aa413633e7882ddd934c2db1353a3"
+  },
+  "observations": [
+    {
+      "id": "V1",
+      "status": "fixed_in_current_source_and_independent_failure_control",
+      "finding": "scope/transport receipts were persisted onlyafterlaterchecks; badscope/transport/disk failure coulddiscardexistingreceipt.",
+      "fix": "Immediate saveofscope andtransport receipts beforegates; independentbadTREEscope fixture confirmsreceiptpreservedandregistered_rng_startedfalse."
+    },
+    {
+      "id": "V2",
+      "status": "fixed_in_current_source_and_independent_literal_controls",
+      "finding": "Completedcasecouldcontainschematicallyvalidpartialchunk andnochunkaggregatebinding.",
+      "fix": "Fullcasechecksallchunks complete1/count8/attempt8; initial/rescue pre/chunk/mixture/eigen/merge aggregateslinked. Independentrejectspartialchunk,rowmismatch,merge-lossmismatch,premismatch,nativeboolbasecount."
+    }
+  ],
+  "current_blocking_findings": [],
+  "still_pending": [
+    "Finalpreregistration/exactruntime/oldinputcommitments/sourcepins/documents/plan.",
+    "Successfulcontrolledsixcasefixture withregisteredRNGconstructorsmocked, terminalsummary/failure/outerreceiptbinding checks.",
+    "Finalsource/parentdependencyhashscan andcontinuedreviewof anychanges; onlythenonefuturedefaultCLIconditionalapproval.",
+    "Resourceactualscope/performance remainsunverifieduntilseparateauthorizedregisteredattempt; preliminaryliteralcontrolsarenotresourcepreflight."
+  ],
+  "integer_inventory_crosscheck": {
+    "per_job_trace_names": 998,
+    "equation": "10+32*2+4*(7+32*3+64*2)=998;6*998=5988",
+    "plan": {
+      "trace_shards": 5988,
+      "trace_bytes_upper_bound": 306834564,
+      "manifest_bytes_upper_bound": 772596,
+      "largest_shard_upper_bound": 3124232,
+      "preflight_shards": 20,
+      "preflight_bytes_upper_bound": 9020691,
+      "metadata_reserve_bytes": 8388608,
+      "parent_retained_bytes_upper_bound": 534980568,
+      "bytes_upper_bound": 859224431,
+      "minimum_free_disk_bytes": 2147483648
+    },
+    "largest_final_cosines": [
+      607,
+      607
+    ],
+    "max_geometry_residual": [
+      192,
+      528
+    ]
+  },
+  "probe_sha256": {
+    "preliminary_probe.py": "86f90a0f7ee56a910c67d71a934c40829c7bf9ddcfdecce893b44c6a73812d66",
+    "preliminary-probe-results.json": "6c6f6b18ab96fb4dbb850ee81874e900f5ec869b14b8ec194fabaf883220211b",
+    "probe-setup-attempt01.py": "87749d272bc16a410d115b7e896fa2046507114d9aae914cadfeb967ac557677",
+    "probe-setup-failure.json": "507de685cfcfab324cfacd8479713f4ffa229b79ad021afbb4501f063c62a784",
+    "probe-setup-attempt02.py": "6ae45d7ed800528a8d27cb2fb5be4fed32c634b26bab576411c97f8fa05c57b1",
+    "probe-setup-api-change.json": "67b9fa3a738a3ed624096b63ad84dfcc7b4ddabebf7183e2414b53b48f5fa81b"
+  },
+  "reviewer_fixture_failures_retained": [
+    {
+      "attempt": 1,
+      "type": "ownfixtureworstshape607withcount1",
+      "product_rejected_correctly": true
+    },
+    {
+      "attempt": 2,
+      "type": "concurrentAPIaddedrequiredjobID/RNG/maxloss",
+      "product_rejected_correctly": true
+    }
+  ],
+  "no_registered_RNG_data_queries_forward_or_fit": true,
+  "private_gate": "closed"
+}

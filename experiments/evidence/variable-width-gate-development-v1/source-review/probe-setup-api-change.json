@@ -1,0 +1,8 @@
+{
+  "status": "reviewer_fixture_api_update",
+  "attempt": 2,
+  "cause": "Controller concurrently added required report job_id/RNGstate/maxloss validation; fixture lackednewmetadata andcorrectlyrejected.",
+  "source_bug": false,
+  "registered_data_RNG_queries_or_fits": false,
+  "update": "PopulateexactopaqueID anddecodedliteralstate metadata,maximumloss0."
+}

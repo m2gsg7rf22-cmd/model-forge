@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "source_sha256": "1bebe0098188af528d3bbd4e7fc1d135dc80f0ff36b0116c448c114085cca8dd",
+  "controls": [
+    {
+      "control": "valid",
+      "accepted": true
+    },
+    {
+      "control": "partial_chunk",
+      "rejected": true,
+      "reason": "Completed case contains partial chunk"
+    },
+    {
+      "control": "different_chunk_row",
+      "rejected": true,
+      "reason": "Refinement chunks disagree with aggregate"
+    },
+    {
+      "control": "different_merge_loss",
+      "rejected": true,
+      "reason": "Initial merge losses disagree"
+    },
+    {
+      "control": "different_pre_input",
+      "rejected": true,
+      "reason": "Initial pretrace disagrees with aggregate"
+    },
+    {
+      "control": "native_bool_base_count",
+      "rejected": true,
+      "reason": "Base count disagrees with merge"
+    },
+    {
+      "control": "failed_TREE_scope_receipt_persisted_before_rejection",
+      "passed": true
+    }
+  ],
+  "scope": "literalarray/IO-stub invariants and failedpreflight only; no realinputroots,registeredseeds,RNG,queries,search or fitting"
+}

@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "independent_literal_shape_plan": {
+    "trace_shards": 5988,
+    "trace_bytes_upper_bound": 306834564,
+    "manifest_bytes_upper_bound": 772596,
+    "largest_shard_upper_bound": 3124232,
+    "preflight_shards": 20,
+    "preflight_bytes_upper_bound": 9020691,
+    "metadata_reserve_bytes": 8388608,
+    "parent_retained_bytes_upper_bound": 534980568,
+    "bytes_upper_bound": 859224431,
+    "minimum_free_disk_bytes": 2147483648
+  },
+  "every5988shape_and20family_match": true,
+  "source_sha256": "f982576e8424696df016f24ed7689a72a75025bce8166441496b37c0b9297c6b",
+  "arrays_RNG_query_or_fit_created": false
+}

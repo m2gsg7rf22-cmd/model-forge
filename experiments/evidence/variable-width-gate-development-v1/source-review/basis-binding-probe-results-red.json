@@ -1,0 +1,15 @@
+{
+  "incorrect_basis_rejected": false,
+  "summary": {
+    "job_id": "job00",
+    "status": "completed",
+    "candidate_status": "candidate_target",
+    "rank": 2,
+    "target_hypothesis": 1,
+    "final_count": 1,
+    "rounds": 0,
+    "certificate": false
+  },
+  "source_sha256": "c14b0d14bd459b529c6941924a0c7b2331ec0dc7f7759b7311ae6b7e68b370e5",
+  "scope": "literalIOstub;noRNG/data/query/fit"
+}

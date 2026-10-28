@@ -1,0 +1,94 @@
+{
+  "actual_run_started": false,
+  "frozen_dependencies": {
+    "examples/isolated_glu/fresh_rank_common.py": "d1ed586a224556a0d3bab1fa2dd05b928ebac485dc9026f1bd762c2f8f058b0b",
+    "examples/isolated_glu/row_acquisition_view.py": "6b89a496733ced75fde476a841a422c234bd8c4938d90066a3c1539f902ec635",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "examples/isolated_glu/variable_gate_common.py": "dffc4e241ff6843b4f425dc795b9c1e1b69298a8488a7ab140a7f9b166ee95d2",
+    "examples/isolated_glu/variable_gate_controller.py": "fedad93c9b2338454e998354c38960f57abe3cbbfbe0a1cde43d6f3d34eee549",
+    "examples/isolated_glu/variable_gate_inventory.py": "f982576e8424696df016f24ed7689a72a75025bce8166441496b37c0b9297c6b",
+    "examples/isolated_glu/variable_gate_search.py": "ba636c22ef27aa449d125d16f25d6ddd9b49a844517e502792dd0dc9d1841716",
+    "examples/isolated_glu/variable_gate_view.py": "999e89d9161c064242ae53235e3b03a727a63f5ca9f43c61952c4ab8437036ce",
+    "src/modelforge/__init__.py": "163f8b506a895a97f81ec473ea9d8d4c22d83372c803dee29e4050ed2d801067",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b"
+  },
+  "input_commitments": {
+    "cases_sha256": "2d51bfe26130a1eebb054d71f1817a7e246005e9ea5a6f5824edc04cebc64cd6",
+    "manifest_sha256": "ffe53561cd35a5cd6de6d27b7537a98a05ab804b3c49477654ded3723b705e7f",
+    "report_sha256": "bf546c416a65e4d46b6fbd544cf0d19b130c17cf2f799a55f2cd365c5a51d2ec",
+    "seal_sha256": "f436992bc2f3b24fd593a373c2127235124626a58c82f95a5626594af2f76901"
+  },
+  "inventory": {
+    "bytes_upper_bound": 859224431,
+    "largest_shard_upper_bound": 3124232,
+    "manifest_bytes_upper_bound": 772596,
+    "metadata_reserve_bytes": 8388608,
+    "minimum_free_disk_bytes": 2147483648,
+    "parent_retained_bytes_upper_bound": 534980568,
+    "preflight_bytes_upper_bound": 9020691,
+    "preflight_shards": 20,
+    "trace_bytes_upper_bound": 306834564,
+    "trace_shards": 5988
+  },
+  "parent_directory": "paired-row-acquisition-v1-20261028-07235ac",
+  "parent_outcome_audit_sha256": "363e46db8c437b40e435ef9d3873e6f834d5a877fb688136d024d7d05aa553c7",
+  "parent_source_commit": "07235acd0ecaa576d57b37eefb2b4e6fc3aa0c6a",
+  "policy": {
+    "adam_steps": 1600,
+    "blas_threads": 1,
+    "certificate": false,
+    "cosine_limit": 0.9995,
+    "development_only": true,
+    "id": "variable-width-gate-development-v1",
+    "initial_refine_steps": 12,
+    "initial_starts": 256,
+    "jobs": 6,
+    "loss_limit": 1e-08,
+    "max_rank": 192,
+    "memory_limit_mb": 512,
+    "n": 32,
+    "new_queries": 0,
+    "output_limit_bytes": 2048,
+    "private_gate": "closed",
+    "progress_chunk": 8,
+    "rescue_refine_steps": 24,
+    "rescue_rounds": 4,
+    "rescue_starts": 512,
+    "timeout_seconds": 180
+  },
+  "runtime": {
+    "numpy": "2.5.4",
+    "python": "3.12.15"
+  },
+  "scope": "public_development_only_no_reconstruction_certificate",
+  "seeds": {
+    "job00": {
+      "initial": 55481533174115787854105696203293976654409449496518216483164534897579408763914,
+      "rescue": 101938004681083069231658582760839877584899107487424996628935885756669779625833
+    },
+    "job01": {
+      "initial": 103602120139668564731202843750137641730752539789023756017413721809654876646198,
+      "rescue": 96328536119406912728597493283478861075935807618016633540692307161267585382755
+    },
+    "job02": {
+      "initial": 2359755355248703354620655308162753637119011613090367893168391709938317358359,
+      "rescue": 107668769889977648385145763359200142904869793641915362503659200928581179457668
+    },
+    "job03": {
+      "initial": 115272516567524149336190230820117314485279179295357468806149794245610241871328,
+      "rescue": 23514590979037386571270444519623474194307169838880042167754336611230561956300
+    },
+    "job04": {
+      "initial": 2002427614718255879642938455590336625694514128015225168257299937913332954182,
+      "rescue": 109001801569277126872612580180750343439562034253366458409891289797241737299052
+    },
+    "job05": {
+      "initial": 31019990718919210235604261541031215874807142761023078348216176375364629225288,
+      "rescue": 99898142980001224977942639997396840937578176444411191153279085500179786009192
+    }
+  }
+}

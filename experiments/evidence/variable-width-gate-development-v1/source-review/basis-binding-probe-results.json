@@ -1,0 +1,6 @@
+{
+  "incorrect_basis_rejected": true,
+  "error": "Saved basis disagrees with actual optimizer job",
+  "source_sha256": "fedad93c9b2338454e998354c38960f57abe3cbbfbe0a1cde43d6f3d34eee549",
+  "scope": "literalIOstub;noRNG/data/query/fit"
+}
