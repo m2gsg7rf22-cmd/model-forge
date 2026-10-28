@@ -1,0 +1,106 @@
+{
+  "artifact_root": "/Users/adamfaruhi123/.local/share/modelforge-research/experiments/variable-width-gate-development-v1-20261028-43cf7a6",
+  "cases": [
+    {
+      "candidate_status": "rounds_exhausted",
+      "certificate": false,
+      "final_count": 93,
+      "job_id": "job00",
+      "rank": 192,
+      "report_sha256": "46051f7f9ae476200b8c998860a2ad748ff6a4ab1bce098bf2f9540c87cf359d",
+      "rounds": 4,
+      "status": "completed",
+      "target_hypothesis": 96
+    },
+    {
+      "candidate_status": "rounds_exhausted",
+      "certificate": false,
+      "final_count": 2,
+      "job_id": "job01",
+      "rank": 192,
+      "report_sha256": "b58625aaccdea11f3ec7cfba4543db6aeede821fb785ac56250952cd5b0d7e49",
+      "rounds": 4,
+      "status": "completed",
+      "target_hypothesis": 96
+    },
+    {
+      "candidate_status": "rounds_exhausted",
+      "certificate": false,
+      "final_count": 47,
+      "job_id": "job02",
+      "rank": 96,
+      "report_sha256": "5a3f3aff5611b20d0352e952b7084f2bcc2404b3f9e45923a267a9a3c25a03ca",
+      "rounds": 4,
+      "status": "completed",
+      "target_hypothesis": 48
+    },
+    {
+      "candidate_status": "rounds_exhausted",
+      "certificate": false,
+      "final_count": 18,
+      "job_id": "job03",
+      "rank": 96,
+      "report_sha256": "d8fd369baf3d08831675a8c65989fb823e1b5b82fa7db6f6a69a83c32abe91f9",
+      "rounds": 4,
+      "status": "completed",
+      "target_hypothesis": 48
+    },
+    {
+      "candidate_status": "candidate_target",
+      "certificate": false,
+      "final_count": 16,
+      "job_id": "job04",
+      "rank": 32,
+      "report_sha256": "e5c73fe61d2170afe8f5aa4ddee9b5dd4b40608e8212731e36056f67a5e92f6c",
+      "rounds": 0,
+      "status": "completed",
+      "target_hypothesis": 16
+    },
+    {
+      "candidate_status": "rounds_exhausted",
+      "certificate": false,
+      "final_count": 13,
+      "job_id": "job05",
+      "rank": 32,
+      "report_sha256": "f435de8305335094b87538c945e820cf897289804d026508ecad4b9cb0936ef8",
+      "rounds": 4,
+      "status": "completed",
+      "target_hypothesis": 16
+    }
+  ],
+  "certificate": false,
+  "controller_sha256": "00aee710089c6225cbdc80ffcece2a23ceaa56197d4838331d147ffabdc51ad2",
+  "controller_status": "completed",
+  "independent_outcome_audit": "pending",
+  "marker_consumed": true,
+  "marker_sha256": "88aedf0f73a740c4980875d190913efcb8b6f7ff0f226d47266e7b2325be45a0",
+  "method_promotion": false,
+  "new_queries": 0,
+  "outer_sha256": "0ad71dd01fe262aba09f8422b7a798f8543bd5c17ac1ce4feb270e988bfa4511",
+  "private_gate": "closed",
+  "receipt": {
+    "memory_limit_mb": 512,
+    "memory_samples": 1499,
+    "new_queries": 0,
+    "peak_sampled_rss_bytes": 392577024,
+    "process_monitor_scope": "process_and_children",
+    "status": "completed"
+  },
+  "small_receipts_sha256": {
+    "adapter-report.json": "a9a1490753d404a6b32494b26ba67ac2f6b587e33e195c13cd9d080aafde7241",
+    "attempt-marker.json": "88aedf0f73a740c4980875d190913efcb8b6f7ff0f226d47266e7b2325be45a0",
+    "controller-report.json": "00aee710089c6225cbdc80ffcece2a23ceaa56197d4838331d147ffabdc51ad2",
+    "outer-monitor.json": "0ad71dd01fe262aba09f8422b7a798f8543bd5c17ac1ce4feb270e988bfa4511",
+    "reports/job00.json": "46051f7f9ae476200b8c998860a2ad748ff6a4ab1bce098bf2f9540c87cf359d",
+    "reports/job01.json": "b58625aaccdea11f3ec7cfba4543db6aeede821fb785ac56250952cd5b0d7e49",
+    "reports/job02.json": "5a3f3aff5611b20d0352e952b7084f2bcc2404b3f9e45923a267a9a3c25a03ca",
+    "reports/job03.json": "d8fd369baf3d08831675a8c65989fb823e1b5b82fa7db6f6a69a83c32abe91f9",
+    "reports/job04.json": "e5c73fe61d2170afe8f5aa4ddee9b5dd4b40608e8212731e36056f67a5e92f6c",
+    "reports/job05.json": "f435de8305335094b87538c945e820cf897289804d026508ecad4b9cb0936ef8",
+    "seed-map.json": "34b5f989780e0fd44c672859f25b1e6a5d1639da07cdd9a6ca01f1c1b7afddae",
+    "trace-manifest.jsonl": "07b73c6bfc222dc00fdf433579388a2e2355d017af40bb4cbd6b99bd2aee6597",
+    "trace-progress.json": "d54d411afbb72829656906d09d5e5893495d1e75e6b9a1853aa903d60bebeb3e"
+  },
+  "source_commit": "43cf7a6cc04b88d1cf1b3071fcf1fe437dd38eae",
+  "status": "completed"
+}

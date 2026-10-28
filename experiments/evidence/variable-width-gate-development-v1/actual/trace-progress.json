@@ -1,0 +1,1 @@
+{"active_job":"job05","bytes_reserved":126366332,"certificate":false,"committed_shards":5064,"last_record":{"bytes":828,"name":"job05-view-residuals.npz","sha256":"656d66aca238d827b8ff9ea38882dc05969bcb690ee5884e3d09401f38ae6f3f"},"status":"committed","uncommitted_current_chunk":"unknown_on_external_stop"}
