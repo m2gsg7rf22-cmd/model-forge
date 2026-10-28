@@ -1,0 +1,12 @@
+{
+  "actual_resource_verification": false,
+  "changed_path_fixture_tests_passed": 51,
+  "integration_fixture_tests_passed": 207,
+  "new_teachers": 0,
+  "notes": "Integration pytest207 passed2.22s; changed51 passed1.10s; these are fixture/source checks, not the actual study.",
+  "preregistration_sha256": "028a7997327b6c1d307ebfed9c8dc63d996a74e8611cece61eb9b4ae769fe84d",
+  "registered_rng": 0,
+  "ruff_files": 9,
+  "strict_mypy_sources": 7,
+  "target_queries": 0
+}

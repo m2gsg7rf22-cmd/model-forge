@@ -1,0 +1,44 @@
+{
+  "approved": false,
+  "preliminary_source_review_only": true,
+  "full_row_acquisition_protocol_approved": false,
+  "actual_data_generation_approved": false,
+  "new_RNG_queries_or_fit": 0,
+  "private_gate": "closed",
+  "source_sha256": {
+    "examples/isolated_glu/row_acquisition_common.py": "a9a710c7c2096682f0516ebb25d43a90454f780cb7ad20829491dae4a172e134",
+    "examples/isolated_glu/row_acquisition_inventory.py": "4c85d4855589cffa261d6b2ece3febe230a65c531aad8675d2f141a538550c90",
+    "examples/isolated_glu/row_acquisition_view.py": "a953ece65384453f5e9d893d3318bb15994a4df0e128736d9a5f440f0b71f62f",
+    "examples/isolated_glu/row_acquisition_collection.py": "7c7514f0fe8a8578240eb112c19e54225aeed09d39423c7f8e10759cd3101490",
+    "examples/isolated_glu/row_acquisition_estimation.py": "af6f6c280744930e607df1a0048f9bd550f641add0cf9a45cf4855988500c434",
+    "examples/isolated_glu/row_acquisition_evaluation.py": "ec63521662075fb5ba1f6e3dcc7717c1573472b18a603c5cd99380dff7b517e8",
+    "examples/isolated_glu/row_acquisition_controller.py": "ba6b719f38b963df5533f25fc3de7a69e0f5442809fa2c146ecf5646f8702cb8"
+  },
+  "blocking_findings": [
+    {
+      "id": "R1",
+      "file": "examples/isolated_glu/row_acquisition_controller.py",
+      "function": "validate_final",
+      "issue": "Evaluation report only checks case count12 and top-level safety flags. No binding of exact registered case/order/probe budgets, each method qualification to saved evaluation arrays, paired table, by_budget and rule_passes. Isolated IO-stub probe accepts12duplicate16-probe failing cases and false success aggregates.",
+      "required": "Fail closed on exact12names/order/base/probes; validate method and reference/rank/qualifies metadata against saved evaluation arrays; derive paired table/by_budget/rule_passes from the validated cases and compare exact reported values. Add adversarial failures plus valid tiny fixture."
+    }
+  ],
+  "verified_static": [
+    "Shared17source prefixes8/8/1 yield512/544-row packed views and use original first2source archives for16.",
+    "Anonymous public-only metadata root excludes width/seed/truthmanifest parsing; registered_view enforces6base and12derived cases.",
+    "Controller binds runtime/review/prereg/cleanGit before markers and entropy; TREE transport/disk precede collection; all54inputs and24estimatorarchives are checked before truth.",
+    "Evaluator slices OWN analyticH prefix before reference spectrum/cutoffs/basis/controls, shares gate/random context for both conditions, and rejects fullreference via proper-subspace endpoint.",
+    "Four signed rows retained per pair, bothsteps/all17queried once;430848slots/204callbacks,432truth54public24est12eval=522scientificshards.",
+    "Frozen selector algorithms and precision/math helpers reused, no threshold or boundary change.",
+    "Outer monitor and receipts preserve separate sampledTREE resource gate; no fullsource approval before finaldocs/prereg."
+  ],
+  "pending": [
+    "Close R1 and recheck current bytes.",
+    "Final formatted typed source/tests plus complete protocol/design/plan/prereg and all24dependency pins.",
+    "Independent exact inventory/transport arithmetic and final review of failure guards before signature."
+  ],
+  "evidence_sha256": {
+    "preliminary_probe.py": "710451b0cb24c8eb8178afcaf361f206b53dceab9f5d67bf025848e213212241",
+    "preliminary-probe-results.json": "eca6ecd82dc29eeb3febda3551a4a24eb925e768862cc0450274880bcf0c1057"
+  }
+}

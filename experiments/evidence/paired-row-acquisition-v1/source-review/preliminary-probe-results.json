@@ -1,0 +1,7 @@
+{
+  "status": "counterexample_reproduced",
+  "claim": "Controller validates no evaluation names/order/derived aggregate binding;12duplicates with failing cases but success aggregate accepted under isolated IO stubs.",
+  "validation_io_stubbed": true,
+  "new_queries_RNG_forward_fits": 0,
+  "controller_sha256": "ba6b719f38b963df5533f25fc3de7a69e0f5442809fa2c146ecf5646f8702cb8"
+}

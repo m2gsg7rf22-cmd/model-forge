@@ -1,0 +1,92 @@
+{
+  "approved": true,
+  "full_row_acquisition_protocol_approved": true,
+  "approval_scope": "ONE future default row_acquisition_controller.py CLI run only, conditional on exact signed bytes in clean committed discovery-lab and all pre-entropy gates. No actual execution occurred in this review.",
+  "source_sha256": {
+    "docs/glu-row-acquisition-protocol.md": "6fe5eb9c746789c3dd134ba2d3daa7cfc4213fead583a7fe113dea7697d8ca3f",
+    "docs/glu-row-acquisition-study-draft.md": "f68a254caa59b1d8b853563eada8a36faa0f2b836327f487eccbae588c27705c",
+    "docs/glu-row-boundary-observability-draft.md": "482a20c292e2403bd3a5c06e9331a304b6f7c507befbd2005278d36bb8fc235e",
+    "docs/superpowers/plans/2026-10-28-row-acquisition.md": "45144f1dc69d581f562e5dbb57539819b0cee677856a6daac3c99397523f27d6",
+    "examples/isolated_glu/fresh_rank_collection.py": "7dc4c3028cb62830a116e43103f436c8cdec7d276bd38c8b67920b134b98982b",
+    "examples/isolated_glu/fresh_rank_common.py": "d1ed586a224556a0d3bab1fa2dd05b928ebac485dc9026f1bd762c2f8f058b0b",
+    "examples/isolated_glu/fresh_rank_controller.py": "14b791f68c951d05d8fb2eaba9a5222e4ec995d00592a8a9ab898535a60a1966",
+    "examples/isolated_glu/fresh_rank_estimation.py": "4c36e7f317a8aea3fd502064bbbb23feb4117773b4af3662c14bcbfe63114c9e",
+    "examples/isolated_glu/fresh_rank_evaluation.py": "3d44c9fec135a2633734045abb16bec6060efa82197a61acecd8081d02ed041c",
+    "examples/isolated_glu/fresh_rank_inventory.py": "2fce32f79f913c390c9e45699cd60127d4a0e8f80c66171c26651199ee06212b",
+    "examples/isolated_glu/fresh_rank_protocol_inventory.py": "12cfbb212069a5dcc262c8580b5dd126f9549b921ec57132e8de7c63d7ef3d43",
+    "examples/isolated_glu/fresh_rank_view.py": "e598762505b7c99bcc180048383b1b27f545682ce7e86bc1980de5fcb3117c1b",
+    "examples/isolated_glu/precision.py": "b71b9add35455316f64401b77af8ebfded3e0f08ed34c388671e9cdf01fb71eb",
+    "examples/isolated_glu/rank_selection.py": "1382f141fd4adf7a80106df75ccedfba4b55b9dd2b877ba4399becc4646f870b",
+    "examples/isolated_glu/row_acquisition_collection.py": "b4b7a644be09a4012458582cf79a2448db4d3961a4151afba840069a55d95e9e",
+    "examples/isolated_glu/row_acquisition_common.py": "42d0f6393da66f56d68edcdbf1c4562f841b885f86f6de788473ed8403757f8e",
+    "examples/isolated_glu/row_acquisition_controller.py": "3af4d763e6835ad1e53d02fe2b9a255cf2c843dfc281f9e5b6e14ba3ef5296e4",
+    "examples/isolated_glu/row_acquisition_estimation.py": "db7b5b2a6df4728fafd52cee648febe03bd37b0dec314c8e7af06fa73194c76b",
+    "examples/isolated_glu/row_acquisition_evaluation.py": "1f9969feb082c6ddd8938d3e6e034106223702edd77ae853ae01cc297dffc928",
+    "examples/isolated_glu/row_acquisition_inventory.py": "93b2b201157d6e25d431ffb7f575c4ffcd2d0881d5d75c480768ee9caa863daf",
+    "examples/isolated_glu/row_acquisition_view.py": "6b89a496733ced75fde476a841a422c234bd8c4938d90066a3c1539f902ec635",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "experiments/preregistrations/paired-row-acquisition-v1.json": "028a7997327b6c1d307ebfed9c8dc63d996a74e8611cece61eb9b4ae769fe84d",
+    "src/modelforge/__init__.py": "163f8b506a895a97f81ec473ea9d8d4c22d83372c803dee29e4050ed2d801067",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "tests/test_glu_row_acquisition.py": "6700f1208bb7cf8fa2a2cdf5b26ee12c86285369629068ca89487058681e89ce",
+    "tests/test_glu_row_acquisition_controller.py": "4afae3443e9a8bb713ea8f9a1531debcea764c95f54428c3b93d2b9281105ca2"
+  },
+  "runtime_dependencies": 24,
+  "signed_files": 31,
+  "preregistration_sha256": "028a7997327b6c1d307ebfed9c8dc63d996a74e8611cece61eb9b4ae769fe84d",
+  "independent_probe_results_sha256": "19cc18705b6a8d0cfe556a8e8e51eaaba9ca5ef1e602f7b32335465a10e87fe6",
+  "evidence_sha256": {
+    "preliminary_probe.py": "710451b0cb24c8eb8178afcaf361f206b53dceab9f5d67bf025848e213212241",
+    "preliminary-probe-results.json": "eca6ecd82dc29eeb3febda3551a4a24eb925e768862cc0450274880bcf0c1057",
+    "preliminary-review.json": "3e2021e64dc7d1ef7c4b21a391cc3f00161cacee0f9f11551f7a593f4f228b2f",
+    "final_probe.py": "b2bf97bb30da1a8faac26b0582a53ecad073b04b1e55898475b145d97bee87f5",
+    "final-probe-results.json": "19cc18705b6a8d0cfe556a8e8e51eaaba9ca5ef1e602f7b32335465a10e87fe6"
+  },
+  "blocking_findings": [],
+  "addressed_findings": [
+    {
+      "id": "R1",
+      "status": "closed",
+      "original_counterexample": "12duplicate failing cases and contradictory successful summaries accepted by validate_final with isolated IO stubs.",
+      "fix_reviewed": "Exact registered ordered12identities/base/probes/context/ranks/nativebool/methods; fixed endpoint recomputation; canonical paired/by_budget/primary recomputation; NPZreference/rank/sensitivity/qualifies binding.",
+      "independent_recheck": "Identical hostile fixture now rejected at exact case metadata before any arrays. Source/static plus parent adversarial fixture tests cover remaining branches; not an independent full experimental audit."
+    }
+  ],
+  "independent_checks": [
+    "Static review of all7new runtime modules plus transitive frozen estimator/seal/math/IO/resource contracts.",
+    "Literal independent scalar inventory reconstruction matches432truth54public24est12eval=522, each payload/archive/header/manifest/store cap,10worstfamilies31,403,888 and combined534,980,568bytes. No array allocation or teacher/RNG used.",
+    "24runtime file hashes and exact policy/inventory match preregistration;31required source/tests/docs/config files signed.",
+    "Public RowView12aliases read shared17source54FDarchives; first16 uses samefirst2chunks, no extra callback.",
+    "Registered6base/12prefix guard precedes frozen selection; estimator imports no privileged producer/inventory; all54public and24estimator files validate beforetruth.",
+    "Own-prefix analyticH reference/cutoffs/basis/controls and12condition pairing; proper-subspace endpoint rejects sensitive/zero/unexpectedfull without exclusion; thresholds/rank algorithms unchanged.",
+    "Defaultouter monitorscontroller/imports/children/Git at180s512MiB/BLAS1/2KiB; source/cleanHEAD/runtime/exactinventory/TREEtransport/disk/marker beforeentropy; no retry.",
+    "Final schema/digest/layout/globalcaps/source/marker/report/NPZ gates; outerfailure dominates innercompletion."
+  ],
+  "parent_reported_validation_not_repeated": {
+    "changed_path_tests": 51,
+    "strict_mypy_modules": 7,
+    "ruff_files": 9
+  },
+  "actual_registered_RNG_teacher_queries_fitting_executed": false,
+  "actual_resource_verification_complete": false,
+  "actual_resource_gates_still_required": [
+    "Pre-data TREE synthetic scope and10literalmaximumtransport under monitored shareddeadline.",
+    "Actualfree2GiB, exactperstore/combinedartifactcaps andexclusivefsyncednewglobalmarker beforeentropy.",
+    "DefaultCLIouterprocess_and_children receipt andallworkerreceipts, actualpolledRSS<=512MiB/shared180s; sampledRSSnotcontinuouspeakproof.",
+    "Preservepartialfailure/killunknowncounts, no automaticretry or replacementoutput.",
+    "Terminalcheckpoint then separateindependent saved-outputaudit; originalresponsevalues/RNGdraws not independentlyverified by sourceapproval."
+  ],
+  "scientific_limits": [
+    "Acquisition16versus17 changes rowcapacity only; no promise fullrank excitation/noise separation/gate usefulness/fullfunction/originalweight identification.",
+    "Pairedprefix/channel dependence;3teacher draws, not6independenttrials. Everycase/referencechange retained; bothrules separately reported;all6at17required.",
+    "No tuning/winningrule selection/repair of prior24casefailure, no newwidthcap/boundaryabstention/algorithmthreshold change.",
+    "LogicalFD-onlyinterfaceisnotOSsecurity/adversarial/statisticalblinding.",
+    "Allcertificatesfalse; broaduniversal/backbone/bias/HVP/weakeraccess goals remainopen andprivatemodelgateclosed."
+  ],
+  "private_gate": "closed",
+  "certificate": false
+}

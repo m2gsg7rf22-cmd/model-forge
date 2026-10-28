@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "scope": "literal scalar/schema/source checks only; no RNG/factory/forward/data queries/fitting",
+  "checks": [
+    {
+      "R1_old_counterexample_now_rejected": true,
+      "error": "Exact case/order/probe/reference metadata required"
+    },
+    {
+      "independent_literal_inventory_matches": true,
+      "stores": {
+        "truth": {
+          "shards": 432,
+          "payload_bytes": 250695680,
+          "array_bytes_upper_bound": 252686336,
+          "shard_limit_bytes": 2101248,
+          "manifest_bytes_upper_bound": 81216,
+          "bytes_upper_bound": 252767552
+        },
+        "public": {
+          "shards": 54,
+          "payload_bytes": 80216064,
+          "array_bytes_upper_bound": 80437248,
+          "shard_limit_bytes": 2101248,
+          "manifest_bytes_upper_bound": 10152,
+          "bytes_upper_bound": 80447400
+        },
+        "estimator": {
+          "shards": 24,
+          "payload_bytes": 160163856,
+          "array_bytes_upper_bound": 160950288,
+          "shard_limit_bytes": 6786616,
+          "manifest_bytes_upper_bound": 4512,
+          "bytes_upper_bound": 160954800
+        },
+        "evaluator": {
+          "shards": 12,
+          "payload_bytes": 426240,
+          "array_bytes_upper_bound": 1016064,
+          "shard_limit_bytes": 86720,
+          "manifest_bytes_upper_bound": 2256,
+          "bytes_upper_bound": 1018320
+        }
+      },
+      "preflight_bytes": 31403888,
+      "combined_bytes": 534980568
+    },
+    {
+      "all24_runtimepins_match": true,
+      "prereg_sha256": "028a7997327b6c1d307ebfed9c8dc63d996a74e8611cece61eb9b4ae769fe84d"
+    }
+  ],
+  "actual_resource_verification": false
+}

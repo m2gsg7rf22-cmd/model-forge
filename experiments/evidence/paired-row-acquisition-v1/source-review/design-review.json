@@ -1,0 +1,58 @@
+{
+  "approved": true,
+  "design_only_approved": true,
+  "actual_source_approved": false,
+  "full_protocol_approved": false,
+  "actual_data_generation_approved": false,
+  "RNG_teacher_queries_fitting_approved": false,
+  "method_promotion_approved": false,
+  "private_gate": "closed",
+  "certificate": false,
+  "doc_sha256": "f68a254caa59b1d8b853563eada8a36faa0f2b836327f487eccbae588c27705c",
+  "source_sha256": {
+    "docs/glu-row-acquisition-study-draft.md": "f68a254caa59b1d8b853563eada8a36faa0f2b836327f487eccbae588c27705c",
+    "examples/isolated_glu/rank_selection.py": "1382f141fd4adf7a80106df75ccedfba4b55b9dd2b877ba4399becc4646f870b"
+  },
+  "review_method": "Read-only exact design review and scalar arithmetic; no factory/RNG/model/probe/data generation or previous experiment replay.",
+  "blocking_findings": [],
+  "addressed_findings": [
+    "Each16/17 condition now uses its own analyticH prefix for all reference cutoffs/basis/rank/sensitivity and known/wrong-width controls.",
+    "Both prefixes use the same saved gate/random directions, and all reference-rank or sensitivity changes must be reported without exclusions.",
+    "Public metadata restricted to anonymous ID/n/output/channel/probe-budget/chunk geometry; privileged widths/factors/seeds/manifest sizes excluded.",
+    "Pre-entropy exact source/schema/inventory gates and failure/kill resource/counter unknown semantics now explicit."
+  ],
+  "independent_planning_checks": {
+    "teachers": 3,
+    "channels_per_teacher": 2,
+    "probe_budgets": [
+      16,
+      17
+    ],
+    "condition_count": 12,
+    "p": 528,
+    "rows16": 512,
+    "rows17": 544,
+    "total_vector_slots": 430848,
+    "prefix16_slots": 405504,
+    "extra17_slots": 25344,
+    "callback_batches": 204,
+    "public_FD_archives": 54,
+    "calculation": "3*2*17*2*4*528=430848;3*2*17*2=204;6*3views*3chunks=54;6*2budgets=12."
+  },
+  "scientific_contract": [
+    "Same teachers/factors and saved raw prefix responses isolate the nested acquisition change within each channel; channels and prefixes are dependent.",
+    "Frozen selector/thresholds and all-case finite subspace criteria unchanged. Each rule is reported separately;17 success requires all6, with all16/17 gains/losses retained.",
+    "Capacity rows>=p removes structural padding beyond available rows only; it does not establish excitation, rank identifiability, noise control, near-parallel resolution, useful gates or full-function recovery.",
+    "Own-prefix references can change with acquisition; report these changes rather than treating every qualification gain as estimator improvement at fixed truth geometry.",
+    "Known/half/double-width controls are revealed only after all12 seals and remain diagnostic. Public geometry may reveal acquisition condition, which is intentional; width is excluded from the input interface, not claimed cryptographically hidden.",
+    "This targeted public study does not repair the failed24-case v1 endpoint or justify broad superiority/independent6-trial statistics."
+  ],
+  "implementation_requirements_still_pending": [
+    "Complete distinct12-condition runner/FD-only view544-row schema and counters, with byte-identical shared prefix archives and all12 seals before any truth reveal.",
+    "Exact combined artifact inventory/byte/header/manifest/metadata budgets and disk preflight, not merely the54-public-archive count.",
+    "Preregister entropy/domain/seed/nonce/assignment/truth commitments and exclusive global marker; no consumed data reuse or automatic retry.",
+    "Whole-source independent approval and clean freeze before entropy.",
+    "Actual outer controller+children polled TREE180s/512MiB/BLAS1/2KiB and independent saved-only terminal audit."
+  ],
+  "resources_this_review": "No subprocess experiment, NumPy probe, model forward, RNG or scientific data read performed. Existing measured proof not rerun."
+}
