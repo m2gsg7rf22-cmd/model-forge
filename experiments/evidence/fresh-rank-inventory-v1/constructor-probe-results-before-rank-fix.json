@@ -1,0 +1,20 @@
+{
+  "all_passed": false,
+  "array_or_RNG_or_query_or_fit": false,
+  "checks": {
+    "copied_mapping_immutable": true,
+    "invalid_name_allow_pick": true,
+    "invalid_name_file": true,
+    "invalid_name_x/../bad": true,
+    "invalid_name_xxxxxxxxxx": true,
+    "invalid_name_\u05e9\u05dd": true,
+    "invalid_shape_()": true,
+    "invalid_shape_(-1,)": true,
+    "invalid_shape_(0,)": true,
+    "invalid_shape_(True,)": true,
+    "mutable_list_shape_rejected": true,
+    "overlong_shape_rank_rejected": false
+  },
+  "literal_header_counterexample_bytes": 6051,
+  "source_sha256": "80f1c1baf85b72651ec325ba9705b1736a4453959906b19d89a7571395a73021"
+}

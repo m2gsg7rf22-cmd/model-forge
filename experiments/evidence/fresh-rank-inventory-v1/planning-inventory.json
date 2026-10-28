@@ -1,0 +1,50 @@
+{
+  "bytes_upper_bound": 479970708,
+  "callback_batches": 768,
+  "cases": 24,
+  "data_generation_approved": false,
+  "largest_shard_upper_bound": 6785056,
+  "metadata_reserve_bytes": 8388608,
+  "minimum_free_disk_bytes": 2147483648,
+  "planning_only": true,
+  "preflight_bytes_upper_bound": 17591940,
+  "preflight_shards": 7,
+  "private_gate": "closed",
+  "scientific_shards": 1824,
+  "stores": {
+    "estimator": {
+      "array_bytes_upper_bound": 86909232,
+      "bytes_upper_bound": 86918256,
+      "manifest_bytes_upper_bound": 9024,
+      "payload_bytes": 85336368,
+      "shard_limit_bytes": 6785056,
+      "shards": 48
+    },
+    "evaluator": {
+      "array_bytes_upper_bound": 1224672,
+      "bytes_upper_bound": 1229184,
+      "manifest_bytes_upper_bound": 4512,
+      "payload_bytes": 143328,
+      "shard_limit_bytes": 57280,
+      "shards": 24
+    },
+    "public": {
+      "array_bytes_upper_bound": 86851584,
+      "bytes_upper_bound": 86878656,
+      "manifest_bytes_upper_bound": 27072,
+      "payload_bytes": 86261760,
+      "shard_limit_bytes": 2101248,
+      "shards": 144
+    },
+    "truth": {
+      "array_bytes_upper_bound": 278661760,
+      "bytes_upper_bound": 278964064,
+      "manifest_bytes_upper_bound": 302304,
+      "payload_bytes": 271190656,
+      "shard_limit_bytes": 2101248,
+      "shards": 1608
+    }
+  },
+  "teachers": 12,
+  "vector_calls": 545280
+}

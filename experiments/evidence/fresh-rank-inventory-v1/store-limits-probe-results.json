@@ -1,0 +1,30 @@
+{
+  "RNG_or_teacher_or_queries_or_fit": 0,
+  "actual_runtime_resource_gate_executed": false,
+  "actual_scientific_arrays_allocated": 0,
+  "passed": true,
+  "previous_scientific_counts_and_totals_unchanged": true,
+  "source_sha256": "2fce32f79f913c390c9e45699cd60127d4a0e8f80c66171c26651199ee06212b",
+  "stores": {
+    "estimator": {
+      "empty_manifest_only": true,
+      "shard_limit_bytes": 6785056,
+      "total_limit_bytes": 86918256
+    },
+    "evaluator": {
+      "empty_manifest_only": true,
+      "shard_limit_bytes": 57280,
+      "total_limit_bytes": 1229184
+    },
+    "public": {
+      "empty_manifest_only": true,
+      "shard_limit_bytes": 2101248,
+      "total_limit_bytes": 86878656
+    },
+    "truth": {
+      "empty_manifest_only": true,
+      "shard_limit_bytes": 2101248,
+      "total_limit_bytes": 278964064
+    }
+  }
+}

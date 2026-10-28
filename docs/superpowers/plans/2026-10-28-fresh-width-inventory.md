@@ -1,0 +1,28 @@
+# Variable-width inventory contract implementation plan
+
+> Parent implements inline with TDD; independent verifier reviews source and literal fixtures outside Git. Full fresh protocol stays queued. No registered RNG, teacher, probes, queries or fitting are executed by this plan.
+
+**Goal:** Freeze one allocation-free shape/count/byte contract for every proposed fresh-study artifact, so future source can reject an incomplete/oversized combined inventory before data.
+**Spec:** Independently reviewed docs/glu-rank-fresh-width-validation-draft.md. This is a planning/transport component, not full protocol approval or a scientific result.
+**Architecture:** New fresh_rank_inventory.py declares the known profile multiset and returns per-profile shard schemas/multiplicities and aggregate per-store caps. It contains only Python integer/shape arithmetic, with no NumPy/model/RNG/filesystem imports. The estimator's signed FDView must never import the privileged profile/multiset helper. Later producer/controller/evaluator use this contract; future anonymous width assignment remains separately committed.
+
+## Frozen proposed layout
+
+Four separate stores: truth arrays (context, raw inputs/returns, analytic reference chunks), public FD-only arrays, estimator arrays (three bases/full spectra and three choices/projectors/diagnostics), evaluator arrays (all six method residuals/ranks/subspace+energy metrics/qualification and reference spectrum/ranks/sensitivity). Width-dependent shapes remain exclusively in truth/evaluator schemas and controller planning. Public names/fields/dtypes/shapes depend only on allowed geometry.
+
+Per case, n=output,16probes,2steps; p=n(n+1)/2, q=min(16*n,p), candidate_count=min(q,p-1). Raw input/return each32shards shaped(4p,n). Context10fields: original+rounded g/u/d, probes16xn,64random directions,2m atoms in p coordinates,16xm preactivations. Reference2chunks; public6chunks, each(8,n,n,n). Estimator bases6fields, choices10fields matching frozen selection diagnostics. Evaluator11fields: reference_spectrum(p), reference_ranks(3), ranks(6), gate_residuals(6,m), random_residuals(6,64), lost_subspace(6), extra_subspace(6), reference_energy_loss(6), observed_energy_loss(6), qualifies(6), reference_sensitive(1). Null numeric metrics use finite-1sentinels, with reasons in bounded reports. Energy formulas must still be reviewed/frozen in the future evaluator before data; array slots do not supply a scientific definition.
+
+All scalar payloads are nativefloat64,8bytes. Per NPZ field4096bytes header/ZIP allowance; per manifest record188bytes, conservatively using the existing bounded maximum84-character basename/8MiB-size/64hex schema. The helper must derive rather than magic-number the record bound. Runtime future serializers must enforce actual schema/store/global caps, not treat allowance as a universal NumPy-format theorem. Each store cap includes its own manifest; <=8MiB shards, <=16fields, <=8192records/store, <=1MiB manifest/store (public additionally<=128KiB FDView cap). Exactly1824 scientific shards across four stores:1608truth+144public+48estimator+24evaluator. Query vectors545280/callback batches768 are separate counts, not shard counts.
+
+A pre-data literal transport fixture retains one maximum-shape example of each7shard families (context/rawinput/rawreturn/Hessian/bases/choices/evaluation), chosen atn32/m96, with its own7record manifest. It creates no GLU/teacher data, random values or forward calls. Exact planned byte upper bound includes those7archives and manifest plus8MiB for <=16bounded128KiB non-array reports/commitments, temporary atomic copies, small engine requests/logs and external marker. Full controller must freeze/check exact metadata filenames/counts and transient request limits; this component alone does not enforce them. Aggregate must stay<1GiB; require>=2GiB actual free disk in the future pre-data gate. No source/OS/resource-availability claim follows from integer arithmetic.
+
+## Tasks and checks
+
+- [ ] Write RED tests for missing module; independently enumerate shapes/multiplicities, exact vector/batch/store counts, worst n32/m96 schemas, partial rowsq512, field caps, computed record bound, total<1GiB, no actual-array/RNG/forward imports.
+- [ ] Implement immutable ShardSpec(store,kind,fields,count), profile_schemas(n,m), inventory_plan(), worst_schemas(); reject bool/out-of-domain n/m (n in4/8/16/32, width1..96). No files or arrays are opened/allocated.
+- [ ] Write literal serialization tests only: deterministic zero/identity arrays at maximum declared shapes serialize through unchanged ShardStore within bounds, roundtrip headers/digests, manifests count toward totals. Preserve peak/resource caveat: these are unit transport tests, not monitored512MiB/180s proof. Optional engines/files/teacher data must not be imported.
+- [ ] Run changed-path pytest/mypy/Ruff; independent exact-source/count/schema/transport review. Preserve all existing signed sources and original markers. Record component-only result and leave full teacher/counter/commitment/two-process/controller/prereg work queued before data.
+
+## Review focus
+
+Separate store budgets must sum with metadata/temporary/preflight allowance, not independently consume1GiB each. Public manifest cannot expose context sizes. Bases use q512 atn32, while full spectra/projectors usep528. Four Hessian views are stored once, not old duplicated spectra/projectors. A future artifact outside these schemas must force source/inventory re-review before data; do not silently expand the plan. Single-process literal tests do not establish TREE monitoring or a scientific result.

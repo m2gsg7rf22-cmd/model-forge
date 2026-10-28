@@ -1,0 +1,47 @@
+{
+  "NumPy_or_scientific_arrays_created": false,
+  "RNG": 0,
+  "actual_resource_protocol_approved": false,
+  "combined_upper": 479970708,
+  "constructor_controls": {
+    "invalid_key_accepted_allow_pickle": true,
+    "invalid_key_accepted_file": true,
+    "invalid_key_accepted_x/../bad": true,
+    "invalid_key_accepted_xxxxxxxxxxxxxxxxxxxx": true,
+    "mutable_shape_accepted_and_exceeds_cap": true
+  },
+  "fitting": 0,
+  "fixed_profile_counts_passed": true,
+  "fixed_profile_header_zip_allowance_checked": true,
+  "four_H_views_bytes": 115015680,
+  "largest_npz_upper": 6785056,
+  "manifest_record_upper": 188,
+  "preflight_upper": 17591940,
+  "public_view_no_inventory_import": true,
+  "raw_input_bytes": 119193600,
+  "raw_output_bytes": 119193600,
+  "source_sha256": "85a0c6cd2e8e1e7287527cee1ffcd63f31d11d50d718d6f017451f72e79d5827",
+  "stores": {
+    "estimator": {
+      "payload": 85336368,
+      "shards": 48,
+      "upper_arrays": 86909232
+    },
+    "evaluator": {
+      "payload": 143328,
+      "shards": 24,
+      "upper_arrays": 1224672
+    },
+    "public": {
+      "payload": 86261760,
+      "shards": 144,
+      "upper_arrays": 86851584
+    },
+    "truth": {
+      "payload": 271190656,
+      "shards": 1608,
+      "upper_arrays": 278661760
+    }
+  },
+  "teacher_or_queries": 0
+}

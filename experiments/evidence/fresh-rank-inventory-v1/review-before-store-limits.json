@@ -1,0 +1,103 @@
+{
+  "RNG": 0,
+  "RNG_generation_approved": false,
+  "actual_experiment_approved": false,
+  "actual_or_private_or941xxx_reads": 0,
+  "addressed_findings": [
+    "Mutable listshapes could bypass frozen budget afterconstruction; exact immutabletuples/snapshotmapping required",
+    "Unbounded orreservedfields invalidatedserializerassumptions; matchfrozenStoreASCII\u226464/nonreserved",
+    "Unboundedshape rankallowedtiny payloadwithoversizeheader; constrain1..4dimensions"
+  ],
+  "approved": true,
+  "blocking_findings": [],
+  "certificate": false,
+  "component_only_approved": true,
+  "data_generation_approved": false,
+  "evidence_sha256": {
+    "constructor-probe-results-before-rank-fix.json": "eb248d550a5e7719824ba4f2209622d3250514863c057de1ae33ef703d7634a0",
+    "constructor-probe-results.json": "d9669a1ce6e9677cde2519e1e60a796879a7a706b87d0297f1fad7ec53038cd9",
+    "constructor_probe.py": "ed1d425b4b4b62371c9a200c50cfb35d00ec5d477f0417dcf56a27d9891b1f82",
+    "probe-results.json": "07aecb3cf38df1bfa3592e72a30d7f0f543d14a2e0ebfafddd962cbd86711124",
+    "probe.py": "e4dde98b27d05d48aa24cd6d463a82998c621429bd1f96eb25d8f80b9a0e92a2",
+    "review.md": "fca4b2ac8db840d21d71f970cc1477cf618f1c908d73b840523e6feee7a2deb2"
+  },
+  "fits": 0,
+  "fresh_analysis_approved": false,
+  "fresh_rank_inventory_component_approved": true,
+  "full_fresh_protocol_approved": false,
+  "full_source_approved": false,
+  "independent_constructor_checks_current_source": {
+    "copied_mapping_immutable": true,
+    "invalid_name_allow_pick": true,
+    "invalid_name_file": true,
+    "invalid_name_x/../bad": true,
+    "invalid_name_xxxxxxxxxx": true,
+    "invalid_name_\u05e9\u05dd": true,
+    "invalid_shape_()": true,
+    "invalid_shape_(-1,)": true,
+    "invalid_shape_(0,)": true,
+    "invalid_shape_(True,)": true,
+    "mutable_list_shape_rejected": true,
+    "overlong_shape_rank_rejected": true
+  },
+  "independent_counts": {
+    "combined_upper": 479970708,
+    "four_H_views_bytes": 115015680,
+    "largest_npz_upper": 6785056,
+    "manifest_record_upper": 188,
+    "preflight_upper": 17591940,
+    "raw_input_bytes": 119193600,
+    "raw_output_bytes": 119193600,
+    "stores": {
+      "estimator": {
+        "payload": 85336368,
+        "shards": 48,
+        "upper_arrays": 86909232
+      },
+      "evaluator": {
+        "payload": 143328,
+        "shards": 24,
+        "upper_arrays": 1224672
+      },
+      "public": {
+        "payload": 86261760,
+        "shards": 144,
+        "upper_arrays": 86851584
+      },
+      "truth": {
+        "payload": 271190656,
+        "shards": 1608,
+        "upper_arrays": 278661760
+      }
+    }
+  },
+  "limitations": [
+    "Planning formulas do not enforce runtime globalcaps or actualdisk/resourceavailability",
+    "Fixed-profile overheadchecked; futureactual serializers must enforcecaps and rejectextras",
+    "Inventoryincludesprivilegedwidths andmustneverbeestimatorinput",
+    "Energyarrayslotsarenotascientificformula",
+    "Noactualscientificdata/generation/queries/fits/runapproved"
+  ],
+  "parent_reported_not_independently_repeated": {
+    "maximum_serialized_roundtrip_families": 7,
+    "mypy_modules": 1,
+    "ruff_files": 2,
+    "tests_passed": 18
+  },
+  "previous_sources_verified_unchanged": 7,
+  "private_gate": "closed",
+  "source_sha256": {
+    "docs/superpowers/plans/2026-10-28-fresh-width-inventory.md": "6f5ce96af1f7a60984bfcfb8ae8ff92c494f700706276afd10cc05996ea4dd7e",
+    "examples/isolated_glu/fresh_rank_inventory.py": "0047b190de198de5659b71daf37178237d6736b91c489817927d99ec8762f2f9",
+    "examples/isolated_glu/fresh_rank_view.py": "e598762505b7c99bcc180048383b1b27f545682ce7e86bc1980de5fcb3117c1b",
+    "examples/isolated_glu/rank_selection.py": "1382f141fd4adf7a80106df75ccedfba4b55b9dd2b877ba4399becc4646f870b",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "tests/test_glu_fresh_rank_inventory.py": "4482020fc7d6fff0ed3b6982ca6f73aad3f678c3db827550e169f317888b61a6"
+  },
+  "teacher_generation_approved": false,
+  "teacher_or_forward_queries": 0
+}
