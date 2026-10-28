@@ -1,0 +1,34 @@
+{
+  "artifact_root": "/Users/adamfaruhi123/.local/share/modelforge-research/experiments/fresh-variable-width-rank-v1-20261028-bb46845",
+  "certificate": false,
+  "controller_elapsed_before_final_report": 9.513309000001755,
+  "controller_sha256": "fd7636e1f39eaccb9acd422f99f52a1ee015102062c457c0daa1a35b46f33ab2",
+  "controller_status": "completed",
+  "counts": {
+    "batch": "c11-fp32-s1-x15",
+    "callback_batches": 768,
+    "calls_attempted": 545280,
+    "calls_persisted": 545280,
+    "calls_reserved": 545280,
+    "calls_returned": 545280,
+    "status": "persisted"
+  },
+  "marker_consumed": true,
+  "marker_created": true,
+  "no_retry": true,
+  "outcome_audit": "pending",
+  "outer_monitor_sha256": "60d2b0f0455fd1bcba332943dff7159ac85003f0fe0f8d6194265ab0584b1b0d",
+  "outer_receipt": {
+    "memory_limit_mb": 512,
+    "memory_samples": 149,
+    "peak_sampled_rss_bytes": 363757568,
+    "private_gate": "closed",
+    "process_monitor_scope": "process_and_children",
+    "status": "completed"
+  },
+  "outer_status": "completed",
+  "private_gate": "closed",
+  "science_claim": "none_before_independent_saved_audit",
+  "source_commit": "bb46845d1efccb80bdfad057d85dd0292e9bf03a",
+  "status": "completed"
+}
