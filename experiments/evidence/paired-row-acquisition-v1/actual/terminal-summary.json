@@ -1,0 +1,200 @@
+{
+  "artifact_root": "/Users/adamfaruhi123/.local/share/modelforge-research/experiments/paired-row-acquisition-v1-20261028-07235ac",
+  "certificate": false,
+  "controller_elapsed_before_final_report": 7.721474000019953,
+  "controller_sha256": "2943237626ca0bcab0315f4cbb5b23f76449d709aef1f43c6d906e56721b645f",
+  "controller_status": "completed",
+  "counts": {
+    "batch": "c02-fp32-s1-x16",
+    "callback_batches": 204,
+    "calls_attempted": 430848,
+    "calls_persisted": 430848,
+    "calls_reserved": 430848,
+    "calls_returned": 430848,
+    "status": "persisted"
+  },
+  "marker_consumed": true,
+  "marker_created": true,
+  "no_retry": true,
+  "outcome_audit": "pending",
+  "outer_monitor_sha256": "39f3605daa5108b1e8b19aab524862bc3b75445933d295325e2d3876069d1813",
+  "outer_receipt": {
+    "memory_limit_mb": 512,
+    "memory_samples": 132,
+    "peak_sampled_rss_bytes": 499023872,
+    "private_gate": "closed",
+    "process_monitor_scope": "process_and_children",
+    "status": "completed"
+  },
+  "outer_status": "completed",
+  "private_gate": "closed",
+  "reported_by_budget": {
+    "16": {
+      "gap": false,
+      "stable": false
+    },
+    "17": {
+      "gap": true,
+      "stable": true
+    }
+  },
+  "reported_paired": [
+    {
+      "base_case": "c00-fp64",
+      "reference_ranks16": [
+        192,
+        192,
+        192
+      ],
+      "reference_ranks17": [
+        192,
+        192,
+        192
+      ],
+      "reference_sensitive16": false,
+      "reference_sensitive17": false,
+      "rules": {
+        "gap": {
+          "pass16": true,
+          "pass17": true
+        },
+        "stable": {
+          "pass16": false,
+          "pass17": true
+        }
+      }
+    },
+    {
+      "base_case": "c00-fp32",
+      "reference_ranks16": [
+        192,
+        192,
+        192
+      ],
+      "reference_ranks17": [
+        192,
+        192,
+        192
+      ],
+      "reference_sensitive16": false,
+      "reference_sensitive17": false,
+      "rules": {
+        "gap": {
+          "pass16": false,
+          "pass17": true
+        },
+        "stable": {
+          "pass16": false,
+          "pass17": true
+        }
+      }
+    },
+    {
+      "base_case": "c01-fp64",
+      "reference_ranks16": [
+        96,
+        96,
+        96
+      ],
+      "reference_ranks17": [
+        96,
+        96,
+        96
+      ],
+      "reference_sensitive16": false,
+      "reference_sensitive17": false,
+      "rules": {
+        "gap": {
+          "pass16": true,
+          "pass17": true
+        },
+        "stable": {
+          "pass16": true,
+          "pass17": true
+        }
+      }
+    },
+    {
+      "base_case": "c01-fp32",
+      "reference_ranks16": [
+        96,
+        96,
+        96
+      ],
+      "reference_ranks17": [
+        96,
+        96,
+        96
+      ],
+      "reference_sensitive16": false,
+      "reference_sensitive17": false,
+      "rules": {
+        "gap": {
+          "pass16": false,
+          "pass17": true
+        },
+        "stable": {
+          "pass16": true,
+          "pass17": true
+        }
+      }
+    },
+    {
+      "base_case": "c02-fp64",
+      "reference_ranks16": [
+        32,
+        32,
+        32
+      ],
+      "reference_ranks17": [
+        32,
+        32,
+        32
+      ],
+      "reference_sensitive16": false,
+      "reference_sensitive17": false,
+      "rules": {
+        "gap": {
+          "pass16": true,
+          "pass17": true
+        },
+        "stable": {
+          "pass16": true,
+          "pass17": true
+        }
+      }
+    },
+    {
+      "base_case": "c02-fp32",
+      "reference_ranks16": [
+        32,
+        32,
+        32
+      ],
+      "reference_ranks17": [
+        32,
+        32,
+        32
+      ],
+      "reference_sensitive16": false,
+      "reference_sensitive17": false,
+      "rules": {
+        "gap": {
+          "pass16": false,
+          "pass17": true
+        },
+        "stable": {
+          "pass16": true,
+          "pass17": true
+        }
+      }
+    }
+  ],
+  "reported_rule_passes": {
+    "gap": true,
+    "stable": true
+  },
+  "science_claim": "none_before_independent_saved_audit",
+  "source_commit": "07235acd0ecaa576d57b37eefb2b4e6fc3aa0c6a",
+  "status": "completed"
+}
