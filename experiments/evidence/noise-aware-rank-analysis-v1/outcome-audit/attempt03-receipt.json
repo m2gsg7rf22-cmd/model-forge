@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "cases": 16,
+  "result_sha256": "313e2115548da552b809b53bc1b99281eee4974329ba7524372b54e2f3e1465b",
+  "process_monitor_scope": "process_only_children_unavailable",
+  "peak_sampled_rss_bytes": 219758592,
+  "memory_samples": 28,
+  "memory_limit_mb": 512,
+  "audit_launcher_elapsed_seconds": 1.6769046660047024
+}

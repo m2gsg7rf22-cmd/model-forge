@@ -1,0 +1,5 @@
+{
+  "status": "failed",
+  "error_type": "RuntimeError",
+  "error": "Engine did not return JSON (exit 1); check optional runtime installation"
+}

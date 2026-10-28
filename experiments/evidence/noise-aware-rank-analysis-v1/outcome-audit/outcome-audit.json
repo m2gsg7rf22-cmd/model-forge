@@ -1,0 +1,338 @@
+{
+  "actual_analysis_attempts": 1,
+  "actual_analysis_resources": {
+    "elapsed_seconds_before_final_report": 4.7152676669938955,
+    "scope": "polled process-and-children RSS; not a continuous/hard peak or final-write duration proof",
+    "worker": {
+      "memory_limit_mb": 512,
+      "memory_samples": 63,
+      "peak_sampled_rss_bytes": 301416448,
+      "process_monitor_scope": "process_and_children",
+      "status": "completed",
+      "worker_report_sha256": "aae3f8f305a851b7f92aea64db316ff06f050125002675b65aaee2a67489cd64"
+    }
+  },
+  "actual_source_commit": "20ccebbabe355fd2dedbe6cd5be8e970f9d178ae",
+  "approved": true,
+  "attempt03_probe_sha256": "e27c0afdbfccd2f091d5256018073a6744ead58bf772b5d6fb3363227f98c896",
+  "audit_attempt_history": [
+    {
+      "attempt": 1,
+      "reason": "Uncaught audit assertion led to no JSON; run_json discarded temporary stderr; exact scope/RSS/elapsed unavailable in this failed receipt",
+      "receipt": {
+        "error": "Engine did not return JSON (exit 1); check optional runtime installation",
+        "error_type": "RuntimeError",
+        "status": "failed"
+      },
+      "status": "failed_before_numeric_cases"
+    },
+    {
+      "attempt": 2,
+      "reason": "Audit incorrectly excluded manifest bytes from bytes_reserved; corrected audit only",
+      "receipt": {
+        "audit_launcher_elapsed_seconds": 0.3024575410236139,
+        "error": "",
+        "error_type": "AssertionError",
+        "memory_limit_mb": 512,
+        "memory_samples": 5,
+        "peak_sampled_rss_bytes": 41091072,
+        "process_monitor_scope": "process_only_children_unavailable",
+        "status": "failed",
+        "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/modelforge-rank-analysis-outcome-review/probe.py\", line 53, in <module>\n    assert sha(A/'manifest.jsonl')==wr['artifact_manifest_sha256'] and sum(x['bytes'] for x in records)==wr['artifact_inventory']['bytes_reserved']\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      "status": "failed_before_numeric_cases"
+    },
+    {
+      "attempt": 3,
+      "reason": "All16 numerical cases passed, but children enumeration was unavailable; does not certify TREE resource scope.",
+      "receipt": {
+        "audit_launcher_elapsed_seconds": 1.6769046660047024,
+        "cases": 16,
+        "memory_limit_mb": 512,
+        "memory_samples": 28,
+        "peak_sampled_rss_bytes": 219758592,
+        "process_monitor_scope": "process_only_children_unavailable",
+        "result_sha256": "313e2115548da552b809b53bc1b99281eee4974329ba7524372b54e2f3e1465b",
+        "status": "passed"
+      },
+      "status": "numeric_pass_resource_scope_incomplete"
+    },
+    {
+      "attempt": 4,
+      "change_from_attempt03": "Only two review artifact paths changed to byte-identical durable repository evidence; no mathematical changes",
+      "executed_by": "parent after separate successful synthetic TREE preflight; reviewer did not launch again",
+      "probe_sha256": "02a86c84540182b5fbf44aaa9a531c5182cb424c4b5b28c044133c294c2adbf3",
+      "receipt": {
+        "audit_launcher_elapsed_seconds": 1.7166753339988645,
+        "cases": 16,
+        "memory_limit_mb": 512,
+        "memory_samples": 26,
+        "peak_sampled_rss_bytes": 219709440,
+        "process_monitor_scope": "process_and_children",
+        "result_sha256": "313e2115548da552b809b53bc1b99281eee4974329ba7524372b54e2f3e1465b",
+        "status": "passed"
+      },
+      "result_identical_to_attempt03": true,
+      "result_sha256": "313e2115548da552b809b53bc1b99281eee4974329ba7524372b54e2f3e1465b",
+      "status": "passed_all16_numeric_cases_and_polled_tree_resources"
+    }
+  ],
+  "audit_resource_limitations": "Attempt04 successfully used polled process-and-children RSS with512MiB/180s bounds. Sampled peak219709440 bytes/26samples and launcher elapsed1.7166753339988645s are not a continuous/hard peak or hard real-time guarantee. Prior incomplete attempts remain preserved; no new experiment/forward/query/fitting occurred.",
+  "audit_resource_preflight": {
+    "memory_limit_mb": 512,
+    "memory_samples": 3,
+    "peak_sampled_rss_bytes": 16859136,
+    "process_monitor_scope": "process_and_children",
+    "synthetic_scope_preflight": true
+  },
+  "audit_resources": {
+    "audit_launcher_elapsed_seconds": 1.7166753339988645,
+    "cases": 16,
+    "memory_limit_mb": 512,
+    "memory_samples": 26,
+    "peak_sampled_rss_bytes": 219709440,
+    "process_monitor_scope": "process_and_children",
+    "result_sha256": "313e2115548da552b809b53bc1b99281eee4974329ba7524372b54e2f3e1465b",
+    "status": "passed"
+  },
+  "audit_tree_memory_bound_verified": true,
+  "blind_claim": false,
+  "blocking_mismatches": [],
+  "case_table": [
+    {
+      "case": "p0-t0-fp64",
+      "gap": null,
+      "gap_gate_max": null,
+      "gap_lost": null,
+      "gap_random_min": null,
+      "reference_rank": 10,
+      "stable": null,
+      "strict": 10
+    },
+    {
+      "case": "p0-t0-fp32",
+      "gap": null,
+      "gap_gate_max": null,
+      "gap_lost": null,
+      "gap_random_min": null,
+      "reference_rank": 10,
+      "stable": null,
+      "strict": 10
+    },
+    {
+      "case": "p0-t1-fp64",
+      "gap": null,
+      "gap_gate_max": null,
+      "gap_lost": null,
+      "gap_random_min": null,
+      "reference_rank": 10,
+      "stable": null,
+      "strict": 10
+    },
+    {
+      "case": "p0-t1-fp32",
+      "gap": null,
+      "gap_gate_max": null,
+      "gap_lost": null,
+      "gap_random_min": null,
+      "reference_rank": 10,
+      "stable": null,
+      "strict": 10
+    },
+    {
+      "case": "p1-t0-fp64",
+      "gap": 32,
+      "gap_gate_max": 1.4000676571371085e-05,
+      "gap_lost": 2.3195532384142675e-05,
+      "gap_random_min": 0.013160586837960698,
+      "reference_rank": 32,
+      "stable": 32,
+      "strict": 36
+    },
+    {
+      "case": "p1-t0-fp32",
+      "gap": 32,
+      "gap_gate_max": 2.082100477293281e-05,
+      "gap_lost": 3.0966875400730184e-05,
+      "gap_random_min": 0.013155703537971684,
+      "reference_rank": 32,
+      "stable": 32,
+      "strict": 36
+    },
+    {
+      "case": "p1-t1-fp64",
+      "gap": 32,
+      "gap_gate_max": 1.5271117393489755e-05,
+      "gap_lost": 1.9648696677983002e-05,
+      "gap_random_min": 0.09736504192633026,
+      "reference_rank": 32,
+      "stable": 32,
+      "strict": 36
+    },
+    {
+      "case": "p1-t1-fp32",
+      "gap": 32,
+      "gap_gate_max": 3.4387155443876644e-05,
+      "gap_lost": 3.8069831534986596e-05,
+      "gap_random_min": 0.09735470495037293,
+      "reference_rank": 32,
+      "stable": 32,
+      "strict": 36
+    },
+    {
+      "case": "p2-t0-fp64",
+      "gap": 64,
+      "gap_gate_max": 5.9625762491698415e-05,
+      "gap_lost": 3.088903717372803e-05,
+      "gap_random_min": 0.45403138779818353,
+      "reference_rank": 64,
+      "stable": 64,
+      "strict": 136
+    },
+    {
+      "case": "p2-t0-fp32",
+      "gap": 64,
+      "gap_gate_max": 0.00013670087303463898,
+      "gap_lost": 7.157811378009584e-05,
+      "gap_random_min": 0.45401459831032787,
+      "reference_rank": 64,
+      "stable": 64,
+      "strict": 136
+    },
+    {
+      "case": "p2-t1-fp64",
+      "gap": 64,
+      "gap_gate_max": 4.695524133211712e-05,
+      "gap_lost": 2.880506322489211e-05,
+      "gap_random_min": 0.5473536790732397,
+      "reference_rank": 64,
+      "stable": 64,
+      "strict": 136
+    },
+    {
+      "case": "p2-t1-fp32",
+      "gap": 64,
+      "gap_gate_max": 7.597792266473163e-05,
+      "gap_lost": 5.693943667565267e-05,
+      "gap_random_min": 0.5473581576191594,
+      "reference_rank": 64,
+      "stable": 64,
+      "strict": 136
+    },
+    {
+      "case": "p3-t0-fp64",
+      "gap": 128,
+      "gap_gate_max": 8.99764262474366e-05,
+      "gap_lost": 3.018627203896877e-05,
+      "gap_random_min": 0.7927496875780272,
+      "reference_rank": 128,
+      "stable": 128,
+      "strict": 402
+    },
+    {
+      "case": "p3-t0-fp32",
+      "gap": 128,
+      "gap_gate_max": 0.0002532354808768861,
+      "gap_lost": 0.00012661970397091272,
+      "gap_random_min": 0.7927563743921732,
+      "reference_rank": 128,
+      "stable": 128,
+      "strict": 528
+    },
+    {
+      "case": "p3-t1-fp64",
+      "gap": 128,
+      "gap_gate_max": 9.591252432994388e-05,
+      "gap_lost": 2.5631768107211874e-05,
+      "gap_random_min": 0.7893153493502323,
+      "reference_rank": 128,
+      "stable": 128,
+      "strict": 398
+    },
+    {
+      "case": "p3-t1-fp32",
+      "gap": 128,
+      "gap_gate_max": 0.00023269594006672503,
+      "gap_lost": 0.00012225648989700567,
+      "gap_random_min": 0.7893162233294108,
+      "reference_rank": 128,
+      "stable": 128,
+      "strict": 528
+    }
+  ],
+  "certificate": false,
+  "evidence_sha256": {
+    "attempt01-receipt.json": "a460d005ac1a6d4db5939ab9cd1c11afdfed49070833dcb7c7a01ed87a9ab291",
+    "attempt02-receipt.json": "c797fab251cbabcb9a019db58272d5e82486f12b4d710279a4754153dba26ed4",
+    "attempt03-probe.py": "e27c0afdbfccd2f091d5256018073a6744ead58bf772b5d6fb3363227f98c896",
+    "attempt03-receipt.json": "53688ddf9d23aeb72a6daf41e2e189c8a97778ef5e72f9e5b496ce92c9bcb4d1",
+    "attempt03-results.json": "313e2115548da552b809b53bc1b99281eee4974329ba7524372b54e2f3e1465b",
+    "attempt04-probe.py": "02a86c84540182b5fbf44aaa9a531c5182cb424c4b5b28c044133c294c2adbf3",
+    "attempt04-receipt.json": "2ff1e7c903a88dd9692b1f6945aec2d38be4c011e0e48c8c71899cba8cf177f3",
+    "attempt04-results.json": "313e2115548da552b809b53bc1b99281eee4974329ba7524372b54e2f3e1465b",
+    "audit-resource-receipt.json": "2ff1e7c903a88dd9692b1f6945aec2d38be4c011e0e48c8c71899cba8cf177f3",
+    "launcher.py": "f365a3bee3331f796f5e8f82c0e22fdad69ea6b5ad3dcfea2c9bb46cfc14e5d1",
+    "outcome-audit.md": "620c40f78251d44750768ef40e5a374cb62cd1b6a8116ee28d4874bc7d2a831e",
+    "probe-results.json": "313e2115548da552b809b53bc1b99281eee4974329ba7524372b54e2f3e1465b",
+    "probe.py": "02a86c84540182b5fbf44aaa9a531c5182cb424c4b5b28c044133c294c2adbf3",
+    "tree-scope-preflight-receipt.json": "696614fafa13da0664e6ea5328d7795f3b61c4ff30b768e2316bb25800ea1b62"
+  },
+  "final_probe_sha256": "02a86c84540182b5fbf44aaa9a531c5182cb424c4b5b28c044133c294c2adbf3",
+  "findings": {
+    "gap_and_stable_match_reference_rank_in_12_of_12_n_ge_8": true,
+    "gap_and_stable_null_in_all_4_n4": true,
+    "gap_max_gate_residual": 0.0002532354808768861,
+    "gap_random_min_range": [
+      0.013155703537971684,
+      0.7927563743921732
+    ],
+    "strict_matches_reference_only_4_fullspace_n4": true
+  },
+  "full_audit_resource_protocol_approved": true,
+  "independent_checks": [
+    "SVD full spectra and basis overlap/orthonormality from original packed FD matrices",
+    "Independent prefix-overlap accumulation for RMS projector stability and all finite gap/clipping/eligibility/floor vectors",
+    "Strict/gap/stable exact rule choices plus nulls/projectors/seal descriptors",
+    "Saved analytic reference numerical SVD ranks, all six methods and all known/wrong-width requested/effective/clipped collision metadata",
+    "All gate/random raw residual arrays and aggregate subspace/rank metrics recomputed without target/model forward",
+    "All selected source arrays/output archives rehashed before and after audit; canonical marker unchanged",
+    "Actual source ancestor and reviewed bytes at actual commit/current checkout; source/policy/receipt commitments"
+  ],
+  "input_shards_verified": 528,
+  "limitations": [
+    "Original raw forward value equivalence was deliberately not re-evaluated; only stored responses/reference arrays and frozen implementation/source were inspected",
+    "These are same known PUBLIC development cases, not fresh/blind/unknown-family validation; no generalization or causal dimension claim",
+    "Gap/stability agreement cannot exclude common structured bias or certify intrinsic rank; arithmetic floor is not a measurement/noise bound",
+    "Gate residuals are nonzero and saved random direction separation is a finite diagnostic; no extraction optimizer, roots, functional candidate, useful-gate threshold or recovery was tested",
+    "Analytic reference is contracted FP64 approximate numerical rank; lost_signal is unweighted subspace RMS, not Hessian energy",
+    "Metadata half/double-width controls can collide after clipping; fullspace n4 membership remains non-discriminating",
+    "No new rules/threshold promotion from this result; fresh preregistration needed for further scientific validation"
+  ],
+  "max_numerical_differences": {
+    "basis_absolute_overlap_error_max": 4.440892098500626e-15,
+    "metric_absolute_max": 5.551115123125783e-16,
+    "projector_absolute_max": 0.0,
+    "residual_absolute_max": 5.551115123125783e-16,
+    "spectrum_relative_max": 0.0,
+    "stability_absolute_max": 1.1737095670372177e-13
+  },
+  "new_fits": 0,
+  "new_reference_queries": 0,
+  "original_marker_consumed_no_retry": true,
+  "output_shards_verified": 48,
+  "prepared_probe_sha256": "02a86c84540182b5fbf44aaa9a531c5182cb424c4b5b28c044133c294c2adbf3",
+  "prior_frozen_source_files_unchanged": 20,
+  "private_gate": "closed",
+  "registered_RNG": 0,
+  "report_sha256": "6cd99df29e303a192e6ac40dd05d641f18b9934eb54d502f3f466acd5e1300f3",
+  "resource_remediation_status": "completed in attempt04 after successful synthetic TREE preflight; original analysis not rerun and original marker unchanged",
+  "review_sha256": "2b6303a98c20ad433ba6d7652d9e3b54eed4ea1e1427c90c4cf76e70196af573",
+  "runtime_dependency_pins": 10,
+  "saved_outcome_evidence_audited": true,
+  "scientific_success_or_rank_certificate": false,
+  "scope": "Independent saved PUBLIC array/source/commitment audit; not original forward value verification, fresh validation, reconstruction, optimization or useful-gate certificate",
+  "seal_all_case_order_and_report_binding_verified": true,
+  "signed_current_and_actual_commit_files_verified": 17,
+  "universal_reconstruction_demonstrated": false,
+  "worker_report_sha256": "aae3f8f305a851b7f92aea64db316ff06f050125002675b65aaee2a67489cd64"
+}

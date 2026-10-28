@@ -1,0 +1,30 @@
+{
+  "audit_attempts": 4,
+  "copy_files_sha256": {
+    "attempt01-receipt.json": "a460d005ac1a6d4db5939ab9cd1c11afdfed49070833dcb7c7a01ed87a9ab291",
+    "attempt02-receipt.json": "c797fab251cbabcb9a019db58272d5e82486f12b4d710279a4754153dba26ed4",
+    "attempt03-probe.py": "e27c0afdbfccd2f091d5256018073a6744ead58bf772b5d6fb3363227f98c896",
+    "attempt03-receipt.json": "53688ddf9d23aeb72a6daf41e2e189c8a97778ef5e72f9e5b496ce92c9bcb4d1",
+    "attempt03-results.json": "313e2115548da552b809b53bc1b99281eee4974329ba7524372b54e2f3e1465b",
+    "attempt04-probe.py": "02a86c84540182b5fbf44aaa9a531c5182cb424c4b5b28c044133c294c2adbf3",
+    "attempt04-receipt.json": "2ff1e7c903a88dd9692b1f6945aec2d38be4c011e0e48c8c71899cba8cf177f3",
+    "attempt04-results.json": "313e2115548da552b809b53bc1b99281eee4974329ba7524372b54e2f3e1465b",
+    "audit-resource-receipt.json": "2ff1e7c903a88dd9692b1f6945aec2d38be4c011e0e48c8c71899cba8cf177f3",
+    "launcher.py": "f365a3bee3331f796f5e8f82c0e22fdad69ea6b5ad3dcfea2c9bb46cfc14e5d1",
+    "outcome-audit.json": "fe73c0382c3b02b84e93293b4637006aedc879b6c6db47e079b79771b8669711",
+    "outcome-audit.md": "620c40f78251d44750768ef40e5a374cb62cd1b6a8116ee28d4874bc7d2a831e",
+    "probe-results.json": "313e2115548da552b809b53bc1b99281eee4974329ba7524372b54e2f3e1465b",
+    "probe.py": "02a86c84540182b5fbf44aaa9a531c5182cb424c4b5b28c044133c294c2adbf3",
+    "tree-scope-preflight-receipt.json": "696614fafa13da0664e6ea5328d7795f3b61c4ff30b768e2316bb25800ea1b62",
+    "update_final_report.py": "68fba95b33265862826a394788dff488f652490df95c66ad7fee847cc538e33b"
+  },
+  "exclude": [
+    "engine/",
+    "tree-scope-engine/",
+    "finalize.py (superseded old snapshot generator)",
+    "audit-progress.json (temporary progress)",
+    "audit-resource-receipt-initial-failed.json (identical to retained attempt01-receipt.json)"
+  ],
+  "original_analysis_attempts": 1,
+  "scope": "Small audit evidence only; do not copy large original arrays"
+}

@@ -1,0 +1,11 @@
+{
+  "status": "failed",
+  "error_type": "AssertionError",
+  "error": "",
+  "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/modelforge-rank-analysis-outcome-review/probe.py\", line 53, in <module>\n    assert sha(A/'manifest.jsonl')==wr['artifact_manifest_sha256'] and sum(x['bytes'] for x in records)==wr['artifact_inventory']['bytes_reserved']\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "process_monitor_scope": "process_only_children_unavailable",
+  "peak_sampled_rss_bytes": 41091072,
+  "memory_samples": 5,
+  "memory_limit_mb": 512,
+  "audit_launcher_elapsed_seconds": 0.3024575410236139
+}
