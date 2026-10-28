@@ -1,0 +1,32 @@
+{
+  "RNG": 0,
+  "checks": {
+    "all_metadata_invalid_before_NPZ_parse": true,
+    "external_null_commitment": true,
+    "header_shape_reject": true,
+    "independent_partial_second_chunk_n3_o2_probe9_packing": true,
+    "metadata_commitment_mutation": true,
+    "metadata_context_bytes": true,
+    "metadata_n": true,
+    "metadata_outputs": true,
+    "metadata_probes": true,
+    "metadata_seed": true,
+    "metadata_teacher_type": true,
+    "metadata_width": true,
+    "no_adjacent_truth_open_stat_or_iter": true,
+    "readonly_public_geometry_no_width": true,
+    "record_bytes_True": true,
+    "record_sha256_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA": true,
+    "record_sha256_None": true,
+    "same_size_used_mutation_after_read_before_return": true,
+    "truth_size_manifest_reject": true,
+    "unknown_case_reject": true
+  },
+  "fits": 0,
+  "passed": true,
+  "private_or941xxx_reads": 0,
+  "registered_or_actual_data_reads": 0,
+  "resource_scope": "Small literal component probes only; no full resource protocol approval",
+  "source_sha256": "e598762505b7c99bcc180048383b1b27f545682ce7e86bc1980de5fcb3117c1b",
+  "teacher_or_forward_queries": 0
+}

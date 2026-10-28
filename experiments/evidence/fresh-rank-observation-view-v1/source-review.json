@@ -1,0 +1,73 @@
+{
+  "RNG": 0,
+  "RNG_generation_approved": false,
+  "actual_experiment_approved": false,
+  "approved": true,
+  "blocking_findings": [],
+  "certificate": false,
+  "component_only_approved": true,
+  "data_generation_approved": false,
+  "design_snapshot_verified_unchanged": true,
+  "evidence_sha256": {
+    "probe-results.json": "da4b031858f9af2b37db0bf5ee6a0c3a47e7fd20a720b4d60ab8ecec910bf668",
+    "probe.py": "c9a8598c61d78d965046ae68ff5af6ccdb21ce5d744fb3718bd544d8077af245",
+    "review.md": "c35bbfb06ea96dd565d590baf40df040778e051a1c3b1dfb0e3857acf67f494c"
+  },
+  "fits": 0,
+  "fresh_analysis_approved": false,
+  "fresh_rank_view_component_approved": true,
+  "frozen_previous_dependencies_verified_unchanged": 6,
+  "full_fresh_protocol_approved": false,
+  "full_source_approved": false,
+  "independent_probe_checks": {
+    "all_metadata_invalid_before_NPZ_parse": true,
+    "external_null_commitment": true,
+    "header_shape_reject": true,
+    "independent_partial_second_chunk_n3_o2_probe9_packing": true,
+    "metadata_commitment_mutation": true,
+    "metadata_context_bytes": true,
+    "metadata_n": true,
+    "metadata_outputs": true,
+    "metadata_probes": true,
+    "metadata_seed": true,
+    "metadata_teacher_type": true,
+    "metadata_width": true,
+    "no_adjacent_truth_open_stat_or_iter": true,
+    "readonly_public_geometry_no_width": true,
+    "record_bytes_True": true,
+    "record_sha256_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA": true,
+    "record_sha256_None": true,
+    "same_size_used_mutation_after_read_before_return": true,
+    "truth_size_manifest_reject": true,
+    "unknown_case_reject": true
+  },
+  "limitations": [
+    "Component permits synthetic small geometry; future controller must enforce exact24case/12teacher pairing and public profile schema",
+    "Hash checks before/after cover metadata/inventory and used arrays; final all-case source seal remains future pipeline responsibility",
+    "Case IDs cannot establish withholding; distinct generator/commitment/obs-only publication must be reviewed",
+    "Read-only NumPy/source-view checks are not adversarial process isolation or blinding",
+    "No actual runtime resource availability/fullprotocol measurement performed"
+  ],
+  "parent_verification_not_independently_repeated": {
+    "mypy_source_modules": 1,
+    "ruff_files": 2,
+    "tests": 23
+  },
+  "private_gate": "closed",
+  "private_or941xxx_reads": 0,
+  "registered_or_actual_data_reads": 0,
+  "source_sha256": {
+    "docs/glu-rank-fresh-width-validation-draft.md": "c6d61d98fd44b03cb0db49e672ee6bb13f361dee9c98615b61c0fa0149f37815",
+    "docs/superpowers/plans/2026-10-28-fresh-observation-view.md": "2d15bd8832c6f2b0a92313dfd54a15880a9eae0024df62df8223bfb4f94173da",
+    "examples/isolated_glu/fresh_rank_view.py": "e598762505b7c99bcc180048383b1b27f545682ce7e86bc1980de5fcb3117c1b",
+    "examples/isolated_glu/rank_selection.py": "1382f141fd4adf7a80106df75ccedfba4b55b9dd2b877ba4399becc4646f870b",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "tests/test_glu_fresh_rank_view.py": "f23a6d4ffc53515b50b70dbbaa8c6b6d91e08720f759df83c58d1f876e897385"
+  },
+  "teacher_generation_approved": false,
+  "teacher_or_forward_queries": 0
+}
