@@ -44,10 +44,10 @@
 
 **Interfaces:** `search_job(job: GateJob, initial_rng: np.random.Generator, rescue_rng: np.random.Generator, sink: TraceSink) -> GateResult`; `TraceSink.write(name: str, arrays: dict[str, NDArray[np.float64]]) -> None`; `GateResult(status: str, candidates: NDArray[np.float64], report: dict[str, object])`. Kernel accesses no paths, manifests, truth, callbacks or original IDs. Production constants are fixed; small fixture tests inject primitive outputs through a separate explicitly named internal test seam without weakening registered configuration.
 
-- [ ] Write RED tests for odd/full/null abstention, zero/overshoot stop, exact-target skip, sign duplicates, no truncation, independent seeded streams, source-span loss recomputation and quartic geometry identity. The already established mathematical limitation is a fixture assertion, not a repeated research experiment.
-- [ ] Implement documented dimension-adaptive initial Adam and refinement; copy/adapt rescue with generator injection and trace sink. Pin exact differences from fixed kernel. Persist initial/final RNG states and all generated starts; same numerical constants as spec.
-- [ ] Enforce original-basis checks, finite arithmetic and scientific-vs-operational statuses. Recompute reports from candidates, never trust a search-side success flag.
-- [ ] Run fixture tests, strict mypy/Ruff and independent kernel review. Commit passing component; do not run actual six jobs yet.
+- [x] Write RED tests for odd/full/null abstention, zero/overshoot stop, exact-target skip, sign duplicates, no truncation, independent seeded streams, source-span loss recomputation and quartic geometry identity. The already established mathematical limitation is a fixture assertion, not a repeated research experiment.
+- [x] Implement documented dimension-adaptive initial Adam and refinement; copy/adapt rescue with generator injection and trace sink. Pin exact differences from fixed kernel. Persist initial/final RNG states and all generated starts; same numerical constants as spec.
+- [x] Enforce original-basis checks, finite arithmetic and scientific-vs-operational statuses. Recompute reports from candidates, never trust a search-side success flag.
+- [x] Run fixture tests, strict mypy/Ruff and independent kernel review. Commit passing component; do not run actual six jobs yet.
 
 ### Task3: Exact inventory, bounded controller and preregistration
 

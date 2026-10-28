@@ -1,0 +1,16 @@
+{
+  "status": "counterexample_reproduced",
+  "error": "literal second refinement fails",
+  "refiner_calls": 2,
+  "persisted_names": [
+    "job00-rng-before",
+    "job00-initial-raw",
+    "job00-initial-starts"
+  ],
+  "optimized_pre_refinement_persisted": false,
+  "first_completed_refinement_persisted": false,
+  "source_sha256": "7c9d0f3a88d45e21f341f4121cc80211ed72abad2aee738c30124ee4d2cf7c71",
+  "tiny_literal_rng_streams_only": true,
+  "registered_jobs_or_arrays_used": false,
+  "newteacher_queries_fit_or_Adam": 0
+}

@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "source_sha256": "ba636c22ef27aa449d125d16f25d6ddd9b49a844517e502792dd0dc9d1841716",
+  "checks": [
+    {
+      "control": "refine2_partial_flush",
+      "passed": true
+    },
+    {
+      "control": "refine2_fault_with_flush_failure",
+      "passed": true
+    },
+    {
+      "control": "eigh2_partial_flush",
+      "passed": true
+    },
+    {
+      "control": "512tiny_rescue_starts_32chunks_vs_aggregate_and_independent_eigen_equations",
+      "passed": true,
+      "normalization_max_difference_from_frozen_vector_reduction": 0.0,
+      "max_eigen_equation_residual": 2.220446049250313e-16,
+      "max_eigenvector_orthogonality_error": 4.440892098500626e-16
+    },
+    {
+      "control": "independent_quartic_sphere_gradient_two_Adamsteps",
+      "passed": true,
+      "max_difference": 0.0
+    },
+    {
+      "control": "exact_cosine_and_loss_merge_boundaries",
+      "passed": true
+    }
+  ],
+  "registered_arrays_jobs_queries_or_model_forward": false,
+  "production_search_job_run": false,
+  "small_control_work": "one n3rescue with512starts,eigh2fault;two n2Adamsteps;literal fault/mergecontrols",
+  "resource_full_protocol_approved": false
+}

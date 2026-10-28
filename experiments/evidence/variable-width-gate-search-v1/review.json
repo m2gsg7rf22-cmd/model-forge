@@ -1,0 +1,106 @@
+{
+  "approved": true,
+  "component_approved": true,
+  "component": "Pure variable-dimension gate-candidate search and bounded progress trace; no runner/artifactstore/controller approval",
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_registered_data_or_fitting_approved": false,
+  "actual_resource_contract_verified": false,
+  "certificate": false,
+  "coverage_certified": false,
+  "private_gate": "closed",
+  "source_sha256": {
+    "examples/isolated_glu/variable_gate_search.py": "ba636c22ef27aa449d125d16f25d6ddd9b49a844517e502792dd0dc9d1841716",
+    "tests/test_variable_gate_search.py": "0bf05e5a3b7b3fa2c289ed4c1805bb2264b536e124add143d501715faf824919",
+    "examples/isolated_glu/variable_gate_view.py": "999e89d9161c064242ae53235e3b03a727a63f5ca9f43c61952c4ab8437036ce",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "docs/glu-variable-width-gate-development-design.md": "38c5de8ecb7a994de5342f01e8b4ee50cd62f5cabd954cca7d2870d1c92365fa"
+  },
+  "frozen31files_unchanged": true,
+  "evidence_sha256": {
+    "partial_probe.py": "8f0336cdb695dcb17a1b733820e83a9165f3f2df81f22eabba7d0aca7556816a",
+    "partial-probe-results.json": "f7eb50503b032ae91e915debf4e272ec6615b5ea8e623b217aec3a87eda37325",
+    "preliminary-review.json": "6f4639586468ee622dce4b7e402fb6906bc0b4cbfc0b750a22f31183cfcbe494",
+    "final_probe.py": "d8c6bc53a67f1469b73eab0f789b2238a22ad70bec7eaa94757e32d0ec6b32b5",
+    "final-probe-results.json": "4f898d4c66534a4c31b667118c1408e19539e60feeaed23d43d259fe0041fee3"
+  },
+  "blocking_findings": [],
+  "addressed_findings": [
+    {
+      "id": "S1",
+      "status": "closed_with_explicit_kill_limit",
+      "resolution": "Initial optimized/preloss batch persisted before refinement. Fixed8rowrefine chunks emit intent and count/attempted/complete/index/paddedpostloss arrays; ordinaryfailureflushes completedrows while retainingoriginalexception ifflushfails. Rescue8mixturechunks persist intent/rawnormalizedcoefficients beforeeigh andpartialcompleted eigenpairs/starts.",
+      "independent_evidence": "Refiner2/eigh2 faults preserve count1/attempted2/complete0, firstcompletedoutput andpreinputs; flushOSError preserves originalFloatingPointError+note. Hardkillcanleaveupto8uncommittedoutputsunknown,notguaranteedcomplete."
+    }
+  ],
+  "fixed_profile_correspondence": [
+    "pack/unpack/tangent/refine/residual_subspace imported from pinnedglu32; no targetoracle/teacher/filesystem logic introduced.",
+    "Initial256unitstarts; unpackedbasis B; projected spheregradient -4Proj(vvT)v withradialtermremoved; Adam1600steps,moments.9/.999,learningrate.02,epsilon1e-8 andbiascorrection reviewed againstfrozendirections.",
+    "Refinementcalls frozenoriginalbasisrefine with12steps initialand24rescue; no deflatedbasisrefinement.",
+    "Merge usesoriginalbasisrecomputedloss<=1e-8,absolute dot<.9995 andnp.argsort samefrozenpolicy; zero/overshoot retained withouttargettruncation.",
+    "Atmost4rescue rounds,256Gaussianmixtures andtwo extremalabsoluteeigenvalue starts each; componentrank2known/residualdim r-2known guards unchanged.",
+    "Stopimmediatelyatexacttargetorovershoot; geometryfailure isscientificresult; sink/nonfinite exceptionspropagate operationally.",
+    "RNGstreams injected distinctPCG64 states; before/afterserializedstates plusrawinitial/rescuemixtures preserved. No hiddenseed creation or seedfallback."
+  ],
+  "reviewed_differences": [
+    "Dimensionn/rankr fromvalidatedGateJob replacesfixed32/r128/target64 profile andHessian64input/gap100frontend. Componentdoesnotclaim variablewidthhypothesisverified.",
+    "Injectedindependentstreamreplaceshardcoded20261024/20261025 RNG; seedmappingvalidatedbyfuturecontroller,nothiscore.",
+    "Scalarrefine r@r/Frobeniusnormreduction replacedbyrecomputedpackedsum forauthoritativemerge; batchnormalization androwwisechunklossversusbatchaggregateloss can differinroundoff/BLASpartition. Frozen thresholds unchanged, no generalbitparityclaim.",
+    "Fixed8rowprogressandpartialflush,immutabletracebuffers,zeroresultpadding andstatusreporting added; nooptimizationthresholds/ranktruncation added."
+  ],
+  "independent_controls": [
+    {
+      "control": "refine2_partial_flush",
+      "passed": true
+    },
+    {
+      "control": "refine2_fault_with_flush_failure",
+      "passed": true
+    },
+    {
+      "control": "eigh2_partial_flush",
+      "passed": true
+    },
+    {
+      "control": "512tiny_rescue_starts_32chunks_vs_aggregate_and_independent_eigen_equations",
+      "passed": true,
+      "normalization_max_difference_from_frozen_vector_reduction": 0.0,
+      "max_eigen_equation_residual": 2.220446049250313e-16,
+      "max_eigenvector_orthogonality_error": 4.440892098500626e-16
+    },
+    {
+      "control": "independent_quartic_sphere_gradient_two_Adamsteps",
+      "passed": true,
+      "max_difference": 0.0
+    },
+    {
+      "control": "exact_cosine_and_loss_merge_boundaries",
+      "passed": true
+    }
+  ],
+  "parent_validation_attributed_not_repeated": {
+    "prior_targeted_fixture_tests": 19,
+    "additional_full_default_tiny_literal_fixture_passed_separately": true,
+    "total_test_cases_now": 20,
+    "strict_mypy_modules": 1,
+    "ruff_files": 2
+  },
+  "future_inventory_and_protocol_requirements": [
+    "All6jobs atmaxn32/r192/target96 and4x512rescuestarts,all32mixturechunks/64refinechunksperround plusintents/pre/aggregates/geometry/partialflush/states/metadata. Initial32refinechunks andalltraces counted,notjustexpectedearlysucceed.",
+    "Worstinitialovershoot256; worstrescueovershoot607=95known+512new. Finaldirections607x32,losses607,cosines607x607 mustfitplannedshards; no silentclip96.",
+    "Geometry residual mayhaveall192rows beforeunexpectedcomponentgeometryabstention; budget192x528 plusknown/tangentdiagnostics beforeguard,notjustexpectedr-2known.",
+    "Partialfailedtrace name mayreplace no other successfulrecord; futurestore/manifest/file exclusivity,failclosedwrite,rawbytes/hashschema/compactstdout andtruthfreeadapterprovenance binding required.",
+    "Crossviewresiduals require separatedpublic-onlydiagnosticstage; thispurecore seesonlyselectedbasisandcannotproduceindependentcrossviewevidence orheldoutmetrics.",
+    "Outerresource/controller/exclusivemarker/source/runtime/cleanfreeze/disk/transportfullreview notimplementedbythiscomponent; allmustprecederegisteredRNG/fitting.",
+    "Futureworker mustpreserveoperationalfailure reports andremainingjobs not_started/unknown; cannotinvokeprivate_testseam or overrideproductionconstants.",
+    "Hardkill/sinkfailurecanpreventflush/RNGafter/report; absentrecordmustremainunknown. Noexactpeak/completekillforensicsclaims."
+  ],
+  "scientific_limits": [
+    "Candidatecount/loworiginalsubspaceloss/duplicatefilter do not establishtruegates/coverage/width/magnitudes/couplings/fullfunction/originalweights.",
+    "Positiveevenr/2 isgenericfamilyhypothesisonly; quarticflatness remains; finiteF64 isnotglobalunderfloworconditioningcertificate.",
+    "Tinycontrols usedonlyliteralbases/fixturestreams,no registeredscientificarrays/jobs,newteachers,query,model-forward,heldoutorprivateassets.",
+    "Reviewer didnotexecuteproductionsearch_job; onlytwoAdammathsteps andone tiny n3rescue with512starts plusfaultcontrols. Parenttestedfull1600steppathseparatelyonliteraln2basis.",
+    "No methodpromotion,newexperiment,universalclaimorprivatefinalmodelpermission follows."
+  ]
+}

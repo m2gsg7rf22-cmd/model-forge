@@ -1,0 +1,33 @@
+{
+  "approved": false,
+  "component_approved": false,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "source_sha256": {
+    "examples/isolated_glu/variable_gate_search.py": "7c9d0f3a88d45e21f341f4121cc80211ed72abad2aee738c30124ee4d2cf7c71",
+    "tests/test_variable_gate_search.py": "9d2539bdc97e13c0571753e19f5264c43aa76ed3f25e0360f54edf1835eca017",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "examples/isolated_glu/variable_gate_view.py": "999e89d9161c064242ae53235e3b03a727a63f5ca9f43c61952c4ab8437036ce",
+    "docs/glu-variable-width-gate-development-design.md": "38c5de8ecb7a994de5342f01e8b4ee50cd62f5cabd954cca7d2870d1c92365fa"
+  },
+  "blocking_findings": [
+    {
+      "id": "S1",
+      "issue": "Late ordinary refinement failure loses initialoptimizedinputs andalreadycompletedpostrefinements; rescueaccumulates256mixture/eigenrecords without progressiveemission. Partialoperationalfailure trace is insufficient for fullforensics claim.",
+      "reproduction": "Injected2ndrefinerexception: onlyrng-before/raw/starts remained, nooptimizedpreorcompletedfirstrefinement.",
+      "required": "Persistbeforeexpensivework andfixedboundedprogresschunks;flushordinaryexception partialoutputs ifsinkavailable;retainoriginalexceptiononsinkfailure;explicitlykilled/inflightunknownnotcomplete."
+    }
+  ],
+  "future_inventory_observations": [
+    "Worstinitialovershoot256; worstrescueovershoot607=target96minus1known+512candidates. Finalcos607x607 plusalllosses/directions mustbebudgeted,never96x96only.",
+    "Fixedsteps/line-search constants remainpinned; componentlosssum changesreductionnp.sum versusfrozenr@r, so do notclaimbitparityatthreshold.",
+    "No formal globalunderflowguarantee; finite/unitguards andnormalizedinputs areonly boundednumericalguards."
+  ],
+  "nonblocking_correspondence": "Adam projectedgradient -4Proj(vvT)v andsphereprojection, moments.9/.999,lr.02,epsilon1e-8,1600steps;12/24originalbasisrefine andabsdot<.9995/loss<=1e-8argsortmerge alignwithfrozenmethods. RNGstreaminjection/dimensionadaptation/telemetry andcomputedlossreduction differencesmustremainexplicit.",
+  "evidence_sha256": {
+    "partial_probe.py": "8f0336cdb695dcb17a1b733820e83a9165f3f2df81f22eabba7d0aca7556816a",
+    "partial-probe-results.json": "f7eb50503b032ae91e915debf4e272ec6615b5ea8e623b217aec3a87eda37325"
+  },
+  "private_gate": "closed",
+  "no_registered_data_or_model_queries": true
+}
