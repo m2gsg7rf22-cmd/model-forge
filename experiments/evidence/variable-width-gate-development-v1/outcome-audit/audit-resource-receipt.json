@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "jobs": 6,
+  "result_sha256": "18c7f2794f0b0a7e093c45fcce20d5dbfb4a0483fe4d0fee02a29f747c8e9158",
+  "process_monitor_scope": "process_and_children",
+  "peak_sampled_rss_bytes": 154402816,
+  "memory_samples": 68,
+  "memory_limit_mb": 512,
+  "launcher_elapsed_seconds": 4.511105707962997
+}

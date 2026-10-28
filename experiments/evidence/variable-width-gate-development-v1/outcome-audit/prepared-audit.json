@@ -1,0 +1,11 @@
+{
+  "probe_sha256": "2a2a227c63b354b90a8909aeae55b3656c1f0aa12efed4a28c0649e63e47cff6",
+  "launcher_sha256": "658eaf54122359d4f515c38b3810f2cc71e68c5b5cdce96f92cca23fdd28dcc0",
+  "scope": "Savedpublic+estimator+actualtraceonly;NoRNGobjects,Adam,refinement,optimizer,eigensolve,teacher,forward,queryorfit; SVD/matrixequationvalidationonly.",
+  "registered_source_commit": "43cf7a6cc04b88d1cf1b3071fcf1fe437dd38eae",
+  "max_seconds_including_preflight": 180,
+  "memory_limit_mb": 512,
+  "BLAS_threads": 1,
+  "stdout_stderr_limit_bytes": 2048,
+  "one_numeric_worker_after_TREE_preflight": true
+}

@@ -1,0 +1,754 @@
+{
+  "approved": true,
+  "saved_outcome_audit_approved": true,
+  "full_resource_audit_approved": true,
+  "original_pipeline_completed": true,
+  "all_six_target_counts_reached": false,
+  "candidate_target_jobs": 1,
+  "scientific_identity_or_coverage_success": false,
+  "candidate_counts_descriptive_only": true,
+  "method_promotion_approved": false,
+  "new_experiment_approved": false,
+  "certificate": false,
+  "coverage_certified": false,
+  "private_gate": "closed",
+  "actual_source_commit": "43cf7a6cc04b88d1cf1b3071fcf1fe437dd38eae",
+  "source_sha256": {
+    "docs/glu-variable-width-gate-adapter.md": "dd7fdadf754f144080d320432461dd846096e9b5201f2ff5e924cf0c1de624ea",
+    "docs/glu-variable-width-gate-development-design.md": "38c5de8ecb7a994de5342f01e8b4ee50cd62f5cabd954cca7d2870d1c92365fa",
+    "docs/glu-variable-width-gate-development-protocol.md": "fdc22e7c25cc86a51a7cf83568f0ad9d5c17779072d05c1a97cfae45a4f35970",
+    "docs/glu-variable-width-gate-search.md": "c768645f0341daa2fce8fecf5df905c66ed2317ca94c0187b7d36366eb18cae5",
+    "docs/superpowers/plans/2026-10-28-variable-width-gate-development.md": "09c0bc3225a28ae21d20ded27f6d3081685cf8a0b77d9f89935c1f361796f7dd",
+    "examples/isolated_glu/fresh_rank_common.py": "d1ed586a224556a0d3bab1fa2dd05b928ebac485dc9026f1bd762c2f8f058b0b",
+    "examples/isolated_glu/row_acquisition_view.py": "6b89a496733ced75fde476a841a422c234bd8c4938d90066a3c1539f902ec635",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "examples/isolated_glu/variable_gate_common.py": "dffc4e241ff6843b4f425dc795b9c1e1b69298a8488a7ab140a7f9b166ee95d2",
+    "examples/isolated_glu/variable_gate_controller.py": "fedad93c9b2338454e998354c38960f57abe3cbbfbe0a1cde43d6f3d34eee549",
+    "examples/isolated_glu/variable_gate_inventory.py": "f982576e8424696df016f24ed7689a72a75025bce8166441496b37c0b9297c6b",
+    "examples/isolated_glu/variable_gate_search.py": "ba636c22ef27aa449d125d16f25d6ddd9b49a844517e502792dd0dc9d1841716",
+    "examples/isolated_glu/variable_gate_view.py": "999e89d9161c064242ae53235e3b03a727a63f5ca9f43c61952c4ab8437036ce",
+    "experiments/evidence/paired-row-acquisition-v1/actual/collection/collection-report.json": "eba75ce5156e0ee13ca1e5cdac060bcb6d9028389b7d6d26a8cff2deeeb35167",
+    "experiments/evidence/paired-row-acquisition-v1/actual/collection/public/cases.json": "2d51bfe26130a1eebb054d71f1817a7e246005e9ea5a6f5824edc04cebc64cd6",
+    "experiments/evidence/paired-row-acquisition-v1/actual/estimator/choices-sealed.json": "f436992bc2f3b24fd593a373c2127235124626a58c82f95a5626594af2f76901",
+    "experiments/evidence/paired-row-acquisition-v1/actual/estimator/estimator-report.json": "bf546c416a65e4d46b6fbd544cf0d19b130c17cf2f799a55f2cd365c5a51d2ec",
+    "experiments/evidence/paired-row-acquisition-v1/outcome-audit/outcome-audit.json": "363e46db8c437b40e435ef9d3873e6f834d5a877fb688136d024d7d05aa553c7",
+    "experiments/preregistrations/variable-width-gate-development-v1.json": "f8d85c9aba42c405c3a7dfe99fec97fd577a2c91a5ebcbdd410afd1bba8a2194",
+    "src/modelforge/__init__.py": "163f8b506a895a97f81ec473ea9d8d4c22d83372c803dee29e4050ed2d801067",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b",
+    "tests/test_variable_gate_protocol.py": "dba0f8e33211368c7dfabe0882fdfff9d617869528720d6fdbe0d5a43314c070",
+    "tests/test_variable_gate_search.py": "0bf05e5a3b7b3fa2c289ed4c1805bb2264b536e124add143d501715faf824919",
+    "tests/test_variable_gate_view.py": "b5f24b8524c95c49a39da7a5352002b5c4e9f4154c5f1d8da8c05679cf4f6467"
+  },
+  "signed_source_files_verified": 28,
+  "runtime_pins": 14,
+  "report_sha256": "00aee710089c6225cbdc80ffcece2a23ceaa56197d4838331d147ffabdc51ad2",
+  "outer_report_sha256": "0ad71dd01fe262aba09f8422b7a798f8543bd5c17ac1ce4feb270e988bfa4511",
+  "config_sha256": "f8d85c9aba42c405c3a7dfe99fec97fd577a2c91a5ebcbdd410afd1bba8a2194",
+  "source_review_sha256": "6ff724f534d1ebb4b631ebf954d429ae3d21a42ec0d4aa75979fa8566e9fbffd",
+  "marker_sha256": "88aedf0f73a740c4980875d190913efcb8b6f7ff0f226d47266e7b2325be45a0",
+  "numeric_probe_results_sha256": "18c7f2794f0b0a7e093c45fcce20d5dbfb4a0483fe4d0fee02a29f747c8e9158",
+  "artifact_commitments_sha256": "373e7bdba6334a4b3cce0d5a098a62e8536bc0937aad023f02c98d729d9b6cdc",
+  "artifact_commitments_file": "artifact-commitments.json",
+  "public_archives_verified": 54,
+  "estimator_archives_verified": 24,
+  "trace_archives_verified": 5064,
+  "transport_archives_verified": 20,
+  "rescue_rounds_verified": 20,
+  "jobs": [
+    {
+      "RNG_draws_or_optimizer_steps_replayed": false,
+      "base_count": 81,
+      "candidate_status": "rounds_exhausted",
+      "certificate": false,
+      "final_count": 93,
+      "initial_merge": {
+        "accepted": 81,
+        "duplicate_rejected": 161,
+        "loss_rejected": 14
+      },
+      "job_id": "job00",
+      "max_retained_loss": 7.716682145445723e-09,
+      "missing_target": 3,
+      "rank": 192,
+      "report_sha256": "46051f7f9ae476200b8c998860a2ad748ff6a4ab1bce098bf2f9540c87cf359d",
+      "round_details": [
+        {
+          "component_rank": 162,
+          "input_count": 81,
+          "merge": {
+            "accepted": 12,
+            "duplicate_rejected": 405,
+            "loss_rejected": 95
+          },
+          "residual_dimension": 30,
+          "retained_count": 93,
+          "round": 0
+        },
+        {
+          "component_rank": 186,
+          "input_count": 93,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 6,
+            "loss_rejected": 506
+          },
+          "residual_dimension": 6,
+          "retained_count": 93,
+          "round": 1
+        },
+        {
+          "component_rank": 186,
+          "input_count": 93,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 5,
+            "loss_rejected": 507
+          },
+          "residual_dimension": 6,
+          "retained_count": 93,
+          "round": 2
+        },
+        {
+          "component_rank": 186,
+          "input_count": 93,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 4,
+            "loss_rejected": 508
+          },
+          "residual_dimension": 6,
+          "retained_count": 93,
+          "round": 3
+        }
+      ],
+      "rounds": 4,
+      "status": "completed",
+      "target_hypothesis": 96,
+      "view_loss_maxima": [
+        4.0441168479072474e-06,
+        6.572685105730896e-05,
+        7.716682145445723e-09
+      ]
+    },
+    {
+      "RNG_draws_or_optimizer_steps_replayed": false,
+      "base_count": 1,
+      "candidate_status": "rounds_exhausted",
+      "certificate": false,
+      "final_count": 2,
+      "initial_merge": {
+        "accepted": 1,
+        "duplicate_rejected": 2,
+        "loss_rejected": 253
+      },
+      "job_id": "job01",
+      "max_retained_loss": 9.477053170858202e-09,
+      "missing_target": 94,
+      "rank": 192,
+      "report_sha256": "b58625aaccdea11f3ec7cfba4543db6aeede821fb785ac56250952cd5b0d7e49",
+      "round_details": [
+        {
+          "component_rank": 2,
+          "input_count": 1,
+          "merge": {
+            "accepted": 1,
+            "duplicate_rejected": 4,
+            "loss_rejected": 507
+          },
+          "residual_dimension": 190,
+          "retained_count": 2,
+          "round": 0
+        },
+        {
+          "component_rank": 4,
+          "input_count": 2,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 0,
+            "loss_rejected": 512
+          },
+          "residual_dimension": 188,
+          "retained_count": 2,
+          "round": 1
+        },
+        {
+          "component_rank": 4,
+          "input_count": 2,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 0,
+            "loss_rejected": 512
+          },
+          "residual_dimension": 188,
+          "retained_count": 2,
+          "round": 2
+        },
+        {
+          "component_rank": 4,
+          "input_count": 2,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 0,
+            "loss_rejected": 512
+          },
+          "residual_dimension": 188,
+          "retained_count": 2,
+          "round": 3
+        }
+      ],
+      "rounds": 4,
+      "status": "completed",
+      "target_hypothesis": 96,
+      "view_loss_maxima": [
+        7.165407733009589e-07,
+        1.1541265922568122e-05,
+        9.477053170858202e-09
+      ]
+    },
+    {
+      "RNG_draws_or_optimizer_steps_replayed": false,
+      "base_count": 47,
+      "candidate_status": "rounds_exhausted",
+      "certificate": false,
+      "final_count": 47,
+      "initial_merge": {
+        "accepted": 47,
+        "duplicate_rejected": 203,
+        "loss_rejected": 6
+      },
+      "job_id": "job02",
+      "max_retained_loss": 4.607353308380883e-09,
+      "missing_target": 1,
+      "rank": 96,
+      "report_sha256": "5a3f3aff5611b20d0352e952b7084f2bcc2404b3f9e45923a267a9a3c25a03ca",
+      "round_details": [
+        {
+          "component_rank": 94,
+          "input_count": 47,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 89,
+            "loss_rejected": 423
+          },
+          "residual_dimension": 2,
+          "retained_count": 47,
+          "round": 0
+        },
+        {
+          "component_rank": 94,
+          "input_count": 47,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 94,
+            "loss_rejected": 418
+          },
+          "residual_dimension": 2,
+          "retained_count": 47,
+          "round": 1
+        },
+        {
+          "component_rank": 94,
+          "input_count": 47,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 87,
+            "loss_rejected": 425
+          },
+          "residual_dimension": 2,
+          "retained_count": 47,
+          "round": 2
+        },
+        {
+          "component_rank": 94,
+          "input_count": 47,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 85,
+            "loss_rejected": 427
+          },
+          "residual_dimension": 2,
+          "retained_count": 47,
+          "round": 3
+        }
+      ],
+      "rounds": 4,
+      "status": "completed",
+      "target_hypothesis": 48,
+      "view_loss_maxima": [
+        5.596381528469464e-06,
+        9.127243895561992e-05,
+        4.607353308380883e-09
+      ]
+    },
+    {
+      "RNG_draws_or_optimizer_steps_replayed": false,
+      "base_count": 18,
+      "candidate_status": "rounds_exhausted",
+      "certificate": false,
+      "final_count": 18,
+      "initial_merge": {
+        "accepted": 18,
+        "duplicate_rejected": 80,
+        "loss_rejected": 158
+      },
+      "job_id": "job03",
+      "max_retained_loss": 9.837114082944115e-09,
+      "missing_target": 30,
+      "rank": 96,
+      "report_sha256": "d8fd369baf3d08831675a8c65989fb823e1b5b82fa7db6f6a69a83c32abe91f9",
+      "round_details": [
+        {
+          "component_rank": 36,
+          "input_count": 18,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 1,
+            "loss_rejected": 511
+          },
+          "residual_dimension": 60,
+          "retained_count": 18,
+          "round": 0
+        },
+        {
+          "component_rank": 36,
+          "input_count": 18,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 0,
+            "loss_rejected": 512
+          },
+          "residual_dimension": 60,
+          "retained_count": 18,
+          "round": 1
+        },
+        {
+          "component_rank": 36,
+          "input_count": 18,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 1,
+            "loss_rejected": 511
+          },
+          "residual_dimension": 60,
+          "retained_count": 18,
+          "round": 2
+        },
+        {
+          "component_rank": 36,
+          "input_count": 18,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 0,
+            "loss_rejected": 512
+          },
+          "residual_dimension": 60,
+          "retained_count": 18,
+          "round": 3
+        }
+      ],
+      "rounds": 4,
+      "status": "completed",
+      "target_hypothesis": 48,
+      "view_loss_maxima": [
+        5.603221950369237e-06,
+        9.131249290961575e-05,
+        9.837114082944115e-09
+      ]
+    },
+    {
+      "RNG_draws_or_optimizer_steps_replayed": false,
+      "base_count": 16,
+      "candidate_status": "candidate_target",
+      "certificate": false,
+      "final_count": 16,
+      "initial_merge": {
+        "accepted": 16,
+        "duplicate_rejected": 240,
+        "loss_rejected": 0
+      },
+      "job_id": "job04",
+      "max_retained_loss": 1.5669298491275197e-09,
+      "missing_target": 0,
+      "rank": 32,
+      "report_sha256": "e5c73fe61d2170afe8f5aa4ddee9b5dd4b40608e8212731e36056f67a5e92f6c",
+      "round_details": [],
+      "rounds": 0,
+      "status": "completed",
+      "target_hypothesis": 16,
+      "view_loss_maxima": [
+        2.942162604617035e-06,
+        4.691670374307759e-05,
+        1.5669298491275197e-09
+      ]
+    },
+    {
+      "RNG_draws_or_optimizer_steps_replayed": false,
+      "base_count": 13,
+      "candidate_status": "rounds_exhausted",
+      "certificate": false,
+      "final_count": 13,
+      "initial_merge": {
+        "accepted": 13,
+        "duplicate_rejected": 198,
+        "loss_rejected": 45
+      },
+      "job_id": "job05",
+      "max_retained_loss": 8.90193329077089e-09,
+      "missing_target": 3,
+      "rank": 32,
+      "report_sha256": "f435de8305335094b87538c945e820cf897289804d026508ecad4b9cb0936ef8",
+      "round_details": [
+        {
+          "component_rank": 26,
+          "input_count": 13,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 1,
+            "loss_rejected": 511
+          },
+          "residual_dimension": 6,
+          "retained_count": 13,
+          "round": 0
+        },
+        {
+          "component_rank": 26,
+          "input_count": 13,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 0,
+            "loss_rejected": 512
+          },
+          "residual_dimension": 6,
+          "retained_count": 13,
+          "round": 1
+        },
+        {
+          "component_rank": 26,
+          "input_count": 13,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 1,
+            "loss_rejected": 511
+          },
+          "residual_dimension": 6,
+          "retained_count": 13,
+          "round": 2
+        },
+        {
+          "component_rank": 26,
+          "input_count": 13,
+          "merge": {
+            "accepted": 0,
+            "duplicate_rejected": 0,
+            "loss_rejected": 512
+          },
+          "residual_dimension": 6,
+          "retained_count": 13,
+          "round": 3
+        }
+      ],
+      "rounds": 4,
+      "status": "completed",
+      "target_hypothesis": 16,
+      "view_loss_maxima": [
+        2.9469848195549192e-06,
+        4.695653726113708e-05,
+        8.90193329077089e-09
+      ]
+    }
+  ],
+  "fixed_threshold_merge_stages": [
+    {
+      "job_id": "job00",
+      "stage": "initial",
+      "accepted": 81,
+      "duplicate_rejected": 161,
+      "loss_rejected": 14
+    },
+    {
+      "job_id": "job00",
+      "stage": "rescue0",
+      "accepted": 12,
+      "duplicate_rejected": 405,
+      "loss_rejected": 95
+    },
+    {
+      "job_id": "job00",
+      "stage": "rescue1",
+      "accepted": 0,
+      "duplicate_rejected": 6,
+      "loss_rejected": 506
+    },
+    {
+      "job_id": "job00",
+      "stage": "rescue2",
+      "accepted": 0,
+      "duplicate_rejected": 5,
+      "loss_rejected": 507
+    },
+    {
+      "job_id": "job00",
+      "stage": "rescue3",
+      "accepted": 0,
+      "duplicate_rejected": 4,
+      "loss_rejected": 508
+    },
+    {
+      "job_id": "job01",
+      "stage": "initial",
+      "accepted": 1,
+      "duplicate_rejected": 2,
+      "loss_rejected": 253
+    },
+    {
+      "job_id": "job01",
+      "stage": "rescue0",
+      "accepted": 1,
+      "duplicate_rejected": 4,
+      "loss_rejected": 507
+    },
+    {
+      "job_id": "job01",
+      "stage": "rescue1",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job01",
+      "stage": "rescue2",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job01",
+      "stage": "rescue3",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job02",
+      "stage": "initial",
+      "accepted": 47,
+      "duplicate_rejected": 203,
+      "loss_rejected": 6
+    },
+    {
+      "job_id": "job02",
+      "stage": "rescue0",
+      "accepted": 0,
+      "duplicate_rejected": 89,
+      "loss_rejected": 423
+    },
+    {
+      "job_id": "job02",
+      "stage": "rescue1",
+      "accepted": 0,
+      "duplicate_rejected": 94,
+      "loss_rejected": 418
+    },
+    {
+      "job_id": "job02",
+      "stage": "rescue2",
+      "accepted": 0,
+      "duplicate_rejected": 87,
+      "loss_rejected": 425
+    },
+    {
+      "job_id": "job02",
+      "stage": "rescue3",
+      "accepted": 0,
+      "duplicate_rejected": 85,
+      "loss_rejected": 427
+    },
+    {
+      "job_id": "job03",
+      "stage": "initial",
+      "accepted": 18,
+      "duplicate_rejected": 80,
+      "loss_rejected": 158
+    },
+    {
+      "job_id": "job03",
+      "stage": "rescue0",
+      "accepted": 0,
+      "duplicate_rejected": 1,
+      "loss_rejected": 511
+    },
+    {
+      "job_id": "job03",
+      "stage": "rescue1",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job03",
+      "stage": "rescue2",
+      "accepted": 0,
+      "duplicate_rejected": 1,
+      "loss_rejected": 511
+    },
+    {
+      "job_id": "job03",
+      "stage": "rescue3",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job04",
+      "stage": "initial",
+      "accepted": 16,
+      "duplicate_rejected": 240,
+      "loss_rejected": 0
+    },
+    {
+      "job_id": "job05",
+      "stage": "initial",
+      "accepted": 13,
+      "duplicate_rejected": 198,
+      "loss_rejected": 45
+    },
+    {
+      "job_id": "job05",
+      "stage": "rescue0",
+      "accepted": 0,
+      "duplicate_rejected": 1,
+      "loss_rejected": 511
+    },
+    {
+      "job_id": "job05",
+      "stage": "rescue1",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job05",
+      "stage": "rescue2",
+      "accepted": 0,
+      "duplicate_rejected": 1,
+      "loss_rejected": 511
+    },
+    {
+      "job_id": "job05",
+      "stage": "rescue3",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    }
+  ],
+  "fixed_threshold_merge_totals": {
+    "accepted": 189,
+    "duplicate_rejected": 1667,
+    "loss_rejected": 9920
+  },
+  "total_candidates_processed": 11776,
+  "max_numeric_differences": {
+    "basis_orthonormality": 5.995204332975845e-15,
+    "component_smallest_singular": 0.0,
+    "eigen_equations": 1.0130785099704553e-15,
+    "eigen_orthogonality": 4.107825191113079e-15,
+    "eigen_reconstruction": 8.604228440844963e-16,
+    "final_original_basis_loss": 0.0,
+    "initial_post_loss": 0.0,
+    "initial_pre_loss": 0.0,
+    "initial_raw_normalization": 0.0,
+    "merge_cosines": 0.0,
+    "merge_recomputed_loss": 0.0,
+    "mixture_normalization": 0.0,
+    "public_view_residuals": 0.0,
+    "refine_chunk_loss_aggregate": 1.0545560193316039e-19,
+    "reported_component_smallest": 0.0,
+    "reported_tangent_singulars": 0.0,
+    "rescue_post_loss": 0.0,
+    "rescue_pre_loss": 0.0,
+    "residual_inside_original": 6.245004513516506e-16,
+    "residual_orthogonal_components": 1.124100812432971e-15,
+    "residual_orthonormal": 3.3306690738754696e-15,
+    "residual_projector": 0.0,
+    "sealed_projectors": 0.0,
+    "tangent_smallest_singulars": 0.0,
+    "unit_norm": 1.887379141862766e-15
+  },
+  "audit_numeric_attempts": 1,
+  "original_registered_attempts": 1,
+  "registered_RNG_draws_optimizer_steps_teacher_forward_or_queries_replayed": false,
+  "actual_audit_resources": {
+    "status": "passed",
+    "jobs": 6,
+    "result_sha256": "18c7f2794f0b0a7e093c45fcce20d5dbfb4a0483fe4d0fee02a29f747c8e9158",
+    "process_monitor_scope": "process_and_children",
+    "peak_sampled_rss_bytes": 154402816,
+    "memory_samples": 68,
+    "memory_limit_mb": 512,
+    "launcher_elapsed_seconds": 4.511105707962997
+  },
+  "actual_audit_preflight": {
+    "status": "passed",
+    "synthetic_scope_preflight": true,
+    "process_monitor_scope": "process_and_children",
+    "peak_sampled_rss_bytes": 16941056,
+    "memory_samples": 3,
+    "memory_limit_mb": 512
+  },
+  "original_outer_resources": {
+    "memory_limit_mb": 512,
+    "memory_samples": 1499,
+    "new_queries": 0,
+    "peak_sampled_rss_bytes": 392577024,
+    "process_monitor_scope": "process_and_children",
+    "status": "completed"
+  },
+  "original_scope_preflight": {
+    "memory_limit_mb": 512,
+    "memory_samples": 3,
+    "peak_sampled_rss_bytes": 17006592,
+    "process_monitor_scope": "process_and_children",
+    "status": "passed"
+  },
+  "original_transport_resources": {
+    "manifest_sha256": "ac51d05c19a35393f9c1ee3b2e467b9d1f2a100b2b4bf79c1e3330dd5522d185",
+    "memory_limit_mb": 512,
+    "memory_samples": 19,
+    "new_queries": 0,
+    "peak_sampled_rss_bytes": 60293120,
+    "process_monitor_scope": "process_and_children",
+    "shards": 20,
+    "status": "passed"
+  },
+  "original_elapsed_before_final_report_seconds": 95.06609991600271,
+  "retained_bytes": 135203053,
+  "trace_bytes_including_manifest": 126366332,
+  "transport_bytes_including_manifest": 8767097,
+  "blocking_findings": [],
+  "limitations": [
+    "לא נוצרו generators מהזרעים הרשומים ולא שוחזרו RNG draws. נבדקו תחומי SHA256, seed-map/marker/config ומבנה PCG64 states והתאמתם לדוחות; seed→state ודגימות normal נשענים על המקור החתום ולא על replay עצמאי.",
+    "לא הורצו Adam, refine, optimizer או eigensolver באודיט. נבדקו endpoints, מונוטוניות עידון והפסדים מתוך הכיוונים השמורים; אין טענה לשחזור עצמאי של כל1600 צעדי Adam או12/24 צעדי העידון. SVD שימש רק לבדיקת גאומטריה שמורה.",
+    "משוואות eigen, אורתוגונליות, שחזור מטריצת mixture ובחירת שני הערכים המוחלטים הקיצוניים אומתו על eigenpairs השמורים, ללא חיפוש או fitting מחדש.",
+    "לא נקראו teacher factors, truth/context, heldout שנצרך או נכסים פרטיים; לא בוצעו forward, שאילתות או יצירת מורה. האודיט מוגבל למקורות חתומים, public/estimator של ההורה ו־traces של הניסוי.",
+    "מספר r/2 הוא היפותזת משפחה בלבד. רק job04 הגיע למספר היעד; גם תוצאה זו אינה מאמתת זהות gates, כיסוי, מגניטודות, couplings, פונקציה או משקולות.",
+    "חמש עצירות אחרי ארבעה סבבים אינן הוכחת התכנסות, גבול אופטימלי או סיבת כשל. חלוקת loss/duplicate/accepted היא תיאורית בספים הקפואים בלבד, ללא מדד recall או שינוי סף.",
+    "נתוני הפיתוח ציבוריים ונצרכו. ערוצים וקידומות תלויים, seeds בין jobs עצמאיים; אין להסיק השוואת precision סיבתית או הכללה על מורים חדשים. residuals בתצוגות השונות אינם heldout.",
+    "RSS הוא שיא דגימות process_and_children, לא חסם שיא רציף או הקצאת OS. משאבי הניסוי מתייחסים לכל הבקר, לא למדידה לכל job. הזמן המקורי נרשם לפני כתיבת הדוח הסופי.",
+    "לא בוצע ניסיון חוזר של הניסוי או של ה־numeric audit. שער המודל הפרטי נשאר סגור, ואין כאן תיקון לכישלונות הקודמים או הוכחת שחזור אוניברסלי."
+  ],
+  "evidence_sha256": {
+    "probe.py": "2a2a227c63b354b90a8909aeae55b3656c1f0aa12efed4a28c0649e63e47cff6",
+    "launcher.py": "658eaf54122359d4f515c38b3810f2cc71e68c5b5cdce96f92cca23fdd28dcc0",
+    "prepared-audit.json": "f40d52c23d72108c07dc017b9ec76020e0747508440914240d2392ef535c1f59",
+    "probe-results.json": "18c7f2794f0b0a7e093c45fcce20d5dbfb4a0483fe4d0fee02a29f747c8e9158",
+    "tree-preflight-receipt.json": "553bd6dea51ad471725608469fa92b699f957214882fedec58a9f560fa2c0b29",
+    "audit-resource-receipt.json": "95fcc567adb5a64e64d34e56c2d0a558588396208ac70b31169ddde5d7bf0f6b",
+    "progress.json": "a2e81977eee4b5130c65176bd8a7ce77157c67b0177cc485f0e40d283492fb47",
+    "merge-counts.json": "c2d451bb6834791d1ceb191f6ec70eeb86a6b5280ed870ffc0f8e70ef2b1d352",
+    "artifact-commitments.json": "373e7bdba6334a4b3cce0d5a098a62e8536bc0937aad023f02c98d729d9b6cdc"
+  }
+}

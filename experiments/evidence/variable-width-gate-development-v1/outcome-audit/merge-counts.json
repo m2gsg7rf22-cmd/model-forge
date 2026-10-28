@@ -1,0 +1,195 @@
+{
+  "interpretation": "Descriptive fixed-threshold merge categories only; not teacher recall, precision, coverage or optimization.",
+  "loss_threshold_inclusive": 1e-08,
+  "cosine_duplicate_threshold_inclusive": 0.9995,
+  "stages": [
+    {
+      "job_id": "job00",
+      "stage": "initial",
+      "accepted": 81,
+      "duplicate_rejected": 161,
+      "loss_rejected": 14
+    },
+    {
+      "job_id": "job00",
+      "stage": "rescue0",
+      "accepted": 12,
+      "duplicate_rejected": 405,
+      "loss_rejected": 95
+    },
+    {
+      "job_id": "job00",
+      "stage": "rescue1",
+      "accepted": 0,
+      "duplicate_rejected": 6,
+      "loss_rejected": 506
+    },
+    {
+      "job_id": "job00",
+      "stage": "rescue2",
+      "accepted": 0,
+      "duplicate_rejected": 5,
+      "loss_rejected": 507
+    },
+    {
+      "job_id": "job00",
+      "stage": "rescue3",
+      "accepted": 0,
+      "duplicate_rejected": 4,
+      "loss_rejected": 508
+    },
+    {
+      "job_id": "job01",
+      "stage": "initial",
+      "accepted": 1,
+      "duplicate_rejected": 2,
+      "loss_rejected": 253
+    },
+    {
+      "job_id": "job01",
+      "stage": "rescue0",
+      "accepted": 1,
+      "duplicate_rejected": 4,
+      "loss_rejected": 507
+    },
+    {
+      "job_id": "job01",
+      "stage": "rescue1",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job01",
+      "stage": "rescue2",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job01",
+      "stage": "rescue3",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job02",
+      "stage": "initial",
+      "accepted": 47,
+      "duplicate_rejected": 203,
+      "loss_rejected": 6
+    },
+    {
+      "job_id": "job02",
+      "stage": "rescue0",
+      "accepted": 0,
+      "duplicate_rejected": 89,
+      "loss_rejected": 423
+    },
+    {
+      "job_id": "job02",
+      "stage": "rescue1",
+      "accepted": 0,
+      "duplicate_rejected": 94,
+      "loss_rejected": 418
+    },
+    {
+      "job_id": "job02",
+      "stage": "rescue2",
+      "accepted": 0,
+      "duplicate_rejected": 87,
+      "loss_rejected": 425
+    },
+    {
+      "job_id": "job02",
+      "stage": "rescue3",
+      "accepted": 0,
+      "duplicate_rejected": 85,
+      "loss_rejected": 427
+    },
+    {
+      "job_id": "job03",
+      "stage": "initial",
+      "accepted": 18,
+      "duplicate_rejected": 80,
+      "loss_rejected": 158
+    },
+    {
+      "job_id": "job03",
+      "stage": "rescue0",
+      "accepted": 0,
+      "duplicate_rejected": 1,
+      "loss_rejected": 511
+    },
+    {
+      "job_id": "job03",
+      "stage": "rescue1",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job03",
+      "stage": "rescue2",
+      "accepted": 0,
+      "duplicate_rejected": 1,
+      "loss_rejected": 511
+    },
+    {
+      "job_id": "job03",
+      "stage": "rescue3",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job04",
+      "stage": "initial",
+      "accepted": 16,
+      "duplicate_rejected": 240,
+      "loss_rejected": 0
+    },
+    {
+      "job_id": "job05",
+      "stage": "initial",
+      "accepted": 13,
+      "duplicate_rejected": 198,
+      "loss_rejected": 45
+    },
+    {
+      "job_id": "job05",
+      "stage": "rescue0",
+      "accepted": 0,
+      "duplicate_rejected": 1,
+      "loss_rejected": 511
+    },
+    {
+      "job_id": "job05",
+      "stage": "rescue1",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    },
+    {
+      "job_id": "job05",
+      "stage": "rescue2",
+      "accepted": 0,
+      "duplicate_rejected": 1,
+      "loss_rejected": 511
+    },
+    {
+      "job_id": "job05",
+      "stage": "rescue3",
+      "accepted": 0,
+      "duplicate_rejected": 0,
+      "loss_rejected": 512
+    }
+  ],
+  "totals": {
+    "accepted": 189,
+    "duplicate_rejected": 1667,
+    "loss_rejected": 9920
+  },
+  "total_candidates_processed": 11776
+}
