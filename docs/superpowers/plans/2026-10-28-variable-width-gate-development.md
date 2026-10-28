@@ -33,10 +33,10 @@
 
 **Interfaces:** `load_jobs(public_root: Path, estimator_root: Path, commitments: dict[str, str]) -> tuple[GateJob, ...]`, with frozen `GateJob(job_id: str, basis: NDArray[np.float64])`; `GateJob` exposes derived n/r through checked geometry, no original ID/channel/width. Separate adapter provenance report retains mapping and input hashes. Reuse pinned schema/seal validators through explicitly reviewed calls; never import evaluator/collection/inventory into optimizer.
 
-- [ ] Write tests `test_sealed_rank_slices_full_basis`, `test_all_inputs_bound_before_jobs`, `test_optimizer_input_has_no_channel_metadata`: a tiny literal fixture selects rank2 from a3row orthobasis; mutation of any sealed input fails before jobs are returned; job fields contain only opaque ID and basis.
-- [ ] Run the three tests and record RED from missing module/interfaces; fixture data only.
-- [ ] Implement strict job validation, complete12/54/24 binding, canonical opaque mapping and first-r selection; factor small-fixture validation from registered6job guard. No current actual arrays loaded during tests.
-- [ ] Run focused tests, strict mypy and Ruff; independently review adapter source and fixtures, commit passing component. This is not full experiment approval.
+- [x] Write tests `test_sealed_rank_slices_full_basis`, `test_all_inputs_bound_before_jobs`, `test_optimizer_input_has_no_channel_metadata`: a tiny literal fixture selects rank2 from a3row orthobasis; mutation of any sealed input fails before jobs are returned; job fields contain only opaque ID and basis.
+- [x] Run the three tests and record RED from missing module/interfaces; fixture data only.
+- [x] Implement strict job validation, complete12/54/24 binding, canonical opaque mapping and first-r selection; factor small-fixture validation from registered6job guard. No current actual arrays loaded during tests.
+- [x] Run focused tests, strict mypy and Ruff; independently review adapter source and fixtures, commit passing component. This is not full experiment approval.
 
 ### Task2: Pure candidate kernel with complete decision trace
 

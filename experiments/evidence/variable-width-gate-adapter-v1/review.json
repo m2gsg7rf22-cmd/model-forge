@@ -1,0 +1,96 @@
+{
+  "approved": true,
+  "component_approved": true,
+  "component": "public sealed input adapter and immutable opaque GateJob only",
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_data_generation_approved": false,
+  "registered_RNG_query_fitting_approved": false,
+  "private_gate": "closed",
+  "certificate": false,
+  "source_sha256": {
+    "examples/isolated_glu/variable_gate_view.py": "999e89d9161c064242ae53235e3b03a727a63f5ca9f43c61952c4ab8437036ce",
+    "tests/test_variable_gate_view.py": "b5f24b8524c95c49a39da7a5352002b5c4e9f4154c5f1d8da8c05679cf4f6467",
+    "docs/glu-variable-width-gate-development-design.md": "38c5de8ecb7a994de5342f01e8b4ee50cd62f5cabd954cca7d2870d1c92365fa",
+    "examples/isolated_glu/row_acquisition_view.py": "6b89a496733ced75fde476a841a422c234bd8c4938d90066a3c1539f902ec635",
+    "examples/isolated_glu/fresh_rank_common.py": "d1ed586a224556a0d3bab1fa2dd05b928ebac485dc9026f1bd762c2f8f058b0b",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b"
+  },
+  "frozen31source_bytes_unchanged": true,
+  "blocking_findings": [],
+  "addressed_findings": [
+    {
+      "id": "late_extra_inventory",
+      "origin": "parent RED→GREEN",
+      "resolution": "Final repeated exactestroot/arraysinventory beforejobs; independently verified bothlateextraarrayandlateextraroottest."
+    }
+  ],
+  "independent_probe": {
+    "status": "passed",
+    "source_sha256": "999e89d9161c064242ae53235e3b03a727a63f5ca9f43c61952c4ab8437036ce",
+    "controls": [
+      {
+        "case": "valid",
+        "accepted": true,
+        "exact_nontrivial_prefix": true
+      },
+      {
+        "case": "bool_query_counter",
+        "rejected": true,
+        "error": "Complete consistent public seal and report required"
+      },
+      {
+        "case": "late_archive_mutation",
+        "rejected": true,
+        "error": "Estimator archive changed"
+      },
+      {
+        "case": "late_public_mutation",
+        "rejected": true,
+        "error": "Public array missing/size changed"
+      },
+      {
+        "case": "late_extra_array",
+        "rejected": true,
+        "error": "Estimator inventory changed"
+      },
+      {
+        "case": "late_extra_estroot",
+        "rejected": true,
+        "error": "Estimator inventory changed"
+      }
+    ],
+    "new_RNG_query_fit_forward": 0,
+    "registered_inputs_read": false,
+    "scope": "component adapter literal fixtures only; not numerical selector validation"
+  },
+  "evidence_sha256": {
+    "probe.py": "6d763a6b2d122cfd719d2713a8ab2ba6d0cc67c3748786ba865be71b254438b3",
+    "probe-results.json": "60e371a27b3af97d9221922b8fb3a715216d007583d4bd5d50e87e017ca1d0e1"
+  },
+  "parent_reported_not_repeated": {
+    "targeted_tests": 32,
+    "strict_mypy_modules": 1,
+    "ruff_files": 2
+  },
+  "verified_contract": [
+    "Four explicit lowercasehex metadata commitments; boundedregularfiles/no symlinkancestors beforehash; strictmetaschema and complete6/12registeredpublicdomain.",
+    "All54publicarchives and24estimatorarchives schema/hash/manifest/descriptors checked includingunused16conditions; canonicalinputcommitments/report/seal consistency and nativezero query/fitcounters.",
+    "All12orderedchoiceindices/metas/ranks/nativeinteger/certificate flags match; fullqorthonormalrightbases andeachselectedprojector checked. Stable17candidate must properpositiveevenr<=192, basis exactlyright[:r].",
+    "Final metadata/publicmanifest/allusedpublichashes/estmanifest/allestarchivehashes andexactestdirectoryinventories rechecked beforejobconstruction.",
+    "GateJob contains only opaquejobID/bytes-backednativeF64basis; callerstorage mutation cannot changeit, n/r derived fromsymmetricshape andcount, no channel/widthfields.",
+    "Registeredload cannotuse fixturegeometry; privatefixtureseam independently exercised n2/output1/fullq3 basis with nontrivialrowpermutation andstrict3/gapnull/stable2.",
+    "No collection/evaluator/inventory imports or filesystemtraversal oftruth roots; direct/transitive imports were reviewed asdefinitionsonly withoutfactory/RNGexecution."
+  ],
+  "scope_limits": [
+    "Commitment/schema/projector validation only: adapter doesnotindependently recomputeselector/rankcriteria/subspace fromFDvalues. It relies onexternally pinnedpreviously auditedsource artifacts. Itdoesnotcertifyrankorgates.",
+    "Opaque namesandknowncanonicalorder do not give statistical/adversarialblinding; job00..05 positionscan be correlatedwithpublicprotocolorder. Only explicitmetadata separation isclaimed.",
+    "GateBundleprovenance ismutablemetadata andmust remainoutsideoptimizer; futurecontroller mustpersist/hashandbindadapterreport separately, and passonlyGateJob objects.",
+    "Endofreadrehash/immutablesnapshots detects testedchanges butisnotOSatomicfilesystemsnapshot or protectionagainstmaliciousABA/descriptor races. Sharedread_arraysrawcap128MiB; strictmanifestshapes/fileslimitnormalacceptedarchives<=8MiB, notaguaranteedconcurrentgrowthallocationbound.",
+    "No actualsavedscientificarrays orregisteredinputsread; onlyliteraltemporaryfixtures. No freshteacher/RNG/model/forward/query/fit.",
+    "No fullprotocolresource/transport/runapproval. Futurecombinedinventory/source/runtime/TREEpreflight/defaultouter/marker/disk/failurereceipts andindependentsavedoutcomeaudit remainrequired."
+  ],
+  "test_only_final_additions_reviewed": "General GateJobn3/r2,n8/r32,n32/r192 and malformedgeometry/float32/nontriangular/empty/nonfinite fixtures reviewed statically; runtime source unchanged, no additional probe needed."
+}

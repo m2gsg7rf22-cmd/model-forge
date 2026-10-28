@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "source_sha256": "999e89d9161c064242ae53235e3b03a727a63f5ca9f43c61952c4ab8437036ce",
+  "controls": [
+    {
+      "case": "valid",
+      "accepted": true,
+      "exact_nontrivial_prefix": true
+    },
+    {
+      "case": "bool_query_counter",
+      "rejected": true,
+      "error": "Complete consistent public seal and report required"
+    },
+    {
+      "case": "late_archive_mutation",
+      "rejected": true,
+      "error": "Estimator archive changed"
+    },
+    {
+      "case": "late_public_mutation",
+      "rejected": true,
+      "error": "Public array missing/size changed"
+    },
+    {
+      "case": "late_extra_array",
+      "rejected": true,
+      "error": "Estimator inventory changed"
+    },
+    {
+      "case": "late_extra_estroot",
+      "rejected": true,
+      "error": "Estimator inventory changed"
+    }
+  ],
+  "new_RNG_query_fit_forward": 0,
+  "registered_inputs_read": false,
+  "scope": "component adapter literal fixtures only; not numerical selector validation"
+}
