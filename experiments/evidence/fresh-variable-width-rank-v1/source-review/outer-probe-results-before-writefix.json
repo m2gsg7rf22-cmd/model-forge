@@ -1,0 +1,41 @@
+{
+  "actual_subprocess_or_factory_RNG_data_queries_fits": 0,
+  "all_passed": false,
+  "checks": {
+    "complete": true,
+    "existing": true,
+    "innerfailed": true,
+    "kill": true,
+    "one_shot_receipt_write_failure": false,
+    "scope": true
+  },
+  "controller_sha256": "4c3ecd5b68bec4aec9531aa2888c9ed7c4e892fa7c62d3d20854f15c9ab6db3e",
+  "details": {
+    "complete": {
+      "error_type": null,
+      "persisted_status": "completed",
+      "raised": false
+    },
+    "innerfailed": {
+      "error_type": "ProtocolError",
+      "persisted_status": "failed",
+      "raised": true
+    },
+    "kill": {
+      "error_type": "TimeoutError",
+      "persisted_status": "failed",
+      "raised": true
+    },
+    "one_shot_receipt_write_failure": {
+      "error_type": "OSError",
+      "persisted_status": "completed",
+      "raised": true
+    },
+    "scope": {
+      "error_type": "ProtocolError",
+      "persisted_status": "failed",
+      "raised": true
+    }
+  },
+  "full_protocol_approved": false
+}

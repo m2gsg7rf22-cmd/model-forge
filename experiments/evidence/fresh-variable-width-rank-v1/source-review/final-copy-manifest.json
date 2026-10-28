@@ -1,0 +1,21 @@
+{
+  "copy_files_sha256": {
+    "current-boundary-probe-results-incomplete-mock.json": "ade29893219fbc94bc8ceca44ee46ff1b111966ee40659ad218e6a76a8361b74",
+    "current-boundary-probe-results.json": "46bfce313d95f5b081331f105034ac824ae8e5cce49c03c0ee68659b273c81f8",
+    "current_boundary_probe.py": "3ff3a161e5771a202db1c5dcb4358d117e92d17f5cbe2343fe6db46e374338b5",
+    "final-gate-probe-results.json": "69361f42e814dc43780ad7551b10543b82d8c7ca280764bd6bd06b104311e164",
+    "final-review.md": "e861f37413f01091218b2970c0f217359b056ec3fc09d3b9063cb65c24b20567",
+    "final-source-review.json": "8a27edccec53b1c544c774745e2024b6a9a08dcb09395d44bc81c86190cd4f01",
+    "final_gate_probe.py": "00560e055c185a29e851ea13a1ed6ebe40fbe7be1f50bf8a2c30bce408ccf274",
+    "fixed-boundary-probe-results.json": "09766016c9a3a5dc62f93179175184cd9c4a667ccc68432a75c64aa23262893c",
+    "fixed_boundary_probe.py": "b6905863f0022e2964bc4a417d5c981e0819520e4ae2101bcaf7206d74e1ed34",
+    "outer-probe-results-before-writefix.json": "343b18eed3d31fe8de08000f5360d48003ad68344308b93b0d24941fb35d5540",
+    "outer-probe-results.json": "cb360e47c258ddd514f6319afd14b72dca9f61b9a4f9350520a41b6ccab3ebea",
+    "outer_probe.py": "48176361450a2d514d8d56563e9eb57f18581a3a4aefe7c834a3b2c7f33597e6",
+    "preliminary-probe-results-after-keyset-fix.json": "a5f508f3bbfa541a123f16613851ddb7f6d62088978e71fdea444c9ef862f73a",
+    "preliminary-probe-results.json": "63437eb7a2cddaa43c6ca7a9ab7ef6298e29c57e87f673aa32a1223462869ee1",
+    "preliminary_probe.py": "efcbd6c8366e2fe317b931a9ec6c9d9fdb4e644969adc2504d58fa632b775682",
+    "sign_final_review.py": "4dbcadac0fd7c3dfcb0a9e9fd89ca847413a8ae44312c229a3f894ef4d1c14f3"
+  },
+  "excluded": "Temporary literal fixture directories and old interim narrative snapshots are not needed; no rawscientificarrays tocopy"
+}

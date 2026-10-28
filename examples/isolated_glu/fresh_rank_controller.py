@@ -654,7 +654,9 @@ def launch(
         save_json(output / "outer-monitor.json", report)
         return report
     except Exception as exc:
-        report.update(error_type=type(exc).__name__, error=str(exc)[:1000])
+        report.update(
+            status="failed", error_type=type(exc).__name__, error=str(exc)[:1000]
+        )
         if output.exists():
             save_json(output / "outer-monitor.json", report)
         raise ProtocolError(str(exc)) from exc

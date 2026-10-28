@@ -1,0 +1,22 @@
+{
+  "RNG_or_teacher_or_target_queries_or_fit": 0,
+  "actual_owned_or_private_or941xxx_reads": 0,
+  "checks": {
+    "independent_energy_identity_and_rowlimited_padding": true,
+    "layout_reject_extra-metadata.json": true,
+    "layout_reject_extra-uncommitted.npz": true,
+    "layout_reject_scope-engine/extra.txt": true,
+    "layout_reject_unexpected-directory": true,
+    "protocol_inventory_extension_counts_and_caps": true,
+    "representable_tiny_component_preserved": true,
+    "weighted_underflow_fail_closed": true
+  },
+  "full_protocol_approved": false,
+  "passed": true,
+  "sources_sha256": {
+    "fresh_rank_controller.py": "cc3fb9ae025af822ebefe413e59cfd8fa895c0d3fbf9bbaef102cec07619c9c7",
+    "fresh_rank_evaluation.py": "3d44c9fec135a2633734045abb16bec6060efa82197a61acecd8081d02ed041c",
+    "fresh_rank_protocol_inventory.py": "12cfbb212069a5dcc262c8580b5dd126f9549b921ec57132e8de7c63d7ef3d43"
+  },
+  "subprocesses_launched": 0
+}

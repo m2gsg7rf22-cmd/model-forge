@@ -1,0 +1,25 @@
+{
+  "actual_data_generation_approved": false,
+  "actual_owned_or_private_or941xxx_reads": 0,
+  "actual_teacher_or_target_forward_or_reference_queries": 0,
+  "all_checks_passed": false,
+  "checks": {
+    "deleted_context_key_detected": false,
+    "deterministic_committable_literal_assignment_no_RNG": true,
+    "nonfull_all_limits_and_strict_random_separation": true,
+    "primary_full_sensitive_null_is_failure": true,
+    "relative_Frobenius_unsquared_point8_tiny_nonzero_preserved": true,
+    "stable_full_requires_null": true,
+    "zero_reference_fails_even_null": true
+  },
+  "full_protocol_approved": false,
+  "registered_factory_or_entropy_or_RNG_invoked": false,
+  "sources_sha256": {
+    "fresh_rank_collection.py": "c765b2d8b0fcfeb34603c31214fcee3bf87f3899e580068ca4b1969577773e31",
+    "fresh_rank_common.py": "d1ed586a224556a0d3bab1fa2dd05b928ebac485dc9026f1bd762c2f8f058b0b",
+    "fresh_rank_estimation.py": "bcc0cbd48cc8d951294165b7f58bdb9144e0256f363ea0bca9cb597668632fdb",
+    "fresh_rank_evaluation.py": "93c7c8a3778d2d81b7d7cfda4d9f4524dc4e397f53851be5b0c3f934f34f60ae"
+  },
+  "synthetic_constant_callback_batches": 2,
+  "synthetic_reserved_vector_slots": 8
+}

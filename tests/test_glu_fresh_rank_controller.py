@@ -397,3 +397,34 @@ def test_transport_receipt_rejects_manifest_mutation_before_data(tmp_path, monke
     manifest.write_bytes(manifest.read_bytes() + b"\n")
     with pytest.raises(ValueError):
         m.validate_transport(output, receipt)
+
+
+def test_outer_receipt_write_failure_cannot_leave_completed_status(
+    tmp_path, monkeypatch
+):
+    m = load(monkeypatch)
+    output = tmp_path / "run"
+    real_save = m.save_json
+    failed = []
+
+    def save(path, value):
+        if path.name == "outer-monitor.json" and not failed:
+            failed.append(True)
+            raise OSError("injected receipt write failure")
+        return real_save(path, value)
+
+    monkeypatch.setattr(m, "save_json", save)
+
+    def engine(*a, **kw):
+        output.mkdir()
+        real_save(output / "controller-report.json", dict(status="completed"))
+        return dict(
+            status="completed",
+            process_monitor_scope="process_and_children",
+            memory_samples=1,
+        )
+
+    with pytest.raises(m.ProtocolError):
+        m.launch(dict(output=str(output), repo=str(tmp_path)), engine=engine)
+    result = json.loads((output / "outer-monitor.json").read_text())
+    assert result["status"] == "failed" and result["error_type"] == "OSError"

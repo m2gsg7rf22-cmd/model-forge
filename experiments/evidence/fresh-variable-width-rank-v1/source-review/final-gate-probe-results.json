@@ -1,0 +1,21 @@
+{
+  "actual_subprocesses_or_factory_or_RNG_or_target_queries_or_fit_or_owneddata": 0,
+  "checks": {
+    "before_truth_rejected_last_case": true,
+    "before_truth_rejected_last_descriptor": true,
+    "before_truth_rejected_last_rank_bool": true,
+    "complete_literal_fullsource_gate": true,
+    "component_only_review_rejected": true,
+    "literal_allcase_seal_then_public_validation_without_truth": true,
+    "missing_required_signed_test_rejected": true,
+    "signed_document_mutation_rejected": true
+  },
+  "full_protocol_executed": false,
+  "passed": true,
+  "source_sha256": {
+    "fresh_rank_controller.py": "14b791f68c951d05d8fb2eaba9a5222e4ec995d00592a8a9ab898535a60a1966",
+    "fresh_rank_estimation.py": "4c36e7f317a8aea3fd502064bbbb23feb4117773b4af3662c14bcbfe63114c9e",
+    "fresh_rank_evaluation.py": "3d44c9fec135a2633734045abb16bec6060efa82197a61acecd8081d02ed041c"
+  },
+  "synthetic_cases": 2
+}

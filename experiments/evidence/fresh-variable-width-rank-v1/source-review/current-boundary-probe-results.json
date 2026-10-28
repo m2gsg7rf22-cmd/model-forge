@@ -1,0 +1,19 @@
+{
+  "actual_factory_RNG_target_queries_fitting_data": 0,
+  "actual_subprocesses_launched": 0,
+  "full_protocol_approved": false,
+  "mock_final_status": "completed",
+  "mocked_stage_calls": 5,
+  "representable_tiny_component": {
+    "expected": 1e-200,
+    "false_zero": true,
+    "relative_Frobenius": 1e-200,
+    "value": 0.0
+  },
+  "source_sha256": {
+    "fresh_rank_controller.py": "c6a043a838d3e77bc73b66d1c9a8fd124573753ffb65ebcdfdfca3ab233648cc",
+    "fresh_rank_evaluation.py": "fd32ce209655431810c4a33ce9a8598eaca161aae6dd853d27d23e67c536de35"
+  },
+  "uncommitted_root_file_rejected_at_final_boundary": false,
+  "underrepresentable_weighted_component_rejected": false
+}
