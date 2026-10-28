@@ -1,0 +1,43 @@
+{
+  "design_approved": false,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "new_data_generation_approved": false,
+  "design_and_cited_source_sha256": {
+    "docs/glu-variable-width-gate-development-design.md": "38c5de8ecb7a994de5342f01e8b4ee50cd62f5cabd954cca7d2870d1c92365fa",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "examples/isolated_glu/coverage_multi.py": "f8fb10036b622cf5fc5ec4e48fff17f0166f82a27901083879e8d25b6b249b59",
+    "docs/isolated-glu-coverage.md": "cba7bef8f127544436dc781445d52ab02f111517e9e59d173a6c1181e952b6c4",
+    "docs/glu-row-acquisition-outcome.md": "81f3a2abf438027439882ebdabe36185e233e8e91e8b6599724a3da99482ec81"
+  },
+  "findings": [
+    {
+      "id": "D1",
+      "issue": "Original IDs contain compute-channel suffix; optimizer anonymous-ID input can leak a prohibited channel hint.",
+      "required": "Opaque optimizer job IDs with canonical externally pinned mapping; channel/base/prefix/width metadata outside optimizer interface."
+    },
+    {
+      "id": "D2",
+      "issue": "Sealed stable input is not specified tightly enough: full basis archives have q rows, while optimizer needs selected r rows; all relevant descriptors must be verified before extraction.",
+      "required": "Validate all12selections/54sourcehashes/24estimatorarchives plus public source/report/seal commitments; select exactly6p17stable, bind rank and row-prefix basis[:r], validateorthonormality and canonicalorder; no regeneratedselector or truth reads."
+    },
+    {
+      "id": "D3",
+      "issue": "Frozen search resets constant RNG20261025 percall, while proposed protocol requests committed percase seeds; copy/seed-stream behavior must be explicit.",
+      "required": "Reviewed adaptation records initial/rescue stream domain mapping; paired versus independent channel starts chosen prospectively and channel-causal interpretation limited accordingly."
+    },
+    {
+      "id": "D4",
+      "issue": "Worst-case evidence inventory and accepted inputdomain are still unspecified.",
+      "required": "Bind6source-selected profiles,n32/maxr192/target96 as resource domain; count all256initialstarts/1600Adam/prepostrefinement plus4x512rescue mixtures/eigensolutions/refinement/merge decisions, oversized/partial artifacts and transport; define whether perstep optimizer traces required; no implicit truncation/log reduction."
+    },
+    {
+      "id": "D5",
+      "issue": "All6cases reporting conflicts with fail-stop partialfailure language without scientific-vs-operational failure taxonomy.",
+      "required": "Case scientific abstention/zero/overshoot/stall/geometryfailure persists and continues under budget; IO/nonfinite/resource/kill global failure preserves partialreceipts and remainingnot_started/unknown; no retry; no extra rescue aftertarget/overshoot."
+    }
+  ],
+  "math_verified": "Unitv example inspan{e1e1T,sym(e1e2T)} has residualnormsin(theta)^2 and squaredloss sin(theta)^4; threshold1e-8 admits about.01rad locally. Evenr/2 isgenericfamilyhypothesisonly,notwidthcertificate.",
+  "review_scope": "Read-onlysource/docs; no largearrays,RNG,model,forward,query,fitting or experimental reruns.",
+  "private_gate": "closed"
+}

@@ -1,0 +1,69 @@
+{
+  "approved": true,
+  "design_approved": true,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_data_generation_approved": false,
+  "registered_RNG_or_fitting_approved": false,
+  "method_promotion_approved": false,
+  "private_gate": "closed",
+  "certificate": false,
+  "design_sha256": "38c5de8ecb7a994de5342f01e8b4ee50cd62f5cabd954cca7d2870d1c92365fa",
+  "design_and_cited_source_sha256": {
+    "docs/glu-variable-width-gate-development-design.md": "38c5de8ecb7a994de5342f01e8b4ee50cd62f5cabd954cca7d2870d1c92365fa",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "examples/isolated_glu/coverage_multi.py": "f8fb10036b622cf5fc5ec4e48fff17f0166f82a27901083879e8d25b6b249b59",
+    "docs/isolated-glu-coverage.md": "cba7bef8f127544436dc781445d52ab02f111517e9e59d173a6c1181e952b6c4",
+    "docs/glu-row-acquisition-outcome.md": "81f3a2abf438027439882ebdabe36185e233e8e91e8b6599724a3da99482ec81",
+    "examples/isolated_glu/row_acquisition_view.py": "6b89a496733ced75fde476a841a422c234bd8c4938d90066a3c1539f902ec635",
+    "examples/isolated_glu/fresh_rank_evaluation.py": "3d44c9fec135a2633734045abb16bec6060efa82197a61acecd8081d02ed041c"
+  },
+  "review_scope": "Read-onlydesign/source review; no experiment,RNG,teacher/model forward,newquery,fitting,largearraysorconsumedvalidationloads.",
+  "blocking_findings": [],
+  "addressed_findings": [
+    {
+      "id": "D1",
+      "status": "closed_in_design",
+      "resolution": "Adapter maps original channel-bearing IDs to job00..05; original mapping and channel/provenance remain outside optimizer."
+    },
+    {
+      "id": "D2",
+      "status": "closed_in_design",
+      "resolution": "Validate all12seal choices/54publichashes/24estimatorarchives; use precisely6p17stable and archivebasis[:r], bind rank/rowcount/canonicalorder and sealed descriptors."
+    },
+    {
+      "id": "D3",
+      "status": "closed_in_design",
+      "resolution": "Prospectively fixed SHA256 UTF8 domains perjob initial/rescue, default_rng streams and initial/terminalstates recorded. Frozen search hardcoded20261025 explicitly replaced by reviewed copied adaptation with injected generator; independent channel seeds prohibit causal precision comparison."
+    },
+    {
+      "id": "D4",
+      "status": "closed_as_source_prerequisite",
+      "resolution": "n32/r<=192 verified before RNG, unsupported domain abstains/redesigns; all6jobs budget maximum192/target96 and4x512rescue with full rejected/overshoot/prepostrefinement/merge/eigen/mixtureevidence plus transport and partialartifacts. Exact bounded inventory still mandatory before execution approval."
+    },
+    {
+      "id": "D5",
+      "status": "closed_in_design",
+      "resolution": "Scientific percase abstention/zero/overshoot/exhaustion/geometry failures continue withinsharedbudget; operational IO/nonfinite/resource/kill terminates globally and preserves not_started/unknown. Exacttarget/overshoot stops withouttruncation/extrarounds."
+    }
+  ],
+  "math_and_scientific_assessment": [
+    "Quarticexamplecorrect: vvT projectedoffspan(e1e1T,sym(e1e2T)) leaves sin(theta)^2 e2e2T, normsin² and squaredloss sin⁴. Loss1e-8 admits localangleapproximately.01rad inthisexample, notgeneralanglebound.",
+    "Even r and generic-family hypothesis make r/2 an experimental target only. Duplicate/nonminimalwidth/nearparallel/noise or misspecifiedfamily can break it; no truewidth fallback is permitted.",
+    "Loworiginalbasisloss/nonduplicatecount/crossviewagreement do not certify coverage, gateidentity, magnitudes,couplings,fullfunction or storedparameters. Crossviews allusedbyselection, notheldout.",
+    "Existing17probe successes establish only finite-subspace endpoints on discloseddevelopment data; newcandidateextraction isseparateresearch and previous24casefailure remains.",
+    "Independent jobseeds acrosspairedchannels can changeoptimizationoutcomes/effort; this design disclaims causal precision comparison appropriately."
+  ],
+  "implementation_requirements_before_future_full_review": [
+    "Exact schema/shape/header/manifest/metadata and combinedworstcasebytes/shards/time inventory including6jobs and4rounds/rejected/overshoot data, transport and failurewrites. Inventory mayforce redesign before RNG; no midrun loggingreduction.",
+    "Source-equivalence audit against fixed-profile initialAdam/refine/residualgeometry/merge, explicitdimensionalgeneralization and generatorinjection; pin all differences.",
+    "Strict finite/orthonormalbasis/n/r validators; bool/integer/schema/seed domains; zero/norm/SVD/eigen arithmetic guards and defaultouterfailure semantics.",
+    "Separate FD-onlyparent adapter/report from optimizer inputs; exact oldcommitments and allsealedrows sources must stayfixed throughout. No truth/analyticreference/seed/originalwidth/private-read imports in optimizer.",
+    "Partialprogress before expensive stages, final raw evidence hashes, failclosed serialization, scientific versus operational statuses, exclusivemarker/source/disk/TREEpreflight and outer180s512MiB/BLAS1/2KiB monitoredattempt.",
+    "Literal fixtures fordimensionindependence/abstention/zero/overshoot/no truncation/thresholdties/quarticexample/streams/no truthaccess, then separatefullsourcepreregistrationreview andcleanfreeze.",
+    "Any authorized futuredevelopment needs terminalcheckpoint and independentsavedoutcomeaudit; no teacher-angle/fullfunction checks onthisconsumeddevelopmentfixture and no freshvalidationwithoutnewprotocol."
+  ],
+  "evidence_sha256": {
+    "preliminary-review.json": "275e1002a5b4c84adab22c95387f66cb07cdd2b7e6bd6677ed6fbe0f7c018957"
+  }
+}

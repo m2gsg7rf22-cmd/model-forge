@@ -1,0 +1,18 @@
+{
+  "files": {
+    "review.json": {
+      "sha256": "2a9e761a90178feeb0b16cd4230399941c9354558992f38d8226991ac84eb3b5",
+      "bytes": 5657
+    },
+    "review.md": {
+      "sha256": "196d03c57ecf496815d905e8812dd6721b35ff439efaedce8fd0dde81acfe800",
+      "bytes": 3427
+    },
+    "preliminary-review.json": {
+      "sha256": "275e1002a5b4c84adab22c95387f66cb07cdd2b7e6bd6677ed6fbe0f7c018957",
+      "bytes": 3247
+    }
+  },
+  "design_only": true,
+  "execution_approved": false
+}
