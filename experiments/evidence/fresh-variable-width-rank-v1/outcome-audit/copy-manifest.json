@@ -1,0 +1,42 @@
+{
+  "files": {
+    "outcome-audit.json": {
+      "sha256": "242a0f8ee6502406b1130c7d4b62c3e31f5d691dae0b543445b569250922c3de",
+      "bytes": 91152
+    },
+    "outcome-audit.md": {
+      "sha256": "c153db89edd8fba13ecade7e71c22db776f4d37ea071ead410d4bd09c72e329c",
+      "bytes": 6987
+    },
+    "probe.py": {
+      "sha256": "9abb7905783c0098d98799cbbad831ee6217497a5af5222a17811bb8e49e1d65",
+      "bytes": 26654
+    },
+    "launcher.py": {
+      "sha256": "7d7538f5a72460705f919644267d5e1de8909e381ea3747e5e8210b0bd1761fd",
+      "bytes": 1367
+    },
+    "probe-results.json": {
+      "sha256": "854650cb55e69d5ca148ed7fc28cac9097c691d85eb47460e310f9e8c7484aaa",
+      "bytes": 511524
+    },
+    "audit-resource-receipt.json": {
+      "sha256": "a6b7f7592f5be256aee129d8331ef043acf1f56c2a618dc410dabfb09daabbc8",
+      "bytes": 314
+    },
+    "tree-preflight-receipt.json": {
+      "sha256": "dec730a387ace006cf26879ac36826077c65046522565896cba073c3a627cce3",
+      "bytes": 200
+    },
+    "progress.json": {
+      "sha256": "688911a67670bc937278cba5714bb0bca442aac13ec96e8ebc6648b4e8cb5e81",
+      "bytes": 35
+    },
+    "finalize.py": {
+      "sha256": "905db4e4137e923d0afa580890e5703a6fb43963cc159108118d71cf6c9e13f6",
+      "bytes": 8272
+    }
+  },
+  "large_arrays_copied": false,
+  "review_scope": "saved_outcome_only"
+}
