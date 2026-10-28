@@ -1,0 +1,72 @@
+{
+  "RNG": 0,
+  "delta": 1e-06,
+  "does_not_prove": "Adding a probe fixes any SwiGLU failure or identifies true rank/width under unknown noise.",
+  "fit": 0,
+  "frozen_selection_sha256": "1382f141fd4adf7a80106df75ccedfba4b55b9dd2b877ba4399becc4646f870b",
+  "items": [
+    {
+      "certificate": false,
+      "gap_ratios": [
+        1000000.0,
+        23456248.05922133
+      ],
+      "input_sha256": "0ddb357025f190b3fb8dc049b33e5774b62c5c769a43d7a1e89e8ca846c8158c",
+      "name": "row_limited",
+      "ranks": {
+        "gap": 2,
+        "stable": 2,
+        "strict": 2
+      },
+      "resolution_floor": 4.263256414560601e-14,
+      "shape": [
+        2,
+        3
+      ],
+      "spectrum": [
+        1.0,
+        1e-06,
+        0.0
+      ],
+      "stability": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "certificate": false,
+      "gap_ratios": [
+        1000000.0,
+        1.0
+      ],
+      "input_sha256": "fa058f7a798146cf3ecc8df6aaed83aa504baa437c28766ee7183469fbaf5f01",
+      "name": "square_control",
+      "ranks": {
+        "gap": 1,
+        "stable": 1,
+        "strict": 3
+      },
+      "resolution_floor": 4.263256414560601e-14,
+      "shape": [
+        3,
+        3
+      ],
+      "spectrum": [
+        1.0,
+        1e-06,
+        1e-06
+      ],
+      "stability": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "new_queries": 0,
+  "new_registered_data": 0,
+  "private_gate": "closed",
+  "proves": "Structural padding can dominate the frozen spectral gap even with identical-view stability.",
+  "scientific_fresh_validation": false,
+  "status": "completed_literal_counterexample",
+  "teacher_forward": 0
+}

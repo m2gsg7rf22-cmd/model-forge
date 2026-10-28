@@ -1,0 +1,57 @@
+{
+  "approved": true,
+  "component_design_only_approved": true,
+  "full_protocol_approved": false,
+  "new_data_generation_approved": false,
+  "actual_experiment_approved": false,
+  "method_promotion_approved": false,
+  "certificate": false,
+  "private_gate": "closed",
+  "independent_review_method": "Static source plus exact algebra and inspection of existing literal results/monitor receipts; no rerun or new NumPy fixture.",
+  "source_and_evidence_sha256": {
+    "examples/isolated_glu/rank_selection.py": "1382f141fd4adf7a80106df75ccedfba4b55b9dd2b877ba4399becc4646f870b",
+    "docs/glu-row-boundary-observability-draft.md": "482a20c292e2403bd3a5c06e9331a304b6f7c507befbd2005278d36bb8fc235e",
+    "probe.py": "02cbf7f8845b0bf5215f632e556875b57ecab52ccf82b76fc06a2093163f72f6",
+    "launch.py": "056d5d9cacc86f75b4302c4139a9253713fff607fb27f061ccdbdaaf23282709",
+    "results.json": "2383e4831867410f6a5a1d43c7935af1c693f418d08bc28d83448fc14a82fbcf",
+    "resource-receipt.json": "87d1b45eea184462d9bb1ae8847958441e9b44f0b5d449bf325c9048201e769f",
+    "scope-receipt.json": "6521c01a8b6ef9188d43deb15c3a0d7661cc485587a9d9d196e0098b573e17fd"
+  },
+  "mathematical_findings": [
+    "For A=[[1,0,0],[0,delta,0]], normalized spectrum is (1,delta,0). With f=64*eps*3 and delta=1e-6, ratios are 1/delta and delta/f; delta^2>f, both eligible ratios exceed10, and the boundary wins.",
+    "Identical views have identical prefix projectors; zero distance does not distinguish shared structured error from signal. With this literal SVD the recorded stability is exactly zero.",
+    "The square diag(1,delta,delta) control has ratios (1/delta,1), selects1, and changes the observed matrix. It is not a nested extra SwiGLU observation and cannot establish that17probes solve the failure.",
+    "M0=diag(1,0,0), M1=diag(1,delta,0), Z=(M0+M1)/2 differ in rank and each lies delta/2 from Z in spectral norm. An error ceiling at least delta/2 alone cannot identify the exact signal rank; repeated identical views do not break this ambiguity.",
+    "Identical ideal-real g/u units can merge by summing output columns, so original nonminimal width need not be identifiable from the ideal function. Floating-point evaluation order/rounding prevents inferring FP32 bit equivalence.",
+    "Rows>=p is a capacity condition only: ceil(p/n)=17 for n32,p528. It does not certify span excitation, numerical separation, gate identification, function recovery or near-parallel success."
+  ],
+  "blocking_findings": [],
+  "nonblocking_precision_notes": [
+    "The general boundary formula sigma_q/floor is literal when sigma_q exceeds the floor; source uses max(sigma_q,floor)/floor otherwise and excludes top<=floor candidates. The concrete counterexample meets these eligibility conditions.",
+    "Exact identical-view projector equality is algebraic; general floating-point SVD prefix-distance calculations can show roundoff. Recorded literal stability zeros are consistent, not a universal bit-exact claim."
+  ],
+  "saved_resources": {
+    "elapsed_seconds_including_preflight": 0.4734287500032224,
+    "memory_limit_mb": 512,
+    "memory_samples": 4,
+    "new_queries": 0,
+    "peak_sampled_rss_bytes": 31522816,
+    "probe_sha256": "02cbf7f8845b0bf5215f632e556875b57ecab52ccf82b76fc06a2093163f72f6",
+    "process_monitor_scope": "process_and_children",
+    "results_sha256": "2383e4831867410f6a5a1d43c7935af1c693f418d08bc28d83448fc14a82fbcf",
+    "status": "completed"
+  },
+  "saved_preflight": {
+    "memory_limit_mb": 512,
+    "memory_samples": 3,
+    "peak_sampled_rss_bytes": 16908288,
+    "process_monitor_scope": "process_and_children",
+    "status": "passed"
+  },
+  "limits": [
+    "Resource values are polled sampled TREE RSS, not continuous peak proof.",
+    "No original raw science, RNG, teacher, target forward, fitting, or registered protocol was invoked in this review.",
+    "Next data acquisition requires separate source/inventory/counter/controller/preregistration review and freeze.",
+    "Universal reconstruction and private-model prerequisite remain unmet."
+  ]
+}
