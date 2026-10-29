@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": {
+    "missing_full_approval_rejects_before_config_or_source_or_data": true,
+    "completed_child_bad_outer_scope_retained_failed_with_bounds_and_threads": true,
+    "engine_exception_preserves_unknown_resources_and_counters": true
+  },
+  "scope": "small JSON/fake engine only; no realPCG/data/fit/largepreflight"
+}

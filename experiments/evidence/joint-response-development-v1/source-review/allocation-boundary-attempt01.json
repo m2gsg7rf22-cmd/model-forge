@@ -1,0 +1,8 @@
+{
+  "exception": "ValueError",
+  "message": "EOF: reading array data, expected 262144 bytes got 0",
+  "intercepted_requested_elements": [],
+  "source_sha256": "b011d12f3ae5162776ea924cd9a702fec16736c638a7d4122cf1dccc528fedab",
+  "valid_interception": false,
+  "setup_error": "Interceptor targeted np.empty; NumPy2.5.4 read_array uses numpy.ndarray. Header-requested 8GB virtual allocation may have occurred before immediate EOF; no payload pages written by this header-only fixture; resident peak unmeasured."
+}

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "checks": [
+    "tiny valid two-field decode native immutable",
+    "second field wrongshape2x2 rejected before anyfrombuffer includingfirstfield",
+    "second field missing8bytepayload rejected before anyfrombuffer",
+    "both former consumers use read_typed without np.load"
+  ],
+  "largest_literal_declared_shape": [
+    2,
+    2
+  ],
+  "actual_data_reads": 0,
+  "registered_rng_calls": 0,
+  "fits": 0,
+  "large_memory_exercise_run": false,
+  "source_sha256": {
+    "examples/isolated_glu/joint_response_arrays.py": "97a7bdab8a7c932bb1c93b91be3ba9c6f7e7583776925b321d838ac3105caf3c",
+    "examples/isolated_glu/joint_response_runtime.py": "2a0836dba5adf2f35bdbf410285bc424017990b33d3cf84f407f8847fcdb7685",
+    "examples/isolated_glu/joint_response_controller.py": "99c3f03226142e1a9b452c6b509ec54446294822b5f910d1e9c00ec0c42df4dd"
+  }
+}

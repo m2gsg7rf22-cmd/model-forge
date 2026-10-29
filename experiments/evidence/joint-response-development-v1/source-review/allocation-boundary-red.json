@@ -1,0 +1,11 @@
+{
+  "exception": "Intercept",
+  "message": "prevented header-driven allocation before array data read",
+  "intercepted_requested_elements": [
+    1000000000
+  ],
+  "requested_bytes": 8000000000,
+  "allocation_prevented_by_interceptor": true,
+  "actual_data_reads": 0,
+  "scope": "small header-only literal NPZ; no large buffer allocated in this corrected attempt"
+}
