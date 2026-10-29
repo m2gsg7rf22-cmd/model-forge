@@ -1,0 +1,29 @@
+{
+  "design_approved": true,
+  "design_sha256": "79a6ded70cddd137111d45444643b239b1b7722cf467a55e60172b3da836b1e3",
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_numeric_audit_approved": false,
+  "actual_data_reads": 0,
+  "numeric_npz_decodes": 0,
+  "rng_calls": 0,
+  "optimizer_replays": 0,
+  "new_queries": 0,
+  "private_gate": "closed",
+  "certificate": false,
+  "blocking_findings": [],
+  "reviewed_contract": [
+    "All six cases and all17saved checkpoints, independent normalized/physical candidate forwards and scalar aggregation; source kernel routines cannot be reused as numerical verification.",
+    "Original408archives only through separately approved frozen whitelist/new numeric-audit source+marker+resource protocol; no original teacher/context/seed/reference/evaluator/heldout/private asset.",
+    "Tolerance declared before data: scalar1e-12+1e-10relative; both maxabsolute and Frobenius array criteria. Exact hashes/schema/order/count/selection metadata remain exact.",
+    "No teacher query, RNG regeneration, optimizer replay, checkpoint retuning or new selected model; audit consistency is not reconstruction/generalization or causal diagnosis."
+  ],
+  "implementation_prereg_requirements": [
+    "Prior857667407retained output bytes exclude the consumed original global marker1209bytes. Exact upcoming inventory must separately include it: prior base857668616bytes, plus every new audit marker/metadata/transport/partial-write reserve, below1GiB.",
+    "Freeze an explicit near-tie/aggregation rule before numeric reads: e.g tau_i=1e-12+1e-10*abs(saved_guard_MSE_i), gap<=tau_i+tau_j is ambiguity; an ambiguity must not silently substitute a checkpoint or be labeled certified selection agreement. This example is a prospective proposal, not execution authorization.",
+    "Checkpoint archives contain G/U/D and moments. Validate every member/header/payload boundary before allocation, but materialize only the required G/U/D arrays; avoid decoding unused moments/schedules. Existing full-field reader may need separately reviewed projection support.",
+    "Keep scaled norm/sum calculations finite and underflow-aware; define zero-reference relative metric nulls consistently with source and preserve nonfinite/missing/partial failures.",
+    "All actual reads/numeric work still require clean frozen prereg+full independent source approval, measured TREE preflight/typed transport/shared180s512MiBBLAS1/2KiB/disk2GiB/newexclusiveauditmarker, then terminal checkpoint and independent audit review."
+  ],
+  "scope_limit": "Document-only review; no code/source execution, probes, arrays or numerical audit were performed."
+}

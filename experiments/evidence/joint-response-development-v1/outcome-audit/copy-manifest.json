@@ -1,0 +1,17 @@
+{
+  "files": {
+    "audit.py": {
+      "sha256": "05d6a4cddfa42b5967a83620098ef80351ea8414ec3293ff6087ecd07c0fa310",
+      "bytes": 18857
+    },
+    "outcome-audit.json": {
+      "sha256": "8724353ed385a28349fc862127c78352f2e5f87f718e3befb9f90de5acb52714",
+      "bytes": 81058
+    },
+    "outcome-audit.md": {
+      "sha256": "7902ae193785de84280f9f43d4bd2975c1b52b4ecf1207340bb92134118b9dec",
+      "bytes": 1280
+    }
+  },
+  "arrays_included": false
+}

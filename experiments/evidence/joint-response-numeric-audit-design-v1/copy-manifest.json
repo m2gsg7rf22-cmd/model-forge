@@ -1,0 +1,13 @@
+{
+  "files": {
+    "design-review.json": {
+      "sha256": "feb1728295d1c2e4eee01446383711e3551d2cc57c0d88c247c49c8a71d6de6b",
+      "bytes": 2675
+    },
+    "design-review.md": {
+      "sha256": "5650422d2cfcbafb07d32c54d18e7642ff6532928442497d25658e8f10531a1a",
+      "bytes": 1079
+    }
+  },
+  "arrays_included": false
+}
