@@ -12,10 +12,10 @@ from pathlib import Path
 import re
 import time
 from typing import Any, cast
-import zipfile
 
 import numpy as np
 from numpy.typing import NDArray
+from joint_response_arrays import read_typed
 from joint_response_inventory import inventory, memory_plan, trace_specs, Shard
 from variable_response_protocol import ancestry, canonical, digest, read, save
 
@@ -168,33 +168,10 @@ def validate_transport(
         blob = path.read_bytes()
         if hashlib.sha256(blob).hexdigest() != record["sha256"]:
             raise ValueError("transport hash changed")
-        with zipfile.ZipFile(io.BytesIO(blob)) as archive:
-            infos = archive.infolist()
-            if (
-                len(infos) != len(spec.fields)
-                or {i.filename for i in infos} != {f.name + ".npy" for f in spec.fields}
-                or any(
-                    i.compress_type != zipfile.ZIP_STORED or i.flag_bits & 1
-                    for i in infos
-                )
-            ):
-                raise ValueError("uncompressed exact literal members required")
-            for field in spec.fields:
-                info = archive.getinfo(field.name + ".npy")
-                if not 0 < info.file_size <= int(np.prod(field.shape)) * 8 + 4096:
-                    raise ValueError("literal member size cap exceeded")
-        with np.load(
-            io.BytesIO(blob), allow_pickle=False, max_header_size=4096
-        ) as restored:
-            for field in spec.fields:
-                a = restored[field.name]
-                if (
-                    a.dtype != np.dtype(field.dtype)
-                    or not a.dtype.isnative
-                    or a.shape != field.shape
-                    or np.any(a != 0)
-                ):
-                    raise ValueError("typed literal values changed")
+        restored = read_typed(path, spec)
+        for field in spec.fields:
+            if np.any(restored[field.name] != 0):
+                raise ValueError("typed literal values changed")
 
 
 def _engine_bytes(root: Path) -> tuple[int, int, int]:

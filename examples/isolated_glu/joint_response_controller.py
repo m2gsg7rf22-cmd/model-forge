@@ -14,8 +14,8 @@ import sys
 import time
 from typing import Any, Callable
 
-import numpy as np
 from modelforge.execution import run_json
+from joint_response_arrays import read_typed
 from joint_response_case import assemble_case
 from joint_response_driver import run_case, _state
 from joint_response_inventory import trace_specs
@@ -236,18 +236,16 @@ def validate_case(
     if hashlib.sha256(canonical(states)).hexdigest() != binding["states"]:
         raise ValueError("saved RNG state binding changed")
     for artifact, fields in [("initial", ("g", "u", "d")), ("schedule", ("indices",))]:
-        with np.load(
-            root / (artifact + ".npz"), allow_pickle=False, max_header_size=4096
-        ) as saved:
-            if set(saved.files) != set(fields):
-                raise ValueError("initial/schedule exact fields required")
-            for field in fields:
-                key = field if artifact == "initial" else "schedule"
-                a = saved[field]
-                if hashlib.sha256(memoryview(a).cast("B")).hexdigest() != binding[key]:
-                    raise ValueError(
-                        "saved initial/schedule bytes differ from prepared inputs"
-                    )
+        saved = read_typed(root / (artifact + ".npz"), specs[artifact])
+        for field in fields:
+            key = field if artifact == "initial" else "schedule"
+            if (
+                hashlib.sha256(memoryview(saved[field]).cast("B")).hexdigest()
+                != binding[key]
+            ):
+                raise ValueError(
+                    "saved initial/schedule bytes differ from prepared inputs"
+                )
     for path in root.iterdir():
         ancestry(path)
         if path.suffix != ".npz":

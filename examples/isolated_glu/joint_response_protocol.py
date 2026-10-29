@@ -90,6 +90,7 @@ DEPENDENCIES = {
         "joint_response_streams",
         "joint_response_trace",
         "joint_response_driver",
+        "joint_response_arrays",
         "joint_response_protocol",
         "joint_response_runtime",
         "joint_response_controller",
@@ -114,6 +115,7 @@ REQUIRED_REVIEW = (
     | {
         "tests/test_joint_response_" + name + ".py"
         for name in (
+            "arrays",
             "kernel",
             "join",
             "inventory",
