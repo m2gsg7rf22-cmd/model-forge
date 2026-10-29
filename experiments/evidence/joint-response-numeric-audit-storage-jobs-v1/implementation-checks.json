@@ -1,0 +1,21 @@
+{
+  "new_storage_tests": 7,
+  "new_all_case_integration_tests": 4,
+  "seconds": 0.3,
+  "pytest": "passed",
+  "strict_mypy_sources": 2,
+  "mypy": "passed",
+  "ruff_files": 4,
+  "ruff": "passed",
+  "journal_disk_binding_regression_red_then_green": true,
+  "literal_complete_cases": 6,
+  "literal_complete_checkpoints": 102,
+  "literal_third_case_failure_committed_prefix": 2,
+  "previously_reviewed_files_unchanged": 67,
+  "actual_original_observation_reads": 0,
+  "actual_experiment_numeric_decodes": 0,
+  "rng_calls": 0,
+  "fits": 0,
+  "private_gate": "closed",
+  "resource_proof": false
+}

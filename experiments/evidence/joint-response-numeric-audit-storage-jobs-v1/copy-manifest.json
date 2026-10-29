@@ -1,0 +1,28 @@
+{
+  "files": {
+    "journal-binding-red.json": {
+      "sha256": "2345b1a2613cddbc8837a4968fe8315b6c5f0da901491a9334a6de56d1f9e273",
+      "bytes": 244
+    },
+    "green-probe.py": {
+      "sha256": "354a98cf75acf4adde72502a54b977e4ce3bbe62c781f34ea5671af31c9059f4",
+      "bytes": 1126
+    },
+    "journal-binding-green.json": {
+      "sha256": "ac3c9c87f4eeabe0e9cfdb04317aee4627886944ae5b31ee27b110d161d7fe48",
+      "bytes": 208
+    },
+    "review.json": {
+      "sha256": "7307d32c9b8cce6c0e47f309b537c367053acf64ebba016dc8cb5d3fc51c40ef",
+      "bytes": 2710
+    },
+    "review.md": {
+      "sha256": "18263bd6bec810c5c7e058bdb75631af87ab80cbd0d2b1a9179f360e07573af7",
+      "bytes": 841
+    }
+  },
+  "excluded": [
+    "literal fixture directories; no arrays or original data"
+  ],
+  "scope": "component review only"
+}

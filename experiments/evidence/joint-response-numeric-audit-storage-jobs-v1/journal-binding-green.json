@@ -1,0 +1,8 @@
+{
+  "error": "ValueError: saved journal differs from committed checkpoint prefix",
+  "done": false,
+  "failed": true,
+  "journal_actual_bytes": 0,
+  "memory_committed_records": 17,
+  "result_exists": false
+}

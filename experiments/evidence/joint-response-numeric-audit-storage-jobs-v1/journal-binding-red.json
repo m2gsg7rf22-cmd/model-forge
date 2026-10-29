@@ -1,0 +1,9 @@
+{
+  "exception": null,
+  "done": true,
+  "failed": false,
+  "journal_actual_bytes": 0,
+  "memory_committed_records": 17,
+  "saved_result_status": "agreed",
+  "source_sha256": "b9f134745912dc91a9d8c2262fde5603021b5f414516dd2b4953f4e46bd6a5ac"
+}

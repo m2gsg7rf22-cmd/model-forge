@@ -1,0 +1,56 @@
+{
+  "approved": true,
+  "component_source_approved": true,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_numeric_audit_approved": false,
+  "private_gate": "closed",
+  "certificate": false,
+  "source_sha256": {
+    "examples/isolated_glu/joint_response_audit_storage.py": "a7edb7b1b28875a1d4ed2b6a2f509e2eba876b201def3d5a14fce735ca601ca7",
+    "examples/isolated_glu/joint_response_audit_jobs.py": "ca6e5f83722fb803a0a790997e8ee698b24d9cdcc022cc5d3b496b6e675cc2ec",
+    "tests/test_joint_response_audit_storage.py": "f413ebb4a53cbf2d2e4efac2f8e8a148dc848dcdf4d3bbb5aa43c509291a5efe",
+    "tests/test_joint_response_audit_jobs.py": "a567f7db57e4cfc4a86d358e3182fd75061ba1c47bcf373e6d615bdf602c0547",
+    "docs/glu-joint-response-numeric-audit-storage-jobs.md": "d739f7d0891dec974005269dd2e3216230f33b1a7a49cfb7081ab98a51c276cd"
+  },
+  "evidence_sha256": {
+    "journal-binding-red.json": "2345b1a2613cddbc8837a4968fe8315b6c5f0da901491a9334a6de56d1f9e273",
+    "green-probe.py": "354a98cf75acf4adde72502a54b977e4ce3bbe62c781f34ea5671af31c9059f4",
+    "journal-binding-green.json": "ac3c9c87f4eeabe0e9cfdb04317aee4627886944ae5b31ee27b110d161d7fe48"
+  },
+  "findings": [
+    {
+      "id": "SJ1",
+      "status": "addressed",
+      "description": "Final completion now bounds and rereads the saved journal and requires exact canonical acknowledged records and byte count before saving result."
+    },
+    {
+      "id": "SJ2",
+      "status": "addressed",
+      "description": "Reader receipt explicitly describes read and completion byte counts as lower bounds after IO failure."
+    }
+  ],
+  "checks": {
+    "independent_literal_truncation_green": {
+      "error": "ValueError: saved journal differs from committed checkpoint prefix",
+      "done": false,
+      "failed": true,
+      "journal_actual_bytes": 0,
+      "memory_committed_records": 17,
+      "result_exists": false
+    },
+    "parent_reported_tests": 11,
+    "parent_tests_repeated": false,
+    "actual_data_reads": 0,
+    "registered_rng_calls": 0,
+    "teacher_queries": 0,
+    "fits": 0
+  },
+  "limitations": [
+    "Component and literal/source review only; full controller/source/resource/execution gates remain unapproved.",
+    "Future protocol must authenticate supplied pins, roots, profiles and source bindings; supplied pins are not independently trusted here.",
+    "Schedule and unused moment numeric values are intentionally not decoded or verified.",
+    "Partial IO or external termination may leave unknown uncommitted work; sampled or measured actual resource evidence is absent.",
+    "Six-case consistency does not establish scientific reconstruction, independent generalization or width identity."
+  ]
+}
