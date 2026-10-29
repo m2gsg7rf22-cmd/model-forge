@@ -1,0 +1,40 @@
+{
+  "files": {
+    "outer_failure_probe.py": {
+      "sha256": "3c5c730e54a8942358e56e1be9ade665be37c6503a4e5db8bc1144b3a4d5165a",
+      "bytes": 1441
+    },
+    "outer-failure-red.json": {
+      "sha256": "716a566579e9883ce7792b87e28905fa917353f103b34039539bd2d1055500d6",
+      "bytes": 745
+    },
+    "JR-A1-red-metadata.json": {
+      "sha256": "777eaf9f3c4ba314d294fb08b1f5d9509b660c8981cdc77cec279574fe59f845",
+      "bytes": 208
+    },
+    "outer-failure-green.json": {
+      "sha256": "7975a30d5f0ac86443b392cf25e7f8a0c3e9f9849bc3c3bf6d6c1daa4f26849c",
+      "bytes": 742
+    },
+    "metadata-source-checks.json": {
+      "sha256": "08fab4425f0ddc9269bc4fada7c705c8350663108760835b0fca8ffceac3c7a7",
+      "bytes": 236
+    },
+    "final-metadata-source-checks.json": {
+      "sha256": "52016a4d62ad9c5c878c849f10f1418f2208914952b739c1d496ba2e6f87d3ab",
+      "bytes": 280
+    },
+    "source-review.json": {
+      "sha256": "d203dc76f7ca3e5f2ca7ab090f71fdcfef5f88c13356995947da270781dcaf28",
+      "bytes": 14956
+    },
+    "source-review.md": {
+      "sha256": "10b64eb1bca6244901ae7b8446691895be4edce4be7fee0f63c5a11bc4a1f062",
+      "bytes": 1309
+    }
+  },
+  "excludes": [
+    "temporary literal fixture directories; no arrays or original experiment inputs"
+  ],
+  "scope": "full conditional source approval; actual resource proof pending"
+}

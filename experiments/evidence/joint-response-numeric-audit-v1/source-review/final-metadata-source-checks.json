@@ -1,0 +1,12 @@
+{
+  "exact_config": true,
+  "required_files": 88,
+  "runtime_files": 26,
+  "all_old_source_and_component_pins_match": true,
+  "actual_data_reads": 0,
+  "registered_rng_calls": 0,
+  "queries": 0,
+  "fits": 0,
+  "large_preflight_executed": false,
+  "actual_resource_proof": false
+}

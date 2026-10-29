@@ -1,0 +1,25 @@
+{
+  "error": "OSError",
+  "saved_outer": {
+    "automatic_retry": false,
+    "certificate": false,
+    "controller_counters_unknown": false,
+    "controller_sha256": "d0765f73cd5d1df39be353d538ea7c47a017d66a8bd001dc4707240dbb71e58c",
+    "elapsed_before_outer_write_seconds": 0.0003968749660998583,
+    "error": "literal injected after-write failure",
+    "error_type": "OSError",
+    "private_gate": "closed",
+    "receipt": {
+      "memory_limit_mb": 512,
+      "memory_samples": 2,
+      "peak_sampled_rss_bytes": 1024,
+      "process_monitor_scope": "process_and_children",
+      "status": "completed"
+    },
+    "resource_receipt_unavailable": false,
+    "status": "failed"
+  },
+  "actual_data_reads": 0,
+  "rng_calls": 0,
+  "fits": 0
+}

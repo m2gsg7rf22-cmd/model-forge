@@ -1,0 +1,6 @@
+{
+  "source_sha256": "685df26f0c969ae634a537fd8e4521ec79ca5ab872276cdfcfd361eb3d993f57",
+  "observed_saved_status": "completed",
+  "injected_exception": "OSError",
+  "scope": "literal mocked launcher only"
+}

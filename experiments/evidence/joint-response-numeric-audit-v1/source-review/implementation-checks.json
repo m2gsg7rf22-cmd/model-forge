@@ -1,0 +1,18 @@
+{
+  "audit_path_tests": 68,
+  "seconds": 0.56,
+  "pytest": "passed",
+  "strict_mypy_sources": 3,
+  "mypy": "passed",
+  "ruff_files": 6,
+  "ruff": "passed",
+  "JR_A1_regression_red_then_green": true,
+  "reader_partial_summary_regression_red_then_green": true,
+  "actual_numeric_observation_reads": 0,
+  "actual_checkpoint_decodes": 0,
+  "large_preflight_executed": false,
+  "rng_calls": 0,
+  "fits": 0,
+  "resource_proof": false,
+  "private_gate": "closed"
+}
