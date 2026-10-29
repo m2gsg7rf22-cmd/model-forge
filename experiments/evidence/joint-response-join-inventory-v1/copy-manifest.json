@@ -1,0 +1,17 @@
+{
+  "files": {
+    "review.json": {
+      "sha256": "9a9841aed4ab3519672d5cd56f239fa5e002edfa16e074ada0e7fc9a0928de9e",
+      "bytes": 2099
+    },
+    "review.md": {
+      "sha256": "c0daeecc98d23324f6cc6e121d702dd26cdae7b0a318064614dcafcb515d55a3",
+      "bytes": 1115
+    },
+    "check-results.json": {
+      "sha256": "78f44ae9d3d4de4f04c79cd886b9a12b2f6c6b4f37134357b920974d51f1261b",
+      "bytes": 794
+    }
+  },
+  "arrays_included": false
+}

@@ -325,3 +325,6 @@ Sourceec2623a, matching independent v2review/readiness committed before teacher 
 
 
 2026-10-29 pure joint-response NUMERIC COMPONENT independently approved, review SHA7ae8a8f444955535a1296221ca22c611f47a27eca5c4557abd5b85d62b3ebdee.13literaltests/mypy/Ruffpassed; noactualobservation/registeredRNG/query/fit. K1 falsezero sampled-loss/subnormalmean/relative-ratio underflow fixed via RED→GREEN; pre-fix evidence retained. Independent complexstepgradient max2.602e-18/twoAdamsteps5.551e-17. Not scientific reconstruction/convergence/resource proof; fullsource/execution approval ABSENT/privategateCLOSED. NEXT strict joined contract +trace/exact scalar inventory; docs/glu-joint-response-kernel.md.
+
+
+2026-10-29 join+scalarinventory components independently approved, SHA9a9841aed4ab3519672d5cd56f239fa5e002edfa16e074ada0e7fc9a0928de9e.19literaltests/mypy2/Ruff4passed; zeroactualmetadata/arrays/RNG/fit. Exact prospective186shards192854016encoded; combined917759475<1GiB; memory420462592 PLANNINGnotmeasured. Actualwriter/controller enforcement/fullsource/runtime/resourceapproval still required. NEXT completecaseassembly/injectedstreams/trace writer; taskglu_joint_response_join_trace_inventory remainsqueued/partial; privategateCLOSED.

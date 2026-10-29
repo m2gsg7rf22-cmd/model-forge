@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "literal_descriptor_join": "six opaque jobs, hypotheses96/96/48/48/16/16,102paired commitments; mismatched input digest rejected",
+  "scalar_inventory": {
+    "prior_retained_upper_bound": 671428083,
+    "trace_shards": 186,
+    "trace_encoded_upper_bound": 192854016,
+    "largest_shard_upper_bound": 8200192,
+    "progress_upper_bound": 12288000,
+    "metadata_reserve": 8388608,
+    "transport_upper_bound": 16400384,
+    "interruption_reserve": 16400384,
+    "combined_artifacts_upper_bound": 917759475,
+    "minimum_free_disk_bytes": 2147483648,
+    "memory_planning_bytes": 420462592,
+    "memory_is_measured": false
+  },
+  "scope": "pure literal descriptors and scalar arithmetic only; no arrays/actual metadata/RNG/query/fit",
+  "measured_resource_proof": false
+}

@@ -1,0 +1,29 @@
+{
+  "approved": true,
+  "component_source_approved": true,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_observation_reads_approved": false,
+  "registered_fitting_approved": false,
+  "source_sha256": {
+    "examples/isolated_glu/joint_response_join.py": "a85f2696930971c8891afcd907ce405cddda350a793e275a86f6fc325f56663e",
+    "examples/isolated_glu/joint_response_inventory.py": "68e0aa32a61c01b496df9b14043c8fb68548842f2917492aa0a9f1d07666dd99",
+    "tests/test_joint_response_join.py": "e24d1b9cdac42d956b828989f131699cfd0b484e7403526453f6b80f752ab024",
+    "tests/test_joint_response_inventory.py": "022c0f18ba181297dfdfb966fe28cb54c85d07115e78649aab8f6395a30fc648"
+  },
+  "check_results_sha256": "78f44ae9d3d4de4f04c79cd886b9a12b2f6c6b4f37134357b920974d51f1261b",
+  "blocking_findings": [],
+  "actual_metadata_or_array_reads": 0,
+  "registered_rng_calls": 0,
+  "new_queries": 0,
+  "fits": 0,
+  "private_gate": "closed",
+  "certificate": false,
+  "limitations": [
+    "Component join authenticates via both frozen validators only through registered load_join; compile_contract and direct Python constructors do not authenticate arbitrary objects. Future controller must fix roots/source pins before actual reads.",
+    "Numeric jobs expose a hypothesis r/2, not true width, basis, candidate directions or precision channel. Opaque APIs are not OS isolation or statistical blinding.",
+    "Inventory is conditional on future writer enforcing every named shard/schema/header/count/metadata/progress/failure cap. Scalar Field/Shard objects are planning descriptions, not validated generic storage constructors.",
+    "420462592 memory bytes is a live-array planning model plus allowances, not measured RSS or a proof about allocator/BLAS/children. Actual single-case lifecycle, transport, TREE monitoring, disk and protocol gates remain unimplemented/unapproved.",
+    "No actual metadata/archive/RNG/teacher/query/fit or old kernel/test reruns. Parent reports19targeted tests+mypy/Ruff; reviewer checked literal descriptors/scalar arithmetic and reviewed source."
+  ]
+}
