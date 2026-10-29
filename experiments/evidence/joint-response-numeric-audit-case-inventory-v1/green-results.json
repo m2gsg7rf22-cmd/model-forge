@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "wrong physical export RED now disagrees via independent normalizedselected prediction despite coefficient tolerance",
+    "reported sx mismatch cannot bypass sy bool/null/degenerate validation before checkpoint callback",
+    "prediction checked/visited counters8 on complete literal comparison",
+    "scalar total868719624 and memory357023744/preflight256360448 planning only"
+  ],
+  "fixed_counterexample_status": "disagreed",
+  "actual_data_reads": 0,
+  "rng_calls": 0,
+  "fits": 0
+}

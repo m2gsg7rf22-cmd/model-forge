@@ -1,0 +1,59 @@
+{
+  "approved": true,
+  "component_source_approved": true,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_numeric_audit_approved": false,
+  "source_sha256": {
+    "examples/isolated_glu/joint_response_audit_case.py": "2f1f9d5232c48c6ca329e4e467468b0d9dadb10395417aa20a453ad17661fd0b",
+    "tests/test_joint_response_audit_case.py": "3c93b47e8d57a913caa9615b4e66cc36c79c0760d2efc1ecfba1d81b9c858ca6",
+    "examples/isolated_glu/joint_response_audit_inventory.py": "e07525d85a746fdba3e39dfdc18596a2d364747790d29176ee0c462e59b5302c",
+    "tests/test_joint_response_audit_inventory.py": "be3a1296b9e9cc95e28ff6d6f708937a725ecb4989ab76b37de1f1b8dff02896",
+    "docs/glu-joint-response-numeric-audit-case-inventory.md": "a83f568ac009ea29c7fecc0920ef6848dc97c83844755cab4f902510af8e3c71"
+  },
+  "evidence_sha256": {
+    "physical-chain-red.json": "f8a14caf08d225efb21b9e11a46ac609cb4111feed3c348f31e8e806481ad5d8",
+    "physical-chain-probe.py": "6c5efbfdc488ce721d958bbb32f43de2a56a1a200ef392c5a968693e5c9e6a51",
+    "green-probe.py": "674a846aad140b6ae655c34e4c532365eea5c0681b7ea873face20e332d7fd52",
+    "green-results.json": "58ae94d33a2ad20a35a603698c49a4b71754f26b0c7753aaaea2dae633ad02dd"
+  },
+  "blocking_findings": [],
+  "addressed_findings": [
+    {
+      "id": "AC1-PHYSICAL-CHAIN",
+      "status": "closed",
+      "before": "Coefficient absolute tolerance plus forward of saved physical parameters falsely accepted erased tiny G/U when sx1e20, even though selected normalized candidate predicted0.7310585786 and saved predictions0.",
+      "after": "Each full saved prediction shard is checked against both selected-normalized-forward*sy and saved-physical-forward, plus crosscomparison. Original eight-row counterexample now disagrees and is uncertified, even while coefficient comparison passes."
+    },
+    {
+      "id": "AC2-SCALE-SCHEMA-SHORTCIRCUIT",
+      "status": "closed",
+      "before": "all() short circuit on valid but disagreeing sx skipped schema checks of sy.",
+      "after": "Both native reported scales are parsed and required>1e-12 before checkpoint work; True/None/degenerate sy rejected under disagreeing sx."
+    }
+  ],
+  "independent_checks": [
+    "wrong physical export RED now disagrees via independent normalizedselected prediction despite coefficient tolerance",
+    "reported sx mismatch cannot bypass sy bool/null/degenerate validation before checkpoint callback",
+    "prediction checked/visited counters8 on complete literal comparison",
+    "scalar total868719624 and memory357023744/preflight256360448 planning only"
+  ],
+  "actual_data_reads": 0,
+  "rng_calls": 0,
+  "fits": 0,
+  "private_gate": "closed",
+  "certificate": false,
+  "resource_proof": false,
+  "scalar_inventory": {
+    "combined_artifacts_upper_bound": 868719624,
+    "memory_planning_bytes": 357023744,
+    "literal_preflight_bytes_not_allocated": 256360448
+  },
+  "limitations": [
+    "Case and scalar planning components only. Full all-six iterator/persistence/source/runtime/layout/prereg/defaultCLI/actualresource/marker approval remains required before original observation or numeric artifact access.",
+    "All17 checkpoint numeric disagreements are retained, while schema/IO/callback failures may stop with partial prefix; a future controller must persist emitted prefix and enforce journal/report caps.",
+    "Near-tie remains ambiguous/uncertified and never replaces the saved winner. Saved guard is consumed calibration; width remains a hypothesis.",
+    "Original/immutable one-case assembly, chunked normalization and prediction/comparison buffers require actual lifecycle/TREE validation. Inventory bounds depend on enforcing all root/case/temp/older-marker/transport reserves; scalar memory is not measured RSS.",
+    "Reviewer used eight-row deterministic fixtures and scalar calculations only; parent16tests/mypy/Ruff reported passing. No original observations/metadata, RNG, teacher/query, optimizer replay or fit were accessed."
+  ]
+}

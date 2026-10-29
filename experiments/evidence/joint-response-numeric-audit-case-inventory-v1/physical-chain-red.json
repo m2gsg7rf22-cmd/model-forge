@@ -1,0 +1,12 @@
+{
+  "source_sha256": "2bce202cb80abbdbff22ffc0063d50a2c9bcbe6e286d3727bdb59d75dcbb0f6c",
+  "audit_status": "agreed",
+  "physical_parameters_agreed": true,
+  "all_predictions_agreed": true,
+  "metrics_agreed": true,
+  "selection_certified": true,
+  "correct_selected_model_prediction": 0.7310585786300049,
+  "wrong_saved_physical_prediction": 0.0,
+  "sx": 1e+20,
+  "actual_data_reads": 0
+}
