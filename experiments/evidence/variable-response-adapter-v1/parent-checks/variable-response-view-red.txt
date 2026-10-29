@@ -1,0 +1,766 @@
+..............FFFFFFFFFFFFFFFFF                                          [100%]
+=================================== FAILURES ===================================
+______ test_streamed_view_canonical_immutable_pairs_and_separate_counters ______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_s.../test_streamed_view_canonical_i0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10af04540>, ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10aefca10>
+
+    def test_streamed_view_canonical_immutable_pairs_and_separate_counters(fixture, monkeypatch):
+        f = fixture
+        manifest = f['compile']()
+        raw_open = Path.open
+        def guarded(path, *args, **kw):
+            if path.parent == f['root']:
+                assert path.name not in ('manifest.jsonl', 'c00-context.npz')
+            return raw_open(path, *args, **kw)
+        monkeypatch.setattr(Path, 'open', guarded)
+        monkeypatch.setattr(Path, 'iterdir', lambda _: pytest.fail('directory enumeration forbidden'))
+>       view = view_module().open_view(f['root'], manifest)
+               ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:177: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+____________ test_partial_delivery_cannot_be_completed_or_restarted ____________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_p.../test_partial_delivery_cannot_b0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10af218a0>, ...}
+
+    def test_partial_delivery_cannot_be_completed_or_restarted(fixture):
+>       view = view_module().open_view(fixture['root'], fixture['compile']())
+               ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:204: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+________ test_late_invalid_archive_aborts_before_any_job_exposure[hash] ________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_l.../test_late_invalid_archive_abor0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10af216c0>, ...}
+kind = 'hash'
+
+    @pytest.mark.parametrize('kind', ['hash', 'field', 'shape', 'dtype', 'nonfinite', 'oversize', 'member', 'duplicate', 'header', 'symlink', 'hardlink'])
+    def test_late_invalid_archive_aborts_before_any_job_exposure(fixture, kind):
+        import io
+        import os
+        import zipfile
+        f = fixture
+        path = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        if kind == 'hash': path.write_bytes(path.read_bytes() + b'changed')
+        elif kind == 'field': rebound_array(f, path, factors=np.ones((12, 1)))
+        elif kind == 'shape': rebound_array(f, path, responses=np.ones((11, 1)))
+        elif kind == 'dtype': rebound_array(f, path, responses=np.ones((12, 1), dtype=np.float32))
+        elif kind == 'nonfinite': rebound_array(f, path, responses=np.full((12, 1), np.nan))
+        elif kind == 'oversize':
+            path.write_bytes(b'x' * 544769)
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        elif kind in ('member', 'duplicate', 'header'):
+            buff = io.BytesIO()
+            np.save(buff, np.ones((12, 1)))
+            with zipfile.ZipFile(path, 'w') as z:
+                if kind == 'header':
+                    # A malicious huge declared shape must be rejected before allocation.
+                    payload = io.BytesIO()
+                    np.lib.format.write_array_header_1_0(payload, dict(descr='<f8', fortran_order=False, shape=(10**9, 1)))
+                    z.writestr('responses.npy', payload.getvalue())
+                else:
+                    z.writestr('responses.npy', buff.getvalue())
+                    if kind == 'member': z.writestr('context.npy', buff.getvalue())
+                    else:
+                        with pytest.warns(UserWarning): z.writestr('responses.npy', buff.getvalue())
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        else:
+            other = path.with_suffix('.original')
+            path.rename(other)
+            if kind == 'symlink': path.symlink_to(other)
+            else: os.link(other, path)
+>       with pytest.raises(ValueError): view_module().open_view(f['root'], f['compile']())
+                                        ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+_______ test_late_invalid_archive_aborts_before_any_job_exposure[field] ________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_l.../test_late_invalid_archive_abor1/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10af21f80>, ...}
+kind = 'field'
+
+    @pytest.mark.parametrize('kind', ['hash', 'field', 'shape', 'dtype', 'nonfinite', 'oversize', 'member', 'duplicate', 'header', 'symlink', 'hardlink'])
+    def test_late_invalid_archive_aborts_before_any_job_exposure(fixture, kind):
+        import io
+        import os
+        import zipfile
+        f = fixture
+        path = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        if kind == 'hash': path.write_bytes(path.read_bytes() + b'changed')
+        elif kind == 'field': rebound_array(f, path, factors=np.ones((12, 1)))
+        elif kind == 'shape': rebound_array(f, path, responses=np.ones((11, 1)))
+        elif kind == 'dtype': rebound_array(f, path, responses=np.ones((12, 1), dtype=np.float32))
+        elif kind == 'nonfinite': rebound_array(f, path, responses=np.full((12, 1), np.nan))
+        elif kind == 'oversize':
+            path.write_bytes(b'x' * 544769)
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        elif kind in ('member', 'duplicate', 'header'):
+            buff = io.BytesIO()
+            np.save(buff, np.ones((12, 1)))
+            with zipfile.ZipFile(path, 'w') as z:
+                if kind == 'header':
+                    # A malicious huge declared shape must be rejected before allocation.
+                    payload = io.BytesIO()
+                    np.lib.format.write_array_header_1_0(payload, dict(descr='<f8', fortran_order=False, shape=(10**9, 1)))
+                    z.writestr('responses.npy', payload.getvalue())
+                else:
+                    z.writestr('responses.npy', buff.getvalue())
+                    if kind == 'member': z.writestr('context.npy', buff.getvalue())
+                    else:
+                        with pytest.warns(UserWarning): z.writestr('responses.npy', buff.getvalue())
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        else:
+            other = path.with_suffix('.original')
+            path.rename(other)
+            if kind == 'symlink': path.symlink_to(other)
+            else: os.link(other, path)
+>       with pytest.raises(ValueError): view_module().open_view(f['root'], f['compile']())
+                                        ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+_______ test_late_invalid_archive_aborts_before_any_job_exposure[shape] ________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_l.../test_late_invalid_archive_abor2/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10af21760>, ...}
+kind = 'shape'
+
+    @pytest.mark.parametrize('kind', ['hash', 'field', 'shape', 'dtype', 'nonfinite', 'oversize', 'member', 'duplicate', 'header', 'symlink', 'hardlink'])
+    def test_late_invalid_archive_aborts_before_any_job_exposure(fixture, kind):
+        import io
+        import os
+        import zipfile
+        f = fixture
+        path = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        if kind == 'hash': path.write_bytes(path.read_bytes() + b'changed')
+        elif kind == 'field': rebound_array(f, path, factors=np.ones((12, 1)))
+        elif kind == 'shape': rebound_array(f, path, responses=np.ones((11, 1)))
+        elif kind == 'dtype': rebound_array(f, path, responses=np.ones((12, 1), dtype=np.float32))
+        elif kind == 'nonfinite': rebound_array(f, path, responses=np.full((12, 1), np.nan))
+        elif kind == 'oversize':
+            path.write_bytes(b'x' * 544769)
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        elif kind in ('member', 'duplicate', 'header'):
+            buff = io.BytesIO()
+            np.save(buff, np.ones((12, 1)))
+            with zipfile.ZipFile(path, 'w') as z:
+                if kind == 'header':
+                    # A malicious huge declared shape must be rejected before allocation.
+                    payload = io.BytesIO()
+                    np.lib.format.write_array_header_1_0(payload, dict(descr='<f8', fortran_order=False, shape=(10**9, 1)))
+                    z.writestr('responses.npy', payload.getvalue())
+                else:
+                    z.writestr('responses.npy', buff.getvalue())
+                    if kind == 'member': z.writestr('context.npy', buff.getvalue())
+                    else:
+                        with pytest.warns(UserWarning): z.writestr('responses.npy', buff.getvalue())
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        else:
+            other = path.with_suffix('.original')
+            path.rename(other)
+            if kind == 'symlink': path.symlink_to(other)
+            else: os.link(other, path)
+>       with pytest.raises(ValueError): view_module().open_view(f['root'], f['compile']())
+                                        ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+_______ test_late_invalid_archive_aborts_before_any_job_exposure[dtype] ________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_l.../test_late_invalid_archive_abor3/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10af04400>, ...}
+kind = 'dtype'
+
+    @pytest.mark.parametrize('kind', ['hash', 'field', 'shape', 'dtype', 'nonfinite', 'oversize', 'member', 'duplicate', 'header', 'symlink', 'hardlink'])
+    def test_late_invalid_archive_aborts_before_any_job_exposure(fixture, kind):
+        import io
+        import os
+        import zipfile
+        f = fixture
+        path = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        if kind == 'hash': path.write_bytes(path.read_bytes() + b'changed')
+        elif kind == 'field': rebound_array(f, path, factors=np.ones((12, 1)))
+        elif kind == 'shape': rebound_array(f, path, responses=np.ones((11, 1)))
+        elif kind == 'dtype': rebound_array(f, path, responses=np.ones((12, 1), dtype=np.float32))
+        elif kind == 'nonfinite': rebound_array(f, path, responses=np.full((12, 1), np.nan))
+        elif kind == 'oversize':
+            path.write_bytes(b'x' * 544769)
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        elif kind in ('member', 'duplicate', 'header'):
+            buff = io.BytesIO()
+            np.save(buff, np.ones((12, 1)))
+            with zipfile.ZipFile(path, 'w') as z:
+                if kind == 'header':
+                    # A malicious huge declared shape must be rejected before allocation.
+                    payload = io.BytesIO()
+                    np.lib.format.write_array_header_1_0(payload, dict(descr='<f8', fortran_order=False, shape=(10**9, 1)))
+                    z.writestr('responses.npy', payload.getvalue())
+                else:
+                    z.writestr('responses.npy', buff.getvalue())
+                    if kind == 'member': z.writestr('context.npy', buff.getvalue())
+                    else:
+                        with pytest.warns(UserWarning): z.writestr('responses.npy', buff.getvalue())
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        else:
+            other = path.with_suffix('.original')
+            path.rename(other)
+            if kind == 'symlink': path.symlink_to(other)
+            else: os.link(other, path)
+>       with pytest.raises(ValueError): view_module().open_view(f['root'], f['compile']())
+                                        ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+_____ test_late_invalid_archive_aborts_before_any_job_exposure[nonfinite] ______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_l.../test_late_invalid_archive_abor4/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10a9c8b80>, ...}
+kind = 'nonfinite'
+
+    @pytest.mark.parametrize('kind', ['hash', 'field', 'shape', 'dtype', 'nonfinite', 'oversize', 'member', 'duplicate', 'header', 'symlink', 'hardlink'])
+    def test_late_invalid_archive_aborts_before_any_job_exposure(fixture, kind):
+        import io
+        import os
+        import zipfile
+        f = fixture
+        path = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        if kind == 'hash': path.write_bytes(path.read_bytes() + b'changed')
+        elif kind == 'field': rebound_array(f, path, factors=np.ones((12, 1)))
+        elif kind == 'shape': rebound_array(f, path, responses=np.ones((11, 1)))
+        elif kind == 'dtype': rebound_array(f, path, responses=np.ones((12, 1), dtype=np.float32))
+        elif kind == 'nonfinite': rebound_array(f, path, responses=np.full((12, 1), np.nan))
+        elif kind == 'oversize':
+            path.write_bytes(b'x' * 544769)
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        elif kind in ('member', 'duplicate', 'header'):
+            buff = io.BytesIO()
+            np.save(buff, np.ones((12, 1)))
+            with zipfile.ZipFile(path, 'w') as z:
+                if kind == 'header':
+                    # A malicious huge declared shape must be rejected before allocation.
+                    payload = io.BytesIO()
+                    np.lib.format.write_array_header_1_0(payload, dict(descr='<f8', fortran_order=False, shape=(10**9, 1)))
+                    z.writestr('responses.npy', payload.getvalue())
+                else:
+                    z.writestr('responses.npy', buff.getvalue())
+                    if kind == 'member': z.writestr('context.npy', buff.getvalue())
+                    else:
+                        with pytest.warns(UserWarning): z.writestr('responses.npy', buff.getvalue())
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        else:
+            other = path.with_suffix('.original')
+            path.rename(other)
+            if kind == 'symlink': path.symlink_to(other)
+            else: os.link(other, path)
+>       with pytest.raises(ValueError): view_module().open_view(f['root'], f['compile']())
+                                        ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+______ test_late_invalid_archive_aborts_before_any_job_exposure[oversize] ______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_l.../test_late_invalid_archive_abor5/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10a7c7c40>, ...}
+kind = 'oversize'
+
+    @pytest.mark.parametrize('kind', ['hash', 'field', 'shape', 'dtype', 'nonfinite', 'oversize', 'member', 'duplicate', 'header', 'symlink', 'hardlink'])
+    def test_late_invalid_archive_aborts_before_any_job_exposure(fixture, kind):
+        import io
+        import os
+        import zipfile
+        f = fixture
+        path = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        if kind == 'hash': path.write_bytes(path.read_bytes() + b'changed')
+        elif kind == 'field': rebound_array(f, path, factors=np.ones((12, 1)))
+        elif kind == 'shape': rebound_array(f, path, responses=np.ones((11, 1)))
+        elif kind == 'dtype': rebound_array(f, path, responses=np.ones((12, 1), dtype=np.float32))
+        elif kind == 'nonfinite': rebound_array(f, path, responses=np.full((12, 1), np.nan))
+        elif kind == 'oversize':
+            path.write_bytes(b'x' * 544769)
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        elif kind in ('member', 'duplicate', 'header'):
+            buff = io.BytesIO()
+            np.save(buff, np.ones((12, 1)))
+            with zipfile.ZipFile(path, 'w') as z:
+                if kind == 'header':
+                    # A malicious huge declared shape must be rejected before allocation.
+                    payload = io.BytesIO()
+                    np.lib.format.write_array_header_1_0(payload, dict(descr='<f8', fortran_order=False, shape=(10**9, 1)))
+                    z.writestr('responses.npy', payload.getvalue())
+                else:
+                    z.writestr('responses.npy', buff.getvalue())
+                    if kind == 'member': z.writestr('context.npy', buff.getvalue())
+                    else:
+                        with pytest.warns(UserWarning): z.writestr('responses.npy', buff.getvalue())
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        else:
+            other = path.with_suffix('.original')
+            path.rename(other)
+            if kind == 'symlink': path.symlink_to(other)
+            else: os.link(other, path)
+>       with pytest.raises(ValueError): view_module().open_view(f['root'], f['compile']())
+                                        ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+_______ test_late_invalid_archive_aborts_before_any_job_exposure[member] _______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_l.../test_late_invalid_archive_abor6/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10a7c7920>, ...}
+kind = 'member'
+
+    @pytest.mark.parametrize('kind', ['hash', 'field', 'shape', 'dtype', 'nonfinite', 'oversize', 'member', 'duplicate', 'header', 'symlink', 'hardlink'])
+    def test_late_invalid_archive_aborts_before_any_job_exposure(fixture, kind):
+        import io
+        import os
+        import zipfile
+        f = fixture
+        path = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        if kind == 'hash': path.write_bytes(path.read_bytes() + b'changed')
+        elif kind == 'field': rebound_array(f, path, factors=np.ones((12, 1)))
+        elif kind == 'shape': rebound_array(f, path, responses=np.ones((11, 1)))
+        elif kind == 'dtype': rebound_array(f, path, responses=np.ones((12, 1), dtype=np.float32))
+        elif kind == 'nonfinite': rebound_array(f, path, responses=np.full((12, 1), np.nan))
+        elif kind == 'oversize':
+            path.write_bytes(b'x' * 544769)
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        elif kind in ('member', 'duplicate', 'header'):
+            buff = io.BytesIO()
+            np.save(buff, np.ones((12, 1)))
+            with zipfile.ZipFile(path, 'w') as z:
+                if kind == 'header':
+                    # A malicious huge declared shape must be rejected before allocation.
+                    payload = io.BytesIO()
+                    np.lib.format.write_array_header_1_0(payload, dict(descr='<f8', fortran_order=False, shape=(10**9, 1)))
+                    z.writestr('responses.npy', payload.getvalue())
+                else:
+                    z.writestr('responses.npy', buff.getvalue())
+                    if kind == 'member': z.writestr('context.npy', buff.getvalue())
+                    else:
+                        with pytest.warns(UserWarning): z.writestr('responses.npy', buff.getvalue())
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        else:
+            other = path.with_suffix('.original')
+            path.rename(other)
+            if kind == 'symlink': path.symlink_to(other)
+            else: os.link(other, path)
+>       with pytest.raises(ValueError): view_module().open_view(f['root'], f['compile']())
+                                        ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+_____ test_late_invalid_archive_aborts_before_any_job_exposure[duplicate] ______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_l.../test_late_invalid_archive_abor7/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10a7c7d80>, ...}
+kind = 'duplicate'
+
+    @pytest.mark.parametrize('kind', ['hash', 'field', 'shape', 'dtype', 'nonfinite', 'oversize', 'member', 'duplicate', 'header', 'symlink', 'hardlink'])
+    def test_late_invalid_archive_aborts_before_any_job_exposure(fixture, kind):
+        import io
+        import os
+        import zipfile
+        f = fixture
+        path = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        if kind == 'hash': path.write_bytes(path.read_bytes() + b'changed')
+        elif kind == 'field': rebound_array(f, path, factors=np.ones((12, 1)))
+        elif kind == 'shape': rebound_array(f, path, responses=np.ones((11, 1)))
+        elif kind == 'dtype': rebound_array(f, path, responses=np.ones((12, 1), dtype=np.float32))
+        elif kind == 'nonfinite': rebound_array(f, path, responses=np.full((12, 1), np.nan))
+        elif kind == 'oversize':
+            path.write_bytes(b'x' * 544769)
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        elif kind in ('member', 'duplicate', 'header'):
+            buff = io.BytesIO()
+            np.save(buff, np.ones((12, 1)))
+            with zipfile.ZipFile(path, 'w') as z:
+                if kind == 'header':
+                    # A malicious huge declared shape must be rejected before allocation.
+                    payload = io.BytesIO()
+                    np.lib.format.write_array_header_1_0(payload, dict(descr='<f8', fortran_order=False, shape=(10**9, 1)))
+                    z.writestr('responses.npy', payload.getvalue())
+                else:
+                    z.writestr('responses.npy', buff.getvalue())
+                    if kind == 'member': z.writestr('context.npy', buff.getvalue())
+                    else:
+                        with pytest.warns(UserWarning): z.writestr('responses.npy', buff.getvalue())
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        else:
+            other = path.with_suffix('.original')
+            path.rename(other)
+            if kind == 'symlink': path.symlink_to(other)
+            else: os.link(other, path)
+>       with pytest.raises(ValueError): view_module().open_view(f['root'], f['compile']())
+                                        ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+_______ test_late_invalid_archive_aborts_before_any_job_exposure[header] _______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_l.../test_late_invalid_archive_abor8/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10a7c7420>, ...}
+kind = 'header'
+
+    @pytest.mark.parametrize('kind', ['hash', 'field', 'shape', 'dtype', 'nonfinite', 'oversize', 'member', 'duplicate', 'header', 'symlink', 'hardlink'])
+    def test_late_invalid_archive_aborts_before_any_job_exposure(fixture, kind):
+        import io
+        import os
+        import zipfile
+        f = fixture
+        path = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        if kind == 'hash': path.write_bytes(path.read_bytes() + b'changed')
+        elif kind == 'field': rebound_array(f, path, factors=np.ones((12, 1)))
+        elif kind == 'shape': rebound_array(f, path, responses=np.ones((11, 1)))
+        elif kind == 'dtype': rebound_array(f, path, responses=np.ones((12, 1), dtype=np.float32))
+        elif kind == 'nonfinite': rebound_array(f, path, responses=np.full((12, 1), np.nan))
+        elif kind == 'oversize':
+            path.write_bytes(b'x' * 544769)
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        elif kind in ('member', 'duplicate', 'header'):
+            buff = io.BytesIO()
+            np.save(buff, np.ones((12, 1)))
+            with zipfile.ZipFile(path, 'w') as z:
+                if kind == 'header':
+                    # A malicious huge declared shape must be rejected before allocation.
+                    payload = io.BytesIO()
+                    np.lib.format.write_array_header_1_0(payload, dict(descr='<f8', fortran_order=False, shape=(10**9, 1)))
+                    z.writestr('responses.npy', payload.getvalue())
+                else:
+                    z.writestr('responses.npy', buff.getvalue())
+                    if kind == 'member': z.writestr('context.npy', buff.getvalue())
+                    else:
+                        with pytest.warns(UserWarning): z.writestr('responses.npy', buff.getvalue())
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        else:
+            other = path.with_suffix('.original')
+            path.rename(other)
+            if kind == 'symlink': path.symlink_to(other)
+            else: os.link(other, path)
+>       with pytest.raises(ValueError): view_module().open_view(f['root'], f['compile']())
+                                        ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+______ test_late_invalid_archive_aborts_before_any_job_exposure[symlink] _______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_l.../test_late_invalid_archive_abor9/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10a7c7240>, ...}
+kind = 'symlink'
+
+    @pytest.mark.parametrize('kind', ['hash', 'field', 'shape', 'dtype', 'nonfinite', 'oversize', 'member', 'duplicate', 'header', 'symlink', 'hardlink'])
+    def test_late_invalid_archive_aborts_before_any_job_exposure(fixture, kind):
+        import io
+        import os
+        import zipfile
+        f = fixture
+        path = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        if kind == 'hash': path.write_bytes(path.read_bytes() + b'changed')
+        elif kind == 'field': rebound_array(f, path, factors=np.ones((12, 1)))
+        elif kind == 'shape': rebound_array(f, path, responses=np.ones((11, 1)))
+        elif kind == 'dtype': rebound_array(f, path, responses=np.ones((12, 1), dtype=np.float32))
+        elif kind == 'nonfinite': rebound_array(f, path, responses=np.full((12, 1), np.nan))
+        elif kind == 'oversize':
+            path.write_bytes(b'x' * 544769)
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        elif kind in ('member', 'duplicate', 'header'):
+            buff = io.BytesIO()
+            np.save(buff, np.ones((12, 1)))
+            with zipfile.ZipFile(path, 'w') as z:
+                if kind == 'header':
+                    # A malicious huge declared shape must be rejected before allocation.
+                    payload = io.BytesIO()
+                    np.lib.format.write_array_header_1_0(payload, dict(descr='<f8', fortran_order=False, shape=(10**9, 1)))
+                    z.writestr('responses.npy', payload.getvalue())
+                else:
+                    z.writestr('responses.npy', buff.getvalue())
+                    if kind == 'member': z.writestr('context.npy', buff.getvalue())
+                    else:
+                        with pytest.warns(UserWarning): z.writestr('responses.npy', buff.getvalue())
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        else:
+            other = path.with_suffix('.original')
+            path.rename(other)
+            if kind == 'symlink': path.symlink_to(other)
+            else: os.link(other, path)
+>       with pytest.raises(ValueError): view_module().open_view(f['root'], f['compile']())
+                                        ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+______ test_late_invalid_archive_aborts_before_any_job_exposure[hardlink] ______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_l...test_late_invalid_archive_abor10/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10af21bc0>, ...}
+kind = 'hardlink'
+
+    @pytest.mark.parametrize('kind', ['hash', 'field', 'shape', 'dtype', 'nonfinite', 'oversize', 'member', 'duplicate', 'header', 'symlink', 'hardlink'])
+    def test_late_invalid_archive_aborts_before_any_job_exposure(fixture, kind):
+        import io
+        import os
+        import zipfile
+        f = fixture
+        path = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        if kind == 'hash': path.write_bytes(path.read_bytes() + b'changed')
+        elif kind == 'field': rebound_array(f, path, factors=np.ones((12, 1)))
+        elif kind == 'shape': rebound_array(f, path, responses=np.ones((11, 1)))
+        elif kind == 'dtype': rebound_array(f, path, responses=np.ones((12, 1), dtype=np.float32))
+        elif kind == 'nonfinite': rebound_array(f, path, responses=np.full((12, 1), np.nan))
+        elif kind == 'oversize':
+            path.write_bytes(b'x' * 544769)
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        elif kind in ('member', 'duplicate', 'header'):
+            buff = io.BytesIO()
+            np.save(buff, np.ones((12, 1)))
+            with zipfile.ZipFile(path, 'w') as z:
+                if kind == 'header':
+                    # A malicious huge declared shape must be rejected before allocation.
+                    payload = io.BytesIO()
+                    np.lib.format.write_array_header_1_0(payload, dict(descr='<f8', fortran_order=False, shape=(10**9, 1)))
+                    z.writestr('responses.npy', payload.getvalue())
+                else:
+                    z.writestr('responses.npy', buff.getvalue())
+                    if kind == 'member': z.writestr('context.npy', buff.getvalue())
+                    else:
+                        with pytest.warns(UserWarning): z.writestr('responses.npy', buff.getvalue())
+            rewrite(f, 'commitments', lambda d: d['artifact_sha256'].__setitem__(f['original']+'/truth/'+path.name, digest(path)))
+        else:
+            other = path.with_suffix('.original')
+            path.rename(other)
+            if kind == 'symlink': path.symlink_to(other)
+            else: os.link(other, path)
+>       with pytest.raises(ValueError): view_module().open_view(f['root'], f['compile']())
+                                        ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+________ test_pair_revalidated_before_delivery_and_failure_is_terminal _________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_p.../test_pair_revalidated_before_d0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10af22020>, ...}
+
+    def test_pair_revalidated_before_delivery_and_failure_is_terminal(fixture):
+        f = fixture
+>       view = view_module().open_view(f['root'], f['compile']())
+               ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:254: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+_________ test_completion_rehashes_all_files_and_public_metadata[data] _________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_c.../test_completion_rehashes_all_f0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10af218a0>, ...}
+where = 'data'
+
+    @pytest.mark.parametrize('where', ['data', 'metadata'])
+    def test_completion_rehashes_all_files_and_public_metadata(fixture, where):
+        f = fixture
+>       view = view_module().open_view(f['root'], f['compile']())
+               ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:270: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+_______ test_completion_rehashes_all_files_and_public_metadata[metadata] _______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_c.../test_completion_rehashes_all_f1/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10af223e0>, ...}
+where = 'metadata'
+
+    @pytest.mark.parametrize('where', ['data', 'metadata'])
+    def test_completion_rehashes_all_files_and_public_metadata(fixture, where):
+        f = fixture
+>       view = view_module().open_view(f['root'], f['compile']())
+               ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:270: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+___________________ test_validator_does_not_cache_all_arrays ___________________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-210/test_v.../test_validator_does_not_cache_0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10af22660>, ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10af555b0>
+
+    def test_validator_does_not_cache_all_arrays(fixture, monkeypatch):
+        import gc
+        import weakref
+>       v = view_module()
+            ^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:282: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def view_module():
+>       assert importlib.util.find_spec('variable_response_view') is not None, 'streamed view missing'
+E       AssertionError: streamed view missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x109d42020>('variable_response_view')
+E        +    where <function find_spec at 0x109d42020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:158: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_variable_response_view.py::test_streamed_view_canonical_immutable_pairs_and_separate_counters
+FAILED tests/test_variable_response_view.py::test_partial_delivery_cannot_be_completed_or_restarted
+FAILED tests/test_variable_response_view.py::test_late_invalid_archive_aborts_before_any_job_exposure[hash]
+FAILED tests/test_variable_response_view.py::test_late_invalid_archive_aborts_before_any_job_exposure[field]
+FAILED tests/test_variable_response_view.py::test_late_invalid_archive_aborts_before_any_job_exposure[shape]
+FAILED tests/test_variable_response_view.py::test_late_invalid_archive_aborts_before_any_job_exposure[dtype]
+FAILED tests/test_variable_response_view.py::test_late_invalid_archive_aborts_before_any_job_exposure[nonfinite]
+FAILED tests/test_variable_response_view.py::test_late_invalid_archive_aborts_before_any_job_exposure[oversize]
+FAILED tests/test_variable_response_view.py::test_late_invalid_archive_aborts_before_any_job_exposure[member]
+FAILED tests/test_variable_response_view.py::test_late_invalid_archive_aborts_before_any_job_exposure[duplicate]
+FAILED tests/test_variable_response_view.py::test_late_invalid_archive_aborts_before_any_job_exposure[header]
+FAILED tests/test_variable_response_view.py::test_late_invalid_archive_aborts_before_any_job_exposure[symlink]
+FAILED tests/test_variable_response_view.py::test_late_invalid_archive_aborts_before_any_job_exposure[hardlink]
+FAILED tests/test_variable_response_view.py::test_pair_revalidated_before_delivery_and_failure_is_terminal
+FAILED tests/test_variable_response_view.py::test_completion_rehashes_all_files_and_public_metadata[data]
+FAILED tests/test_variable_response_view.py::test_completion_rehashes_all_files_and_public_metadata[metadata]
+FAILED tests/test_variable_response_view.py::test_validator_does_not_cache_all_arrays
+17 failed, 14 passed in 0.35s

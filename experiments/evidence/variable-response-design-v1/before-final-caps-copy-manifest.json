@@ -1,0 +1,18 @@
+{
+  "scope": "small design-only evidence; no arrays",
+  "files": {
+    "review.json": {
+      "sha256": "4f6f8e2005766a5952ef585c44010bbbe06eba2852c525533f356194f48fae93",
+      "bytes": 4044
+    },
+    "review.md": {
+      "sha256": "d80ff763115e2325e1732aea91013371ba6ca862dbc502b98ad9856a7791a714",
+      "bytes": 3308
+    },
+    "sign_review.py": {
+      "sha256": "130335c9b701cdc45ec957409233ca1cc6d0fc51419718434abb439d07233856",
+      "bytes": 7594
+    }
+  },
+  "raw_arrays_included": false
+}

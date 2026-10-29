@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-29",
+  "reviewer": "independent /root/v3_review",
+  "scope": "DESIGN ONLY; static text/source/public-commitment metadata inspection",
+  "approved": true,
+  "design_approved": true,
+  "full_source_approved": false,
+  "actual_transcript_read_protocol_approved": false,
+  "execution_approved": false,
+  "new_data_generation_approved": false,
+  "rng_or_teacher_or_query_or_fit_approved": false,
+  "private_gate": "closed",
+  "sources_sha256": {
+    "docs/glu-variable-width-response-view-design.md": "38282dc5cd6cf3887505b8f0873a896ae40050e2e504e9fa3ce3b4af743c148e",
+    "examples/isolated_glu/row_acquisition_collection.py": "b4b7a644be09a4012458582cf79a2448db4d3961a4151afba840069a55d95e9e",
+    "examples/isolated_glu/fresh_rank_collection.py": "7dc4c3028cb62830a116e43103f436c8cdec7d276bd38c8b67920b134b98982b",
+    "docs/glu-variable-width-gate-outcome.md": "46db2aaf91344242f6a0d344093982d63e54356ffd185ac4e16f4f12aa034874",
+    "experiments/evidence/paired-row-acquisition-v1/outcome-audit/outcome-audit.json": "363e46db8c437b40e435ef9d3873e6f834d5a877fb688136d024d7d05aa553c7"
+  },
+  "design_sha256": "38282dc5cd6cf3887505b8f0873a896ae40050e2e504e9fa3ce3b4af743c148e",
+  "blocking_findings": [],
+  "checked_contract": {
+    "jobs": 6,
+    "steps_per_job": 2,
+    "probes_per_step": 17,
+    "pairs": 204,
+    "archives": 408,
+    "rows_per_pair": 2112,
+    "vector_rows": 430848,
+    "array_shape": [
+      2112,
+      32
+    ],
+    "bytes_per_array": 540672,
+    "total_raw_payload_bytes": 220594176,
+    "batch_count_per_job": 34
+  },
+  "conclusions": [
+    "Chosen input/observed full-response pairs are calibration observations, distinct from teacher factors or analytic reference data, despite adjacent storage. Permission remains prospective and limited to the fixed whitelist.",
+    "Whitelist digests must come from pinned public audit commitments before any transcript opening; no truth manifest/directory enumeration/context/reference/seed/evaluator access.",
+    "All six cases remain mandatory; prior five count failures and fixed thresholds remain unchanged.",
+    "Opaque job API is dataflow separation, not OS isolation, statistical blinding or functional identifiability.",
+    "Stored float64 responses do not establish FP64 physical computation.",
+    "Zero-copy source storage does not mean zero-copy immutable in-memory arrays."
+  ],
+  "implementation_review_requirements": [
+    "Explicit bounded sizes/counts for public commitment JSON, descriptors, ZIP/NPY headers, encoded archives and reports before decoding/allocation; strict duplicate-key/field/schema/hash validation.",
+    "Bounded streaming validation of all 408 files before exposure and pair revalidation before each yield; do not retain the entire transcript in validator memory.",
+    "Separate validation/read passes, read archives/bytes and delivered pairs/rows/bytes; distinguish partial iterator failure/exhaustion and unknowns from completed delivery.",
+    "Pin exact public audit/commitments/query-progress/frozen geometry source and dependency versions; verify no forbidden path reads with literal fixtures.",
+    "Independently reviewed source/controller/read-only audit, clean freeze, exclusive marker before transcript opening, preflight TREE and measured 180s/512MiB/BLAS1/2KiB gates before any actual read.",
+    "Compute encoded artifact/report bounds plus existing retained artifacts below 1GiB without forbidden directory traversal; payload arithmetic alone is insufficient."
+  ],
+  "not_verified": [
+    "Actual transcript values, hashes, schemas or response/input association were not loaded or verified.",
+    "No runtime, resource measurement, numerical worker or fixture execution performed.",
+    "No solver, parameter/gate identity, coverage, full-function fidelity or universal reconstruction claim approved."
+  ],
+  "activity": {
+    "actual_array_reads": 0,
+    "numerical_workers": 0,
+    "rng_calls": 0,
+    "target_queries": 0,
+    "fits": 0,
+    "repository_edits": 0
+  }
+}

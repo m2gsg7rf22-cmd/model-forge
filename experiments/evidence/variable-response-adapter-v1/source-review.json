@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-29",
+  "reviewer": "independent /root/v3_review",
+  "approved": true,
+  "component_source_approved": true,
+  "component_only": true,
+  "full_source_protocol_approved": false,
+  "actual_transcript_read_protocol_approved": false,
+  "actual_transcript_reads_approved": false,
+  "execution_approved": false,
+  "new_data_generation_approved": false,
+  "fitting_approved": false,
+  "private_gate": "closed",
+  "certificate": false,
+  "source_sha256": {
+    "examples/isolated_glu/variable_response_manifest.py": "8790fe27d31e1c329fcfe59a387a4c94f7a694c101e75f9ed77e0cc749d44bf2",
+    "examples/isolated_glu/variable_response_view.py": "5db5b91fd6d0eedf2dec507dc7ed293efc10284b807bb6e1b48b211d272d8712",
+    "tests/test_variable_response_view.py": "798912670e33cf63c2b11a58a3ba0cb8810e6a6e14a4873183230992c88c0339",
+    "docs/glu-variable-width-response-adapter.md": "5854a77b004e717823f52d2ea74a146601488d2af2d94387c88dba6b72d2089d",
+    "docs/superpowers/plans/2026-10-29-variable-response-adapter.md": "d1a550ee4beec33b99a1c076ba21a52031f633cc863ad1ea45c1ba30775ec6d3",
+    "docs/glu-variable-width-response-view-design.md": "38282dc5cd6cf3887505b8f0873a896ae40050e2e504e9fa3ce3b4af743c148e"
+  },
+  "evidence_sha256": {
+    "probe.py": "cd780f4069584a4f1c625388d0361931a512a77e182c93922fd9ab0b39b7db45",
+    "probe-results.json": "a9c14162446c249b21db4170e35907e5648a4519e0e6c14de5941a51d3046d88",
+    "frozen-pins-check.json": "0282db862933e1d94a47687b1a2c7eabce46db71b5fabe4cb415d63614dba972",
+    "preliminary-finding.json": "16c71d08bade6e5d6775f5ee7dc61eb9efe43988ce28cd0e9daaefd92de4fbdf",
+    "before-relative-schema-probe.py": "a3d4f37df1c41637c5b700f8ca4e82e7fdf94a557ee20458742938f2d0f8916c",
+    "before-relative-schema-probe-results.json": "24287462f833ac656168d0e51f1ea7cfb5e01c1161814e28d618dfd1880cd04e",
+    "before-relative-schema-variable_response_manifest.py": "8790fe27d31e1c329fcfe59a387a4c94f7a694c101e75f9ed77e0cc749d44bf2",
+    "before-relative-schema-variable_response_view.py": "5db5b91fd6d0eedf2dec507dc7ed293efc10284b807bb6e1b48b211d272d8712"
+  },
+  "blocking_findings": [],
+  "addressed_findings": [
+    {
+      "id": "PUBLIC-METADATA-RELATIVE-KEYS",
+      "status": "closed",
+      "discovered_by": "parent public-metadata-only integration check",
+      "before": "Compiler and tiny fixtures used absolute metadata_sha256 keys, while the pinned public archive uses collection/... relative metadata keys. Archive artifact_sha256 keys remain absolute.",
+      "after": "Compiler and both parent/reviewer literal fixtures use collection/collection-report.json and collection/query-progress.json. Independent production load_manifest succeeds under a strict four-PUBLIC-file allowlist, without any transcript open/listing.",
+      "pre_fix_evidence_preserved": true,
+      "pre_fix_source_snapshot_available": false,
+      "historical_artifact_correction": "The file named before-relative-schema-variable_response_manifest.py was copied after the concurrent parent fix and is byte-identical to reviewed current source. Its historical filename describes the notification-time preservation step, not pre-fix source bytes. It is not evidence of the pre-fix implementation. The preserved initial probe source/results and preliminary finding record remain historical evidence; the initial probe does not establish actual public schema compatibility."
+    }
+  ],
+  "independent_controls": {
+    "all_literal_archives_before_job_exposure_and_no_adjacent_reads": true,
+    "immutable_and_idle_generator_no_array_retention": true,
+    "delivery_completion_separate_counters_and_hash_only_finish": true,
+    "forged_manifest_rejected_before_archive_read": true,
+    "last_archive_failure_blocks_exposure_and_preserves_receipt": true,
+    "late_pair_failure_is_terminal_and_does_not_increment_delivery": true,
+    "huge_npy_header_rejected_before_array_construction": true,
+    "registered_public_metadata_only_compiles_204_pairs_without_transcript_or_directory_access": true
+  },
+  "frozen_prior_sources": [
+    {
+      "review": "experiments/evidence/variable-width-gate-development-v1/source-review/final-source-review.json",
+      "review_sha256": "6ff724f534d1ebb4b631ebf954d429ae3d21a42ec0d4aa75979fa8566e9fbffd",
+      "signed_files": 28,
+      "mismatches": []
+    },
+    {
+      "review": "experiments/evidence/paired-row-acquisition-v1/source-review/final-source-review.json",
+      "review_sha256": "6a819f3654a696cacd9297d32a5897f0106e670c3168dc95dea4fcd84a069acf",
+      "signed_files": 31,
+      "mismatches": []
+    }
+  ],
+  "scope": {
+    "actual_transcript_array_reads": 0,
+    "registered_rng_calls": 0,
+    "teacher_queries": 0,
+    "fits": 0,
+    "scientific_experiments": 0,
+    "literal_fixture_runs": 2,
+    "public_metadata_only_registered_compile": 1,
+    "repository_edits": 0
+  },
+  "limitations": [
+    "Source/fixture component approval only. It supplies no CLI controller, exclusive actual-read marker, read-only audit protocol, exact combined disk inventory or measured actual TREE resource receipt. Those remain required before any actual transcript access.",
+    "Public metadata compilation validates commitments and schema; no actual transcript bytes/values/headers were opened.",
+    "Tiny literal profile exercises shared paths, not an actual 408-archive load. All-before-exposure for registered data follows source iteration but remains runtime unverified.",
+    "Parent ResponseView exposes provenance; numerical consumers must receive only ResponseJob/ResponseBatch. This is synchronous API separation, not adversarial isolation or statistical blinding.",
+    "Immutable batch copies and one-pair streaming bound adapter retention; caller-retained batches require a future controller memory bound. No continuous OS memory cap claimed.",
+    "The internal fixture seams and direct constructors are not security boundaries; future protocol must invoke the fixed registered entry point and pin roots/sources.",
+    "Hash/read TOCTOU protection is not a malicious concurrent-writer guarantee; failed read counters are explicit lower bounds.",
+    "No full-map accuracy, teacher parameter/gate identity, coverage or improvement claim follows. All six prior candidate outcomes remain unchanged."
+  ],
+  "parent_reported_checks_not_repeated": {
+    "targeted_tests": 35,
+    "strict_mypy_modules": 2,
+    "ruff_files": 3,
+    "note": "Recorded as parent-reported; reviewer ran only independent small controls and public metadata compile."
+  }
+}

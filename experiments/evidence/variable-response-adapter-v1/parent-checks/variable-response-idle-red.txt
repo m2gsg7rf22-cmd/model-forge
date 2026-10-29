@@ -1,0 +1,22 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_idle_generator_does_not_retain_a_delivered_pair _____________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-212/test_i.../test_idle_generator_does_not_r0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10b78a7a0>, ...}
+
+    def test_idle_generator_does_not_retain_a_delivered_pair(fixture):
+        import gc
+        import weakref
+        view = view_module()._open_fixture_view(fixture['root'], fixture['compile']())
+        batch = next(view.jobs[0].batches)
+        refs = (weakref.ref(batch.inputs), weakref.ref(batch.responses))
+        del batch
+        gc.collect()
+>       assert all(ref() is None for ref in refs)
+E       assert False
+E        +  where False = all(<generator object test_idle_generator_does_not_retain_a_delivered_pair.<locals>.<genexpr> at 0x10b3a4520>)
+
+tests/test_variable_response_view.py:320: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_variable_response_view.py::test_idle_generator_does_not_retain_a_delivered_pair
+1 failed in 0.10s

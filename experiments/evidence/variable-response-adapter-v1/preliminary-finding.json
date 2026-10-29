@@ -1,0 +1,6 @@
+{
+  "status": "hold_signature",
+  "finding": "Public commitment metadata_sha256 keys are relative collection/...; pre-fix compiler and both tiny fixtures used absolute keys. Parent identified integration mismatch using public metadata only. Existing literal controls do not establish actual public schema compatibility.",
+  "actual_transcript_reads": 0,
+  "parent_fix_pending": true
+}

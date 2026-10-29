@@ -1,0 +1,30 @@
+{
+  "scope": "small design-only evidence; no arrays",
+  "files": {
+    "review.json": {
+      "sha256": "f1e0dc12c59d11764d48bf098260652043318924389e21eb04a57d41c04bd9d6",
+      "bytes": 4525
+    },
+    "review.md": {
+      "sha256": "059d103e1b913eae9824636577ea486d295725c7e8527ae20e13ecab73c9bbf6",
+      "bytes": 3859
+    },
+    "sign_review.py": {
+      "sha256": "9d6877c7bf68bf065b6e9ac97a1924a18004e311d8601879b4570372a9e3f5a9",
+      "bytes": 8674
+    },
+    "before-final-caps-review.json": {
+      "sha256": "4f6f8e2005766a5952ef585c44010bbbe06eba2852c525533f356194f48fae93",
+      "bytes": 4044
+    },
+    "before-final-caps-review.md": {
+      "sha256": "d80ff763115e2325e1732aea91013371ba6ca862dbc502b98ad9856a7791a714",
+      "bytes": 3308
+    },
+    "before-final-caps-copy-manifest.json": {
+      "sha256": "333611ecdd817b246ad2b72a578eef1177beca85e35d2c3f90a345f082e2455c",
+      "bytes": 501
+    }
+  },
+  "raw_arrays_included": false
+}

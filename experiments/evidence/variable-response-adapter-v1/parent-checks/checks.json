@@ -1,0 +1,22 @@
+{
+  "actual_transcript_array_reads": 0,
+  "logs_sha256": {
+    "variable-response-adapter-final-tests.txt": "dd29040c8988c9ae9094f6702eb36f2787c19a9faa730ec6ca972feac1b825b8",
+    "variable-response-adapter-relative-green.txt": "f8d61e1795ee19ad064aada4a04527c56f0f99bc8df9d2e5af74b368db15ba00",
+    "variable-response-idle-red.txt": "8208275f5c8243bac25ade2c5c1c25b3b5fee89be9ad4a4e406b984707af5278",
+    "variable-response-initial-receipt-red.txt": "3a2ccfebbeece66d48042fa4f60aa159909aee11e17a8f37c7eb546fbe069933",
+    "variable-response-manifest-green.txt": "c4e26d55f5ac8564e62ef355d2376905723e4d00919af54509b22c5a7bff9b8f",
+    "variable-response-manifest-red.txt": "12966cc7e516df49d8dd1059361fce9c1db56aacf76f4a10a05a1ce61b2333ea",
+    "variable-response-public-metadata-check.json": "045f8865000c4cf80f38099f2d98a2355c6ef924992486a825564e953f0b1512",
+    "variable-response-relative-metadata-red.txt": "d3a3697e3d1eeef2ab75d8ce6f810147b9d042d99a6419065f9f4ced5d6bfbba",
+    "variable-response-view-green.txt": "64d59a90a0bb3aeaff0babc66ee262458e1afc3780312963cdef09990526987f",
+    "variable-response-view-red.txt": "c61fcee12083420912f56022564fa7d529338d2d6016aa861a0dfce78fdf4553"
+  },
+  "new_tests": 35,
+  "old_experiments_repeated": false,
+  "private_gate": "closed",
+  "public_metadata_compiler_check": "204pairs408archives430848rows",
+  "ruff_files": 3,
+  "seconds": 0.22,
+  "strict_mypy_sources": 2
+}

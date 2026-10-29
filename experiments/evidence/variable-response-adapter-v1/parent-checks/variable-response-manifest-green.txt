@@ -1,0 +1,31 @@
+F.............                                                           [100%]
+=================================== FAILURES ===================================
+_____________ test_public_compiler_never_reads_raw_or_lists_truth ______________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-209/test_p.../test_public_compiler_never_rea0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x10b59cea0>, ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b5b0110>
+
+    def test_public_compiler_never_reads_raw_or_lists_truth(fixture, monkeypatch):
+        f = fixture
+        opened = []
+        original = Path.open
+        def guarded(path, *a, **kw):
+            assert f['root'] not in path.parents and path != f['root']
+            opened.append(path)
+            return original(path, *a, **kw)
+        monkeypatch.setattr(Path, 'open', guarded)
+        monkeypatch.setattr(Path, 'iterdir', lambda _: pytest.fail('directory enumeration forbidden'))
+        result = f['compile']()
+        assert len(result.pairs) == 8 and result.profile.rows == 12
+        assert [p.job_id for p in result.pairs] == ['job00'] * 4 + ['job01'] * 4
+        assert result.pairs[-1].inputs.name == 'c00-fp32-s1-x01-inputs.npz'
+        assert result.pairs[-1].responses.field == 'responses'
+        assert result.profile.vector_rows == 96
+>       assert len(opened) == 4
+E       AssertionError: assert 8 == 4
+E        +  where 8 = len([PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-209/test_public_co...l15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-209/test_public_compiler_never_rea0/public/commitments.json'), ...])
+
+tests/test_variable_response_view.py:104: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_variable_response_view.py::test_public_compiler_never_reads_raw_or_lists_truth
+1 failed, 13 passed in 0.11s

@@ -1,0 +1,20 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_failed_initial_validation_preserves_partial_receipt ___________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-213/test_f.../test_failed_initial_validation0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x107062980>, ...}
+
+    def test_failed_initial_validation_preserves_partial_receipt(fixture):
+        f = fixture
+        p = f['root'] / 'c00-fp32-s1-x01-responses.npz'
+        p.write_bytes(p.read_bytes() + b'changed')
+        with pytest.raises(ValueError) as caught:
+            view_module()._open_fixture_view(f['root'], f['compile']())
+>       report = caught.value.report
+                 ^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'ValueError' object has no attribute 'report'
+
+tests/test_variable_response_view.py:329: AttributeError
+=========================== short test summary info ============================
+FAILED tests/test_variable_response_view.py::test_failed_initial_validation_preserves_partial_receipt
+1 failed in 0.11s

@@ -1,0 +1,14 @@
+[
+  {
+    "review": "experiments/evidence/variable-width-gate-development-v1/source-review/final-source-review.json",
+    "review_sha256": "6ff724f534d1ebb4b631ebf954d429ae3d21a42ec0d4aa75979fa8566e9fbffd",
+    "signed_files": 28,
+    "mismatches": []
+  },
+  {
+    "review": "experiments/evidence/paired-row-acquisition-v1/source-review/final-source-review.json",
+    "review_sha256": "6a819f3654a696cacd9297d32a5897f0106e670c3168dc95dea4fcd84a069acf",
+    "signed_files": 31,
+    "mismatches": []
+  }
+]

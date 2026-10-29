@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "checks": {
+    "all_literal_archives_before_job_exposure_and_no_adjacent_reads": true,
+    "immutable_and_idle_generator_no_array_retention": true,
+    "delivery_completion_separate_counters_and_hash_only_finish": true,
+    "forged_manifest_rejected_before_archive_read": true,
+    "last_archive_failure_blocks_exposure_and_preserves_receipt": true,
+    "late_pair_failure_is_terminal_and_does_not_increment_delivery": true,
+    "huge_npy_header_rejected_before_array_construction": true
+  },
+  "scope": "literal n1/one case/two pairs only; no registered transcript/data/RNG/teacher/query/fit",
+  "numeric_worker": false,
+  "source_sha256": {
+    "examples/isolated_glu/variable_response_manifest.py": "1e6020b8948578c96ec25132eed871b6fb816ed7f1510b94420720b78af44feb",
+    "examples/isolated_glu/variable_response_view.py": "5db5b91fd6d0eedf2dec507dc7ed293efc10284b807bb6e1b48b211d272d8712"
+  }
+}

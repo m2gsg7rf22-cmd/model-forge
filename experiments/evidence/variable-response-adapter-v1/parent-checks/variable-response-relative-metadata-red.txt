@@ -1,0 +1,105 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_public_compiler_never_reads_raw_or_lists_truth ______________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-215/test_p.../test_public_compiler_never_rea0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x107b968e0>, ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107ba6c60>
+
+    def test_public_compiler_never_reads_raw_or_lists_truth(fixture, monkeypatch):
+        f = fixture
+        pins = f["pins"]()
+        m = module()
+        opened = []
+        original = Path.open
+    
+        def guarded(path, *a, **kw):
+            assert f["root"] not in path.parents and path != f["root"]
+            opened.append(path)
+            return original(path, *a, **kw)
+    
+        monkeypatch.setattr(Path, "open", guarded)
+        monkeypatch.setattr(
+            Path, "iterdir", lambda _: pytest.fail("directory enumeration forbidden")
+        )
+>       result = m._compile(pins, m._Profile(2, 1, 2, f["names"]), f["original"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:161: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pins = {'audit': (PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-215/test...public_compiler_never_rea0/public/progress.json'), 'ee5acb02f59bd5d4945031db4bd0f92ec5cc9568886dd8faf1c495535d513cd8')}
+profile = _Profile(n=2, outputs=1, probes=2, case_names=('c00-fp64', 'c00-fp32'))
+committed_collection = '/owned/prior/collection'
+_reader = <function _read at 0x107b947c0>
+
+    def _compile(
+        pins: dict[str, tuple[Path, str]],
+        profile: _Profile,
+        committed_collection: str,
+        *,
+        _reader: Callable[[Path, int], bytes] = _read,
+    ) -> TranscriptManifest:
+        """Explicit literal seam; production load_manifest has fixed profile/pins."""
+        if set(pins) != {"audit", "commitments", "collection", "progress"}:
+            raise ValueError("Exact public pins required")
+        values: dict[str, Any] = {}
+        metadata = []
+        for key in ("audit", "commitments", "collection", "progress"):
+            path, expected = pins[key]
+            if not _digest(expected):
+                raise ValueError("Public hash required")
+            cap = COMMITMENTS_CAP if key == "commitments" else METADATA_CAP
+            blob = _reader(path, cap)
+            if _hash(blob) != expected:
+                raise ValueError("Public hash mismatch")
+            values[key] = _json(blob)
+            metadata.append(MetadataPin(key, path, expected, cap))
+        a, c, q, h = (values[k] for k in ("audit", "collection", "progress", "commitments"))
+        if (
+            a.get("approved") is not True
+            or a.get("saved_outcome_audit_approved") is not True
+            or a.get("actual_source_commit") != SOURCE
+            or c.get("source_commit") != SOURCE
+            or a.get("private_gate") != "closed"
+            or c.get("status") != "completed"
+            or q.get("status") != "persisted"
+            or a.get("artifact_commitments_sha256") != pins["commitments"][1]
+        ):
+            raise ValueError("Public audit/source/collection lineage mismatch")
+        expected_counts = dict(
+            calls_reserved=profile.vector_rows,
+            calls_attempted=profile.vector_rows,
+            calls_returned=profile.vector_rows,
+            calls_persisted=profile.vector_rows,
+            callback_batches=len(profile.case_names) * 2 * profile.probes,
+        )
+        for receipt in (c, q):
+            if any(
+                type(receipt.get(k)) is not int or receipt[k] != v
+                for k, v in expected_counts.items()
+            ):
+                raise ValueError("Native complete query counters required")
+        if (
+            type(a.get("vector_calls")) is not int
+            or a["vector_calls"] != profile.vector_rows
+            or type(a.get("callback_batches")) is not int
+            or a["callback_batches"] != expected_counts["callback_batches"]
+            or q.get("batch") != f"{profile.case_names[-1]}-s1-x{profile.probes - 1:02d}"
+        ):
+            raise ValueError("Public audit/final batch counter mismatch")
+        if not isinstance(h.get("artifact_sha256"), dict) or not isinstance(
+            h.get("metadata_sha256"), dict
+        ):
+            raise ValueError("Pinned public commitment maps required")
+        for key, name in [
+            ("collection", "collection-report.json"),
+            ("progress", "query-progress.json"),
+        ]:
+            if h["metadata_sha256"].get(committed_collection + "/" + name) != pins[key][1]:
+>               raise ValueError("Public receipt commitment mismatch")
+E               ValueError: Public receipt commitment mismatch
+
+examples/isolated_glu/variable_response_manifest.py:233: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_variable_response_view.py::test_public_compiler_never_reads_raw_or_lists_truth
+1 failed in 0.09s

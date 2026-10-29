@@ -1,0 +1,441 @@
+FFFFFFFFFFFFFF                                                           [100%]
+=================================== FAILURES ===================================
+_____________ test_public_compiler_never_reads_raw_or_lists_truth ______________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_p.../test_public_compiler_never_rea0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x1076a0f40>, ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107697bf0>
+
+    def test_public_compiler_never_reads_raw_or_lists_truth(fixture, monkeypatch):
+        f = fixture
+        opened = []
+        original = Path.open
+        def guarded(path, *a, **kw):
+            assert f['root'] not in path.parents and path != f['root']
+            opened.append(path)
+            return original(path, *a, **kw)
+        monkeypatch.setattr(Path, 'open', guarded)
+        monkeypatch.setattr(Path, 'iterdir', lambda _: pytest.fail('directory enumeration forbidden'))
+>       result = f['compile']()
+                 ^^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_variable_response_view.py:69: in compile_view
+    m = module()
+        ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+______________ test_default_profile_and_production_pins_are_fixed ______________
+
+    def test_default_profile_and_production_pins_are_fixed():
+>       m = module()
+            ^^^^^^^^
+
+tests/test_variable_response_view.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+______________ test_wrong_public_hash_prevents_compilation[audit] ______________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_w.../test_wrong_public_hash_prevent0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x1076ca660>, ...}
+name = 'audit'
+
+    @pytest.mark.parametrize('name', ['audit', 'commitments', 'collection', 'progress'])
+    def test_wrong_public_hash_prevents_compilation(fixture, name):
+        f = fixture
+        pins = f['pins']()
+        pins[name] = (pins[name][0], '0' * 64)
+        with pytest.raises(ValueError, match='hash'):
+>           module()._compile(pins, module()._Profile(2, 1, 2, f['names']), f['original'])
+            ^^^^^^^^
+
+tests/test_variable_response_view.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+___________ test_wrong_public_hash_prevents_compilation[commitments] ___________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_w.../test_wrong_public_hash_prevent1/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x1076cab60>, ...}
+name = 'commitments'
+
+    @pytest.mark.parametrize('name', ['audit', 'commitments', 'collection', 'progress'])
+    def test_wrong_public_hash_prevents_compilation(fixture, name):
+        f = fixture
+        pins = f['pins']()
+        pins[name] = (pins[name][0], '0' * 64)
+        with pytest.raises(ValueError, match='hash'):
+>           module()._compile(pins, module()._Profile(2, 1, 2, f['names']), f['original'])
+            ^^^^^^^^
+
+tests/test_variable_response_view.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+___________ test_wrong_public_hash_prevents_compilation[collection] ____________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_w.../test_wrong_public_hash_prevent2/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x1076ca840>, ...}
+name = 'collection'
+
+    @pytest.mark.parametrize('name', ['audit', 'commitments', 'collection', 'progress'])
+    def test_wrong_public_hash_prevents_compilation(fixture, name):
+        f = fixture
+        pins = f['pins']()
+        pins[name] = (pins[name][0], '0' * 64)
+        with pytest.raises(ValueError, match='hash'):
+>           module()._compile(pins, module()._Profile(2, 1, 2, f['names']), f['original'])
+            ^^^^^^^^
+
+tests/test_variable_response_view.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+____________ test_wrong_public_hash_prevents_compilation[progress] _____________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_w.../test_wrong_public_hash_prevent3/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x1076ca5c0>, ...}
+name = 'progress'
+
+    @pytest.mark.parametrize('name', ['audit', 'commitments', 'collection', 'progress'])
+    def test_wrong_public_hash_prevents_compilation(fixture, name):
+        f = fixture
+        pins = f['pins']()
+        pins[name] = (pins[name][0], '0' * 64)
+        with pytest.raises(ValueError, match='hash'):
+>           module()._compile(pins, module()._Profile(2, 1, 2, f['names']), f['original'])
+            ^^^^^^^^
+
+tests/test_variable_response_view.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+_____ test_invalid_public_lineage_or_counter_rejected[commitments-missing] _____
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_i.../test_invalid_public_lineage_or0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x1076cade0>, ...}
+where = 'commitments', kind = 'missing'
+
+    @pytest.mark.parametrize('where,kind', [('commitments', 'missing'), ('commitments', 'digest'),
+                                          ('collection', 'boolean'), ('progress', 'boolean'),
+                                          ('audit', 'approval'), ('audit', 'source')])
+    def test_invalid_public_lineage_or_counter_rejected(fixture, where, kind):
+        f = fixture
+        def change(d):
+            if kind == 'missing': d['artifact_sha256'].pop(next(iter(d['artifact_sha256'])))
+            elif kind == 'digest': d['artifact_sha256'][next(iter(d['artifact_sha256']))] = 'not-a-digest'
+            elif kind == 'boolean': d['calls_persisted'] = True
+            elif kind == 'approval': d['saved_outcome_audit_approved'] = False
+            else: d['actual_source_commit'] = '0' * 40
+        rewrite(f, where, change)
+>       with pytest.raises(ValueError): f['compile']()
+                                        ^^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_variable_response_view.py:69: in compile_view
+    m = module()
+        ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+_____ test_invalid_public_lineage_or_counter_rejected[commitments-digest] ______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_i.../test_invalid_public_lineage_or1/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x1076caf20>, ...}
+where = 'commitments', kind = 'digest'
+
+    @pytest.mark.parametrize('where,kind', [('commitments', 'missing'), ('commitments', 'digest'),
+                                          ('collection', 'boolean'), ('progress', 'boolean'),
+                                          ('audit', 'approval'), ('audit', 'source')])
+    def test_invalid_public_lineage_or_counter_rejected(fixture, where, kind):
+        f = fixture
+        def change(d):
+            if kind == 'missing': d['artifact_sha256'].pop(next(iter(d['artifact_sha256'])))
+            elif kind == 'digest': d['artifact_sha256'][next(iter(d['artifact_sha256']))] = 'not-a-digest'
+            elif kind == 'boolean': d['calls_persisted'] = True
+            elif kind == 'approval': d['saved_outcome_audit_approved'] = False
+            else: d['actual_source_commit'] = '0' * 40
+        rewrite(f, where, change)
+>       with pytest.raises(ValueError): f['compile']()
+                                        ^^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_variable_response_view.py:69: in compile_view
+    m = module()
+        ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+_____ test_invalid_public_lineage_or_counter_rejected[collection-boolean] ______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_i.../test_invalid_public_lineage_or2/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x1076cb4c0>, ...}
+where = 'collection', kind = 'boolean'
+
+    @pytest.mark.parametrize('where,kind', [('commitments', 'missing'), ('commitments', 'digest'),
+                                          ('collection', 'boolean'), ('progress', 'boolean'),
+                                          ('audit', 'approval'), ('audit', 'source')])
+    def test_invalid_public_lineage_or_counter_rejected(fixture, where, kind):
+        f = fixture
+        def change(d):
+            if kind == 'missing': d['artifact_sha256'].pop(next(iter(d['artifact_sha256'])))
+            elif kind == 'digest': d['artifact_sha256'][next(iter(d['artifact_sha256']))] = 'not-a-digest'
+            elif kind == 'boolean': d['calls_persisted'] = True
+            elif kind == 'approval': d['saved_outcome_audit_approved'] = False
+            else: d['actual_source_commit'] = '0' * 40
+        rewrite(f, where, change)
+>       with pytest.raises(ValueError): f['compile']()
+                                        ^^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_variable_response_view.py:69: in compile_view
+    m = module()
+        ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+______ test_invalid_public_lineage_or_counter_rejected[progress-boolean] _______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_i.../test_invalid_public_lineage_or3/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x1076cb920>, ...}
+where = 'progress', kind = 'boolean'
+
+    @pytest.mark.parametrize('where,kind', [('commitments', 'missing'), ('commitments', 'digest'),
+                                          ('collection', 'boolean'), ('progress', 'boolean'),
+                                          ('audit', 'approval'), ('audit', 'source')])
+    def test_invalid_public_lineage_or_counter_rejected(fixture, where, kind):
+        f = fixture
+        def change(d):
+            if kind == 'missing': d['artifact_sha256'].pop(next(iter(d['artifact_sha256'])))
+            elif kind == 'digest': d['artifact_sha256'][next(iter(d['artifact_sha256']))] = 'not-a-digest'
+            elif kind == 'boolean': d['calls_persisted'] = True
+            elif kind == 'approval': d['saved_outcome_audit_approved'] = False
+            else: d['actual_source_commit'] = '0' * 40
+        rewrite(f, where, change)
+>       with pytest.raises(ValueError): f['compile']()
+                                        ^^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_variable_response_view.py:69: in compile_view
+    m = module()
+        ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+_______ test_invalid_public_lineage_or_counter_rejected[audit-approval] ________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_i.../test_invalid_public_lineage_or4/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x107714040>, ...}
+where = 'audit', kind = 'approval'
+
+    @pytest.mark.parametrize('where,kind', [('commitments', 'missing'), ('commitments', 'digest'),
+                                          ('collection', 'boolean'), ('progress', 'boolean'),
+                                          ('audit', 'approval'), ('audit', 'source')])
+    def test_invalid_public_lineage_or_counter_rejected(fixture, where, kind):
+        f = fixture
+        def change(d):
+            if kind == 'missing': d['artifact_sha256'].pop(next(iter(d['artifact_sha256'])))
+            elif kind == 'digest': d['artifact_sha256'][next(iter(d['artifact_sha256']))] = 'not-a-digest'
+            elif kind == 'boolean': d['calls_persisted'] = True
+            elif kind == 'approval': d['saved_outcome_audit_approved'] = False
+            else: d['actual_source_commit'] = '0' * 40
+        rewrite(f, where, change)
+>       with pytest.raises(ValueError): f['compile']()
+                                        ^^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_variable_response_view.py:69: in compile_view
+    m = module()
+        ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+________ test_invalid_public_lineage_or_counter_rejected[audit-source] _________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_i.../test_invalid_public_lineage_or5/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x1077142c0>, ...}
+where = 'audit', kind = 'source'
+
+    @pytest.mark.parametrize('where,kind', [('commitments', 'missing'), ('commitments', 'digest'),
+                                          ('collection', 'boolean'), ('progress', 'boolean'),
+                                          ('audit', 'approval'), ('audit', 'source')])
+    def test_invalid_public_lineage_or_counter_rejected(fixture, where, kind):
+        f = fixture
+        def change(d):
+            if kind == 'missing': d['artifact_sha256'].pop(next(iter(d['artifact_sha256'])))
+            elif kind == 'digest': d['artifact_sha256'][next(iter(d['artifact_sha256']))] = 'not-a-digest'
+            elif kind == 'boolean': d['calls_persisted'] = True
+            elif kind == 'approval': d['saved_outcome_audit_approved'] = False
+            else: d['actual_source_commit'] = '0' * 40
+        rewrite(f, where, change)
+>       with pytest.raises(ValueError): f['compile']()
+                                        ^^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_variable_response_view.py:69: in compile_view
+    m = module()
+        ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+______ test_duplicate_public_json_keys_and_metadata_cap_fail_before_parse ______
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_d.../test_duplicate_public_json_key0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x107714720>, ...}
+
+    def test_duplicate_public_json_keys_and_metadata_cap_fail_before_parse(fixture):
+        f = fixture
+        p = f['paths']['audit']
+        p.write_text('{"approved":true,"approved":false}')
+>       with pytest.raises(ValueError, match='duplicate'): f['compile']()
+                                                           ^^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_variable_response_view.py:69: in compile_view
+    m = module()
+        ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+___________________ test_manifest_descriptors_are_immutable ____________________
+
+fixture = {'root': PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-208/test_m.../test_manifest_descriptors_are_0/public/progress.json')}, 'pins': <function fixture.<locals>.pins at 0x107714b80>, ...}
+
+    def test_manifest_descriptors_are_immutable(fixture):
+>       result = fixture['compile']()
+                 ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_variable_response_view.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_variable_response_view.py:69: in compile_view
+    m = module()
+        ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def module():
+>       assert importlib.util.find_spec('variable_response_manifest') is not None, 'public-only commitment compiler missing'
+E       AssertionError: public-only commitment compiler missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x101c12020>('variable_response_manifest')
+E        +    where <function find_spec at 0x101c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_view.py:18: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_variable_response_view.py::test_public_compiler_never_reads_raw_or_lists_truth
+FAILED tests/test_variable_response_view.py::test_default_profile_and_production_pins_are_fixed
+FAILED tests/test_variable_response_view.py::test_wrong_public_hash_prevents_compilation[audit]
+FAILED tests/test_variable_response_view.py::test_wrong_public_hash_prevents_compilation[commitments]
+FAILED tests/test_variable_response_view.py::test_wrong_public_hash_prevents_compilation[collection]
+FAILED tests/test_variable_response_view.py::test_wrong_public_hash_prevents_compilation[progress]
+FAILED tests/test_variable_response_view.py::test_invalid_public_lineage_or_counter_rejected[commitments-missing]
+FAILED tests/test_variable_response_view.py::test_invalid_public_lineage_or_counter_rejected[commitments-digest]
+FAILED tests/test_variable_response_view.py::test_invalid_public_lineage_or_counter_rejected[collection-boolean]
+FAILED tests/test_variable_response_view.py::test_invalid_public_lineage_or_counter_rejected[progress-boolean]
+FAILED tests/test_variable_response_view.py::test_invalid_public_lineage_or_counter_rejected[audit-approval]
+FAILED tests/test_variable_response_view.py::test_invalid_public_lineage_or_counter_rejected[audit-source]
+FAILED tests/test_variable_response_view.py::test_duplicate_public_json_keys_and_metadata_cap_fail_before_parse
+FAILED tests/test_variable_response_view.py::test_manifest_descriptors_are_immutable
+14 failed in 0.21s
