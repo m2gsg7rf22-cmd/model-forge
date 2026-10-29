@@ -1,0 +1,124 @@
+{
+  "artifact_root": "/Users/adamfaruhi123/.local/share/modelforge-research/experiments/variable-response-view-v1-20261029-ff11672",
+  "certificate": false,
+  "controller_sha256": "4c2e78d24fa1bc37c6895aa3f7864175fa2a0934b3e5aadd6d2c95a36cfc8d21",
+  "controller_status": "completed",
+  "delivery_chain": {
+    "bytes": 82560,
+    "head": "bac3ed9d709c4a560ae66f00b5c0216bf28feab25518f5e6d3b646e65118841a",
+    "pairs": 204,
+    "sha256": "536925ed1abda264d90ac56df1b9b2614ca69dac8372f63de80160e48bf58668"
+  },
+  "independent_outcome_audit": "pending",
+  "marker_consumed": true,
+  "new_fits": 0,
+  "new_queries": 0,
+  "outer_receipt": {
+    "memory_limit_mb": 512,
+    "memory_samples": 24,
+    "new_fits": 0,
+    "new_queries": 0,
+    "peak_sampled_rss_bytes": 76267520,
+    "process_monitor_scope": "process_and_children",
+    "status": "completed"
+  },
+  "outer_sha256": "c0937d1c8228bb57813671fa5d467aea81fd992922ff299a5be95328f6f414c0",
+  "private_gate": "closed",
+  "receipt_unavailable": false,
+  "small_receipts_sha256": {
+    "attempt-marker.json": "cff83243898a1141eeaf35ebd0d8fe90364441f1c21e474efa725888abe7de70",
+    "controller-report.json": "4c2e78d24fa1bc37c6895aa3f7864175fa2a0934b3e5aadd6d2c95a36cfc8d21",
+    "delivery.jsonl": "536925ed1abda264d90ac56df1b9b2614ca69dac8372f63de80160e48bf58668",
+    "descriptor-seal.json": "599d704295dae83c9d9da84c598da128eee4116592effa0ea425824a9cebd2ca",
+    "outer-monitor.json": "c0937d1c8228bb57813671fa5d467aea81fd992922ff299a5be95328f6f414c0",
+    "progress.json": "dc583b4bec1d39b85ef78de79eecb8a10cc9bace93c12c2b7c8dc8b885058afb",
+    "scope-receipt.json": "52be401162ca4465cbb03d6418d7cbdd08bebf337023323f7f5336c6fc688c17",
+    "transport-receipt.json": "eeb86c3b1320e6ab5dcd9e5bcbe116ea67574a3384e4b62ff6002245c2a1d08b",
+    "transport/manifest.json": "2090defe9865cfdc31d360444176db61b951675816fabdb31a731a65414518e7",
+    "view-report.json": "2eef2ddbc06da959889b0fd1ec593425d8d7d214a8ec4d44a82697c32413edb7"
+  },
+  "source_commit": "ff11672240d05625aec014b2840d64397f47fae1",
+  "status": "completed",
+  "view": {
+    "allowed_archives": 408,
+    "certificate": false,
+    "completion": {
+      "archives_attempted": 408,
+      "archives_read": 408,
+      "arrays_validated": 0,
+      "bytes_read": 220703928,
+      "metadata_attempted": 4,
+      "metadata_bytes": 180415,
+      "metadata_read": 4
+    },
+    "delivery": {
+      "archives_attempted": 408,
+      "archives_read": 408,
+      "arrays_validated": 408,
+      "bytes_read": 220703928,
+      "metadata_attempted": 0,
+      "metadata_bytes": 0,
+      "metadata_read": 0,
+      "pairs": 204,
+      "payload_bytes": 220594176,
+      "rows": 430848
+    },
+    "error": null,
+    "jobs": {
+      "job00": {
+        "delivered_batches": 34,
+        "status": "completed"
+      },
+      "job01": {
+        "delivered_batches": 34,
+        "status": "completed"
+      },
+      "job02": {
+        "delivered_batches": 34,
+        "status": "completed"
+      },
+      "job03": {
+        "delivered_batches": 34,
+        "status": "completed"
+      },
+      "job04": {
+        "delivered_batches": 34,
+        "status": "completed"
+      },
+      "job05": {
+        "delivered_batches": 34,
+        "status": "completed"
+      }
+    },
+    "mapping": {
+      "job00": "c00-fp64",
+      "job01": "c00-fp32",
+      "job02": "c01-fp64",
+      "job03": "c01-fp32",
+      "job04": "c02-fp64",
+      "job05": "c02-fp32"
+    },
+    "metadata_sha256": {
+      "audit": "363e46db8c437b40e435ef9d3873e6f834d5a877fb688136d024d7d05aa553c7",
+      "collection": "eba75ce5156e0ee13ca1e5cdac060bcb6d9028389b7d6d26a8cff2deeeb35167",
+      "commitments": "6024e60e35c9feaac11277f488325abca85909cedc0c1cc43b6fea45e6f9f23d",
+      "progress": "b6d2af933eab4941889b969967d32c7ef570f4a6135942bf0e0315ebf7784946"
+    },
+    "new_fits": 0,
+    "new_queries": 0,
+    "private_gate": "closed",
+    "raw_payload_bound": 220594176,
+    "read_bytes_are_lower_bounds_on_io_failure": true,
+    "source_commit": "07235acd0ecaa576d57b37eefb2b4e6fc3aa0c6a",
+    "status": "completed",
+    "validation": {
+      "archives_attempted": 408,
+      "archives_read": 408,
+      "arrays_validated": 408,
+      "bytes_read": 220703928,
+      "metadata_attempted": 4,
+      "metadata_bytes": 180415,
+      "metadata_read": 4
+    }
+  }
+}

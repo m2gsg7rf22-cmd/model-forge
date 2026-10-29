@@ -1,0 +1,1 @@
+{"records":[{"bytes":540938,"digest":"68fcfda0bee211dd9f9e43b88718e819bdbb859ee2d574fba3e955aed39ce2d1","field":"inputs","name":"inputs.npz","shape":[2112,32]},{"bytes":540944,"digest":"1cfbb9c542ae846a14dd1ea7eab1f2740730c1154554da7088fbc23086866fc3","field":"responses","name":"responses.npz","shape":[2112,32]}]}
