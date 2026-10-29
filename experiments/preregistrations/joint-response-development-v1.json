@@ -1,0 +1,153 @@
+{
+  "component_reviews": {
+    "experiments/evidence/joint-response-case-v1/review.json": "fcd9efb7cbc9250d7ac7d9486916e4a6185664449c09d8fa7673d70684df228f",
+    "experiments/evidence/joint-response-development-design-v1/review.json": "88f61e33bdc8cc187c26d9712fa81866e4e5af8d21fc5b92064d78edeef45712",
+    "experiments/evidence/joint-response-driver-v1/review.json": "229acca6c31c5623a10f29219a6391d30832d5f3e3b7281d952b6f3e8d71a711",
+    "experiments/evidence/joint-response-join-inventory-v1/review.json": "9a9841aed4ab3519672d5cd56f239fa5e002edfa16e074ada0e7fc9a0928de9e",
+    "experiments/evidence/joint-response-kernel-v1/review.json": "7ae8a8f444955535a1296221ca22c611f47a27eca5c4557abd5b85d62b3ebdee",
+    "experiments/evidence/joint-response-stream-v1/review.json": "bc35a672c281a4a606685afa7c090019fdbbdb7f92c3cb9e772d462dbe07b6db",
+    "experiments/evidence/joint-response-trace-v1/review.json": "7fdec3e671a30169cb878afd014fb8a1e34927508952b11ae1f32e724f17cad1"
+  },
+  "frozen_dependencies": {
+    "examples/isolated_glu/fresh_rank_common.py": "d1ed586a224556a0d3bab1fa2dd05b928ebac485dc9026f1bd762c2f8f058b0b",
+    "examples/isolated_glu/joint_response_case.py": "0ccef05886f07d53287d2818c0680d0efc0021529314c148f18e0445df2b3204",
+    "examples/isolated_glu/joint_response_controller.py": "cc23b080bf696559193a629c0d91d2fd106caf308740f1c3754347fde393a7df",
+    "examples/isolated_glu/joint_response_driver.py": "d7235977b17587b02926ae42a864d78071d4fc6d99351157876395dfa1816ab2",
+    "examples/isolated_glu/joint_response_inventory.py": "68e0aa32a61c01b496df9b14043c8fb68548842f2917492aa0a9f1d07666dd99",
+    "examples/isolated_glu/joint_response_join.py": "a85f2696930971c8891afcd907ce405cddda350a793e275a86f6fc325f56663e",
+    "examples/isolated_glu/joint_response_kernel.py": "109ea81f69709dc93322efa88c02ed0bb51e499329f4197b738848dfe261b8da",
+    "examples/isolated_glu/joint_response_protocol.py": "ece445fe0ef307297bbb8906e15ac2455b9fe4737a80597eee25abd2784c4def",
+    "examples/isolated_glu/joint_response_runtime.py": "b011d12f3ae5162776ea924cd9a702fec16736c638a7d4122cf1dccc528fedab",
+    "examples/isolated_glu/joint_response_streams.py": "0b2760c60728c760d80d697ab254508c58515811f5f52880ef99c0f19e8f8268",
+    "examples/isolated_glu/joint_response_trace.py": "3f89e620881d78fc396323e05a85b4c9292cec8051c1bf96c2022128ded00f0a",
+    "examples/isolated_glu/row_acquisition_view.py": "6b89a496733ced75fde476a841a422c234bd8c4938d90066a3c1539f902ec635",
+    "examples/isolated_glu/scaling_domain_math.py": "c3d4a682f225d2175a86d9725c8c8b4954f5f7858e1e9aa0cd66c19290571277",
+    "examples/isolated_glu/scaling_domain_store.py": "f6b87e4a0c95927776a2bfcdacec7cc8d1494d5582a549593c41aff1d825b945",
+    "examples/isolated_glu/variable_gate_view.py": "999e89d9161c064242ae53235e3b03a727a63f5ca9f43c61952c4ab8437036ce",
+    "examples/isolated_glu/variable_response_manifest.py": "8790fe27d31e1c329fcfe59a387a4c94f7a694c101e75f9ed77e0cc749d44bf2",
+    "examples/isolated_glu/variable_response_protocol.py": "94b79dcad06a062902b375b6cbdcacc9cb741ec364432aec19a50cd55a7a90fb",
+    "examples/isolated_glu/variable_response_view.py": "5db5b91fd6d0eedf2dec507dc7ed293efc10284b807bb6e1b48b211d272d8712",
+    "src/modelforge/__init__.py": "163f8b506a895a97f81ec473ea9d8d4c22d83372c803dee29e4050ed2d801067",
+    "src/modelforge/antipodal.py": "b6bf5b81a0edc0531f02ce9f3356b11c1b20b978df8fd3280d37189237c4902b",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3",
+    "src/modelforge/glu32.py": "7a21b6d5cba63875695b109a127c352ba29a272c503861f98c30b5f1ff9a7cd9",
+    "src/modelforge/glu32_io.py": "fd01b9468cb0548da0461dcc67524360b5e5853c89d58f2fa6c25b6198f6531b"
+  },
+  "id": "joint-response-development-v1",
+  "inventory": {
+    "combined_artifacts_upper_bound": 917759475,
+    "interruption_reserve": 16400384,
+    "largest_shard_upper_bound": 8200192,
+    "memory_is_measured": false,
+    "memory_planning_bytes": 420462592,
+    "metadata_reserve": 8388608,
+    "minimum_free_disk_bytes": 2147483648,
+    "prior_retained_upper_bound": 671428083,
+    "progress_upper_bound": 12288000,
+    "trace_encoded_upper_bound": 192854016,
+    "trace_shards": 186,
+    "transport_upper_bound": 16400384
+  },
+  "paired_seeds": {
+    "group00": {
+      "batches": 206821521777024018365759919313055904367226505458756792629666292811178079432,
+      "initial": 71981720246271764285936977804720507050740286794034798054705424871941400902160
+    },
+    "group01": {
+      "batches": 1479996484989410113457138858963799121244552626366558343375124395027379465018,
+      "initial": 59437217125037218134414390151125670926727054489031774676992910417705373515506
+    },
+    "group02": {
+      "batches": 23879946485225164165204094782955661983003674899943373574465144785386886816365,
+      "initial": 17271754850754942693572732899804534517709257619044101146710184412442481261222
+    }
+  },
+  "parent_directory": "paired-row-acquisition-v1-20261028-07235ac",
+  "parent_source_commit": "07235acd0ecaa576d57b37eefb2b4e6fc3aa0c6a",
+  "policy": {
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.999,
+    "adam_epsilon": 1e-08,
+    "adam_steps": 4000,
+    "batch_size": 256,
+    "blas_threads": 1,
+    "certificate": false,
+    "checkpoint_steps": [
+      0,
+      256,
+      512,
+      768,
+      1024,
+      1280,
+      1536,
+      1792,
+      2048,
+      2304,
+      2560,
+      2816,
+      3072,
+      3328,
+      3584,
+      3840,
+      4000
+    ],
+    "guard_centers": [
+      3,
+      7,
+      11,
+      15
+    ],
+    "guard_is_consumed_calibration": true,
+    "guard_rows": 16896,
+    "id": "joint-response-development-v1",
+    "jobs": 6,
+    "learning_rate_end": 0.0001,
+    "learning_rate_start": 0.01,
+    "max_width_hypothesis": 96,
+    "memory_limit_mb": 512,
+    "min_free_bytes": 2147483648,
+    "n": 32,
+    "new_queries": 0,
+    "output_limit_bytes": 2048,
+    "outputs": 32,
+    "per_engine_output_limit_bytes": 1024,
+    "prediction_chunk_rows": 8192,
+    "private_gate": "closed",
+    "probes": 17,
+    "rows_per_pair": 2112,
+    "steps": 2,
+    "timeout_seconds": 180,
+    "train_rows": 54912
+  },
+  "prior_evidence": {
+    "experiments/evidence/variable-response-view-v1/outcome-audit/outcome-audit.json": "14573ecea3251d205b3974387d7f1def81ab731eeb1ccffda0841116db6bf2cc",
+    "experiments/evidence/variable-response-view-v1/source-review/source-review.json": "903c2ea2b4be8080c4d3ba6bf2a064f36ea4fa87691b14168f16cb51e73990b9",
+    "experiments/evidence/variable-width-gate-development-v1/outcome-audit/outcome-audit.json": "e03cb21debfd87e41e58175c3050beb88b64e8a632242846c57be9b81bfd4a26"
+  },
+  "rank_metadata": {
+    "cases_sha256": "2d51bfe26130a1eebb054d71f1817a7e246005e9ea5a6f5824edc04cebc64cd6",
+    "manifest_sha256": "ffe53561cd35a5cd6de6d27b7537a98a05ab804b3c49477654ded3723b705e7f",
+    "report_sha256": "bf546c416a65e4d46b6fbd544cf0d19b130c17cf2f799a55f2cd365c5a51d2ec",
+    "seal_sha256": "f436992bc2f3b24fd593a373c2127235124626a58c82f95a5626594af2f76901"
+  },
+  "required_environment": {
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  },
+  "response_metadata": {
+    "audit": "363e46db8c437b40e435ef9d3873e6f834d5a877fb688136d024d7d05aa553c7",
+    "collection": "eba75ce5156e0ee13ca1e5cdac060bcb6d9028389b7d6d26a8cff2deeeb35167",
+    "commitments": "6024e60e35c9feaac11277f488325abca85909cedc0c1cc43b6fea45e6f9f23d",
+    "progress": "b6d2af933eab4941889b969967d32c7ef570f4a6135942bf0e0315ebf7784946"
+  },
+  "runtime": {
+    "executable": "/Users/adamfaruhi123/.local/share/modelforge-research/runtime/bin/python",
+    "machine": "arm64",
+    "numpy": "2.5.4",
+    "psutil": "7.2.2",
+    "python": "3.12.15"
+  }
+}
