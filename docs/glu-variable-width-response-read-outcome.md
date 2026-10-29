@@ -1,0 +1,15 @@
+# Response view v1: saved engineering receipt audit passed
+
+The one registered default-CLI read attempt completed, and its saved engineering receipts/source provenance were independently audited. This is not reconstruction, functional fidelity, gate identity or a private-model readiness result. The private final-model gate remains CLOSED.
+
+Source was frozen at `ff11672240d05625aec014b2840d64397f47fae1`. All21signed source/config/input documents and7runtime source pins remain unchanged. The one-shot marker is consumed and must not be reset. Raw source transcripts remain outside Git.
+
+The audited receipts report408validated archives,204delivered input/response pairs and430848vectorrows. Validation and delivery each report408array decodes; completion reports408hash-only reads, for1224reported archive reads and816decodes. Each pass records220703928encoded bytes; delivery records220594176raw payload bytes. The ordered receipt chain has204records. Disk/preflight/source/marker/seal/layout/counter commitments passed. Post-outer retained output is1244462bytes.
+
+Original outer monitoring sampled76267520bytes across24process-and-children samples under512MiB/180s/BLAS1/2KiB. Controller elapsed before the final write was1.306990208seconds. Sampled RSS is not a continuous maximum, and total final-write time is not inferred. There were zero new target queries or fits.
+
+Independent audit: one short stdlib checker,0.162303seconds, no numeric worker or new probe. Audit memory/resources were not measured and are not claimed. It checked saved receipts, public metadata, ordered descriptors/chain, source/current+commit lineage, marker bindings, native counters, exact output layout/caps, durable copies and hashes of the two literal transport files. It did not reopen the408source archives, recompute their array values/decoded delivery hashes/oracle outputs, or independently establish the chronology of every filesystem event. Its conclusion is limited to engineering receipts/source/fixture provenance.
+
+Evidence: [signed outcome](../experiments/evidence/variable-response-view-v1/outcome-audit/outcome-audit.json), [independent checker](../experiments/evidence/variable-response-view-v1/outcome-audit/audit.py), and [brief report](../experiments/evidence/variable-response-view-v1/outcome-audit/outcome-audit.md). The prior gate study still reached only1/6hypothesized counts, with no identity or full-function certificate. Previous failed studies and stable releases remain unchanged.
+
+Next design a distinct all-six-case calibration-only joint full-response identification study. Reuse of disclosed responses must be explicit, with a new approved input contract if rank hypotheses are joined; no old truth/context/consumed heldout or teacher-angle/private-reference evaluation. The old read-only marker is not a fitting permit. New optimizer/source/inventory/one-shot protocol review must precede any actual fitting. Calibration/guard fit would not certify reconstruction; a later separately reviewed fresh-owned sealed full-function study remains mandatory. Main bias/HVP/weak-access/backbone/universal reconstruction work remains open.
