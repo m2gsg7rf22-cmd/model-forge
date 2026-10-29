@@ -1,0 +1,17 @@
+{"guard_mse":0.7957357501069438,"guard_relative_error":1.082351107706558,"selected_at_checkpoint":true,"selected_step_so_far":0,"step":0,"train_half_mse":0.7055091694764358}
+{"guard_mse":0.8097858004188409,"guard_relative_error":1.0918646597931148,"selected_at_checkpoint":false,"selected_step_so_far":0,"step":256,"train_half_mse":0.0011536733812775276}
+{"guard_mse":0.7559724196546248,"guard_relative_error":1.0549617328893783,"selected_at_checkpoint":true,"selected_step_so_far":512,"step":512,"train_half_mse":0.0010641508384679472}
+{"guard_mse":0.7199530450430199,"guard_relative_error":1.029522440448148,"selected_at_checkpoint":true,"selected_step_so_far":768,"step":768,"train_half_mse":0.0010203554911555849}
+{"guard_mse":0.7031880075467808,"guard_relative_error":1.0174649528776873,"selected_at_checkpoint":true,"selected_step_so_far":1024,"step":1024,"train_half_mse":0.0008570950748341082}
+{"guard_mse":0.6994131378610726,"guard_relative_error":1.0147302887397422,"selected_at_checkpoint":true,"selected_step_so_far":1280,"step":1280,"train_half_mse":0.000798882418672847}
+{"guard_mse":0.7038439000507618,"guard_relative_error":1.0179393580761196,"selected_at_checkpoint":false,"selected_step_so_far":1280,"step":1536,"train_half_mse":0.0006982031450856512}
+{"guard_mse":0.7156022265461378,"guard_relative_error":1.026406922634487,"selected_at_checkpoint":false,"selected_step_so_far":1280,"step":1792,"train_half_mse":0.000674978913780719}
+{"guard_mse":0.727934677892572,"guard_relative_error":1.035213520396271,"selected_at_checkpoint":false,"selected_step_so_far":1280,"step":2048,"train_half_mse":0.000616417544482847}
+{"guard_mse":0.7445222987807072,"guard_relative_error":1.0469419108731581,"selected_at_checkpoint":false,"selected_step_so_far":1280,"step":2304,"train_half_mse":0.0005340174062049519}
+{"guard_mse":0.7561432598938168,"guard_relative_error":1.0550809301833723,"selected_at_checkpoint":false,"selected_step_so_far":1280,"step":2560,"train_half_mse":0.0005018850885300768}
+{"guard_mse":0.7676407294037526,"guard_relative_error":1.0630721373081176,"selected_at_checkpoint":false,"selected_step_so_far":1280,"step":2816,"train_half_mse":0.0004653395017378058}
+{"guard_mse":0.7773415717882542,"guard_relative_error":1.069768185450472,"selected_at_checkpoint":false,"selected_step_so_far":1280,"step":3072,"train_half_mse":0.00043592699184459577}
+{"guard_mse":0.7838510972047839,"guard_relative_error":1.074238012839009,"selected_at_checkpoint":false,"selected_step_so_far":1280,"step":3328,"train_half_mse":0.0004159780756531265}
+{"guard_mse":0.7886062065420398,"guard_relative_error":1.0774914341406407,"selected_at_checkpoint":false,"selected_step_so_far":1280,"step":3584,"train_half_mse":0.0004041420949030031}
+{"guard_mse":0.790285698609633,"guard_relative_error":1.078638188902993,"selected_at_checkpoint":false,"selected_step_so_far":1280,"step":3840,"train_half_mse":0.0003977373070804524}
+{"guard_mse":0.7909401988167265,"guard_relative_error":1.0790847507046974,"selected_at_checkpoint":false,"selected_step_so_far":1280,"step":4000,"train_half_mse":0.0003963757812769721}

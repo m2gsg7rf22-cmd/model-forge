@@ -1,0 +1,202 @@
+{
+  "schema": "joint-response-actual-terminal-v1",
+  "source_commit": "585eb97db907d6a07463e072b1bc690857594bd3",
+  "actual_root": "/Users/adamfaruhi123/.local/share/modelforge-research/experiments/joint-response-development-v1-20261029-585eb97",
+  "layout_after_final_outer_write": {
+    "retained_bytes": 186239324,
+    "combined_retained_bytes": 857667407,
+    "files": 237,
+    "global_metadata_bytes": 30443
+  },
+  "outer": {
+    "automatic_retry": false,
+    "certificate": false,
+    "controller_counters_unknown": false,
+    "controller_sha256": "c3956dace74a22ba1907d05e89aadc38cec16bd7bbe270a73fc286e8c539e033",
+    "elapsed_before_outer_write_seconds": 12.448610334016848,
+    "private_gate": "closed",
+    "receipt": {
+      "memory_limit_mb": 512,
+      "memory_samples": 197,
+      "peak_sampled_rss_bytes": 420052992,
+      "process_monitor_scope": "process_and_children",
+      "status": "completed"
+    },
+    "resource_receipt_unavailable": false,
+    "retained_before_final_outer_write": {
+      "combined_retained_bytes": 857667264,
+      "files": 237,
+      "global_metadata_bytes": 30300,
+      "retained_bytes": 186239181
+    },
+    "status": "completed"
+  },
+  "cases": {
+    "job00": {
+      "initial": {
+        "guard_mse": 0.7957357211331739,
+        "guard_relative_error": 1.082351117204267,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 0,
+        "step": 0,
+        "train_half_mse": 0.705509163953933
+      },
+      "selected": {
+        "guard_mse": 0.6994131200706581,
+        "guard_relative_error": 1.0147303032124537,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 1280,
+        "step": 1280,
+        "train_half_mse": 0.0007988824988415447
+      },
+      "final": {
+        "guard_mse": 0.790940174472524,
+        "guard_relative_error": 1.0790847632127063,
+        "selected_at_checkpoint": false,
+        "selected_step_so_far": 1280,
+        "step": 4000,
+        "train_half_mse": 0.0003963757726777867
+      },
+      "updates_completed": 4000
+    },
+    "job01": {
+      "initial": {
+        "guard_mse": 0.7957357501069438,
+        "guard_relative_error": 1.082351107706558,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 0,
+        "step": 0,
+        "train_half_mse": 0.7055091694764358
+      },
+      "selected": {
+        "guard_mse": 0.6994131378610726,
+        "guard_relative_error": 1.0147302887397422,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 1280,
+        "step": 1280,
+        "train_half_mse": 0.000798882418672847
+      },
+      "final": {
+        "guard_mse": 0.7909401988167265,
+        "guard_relative_error": 1.0790847507046974,
+        "selected_at_checkpoint": false,
+        "selected_step_so_far": 1280,
+        "step": 4000,
+        "train_half_mse": 0.0003963757812769721
+      },
+      "updates_completed": 4000
+    },
+    "job02": {
+      "initial": {
+        "guard_mse": 1.2236552738376723,
+        "guard_relative_error": 1.1859929208803746,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 0,
+        "step": 0,
+        "train_half_mse": 0.6578947402817727
+      },
+      "selected": {
+        "guard_mse": 1.2236552738376723,
+        "guard_relative_error": 1.1859929208803746,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 0,
+        "step": 0,
+        "train_half_mse": 0.6578947402817727
+      },
+      "final": {
+        "guard_mse": 1.5355668004409502,
+        "guard_relative_error": 1.3285775530898891,
+        "selected_at_checkpoint": false,
+        "selected_step_so_far": 0,
+        "step": 4000,
+        "train_half_mse": 0.0004872697930455726
+      },
+      "updates_completed": 4000
+    },
+    "job03": {
+      "initial": {
+        "guard_mse": 1.2236552793951767,
+        "guard_relative_error": 1.1859929083570402,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 0,
+        "step": 0,
+        "train_half_mse": 0.6578947359885144
+      },
+      "selected": {
+        "guard_mse": 1.2236552793951767,
+        "guard_relative_error": 1.1859929083570402,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 0,
+        "step": 0,
+        "train_half_mse": 0.6578947359885144
+      },
+      "final": {
+        "guard_mse": 1.5355668660143016,
+        "guard_relative_error": 1.3285775644110762,
+        "selected_at_checkpoint": false,
+        "selected_step_so_far": 0,
+        "step": 4000,
+        "train_half_mse": 0.0004872697863364596
+      },
+      "updates_completed": 4000
+    },
+    "job04": {
+      "initial": {
+        "guard_mse": 1.331587233663064,
+        "guard_relative_error": 1.0491439833235439,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 0,
+        "step": 0,
+        "train_half_mse": 0.821468098663859
+      },
+      "selected": {
+        "guard_mse": 1.331587233663064,
+        "guard_relative_error": 1.0491439833235439,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 0,
+        "step": 0,
+        "train_half_mse": 0.821468098663859
+      },
+      "final": {
+        "guard_mse": 5.719883070687017,
+        "guard_relative_error": 2.174422124732809,
+        "selected_at_checkpoint": false,
+        "selected_step_so_far": 0,
+        "step": 4000,
+        "train_half_mse": 0.0010034018835487898
+      },
+      "updates_completed": 4000
+    },
+    "job05": {
+      "initial": {
+        "guard_mse": 1.3315873813363595,
+        "guard_relative_error": 1.0491439731379353,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 0,
+        "step": 0,
+        "train_half_mse": 0.821468087386949
+      },
+      "selected": {
+        "guard_mse": 1.3315873813363595,
+        "guard_relative_error": 1.0491439731379353,
+        "selected_at_checkpoint": true,
+        "selected_step_so_far": 0,
+        "step": 0,
+        "train_half_mse": 0.821468087386949
+      },
+      "final": {
+        "guard_mse": 5.719882385343262,
+        "guard_relative_error": 2.1744218527833037,
+        "selected_at_checkpoint": false,
+        "selected_step_so_far": 0,
+        "step": 4000,
+        "train_half_mse": 0.0010034019316689906
+      },
+      "updates_completed": 4000
+    }
+  },
+  "independently_audited": false,
+  "scientific_reconstruction_success": false,
+  "private_gate": "closed",
+  "automatic_retry": false
+}
