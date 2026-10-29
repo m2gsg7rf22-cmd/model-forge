@@ -1,0 +1,26 @@
+{
+  "approved": true,
+  "component_source_approved": true,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_observation_reads_approved": false,
+  "registered_fitting_approved": false,
+  "source_sha256": {
+    "examples/isolated_glu/joint_response_case.py": "0ccef05886f07d53287d2818c0680d0efc0021529314c148f18e0445df2b3204",
+    "tests/test_joint_response_case.py": "0b3673b8944af064354f9187d088927c76fcaf2dec1d022c0e6a58642d07a37d"
+  },
+  "check_results_sha256": "6a4ca672ea25b221e19c111cb45b51f1e2a90c39bd92d2386510e2c7d1311661",
+  "blocking_findings": [],
+  "actual_data_or_metadata_reads": 0,
+  "registered_rng_calls": 0,
+  "fits": 0,
+  "private_gate": "closed",
+  "certificate": false,
+  "limitations": [
+    "One-case assembly component only; caller must enforce signed joined jobs, global attempt/source/resource gates and lifetime/release between cases. No actual assembly is approved.",
+    "Memory review is qualitative: original buffers, immutable copies, normalized train/guard buffers and temporary indexing coexist. Previously signed memory allowance covers conservative overlaps, but runtime/allocator/TREE proof is pending.",
+    "Whole-center split and training-only scales do not make consumed calibration guard independent; all17 centers already participated in rank selection.",
+    "Tiny internal fixture seam is not an actual CLI profile. Direct dataclass constructors are not arbitrary-object security boundaries.",
+    "Parent eight tests/mypy/Ruff reported passing; reviewer used only the focused literal checks above, no old test rerun."
+  ]
+}

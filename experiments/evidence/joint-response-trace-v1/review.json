@@ -1,0 +1,46 @@
+{
+  "approved": true,
+  "component_source_approved": true,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_observation_reads_approved": false,
+  "registered_fitting_approved": false,
+  "source_sha256": {
+    "examples/isolated_glu/joint_response_trace.py": "3f89e620881d78fc396323e05a85b4c9292cec8051c1bf96c2022128ded00f0a",
+    "tests/test_joint_response_trace.py": "480aedc9b7e23baabc535b08d4fb74683fe286268d828b8488c7397583d280a8",
+    "examples/isolated_glu/joint_response_inventory.py": "68e0aa32a61c01b496df9b14043c8fb68548842f2917492aa0a9f1d07666dd99"
+  },
+  "evidence_sha256": {
+    "setup-failure.json": "eed01731c1b2ed10a52c02051f96e3d4abe52dbbd88a0e2bc74f20bd79e6f079",
+    "short-write-red.json": "82db1fe5711181369aba62d8f43c19616cd465ed8ce320fcb6abd9ece7aad859",
+    "probe.py": "57b19ee18006e56390d38e0156b7ac481f3641690a82eaefc210bbf63748ac34",
+    "probe-results.json": "cd3fbbdf2049f38ea77f424e2fe0f2d26ede7d9ad7f66112179a5919ad9c763e"
+  },
+  "blocking_findings": [],
+  "addressed_findings": [
+    {
+      "id": "T1-SHORT-WRITE",
+      "status": "closed",
+      "before": "_exclusive/_append ignored write return lengths; a two-byte rng.json write returned success with failed=false. Valid RED preserved separately from a first fixture-wrapper setup error.",
+      "after": "Both functions require full byte count before successful progress/manifest advancement; numeric/metadata names remain reservations and failed=true prevents retry. Two independent injected short writes now raise OSError."
+    }
+  ],
+  "independent_checks": {
+    "short_metadata_write_terminal_and_not_successfully_committed": true,
+    "short_manifest_write_terminal_and_not_successfully_committed": true,
+    "small_numeric_archive_schema_size_manifest_and_digest": true,
+    "incomplete_inventory_cannot_write_completed_terminal": true
+  },
+  "actual_data_reads": 0,
+  "rng_calls": 0,
+  "fits": 0,
+  "private_gate": "closed",
+  "certificate": false,
+  "limitations": [
+    "Storage/order/cap component only. Generic metadata scientific/source/RNG/selection provenance requires future controller binding and independent full protocol approval.",
+    "Parent12tests/mypy/Ruff passed, including 4000 literal progress+17checkpoints+30 numeric shards; reviewer did not rerun that full path.",
+    "Store name/byte reservations precede writes; failed objects and existing roots cannot be retried. Partial files remain evidence, not committed scientific states.",
+    "Fsync applies to closed numeric/metadata and intents/manifests; progress closes per event without per-update fsync. No atomic host-power-loss or adversarial concurrent-writer guarantee.",
+    "No actual resources measured; future writer lifecycle/global layout/combinedinventory/monitor/deadline/source/attempt gates remain required."
+  ]
+}

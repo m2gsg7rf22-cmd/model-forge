@@ -1,0 +1,7 @@
+{
+  "attempt": 1,
+  "status": "fixture_setup_failure",
+  "error": "Short wrapper lacked read(); observation attempted while Path.open patch still active",
+  "valid_counterexample_result": false,
+  "actual_data_access": 0
+}

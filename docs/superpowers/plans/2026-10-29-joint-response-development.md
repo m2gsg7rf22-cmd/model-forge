@@ -42,9 +42,9 @@ Interfaces: immutable `Parameters(g,u,d)` with bounded native FP64 arrays; `pred
 
 Create separate joint-response adapter/inventory/trace modules and tests. Do not modify any existing signed adapter.
 
-- [ ] Test canonical six mappings/rankhypothesis and paired input commitment equality, whole-source validation before RNG, no forbidden metadata/files, immutable jobs and bounded single-case assembly on tiny literal stores.
+- [x] Test canonical six mappings/rankhypothesis and paired input commitment equality, whole-source validation before RNG, no forbidden metadata/files, immutable jobs and bounded single-case assembly on tiny literal stores.
 - [ ] Implement fixed train/guard indices, training-only scale validation, shared paired initial/schedule construction AFTERgates, precommitted initial/schedule/RNG trace and bounded snapshot/prediction storage.
-- [ ] Compute exact ALLsixmaxwidth96record/shard/encoded byte bounds including all4000losses/fullschedule/17weights+moments/predictions/failureprogress/transport/reserves; require combined<1GiB. Review before actual data; redesign if bounds fail.
+- [x] Compute exact ALLsixmaxwidth96record/shard/encoded byte bounds including all4000losses/fullschedule/17weights+moments/predictions/failureprogress/transport/reserves; require combined<1GiB. Review before actual data; redesign if bounds fail.
 
 ### Task3: Full protocol/source review and one development attempt
 
@@ -54,3 +54,6 @@ Create preregistration, controller/default outer launcher, literal source/transp
 - [ ] One shared-budget defaultCLI attempt after actual preflights/disk and new exclusive global marker. Record ALLsixoutcomes/partial/unknowns, no retry/restarts/threshold changes.
 - [ ] Terminal checkpoint and independent saved candidate/metric/resource audit within the approved calibration boundary. Candidate forward verification is allowed in that future contract; original teacher/RNG/optimization replay is not.
 - [ ] Preserve actual results/failures and define a DISTINCT fresh-owned sealed full-function/invariant study only after its complete query/storage/source approval. Development fit/guard loss never opens private/universal/full-platform gates.
+
+
+2026-10-29 component boundary: case/stream/trace sources independently reviewed; shared changed-path integration59tests1.01s, strictmypy6/Ruff12pass. The remaining Task2 checkbox includes integrating precommitted metadata/initial/schedule/checkpoint observer into a case driver; it is deliberately unchecked. Draft full protocol: docs/glu-joint-response-development-protocol.md. No actual observations/registered RNG/fitting/sourcefreeze/resource approval yet.

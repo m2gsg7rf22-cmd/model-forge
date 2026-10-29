@@ -1,0 +1,34 @@
+{
+  "approved": true,
+  "component_source_approved": true,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_observation_reads_approved": false,
+  "registered_fitting_approved": false,
+  "source_sha256": {
+    "examples/isolated_glu/joint_response_streams.py": "0b2760c60728c760d80d697ab254508c58515811f5f52880ef99c0f19e8f8268",
+    "tests/test_joint_response_streams.py": "17328f7b6263ae571729cdf55f8f6e6ded22ef37ea1235b7e0e2185b59e37439"
+  },
+  "check_results_sha256": "a9f393e67efae9d5cd73afc4867787c14cf668d2ba04c56eea11d609196f833e",
+  "blocking_findings": [],
+  "checks": [
+    "independent exact12SHA256seed domains and paired group mapping",
+    "G/U/D normal draw order and n/m scaling",
+    "full bounded immutable int64 schedule",
+    "detached exact before/after state JSON",
+    "same-object role alias rejected before draws",
+    "native state integer schema rejects bool"
+  ],
+  "actual_data_reads": 0,
+  "registered_rng_calls": 0,
+  "fits": 0,
+  "private_gate": "closed",
+  "certificate": false,
+  "limitations": [
+    "Injected Stream factory is trusted by this component; state JSON schema/seeds and object-identity check do not prove actual PCG64 seed initialization, normal law, draw fidelity or independent underlying engines. Full controller must provide and pin a freshly seeded PCG64 wrapper after all source/input/scale/resource/marker gates.",
+    "No default generator is created. Python fixture seams are not an approved actual entry point or security boundary.",
+    "Production assumes a validated JoinedView/CaseArrays chain; dimensions/scales before factory do not authenticate arbitrary fabricated Python objects.",
+    "Complete initial/schedule/state persistence before first optimizer update remains future trace/controller responsibility; no resource or execution proof here.",
+    "Paired common random numbers do not create independent trials or a causal precision comparison. Parent7tests/mypy/Ruff passed; only focused literal controls were independently run."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": [
+    "both-step center split has no omissions or overlap",
+    "training-only sx/sy unaffected by large guard",
+    "immutable original/normalized/index arrays",
+    "nonzero normalization underflow fails closed",
+    "fixed production wrapper refuses tiny profile before iterator",
+    "54912/16896/71808 scalar production split"
+  ],
+  "actual_data_reads": 0,
+  "registered_rng_calls": 0,
+  "fits": 0,
+  "resource_measurement": false
+}

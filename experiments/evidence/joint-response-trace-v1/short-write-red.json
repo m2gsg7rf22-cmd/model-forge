@@ -1,0 +1,8 @@
+{
+  "raised": null,
+  "failed": false,
+  "claimed_committed": true,
+  "actual_file_bytes": 2,
+  "file_contents": "{\"",
+  "source_sha256": "7fc536900ac0139e0cad9b1b9a3870ebdf7f1e732c07dee6519ee5349eab2d22"
+}

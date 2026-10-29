@@ -1,0 +1,27 @@
+# Joint response case, injected streams and trace components
+
+Implementation boundary only. The full experiment protocol/default launcher/source/runtime/resource approval does not exist yet, so actual observation loading, registered PCG64 draws and fitting remain forbidden. Private gate CLOSED. Old consumed markers and prior scientific failures remain unchanged.
+
+## One-case assembly
+
+`joint_response_case.assemble_case` fixes n/output32,34batches and2112rows per batch, validating this profile before consuming an iterator. It copies exactly one case in canonical response order, rejects short/extra/malformed/nonfinite batches, and splits whole probe centers3/7/11/15 across both steps into16896guard rows; the remaining54912rows train. Train-only RMS values must be finite and>1e-12 before any streams can be created. Normalized train/guard arrays, original X/Y and split indices have immutable byte owners. Componentwise normalization overflow/underflow is terminal. Caller must release one case before the next; retaining all cases is outside the memory plan. Private fixture helpers operate on small artificial batches only and must not enter the actual controller.
+
+Parent:8literaltests passed0.08s/mypy1/Ruff2. Independent case review verifies a separate literal8center/twostep split, train-only scales with large guard, immutability, underflow rejection and actual-profile gating before iteration. No original observations were read.
+
+## Injected optimizer inputs
+
+`joint_response_streams` defines no default generator. It hashes the exact approved paired groupNN/initial and groupNN/batches domains to big-endian seeds. A future verified controller must create fresh distinct PCG64 wrappers AFTER all global gates and per-case normalization. Three standard-normal draws create G/U divided by sqrt(n), D divided by sqrt(m); one integer draw produces the complete4000x256training schedule. This component checks native types/shapes/bounds, stores immutable initial parameters/schedule and bounded exact-schema PCG64 JSON before/after states. Equal paired seeds alone cannot certify the injected factory/draws: the complete source freeze must bind the actual implementation.
+
+Production input dimensions/scales precede factory calls. Registered states and schedule must be persisted before the first update. Parent:7literal fake-stream tests passed0.08s/mypy1/Ruff2; no real generator/registered random call was made. A failing alias test preceded rejecting a factory returning the same stream object for both domains.
+
+## Exclusive bounded trace
+
+`joint_response_trace.TraceStore` enforces the immutable scalar inventory per case:31possible numeric shard names, exact native float64/int64 shapes/finite values, canonical split and bounded schedule indices, ZIP_STORED NPZ encoded caps,31bounded manifest records,17ordered checkpoint intents,4000sequential512byte progress records and1MiBaggregate case metadata. Four fixed metadata files are capped128KiB each; their contents still require the future controller's strict provenance/scientific schemas. Six case metadata caps leave2MiB of the8MiBglobal reserve for outer/source/runtime/transport reports, which the controller must enforce.
+
+Checkpoint0requires initial/schedule/split and RNG/case metadata first. Each checkpoint intent precedes its arrays; no later progress can skip an outstanding checkpoint. Selected physical parameters and prediction chunks require all4000updates/checkpoint4000 and no finite failure snapshot; a partial/failed prefix cannot become a completed trace. Completed terminal status additionally requires all30nonfailure shards and metrics metadata. Ordinary numeric failures may save one finite state; IO/write/schema/order failures make this store terminal and require the outer controller's failure receipt. Reserved numeric bytes/names survive failed writes and must not be treated as committed files. There are no retries or overwritten files.
+
+All exclusive and append writes require exactly the requested number of bytes before committing counters. Numeric/metadata files and checkpoint intents/manifests are flushed and fsynced; step progress is closed after each record without a per-update fsync. No atomic host-power-loss or adversarial concurrent-writer guarantee is claimed. The future outer controller must bind a shared180s/512MiBprocess-and-children/BLAS1/2KiBbudget, source/runtime/transport checks, actual2GiBfree disk, all combined artifact caps and an exclusive one-shot marker. This writer alone proves none of those.
+
+Parent:12literalIOtests passed0.46s/mypy1/Ruff2, including a complete artificial4000progress/17checkpoint/30numericshard trace and file hashes/schema/caps, invalid input, partial/no-retry and short writes. Missing-module9RED errors preceded implementation. Independent review found short-write acceptance; two failing parent regression tests preceded exact-byte checks. The independent reviewer preserved the valid short-write RED separately from its initial wrapper setup failure. These are component engineering fixtures, not optimization/reconstruction measurements.
+
+Evidence directories: joint-response-case-v1, joint-response-trace-v1 and joint-response-stream-v1 under experiments/evidence after checkpointing their signed reviews. The complete prospective protocol, integrated controller/observer and independent full-source approval are the next boundary; no actual study or reconstruction success follows from these components.

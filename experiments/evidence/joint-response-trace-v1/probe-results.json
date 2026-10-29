@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": {
+    "short_metadata_write_terminal_and_not_successfully_committed": true,
+    "short_manifest_write_terminal_and_not_successfully_committed": true,
+    "small_numeric_archive_schema_size_manifest_and_digest": true,
+    "incomplete_inventory_cannot_write_completed_terminal": true
+  },
+  "source_sha256": "3f89e620881d78fc396323e05a85b4c9292cec8051c1bf96c2022128ded00f0a",
+  "scope": "small literal zero-array storage and IO fault injection only; no schedule/optimizer/scientific data",
+  "actual_data_reads": 0,
+  "rng_calls": 0,
+  "fits": 0
+}

@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": [
+    "independent exact12SHA256seed domains and paired group mapping",
+    "G/U/D normal draw order and n/m scaling",
+    "full bounded immutable int64 schedule",
+    "detached exact before/after state JSON",
+    "same-object role alias rejected before draws",
+    "native state integer schema rejects bool"
+  ],
+  "scope": "literal injected streams only; no PCG64/registered RNG/actualdata/fit",
+  "actual_data_reads": 0,
+  "registered_rng_calls": 0,
+  "fits": 0
+}
