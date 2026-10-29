@@ -1,0 +1,18 @@
+{
+  "new_literal_tests": 20,
+  "seconds": 0.07,
+  "pytest": "passed",
+  "strict_mypy_sources": 2,
+  "mypy": "passed",
+  "ruff_files": 4,
+  "ruff": "passed",
+  "red_missing_modules": true,
+  "saturation_regression_red_then_green": true,
+  "original_frozen_source_pins_unchanged": 57,
+  "actual_original_observation_reads": 0,
+  "actual_experiment_numeric_decodes": 0,
+  "registered_rng_calls": 0,
+  "fits": 0,
+  "private_gate": "closed",
+  "initial_cache_checks": "sandbox cache write failures; mypy tmp cache and ruff --no-cache pass without code change"
+}

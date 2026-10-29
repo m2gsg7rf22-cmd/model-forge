@@ -1,0 +1,11 @@
+{
+  "1000.0": {
+    "exception": "FloatingPointError",
+    "message": "underflow encountered in logaddexp"
+  },
+  "-1000.0": {
+    "exception": "FloatingPointError",
+    "message": "underflow encountered in logaddexp"
+  },
+  "source_sha256": "e4d477fd538970982de92f85d9370107865864f9ee2811fb119e12cf8fd0087b"
+}

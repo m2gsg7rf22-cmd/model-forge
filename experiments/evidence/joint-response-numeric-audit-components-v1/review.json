@@ -1,0 +1,49 @@
+{
+  "approved": true,
+  "component_source_approved": true,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_numeric_audit_approved": false,
+  "source_sha256": {
+    "examples/isolated_glu/joint_response_audit_math.py": "8206fd648a67444204d69d91eddd043b74370aa4058341b69ff3ab07f9670800",
+    "examples/isolated_glu/joint_response_audit_projection.py": "136213b8d87779ff96666d48391e203e1c686a9f3236434d2a44a607e5a5eb56",
+    "tests/test_joint_response_audit_math.py": "32214c0520b986b0f26e8c3ce37a3db9d781774078911e6ff6b614f5a16a39ed",
+    "tests/test_joint_response_audit_projection.py": "f02cba47c1c572ef14a6bb1cc971fd91e41b13a5e9f4dade75084664395288c2",
+    "docs/glu-joint-response-numeric-audit-components.md": "c808c0d2cf7feadef40c809491827e67c87f4365f6c46e09b793b7df35b848bb",
+    "examples/isolated_glu/joint_response_arrays.py": "97a7bdab8a7c932bb1c93b91be3ba9c6f7e7583776925b321d838ac3105caf3c",
+    "examples/isolated_glu/joint_response_inventory.py": "68e0aa32a61c01b496df9b14043c8fb68548842f2917492aa0a9f1d07666dd99"
+  },
+  "evidence_sha256": {
+    "saturation-probe-results.json": "d5b9c71e43dcec3919a7d00d659086880523de94b1ca2a4ae0ceb69db69555a0",
+    "probe.py": "4401e78592251d457efba1c186f882438d4c12f5c9b6a440b82c98b8820ba14c",
+    "probe-results.json": "2a49b56ce1882edc10a601a167a5c3a3ac3d36951f0161ecc0658a392536c786"
+  },
+  "blocking_findings": [],
+  "addressed_findings": [
+    {
+      "id": "AM1-SATURATION",
+      "status": "closed",
+      "before": "Positive scalar1000 failed on negligible logaddexp saturation correction although final output1e6 is representable; pre-fix observations/sourcehash retained.",
+      "after": "Only local logaddexp underflow is ignored; positive1000 succeeds. Negative1000 still raises for unrepresentable nonzero final SiLU, a declared fail-closed domain limit."
+    }
+  ],
+  "independent_checks": {
+    "independent_scalar_forward_and_positive_saturation_fix_negative_underflow_policy": true,
+    "scaled_streaming_literal_metrics_partition_hugeRMS_zero_and_falsezero_guards": true,
+    "both_max_and_frobenius_tolerances_plus_earliest_and_neartie_rules": true,
+    "all9headers_before_views_exact3GUD_views_no_moment_value_claim": true
+  },
+  "maximum_literal_forward_difference": 6.938893903907228e-18,
+  "actual_original_data_reads": 0,
+  "registered_rng_calls": 0,
+  "fits": 0,
+  "private_gate": "closed",
+  "certificate": false,
+  "limitations": [
+    "Component arithmetic/projection approval only; no numeric audit runner, observation iterator, prereg/source protocol, actual resource or execution approval.",
+    "Arithmetic is FP64/BLAS with conservative failure on some subnormal/intermediate outcomes, not interval proof or exact-real equivalence. Negligible scaled-square terms may round away; nonzero total loss/RMS/relative cannot silently become zero.",
+    "Scalar/array agreements and near-tie classification are separate checks. Future controller must validate exact metadata/schema/order and scalar metric consistency, retain ambiguity as uncertified, and never choose a new model.",
+    "Projection validates all nine headers/payload boundaries/CRC but constructs only three finite immutable G/U/D views. Unused moment values, including NaN, deliberately remain outside audit and are not optimizer-state validation.",
+    "Independent controls use only small deterministic literal arrays and NPZ bytes. Parent20tests/mypy/Ruff reported passing; no old data, teacher/query/RNG/optimizer or full audit was accessed/replayed."
+  ]
+}

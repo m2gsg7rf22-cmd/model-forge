@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": {
+    "independent_scalar_forward_and_positive_saturation_fix_negative_underflow_policy": true,
+    "scaled_streaming_literal_metrics_partition_hugeRMS_zero_and_falsezero_guards": true,
+    "both_max_and_frobenius_tolerances_plus_earliest_and_neartie_rules": true,
+    "all9headers_before_views_exact3GUD_views_no_moment_value_claim": true
+  },
+  "maximum_literal_forward_difference": 6.938893903907228e-18,
+  "positive1000_result": 999999.9999999998,
+  "scope": "small deterministic literal arrays/NPZ bytes only; no original observations/RNG/fit",
+  "actual_data_reads": 0,
+  "rng_calls": 0,
+  "fits": 0
+}
