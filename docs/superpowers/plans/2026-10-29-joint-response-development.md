@@ -43,7 +43,7 @@ Interfaces: immutable `Parameters(g,u,d)` with bounded native FP64 arrays; `pred
 Create separate joint-response adapter/inventory/trace modules and tests. Do not modify any existing signed adapter.
 
 - [x] Test canonical six mappings/rankhypothesis and paired input commitment equality, whole-source validation before RNG, no forbidden metadata/files, immutable jobs and bounded single-case assembly on tiny literal stores.
-- [ ] Implement fixed train/guard indices, training-only scale validation, shared paired initial/schedule construction AFTERgates, precommitted initial/schedule/RNG trace and bounded snapshot/prediction storage.
+- [x] Implement fixed train/guard indices, training-only scale validation, shared paired initial/schedule construction AFTERgates, precommitted initial/schedule/RNG trace and bounded snapshot/prediction storage.
 - [x] Compute exact ALLsixmaxwidth96record/shard/encoded byte bounds including all4000losses/fullschedule/17weights+moments/predictions/failureprogress/transport/reserves; require combined<1GiB. Review before actual data; redesign if bounds fail.
 
 ### Task3: Full protocol/source review and one development attempt
@@ -57,3 +57,6 @@ Create preregistration, controller/default outer launcher, literal source/transp
 
 
 2026-10-29 component boundary: case/stream/trace sources independently reviewed; shared changed-path integration59tests1.01s, strictmypy6/Ruff12pass. The remaining Task2 checkbox includes integrating precommitted metadata/initial/schedule/checkpoint observer into a case driver; it is deliberately unchecked. Draft full protocol: docs/glu-joint-response-development-protocol.md. No actual observations/registered RNG/fitting/sourcefreeze/resource approval yet.
+
+
+2026-10-29 integrateddriver component approved; Task2 complete as source components, actual gating/PCGfactory/globalaccounting/defaultCLI still Task3. Sixnew driver tests1.30s/mypy1/Ruff2; zeroactualobservations/registeredRNG/fit. Journal counts within1MiBcase allowance.

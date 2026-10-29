@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "canonical bounded nativePCG64state rejects pretty/duplicate/bool/eveninc",
+    "metric journal successful append byte/count matches file",
+    "short journal write raises before count/size advance and preservespartial",
+    "790528percase metadata scalar accounting",
+    "static precommit initial/schedule/split/rng before solefit invocation"
+  ],
+  "scope": "source inspection plus small literal JSON/IO controls; no actual arrays/RNG/fit or full4000test rerun"
+}

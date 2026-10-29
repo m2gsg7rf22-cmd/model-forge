@@ -1,0 +1,33 @@
+{
+  "approved": true,
+  "component_source_approved": true,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_observation_reads_approved": false,
+  "registered_fitting_approved": false,
+  "source_sha256": {
+    "examples/isolated_glu/joint_response_driver.py": "d7235977b17587b02926ae42a864d78071d4fc6d99351157876395dfa1816ab2",
+    "tests/test_joint_response_driver.py": "46bbe7bdfd69c8486b949e4606bce9f0dee4c058a130f98a5eb00e3de19696ad"
+  },
+  "check_results_sha256": "a381b6d6d0614e7bbbe999421213cb1fdce9c08fba9bd051eab8a1445c01f724",
+  "blocking_findings": [],
+  "independent_checks": [
+    "canonical bounded nativePCG64state rejects pretty/duplicate/bool/eveninc",
+    "metric journal successful append byte/count matches file",
+    "short journal write raises before count/size advance and preservespartial",
+    "790528percase metadata scalar accounting",
+    "static precommit initial/schedule/split/rng before solefit invocation"
+  ],
+  "actual_data_or_metadata_reads": 0,
+  "registered_rng_calls": 0,
+  "fits": 0,
+  "private_gate": "closed",
+  "certificate": false,
+  "limitations": [
+    "Driver component only; caller must provide authenticated joined jobs/assembled case/prepared streams, global source/input/attempt/resource gates and full source protocol. Direct objects are not authenticated by shape checks.",
+    "Canonical state+domain seed metadata does not independently prove seed-to-PCG64 initialization/draw fidelity. Future controller must pin the real wrapper and record all dependencies.",
+    "Generic TraceStore provenance and journal/array/hash correspondence require future controller final-layout/manifest and saved-outcome audit binding; no adversarial concurrent-writer or power-loss guarantee.",
+    "Parent6literal tests/mypy/Ruff reported passing, including complete4000step case and numeric/IO/journal/export failures. Reviewer did not rerun those full integrations; source review plus focused JSON/journal controls only.",
+    "Per-case metadata790528 fits the existing1MiB planning cap; no actual full-run memory/storage/time proof. Numerical case failure never creates selected-prefix success; quality remains untested consumed calibration."
+  ]
+}
