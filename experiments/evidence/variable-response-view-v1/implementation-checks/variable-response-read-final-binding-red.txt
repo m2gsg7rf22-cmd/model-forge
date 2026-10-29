@@ -1,0 +1,114 @@
+FFFFF                                                                    [100%]
+=================================== FAILURES ===================================
+___ test_late_saved_evidence_mutation_prevents_completed_status[descriptor] ____
+
+controlled = {'c': <module 'variable_response_controller' from '/Users/adamfaruhi123/.local/share/modelforge-research/repository/ex...test-221/test_late_saved_evidence_mutat0/repository/experiments/preregistrations/variable-response-view-v1.json'), ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b070680>
+where = 'descriptor'
+
+    @pytest.mark.parametrize('where',['descriptor','delivery','view','transport'])
+    def test_late_saved_evidence_mutation_prevents_completed_status(controlled,monkeypatch,where):
+        f=controlled
+        original=f['c'].consume
+        def altered(*args,**kwargs):
+            value=original(*args,**kwargs)
+            path=f['output']/({'descriptor':'descriptor-seal.json','delivery':'delivery.jsonl',
+                               'view':'view-report.json','transport':'transport/extra.txt'}[where])
+            path.write_bytes((path.read_bytes() if path.exists() else b'')+b'changed')
+            return value
+        monkeypatch.setattr(f['c'],'consume',altered)
+>       with pytest.raises(ValueError): f['run']()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_variable_response_protocol.py:277: Failed
+____ test_late_saved_evidence_mutation_prevents_completed_status[delivery] _____
+
+controlled = {'c': <module 'variable_response_controller' from '/Users/adamfaruhi123/.local/share/modelforge-research/repository/ex...test-221/test_late_saved_evidence_mutat1/repository/experiments/preregistrations/variable-response-view-v1.json'), ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b4a3d10>
+where = 'delivery'
+
+    @pytest.mark.parametrize('where',['descriptor','delivery','view','transport'])
+    def test_late_saved_evidence_mutation_prevents_completed_status(controlled,monkeypatch,where):
+        f=controlled
+        original=f['c'].consume
+        def altered(*args,**kwargs):
+            value=original(*args,**kwargs)
+            path=f['output']/({'descriptor':'descriptor-seal.json','delivery':'delivery.jsonl',
+                               'view':'view-report.json','transport':'transport/extra.txt'}[where])
+            path.write_bytes((path.read_bytes() if path.exists() else b'')+b'changed')
+            return value
+        monkeypatch.setattr(f['c'],'consume',altered)
+>       with pytest.raises(ValueError): f['run']()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_variable_response_protocol.py:277: Failed
+______ test_late_saved_evidence_mutation_prevents_completed_status[view] _______
+
+controlled = {'c': <module 'variable_response_controller' from '/Users/adamfaruhi123/.local/share/modelforge-research/repository/ex...test-221/test_late_saved_evidence_mutat2/repository/experiments/preregistrations/variable-response-view-v1.json'), ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b4a0ce0>
+where = 'view'
+
+    @pytest.mark.parametrize('where',['descriptor','delivery','view','transport'])
+    def test_late_saved_evidence_mutation_prevents_completed_status(controlled,monkeypatch,where):
+        f=controlled
+        original=f['c'].consume
+        def altered(*args,**kwargs):
+            value=original(*args,**kwargs)
+            path=f['output']/({'descriptor':'descriptor-seal.json','delivery':'delivery.jsonl',
+                               'view':'view-report.json','transport':'transport/extra.txt'}[where])
+            path.write_bytes((path.read_bytes() if path.exists() else b'')+b'changed')
+            return value
+        monkeypatch.setattr(f['c'],'consume',altered)
+>       with pytest.raises(ValueError): f['run']()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_variable_response_protocol.py:277: Failed
+____ test_late_saved_evidence_mutation_prevents_completed_status[transport] ____
+
+controlled = {'c': <module 'variable_response_controller' from '/Users/adamfaruhi123/.local/share/modelforge-research/repository/ex...test-221/test_late_saved_evidence_mutat3/repository/experiments/preregistrations/variable-response-view-v1.json'), ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b4c3260>
+where = 'transport'
+
+    @pytest.mark.parametrize('where',['descriptor','delivery','view','transport'])
+    def test_late_saved_evidence_mutation_prevents_completed_status(controlled,monkeypatch,where):
+        f=controlled
+        original=f['c'].consume
+        def altered(*args,**kwargs):
+            value=original(*args,**kwargs)
+            path=f['output']/({'descriptor':'descriptor-seal.json','delivery':'delivery.jsonl',
+                               'view':'view-report.json','transport':'transport/extra.txt'}[where])
+            path.write_bytes((path.read_bytes() if path.exists() else b'')+b'changed')
+            return value
+        monkeypatch.setattr(f['c'],'consume',altered)
+>       with pytest.raises(ValueError): f['run']()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_variable_response_protocol.py:277: Failed
+__________ test_free_disk_is_rechecked_after_transport_before_marker ___________
+
+controlled = {'c': <module 'variable_response_controller' from '/Users/adamfaruhi123/.local/share/modelforge-research/repository/ex...test-221/test_free_disk_is_rechecked_af0/repository/experiments/preregistrations/variable-response-view-v1.json'), ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b4c3cb0>
+
+    def test_free_disk_is_rechecked_after_transport_before_marker(controlled,monkeypatch):
+        f=controlled
+        calls=[]
+        def disk(_):
+            calls.append(None)
+            return type('Disk',(),{'free':3*1024**3 if len(calls)==1 else 1})()
+        monkeypatch.setattr(f['c'].shutil,'disk_usage',disk)
+>       with pytest.raises(ValueError): f['run']()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_variable_response_protocol.py:288: Failed
+=========================== short test summary info ============================
+FAILED tests/test_variable_response_protocol.py::test_late_saved_evidence_mutation_prevents_completed_status[descriptor]
+FAILED tests/test_variable_response_protocol.py::test_late_saved_evidence_mutation_prevents_completed_status[delivery]
+FAILED tests/test_variable_response_protocol.py::test_late_saved_evidence_mutation_prevents_completed_status[view]
+FAILED tests/test_variable_response_protocol.py::test_late_saved_evidence_mutation_prevents_completed_status[transport]
+FAILED tests/test_variable_response_protocol.py::test_free_disk_is_rechecked_after_transport_before_marker
+5 failed, 19 deselected in 1.69s

@@ -1,0 +1,20 @@
+{
+  "actual_resource_proof": false,
+  "actual_transcript_reads": 0,
+  "execution_approved": false,
+  "integration_tests": 59,
+  "logs_sha256": {
+    "variable-response-controller-green.txt": "f525d39ed2c486806c7c6d4a663f9a300596593a384d5171e20346ea2e64038a",
+    "variable-response-controller-red.txt": "032d67601186bb8323b55aaf14dbe543a93e0f155cdbb69350c91d5d272b0e82",
+    "variable-response-protocol-common-green.txt": "ef0e7ef49e71fa999842be0cb8d22ec1058d3a384ed5c0a2ec6efb8f434975ac",
+    "variable-response-protocol-red.txt": "27f3d07899f4cb74454fd3bad1caa2b7934a8ad6f6709145aab2a99f7fc0cd3a",
+    "variable-response-read-final-binding-red.txt": "3ac9052fc6b78ebed563e3088037298c4e33ce0303585ddee141dac453364b06",
+    "variable-response-read-integration-green.txt": "3c63b5c3314d3b151504914c1ead047e3c1ed8088e132eede3e949b4b3472f44"
+  },
+  "new_protocol_tests": 24,
+  "private_gate": "closed",
+  "ruff_changed_files": 4,
+  "seconds": 4.17,
+  "status": "implemented_full_review_pending",
+  "strict_mypy_new_sources": 3
+}

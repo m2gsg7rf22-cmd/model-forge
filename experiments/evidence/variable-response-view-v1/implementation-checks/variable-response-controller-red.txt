@@ -1,0 +1,328 @@
+.....EEEEEEEEEEEE                                                        [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_complete_literal_protocol_is_readonly_and_commits_every_pair _
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_complete_literal_protocol0')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+_ ERROR at setup of test_clean_freeze_gate_rejects_changed_source_before_output[source] _
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_clean_freeze_gate_rejects0')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+_ ERROR at setup of test_clean_freeze_gate_rejects_changed_source_before_output[config] _
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_clean_freeze_gate_rejects1')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+_ ERROR at setup of test_clean_freeze_gate_rejects_changed_source_before_output[review] _
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_clean_freeze_gate_rejects2')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+_ ERROR at setup of test_clean_freeze_gate_rejects_changed_source_before_output[dirty] _
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_clean_freeze_gate_rejects3')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+________ ERROR at setup of test_existing_marker_or_output_never_retries ________
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_existing_marker_or_output0')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+_ ERROR at setup of test_failed_preflight_is_preserved_without_data_or_marker[scope] _
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_failed_preflight_is_prese0')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+_ ERROR at setup of test_failed_preflight_is_preserved_without_data_or_marker[transport] _
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_failed_preflight_is_prese1')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+_ ERROR at setup of test_failed_preflight_is_preserved_without_data_or_marker[disk] _
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_failed_preflight_is_prese2')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+_ ERROR at setup of test_initial_or_late_data_failure_keeps_consumed_marker_and_partial_counters _
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_initial_or_late_data_fail0')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+____ ERROR at setup of test_late_marker_mutation_prevents_completed_status _____
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_late_marker_mutation_prev0')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+_ ERROR at setup of test_outer_bad_tree_does_not_promote_completed_controller __
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-219/test_outer_bad_tree_does_not_p0')
+
+    @pytest.fixture
+    def controlled(tmp_path):
+        import hashlib
+        import subprocess
+        import numpy as np
+        from variable_response_manifest import _compile, _Profile
+        from variable_response_view import _open_fixture_view
+>       c = controller()
+            ^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def controller():
+>       assert importlib.util.find_spec('variable_response_controller') is not None, 'read controller missing'
+E       AssertionError: read controller missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105e0e020>('variable_response_controller')
+E        +    where <function find_spec at 0x105e0e020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:88: AssertionError
+=========================== short test summary info ============================
+ERROR tests/test_variable_response_protocol.py::test_complete_literal_protocol_is_readonly_and_commits_every_pair
+ERROR tests/test_variable_response_protocol.py::test_clean_freeze_gate_rejects_changed_source_before_output[source]
+ERROR tests/test_variable_response_protocol.py::test_clean_freeze_gate_rejects_changed_source_before_output[config]
+ERROR tests/test_variable_response_protocol.py::test_clean_freeze_gate_rejects_changed_source_before_output[review]
+ERROR tests/test_variable_response_protocol.py::test_clean_freeze_gate_rejects_changed_source_before_output[dirty]
+ERROR tests/test_variable_response_protocol.py::test_existing_marker_or_output_never_retries
+ERROR tests/test_variable_response_protocol.py::test_failed_preflight_is_preserved_without_data_or_marker[scope]
+ERROR tests/test_variable_response_protocol.py::test_failed_preflight_is_preserved_without_data_or_marker[transport]
+ERROR tests/test_variable_response_protocol.py::test_failed_preflight_is_preserved_without_data_or_marker[disk]
+ERROR tests/test_variable_response_protocol.py::test_initial_or_late_data_failure_keeps_consumed_marker_and_partial_counters
+ERROR tests/test_variable_response_protocol.py::test_late_marker_mutation_prevents_completed_status
+ERROR tests/test_variable_response_protocol.py::test_outer_bad_tree_does_not_promote_completed_controller
+5 passed, 12 errors in 0.21s

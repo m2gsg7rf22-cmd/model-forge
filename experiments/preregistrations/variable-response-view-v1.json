@@ -1,0 +1,65 @@
+{
+  "component_review_sha256": "eb12dadf7432583470afac56becad2c7d7d308caf0156a924e410cc893806543",
+  "frozen_dependencies": {
+    "examples/isolated_glu/variable_response_controller.py": "4effed940bfe35bf94bbb9d26a39f30ca485f4ce9673461c38fcfaefe995c92c",
+    "examples/isolated_glu/variable_response_inventory.py": "b70ae5b79f589b800dfae1f39da0cb02f5270f4f1f272e91f8a0fb73cd160daf",
+    "examples/isolated_glu/variable_response_manifest.py": "8790fe27d31e1c329fcfe59a387a4c94f7a694c101e75f9ed77e0cc749d44bf2",
+    "examples/isolated_glu/variable_response_protocol.py": "94b79dcad06a062902b375b6cbdcacc9cb741ec364432aec19a50cd55a7a90fb",
+    "examples/isolated_glu/variable_response_view.py": "5db5b91fd6d0eedf2dec507dc7ed293efc10284b807bb6e1b48b211d272d8712",
+    "src/modelforge/__init__.py": "163f8b506a895a97f81ec473ea9d8d4c22d83372c803dee29e4050ed2d801067",
+    "src/modelforge/execution.py": "bb64d5bee0262e62127c279e6250b0a1ff4536d045b7dcdd8ca1093239d9acb3"
+  },
+  "gate_outcome_audit_sha256": "e03cb21debfd87e41e58175c3050beb88b64e8a632242846c57be9b81bfd4a26",
+  "id": "variable-response-view-v1",
+  "inventory": {
+    "archives": 408,
+    "combined_artifacts_upper_bound": 679665861,
+    "complete_archive_reads": 1224,
+    "complete_array_decodes": 816,
+    "delivery_record_upper_bound": 512,
+    "delivery_upper_bound": 104448,
+    "descriptor_record_upper_bound": 512,
+    "descriptor_seal_upper_bound": 106700,
+    "encoded_pass_upper_bound": 222265344,
+    "encoded_read_bytes_upper_bound": 666796032,
+    "metadata_reserve": 8388608,
+    "new_artifacts_upper_bound": 9482240,
+    "pairs": 204,
+    "raw_payload_bytes": 220594176,
+    "report_cap": 131072,
+    "transport_manifest_cap": 4096,
+    "transport_upper_bound": 1093632,
+    "vector_rows": 430848
+  },
+  "parent_directory": "paired-row-acquisition-v1-20261028-07235ac",
+  "parent_source": "07235acd0ecaa576d57b37eefb2b4e6fc3aa0c6a",
+  "policy": {
+    "blas_threads": 1,
+    "certificate": false,
+    "id": "variable-response-view-v1",
+    "jobs": 6,
+    "memory_limit_mb": 512,
+    "min_free_bytes": 2147483648,
+    "n": 32,
+    "new_fits": 0,
+    "new_queries": 0,
+    "output_limit_bytes": 2048,
+    "outputs": 32,
+    "private_gate": "closed",
+    "probes": 17,
+    "rows_per_pair": 2112,
+    "steps": 2,
+    "timeout_seconds": 180
+  },
+  "public_metadata": {
+    "audit": "363e46db8c437b40e435ef9d3873e6f834d5a877fb688136d024d7d05aa553c7",
+    "collection": "eba75ce5156e0ee13ca1e5cdac060bcb6d9028389b7d6d26a8cff2deeeb35167",
+    "commitments": "6024e60e35c9feaac11277f488325abca85909cedc0c1cc43b6fea45e6f9f23d",
+    "progress": "b6d2af933eab4941889b969967d32c7ef570f4a6135942bf0e0315ebf7784946"
+  },
+  "runtime": {
+    "numpy": "2.5.4",
+    "psutil": "7.2.2",
+    "python": "3.12.15"
+  }
+}

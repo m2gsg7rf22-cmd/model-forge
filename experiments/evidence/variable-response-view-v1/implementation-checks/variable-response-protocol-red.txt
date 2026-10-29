@@ -1,0 +1,105 @@
+FFFFF                                                                    [100%]
+=================================== FAILURES ===================================
+______ test_scalar_read_inventory_covers_three_passes_and_prior_artifacts ______
+
+    def test_scalar_read_inventory_covers_three_passes_and_prior_artifacts():
+>       v = inventory_module().inventory()
+            ^^^^^^^^^^^^^^^^^^
+
+tests/test_variable_response_protocol.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def inventory_module():
+>       assert importlib.util.find_spec('variable_response_inventory') is not None, 'read inventory missing'
+E       AssertionError: read inventory missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105c12020>('variable_response_inventory')
+E        +    where <function find_spec at 0x105c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:15: AssertionError
+________________ test_atomic_bounded_json_and_exclusive_marker _________________
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-217/test_atomic_bounded_json_and_e0')
+
+    def test_atomic_bounded_json_and_exclusive_marker(tmp_path):
+>       m = common()
+            ^^^^^^^^
+
+tests/test_variable_response_protocol.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def common():
+>       assert importlib.util.find_spec('variable_response_protocol') is not None, 'read protocol missing'
+E       AssertionError: read protocol missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105c12020>('variable_response_protocol')
+E        +    where <function find_spec at 0x105c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:20: AssertionError
+___________ test_tree_receipt_rejects_process_only_boolean_and_zero ____________
+
+    def test_tree_receipt_rejects_process_only_boolean_and_zero():
+>       m = common()
+            ^^^^^^^^
+
+tests/test_variable_response_protocol.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def common():
+>       assert importlib.util.find_spec('variable_response_protocol') is not None, 'read protocol missing'
+E       AssertionError: read protocol missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105c12020>('variable_response_protocol')
+E        +    where <function find_spec at 0x105c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:20: AssertionError
+__________________ test_delivery_chain_is_ordered_and_bounded __________________
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-217/test_delivery_chain_is_ordered0')
+
+    def test_delivery_chain_is_ordered_and_bounded(tmp_path):
+>       m = common()
+            ^^^^^^^^
+
+tests/test_variable_response_protocol.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def common():
+>       assert importlib.util.find_spec('variable_response_protocol') is not None, 'read protocol missing'
+E       AssertionError: read protocol missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105c12020>('variable_response_protocol')
+E        +    where <function find_spec at 0x105c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:20: AssertionError
+____________ test_duplicate_json_keys_and_oversized_marker_rejected ____________
+
+tmp_path = PosixPath('/private/var/folders/_b/sctv2d_x0xqdl15bn_1svd8r0000gn/T/pytest-of-adamfaruhi123/pytest-217/test_duplicate_json_keys_and_o0')
+
+    def test_duplicate_json_keys_and_oversized_marker_rejected(tmp_path):
+>       m = common()
+            ^^^^^^^^
+
+tests/test_variable_response_protocol.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def common():
+>       assert importlib.util.find_spec('variable_response_protocol') is not None, 'read protocol missing'
+E       AssertionError: read protocol missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x105c12020>('variable_response_protocol')
+E        +    where <function find_spec at 0x105c12020> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_variable_response_protocol.py:20: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_variable_response_protocol.py::test_scalar_read_inventory_covers_three_passes_and_prior_artifacts
+FAILED tests/test_variable_response_protocol.py::test_atomic_bounded_json_and_exclusive_marker
+FAILED tests/test_variable_response_protocol.py::test_tree_receipt_rejects_process_only_boolean_and_zero
+FAILED tests/test_variable_response_protocol.py::test_delivery_chain_is_ordered_and_bounded
+FAILED tests/test_variable_response_protocol.py::test_duplicate_json_keys_and_oversized_marker_rejected
+5 failed in 0.07s
