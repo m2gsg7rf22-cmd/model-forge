@@ -1,0 +1,54 @@
+{
+  "approved": true,
+  "component_source_approved": true,
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_observation_reads_approved": false,
+  "registered_fitting_approved": false,
+  "private_gate": "closed",
+  "certificate": false,
+  "source_sha256": {
+    "examples/isolated_glu/joint_response_kernel.py": "109ea81f69709dc93322efa88c02ed0bb51e499329f4197b738848dfe261b8da",
+    "tests/test_joint_response_kernel.py": "fee28c2226b213aeafac08e7271c569270d3512630b59b6b6c9a6520044f5040"
+  },
+  "design_sha256": "531239ea94f18ea34db49ae33014d1b4e2fffa54bfd2f6d77bf8a1ee296c7fea",
+  "independent_checks": {
+    "scalar_forward_and_all_coordinate_complex_step_gradients": true,
+    "two_independent_adam_steps_schedule_endpoints_and_callback_propagation": true,
+    "physical_coordinate_folding_and_immutable_parameters": true,
+    "all_three_previously_observed_false_zero_boundaries_now_fail_closed": true,
+    "initial_metric_numeric_failure_has_no_observer_or_success_prefix": true
+  },
+  "maximum_differences": {
+    "forward": 2.0816681711721685e-17,
+    "gradient": 2.6020852139652106e-18,
+    "two_step_adam": 5.551115123125783e-17,
+    "physical_folding": 2.0383000842727483e-17
+  },
+  "addressed_findings": [
+    {
+      "id": "K1-FALSE-ZERO-UNDERFLOW",
+      "status": "closed",
+      "before": "Sampled loss, subnormal RMS-derived MSE and nonzero relative error could silently become zero. Pre-fix literal observations preserved in underflow-probe-results.json.",
+      "after": "Explicit residual/error_scale nonzero-to-zero guards now raise FloatingPointError; all three independent counterexamples reject, and fit initial failure reports NumericalFailure with zero completed updates."
+    }
+  ],
+  "evidence_sha256": {
+    "underflow-probe-results.json": "7683688a02e77e61e5a0cd46c129b8b98cea00debb991d54eb6a921c4d4d2bc4",
+    "probe.py": "aa4ca2ab5d4f408a11f13f564bd01f261d4b1f1ccce75c6a128bfb3b3f6e0f91",
+    "probe-results.json": "a4f09273b92c738a9e78d1615f4c83acd71ff81c7114a3ea0851ad205d559b7b"
+  },
+  "actual_observation_reads": 0,
+  "registered_rng_calls": 0,
+  "new_queries": 0,
+  "registered_fits": 0,
+  "literal_work": "one two-update synthetic prefix plus initial-failure boundary; no full registered fit",
+  "parent_reported_checks_not_repeated": "13 literal tests, strict mypy and Ruff passed; full 4000-step/checkpoint/guard-isolation suite not rerun by reviewer.",
+  "limitations": [
+    "Pure arithmetic component approval only. No joined observation, schedule RNG, persistence/controller/inventory/runtime or actual data protocol approval.",
+    "Guard is consumed calibration, not independent validation. r/2 remains a hypothesis, not teacher width or identifiability.",
+    "Source implements 4000 Adam steps and 17 checkpoints; callback propagation, immutable input copies and earliest strict minimum were reviewed. Parent fixtures establish full schedule/checkpoint behavior; reviewer independently checked two updates and scalar complex-step gradients.",
+    "Floating-point saturation and componentwise rounding remain; targeted guards prevent observed false zero totals, not an all-arithmetic exactness theorem.",
+    "No measured experiment resource proof, reconstruction success, convergence or private model readiness."
+  ]
+}

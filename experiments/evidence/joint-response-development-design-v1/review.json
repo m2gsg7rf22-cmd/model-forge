@@ -1,0 +1,19 @@
+{
+  "design_approved": true,
+  "design_sha256": "531239ea94f18ea34db49ae33014d1b4e2fffa54bfd2f6d77bf8a1ee296c7fea",
+  "full_source_approved": false,
+  "execution_approved": false,
+  "actual_reads": 0,
+  "rng_calls": 0,
+  "new_queries": 0,
+  "fits": 0,
+  "private_gate": "closed",
+  "blocking_findings": [],
+  "notes": [
+    "Distinct joint G/U/D response objective is scientifically different from fixed-gate polish and rank-one count search; old failures remain failures, with all six cases required.",
+    "The chosen r/2 is a hypothesized minimal-family width, not true/stored width or an identifiability certificate. Joined input contract must independently bind both frozen sources without supplying basis/directions/channel/truth metadata.",
+    "Guard centers were used in the all17 rank selection and are reused calibration; checkpoint selection and paired shared randomness do not establish independent generalization or causal precision effects. Fresh owned sealed replication remains mandatory.",
+    "Physical coordinate rescaling is algebraically consistent. Implementation must fail closed on nonfinite/underflow scale arithmetic and explicitly define undefined zero-reference relative metrics; guard MSE selection must not acquire hidden exceptions or extra restarts.",
+    "17checkpoints and proposed payload arithmetic are coherent, but exact worst-case shard/metadata/failure/transport/memory/runtime inventory and independent full source review remain prerequisites; no actual resource proof, RNG, transcript load or fitting is approved."
+  ]
+}

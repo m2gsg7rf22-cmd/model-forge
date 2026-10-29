@@ -1,0 +1,18 @@
+{
+  "subnormal_metric": {
+    "returned": [
+      0.0,
+      1.0
+    ]
+  },
+  "sampled_loss_underflow": {
+    "returned": 0.0
+  },
+  "source_sha256": "a0010e8bca7b48274a175d6ca0497521e027dbf09d3979c5f862b6852dbbe047",
+  "nonzero_representable_mse_but_relative_underflow": {
+    "returned": [
+      5.000000000000001e-201,
+      0.0
+    ]
+  }
+}
