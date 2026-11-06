@@ -1,0 +1,125 @@
+{
+  "schema": "joint-response-numeric-audit-actual-v1",
+  "source_commit": "398819e3a284f98c029fe1449b6efcb453246368",
+  "actual_root": "/Users/adamfaruhi123/.local/share/modelforge-research/experiments/joint-response-numeric-audit-v1",
+  "status": "completed",
+  "numeric_consistency_agreed": true,
+  "scientific_reconstruction_success": false,
+  "private_gate": "closed",
+  "automatic_retry": false,
+  "independent_terminal_receipt_review": false,
+  "layout_after_final_outer_write": {
+    "retained_bytes": 2289280,
+    "audit_marker_bytes": 1158,
+    "combined_retained_bytes": 860352270,
+    "files": 22,
+    "root_metadata_including_engines_bytes": 31005,
+    "root_temporary_metadata_bytes": 0
+  },
+  "outer_resources": {
+    "memory_limit_mb": 512,
+    "memory_samples": 164,
+    "peak_sampled_rss_bytes": 359612416,
+    "process_monitor_scope": "process_and_children",
+    "status": "completed"
+  },
+  "preflight_resources": {
+    "manifest_sha256": "dbc16838f41bb95fe050249dca65e5efbc850aa41e3fe93408adc2ecd9c344a1",
+    "memory_limit_mb": 512,
+    "memory_samples": 6,
+    "peak_sampled_rss_bytes": 299565056,
+    "process_monitor_scope": "process_and_children",
+    "shards": 2,
+    "status": "passed"
+  },
+  "cases": [
+    {
+      "job_id": "job00",
+      "selected_step": 1280,
+      "selected_recomputed": {
+        "guard_mse": 0.6994131200706581,
+        "guard_relative_error": 1.0147303032124535,
+        "train_half_mse": 0.0007988824988415447
+      },
+      "checkpoint_count": 17,
+      "prediction_rows_checked": 71808,
+      "physical_parameters_agreed": true,
+      "all_predictions_agreed": true
+    },
+    {
+      "job_id": "job01",
+      "selected_step": 1280,
+      "selected_recomputed": {
+        "guard_mse": 0.6994131378610726,
+        "guard_relative_error": 1.014730288739742,
+        "train_half_mse": 0.0007988824186728474
+      },
+      "checkpoint_count": 17,
+      "prediction_rows_checked": 71808,
+      "physical_parameters_agreed": true,
+      "all_predictions_agreed": true
+    },
+    {
+      "job_id": "job02",
+      "selected_step": 0,
+      "selected_recomputed": {
+        "guard_mse": 1.2236552738376723,
+        "guard_relative_error": 1.1859929208803754,
+        "train_half_mse": 0.6578947402817727
+      },
+      "checkpoint_count": 17,
+      "prediction_rows_checked": 71808,
+      "physical_parameters_agreed": true,
+      "all_predictions_agreed": true
+    },
+    {
+      "job_id": "job03",
+      "selected_step": 0,
+      "selected_recomputed": {
+        "guard_mse": 1.2236552793951767,
+        "guard_relative_error": 1.1859929083570404,
+        "train_half_mse": 0.6578947359885141
+      },
+      "checkpoint_count": 17,
+      "prediction_rows_checked": 71808,
+      "physical_parameters_agreed": true,
+      "all_predictions_agreed": true
+    },
+    {
+      "job_id": "job04",
+      "selected_step": 0,
+      "selected_recomputed": {
+        "guard_mse": 1.331587233663064,
+        "guard_relative_error": 1.0491439833235439,
+        "train_half_mse": 0.821468098663859
+      },
+      "checkpoint_count": 17,
+      "prediction_rows_checked": 71808,
+      "physical_parameters_agreed": true,
+      "all_predictions_agreed": true
+    },
+    {
+      "job_id": "job05",
+      "selected_step": 0,
+      "selected_recomputed": {
+        "guard_mse": 1.3315873813363601,
+        "guard_relative_error": 1.0491439731379357,
+        "train_half_mse": 0.821468087386949
+      },
+      "checkpoint_count": 17,
+      "prediction_rows_checked": 71808,
+      "physical_parameters_agreed": true,
+      "all_predictions_agreed": true
+    }
+  ],
+  "maximum_absolute_metric_differences": {
+    "train_half_mse": 3.3306690738754696e-16,
+    "guard_mse": 2.6645352591003757e-15,
+    "guard_relative_error": 1.7763568394002505e-15
+  },
+  "candidate_numeric_decodes": 168,
+  "candidate_initial_reads": 186,
+  "candidate_completion_hashes": 186,
+  "candidate_bytes_read": 126810009,
+  "candidate_completion_bytes": 126810009
+}
