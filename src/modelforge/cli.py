@@ -61,6 +61,7 @@ def main() -> None:
         "operation",
         choices=[
             "local_runtime_status",
+            "video_runtime_inventory",
             "install_local_runtime",
             "create_local_fixture",
             "attach_local_model",

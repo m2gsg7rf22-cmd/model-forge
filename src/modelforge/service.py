@@ -299,6 +299,12 @@ class Service:
                 timeout_seconds=timeout_seconds,
             )
 
+    def video_runtime_inventory(self, model_root: str) -> dict[str, Any]:
+        """Read-only known-file inventory in the current service interpreter."""
+        from .video_inventory import inspect_fastmetal
+
+        return inspect_fastmetal(model_root)
+
     def local_runtime_status(self) -> dict[str, Any]:
         """Check actual installed libraries in the configured companion interpreter."""
         return self._engine("status", {})

@@ -129,6 +129,7 @@ def create_server(data_dir: str | None = None) -> FastMCP:
     # Bound signatures remain explicit typed MCP schemas; every tool calls the shared engines.
     for name in (
         "local_runtime_status",
+        "video_runtime_inventory",
         "install_local_runtime",
         "create_local_fixture",
         "attach_local_model",

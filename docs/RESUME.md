@@ -279,3 +279,6 @@ Latest actual v2 result (sourceec2623a, CI40108932281):40focused tests passed on
 
 
 2026-10-29 ACTUAL numeric-audit ONEdefaultterminal COMPLETE at398819e; all6x17metrics/430848selectedpredrows/physicaltransform agree, selection1280/1280/0/0/0/0/noambiguity. Maxmetricdeltas3.33e-16/2.66e-15/1.78e-15, negativeguarderrors>1confirmedbyindependentarithmetic; nocausalattribution/generalization/reconstruction. OuterTREE359612416bytes164samples/9.563656792s beforefinalouterwrite; finaloutput2289280+marker1158/combinedconservative860352270bytes22files.168numericdecodes/186reads+186streamhashes,0queries/RNG/optimizerreplay. TerminalsummarySHAbbea92430f437a48c34f714fd5328f812b6c047552ed73af6e0fdf08597748aa; markerconsumedNOretry. NEXT independentboundedstdlibSAVEDreceiptoutcomereview no NPZ/raw408/teacher/heldout/private/RNG/fit. PrivategateCLOSED.
+
+
+2026-11-06 video runtime inventory candidate: known FastMetal filenames/current interpreter import-spec checks via CLI and MCP;3focused tests including real MCP transport passed; strictmypy/Ruff passed. Inventory is NOT model-integrity/runtime/offline/generation/quality proof. No weights downloaded or generated; independent source review pending. Existing numeric-audit receipt review remains queued/privategateCLOSED.

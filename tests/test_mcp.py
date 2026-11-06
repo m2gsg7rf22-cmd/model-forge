@@ -26,5 +26,10 @@ def test_real_mcp_transport(tmp_path):
                 assert "MCP transport" in projects.content[0].text
                 hardware = await session.call_tool("hardware_status", {})
                 assert "memory_available" in hardware.content[0].text
+                inventory = await session.call_tool(
+                    "video_runtime_inventory", {"model_root": str(tmp_path / "missing")}
+                )
+                assert not inventory.isError
+                assert '"generation_verified":false' in inventory.content[0].text.replace(" ", "")
 
     asyncio.run(run())
